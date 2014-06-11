@@ -1,0 +1,202 @@
+{
+    
+    
+    "SYMBOLS" : {
+        "A" : {
+            "id" : 1,
+            "color": [110, 20, 30, 1],
+        },
+        
+        "B" : {
+            "id" : 2,
+            "color": [110, 100, 50, 1],
+        },
+        
+        "C" : {
+            "id" : 3,
+            "color": [110, 150, 130, 1],
+        },
+        
+        "D" : {
+            "id" : 4,
+            "color": [110, 205, 90, 1],
+        }
+    },
+    
+    
+    "Squeeze": 1 ,
+    
+    "ContainerClipsToBounds": 1,
+    
+    "ActionExecutors" : {
+        
+        "RollIn_ActionExecutors" : [
+                                    
+                                    {
+                                    "Action": "positions.move"
+                                    , "keyPath": "position"
+                                    , "forward": 1
+                                    , "transition.mode_": 2
+                                    , "stepTime": 0.05
+                                    , "autoreverses" : 0
+                                    , "repeatCount" : 0
+                                    
+                                    , "matrix.delayRelativeToMilestone": 0
+                                    , "matrix.delayRelativeToQueueIndex": 0
+                                    , "element.startingOffset" : 3
+                                    , "element.totalTransitTime_" : 0.5
+                                    , "queue.easingType_": 16
+                                    , "queue.easingDegree": 15
+                                    , "queue.timeControl.point1.x": 0.5
+                                    , "queue.timeControl.point1.y": 0.5
+                                    , "queue.timeControl.point2.x": 0.2
+                                    , "queue.timeControl.point2.y": 1.0
+                                    , "queue.timeControl.Each_" : 1
+                                    }
+                                    
+                                    ],
+        
+        "Adjusts_ActionExecutors" : [
+                                     
+                                     {
+                                     "Action": "positions.move"
+                                     , "keyPath": "position"
+                                     , "forward": 1
+                                     , "transition.mode_": 2
+                                     , "stepTime": 0.25
+                                     , "autoreverses" : 0
+                                     , "repeatCount" : 0
+                                     
+                                     , "matrix.delayRelativeToMilestone": 0
+                                     , "matrix.delayRelativeToQueueIndex": 0
+                                     , "element.startingOffset_" : 1
+                                     , "element.totalTransitTime_" : 0.5
+                                     , "queue.easingType_": 16
+                                     , "queue.easingDegree": 15
+                                     , "queue.timeControl.point1.x": 0.5
+                                     , "queue.timeControl.point1.y": 0.5
+                                     , "queue.timeControl.point2.x": 0.2
+                                     , "queue.timeControl.point2.y": 1.0
+                                     , "queue.timeControl.Each_" : 1
+                                     }
+                                     
+                                     ],
+        
+        "FillIn_ActionExecutors" : [
+                                    
+                                    {
+                                    "Action": "positions.move"
+                                    , "keyPath": "position"
+                                    , "forward": 1
+                                    , "transition.mode_": 2
+                                    , "stepTime": 0.25
+                                    , "autoreverses" : 0
+                                    , "repeatCount" : 0
+                                    
+                                    , "matrix.delayRelativeToMilestone": 0
+                                    , "matrix.delayRelativeToQueueIndex": 0
+                                    , "element.startingOffset_" : 1
+                                    , "element.totalTransitTime_" : 0.5
+                                    , "queue.easingType_": 16
+                                    , "queue.easingDegree": 15
+                                    , "queue.timeControl.point1.x": 0.5
+                                    , "queue.timeControl.point1.y": 0.5
+                                    , "queue.timeControl.point2.x": 0.2
+                                    , "queue.timeControl.point2.y": 1.0
+                                    , "queue.timeControl.Each_" : 1
+                                    }
+                                    
+                                    ],
+        
+        
+        
+        "Squeeze.Adjust_ActionExecutors" : [
+                                            
+                                            {
+                                            "Action": "positions.move"
+                                            , "keyPath": "position"
+                                            , "forward": 1
+                                            , "transition.mode_": 2
+                                            , "stepTime": 0.25
+                                            , "autoreverses" : 0
+                                            , "repeatCount" : 0
+                                            
+                                            , "matrix.delayRelativeToMilestone": 0
+                                            , "matrix.delayRelativeToQueueIndex": 0
+                                            , "element.startingOffset_" : 1
+                                            , "element.totalTransitTime_" : 0.5
+                                            , "queue.easingType_": 16
+                                            , "queue.easingDegree": 15
+                                            , "queue.timeControl.point1.x": 0.5
+                                            , "queue.timeControl.point1.y": 0.5
+                                            , "queue.timeControl.point2.x": 0.2
+                                            , "queue.timeControl.point2.y": 1.0
+                                            , "queue.timeControl.Each_" : 1
+                                            }
+                                            
+                                            ],
+        
+        
+        
+        "Squeeze.FillIn_ActionExecutors" : [
+                                            
+                                            {
+                                            "Action": "positions.move"
+                                            , "keyPath": "position"
+                                            , "forward": 1
+                                            , "transition.mode_": 2
+                                            , "stepTime": 0.25
+                                            , "autoreverses" : 0
+                                            , "repeatCount" : 0
+                                            
+                                            , "matrix.delayRelativeToMilestone": 0
+                                            , "matrix.delayRelativeToQueueIndex": 0
+                                            , "element.startingOffset_" : 1
+                                            , "element.totalTransitTime_" : 0.5
+                                            , "queue.easingType_": 16
+                                            , "queue.easingDegree": 15
+                                            , "queue.timeControl.point1.x": 0.5
+                                            , "queue.timeControl.point1.y": 0.5
+                                            , "queue.timeControl.point2.x": 0.2
+                                            , "queue.timeControl.point2.y": 1.0
+                                            , "queue.timeControl.Each_" : 1
+                                            }
+                                            
+                                            ],
+        
+        
+        
+        
+        "Vanish_ActionExecutors": [
+                                   {
+                                   "Action_": "values.animation",
+                                   "keyPath": "transform.scale",
+                                   
+                                   "values": [1, 0],
+                                   "transition.mode": -1,
+                                   "element.totalTransitTime": 0.5,
+                                   "autoreverses_": 1,
+                                   "repeatCount_":2,
+                                   "fillMode": 1
+                                   },
+                                   
+                                   {
+                                   "Action": "values.animation",
+                                   "keyPath": "opacity",
+                                   
+                                   "values": [1, 0.1],
+                                   "transition.mode": -1,
+                                   "element.totalTransitTime": 0.15,
+                                   "repeatCount": 10,
+                                   "repeatDuration_": 1,
+                                   "autoreverses_": 1,
+                                   "fillMode": 1
+                                   }
+                                   ]
+        
+        
+        
+    }
+    
+    
+}

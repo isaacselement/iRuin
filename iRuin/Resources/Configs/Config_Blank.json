@@ -1,0 +1,19 @@
+{
+    
+    
+    "Blank_Explode_ActionExecutors": [
+                                      
+                                      {
+                                      "Action": "tiles.explode",
+                                      
+                                      
+                                      "fillMode": 1
+                                      
+                                      }
+                                      
+                                      
+                                      ],
+    
+    
+    
+}

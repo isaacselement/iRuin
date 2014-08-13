@@ -1,8 +1,6 @@
 #import "LineScrollView.h"
 #import "LineScrollViewCell.h"
 
-#import "UIView+PropertiesSetter.h"
-
 #import "Modules.h"         // Remove it when complete
 
 #define default_cell_width 80.0f;
@@ -72,7 +70,7 @@
         
         if (! cell) break ; // aware of the infinite loop
         
-        float cellWidth = [cell getSizeWidth];
+        float cellWidth = [cell sizeWidth];
         
         cell.frame = CGRectMake(length, 0, cellWidth, height);
         criticalIndex++;
@@ -92,7 +90,7 @@
     criticalWidth = [self getLeftestIndexCellWidth];
     
     float lineLength = 0.0f;
-    for (UIView* view in contentView.subviews)  lineLength += [view getSizeWidth];
+    for (UIView* view in contentView.subviews)  lineLength += [view sizeWidth];
     self.contentSize = CGSizeMake(lineLength, height);
     contentView.frame = CGRectMake(0, 0, self.contentSize.width, self.contentSize.height);
 }
@@ -150,8 +148,8 @@
     float xc[count] ;
     
     for (int i = 0; i < count; i++) {
-        if (i == 0) xc[i] = [subviews[i] getOriginX];
-        else xc[i] = [subviews[i - 1] getOriginX] + [subviews[i - 1] getSizeWidth];
+        if (i == 0) xc[i] = [subviews[i] originX];
+        else xc[i] = [subviews[i - 1] originX] + [subviews[i - 1] sizeWidth];
     }
     
     for (int i = 0; i < count; i++) {

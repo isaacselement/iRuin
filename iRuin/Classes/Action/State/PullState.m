@@ -47,8 +47,8 @@
     SymbolView* xSymbol = [SearchHelper getAdjacentSymbolByDirection: symbol direction:DirectionRIGHT];
     SymbolView* ySymbol = [SearchHelper getAdjacentSymbolByDirection: symbol direction:DirectionDOWN];
     
-    xDistance = [xSymbol getCenterX] - [symbol getCenterX];
-    yDistance = [ySymbol getCenterY] - [symbol getCenterY];
+    xDistance = [xSymbol centerX] - [symbol centerX];
+    yDistance = [ySymbol centerY] - [symbol centerY];
     
 }
 
@@ -176,11 +176,11 @@
         SymbolView* lastView = [twoViews lastObject];
         // positions
         if (isVertical) {
-            firstView.center = CGPointMake([first getCenterX], [first getCenterY] - yDistance);
-            lastView.center = CGPointMake([last getCenterX], [last getCenterY] + yDistance);
+            firstView.center = CGPointMake([first centerX], [first centerY] - yDistance);
+            lastView.center = CGPointMake([last centerX], [last centerY] + yDistance);
         } else {
-            firstView.center = CGPointMake([first getCenterX] - xDistance, [first getCenterY]);
-            lastView.center = CGPointMake([last getCenterX] + xDistance, [last getCenterY]);
+            firstView.center = CGPointMake([first centerX] - xDistance, [first centerY]);
+            lastView.center = CGPointMake([last centerX] + xDistance, [last centerY]);
         }
         
         [currentMovingViews insertObject: firstView atIndex:0];
@@ -243,21 +243,21 @@
         
         if (interval < value) {
             if (isVertical) {   // pulling down
-                [last setCenterY: [first getCenterY] - yDistance];
+                [last setCenterY: [first centerY] - yDistance];
                 [currentMovingViews moveLastObjectToFirst];
                 [self updateFirstViewPrototypes];
             } else {            // pulling right
-                [last setCenterX: [first getCenterX] - xDistance];
+                [last setCenterX: [first centerX] - xDistance];
                 [currentMovingViews moveLastObjectToFirst];
                 [self updateFirstViewPrototypes];
             }
         } else {
             if (isVertical) {   // pulling up
-                [first setCenterY: [last getCenterY] + yDistance];
+                [first setCenterY: [last centerY] + yDistance];
                 [currentMovingViews moveFirstObjectToLast];
                 [self updateLastViewPrototypes];
             } else {            // pulling left
-                [first setCenterX: [last getCenterX] + xDistance];
+                [first setCenterX: [last centerX] + xDistance];
                 [currentMovingViews moveFirstObjectToLast];
                 [self updateLastViewPrototypes];
             }
@@ -294,10 +294,10 @@
     } else if ([StateHelper isInContainer: first]) {
         
         if (isVertical) {
-            [last setCenterY: [first getCenterY] - yDistance];
+            [last setCenterY: [first centerY] - yDistance];
             [views moveLastObjectToFirst];
         } else {
-            [last setCenterX: [first getCenterX] - xDistance];
+            [last setCenterX: [first centerX] - xDistance];
             [views moveLastObjectToFirst];
             
         }
@@ -305,10 +305,10 @@
     } else if ([StateHelper isInContainer: last]) {
         
         if (isVertical) {
-            [first setCenterY: [last getCenterY] + yDistance];
+            [first setCenterY: [last centerY] + yDistance];
             [views moveFirstObjectToLast];
         } else {
-            [first setCenterX: [last getCenterX] + xDistance];
+            [first setCenterX: [last centerX] + xDistance];
             [views moveFirstObjectToLast];
         }
         

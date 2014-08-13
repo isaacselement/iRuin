@@ -36,7 +36,7 @@ static DataManager* sharedInstance = nil;
 
 #pragma mark - Public Methods
 -(void) initializeWithData {
-    // iPhone
+    // universal
     NSString* portraitDesignJsonFile = Visual_Portrait_JsonFile;
     NSString* landscapeDesignJsonFile = Visual_Landscape_JsonFile;
     
@@ -44,13 +44,25 @@ static DataManager* sharedInstance = nil;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         NSString* ipadPortraitDesignJsonFile = [IPad_Prefix stringByAppendingString: portraitDesignJsonFile];
         NSString* ipadLandscapeDesignJsonFile = [IPad_Prefix stringByAppendingString: landscapeDesignJsonFile];
+        
         // check if exist
         if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(ipadPortraitDesignJsonFile)]) {
             portraitDesignJsonFile = ipadPortraitDesignJsonFile;
         }
-        // check if exist
         if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(ipadLandscapeDesignJsonFile)]) {
             landscapeDesignJsonFile = ipadLandscapeDesignJsonFile;
+        }
+    // iPhone
+    } else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        NSString* iphonePortraitDesignJsonFile = [IPhone_Prefix stringByAppendingString: portraitDesignJsonFile];
+        NSString* iphoneLandscapeDesignJsonFile = [IPhone_Prefix stringByAppendingString: landscapeDesignJsonFile];
+        
+        // check if exist
+        if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(iphonePortraitDesignJsonFile)]) {
+            portraitDesignJsonFile = iphonePortraitDesignJsonFile;
+        }
+        if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(iphoneLandscapeDesignJsonFile)]) {
+            landscapeDesignJsonFile = iphoneLandscapeDesignJsonFile;
         }
     }
     

@@ -108,7 +108,6 @@
 // Symbol
 #import "Symbol.h"
 #import "SymbolView.h"
-#import "SymbolLayer.h"
 
 
 

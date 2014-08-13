@@ -157,7 +157,6 @@
 		4EDC7B341984F6EC00B20E7B /* FrameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC7AD41984F6EC00B20E7B /* FrameHelper.m */; };
 		4EDC7B351984F6EC00B20E7B /* FrameTranslater.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC7AD61984F6EC00B20E7B /* FrameTranslater.m */; };
 		4EDC7B361984F6EC00B20E7B /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC7AD81984F6EC00B20E7B /* UIView+Frame.m */; };
-		4EE35079190FED2100E307CC /* SeparateSymbolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE35078190FED2100E307CC /* SeparateSymbolView.m */; };
 		4EE45556192B3AC600FA71B9 /* BlankEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE45555192B3AC600FA71B9 /* BlankEvent.m */; };
 		4EE45559192B3AF900FA71B9 /* BlankState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE45558192B3AF900FA71B9 /* BlankState.m */; };
 		4EE4555C192B3B2900FA71B9 /* BlankEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE4555B192B3B2900FA71B9 /* BlankEffect.m */; };
@@ -169,7 +168,6 @@
 		4EF78DBE18C1609300E25A30 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4EF78DBD18C1609300E25A30 /* README.md */; };
 		4EF7943A18C21DB800E25A30 /* iPhone_Visual_Portrait_10x6.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EF7943918C21DB800E25A30 /* iPhone_Visual_Portrait_10x6.json */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
-		4EF8BE4E18D1F59D000B4069 /* SymbolLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8BE4D18D1F59D000B4069 /* SymbolLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -488,8 +486,6 @@
 		4EDC7AD61984F6EC00B20E7B /* FrameTranslater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameTranslater.m; sourceTree = "<group>"; };
 		4EDC7AD71984F6EC00B20E7B /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		4EDC7AD81984F6EC00B20E7B /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
-		4EE35077190FED2100E307CC /* SeparateSymbolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparateSymbolView.h; sourceTree = "<group>"; };
-		4EE35078190FED2100E307CC /* SeparateSymbolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparateSymbolView.m; sourceTree = "<group>"; };
 		4EE45554192B3AC600FA71B9 /* BlankEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankEvent.h; sourceTree = "<group>"; };
 		4EE45555192B3AC600FA71B9 /* BlankEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankEvent.m; sourceTree = "<group>"; };
 		4EE45557192B3AF900FA71B9 /* BlankState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankState.h; sourceTree = "<group>"; };
@@ -509,8 +505,6 @@
 		4EF7943918C21DB800E25A30 /* iPhone_Visual_Portrait_10x6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iPhone_Visual_Portrait_10x6.json; sourceTree = "<group>"; };
 		4EF7943C18C21FE800E25A30 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
-		4EF8BE4C18D1F59D000B4069 /* SymbolLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolLayer.h; sourceTree = "<group>"; };
-		4EF8BE4D18D1F59D000B4069 /* SymbolLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -700,10 +694,6 @@
 				4E9ED87F18BB8C0100BE6EB7 /* Symbol.m */,
 				4E9ED88118BB8CD600BE6EB7 /* SymbolView.h */,
 				4E9ED88218BB8CD600BE6EB7 /* SymbolView.m */,
-				4EF8BE4C18D1F59D000B4069 /* SymbolLayer.h */,
-				4EF8BE4D18D1F59D000B4069 /* SymbolLayer.m */,
-				4EE35077190FED2100E307CC /* SeparateSymbolView.h */,
-				4EE35078190FED2100E307CC /* SeparateSymbolView.m */,
 			);
 			path = Symbols;
 			sourceTree = "<group>";
@@ -1479,7 +1469,6 @@
 				4EDC7B231984F6EC00B20E7B /* NumberLabel.m in Sources */,
 				4E4D4EC6181D5B9C00886D75 /* ViewManager.m in Sources */,
 				4EDC7AEF1984F6EC00B20E7B /* HTTPGetRequest.m in Sources */,
-				4EF8BE4E18D1F59D000B4069 /* SymbolLayer.m in Sources */,
 				4EDC7B201984F6EC00B20E7B /* FontHelper.m in Sources */,
 				4EDC7B0E1984F6EC00B20E7B /* ActionAnimateHelper.m in Sources */,
 				4EDC7AED1984F6EC00B20E7B /* JsonFileManager.m in Sources */,
@@ -1519,7 +1508,6 @@
 				4EDC7AEC1984F6EC00B20E7B /* FileManager.m in Sources */,
 				4E8067C218C35CB900AF71B5 /* MoveState.m in Sources */,
 				4EDACDC2191FB1A600A8E84E /* ChainableState.m in Sources */,
-				4EE35079190FED2100E307CC /* SeparateSymbolView.m in Sources */,
 				4E71D40518BF779900270180 /* BaseEvent.m in Sources */,
 				4E1FBA2A191BC0E40093BE25 /* TouchEffect.m in Sources */,
 				4EF282751908038800AA0C54 /* GameState.m in Sources */,

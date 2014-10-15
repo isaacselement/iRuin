@@ -21,13 +21,6 @@ static ActionManager* sharedInstance = nil;
 }
 
 +(ActionManager*) getInstance {
-//    static ActionManager *_sharedInstance = nil;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        _sharedInstance = [[self alloc] init];
-//    });
-//    return _sharedInstance;
-    
     return sharedInstance;
 }
 
@@ -52,15 +45,14 @@ static ActionManager* sharedInstance = nil;
     
     // modes
     [self establishGameModes];
+    [self switchToMode: MODE_SWIPE];
+    
     // when chapter config is ready
     [gameState initializePrototypes];
     
     [self renderFramesWithCurrentOrientation];
     
-    [self switchToMode: MODE_BLANK];
-    
     [VIEW.controller switchToView: VIEW.gameView];
-    
 }
 
 -(void) establishGameModes
@@ -94,7 +86,13 @@ static ActionManager* sharedInstance = nil;
 
 -(void) switchToMode: (NSString*)mode
 {
-    [self setCurrentMode: mode];
+    _currentMode = mode;
+    
+    [DATA setConfigByMode: mode];
+    
+    self.currentEvent   = [[modesRepository objectForKey: mode] objectForKey: kEVENT];
+    self.currentState   = [[modesRepository objectForKey: mode] objectForKey: kSTATE];
+    self.currentEffect  = [[modesRepository objectForKey: mode] objectForKey: kEFFECT];
     
     // do some stuff
     [self.currentEvent eventInitialize];
@@ -102,15 +100,8 @@ static ActionManager* sharedInstance = nil;
     [self.currentEffect effectInitialize];
 }
 
--(void) setCurrentMode: (NSString*)mode
-{
-    self.currentEvent   = [[modesRepository objectForKey: mode] objectForKey: kEVENT];
-    self.currentState   = [[modesRepository objectForKey: mode] objectForKey: kSTATE];
-    self.currentEffect  = [[modesRepository objectForKey: mode] objectForKey: kEFFECT];
-}
 
-
-#pragma mark - 
+#pragma mark -
 
 -(void) renderFramesWithCurrentOrientation
 {
@@ -124,15 +115,9 @@ static ActionManager* sharedInstance = nil;
     // set up design/canvas size
     [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.visualJSON[@"DESIGN"]]];
     
-    // get the right size
-    BOOL isPortrait = [DATA isDeviceOrientationPortrait];
-    CGFloat width = VIEW.controller.view.bounds.size.width;
-    CGFloat height = VIEW.controller.view.bounds.size.height;
-    CGFloat x = isPortrait ? MIN(width, height) : MAX(width, height);
-    CGFloat y = isPortrait ? MAX(width, height) : MIN(width, height);
-    
+    // set up the game view and its subviews frames
     GameView* gameView = VIEW.gameView;
-    gameView.frame = CGRectMake(0, 0, x, y);
+    gameView.frame = [RectHelper getScreenRectByControllerOrientation];
     [FrameHelper setSubViewsFrames: gameView config:DATA.visualJSON[@"GameView"]];
 }
 

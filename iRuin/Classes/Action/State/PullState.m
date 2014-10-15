@@ -317,7 +317,7 @@
     [IterateHelper iterate: views handler:^BOOL(int index, id obj, int count) {
         NSValue* pointValue = [_originalPositions safeObjectAtIndex: index];
         NSArray* symbolPositions = @[CGPointValue(((UIView*)obj).center), pointValue];
-        [VIEW.actionExecutorManager runActionExecutors:[DATA config:MODE_PULL][@"Adjust_Positions_ActionExecutors"] onObjects:@[obj] values:symbolPositions baseTimes:nil];
+        [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Adjust_Positions_ActionExecutors"] onObjects:@[obj] values:symbolPositions baseTimes:nil];
         return NO;
     }];
 }
@@ -338,7 +338,7 @@
 -(void) updateViewPrototypeAfterAdjustIndex: (BOOL)isFirstView
 {
     SymbolView* view = isFirstView ? [currentMovingViews firstObject] : [currentMovingViews lastObject];
-    BOOL isRandom = [[DATA config:MODE_PULL][@"IsRandom"] boolValue];           // random or not
+    BOOL isRandom = [DATA.config[@"IsRandom"] boolValue];           // random or not
     
     Symbol* prototype = nil;
     if (isRandom) {

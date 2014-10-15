@@ -13,7 +13,6 @@
     if (vanishSymbols) {
         [self.effect effectStartVanish: vanishSymbols];
     } else {
-//        [self.effect effectStartVanish:nil];
         [(ChainableEvent*)ACTION.currentEvent didChainVanish];
     }
 }

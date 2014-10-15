@@ -13,9 +13,12 @@
 @implementation SearchHelper
 
 
-#pragma mark - 
-
 #pragma mark - SEARCH
+
++(NSMutableArray*) searchBlankMatchedSymbols: (SymbolView*)symbol
+{
+    return [self searchTouchMatchedSymbols: symbol];
+}
 
 
 +(NSMutableArray*) searchTouchMatchedSymbols: (SymbolView*)symbol

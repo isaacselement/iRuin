@@ -6,6 +6,7 @@
     NSMutableDictionary* portraitVisualJSON;
     NSMutableDictionary* landscapeVisualJSON;
     
+    NSDictionary* sharedConfig;
     NSMutableDictionary* config;
     NSMutableDictionary* modesConfigs;
 }
@@ -76,45 +77,35 @@ static DataManager* sharedInstance = nil;
     [QueueIndexPathParser setIndexPathsRepository: [ArrayHelper getMaxCount: landscapeVisualJSON[@"MATRIX"]]];
     [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:landscapeVisualJSON];
     
-    
     // prepare the shared config
-    config = [DictionaryHelper deepCopy: (NSDictionary*)[JsonFileManager getJsonFromFile: Key_Config]];
+    sharedConfig = [JsonFileManager getJsonFromFile: Key_Config];
     
     // prepare the modes config
     modesConfigs = [NSMutableDictionary dictionary];
     for (NSString* mode in ACTION.gameModes) {
-        NSString* modeConfigFileName = [NSString stringWithFormat:@"%@_%@", Key_Config, mode];
-        NSMutableDictionary* modeConfig = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromFile: modeConfigFileName]];
-        [modesConfigs setObject: modeConfig forKey:mode];
+        NSDictionary* modeConfig = [JsonFileManager getJsonFromFile: [NSString stringWithFormat:@"%@_%@", Key_Config, mode]];
+        if (modeConfig) [modesConfigs setObject: modeConfig forKey:mode];
     }
 }
 
 
-#pragma mark - Get The Configs
+#pragma mark - Get and Set The Configs
 
 -(NSMutableDictionary*) visualJSON
 {
-    return [self isDeviceOrientationPortrait] ? portraitVisualJSON : landscapeVisualJSON;
+    return UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]) ? landscapeVisualJSON : portraitVisualJSON ;
 }
+
 -(NSMutableDictionary*) config
 {
     return config;
 }
--(NSMutableDictionary*) config: (NSString*)mode
+
+-(void) setConfigByMode: (NSString*)mode
 {
-    return modesConfigs[mode];
+    config = [DictionaryHelper combines: sharedConfig with:modesConfigs[mode]];
 }
--(BOOL) isDeviceOrientationPortrait
-{
-    return UIDeviceOrientationIsPortrait([self getDeviceOrientation]);
-}
--(UIDeviceOrientation) getDeviceOrientation
-{
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if (orientation == UIDeviceOrientationUnknown) {
-        orientation = UIDeviceOrientationPortrait;      // default
-    }
-    return orientation;
-}
+
+
 
 @end

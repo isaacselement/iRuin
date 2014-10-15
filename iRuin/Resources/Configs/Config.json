@@ -168,17 +168,6 @@
         
         
         "Vanish_ActionExecutors": [
-                                   {
-                                   "Action_": "values.animation",
-                                   "keyPath": "transform.scale",
-                                   
-                                   "values": [1, 0],
-                                   "transition.mode": -1,
-                                   "element.totalTransitTime": 0.5,
-                                   "autoreverses_": 1,
-                                   "repeatCount_":2,
-                                   "fillMode": 1
-                                   },
                                    
                                    {
                                    "Action": "values.animation",
@@ -191,7 +180,22 @@
                                    "repeatDuration_": 1,
                                    "autoreverses_": 1,
                                    "fillMode": 1
+                                   },
+                                   
+                                   
+                                   {
+                                   "Action_": "values.animation",
+                                   "keyPath": "transform.scale",
+                                   
+                                   "values": [1, 0],
+                                   "transition.mode": -1,
+                                   "element.totalTransitTime": 0.5,
+                                   "autoreverses_": 1,
+                                   "repeatCount_":2,
+                                   "fillMode": 1
                                    }
+                                   
+                                   
                                    ]
         
         

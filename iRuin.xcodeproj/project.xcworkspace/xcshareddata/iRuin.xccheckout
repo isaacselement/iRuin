@@ -10,31 +10,43 @@
 	<string>iRuin</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B8479B89-6BC5-46BB-997E-36C4E3939289</key>
+		<key>382CF808FA8CFA837D2AEBBBB6B28956273A1D3B</key>
+		<string>https://github.com/isaacselement/Modules.git</string>
+		<key>A0DD2EED7C7ED37B02BF747EC8AD12626E0A6249</key>
 		<string>https://github.com/isaacselement/iRuin.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>iRuin.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B8479B89-6BC5-46BB-997E-36C4E3939289</key>
+		<key>382CF808FA8CFA837D2AEBBBB6B28956273A1D3B</key>
+		<string>../../../Modules</string>
+		<key>A0DD2EED7C7ED37B02BF747EC8AD12626E0A6249</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/isaacselement/iRuin.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B8479B89-6BC5-46BB-997E-36C4E3939289</string>
+	<string>A0DD2EED7C7ED37B02BF747EC8AD12626E0A6249</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B8479B89-6BC5-46BB-997E-36C4E3939289</string>
+			<string>A0DD2EED7C7ED37B02BF747EC8AD12626E0A6249</string>
 			<key>IDESourceControlWCCName</key>
 			<string>iRuin</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>382CF808FA8CFA837D2AEBBBB6B28956273A1D3B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Modules</string>
 		</dict>
 	</array>
 </dict>

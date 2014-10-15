@@ -1,18 +1,21 @@
 {
     
-    
-    "Blank_Explode_ActionExecutors": [
-                                      
-                                      {
-                                      "Action": "tiles.explode",
-                                      
-                                      
-                                      "fillMode": 1
-                                      
-                                      }
-                                      
-                                      
-                                      ],
+    "ActionExecutors" : {
+        
+        "Vanish_ActionExecutors": [
+                                   
+                                   {
+                                   "Action": "tiles.explode",
+                                   
+                                   
+                                   "fillMode": 1
+                                   
+                                   }
+                                   
+                                   
+                                   ],
+        
+    }
     
     
     

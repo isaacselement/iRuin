@@ -136,9 +136,9 @@
     NSArray* withSymbolPositions = @[CGPointValue(withSymbol.center),CGPointValue(symbol.center)];
     
     [timeCalculator clear];
-    [VIEW.actionExecutorManager runActionExecutors:[DATA config:MODE_SWIPE][@"Swipe_First_ActionExecutors"] onObjects:@[symbol] values:symbolPositions baseTimes:nil];
+    [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Swipe_First_ActionExecutors"] onObjects:@[symbol] values:symbolPositions baseTimes:nil];
     swapEffectDuration += [timeCalculator takeThenClear];
-    [VIEW.actionExecutorManager runActionExecutors:[DATA config:MODE_SWIPE][@"Swipe_Second_ActionExecutors"] onObjects:@[withSymbol] values:withSymbolPositions baseTimes:nil];
+    [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Swipe_Second_ActionExecutors"] onObjects:@[withSymbol] values:withSymbolPositions baseTimes:nil];
     swapEffectDuration += [timeCalculator takeThenClear];
     
     // update the row and column attribute , and the position in symbolsInContainer
@@ -149,7 +149,6 @@
     
     if (vanishSymbols.count >= MATCH_COUNT) {
         [self.effect performSelector: @selector(effectStartVanish:) withObject:vanishSymbols afterDelay:swapEffectDuration];
-        
     }
     
 }

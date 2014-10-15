@@ -11,10 +11,9 @@
 
 
 -(NSMutableDictionary*) visualJSON;
--(NSMutableDictionary*) config;
--(NSMutableDictionary*) config: (NSString*)mode;
 
--(BOOL) isDeviceOrientationPortrait;
--(UIDeviceOrientation) getDeviceOrientation;
+-(NSMutableDictionary*) config;
+
+-(void) setConfigByMode: (NSString*)mode;
 
 @end

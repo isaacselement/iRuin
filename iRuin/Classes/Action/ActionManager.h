@@ -29,6 +29,7 @@
 
 // modes
 @property (strong, readonly) NSArray* gameModes;
+@property (strong, readonly) NSString* currentMode;
 @property (strong, readonly) NSMutableDictionary* modesRepository;
 
 @property (assign) BaseEvent* currentEvent;

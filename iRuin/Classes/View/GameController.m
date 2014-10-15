@@ -35,7 +35,7 @@
     DLog(@"orientationDidChanged: %ld . %f X %f", [UIDevice currentDevice].orientation, self.view.bounds.size.width, self.view.bounds.size.height);
     
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(renderWithCurrentOrientation) object:nil];
-    [self performSelector: @selector(renderWithCurrentOrientation) withObject:nil afterDelay:0.3];
+    [self performSelector: @selector(renderWithCurrentOrientation) withObject:nil afterDelay: 0.5];
 }
 
 
@@ -60,6 +60,7 @@
     
 //    return;
     
+    // symbols frames
     if (! ACTION.gameState.isGameStarted) {
         [ACTION.currentEffect effectStartRollIn];
 
@@ -70,6 +71,7 @@
         }];
     } else {
 
+        // Temporary code here.
         [UIView animateWithDuration: 0.5 animations:^{
             [IterateHelper iterateTwoDimensionArray:viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
                 SymbolView* symbolView = (SymbolView*)obj;

@@ -26,11 +26,10 @@
     [super stateTouchesEnded:symbol location:location];
     
     if (touchingSymbol && touchingSymbol == symbol) {
-        
         NSMutableArray* vanishSymbols = [SearchHelper searchBlankMatchedSymbols: symbol];
-        if (vanishSymbols) [self.effect effectStartVanish: vanishSymbols];
-        // to do the explode effect ...
-//        [VIEW.actionExecutorManager runActionExecutors:[DATA config:MODE_BLANK][@"Blank_Explode_ActionExecutors"] onObjects:@[symbol] values:nil baseTimes:nil];
+        if (vanishSymbols) {
+            [self.effect effectStartVanish: vanishSymbols];
+        }
     }
     
 }

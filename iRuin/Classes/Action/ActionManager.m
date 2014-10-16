@@ -45,7 +45,7 @@ static ActionManager* sharedInstance = nil;
     
     // modes
     [self establishGameModes];
-    [self switchToMode: MODE_SWIPE];
+    [self switchToMode: MODE_BLANK];
     
     // when chapter config is ready
     [gameState initializePrototypes];

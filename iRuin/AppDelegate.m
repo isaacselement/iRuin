@@ -57,4 +57,19 @@ void uncaughtExceptionHandler(NSException *exception) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+-(void)initInAppIMSDK:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [InAppIMSDK application:application didFinishLaunchingWithOptions:launchOptions];
+    [InAppIMSDK registerApp: @"543f77915fe8bd75b0436c42"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InAppIMWillAuth:) name:KIAI_InAppIMSDK_Will_AuthNtf object:nil];
+    
+    [InAppIMSDK init];
+}
+
+-(void)InAppIMWillAuth:(NSNotification*)notification
+{
+    [AllSDKManager setCurrentSDKType:AllSDKType_IAIIM];
+}
+
 @end

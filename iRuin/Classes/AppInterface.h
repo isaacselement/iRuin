@@ -18,6 +18,9 @@
 
 #import "Modules.h"
 
+#import "InAppIMSDK.h"
+#import "AllSDKManager.h"
+
 
 
 #pragma mark - Data

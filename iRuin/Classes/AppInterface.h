@@ -18,7 +18,12 @@
 
 #import "Modules.h"
 
+
+//InAppIMSDK
 #import "InAppIMSDK.h"
+#import "IAIExtDef.h"
+#import "IAITopNavSkin.h"
+#import "CConfigs.h"
 #import "AllSDKManager.h"
 
 

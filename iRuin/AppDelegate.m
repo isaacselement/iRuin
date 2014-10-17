@@ -27,6 +27,11 @@ void uncaughtExceptionHandler(NSException *exception) {
     [ACTION launchAppProcedures];
     
     [self.window makeKeyAndVisible];
+    
+    
+    //
+    [self initInAppIMSDK:application didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
 }
 
@@ -45,6 +50,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
+    [InAppIMSDK applicationWillEnterForeground:application];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -55,6 +62,31 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    [InAppIMSDK applicationDidEnterBackground:application];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [InAppIMSDK handleRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    [InAppIMSDK handleFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+//    [InAppIMSDK application:application didReceiveRemoteNotification:userInfo navigationController:navController];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([AllSDKManager getCurrentSDKType]==AllSDKType_IAIIM) {
+        return [InAppIMSDK handleOpenURL:url delegate:self];
+    }
+    return YES;
 }
 
 

@@ -40,7 +40,7 @@
 //    ContainerView* containerView = VIEW.gameView.containerView;
 //    NSMutableArray* array = [NSMutableArray array];
 //    for (int i = 0; i < 10; i++) {
-//        UIBezierPath* path = [ExplodeExecutor pathFromPoint:location];
+//        UIBezierPath* path = [ExplodesExecutor pathFromPoint:location];
 //        [array addObject: path];
 //    }
 //    containerView.testPath = array;

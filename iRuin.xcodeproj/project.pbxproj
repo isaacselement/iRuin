@@ -162,7 +162,6 @@
 		4EE5FC3E19D858DD005E8736 /* ActionExecutorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBA219D858DD005E8736 /* ActionExecutorManager.m */; };
 		4EE5FC3F19D858DD005E8736 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBA519D858DD005E8736 /* AudioPlayer.m */; };
 		4EE5FC4019D858DD005E8736 /* ElementExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBA719D858DD005E8736 /* ElementExecutor.m */; };
-		4EE5FC4119D858DD005E8736 /* ExplodeExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBA919D858DD005E8736 /* ExplodeExecutor.m */; };
 		4EE5FC4219D858DD005E8736 /* ImageAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBAB19D858DD005E8736 /* ImageAnimator.m */; };
 		4EE5FC4319D858DD005E8736 /* TextFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBAD19D858DD005E8736 /* TextFormatter.m */; };
 		4EE5FC4419D858DD005E8736 /* PositionsExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBB019D858DD005E8736 /* PositionsExecutor.m */; };
@@ -201,6 +200,7 @@
 		4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7018D47D96001FB745 /* EffectHelper.m */; };
 		4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7418D47D96001FB745 /* SearchHelper.m */; };
 		4EF282751908038800AA0C54 /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF282741908038800AA0C54 /* GameState.m */; };
+		4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6641E19F40A4A00C2B9FC /* ExplodesExecutor.m */; };
 		4EF78DBE18C1609300E25A30 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4EF78DBD18C1609300E25A30 /* README.md */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
 /* End PBXBuildFile section */
@@ -500,8 +500,6 @@
 		4EE5FBA519D858DD005E8736 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		4EE5FBA619D858DD005E8736 /* ElementExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementExecutor.h; sourceTree = "<group>"; };
 		4EE5FBA719D858DD005E8736 /* ElementExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementExecutor.m; sourceTree = "<group>"; };
-		4EE5FBA819D858DD005E8736 /* ExplodeExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodeExecutor.h; sourceTree = "<group>"; };
-		4EE5FBA919D858DD005E8736 /* ExplodeExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplodeExecutor.m; sourceTree = "<group>"; };
 		4EE5FBAA19D858DD005E8736 /* ImageAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAnimator.h; sourceTree = "<group>"; };
 		4EE5FBAB19D858DD005E8736 /* ImageAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAnimator.m; sourceTree = "<group>"; };
 		4EE5FBAC19D858DD005E8736 /* TextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFormatter.h; sourceTree = "<group>"; };
@@ -588,6 +586,8 @@
 		4EEAFF7418D47D96001FB745 /* SearchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHelper.m; sourceTree = "<group>"; };
 		4EF282731908038800AA0C54 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
 		4EF282741908038800AA0C54 /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
+		4EF6641D19F40A4A00C2B9FC /* ExplodesExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodesExecutor.h; sourceTree = "<group>"; };
+		4EF6641E19F40A4A00C2B9FC /* ExplodesExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplodesExecutor.m; sourceTree = "<group>"; };
 		4EF78DBD18C1609300E25A30 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4EF7943C18C21FE800E25A30 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
@@ -1333,8 +1333,6 @@
 				4EE5FBA519D858DD005E8736 /* AudioPlayer.m */,
 				4EE5FBA619D858DD005E8736 /* ElementExecutor.h */,
 				4EE5FBA719D858DD005E8736 /* ElementExecutor.m */,
-				4EE5FBA819D858DD005E8736 /* ExplodeExecutor.h */,
-				4EE5FBA919D858DD005E8736 /* ExplodeExecutor.m */,
 				4EE5FBAA19D858DD005E8736 /* ImageAnimator.h */,
 				4EE5FBAB19D858DD005E8736 /* ImageAnimator.m */,
 				4EE5FBAC19D858DD005E8736 /* TextFormatter.h */,
@@ -1346,6 +1344,8 @@
 		4EE5FBAE19D858DD005E8736 /* Queue */ = {
 			isa = PBXGroup;
 			children = (
+				4EF6641D19F40A4A00C2B9FC /* ExplodesExecutor.h */,
+				4EF6641E19F40A4A00C2B9FC /* ExplodesExecutor.m */,
 				4EE5FBAF19D858DD005E8736 /* PositionsExecutor.h */,
 				4EE5FBB019D858DD005E8736 /* PositionsExecutor.m */,
 				4EE5FBB119D858DD005E8736 /* QueueExecutorBase.h */,
@@ -1729,6 +1729,7 @@
 				4E4D4E96181D5AFB00886D75 /* main.m in Sources */,
 				4EE5FC4319D858DD005E8736 /* TextFormatter.m in Sources */,
 				4EE5FC1619D858DD005E8736 /* CHCSVParser.m in Sources */,
+				4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */,
 				4E71D40818BF80D200270180 /* MoveEvent.m in Sources */,
 				4EE5FC2E19D858DD005E8736 /* NSArray+Additions.m in Sources */,
 				4E8067C518C3678B00AF71B5 /* MoveEffect.m in Sources */,
@@ -1790,7 +1791,6 @@
 				4E9ED88018BB8C0100BE6EB7 /* Symbol.m in Sources */,
 				4EE5FC2619D858DD005E8736 /* CharacterSetHelper.m in Sources */,
 				4EE5FC6319D858DD005E8736 /* UIView+Frame.m in Sources */,
-				4EE5FC4119D858DD005E8736 /* ExplodeExecutor.m in Sources */,
 				4EE5FC5319D858DD005E8736 /* PickerViewBase.m in Sources */,
 				4EE5FC5619D858DD005E8736 /* AlignTableView.m in Sources */,
 				4EE5FC4619D858DD005E8736 /* EaseFunction.m in Sources */,
@@ -1919,7 +1919,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/TencentSDK,
@@ -1940,6 +1940,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ad4679aa-571a-46ca-bc20-b3e130051011";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1950,7 +1951,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/TencentSDK,
@@ -1970,6 +1971,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ad4679aa-571a-46ca-bc20-b3e130051011";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

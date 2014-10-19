@@ -44,11 +44,14 @@ static ViewManager* sharedInstance = nil;
 -(void) setupActionExecutor {
     // set up action executor
     _actionExecutorManager = [[ActionExecutorManager alloc] init];
+    
+    // QUEUE
     [_actionExecutorManager registerActionExecutor: effect_ValuesAnimation  executor:       [[NSClassFromString(@"QueueExecutorBase") alloc] init]];
+    [_actionExecutorManager registerActionExecutor: effect_Movement         executor:       [[NSClassFromString(@"PositionsExecutor") alloc] init]];
+    
+    // ELEMENT
     [_actionExecutorManager registerActionExecutor: effect_ValueSet         executor:       [[NSClassFromString(@"ElementExecutor") alloc] init]];
-    [_actionExecutorManager registerActionExecutor: effect_Movement         executor:       [[NSClassFromString(@"PositionsExecutor") alloc] init] ];
-    [_actionExecutorManager registerActionExecutor: effect_Explode          executor:       [[NSClassFromString(@"ExplodeExecutor") alloc] init]];
-
+    [_actionExecutorManager registerActionExecutor: effect_Explode          executor:       [[NSClassFromString(@"ExplodesExecutor") alloc] init]];
     [_actionExecutorManager registerActionExecutor: effect_ANIMATION        executor:       [[NSClassFromString(@"ImageAnimator") alloc] init] ];
     [_actionExecutorManager registerActionExecutor: effect_AUDIO            executor:       [[NSClassFromString(@"AudioPlayer") alloc] init] ];
     [_actionExecutorManager registerActionExecutor: effect_Font             executor:       [[NSClassFromString(@"TextFormatter") alloc] init] ];

@@ -6,11 +6,21 @@
                                    
                                    {
                                    "Action": "tiles.explode",
+                                   "keyPath": "position",
                                    
-                                   
+                                   "values": [],
+                                   "transition.mode": -1,
+                                   "element.totalTransitTime": 0.15,
+                                   "repeatCount": 0,
+                                   "repeatDuration_": 1,
+                                   "autoreverses_": 1,
                                    "fillMode": 1
                                    
-                                   }
+                                   
+                                   , "stepTime": 0.5
+                                   
+                                   
+                                   },
                                    
                                    
                                    ],

@@ -10,7 +10,7 @@
                                    
                                    "values": [],
                                    "transition.mode": -1,
-                                   "element.totalTransitTime": 0.15,
+                                   "_element.totalTransitTime_": 0.15,
                                    "repeatCount": 0,
                                    "repeatDuration_": 1,
                                    "autoreverses_": 1,

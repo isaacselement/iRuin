@@ -103,7 +103,19 @@ static DataManager* sharedInstance = nil;
 
 -(void) setConfigByMode: (NSString*)mode
 {
+    [DictionaryHelper setCombineHandler:^BOOL(NSString *key, NSMutableDictionary *destination, NSDictionary *source) {
+        if ([key hasPrefix:@"_"] && [key hasSuffix:@"_"]) {
+            NSString* removeKey = [key substringWithRange:NSMakeRange(1, [key length] - 2)];
+            [destination removeObjectForKey: removeKey];
+            return NO;
+        }
+        return YES;
+    }];
+    
     config = [DictionaryHelper combines: sharedConfig with:modesConfigs[mode]];
+    
+    [DictionaryHelper setCombineHandler: nil];
+
 }
 
 

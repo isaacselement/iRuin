@@ -8,7 +8,7 @@
                                    "Action": "tiles.explode",
                                    "keyPath": "position",
                                    
-                                   "values": [],
+                                   "_values_": [1, 0.1],
                                    "transition.mode": -1,
                                    "_element.totalTransitTime_": 0.15,
                                    "repeatCount": 0,

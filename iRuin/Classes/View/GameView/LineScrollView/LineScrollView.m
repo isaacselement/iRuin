@@ -22,6 +22,17 @@
 @synthesize contentView;
 
 
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint location = [[touches anyObject] locationInView:self];
+    LineScrollViewCell* view = (LineScrollViewCell*)[self hitTest:location withEvent:event];
+    int index = [self indexOfVisibleCell: view];
+    if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:didSelectIndex:)]) {
+        [dataSource lineScrollView: self didSelectIndex:index];
+    }
+}
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -62,7 +73,16 @@
     float width = frame.size.width;
     float height = frame.size.height;
     if (width == 0 || height == 0) return;
+    
+    
+    // subviews are LineScrollViewCell
+    NSArray* subviews = contentView.subviews;
+    NSUInteger count = subviews.count;
+    for (int i = 0; i < count; i++) {
+        [subviews[i] removeFromSuperview];
+    }
 
+    
     float length = 0.0f;
     for ( ; (length - width) < [self getCellWidth: criticalIndex + 1] ; )
     {
@@ -203,6 +223,14 @@
     NSArray* cells = contentView.subviews;
     int mostLeftIndex = currentDirection ? currentIndex : currentIndex - ((int)cells.count - 1) ;
     return [contentView.subviews objectAtIndex: (index - mostLeftIndex)];
+}
+
+-(int) indexOfVisibleCell: (LineScrollViewCell*)cell
+{
+    NSArray* cells = contentView.subviews;
+    int mostLeftIndex = currentDirection ? currentIndex : currentIndex - ((int)cells.count - 1) ;
+    int index = [cells indexOfObject: cell] + mostLeftIndex;
+    return index;
 }
 
 

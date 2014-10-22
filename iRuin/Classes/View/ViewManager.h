@@ -15,6 +15,7 @@
 
 
 @class GameView;
+@class ChaptersView;
 @class GameController;
 
 @class FrameManager;
@@ -24,10 +25,14 @@
 
 @interface ViewManager : NSObject
 
-@property (strong) UIWindow* window;
-@property (strong) GameView* gameView;
+@property (assign) UIWindow* window;
+
 @property (strong) FrameManager* frame;
 @property (strong) GameController* controller;
+
+@property (strong) GameView* gameView;
+@property (strong) ChaptersView* chaptersView;
+
 
 @property (strong, readonly) QueueTimeCalculator* actionDurations;
 @property (strong, readonly) ActionExecutorManager* actionExecutorManager;

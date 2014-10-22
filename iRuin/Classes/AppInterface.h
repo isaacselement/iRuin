@@ -25,6 +25,7 @@
 #import "IAITopNavSkin.h"
 #import "CConfigs.h"
 #import "AllSDKManager.h"
+#import "IAISimpleRoomInfo.h"
 
 
 
@@ -105,6 +106,7 @@
 #import "GameController.h"
 
 // GameView
+#import "ChaptersView.h"
 #import "GameView.h"
 #import "HeaderView.h"
 #import "ContainerView.h"

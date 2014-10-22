@@ -32,7 +32,7 @@
 
 -(void) orientationDidChanged: (NSNotification*)notification
 {
-    DLog(@"orientationDidChanged: %ld . %f X %f", [UIDevice currentDevice].orientation, self.view.bounds.size.width, self.view.bounds.size.height);
+    DLog(@"orientationDidChanged: %d . %f X %f", [UIDevice currentDevice].orientation, self.view.bounds.size.width, self.view.bounds.size.height);
     
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(renderWithCurrentOrientation) object:nil];
     [self performSelector: @selector(renderWithCurrentOrientation) withObject:nil afterDelay: 0.5];

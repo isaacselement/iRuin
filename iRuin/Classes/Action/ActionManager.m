@@ -45,14 +45,16 @@ static ActionManager* sharedInstance = nil;
     
     // modes
     [self establishGameModes];
-    [self switchToMode: MODE_BLANK];
+    [self switchToMode: MODE_MOVE];
     
     // when chapter config is ready
     [gameState initializePrototypes];
     
     [self renderFramesWithCurrentOrientation];
     
-    [VIEW.controller switchToView: VIEW.gameView];
+//    [VIEW.controller switchToView: VIEW.gameView];
+    
+    [VIEW.controller switchToView: VIEW.chaptersView];
 }
 
 -(void) establishGameModes
@@ -119,6 +121,12 @@ static ActionManager* sharedInstance = nil;
     GameView* gameView = VIEW.gameView;
     gameView.frame = [RectHelper getScreenRectByControllerOrientation];
     [FrameHelper setSubViewsFrames: gameView config:DATA.visualJSON[@"GameView"]];
+    
+    
+    // set up the chapters view and its subviews frames
+    ChaptersView* chaptersView = VIEW.chaptersView;
+    chaptersView.frame = [RectHelper getScreenRectByControllerOrientation];
+    [FrameHelper setSubViewsFrames: chaptersView config:DATA.visualJSON[@"ChaptersView"]];
 }
 
 -(void) createOrUpdateSymbolsWithFramesMatrix

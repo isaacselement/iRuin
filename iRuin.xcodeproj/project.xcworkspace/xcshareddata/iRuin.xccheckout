@@ -16,7 +16,7 @@
 		<string>https://github.com/isaacselement/iRuin.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iRuin.xcodeproj/project.xcworkspace</string>
+	<string>iRuin.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>382CF808FA8CFA837D2AEBBBB6B28956273A1D3B</key>

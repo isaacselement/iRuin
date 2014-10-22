@@ -15,6 +15,7 @@
 -(float)lineScrollView:(LineScrollView *)lineScrollView widthForCellAtIndex:(int)index;
 -(void)lineScrollView:(LineScrollView *)lineScrollView willShowIndex:(int)index;
 -(BOOL)lineScrollView:(LineScrollView *)lineScrollView shouldShowIndex:(int)index;
+-(void)lineScrollView:(LineScrollView *)lineScrollView didSelectIndex:(int)index;
 
 @end
 

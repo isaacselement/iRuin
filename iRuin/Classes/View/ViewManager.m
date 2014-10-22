@@ -5,8 +5,10 @@
 
 @synthesize window;
 @synthesize frame;
-@synthesize gameView;
 @synthesize controller;
+
+@synthesize gameView;
+@synthesize chaptersView;
 
 static ViewManager* sharedInstance = nil;
 
@@ -29,8 +31,10 @@ static ViewManager* sharedInstance = nil;
     self = [super init];
     if (self) {
         frame = [[FrameManager alloc] init];
-        gameView = [[GameView alloc] init];
         controller = [[GameController alloc] init];
+        
+        gameView = [[GameView alloc] init];
+        chaptersView = [[ChaptersView alloc] init];
         
         for (int i = 0; i < 5; i++)  NSLog(@"%d", arc4random() % 10);
     }

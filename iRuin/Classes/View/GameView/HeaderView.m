@@ -23,16 +23,18 @@
 
 #pragma mark - LineScrollViewDataSource
 
--(float)lineScrollView:(LineScrollView *)lineScrollView widthForCellAtIndex:(int)index
-{
-    return [FrameTranslater convertCanvasWidth: 120] ;
-}
-
 -(LineScrollViewCell *)lineScrollView:(LineScrollView *)lineScrollView cellAtIndex:(int)index
 {
     LineScrollViewCell* cell = [[LineScrollViewCell alloc] init];
     return cell;
 }
+
+
+-(float)lineScrollView:(LineScrollView *)lineScrollView widthForCellAtIndex:(int)index
+{
+    return [FrameTranslater convertCanvasWidth: 120] ;
+}
+
 
 -(void)lineScrollView:(LineScrollView *)lineScrollView willShowIndex:(int)index
 {

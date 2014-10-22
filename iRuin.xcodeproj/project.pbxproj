@@ -84,6 +84,12 @@
 		4EA5C07F19EFC31800008EED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C07E19EFC31800008EED /* AVFoundation.framework */; };
 		4EA5C08219EFC32400008EED /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C08019EFC32400008EED /* AddressBook.framework */; };
 		4EA5C08319EFC32400008EED /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C08119EFC32400008EED /* AddressBookUI.framework */; };
+		4EAB5A6119F79C440031F69D /* ChaptersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6019F79C440031F69D /* ChaptersView.m */; };
+		4EAB5A6A19F7A3550031F69D /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6519F7A3550031F69D /* 1.png */; };
+		4EAB5A6B19F7A3550031F69D /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6619F7A3550031F69D /* 2.png */; };
+		4EAB5A6C19F7A3550031F69D /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6719F7A3550031F69D /* 3.png */; };
+		4EAB5A6D19F7A3550031F69D /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6819F7A3550031F69D /* 4.png */; };
+		4EAB5A6E19F7A3550031F69D /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6919F7A3550031F69D /* 5.png */; };
 		4ECDE1D119F6992900DD9206 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECDE1CF19F6992900DD9206 /* icon.png */; };
 		4ECDE1D219F6992900DD9206 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECDE1D019F6992900DD9206 /* icon@2x.png */; };
 		4ED3BE5F18E7043A00621666 /* PositionsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3BE5E18E7043A00621666 /* PositionsHelper.m */; };
@@ -340,6 +346,13 @@
 		4EA5C07E19EFC31800008EED /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4EA5C08019EFC32400008EED /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		4EA5C08119EFC32400008EED /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		4EAB5A5F19F79C440031F69D /* ChaptersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaptersView.h; sourceTree = "<group>"; };
+		4EAB5A6019F79C440031F69D /* ChaptersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChaptersView.m; sourceTree = "<group>"; };
+		4EAB5A6519F7A3550031F69D /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		4EAB5A6619F7A3550031F69D /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		4EAB5A6719F7A3550031F69D /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		4EAB5A6819F7A3550031F69D /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		4EAB5A6919F7A3550031F69D /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		4ECA1EB0184E0EB90063545E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4ECDE1CF19F6992900DD9206 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		4ECDE1D019F6992900DD9206 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -661,6 +674,8 @@
 				4EDC3D7018228BB700CD1C04 /* ContainerView.m */,
 				4E0D7D7418B63031001D012E /* HeaderView.h */,
 				4E0D7D7518B63031001D012E /* HeaderView.m */,
+				4EAB5A5F19F79C440031F69D /* ChaptersView.h */,
+				4EAB5A6019F79C440031F69D /* ChaptersView.m */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -726,6 +741,7 @@
 		4E4D4E8F181D5AFB00886D75 /* iRuin */ = {
 			isa = PBXGroup;
 			children = (
+				4EAB5A6219F7A3550031F69D /* iRuinResources */,
 				4EA5C02719EFB4A300008EED /* InAppIMSDK1.0.0 */,
 				4EE5FB0519D858DC005E8736 /* Modules */,
 				4EDC3D7618228D6500CD1C04 /* Resources */,
@@ -951,6 +967,35 @@
 				4EA5C04519EFB4A300008EED /* TencentOpenApi_IOS_Bundle.bundle */,
 			);
 			path = TencentSDK;
+			sourceTree = "<group>";
+		};
+		4EAB5A6219F7A3550031F69D /* iRuinResources */ = {
+			isa = PBXGroup;
+			children = (
+				4EAB5A6319F7A3550031F69D /* Images */,
+			);
+			name = iRuinResources;
+			path = ../../iRuinResources;
+			sourceTree = "<group>";
+		};
+		4EAB5A6319F7A3550031F69D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4EAB5A6419F7A3550031F69D /* Chapters */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		4EAB5A6419F7A3550031F69D /* Chapters */ = {
+			isa = PBXGroup;
+			children = (
+				4EAB5A6519F7A3550031F69D /* 1.png */,
+				4EAB5A6619F7A3550031F69D /* 2.png */,
+				4EAB5A6719F7A3550031F69D /* 3.png */,
+				4EAB5A6819F7A3550031F69D /* 4.png */,
+				4EAB5A6919F7A3550031F69D /* 5.png */,
+			);
+			path = Chapters;
 			sourceTree = "<group>";
 		};
 		4ECDE1CE19F6992800DD9206 /* Images */ = {
@@ -1632,6 +1677,7 @@
 			files = (
 				4ECDE1D119F6992900DD9206 /* icon.png in Resources */,
 				4ED4786A19EE536000306C3E /* iPad_Visual_Landscape_10x6.json in Resources */,
+				4EAB5A6B19F7A3550031F69D /* 2.png in Resources */,
 				4EE5FC1219D858DD005E8736 /* Screen Shot  private_key info.png in Resources */,
 				4EE4F0EF1924418900A31903 /* Config_Pull.json in Resources */,
 				4EA5C04B19EFB4A300008EED /* InAppIM.ttf in Resources */,
@@ -1642,7 +1688,10 @@
 				4EA5C04D19EFB4A400008EED /* InAppIMSDKBundle.bundle in Resources */,
 				4E4D4E94181D5AFB00886D75 /* InfoPlist.strings in Resources */,
 				4EDACDBC191F216600A8E84E /* Config_Swipe.json in Resources */,
+				4EAB5A6E19F7A3550031F69D /* 5.png in Resources */,
 				4E23718E18C0CCA700449535 /* Config.json in Resources */,
+				4EAB5A6A19F7A3550031F69D /* 1.png in Resources */,
+				4EAB5A6C19F7A3550031F69D /* 3.png in Resources */,
 				4E93C8D919308F0E0021D041 /* Config_Blank.json in Resources */,
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
 				4EE5FC0919D858DD005E8736 /* private_key.p12 in Resources */,
@@ -1653,6 +1702,7 @@
 				4EE5FC0819D858DD005E8736 /* pkcs8_private_key.pem in Resources */,
 				4ED4786D19EE536000306C3E /* iPhone_Visual_Portrait_10x6.json in Resources */,
 				4ED4786C19EE536000306C3E /* iPhone_Visual_Landscape_10x6.json in Resources */,
+				4EAB5A6D19F7A3550031F69D /* 4.png in Resources */,
 				4EE5FC0B19D858DD005E8736 /* public_key.der in Resources */,
 				4E93C8D719308E880021D041 /* Config_Dots.json in Resources */,
 				4EA5C04F19EFB4A400008EED /* WeiboSDK.bundle in Resources */,
@@ -1765,6 +1815,7 @@
 				4E1FBA2A191BC0E40093BE25 /* TouchEffect.m in Sources */,
 				4EE5FC1719D858DD005E8736 /* CSVFileWriter.m in Sources */,
 				4EF282751908038800AA0C54 /* GameState.m in Sources */,
+				4EAB5A6119F79C440031F69D /* ChaptersView.m in Sources */,
 				4EE5FC3919D858DD005E8736 /* ViewHelper.m in Sources */,
 				4EE5FC3719D858DD005E8736 /* RectHelper.m in Sources */,
 				4EE5FC3519D858DD005E8736 /* LayerHelper.m in Sources */,

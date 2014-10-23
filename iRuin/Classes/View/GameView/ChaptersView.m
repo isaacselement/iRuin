@@ -2,6 +2,38 @@
 #import "AppInterface.h"
 
 
+@interface INAppImNavgationController : UINavigationController <UINavigationControllerDelegate>
+
+@end
+
+@implementation INAppImNavgationController
+
+- (instancetype)initWithRootViewController:(UIViewController *)rootViewController
+{
+    self = [super initWithRootViewController:rootViewController];
+    if (self) {
+        self.delegate = self;
+    }
+    return self;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (navigationController.viewControllers.count == 1) {
+
+        [UIView animateWithDuration: 0.5 animations:^{
+            navigationController.view.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [VIEW.controller dismissViewControllerAnimated: NO completion:nil];
+        }];
+    }
+}
+
+@end
+
+
+
+
 @interface ChaptersView() <LineScrollViewDataSource>
 
 @end
@@ -22,10 +54,18 @@
         // for test now
         NormalButton* button = [NormalButton buttonWithType:UIButtonTypeContactAdd];
         button.didClikcButtonAction = ^void(NormalButton* button){
+            
+            UIViewController* imController = [[UIViewController alloc] init];
+            UINavigationController* imNavController = [[INAppImNavgationController alloc] initWithRootViewController:imController];
+            imNavController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            
             IAISimpleRoomInfo *roomInfo=[[IAISimpleRoomInfo alloc] init];
             [roomInfo setTitle:@"自定义聊天室-C"];
             [roomInfo setUniqueKey:@"cn.inappim.CustomRoom"];
-            [InAppIMSDK enterCustomRoomClient:roomInfo navigationController:VIEW.controller animated:YES];
+            [InAppIMSDK enterCustomRoomClient:roomInfo navigationController:imController animated:YES];
+            
+            [VIEW.controller presentViewController:imNavController animated:YES completion:nil];
+
         };
         
         [self addSubview:button];

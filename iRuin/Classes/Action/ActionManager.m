@@ -29,7 +29,7 @@ static ActionManager* sharedInstance = nil;
 {
     self = [super init];
     if (self) {
-        gameModes = @[MODE_MOVE, MODE_TOUCH, MODE_BLANK, MODE_DOTS, MODE_PULL, MODE_SWIPE];
+        gameModes = @[MODE_MOVE, MODE_TOUCH, MODE_EXPLODE, MODE_DOTS, MODE_PULL, MODE_SWIPE];
         modesRepository = [[NSMutableDictionary alloc] init];
         
         gameEvent = [[GameEvent alloc] init];
@@ -45,7 +45,7 @@ static ActionManager* sharedInstance = nil;
     
     // modes
     [self establishGameModes];
-    [self switchToMode: MODE_MOVE];
+    [self switchToMode: MODE_EXPLODE];
     
     // when chapter config is ready
     [gameState initializePrototypes];

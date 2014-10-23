@@ -1,9 +1,9 @@
-#import "BlankState.h"
+#import "ExplodeState.h"
 #import "AppInterface.h"
 
 #import "ExplodesExecutor.h"
 
-@implementation BlankState
+@implementation ExplodeState
 {
     SymbolView* touchingSymbol;
 }
@@ -26,7 +26,7 @@
     [super stateTouchesEnded:symbol location:location];
     
     if (touchingSymbol && touchingSymbol == symbol) {
-        NSMutableArray* vanishSymbols = [SearchHelper searchBlankMatchedSymbols: symbol];
+        NSMutableArray* vanishSymbols = [SearchHelper searchExplodeMatchedSymbols: symbol];
         if (vanishSymbols) {
             [self.effect effectStartVanish: vanishSymbols];
         }

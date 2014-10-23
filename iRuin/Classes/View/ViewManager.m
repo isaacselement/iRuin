@@ -1,6 +1,22 @@
 #import "ViewManager.h"
 #import "AppInterface.h"
 
+
+
+#define effect_Font     @"FONT"
+
+#define effect_AUDIO        @"audio.play"
+#define effect_ANIMATION    @"images.play"
+
+#define effect_ValueSet         @"value.set"
+#define effect_ValuesAnimation  @"values.animation"
+
+#define effect_Movement         @"positions.move"
+#define effect_Explode          @"tiles.explode"
+
+
+
+
 @implementation ViewManager
 
 @synthesize window;
@@ -13,8 +29,7 @@
 static ViewManager* sharedInstance = nil;
 
 +(void)initialize {
-    // Without that extra check, your initializations could run twice in this class,
-    // if you ever have a subclass that doesn't implement its own +initialize method.
+    // Without that extra check, your initializations could run twice in this class, if you ever have a subclass that doesn't implement its own +initialize method.
     if (self == [ViewManager class]) {
         sharedInstance = [[ViewManager alloc] init];
     }
@@ -35,8 +50,6 @@ static ViewManager* sharedInstance = nil;
         
         gameView = [[GameView alloc] init];
         chaptersView = [[ChaptersView alloc] init];
-        
-        for (int i = 0; i < 5; i++)  NSLog(@"%d", arc4random() % 10);
     }
     return self;
 }

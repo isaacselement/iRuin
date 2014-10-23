@@ -15,7 +15,7 @@
 
 #pragma mark - SEARCH
 
-+(NSMutableArray*) searchBlankMatchedSymbols: (SymbolView*)symbol
++(NSMutableArray*) searchExplodeMatchedSymbols: (SymbolView*)symbol
 {
     return [self searchTouchMatchedSymbols: symbol];
 }

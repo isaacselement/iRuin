@@ -12,7 +12,7 @@
 #define MODE_SWIPE  @"Swipe"
 #define MODE_PULL   @"Pull"
 #define MODE_DOTS   @"Dots"
-#define MODE_BLANK  @"Blank"
+#define MODE_EXPLODE  @"Explode"
 
 
 @class GameEvent;

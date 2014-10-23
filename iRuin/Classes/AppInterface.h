@@ -53,7 +53,7 @@
 
 #import "TouchEvent.h"
 
-#import "BlankEvent.h"
+#import "ExplodeEvent.h"
 #import "DotsEvent.h"
 #import "PullEvent.h"
 #import "SwipeEvent.h"
@@ -67,7 +67,7 @@
 
 #import "TouchState.h"
 
-#import "BlankState.h"
+#import "ExplodeState.h"
 #import "DotsState.h"
 #import "PullState.h"
 #import "SwipeState.h"
@@ -91,7 +91,7 @@
 
 #import "TouchEffect.h"
 
-#import "BlankEffect.h"
+#import "ExplodeEffect.h"
 #import "DotsEffect.h"
 #import "PullEffect.h"
 #import "SwipeEffect.h"

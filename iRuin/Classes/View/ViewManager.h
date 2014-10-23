@@ -2,17 +2,6 @@
 
 #define VIEW [ViewManager getInstance]
 
-#define effect_Font     @"FONT"
-
-#define effect_ValueSet         @"value.set"
-#define effect_ValuesAnimation  @"values.animation"
-
-#define effect_Movement         @"positions.move"
-#define effect_Explode          @"tiles.explode"
-
-#define effect_AUDIO        @"audio.play"
-#define effect_ANIMATION    @"images.play"
-
 
 @class GameView;
 @class ChaptersView;

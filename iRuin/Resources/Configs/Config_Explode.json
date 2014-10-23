@@ -14,7 +14,7 @@
                                    "repeatCount": 0,
                                    "repeatDuration_": 1,
                                    "autoreverses_": 1,
-                                   "fillMode": 1
+                                   "_fillMode_": 1
                                    
                                    
                                    , "stepTime": 0.5
@@ -22,6 +22,19 @@
                                    
                                    },
                                    
+                                   {
+                                   "Action_": "values.animation",
+                                   "keyPath": "opacity",
+                                   
+                                   "values": [1, 0],
+                                   "transition.mode": -1,
+                                   "element.totalTransitTime": 0.5,
+                                   "repeatCount": 3,
+                                   "repeatDuration_": 1,
+                                   "autoreverses_": 1,
+                                   "fillMode": 1
+                                   }
+
                                    
                                    ],
         

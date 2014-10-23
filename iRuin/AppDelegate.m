@@ -28,8 +28,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     [self.window makeKeyAndVisible];
     
-    
-    //
+    // InAppIM
     [self initInAppIMSDK:application didFinishLaunchingWithOptions:launchOptions];
     
     return YES;
@@ -83,18 +82,24 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([AllSDKManager getCurrentSDKType]==AllSDKType_IAIIM) {
+    if ([AllSDKManager getCurrentSDKType] == AllSDKType_IAIIM) {
         return [InAppIMSDK handleOpenURL:url delegate:self];
     }
     return YES;
 }
 
 
+
+
+
+#pragma mark - InAppIM
+
 -(void)initInAppIMSDK:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [InAppIMSDK application:application didFinishLaunchingWithOptions:launchOptions];
     [InAppIMSDK registerApp: @"543f77915fe8bd75b0436c42"];
     [InAppIMSDK enableDebugMode:NO];
+     [InAppIMSDK enableAccessLocation:NO];
     
     {
         //sina

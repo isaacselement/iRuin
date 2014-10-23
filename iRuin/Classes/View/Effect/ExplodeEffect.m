@@ -1,7 +1,7 @@
-#import "BlankEffect.h"
+#import "ExplodeEffect.h"
 #import "AppInterface.h"
 
-@implementation BlankEffect
+@implementation ExplodeEffect
 
 
 -(void)effectStartVanish:(NSMutableArray *)symbols

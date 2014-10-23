@@ -85,7 +85,6 @@
 -(void) effectStartSqueeze: (NSArray*)nullRowColumns
 {
 //    DLOG(@"effect - effectStartSqueeze");
-    
     [VIEW.actionDurations clear];
     [self startSymbolsSqueeze: nullRowColumns];
     double totalDuration = [VIEW.actionDurations take];

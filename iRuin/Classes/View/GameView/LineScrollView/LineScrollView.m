@@ -1,7 +1,9 @@
 #import "LineScrollView.h"
 #import "LineScrollViewCell.h"
 
-#import "Modules.h"         // Remove it when complete
+#import "ViewHelper.h"
+#import "UIView+Frame.h"
+
 
 #define default_cell_width 80.0f;
 

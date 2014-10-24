@@ -16,13 +16,13 @@
 
 
 #pragma mark - Public Methods
+-(void) vanish;
 -(void) restore;
 -(void) addEllipseInRectWithAnimation;
 
 -(void) setValidArea: (CGRect)rect;
 -(BOOL) isInValidArea: (CGPoint)location;
 
--(void) vanish;
 
 @end
 

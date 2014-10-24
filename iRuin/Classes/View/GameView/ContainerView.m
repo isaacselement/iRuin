@@ -11,19 +11,19 @@
 
 
 /// -------- Test ---------
--(void)drawRect:(CGRect)rect
-{
-    if (! self.testPath) return;
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextClearRect(context, rect);
-    for (UIBezierPath* pathObj in self.testPath) {
-        CGPathRef path = pathObj.CGPath;
-        CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-        CGContextSetLineWidth(context, 1);
-        CGContextAddPath(context, path);
-        CGContextStrokePath(context);
-    }
-}
+//-(void)drawRect:(CGRect)rect
+//{
+//    if (! self.testPath) return;
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextClearRect(context, rect);
+//    for (UIBezierPath* pathObj in self.testPath) {
+//        CGPathRef path = pathObj.CGPath;
+//        CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+//        CGContextSetLineWidth(context, 1);
+//        CGContextAddPath(context, path);
+//        CGContextStrokePath(context);
+//    }
+//}
 
 -(void)setTestPath:(NSArray*)testPath
 {

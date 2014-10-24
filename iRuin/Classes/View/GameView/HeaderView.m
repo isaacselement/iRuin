@@ -15,6 +15,7 @@
         LineScrollView* lineScrollView = [[LineScrollView alloc] init];
         lineScrollView.clipsToBounds = NO;
         lineScrollView.dataSource = self;
+        [ColorHelper setBorder: lineScrollView];
         [self addSubview: lineScrollView];
     }
     return self;

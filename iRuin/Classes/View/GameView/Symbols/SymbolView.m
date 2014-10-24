@@ -79,6 +79,10 @@
 }
 
 #pragma mark - Public Methods
+-(void) vanish
+{
+    [self restore];
+}
 
 -(void) restore
 {
@@ -103,10 +107,6 @@
     return CGPathContainsPoint(validAreaCGPath, NULL, location, true);
 }
 
--(void) vanish
-{
-    [self restore];
-}
 
 #pragma mark - Private Methods
 // call it in drawRect: methods

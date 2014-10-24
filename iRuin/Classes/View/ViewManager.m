@@ -3,10 +3,10 @@
 
 
 
-#define effect_Font     @"FONT"
+#define effect_Font             @"FONT"
 
-#define effect_AUDIO        @"audio.play"
-#define effect_ANIMATION    @"images.play"
+#define effect_AUDIO            @"audio.play"
+#define effect_ANIMATION        @"images.play"
 
 #define effect_ValueSet         @"value.set"
 #define effect_ValuesAnimation  @"values.animation"
@@ -67,7 +67,7 @@ static ViewManager* sharedInstance = nil;
     [_actionExecutorManager registerActionExecutor: effect_Movement         executor:       [[NSClassFromString(@"PositionsExecutor") alloc] init]];
     
     // ELEMENT
-    [_actionExecutorManager registerActionExecutor: effect_ValueSet         executor:       [[NSClassFromString(@"ElementExecutor") alloc] init]];
+    [_actionExecutorManager registerActionExecutor: effect_ValueSet         executor:       [[NSClassFromString(@"ElementsExecutor") alloc] init]];
     [_actionExecutorManager registerActionExecutor: effect_Explode          executor:       [[NSClassFromString(@"ExplodesExecutor") alloc] init]];
     [_actionExecutorManager registerActionExecutor: effect_ANIMATION        executor:       [[NSClassFromString(@"ImageAnimator") alloc] init] ];
     [_actionExecutorManager registerActionExecutor: effect_AUDIO            executor:       [[NSClassFromString(@"AudioPlayer") alloc] init] ];

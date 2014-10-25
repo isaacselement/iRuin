@@ -40,7 +40,7 @@
 
 @implementation ChaptersView
 {
-    UIImageView* backgroundView;
+    
     LineScrollView* lineScrollView;
 }
 
@@ -49,12 +49,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        // background image view
-        backgroundView = [[UIImageView alloc] init];
-//        backgroundView.image = [UIImage imageNamed:@"background"];
-        [self addSubview: backgroundView];
-        
         
         // chapter views
         lineScrollView = [[LineScrollView alloc] init];
@@ -90,9 +84,9 @@
 
 #pragma mark - LineScrollViewDataSource Methods
 
--(void)lineScrollView:(LineScrollView *)lineScrollView willShowIndex:(int)index
+-(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index
 {
-    LineScrollViewCell* cell = [lineScrollView visibleCellAtIndex: index];
+    LineScrollViewCell* cell = [lineScrollViewObj visibleCellAtIndex: index];
     
     
     // image

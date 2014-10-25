@@ -1,5 +1,5 @@
-#import <UIKit/UIKit.h>
+#import "BaseGameView.h"
 
-@interface ChaptersView : UIView
+@interface ChaptersView : BaseGameView
 
 @end

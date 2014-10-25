@@ -10,7 +10,6 @@
 		4E0BFC5119260B9100F0E632 /* DotsState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5019260B9100F0E632 /* DotsState.m */; };
 		4E0BFC5419260BAA00F0E632 /* DotsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5319260BAA00F0E632 /* DotsEvent.m */; };
 		4E0BFC5719260BF900F0E632 /* DotsEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5619260BF900F0E632 /* DotsEffect.m */; };
-		4E0D7D7618B63031001D012E /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D7D7518B63031001D012E /* HeaderView.m */; };
 		4E11D8DE181FE4F6007837F0 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E11D8DD181FE4F6007837F0 /* GameView.m */; };
 		4E14BC5419225AA0000CDB57 /* PullEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BC5319225AA0000CDB57 /* PullEvent.m */; };
 		4E14BC5719225AF7000CDB57 /* PullState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BC5619225AF7000CDB57 /* PullState.m */; };
@@ -20,7 +19,11 @@
 		4E1FBA2A191BC0E40093BE25 /* TouchEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1FBA29191BC0E40093BE25 /* TouchEffect.m */; };
 		4E2CCAC419FB5C5100D2AAEC /* KeyValueCodingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAC319FB5C5100D2AAEC /* KeyValueCodingHelper.m */; };
 		4E2CCAC719FB6DD900D2AAEC /* QueueValuesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAC619FB6DD900D2AAEC /* QueueValuesHelper.m */; };
-		4E2CCAC919FBA3CF00D2AAEC /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E2CCAC819FBA3CF00D2AAEC /* background.png */; };
+		4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCACC19FBF93500D2AAEC /* ContainerView.m */; };
+		4E2CCAD019FBF93500D2AAEC /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCACE19FBF93500D2AAEC /* HeaderView.m */; };
+		4E2CCAD319FBF98B00D2AAEC /* BaseGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAD219FBF98B00D2AAEC /* BaseGameView.m */; };
+		4E2CCAD619FBFAC500D2AAEC /* background_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E2CCAD419FBFAC500D2AAEC /* background_01.png */; };
+		4E2CCAD719FBFAC500D2AAEC /* background_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E2CCAD519FBFAC500D2AAEC /* background_02.png */; };
 		4E4D4E8A181D5AFB00886D75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E89181D5AFB00886D75 /* Foundation.framework */; };
 		4E4D4E8C181D5AFB00886D75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E8B181D5AFB00886D75 /* CoreGraphics.framework */; };
 		4E4D4E8E181D5AFB00886D75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E8D181D5AFB00886D75 /* UIKit.framework */; };
@@ -110,7 +113,6 @@
 		4EDACDC5191FB1C200A8E84E /* ChainableEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDACDC4191FB1C200A8E84E /* ChainableEffect.m */; };
 		4EDACDC8191FB88C00A8E84E /* StateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDACDC7191FB88C00A8E84E /* StateHelper.m */; };
 		4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDACDCA191FBCF600A8E84E /* FilterHelper.m */; };
-		4EDC3D7118228BB700CD1C04 /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC3D7018228BB700CD1C04 /* ContainerView.m */; };
 		4EDC3D8C18229FEB00CD1C04 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDC3D8B18229FEB00CD1C04 /* QuartzCore.framework */; };
 		4EE45556192B3AC600FA71B9 /* ExplodeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE45555192B3AC600FA71B9 /* ExplodeEvent.m */; };
 		4EE45559192B3AF900FA71B9 /* ExplodeState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE45558192B3AF900FA71B9 /* ExplodeState.m */; };
@@ -231,8 +233,6 @@
 		4E0BFC5319260BAA00F0E632 /* DotsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotsEvent.m; sourceTree = "<group>"; };
 		4E0BFC5519260BF900F0E632 /* DotsEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotsEffect.h; sourceTree = "<group>"; };
 		4E0BFC5619260BF900F0E632 /* DotsEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotsEffect.m; sourceTree = "<group>"; };
-		4E0D7D7418B63031001D012E /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
-		4E0D7D7518B63031001D012E /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		4E11D8DC181FE4F6007837F0 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
 		4E11D8DD181FE4F6007837F0 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
 		4E14BC5219225AA0000CDB57 /* PullEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullEvent.h; sourceTree = "<group>"; };
@@ -251,7 +251,14 @@
 		4E2CCAC319FB5C5100D2AAEC /* KeyValueCodingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyValueCodingHelper.m; sourceTree = "<group>"; };
 		4E2CCAC519FB6DD900D2AAEC /* QueueValuesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueValuesHelper.h; sourceTree = "<group>"; };
 		4E2CCAC619FB6DD900D2AAEC /* QueueValuesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueValuesHelper.m; sourceTree = "<group>"; };
-		4E2CCAC819FBA3CF00D2AAEC /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		4E2CCACB19FBF93500D2AAEC /* ContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerView.h; sourceTree = "<group>"; };
+		4E2CCACC19FBF93500D2AAEC /* ContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
+		4E2CCACD19FBF93500D2AAEC /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		4E2CCACE19FBF93500D2AAEC /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		4E2CCAD119FBF98B00D2AAEC /* BaseGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGameView.h; sourceTree = "<group>"; };
+		4E2CCAD219FBF98B00D2AAEC /* BaseGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGameView.m; sourceTree = "<group>"; };
+		4E2CCAD419FBFAC500D2AAEC /* background_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_01.png; sourceTree = "<group>"; };
+		4E2CCAD519FBFAC500D2AAEC /* background_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_02.png; sourceTree = "<group>"; };
 		4E4D4E86181D5AFB00886D75 /* iRuin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRuin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4D4E89181D5AFB00886D75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4E4D4E8B181D5AFB00886D75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -387,8 +394,6 @@
 		4EDACDC7191FB88C00A8E84E /* StateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateHelper.m; sourceTree = "<group>"; };
 		4EDACDC9191FBCF600A8E84E /* FilterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterHelper.h; sourceTree = "<group>"; };
 		4EDACDCA191FBCF600A8E84E /* FilterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterHelper.m; sourceTree = "<group>"; };
-		4EDC3D6F18228BB700CD1C04 /* ContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerView.h; sourceTree = "<group>"; };
-		4EDC3D7018228BB700CD1C04 /* ContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
 		4EDC3D8B18229FEB00CD1C04 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4EE45554192B3AC600FA71B9 /* ExplodeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodeEvent.h; sourceTree = "<group>"; };
 		4EE45555192B3AC600FA71B9 /* ExplodeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplodeEvent.m; sourceTree = "<group>"; };
@@ -669,18 +674,28 @@
 		4E11D8DB181FE4F6007837F0 /* GameView */ = {
 			isa = PBXGroup;
 			children = (
+				4E2CCACA19FBF93500D2AAEC /* GameComponents */,
 				4E9ED87D18BB8BDC00BE6EB7 /* Symbols */,
 				4E77862218B4F576003A1DAC /* LineScrollView */,
 				4E11D8DC181FE4F6007837F0 /* GameView.h */,
 				4E11D8DD181FE4F6007837F0 /* GameView.m */,
-				4EDC3D6F18228BB700CD1C04 /* ContainerView.h */,
-				4EDC3D7018228BB700CD1C04 /* ContainerView.m */,
-				4E0D7D7418B63031001D012E /* HeaderView.h */,
-				4E0D7D7518B63031001D012E /* HeaderView.m */,
 				4EAB5A5F19F79C440031F69D /* ChaptersView.h */,
 				4EAB5A6019F79C440031F69D /* ChaptersView.m */,
+				4E2CCAD119FBF98B00D2AAEC /* BaseGameView.h */,
+				4E2CCAD219FBF98B00D2AAEC /* BaseGameView.m */,
 			);
 			path = GameView;
+			sourceTree = "<group>";
+		};
+		4E2CCACA19FBF93500D2AAEC /* GameComponents */ = {
+			isa = PBXGroup;
+			children = (
+				4E2CCACB19FBF93500D2AAEC /* ContainerView.h */,
+				4E2CCACC19FBF93500D2AAEC /* ContainerView.m */,
+				4E2CCACD19FBF93500D2AAEC /* HeaderView.h */,
+				4E2CCACE19FBF93500D2AAEC /* HeaderView.m */,
+			);
+			path = GameComponents;
 			sourceTree = "<group>";
 		};
 		4E4D4E7D181D5AFB00886D75 = {
@@ -1019,7 +1034,8 @@
 		4ECB29F419FA562A00D60219 /* Chapters */ = {
 			isa = PBXGroup;
 			children = (
-				4E2CCAC819FBA3CF00D2AAEC /* background.png */,
+				4E2CCAD419FBFAC500D2AAEC /* background_01.png */,
+				4E2CCAD519FBFAC500D2AAEC /* background_02.png */,
 				4ECB29F519FA562A00D60219 /* 1.png */,
 				4ECB29F619FA562A00D60219 /* 2.png */,
 				4ECB29F719FA562A00D60219 /* 3.png */,
@@ -1672,11 +1688,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E2CCAD719FBFAC500D2AAEC /* background_02.png in Resources */,
 				4ECB2A0119FA562A00D60219 /* iPad_Visual_Landscape_10x6.json in Resources */,
-				4E2CCAC919FBA3CF00D2AAEC /* background.png in Resources */,
 				4ECB2A0419FA562A00D60219 /* iPhone_Visual_Portrait_10x6.json in Resources */,
 				4EE5FC1219D858DD005E8736 /* Screen Shot  private_key info.png in Resources */,
 				4ECB2A0219FA562A00D60219 /* iPad_Visual_Portrait_10x6.json in Resources */,
+				4E2CCAD619FBFAC500D2AAEC /* background_01.png in Resources */,
 				4EA5C04B19EFB4A300008EED /* InAppIM.ttf in Resources */,
 				4ECB2A0519FA562A00D60219 /* 1.png in Resources */,
 				4ECB29FF19FA562A00D60219 /* Config_Pull.json in Resources */,
@@ -1728,7 +1745,6 @@
 				4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */,
 				4E11D8DE181FE4F6007837F0 /* GameView.m in Sources */,
 				4EE5FC5419D858DD005E8736 /* ZoomablePanView.m in Sources */,
-				4EDC3D7118228BB700CD1C04 /* ContainerView.m in Sources */,
 				4EE5FC2519D858DD005E8736 /* SQLiteManager.m in Sources */,
 				4EE5FC4419D858DD005E8736 /* PositionsExecutor.m in Sources */,
 				4EE5FC5C19D858DD005E8736 /* TableViewBaseContentHelper.m in Sources */,
@@ -1736,7 +1752,6 @@
 				4EE45559192B3AF900FA71B9 /* ExplodeState.m in Sources */,
 				4EE5FC5819D858DD005E8736 /* HeaderSearchTableView.m in Sources */,
 				4EE5FC2C19D858DD005E8736 /* IterateHelper.m in Sources */,
-				4E0D7D7618B63031001D012E /* HeaderView.m in Sources */,
 				4EE5FC3219D858DD005E8736 /* ColorHelper.m in Sources */,
 				4EE5FC5F19D858DD005E8736 /* RotatableViewController.m in Sources */,
 				4EE5FC1D19D858DD005E8736 /* LocalizeFileManager.m in Sources */,
@@ -1758,6 +1773,7 @@
 				4EE5FC5719D858DD005E8736 /* FilterTableView.m in Sources */,
 				4EE5FC2B19D858DD005E8736 /* DictionaryHelper.m in Sources */,
 				4EE5FC2719D858DD005E8736 /* StringHelper.m in Sources */,
+				4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */,
 				4EE5FC4C19D858DD005E8736 /* NormalButton.m in Sources */,
 				4E0BFC5119260B9100F0E632 /* DotsState.m in Sources */,
 				4EE5FC2119D858DD005E8736 /* HTTPUploader.m in Sources */,
@@ -1782,6 +1798,7 @@
 				4EE5FC3319D858DD005E8736 /* ImageHelper.m in Sources */,
 				4E4D4E96181D5AFB00886D75 /* main.m in Sources */,
 				4EE5FC4319D858DD005E8736 /* TextFormatter.m in Sources */,
+				4E2CCAD019FBF93500D2AAEC /* HeaderView.m in Sources */,
 				4EE5FC1619D858DD005E8736 /* CHCSVParser.m in Sources */,
 				4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */,
 				4E71D40818BF80D200270180 /* MoveEvent.m in Sources */,
@@ -1854,6 +1871,7 @@
 				4E2CCAC419FB5C5100D2AAEC /* KeyValueCodingHelper.m in Sources */,
 				4ED52C84191E623A002ADA73 /* SwipeEffect.m in Sources */,
 				4EE5FC4B19D858DD005E8736 /* UIColor+FlatColors.m in Sources */,
+				4E2CCAD319FBF98B00D2AAEC /* BaseGameView.m in Sources */,
 				4EE5FC1419D858DD005E8736 /* RSACryptor.m in Sources */,
 				4E14BC5A19225B3E000CDB57 /* PullEffect.m in Sources */,
 				4EE5FC4E19D858DD005E8736 /* GradientLabel.m in Sources */,

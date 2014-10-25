@@ -35,6 +35,9 @@
 @property (strong, readonly) UIView* contentView;
 
 
+@property (assign) CGFloat eachCellWidth;
+
+
 
 #pragma mark - Public Methods
 

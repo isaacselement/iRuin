@@ -1,9 +1,9 @@
-#import <UIKit/UIKit.h>
+#import "BaseGameView.h"
 
 @class HeaderView;
 @class ContainerView;
 
-@interface GameView : UIView
+@interface GameView : BaseGameView
 
 @property (strong, readonly) HeaderView* headerView;
 @property (strong, readonly) ContainerView* containerView;

@@ -5,9 +5,6 @@
 #import "UIView+Frame.h"
 
 
-#define default_cell_width 80.0f;
-
-
 @implementation LineScrollView {
     Class __cellClass;
     
@@ -46,6 +43,8 @@
         [self addSubview: contentView];
         
         __cellClass = [LineScrollViewCell class];
+        
+        self.eachCellWidth = 100.0f;
     
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
@@ -215,7 +214,7 @@
 
 -(float) getCellWidthForIndex: (int)index
 {
-    float cellWidth = default_cell_width ;
+    float cellWidth = self.eachCellWidth ;
     if (dataSource && [dataSource respondsToSelector:@selector(lineScrollView:widthForCellAtIndex:)]) {
        cellWidth = [dataSource lineScrollView: self widthForCellAtIndex: index];
     }

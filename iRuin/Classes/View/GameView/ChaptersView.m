@@ -75,12 +75,6 @@
 
 #pragma mark - LineScrollViewDataSource Methods
 
-- (LineScrollViewCell *)lineScrollView:(LineScrollView *)lineScrollView cellAtIndex:(int)index
-{
-    LineScrollViewCell* cell = [[LineScrollViewCell alloc] init];
-    return cell;
-}
-
 -(void)lineScrollView:(LineScrollView *)lineScrollView willShowIndex:(int)index
 {
     LineScrollViewCell* cell = [lineScrollView visibleCellAtIndex: index];

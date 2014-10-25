@@ -6,9 +6,6 @@
 
 @protocol LineScrollViewDataSource <NSObject>
 
-@required
-- (LineScrollViewCell *)lineScrollView:(LineScrollView *)lineScrollView cellAtIndex:(int)index;
-
 
 @optional
 // be sure that LineScrollView.width = cell.width * int
@@ -34,13 +31,18 @@
 
 @property (nonatomic, assign) id<LineScrollViewDataSource> dataSource;
 
+
 @property (strong, readonly) UIView* contentView;
 
-@property (nonatomic, assign) CGFloat perCellWidth;
 
 
+#pragma mark - Public Methods
+
+-(void) registerCellClass:(Class)cellClass;
 
 -(LineScrollViewCell*) visibleCellAtIndex: (int)index;
+
+-(int) indexOfVisibleCell: (LineScrollViewCell*)cell;
 
 
 @end

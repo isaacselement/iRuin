@@ -9,6 +9,9 @@
 
 
 @implementation LineScrollView {
+    Class __cellClass;
+    
+    
     float criticalWidth;
 
     float previousOffsetx;
@@ -42,7 +45,7 @@
         contentView = [[UIView alloc] init];
         [self addSubview: contentView];
         
-        self.perCellWidth = 80.0f;
+        __cellClass = [LineScrollViewCell class];
     
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
@@ -88,9 +91,9 @@
 
     
     float length = 0.0f;
-    for ( ; (length - width) < [self getCellWidth: criticalIndex + 1] ; )
+    for ( ; (length - width) < [self getCellWidthForIndex: criticalIndex + 1] ; )
     {
-        LineScrollViewCell* cell = [self getCell: criticalIndex];
+        LineScrollViewCell* cell = [self getCellForIndex: criticalIndex];
         
         if (! cell) break ; // aware of the infinite loop
         
@@ -193,32 +196,31 @@
     }
 }
 
--(LineScrollViewCell*) getCell: (int)index
+-(LineScrollViewCell*) getCellForIndex: (int)index
 {
-    float cellWidth = [self getCellWidth: index];
-    LineScrollViewCell* cell = [dataSource lineScrollView: self cellAtIndex: index];
+    LineScrollViewCell* cell = [[__cellClass alloc] init];;
+    float cellWidth = [self getCellWidthForIndex: index];
     [cell setSizeWidth: cellWidth];
     return cell;
 }
 
--(float) getCellWidth: (int)index
+-(float) getCellWidthForIndex: (int)index
 {
     float cellWidth = default_cell_width ;
     if (dataSource && [dataSource respondsToSelector:@selector(lineScrollView:widthForCellAtIndex:)]) {
        cellWidth = [dataSource lineScrollView: self widthForCellAtIndex: index];
     }
     return cellWidth;
-//    return self.perCellWidth;
 }
 
 -(float) getLeftestIndexCellWidth
 {
-    return [self getCellWidth: criticalIndex - (int)contentView.subviews.count];
+    return [self getCellWidthForIndex: criticalIndex - (int)contentView.subviews.count];
 }
 
 -(float) getRightestIndexCellWidth
 {
-    return [self getCellWidth: criticalIndex - 1];
+    return [self getCellWidthForIndex: criticalIndex - 1];
 }
 
 

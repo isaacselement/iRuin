@@ -15,8 +15,6 @@
         LineScrollView* lineScrollView = [[LineScrollView alloc] init];
         lineScrollView.clipsToBounds = NO;
         lineScrollView.dataSource = self;
-        lineScrollView.perCellWidth = CanvasW(120);
-        
         [ColorHelper setBorder: lineScrollView];
         [self addSubview: lineScrollView];
     }
@@ -25,13 +23,6 @@
 
 
 #pragma mark - LineScrollViewDataSource
-
--(LineScrollViewCell *)lineScrollView:(LineScrollView *)lineScrollView cellAtIndex:(int)index
-{
-    LineScrollViewCell* cell = [[LineScrollViewCell alloc] init];
-    return cell;
-}
-
 
 -(float)lineScrollView:(LineScrollView *)lineScrollView widthForCellAtIndex:(int)index
 {

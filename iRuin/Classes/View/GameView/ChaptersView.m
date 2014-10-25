@@ -39,6 +39,10 @@
 @end
 
 @implementation ChaptersView
+{
+    UIImageView* backgroundView;
+    LineScrollView* lineScrollView;
+}
 
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -47,13 +51,13 @@
     if (self) {
         
         // background image view
-        UIImageView* backgroundView = [[UIImageView alloc] init];
-        backgroundView.image = [UIImage imageNamed:@"background"];
+        backgroundView = [[UIImageView alloc] init];
+//        backgroundView.image = [UIImage imageNamed:@"background"];
         [self addSubview: backgroundView];
         
         
         // chapter views
-        LineScrollView* lineScrollView = [[LineScrollView alloc] init];
+        lineScrollView = [[LineScrollView alloc] init];
         lineScrollView.clipsToBounds = YES;
         lineScrollView.dataSource = self;
         [self addSubview: lineScrollView];

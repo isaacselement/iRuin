@@ -7,20 +7,24 @@
 
 @implementation HeaderView
 
+
+@synthesize lineScrollView;
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        LineScrollView* lineScrollView = [[LineScrollView alloc] init];
+        lineScrollView = [[LineScrollView alloc] init];
         lineScrollView.clipsToBounds = NO;
         lineScrollView.dataSource = self;
         [ColorHelper setBorder: lineScrollView];
+        
         [self addSubview: lineScrollView];
     }
     return self;
 }
-
 
 #pragma mark - LineScrollViewDataSource
 
@@ -30,9 +34,9 @@
 }
 
 
--(void)lineScrollView:(LineScrollView *)lineScrollView willShowIndex:(int)index
+-(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index
 {
-    LineScrollViewCell* cell = [lineScrollView visibleCellAtIndex: index];
+    LineScrollViewCell* cell = [lineScrollViewObj visibleCellAtIndex: index];
     [ColorHelper setBackGround: cell color:[ColorHelper parseColor:@[@(index*2), @(index*8), @(index*10)]]];
 }
 

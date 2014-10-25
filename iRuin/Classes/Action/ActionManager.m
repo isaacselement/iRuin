@@ -54,12 +54,6 @@ static ActionManager* sharedInstance = nil;
     
 //    [VIEW.controller switchToView: VIEW.gameView];
     
-    NSDictionary* kkkl = [KeyValueCodingHelper getClassPropertieTypes:[CALayer class]];
-    
-    const char* lldfsaklfkdsal = @encode(CALayer);
-    const char* lllll = @encode(float);
-    const char* llllll = @encode(id);
-    
     [VIEW.controller switchToView: VIEW.chaptersView];
 }
 
@@ -126,13 +120,13 @@ static ActionManager* sharedInstance = nil;
     // set up the game view and its subviews frames
     GameView* gameView = VIEW.gameView;
     gameView.frame = [RectHelper getScreenRectByControllerOrientation];
-    [FrameHelper setSubViewsFrames: gameView config:DATA.visualJSON[@"GameView"]];
+    [FrameHelper setValues:gameView config:DATA.visualJSON[@"GameView"]];
     
     
     // set up the chapters view and its subviews frames
     ChaptersView* chaptersView = VIEW.chaptersView;
     chaptersView.frame = [RectHelper getScreenRectByControllerOrientation];
-    [FrameHelper setSubViewsFrames: chaptersView config:DATA.visualJSON[@"ChaptersView"]];
+    [FrameHelper setValues:chaptersView config:DATA.visualJSON[@"ChaptersView"]];
 }
 
 -(void) createOrUpdateSymbolsWithFramesMatrix

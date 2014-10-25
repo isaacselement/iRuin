@@ -49,9 +49,11 @@
     
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
+        
     }
     return self;
 }
+
 
 -(void)layoutSubviews
 {
@@ -77,6 +79,12 @@
 
 -(void)setFrame:(CGRect)frame {
     [super setFrame: frame];
+    [self initializeLineCells];
+}
+
+-(void) initializeLineCells
+{
+    CGRect frame = self.frame;
     float width = frame.size.width;
     float height = frame.size.height;
     if (width == 0 || height == 0) return;
@@ -88,7 +96,7 @@
     for (int i = 0; i < count; i++) {
         [subviews[i] removeFromSuperview];
     }
-
+    
     
     float length = 0.0f;
     for ( ; (length - width) < [self getCellWidthForIndex: criticalIndex + 1] ; )
@@ -120,6 +128,7 @@
     for (UIView* view in contentView.subviews)  lineLength += [view sizeWidth];
     self.contentSize = CGSizeMake(lineLength, height);
     contentView.frame = CGRectMake(0, 0, self.contentSize.width, self.contentSize.height);
+    
 }
 
 #pragma mark - Private Methods

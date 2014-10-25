@@ -225,6 +225,11 @@
 
 
 #pragma mark - Public Methods
+-(void) registerCellClass:(Class)cellClass
+{
+    __cellClass = cellClass;
+}
+
 -(LineScrollViewCell *)visibleCellAtIndex:(int)index
 {
     NSArray* cells = contentView.subviews;
@@ -244,6 +249,7 @@
 
 
 #pragma mark -
+
 -(void) reLeft {
     self.contentOffset = CGPointMake(0, self.contentOffset.y);
 }

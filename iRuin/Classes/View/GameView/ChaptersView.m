@@ -45,10 +45,21 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        // background image view
+        UIImageView* backgroundView = [[UIImageView alloc] init];
+        backgroundView.image = [UIImage imageNamed:@"background"];
+        [self addSubview: backgroundView];
+        
+        
+        // chapter views
         LineScrollView* lineScrollView = [[LineScrollView alloc] init];
         lineScrollView.clipsToBounds = YES;
         lineScrollView.dataSource = self;
         [self addSubview: lineScrollView];
+        
+        
+        
         
         
         // for test now
@@ -81,7 +92,7 @@
     
     
     // image
-    int i = index % 5;
+    int i = index % 4;
     i = i + 1;
     UIImage* image = [UIImage imageNamed: [NSString stringWithFormat:@"%d", abs(i)]];
     

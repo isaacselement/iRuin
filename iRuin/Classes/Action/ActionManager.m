@@ -54,6 +54,12 @@ static ActionManager* sharedInstance = nil;
     
 //    [VIEW.controller switchToView: VIEW.gameView];
     
+    NSDictionary* kkkl = [KeyValueCodingHelper getClassPropertieTypes:[CALayer class]];
+    
+    const char* lldfsaklfkdsal = @encode(CALayer);
+    const char* lllll = @encode(float);
+    const char* llllll = @encode(id);
+    
     [VIEW.controller switchToView: VIEW.chaptersView];
 }
 

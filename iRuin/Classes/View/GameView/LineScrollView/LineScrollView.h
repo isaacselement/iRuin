@@ -36,6 +36,8 @@
 
 @property (strong, readonly) UIView* contentView;
 
+@property (nonatomic, assign) CGFloat perCellWidth;
+
 
 
 -(LineScrollViewCell*) visibleCellAtIndex: (int)index;

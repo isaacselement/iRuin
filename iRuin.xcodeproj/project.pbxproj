@@ -18,6 +18,8 @@
 		4E1FBA24191BBBDD0093BE25 /* TouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1FBA23191BBBDD0093BE25 /* TouchEvent.m */; };
 		4E1FBA27191BBC8D0093BE25 /* TouchState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1FBA26191BBC8D0093BE25 /* TouchState.m */; };
 		4E1FBA2A191BC0E40093BE25 /* TouchEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1FBA29191BC0E40093BE25 /* TouchEffect.m */; };
+		4E2CCAC419FB5C5100D2AAEC /* KeyValueCodingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAC319FB5C5100D2AAEC /* KeyValueCodingHelper.m */; };
+		4E2CCAC719FB6DD900D2AAEC /* QueueValuesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAC619FB6DD900D2AAEC /* QueueValuesHelper.m */; };
 		4E4D4E8A181D5AFB00886D75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E89181D5AFB00886D75 /* Foundation.framework */; };
 		4E4D4E8C181D5AFB00886D75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E8B181D5AFB00886D75 /* CoreGraphics.framework */; };
 		4E4D4E8E181D5AFB00886D75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E8D181D5AFB00886D75 /* UIKit.framework */; };
@@ -245,6 +247,10 @@
 		4E1FBA26191BBC8D0093BE25 /* TouchState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchState.m; sourceTree = "<group>"; };
 		4E1FBA28191BC0E40093BE25 /* TouchEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchEffect.h; sourceTree = "<group>"; };
 		4E1FBA29191BC0E40093BE25 /* TouchEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchEffect.m; sourceTree = "<group>"; };
+		4E2CCAC219FB5C5100D2AAEC /* KeyValueCodingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueCodingHelper.h; sourceTree = "<group>"; };
+		4E2CCAC319FB5C5100D2AAEC /* KeyValueCodingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyValueCodingHelper.m; sourceTree = "<group>"; };
+		4E2CCAC519FB6DD900D2AAEC /* QueueValuesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueValuesHelper.h; sourceTree = "<group>"; };
+		4E2CCAC619FB6DD900D2AAEC /* QueueValuesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueValuesHelper.m; sourceTree = "<group>"; };
 		4E4D4E86181D5AFB00886D75 /* iRuin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRuin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4D4E89181D5AFB00886D75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4E4D4E8B181D5AFB00886D75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1321,6 +1327,8 @@
 				4EE5FB9019D858DD005E8736 /* TableViewHelper.m */,
 				4EE5FB9119D858DD005E8736 /* ViewHelper.h */,
 				4EE5FB9219D858DD005E8736 /* ViewHelper.m */,
+				4E2CCAC219FB5C5100D2AAEC /* KeyValueCodingHelper.h */,
+				4E2CCAC319FB5C5100D2AAEC /* KeyValueCodingHelper.m */,
 			);
 			path = ViewHelper;
 			sourceTree = "<group>";
@@ -1406,6 +1414,8 @@
 				4EE5FBBB19D858DD005E8736 /* QueueTimeCalculator.m */,
 				4EE5FBBC19D858DD005E8736 /* QueueViewsHelper.h */,
 				4EE5FBBD19D858DD005E8736 /* QueueViewsHelper.m */,
+				4E2CCAC519FB6DD900D2AAEC /* QueueValuesHelper.h */,
+				4E2CCAC619FB6DD900D2AAEC /* QueueValuesHelper.m */,
 			);
 			path = QueueHelper;
 			sourceTree = "<group>";
@@ -1819,6 +1829,7 @@
 				4EE5FC3819D858DD005E8736 /* TableViewHelper.m in Sources */,
 				4EE5FC1019D858DD005E8736 /* RSAKeysKeeper.m in Sources */,
 				4EE5FC5E19D858DD005E8736 /* RotatableScorllViewController.m in Sources */,
+				4E2CCAC719FB6DD900D2AAEC /* QueueValuesHelper.m in Sources */,
 				4EA40A3B1821361B001539B8 /* GameEvent.m in Sources */,
 				4EE5FC2319D858DD005E8736 /* LocalizeHelper.m in Sources */,
 				4E0BFC5719260BF900F0E632 /* DotsEffect.m in Sources */,
@@ -1840,6 +1851,7 @@
 				4EE5FC5619D858DD005E8736 /* AlignTableView.m in Sources */,
 				4EE5FC4619D858DD005E8736 /* EaseFunction.m in Sources */,
 				4EE5FC1F19D858DD005E8736 /* HTTPPostRequest.m in Sources */,
+				4E2CCAC419FB5C5100D2AAEC /* KeyValueCodingHelper.m in Sources */,
 				4ED52C84191E623A002ADA73 /* SwipeEffect.m in Sources */,
 				4EE5FC4B19D858DD005E8736 /* UIColor+FlatColors.m in Sources */,
 				4EE5FC1419D858DD005E8736 /* RSACryptor.m in Sources */,

@@ -41,6 +41,8 @@
     if (self) {
         contentView = [[UIView alloc] init];
         [self addSubview: contentView];
+        
+        self.perCellWidth = 80.0f;
     
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
@@ -206,6 +208,7 @@
        cellWidth = [dataSource lineScrollView: self widthForCellAtIndex: index];
     }
     return cellWidth;
+//    return self.perCellWidth;
 }
 
 -(float) getLeftestIndexCellWidth

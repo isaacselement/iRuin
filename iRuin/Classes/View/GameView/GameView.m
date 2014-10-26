@@ -18,6 +18,15 @@
         headerView = [[HeaderView alloc] init];
         [self addSubview: containerView];
         [self addSubview: headerView];
+        
+        
+        
+        NormalButton* normalButton = [NormalButton buttonWithType:UIButtonTypeContactAdd];
+        normalButton.didClikcButtonAction = ^void(NormalButton* btn) {
+            [VIEW.controller switchToView: VIEW.chaptersView];
+        };
+        normalButton.frame = CGRectMake(0, 0, 25, 25);
+        [self addSubview: normalButton];
     }
     return self;
 }

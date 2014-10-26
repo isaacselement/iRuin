@@ -3,14 +3,23 @@
 
 @implementation GameController
 
+@synthesize gameView;
+@synthesize chaptersView;
+
+
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName: nil bundle:nibBundleOrNil];
     if (self) {
+        chaptersView = [[ChaptersView alloc] init];
+        gameView = [[GameView alloc] init];
+        
+        
         // Hide status bar , for ios version <= ios 6.0
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         // Add the UIDeviceOrientationDidChangeNotification
         [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(orientationDidChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+        
     }
     return self;
 }
@@ -24,10 +33,9 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    
     // Give a new uiview , cause the origin is a strange mess thing
-    self.view = [[UIView alloc] initWithFrame:self.view.bounds];
-    self.view.backgroundColor = [UIColor flatGrayColor];
+    self.view = [[GameBaseView alloc] initWithFrame:self.view.bounds];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 -(void) orientationDidChanged: (NSNotification*)notification
@@ -69,6 +77,7 @@
             symbolView.frame = [rectsRepository[outterIndex][innerIndex] CGRectValue];
             return NO;
         }];
+        
     } else {
 
         // Temporary code here.

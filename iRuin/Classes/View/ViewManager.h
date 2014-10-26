@@ -19,16 +19,18 @@
 @property (strong) FrameManager* frame;
 @property (strong) GameController* controller;
 
-@property (strong) GameView* gameView;
-@property (strong) ChaptersView* chaptersView;
-
 
 @property (strong, readonly) QueueTimeCalculator* actionDurations;
 @property (strong, readonly) ActionExecutorManager* actionExecutorManager;
 
 +(ViewManager*) getInstance ;
 
+-(GameView*) gameView;
+
+-(ChaptersView*) chaptersView;
 
 -(void) initializeWithData ;
+
+
 
 @end

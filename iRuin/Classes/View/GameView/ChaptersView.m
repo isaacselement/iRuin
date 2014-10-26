@@ -42,6 +42,8 @@
 {
     
     LineScrollView* lineScrollView;
+    
+    UIView* testView;
 }
 
 
@@ -52,11 +54,8 @@
         
         // chapter views
         lineScrollView = [[LineScrollView alloc] init];
-        lineScrollView.clipsToBounds = YES;
         lineScrollView.dataSource = self;
         [self addSubview: lineScrollView];
-        
-        
         
         
         
@@ -77,7 +76,7 @@
 
         };
         
-        [self addSubview:button];
+//        [self addSubview:button];
     }
     return self;
 }
@@ -91,8 +90,8 @@
     
     // image
     int i = index % 4;
-    i = i + 1;
-    UIImage* image = [UIImage imageNamed: [NSString stringWithFormat:@"%d", abs(i)]];
+    NSString* imageName = [NSString stringWithFormat:@"%d", abs(i) + 1];
+    UIImage* image = [UIImage imageNamed: imageName];
     
     
     // imageView

@@ -55,6 +55,7 @@ static ActionManager* sharedInstance = nil;
 //    [VIEW.controller switchToView: VIEW.gameView];
     
     [VIEW.controller switchToView: VIEW.chaptersView];
+    
 }
 
 -(void) establishGameModes
@@ -134,8 +135,7 @@ static ActionManager* sharedInstance = nil;
         }
         return result;
     }];
-    [FrameHelper setValues:gameView config:DATA.visualJSON[@"GameView"]];
-    [FrameHelper setValues:chaptersView config:DATA.visualJSON[@"ChaptersView"]];
+    [FrameHelper setValues:VIEW.controller config:DATA.visualJSON[@"GameController"]];
     
     // remove handler
     [KeyValueCodingHelper setTranslateValueHandler:nil];

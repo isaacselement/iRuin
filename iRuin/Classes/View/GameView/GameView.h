@@ -1,9 +1,9 @@
-#import "BaseGameView.h"
+#import "GameBaseView.h"
 
 @class HeaderView;
 @class ContainerView;
 
-@interface GameView : BaseGameView
+@interface GameView : GameBaseView
 
 @property (strong, readonly) HeaderView* headerView;
 @property (strong, readonly) ContainerView* containerView;

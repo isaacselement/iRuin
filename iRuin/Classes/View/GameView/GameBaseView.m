@@ -1,6 +1,6 @@
-#import "BaseGameView.h"
+#import "GameBaseView.h"
 
-@implementation BaseGameView
+@implementation GameBaseView
 {
     UIImageView* backgroundView;
 }

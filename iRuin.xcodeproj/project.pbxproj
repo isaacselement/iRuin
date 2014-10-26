@@ -21,9 +21,8 @@
 		4E2CCAC719FB6DD900D2AAEC /* QueueValuesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAC619FB6DD900D2AAEC /* QueueValuesHelper.m */; };
 		4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCACC19FBF93500D2AAEC /* ContainerView.m */; };
 		4E2CCAD019FBF93500D2AAEC /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCACE19FBF93500D2AAEC /* HeaderView.m */; };
-		4E2CCAD319FBF98B00D2AAEC /* BaseGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAD219FBF98B00D2AAEC /* BaseGameView.m */; };
+		4E2CCAD319FBF98B00D2AAEC /* GameBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAD219FBF98B00D2AAEC /* GameBaseView.m */; };
 		4E2CCAD619FBFAC500D2AAEC /* background_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E2CCAD419FBFAC500D2AAEC /* background_01.png */; };
-		4E2CCAD719FBFAC500D2AAEC /* background_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E2CCAD519FBFAC500D2AAEC /* background_02.png */; };
 		4E4D4E8A181D5AFB00886D75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E89181D5AFB00886D75 /* Foundation.framework */; };
 		4E4D4E8C181D5AFB00886D75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E8B181D5AFB00886D75 /* CoreGraphics.framework */; };
 		4E4D4E8E181D5AFB00886D75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E8D181D5AFB00886D75 /* UIKit.framework */; };
@@ -255,10 +254,9 @@
 		4E2CCACC19FBF93500D2AAEC /* ContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
 		4E2CCACD19FBF93500D2AAEC /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		4E2CCACE19FBF93500D2AAEC /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
-		4E2CCAD119FBF98B00D2AAEC /* BaseGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGameView.h; sourceTree = "<group>"; };
-		4E2CCAD219FBF98B00D2AAEC /* BaseGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGameView.m; sourceTree = "<group>"; };
+		4E2CCAD119FBF98B00D2AAEC /* GameBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBaseView.h; sourceTree = "<group>"; };
+		4E2CCAD219FBF98B00D2AAEC /* GameBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBaseView.m; sourceTree = "<group>"; };
 		4E2CCAD419FBFAC500D2AAEC /* background_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_01.png; sourceTree = "<group>"; };
-		4E2CCAD519FBFAC500D2AAEC /* background_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_02.png; sourceTree = "<group>"; };
 		4E4D4E86181D5AFB00886D75 /* iRuin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRuin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4D4E89181D5AFB00886D75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4E4D4E8B181D5AFB00886D75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -681,8 +679,8 @@
 				4E11D8DD181FE4F6007837F0 /* GameView.m */,
 				4EAB5A5F19F79C440031F69D /* ChaptersView.h */,
 				4EAB5A6019F79C440031F69D /* ChaptersView.m */,
-				4E2CCAD119FBF98B00D2AAEC /* BaseGameView.h */,
-				4E2CCAD219FBF98B00D2AAEC /* BaseGameView.m */,
+				4E2CCAD119FBF98B00D2AAEC /* GameBaseView.h */,
+				4E2CCAD219FBF98B00D2AAEC /* GameBaseView.m */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -1035,7 +1033,6 @@
 			isa = PBXGroup;
 			children = (
 				4E2CCAD419FBFAC500D2AAEC /* background_01.png */,
-				4E2CCAD519FBFAC500D2AAEC /* background_02.png */,
 				4ECB29F519FA562A00D60219 /* 1.png */,
 				4ECB29F619FA562A00D60219 /* 2.png */,
 				4ECB29F719FA562A00D60219 /* 3.png */,
@@ -1688,7 +1685,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E2CCAD719FBFAC500D2AAEC /* background_02.png in Resources */,
 				4ECB2A0119FA562A00D60219 /* iPad_Visual_Landscape_10x6.json in Resources */,
 				4ECB2A0419FA562A00D60219 /* iPhone_Visual_Portrait_10x6.json in Resources */,
 				4EE5FC1219D858DD005E8736 /* Screen Shot  private_key info.png in Resources */,
@@ -1871,7 +1867,7 @@
 				4E2CCAC419FB5C5100D2AAEC /* KeyValueCodingHelper.m in Sources */,
 				4ED52C84191E623A002ADA73 /* SwipeEffect.m in Sources */,
 				4EE5FC4B19D858DD005E8736 /* UIColor+FlatColors.m in Sources */,
-				4E2CCAD319FBF98B00D2AAEC /* BaseGameView.m in Sources */,
+				4E2CCAD319FBF98B00D2AAEC /* GameBaseView.m in Sources */,
 				4EE5FC1419D858DD005E8736 /* RSACryptor.m in Sources */,
 				4E14BC5A19225B3E000CDB57 /* PullEffect.m in Sources */,
 				4EE5FC4E19D858DD005E8736 /* GradientLabel.m in Sources */,

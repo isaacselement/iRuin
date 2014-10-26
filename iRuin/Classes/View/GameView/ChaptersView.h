@@ -1,5 +1,5 @@
-#import "BaseGameView.h"
+#import "GameBaseView.h"
 
-@interface ChaptersView : BaseGameView
+@interface ChaptersView : GameBaseView
 
 @end

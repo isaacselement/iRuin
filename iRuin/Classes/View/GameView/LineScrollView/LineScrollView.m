@@ -3,6 +3,22 @@
 
 #import "ViewHelper.h"
 #import "UIView+Frame.h"
+#import "NSArray+Additions.h"
+
+
+#ifdef DEBUG
+
+#ifndef __DLog
+
+#define __DLog(format, ...) NSLog(format, ##__VA_ARGS__)
+
+#else
+
+#define __DLog(format, ...)
+
+#endif
+
+#endif
 
 
 @implementation LineScrollView {
@@ -12,11 +28,9 @@
     float criticalWidth;
 
     float previousOffsetx;
-    int criticalIndex;      // the head or the tail
     
-    
-    BOOL currentDirection;
     int currentIndex;
+    BOOL currentDirection;      // Yes : is heading right, currentIndex is decrease, contentOffset.x is decrease
 }
 
 @synthesize dataSource;
@@ -53,31 +67,9 @@
     return self;
 }
 
-
--(void)layoutSubviews
-{
-    [super layoutSubviews];
-    // check if change direction
-    BOOL direction = self.contentOffset.x < previousOffsetx;
-    if ([self getRightestIndexCellWidth] || previousOffsetx != 0) {
-        if (currentDirection != direction) [self directionDidChange: direction];
-    }
-    currentDirection = direction;
-    
-    // ask datasource
-    int nextIndex = currentDirection ? currentIndex- 1 : currentIndex + 1;
-    if (dataSource && [dataSource respondsToSelector:@selector(lineScrollView:shouldShowIndex:)]) {
-        if (! [dataSource lineScrollView:self shouldShowIndex:nextIndex]) {
-            return;
-        }
-    }
-    
-    // if no return , check and do relocate if necessary.
-    if (self.contentOffset.x != 0) [self relocateIfNecessary];
-}
-
 -(void)setFrame:(CGRect)frame {
     [super setFrame: frame];
+    
     [self initializeLineCells];
 }
 
@@ -91,43 +83,66 @@
     
     // subviews are LineScrollViewCell
     NSArray* subviews = contentView.subviews;
-    NSUInteger count = subviews.count;
-    for (int i = 0; i < count; i++) {
-        [subviews[i] removeFromSuperview];
-    }
+    currentIndex = 0 ;
+    currentDirection = NO;
     
     
-    float length = 0.0f;
-    for ( ; (length - width) < [self getCellWidthForIndex: criticalIndex + 1] ; )
+    // begin
+    
+    float addLength = 0.0f;
+    for ( ; (addLength - width) < [self getCellWidthForIndex: currentIndex + 1] ; )
     {
-        LineScrollViewCell* cell = [self getCellForIndex: criticalIndex];
+        // be aware of the infinite loop
         
-        if (! cell) break ; // aware of the infinite loop
+        LineScrollViewCell* cell = [subviews safeObjectAtIndex: currentIndex];
+        if (! cell) {
+            cell = [[__cellClass alloc] init];
+        }
+        float cellWidth = [self getCellWidthForIndex: currentIndex];
         
-        float cellWidth = [cell sizeWidth];
-        
-        cell.frame = CGRectMake(length, 0, cellWidth, height);
-        criticalIndex++;
+        cell.frame = CGRectMake(addLength, 0, cellWidth, height);
         
         [contentView addSubview: cell];
         
-        length += cellWidth;
+        addLength += cellWidth;
         
         
         // first call
-        currentIndex = criticalIndex;
+        currentIndex++;
         if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:willShowIndex:)]) {
             [dataSource lineScrollView: self willShowIndex:currentIndex];
         }
     }
     
-    criticalWidth = [self getLeftestIndexCellWidth];
+    criticalWidth = [self getCellWidthForIndex: currentIndex];
     
     float lineLength = 0.0f;
     for (UIView* view in contentView.subviews)  lineLength += [view sizeWidth];
     self.contentSize = CGSizeMake(lineLength, height);
     contentView.frame = CGRectMake(0, 0, self.contentSize.width, self.contentSize.height);
     
+}
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    // check if change direction
+    BOOL direction = self.contentOffset.x < previousOffsetx;
+    if (currentDirection != direction) {
+        [self directionDidChange: direction];
+    }
+    currentDirection = direction;
+    
+    // ask datasource
+    int nextIndex = currentDirection ? currentIndex - 1 : currentIndex + 1;
+    if (dataSource && [dataSource respondsToSelector:@selector(lineScrollView:shouldShowIndex:)]) {
+        if (! [dataSource lineScrollView:self shouldShowIndex:nextIndex]) {
+            return;
+        }
+    }
+    
+    // if no return , check and do relocate if necessary.
+    if (self.contentOffset.x != 0) [self relocateIfNecessary];
 }
 
 #pragma mark - Private Methods
@@ -138,36 +153,28 @@
     // Forward Left
     if (self.contentOffset.x > criticalWidth) {
         [self relocateSubviews: NO];
-        criticalWidth = [self getLeftestIndexCellWidth];
+        criticalWidth = [self getCellWidthForIndex: currentIndex];
         
     // Forward Right
     } else if (self.contentOffset.x < 0 ) {
         [self relocateSubviews: YES];
     }
     previousOffsetx = self.contentOffset.x;
-    
 }
 
--(void) alignRight
-{
-    self.contentOffset = CGPointMake([self getRightestIndexCellWidth], self.contentOffset.y);
-}
-
--(void) directionDidChange: (BOOL)isHeadRight {
-    NSLog(@"directionDidChange - %d" , isHeadRight);
+-(void) directionDidChange: (BOOL)isHeadingRight {
+    __DLog(@"directionDidChange - %d" , isHeadingRight);
     NSUInteger count = contentView.subviews.count ;
-    if (isHeadRight) {
-        criticalIndex -= (count + 1);
+    if (isHeadingRight) {
         currentIndex -= (count - 1);
     } else {
-        criticalIndex += (count + 1);
         currentIndex += (count - 1);
     }
 }
 
 // isHeadRight means self.contentOffset.x is increasing!!!
--(void) relocateSubviews: (BOOL)isHeadRight {
-    if (isHeadRight) {
+-(void) relocateSubviews: (BOOL)isHeadingRight {
+    if (isHeadingRight) {
         [self alignRight];
         currentIndex -- ;
     } else {
@@ -175,8 +182,6 @@
         currentIndex ++ ;
     }
 
-    
-    
     // reset the x coordinate
     NSArray* subviews = contentView.subviews;       // subviews are LineScrollViewCell
     NSUInteger count = subviews.count;
@@ -189,12 +194,12 @@
     
     for (int i = 0; i < count; i++) {
         UIView* view = subviews[i];
-        int j = isHeadRight ?(i+1):(i-1);
+        int j = isHeadingRight ?(i+1):(i-1);
         NSUInteger k = (j + count) % count;
         [view setOriginX: xc[k]];
     }
     
-    // sort the subview by x coordinate
+    // sort the subviews by x coordinate
     [ViewHelper sortedSubviewsByXCoordinate: contentView];
     
     
@@ -202,14 +207,6 @@
     if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:willShowIndex:)]) {
         [dataSource lineScrollView: self willShowIndex:currentIndex];
     }
-}
-
--(LineScrollViewCell*) getCellForIndex: (int)index
-{
-    LineScrollViewCell* cell = [[__cellClass alloc] init];;
-    float cellWidth = [self getCellWidthForIndex: index];
-    [cell setSizeWidth: cellWidth];
-    return cell;
 }
 
 -(float) getCellWidthForIndex: (int)index
@@ -221,18 +218,8 @@
     return cellWidth;
 }
 
--(float) getLeftestIndexCellWidth
-{
-    return [self getCellWidthForIndex: criticalIndex - (int)contentView.subviews.count];
-}
-
--(float) getRightestIndexCellWidth
-{
-    return [self getCellWidthForIndex: criticalIndex - 1];
-}
-
-
 #pragma mark - Public Methods
+
 -(void) registerCellClass:(Class)cellClass
 {
     __cellClass = cellClass;
@@ -255,6 +242,10 @@
 
 
 
+-(void) alignRight
+{
+    self.contentOffset = CGPointMake([self getCellWidthForIndex: currentIndex + contentView.subviews.count - 1], self.contentOffset.y);
+}
 
 #pragma mark -
 

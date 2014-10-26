@@ -23,8 +23,6 @@
 @synthesize frame;
 @synthesize controller;
 
-@synthesize gameView;
-@synthesize chaptersView;
 
 static ViewManager* sharedInstance = nil;
 
@@ -47,11 +45,18 @@ static ViewManager* sharedInstance = nil;
     if (self) {
         frame = [[FrameManager alloc] init];
         controller = [[GameController alloc] init];
-        
-        gameView = [[GameView alloc] init];
-        chaptersView = [[ChaptersView alloc] init];
     }
     return self;
+}
+
+-(GameView*) gameView
+{
+    return controller.gameView;
+}
+
+-(ChaptersView*) chaptersView
+{
+    return controller.chaptersView;
 }
 
 -(void) initializeWithData {

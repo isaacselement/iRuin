@@ -114,19 +114,31 @@ static ActionManager* sharedInstance = nil;
 
 -(void) switchFrameDesignAndComponentsFrames
 {
-    // set up design/canvas size
+    // first, set up design/canvas size
     [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.visualJSON[@"DESIGN"]]];
     
-    // set up the game view and its subviews frames
     GameView* gameView = VIEW.gameView;
     gameView.frame = [RectHelper getScreenRectByControllerOrientation];
-    [FrameHelper setValues:gameView config:DATA.visualJSON[@"GameView"]];
     
-    
-    // set up the chapters view and its subviews frames
     ChaptersView* chaptersView = VIEW.chaptersView;
     chaptersView.frame = [RectHelper getScreenRectByControllerOrientation];
+    
+    // set handler
+    [KeyValueCodingHelper setTranslateValueHandler:^id(id value, const char *type, NSString *key) {
+        id result = value;
+        if (strcmp(type, @encode(CGFloat)) == 0) {
+            if ([key rangeOfString:@"Width"].location != NSNotFound) {
+                CGFloat num = [value floatValue];
+                result = @(CanvasW(num));
+            }
+        }
+        return result;
+    }];
+    [FrameHelper setValues:gameView config:DATA.visualJSON[@"GameView"]];
     [FrameHelper setValues:chaptersView config:DATA.visualJSON[@"ChaptersView"]];
+    
+    // remove handler
+    [KeyValueCodingHelper setTranslateValueHandler:nil];
 }
 
 -(void) createOrUpdateSymbolsWithFramesMatrix

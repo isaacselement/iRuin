@@ -30,7 +30,7 @@ static DataManager* sharedInstance = nil;
 {
     self = [super init];
     if (self) {
-        [ViewHelper propertiesTypes];
+
     }
     return self;
 }

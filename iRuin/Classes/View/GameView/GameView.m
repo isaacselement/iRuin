@@ -3,7 +3,9 @@
 
 @implementation GameView
 {
-    NSMutableArray* _symbolsInContianer;
+    InteractiveImageView* backActionView;
+    InteractiveImageView* pauseActionView;
+    InteractiveImageView* refreshActionView;
 }
 
 @synthesize headerView;
@@ -13,21 +15,32 @@
 {
     self = [super init];
     if (self) {
-        // view
+        // views
         containerView = [[ContainerView alloc] init];
-        headerView = [[HeaderView alloc] init];
         [self addSubview: containerView];
+        
+        headerView = [[HeaderView alloc] init];
         [self addSubview: headerView];
         
-        
-        
-        NormalButton* normalButton = [NormalButton buttonWithType:UIButtonTypeContactAdd];
-        normalButton.didClikcButtonAction = ^void(NormalButton* btn) {
-//            [VIEW.controller switchToView: VIEW.chaptersView];
-            [ACTION.currentEffect effectStartRollOut];
+        // action views
+        backActionView = [[InteractiveImageView alloc] init];
+        backActionView.didEndTouchAction = ^void(InteractiveImageView* view){
+            [ACTION.gameEvent gameBack];
         };
-        normalButton.frame = CGRectMake(0, 0, 25, 25);
-        [self addSubview: normalButton];
+        [self addSubview: backActionView];
+        
+        pauseActionView = [[InteractiveImageView alloc] init];
+        pauseActionView.didEndTouchAction = ^void(InteractiveImageView* view){
+            [ACTION.gameEvent gamePause];
+        };
+        [self addSubview: pauseActionView];
+        
+        refreshActionView = [[InteractiveImageView alloc] init];
+        refreshActionView.didEndTouchAction = ^void(InteractiveImageView* view){
+            [ACTION.gameEvent gameRefresh];
+        };
+        [self addSubview: refreshActionView];
+        
     }
     return self;
 }
@@ -35,11 +48,9 @@
 
 -(NSMutableArray*) symbolsInContainer
 {
-    if (!_symbolsInContianer) {
-        _symbolsInContianer = [QueueViewsHelper viewsInVisualArea];
-    }
-    return _symbolsInContianer;
+    return [QueueViewsHelper viewsInVisualArea];
 }
+
 
 
 @end

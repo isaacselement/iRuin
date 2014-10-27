@@ -112,6 +112,8 @@
 #import "ContainerView.h"
 #import "SymbolView.h"
 
+#import "InteractiveImageView.h"
+
 // LineScrollView
 #import "LineScrollView.h"
 #import "LineScrollViewCell.h"

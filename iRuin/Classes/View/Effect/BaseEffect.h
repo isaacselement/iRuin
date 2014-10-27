@@ -19,6 +19,7 @@
 
 #pragma mark - Public Methods
 -(void) effectStartRollIn ;
+-(void) effectStartRollOut;
 -(void) effectStartVanish: (NSMutableArray*)symbols;
 
 

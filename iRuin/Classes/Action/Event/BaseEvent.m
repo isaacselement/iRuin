@@ -36,8 +36,16 @@
 }
 -(void) eventSymbolsDidRollIn
 {
-    ACTION.gameState.isViewsDidRollIn = YES;
     DLOG(@" eventSymbolsDidRollIn ");
+}
+
+-(void) eventSymbolsWillRollOut
+{
+    ACTION.gameState.isGameStarted = NO;
+}
+-(void) eventSymbolsDidRollOut
+{
+    DLOG(@" eventSymbolsDidRollOut ");
 }
 
 //#ifdef DEBUG

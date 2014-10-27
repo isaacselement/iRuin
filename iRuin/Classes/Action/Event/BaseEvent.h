@@ -20,6 +20,9 @@
 -(void) eventSymbolsWillRollIn;
 -(void) eventSymbolsDidRollIn;
 
+-(void) eventSymbolsWillRollOut;
+-(void) eventSymbolsDidRollOut;
+
 -(void) eventSymbolsWillVanish: (NSArray*)symbols;
 -(void) eventSymbolsDidVanish: (NSArray*)symbols;
 

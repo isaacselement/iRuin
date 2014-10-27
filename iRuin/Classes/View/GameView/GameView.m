@@ -23,7 +23,8 @@
         
         NormalButton* normalButton = [NormalButton buttonWithType:UIButtonTypeContactAdd];
         normalButton.didClikcButtonAction = ^void(NormalButton* btn) {
-            [VIEW.controller switchToView: VIEW.chaptersView];
+//            [VIEW.controller switchToView: VIEW.chaptersView];
+            [ACTION.currentEffect effectStartRollOut];
         };
         normalButton.frame = CGRectMake(0, 0, 25, 25);
         [self addSubview: normalButton];

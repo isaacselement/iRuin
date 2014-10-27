@@ -106,7 +106,7 @@ static ActionManager* sharedInstance = nil;
 {
     [self switchFrameDesignChaptersViewGameViewFrames];
     [self createOrUpdateSymbolsWithFramesMatrix];
-    [self initializeNewSymbolsPrototypesAppearance];
+    [self initializeNewToContainerSymbolsPrototypesAppearance];
 }
 
 -(void) switchFrameDesignChaptersViewGameViewFrames
@@ -143,11 +143,20 @@ static ActionManager* sharedInstance = nil;
     CGRect visualArea = containerView.bounds;
     CGRect visualFrame = containerView.frame;
     
+    
     // set up the basic views and positions array
     NSArray* matrixs = DATA.visualJSON[@"MATRIX"];
     [QueuePositionsHelper setRectsRepository: matrixs];
     [QueueViewsHelper setViewsRepository: matrixs viewClass:[SymbolView class]];
     [QueueViewsHelper setViewsInVisualArea: visualArea];
+    
+    
+    BOOL isContainerClipsToBounds = [DATA.config[@"ContainerClipsToBounds"] boolValue];
+    containerView.clipsToBounds = isContainerClipsToBounds;   // Comment it for test , in production , open it .
+    if (! isContainerClipsToBounds) {
+        [QueuePositionsHelper refreshRectsPositionsRepositoryWhenClipsToBoundsIsNO:visualFrame];
+    }
+    
     
     [IterateHelper iterateTwoDimensionArray: QueueViewsHelper.viewsInVisualArea handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
         SymbolView* symbolView = (SymbolView*)obj;
@@ -156,14 +165,9 @@ static ActionManager* sharedInstance = nil;
         return NO;
     }];
     
-    BOOL isContainerClipsToBounds = [DATA.config[@"ContainerClipsToBounds"] boolValue];
-    containerView.clipsToBounds = isContainerClipsToBounds;   // Comment it for test , in production , open it .
-    if (! isContainerClipsToBounds) {
-        [QueuePositionsHelper refreshRectsPositionsRepositoryWhenClipsToBoundsIsNO:visualFrame];
-    }
 }
 
--(void) initializeNewSymbolsPrototypesAppearance
+-(void) initializeNewToContainerSymbolsPrototypesAppearance
 {
     // set up all symbols attributes
     UIView* containerView = VIEW.gameView.containerView;
@@ -171,14 +175,16 @@ static ActionManager* sharedInstance = nil;
     NSArray* rectsRepository = QueuePositionsHelper.rectsRepository;
     [IterateHelper iterateTwoDimensionArray:viewRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
         SymbolView* symbolView = (SymbolView*)obj;
+        
+        // the new symbols
         if (!symbolView.superview) {
+            // cause it's new , so should restore
+            [symbolView restore];
+            
             [containerView addSubview: symbolView];
             
-            CGRect rect = [[[rectsRepository objectAtIndex: outterIndex] objectAtIndex: innerIndex] CGRectValue];
-            [symbolView setSize: rect.size];                // we set the frame after the orientation has been stable
+            symbolView.frame = [rectsRepository[outterIndex][innerIndex] CGRectValue];
             [symbolView setValidArea: symbolView.bounds];
-            
-            [symbolView restore];
             
             symbolView.name = [ACTION.gameState oneRandomSymbolName];
         }

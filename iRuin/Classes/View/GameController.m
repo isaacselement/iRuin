@@ -18,7 +18,7 @@
         // Hide status bar , for ios version <= ios 6.0
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         // Add the UIDeviceOrientationDidChangeNotification
-        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(deviceOrientationDidChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(deviceOrientationDidChangedWithNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
         
     }
     return self;
@@ -38,12 +38,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
--(void) deviceOrientationDidChanged: (NSNotification*)notification
+-(void) deviceOrientationDidChangedWithNotification: (NSNotification*)notification
 {
-    DLog(@"deviceOrientationDidChanged: %d . %f X %f", [UIDevice currentDevice].orientation, self.view.bounds.size.width, self.view.bounds.size.height);
+    DLog(@"deviceOrientationDidChangedWithNotification: %d . %f X %f", [UIDevice currentDevice].orientation, self.view.bounds.size.width, self.view.bounds.size.height);
     
-    [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(renderWithCurrentOrientation) object:nil];
-    [self performSelector: @selector(renderWithCurrentOrientation) withObject:nil afterDelay: 0.5];
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(reRenderWithDeviceOrientation) object:nil];
+    [self performSelector: @selector(reRenderWithDeviceOrientation) withObject:nil afterDelay: 0.5];
 }
 
 
@@ -59,36 +59,29 @@
 
 #pragma mark - Orientation Change
 
--(void) renderWithCurrentOrientation
+-(void) reRenderWithDeviceOrientation
 {
     [ACTION renderFramesWithCurrentOrientation];
+    
+    [self deviceOrientationChangedRefreshSymbolsFramesWhileGameIsStarted];
+}
+
+
+-(void) deviceOrientationChangedRefreshSymbolsFramesWhileGameIsStarted
+{
+    if (! ACTION.gameState.isGameStarted) return;
     
     NSArray* viewsRepository = QueueViewsHelper.viewsRepository;
     NSArray* rectsRepository = QueuePositionsHelper.rectsRepository;
     
-//    return;
-    
-    // symbols frames
-    if (! ACTION.gameState.isGameStarted) {
-        [ACTION.currentEffect effectStartRollIn];
-
+    // Temporary code here.
+    [UIView animateWithDuration: 0.5 animations:^{
         [IterateHelper iterateTwoDimensionArray:viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
             SymbolView* symbolView = (SymbolView*)obj;
             symbolView.frame = [rectsRepository[outterIndex][innerIndex] CGRectValue];
             return NO;
         }];
-        
-    } else {
-
-        // Temporary code here.
-        [UIView animateWithDuration: 0.5 animations:^{
-            [IterateHelper iterateTwoDimensionArray:viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-                SymbolView* symbolView = (SymbolView*)obj;
-                symbolView.frame = [rectsRepository[outterIndex][innerIndex] CGRectValue];
-                return NO;
-            }];
-        }];
-    }
+    }];
 }
 
 @end

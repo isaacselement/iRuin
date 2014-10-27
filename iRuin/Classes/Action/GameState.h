@@ -6,8 +6,6 @@
 
 @property (assign) BOOL isGameStarted;
 
-@property (assign) BOOL isViewsDidRollIn;
-
 
 -(NSString*) oneRandomSymbolName;
 

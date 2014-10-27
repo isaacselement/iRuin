@@ -81,7 +81,6 @@
     column = -1;
     self.center = VIEW.frame.blackPoint;
     [self.layer removeAllAnimations];
-    
 }
 
 -(void)setName:(NSString *)name

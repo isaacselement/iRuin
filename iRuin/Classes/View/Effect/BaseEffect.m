@@ -45,6 +45,18 @@
     [event performSelector:@selector(eventSymbolsDidRollIn) withObject:nil afterDelay:totalDuration];
 }
 
+-(void) effectStartRollOut
+{
+    //    DLOG(@"effect - effectStartRollOut");
+    [event performSelector:@selector(eventSymbolsWillRollOut) withObject:nil];
+    
+    [VIEW.actionDurations clear];
+    [self startSymbolsRollOut];
+    double totalDuration = [VIEW.actionDurations take];
+    
+    [event performSelector:@selector(eventSymbolsDidRollOut) withObject:nil afterDelay:totalDuration];
+}
+
 
 -(void)effectStartVanish: (NSMutableArray*)symbols
 {
@@ -100,11 +112,25 @@
     // start roll in effect
     NSArray* lines = DATA.visualJSON[@"VISUAL.POSITIONS"][@"RollIn"];
     NSDictionary* config = DATA.visualJSON[@"CONFIG.POSITIONS"][@"RollIn"];
+    NSArray* actionsConfig = DATA.config[@"ActionExecutors"][@"RollIn_ActionExecutors"];
+    [self roll:lines config:config actionsConfig:actionsConfig];
+}
+-(void) startSymbolsRollOut
+{
+    // start roll in effect
+    NSArray* lines = DATA.visualJSON[@"VISUAL.POSITIONS"][@"RollOut"];
+    NSDictionary* config = DATA.visualJSON[@"CONFIG.POSITIONS"][@"RollOut"];
+    NSArray* actionsConfig = DATA.config[@"ActionExecutors"][@"RollOut_ActionExecutors"];
+    [self roll:lines config:config actionsConfig:actionsConfig];
+}
+
+-(void) roll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig
+{
     NSDictionary* linesConfig = config[@"LINES"];
     NSDictionary* indexPathsConfig = config[@"INDEXPATHS"];
     
     NSMutableArray* nullLocations = [NSMutableArray array];
-    [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsInVisualArea handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
+    [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
         [nullLocations addObject:[[QueueIndexPathParser.indexPathsRepository objectAtIndex:outterIndex] objectAtIndex: innerIndex]];
         return NO;
     }];
@@ -116,14 +142,12 @@
     NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupTheNullIndexPaths: nullIndexPaths isNullIndexPathsBreakWhenNotCoterminous:NO isColumnBase:isColumnBase];
     NSArray* indexPaths = [QueueIndexPathParser assembleIndexPaths:lines groupedNullIndexpaths:groupedNullIndexpaths isBackward:isBackward isColumnBase:isColumnBase];
     
-
+    
     NSMutableArray* views = [QueueViewsHelper getViewsQueues: lines indexPaths:indexPaths];
     NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
     
     // start , trigger event
-    
-    NSArray* actionConfig = DATA.config[@"ActionExecutors"][@"RollIn_ActionExecutors"];
-    [VIEW.actionExecutorManager runActionExecutors:actionConfig onObjects:views values:positions baseTimes:nil];
+    [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:nil];
 }
 
 -(void) startSymbolsAdjusts: (NSArray*)nullRowColumns
@@ -199,7 +223,6 @@
     
     [PositionsHelper updateFillInRowsColumnsInVisualArea: views];
 }
-
 
 -(void) startSymbolsSqueeze: (NSArray*)nullRowColumns
 {

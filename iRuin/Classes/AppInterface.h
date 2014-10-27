@@ -110,14 +110,12 @@
 #import "GameView.h"
 #import "HeaderView.h"
 #import "ContainerView.h"
+#import "SymbolView.h"
 
 // LineScrollView
 #import "LineScrollView.h"
 #import "LineScrollViewCell.h"
 
-// Symbol
-#import "Symbol.h"
-#import "SymbolView.h"
 
 
 

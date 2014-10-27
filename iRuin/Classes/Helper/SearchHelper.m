@@ -37,7 +37,7 @@
     
     for (int i = 0 ; i < routeSymbols.count ; i++) {
         SymbolView* checkedSymbolView = [routeSymbols objectAtIndex: i];
-        if (checkedSymbolView.prototype.identification != baseSymbolView.prototype.identification){
+        if (checkedSymbolView.identification != baseSymbolView.identification){
             break;
         }
         [array addObject:checkedSymbolView];
@@ -202,7 +202,7 @@
     
     while (symbolGet) {
         symbolGet = [self getAdjacentSymbolByDirection: symbolGet direction:direction];
-        if((symbol.prototype.identification == symbolGet.prototype.identification)) {
+        if((symbol.identification == symbolGet.identification)) {
             [array addObject: symbolGet];
         } else {
             break;

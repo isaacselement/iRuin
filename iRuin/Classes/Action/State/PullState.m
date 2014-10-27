@@ -340,15 +340,15 @@
     SymbolView* view = isFirstView ? [currentMovingViews firstObject] : [currentMovingViews lastObject];
     BOOL isRandom = [DATA.config[@"IsRandom"] boolValue];           // random or not
     
-    Symbol* prototype = nil;
+    NSString* symbolName = nil;
     if (isRandom) {
-        prototype = [ACTION.gameState oneRandomPrototype];
+        symbolName = [ACTION.gameState oneRandomSymbolName];
     } else {
         NSUInteger againstIndex = isFirstView ? currentMovingViews.count - 2 : 1 ;
         SymbolView* againstView = [currentMovingViews objectAtIndex: againstIndex];
-        prototype = againstView.prototype;
+        symbolName = againstView.name;
     }
-    view.prototype = prototype;
+    view.name = symbolName;
 }
 
 @end

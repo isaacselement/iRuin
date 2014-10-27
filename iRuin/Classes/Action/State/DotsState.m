@@ -72,9 +72,9 @@
 -(void) exchange: (SymbolView*)symbol with:(SymbolView*)withSymbol
 {
     // TODO. Apply the effect ...
-    Symbol* temp = symbol.prototype;
-    symbol.prototype = withSymbol.prototype;
-    withSymbol.prototype = temp;
+    NSString* temp = symbol.name;
+    symbol.name = withSymbol.name;
+    withSymbol.name = temp;
 }
 
 @end

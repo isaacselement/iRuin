@@ -18,7 +18,7 @@
         // Hide status bar , for ios version <= ios 6.0
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         // Add the UIDeviceOrientationDidChangeNotification
-        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(orientationDidChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(deviceOrientationDidChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
         
     }
     return self;
@@ -38,9 +38,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
--(void) orientationDidChanged: (NSNotification*)notification
+-(void) deviceOrientationDidChanged: (NSNotification*)notification
 {
-    DLog(@"orientationDidChanged: %d . %f X %f", [UIDevice currentDevice].orientation, self.view.bounds.size.width, self.view.bounds.size.height);
+    DLog(@"deviceOrientationDidChanged: %d . %f X %f", [UIDevice currentDevice].orientation, self.view.bounds.size.width, self.view.bounds.size.height);
     
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(renderWithCurrentOrientation) object:nil];
     [self performSelector: @selector(renderWithCurrentOrientation) withObject:nil afterDelay: 0.5];

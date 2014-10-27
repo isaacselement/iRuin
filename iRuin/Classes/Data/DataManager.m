@@ -112,7 +112,6 @@ static DataManager* sharedInstance = nil;
         }
         return YES;
     };
-    
     [DictionaryHelper setCombineHandler: combineHandler];
     config = [DictionaryHelper combines: sharedConfig with:modesConfigs[mode]];
     [DictionaryHelper setCombineHandler: nil];

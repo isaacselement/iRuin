@@ -59,7 +59,7 @@
 }
 
 -(NSString*) description {
-    return [NSString stringWithFormat: @"[[%s]%p(%d,%d) ,%@]", object_getClassName(self), self, row, column, self.prototype];
+    return [NSString stringWithFormat: @"[[%s]%p(%d,%d) ,id: %d]", object_getClassName(self), self, row, column, self.identification];
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -68,15 +68,6 @@
 //{
 //    [self drawValidArea:validAreaCGPath];
 //}
-
-#pragma mark -
-
--(void)setPrototype:(Symbol *)prototype
-{
-    // do the appearance stuff
-    _prototype = prototype;
-    self.backgroundColor = prototype.color;
-}
 
 #pragma mark - Public Methods
 -(void) vanish
@@ -90,6 +81,14 @@
     column = -1;
     self.center = VIEW.frame.blackPoint;
     [self.layer removeAllAnimations];
+    
+}
+
+-(void)setName:(NSString *)name
+{
+    _name = name;
+    NSDictionary* specification = DATA.config[@"SYMBOLS"][name];
+    [FrameHelper setValues: self config:specification];
 }
 
 -(void) setValidArea: (CGRect)rect

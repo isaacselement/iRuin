@@ -190,7 +190,7 @@
     
     [IterateHelper iterateTwoDimensionArray: views handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
         SymbolView* symbol = (SymbolView*)obj;
-        symbol.prototype = ACTION.gameState.oneRandomPrototype;
+        symbol.name = ACTION.gameState.oneRandomSymbolName;
         return NO;
     }];
     

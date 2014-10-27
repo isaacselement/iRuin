@@ -48,11 +48,7 @@ static ActionManager* sharedInstance = nil;
     [self switchToMode: MODE_EXPLODE];
     
     // when chapter config is ready
-    [gameState initializePrototypes];
-    
     [self renderFramesWithCurrentOrientation];
-    
-//    [VIEW.controller switchToView: VIEW.gameView];
     
     [VIEW.controller switchToView: VIEW.chaptersView];
     
@@ -108,12 +104,12 @@ static ActionManager* sharedInstance = nil;
 
 -(void) renderFramesWithCurrentOrientation
 {
-    [self switchFrameDesignAndComponentsFrames];
+    [self switchFrameDesignChaptersViewGameViewFrames];
     [self createOrUpdateSymbolsWithFramesMatrix];
     [self initializeNewSymbolsPrototypesAppearance];
 }
 
--(void) switchFrameDesignAndComponentsFrames
+-(void) switchFrameDesignChaptersViewGameViewFrames
 {
     // first, set up design/canvas size
     [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.visualJSON[@"DESIGN"]]];
@@ -184,10 +180,7 @@ static ActionManager* sharedInstance = nil;
             
             [symbolView restore];
             
-            Symbol* prototype = [ACTION.gameState oneRandomPrototype];
-            symbolView.prototype = prototype;
-            
-            [ColorHelper setBorder: symbolView color:[UIColor flatBlackColor]];
+            symbolView.name = [ACTION.gameState oneRandomSymbolName];
         }
         return NO;
     }];

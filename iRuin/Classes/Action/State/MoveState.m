@@ -64,7 +64,7 @@
         {
             
             // the same identification
-            if (touchingSymbol.prototype.identification == symbol.prototype.identification) {
+            if (touchingSymbol.identification == symbol.identification) {
                 // add to engage
                 if (![engageSymbolRepository containsObject: symbol]){
                     [engageSymbolRepository addObject: symbol];

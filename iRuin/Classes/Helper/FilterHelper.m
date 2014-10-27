@@ -56,27 +56,27 @@
 
 +(BOOL) check: (SymbolView*)symbol second:(SymbolView*)second third:(SymbolView*)third {
     if (!symbol || !second || !third) return false;
-    int firstId = symbol.prototype.identification;
-    int secondID = second.prototype.identification;
-    int thirdID = third.prototype.identification;
+    int firstId = symbol.identification;
+    int secondID = second.identification;
+    int thirdID = third.identification;
     return firstId == secondID && firstId == thirdID;
 }
 
 
 +(void) setDifferentPrototype: (SymbolView*)symbolView {
-    symbolView.prototype = [self getDifferentPrototype: symbolView];
+    symbolView.name = [self getDifferentPrototype: symbolView];
 }
 
-+(Symbol*) getDifferentPrototype: (SymbolView*)symbolView {
-    return [self getDifferentPrototypeByID: symbolView.prototype.identification];
++(NSString*) getDifferentPrototype: (SymbolView*)symbolView {
+    return [self getDifferentPrototypeByID: symbolView.name];
 }
 
-+(Symbol*) getDifferentPrototypeByID: (int)identification {
-    Symbol* prototype = [ACTION.gameState oneRandomPrototype];
-    while (prototype.identification == identification) {
-        prototype = [ACTION.gameState oneRandomPrototype];
++(NSString*) getDifferentPrototypeByID: (NSString*)name {
+    NSString* randomName = [ACTION.gameState oneRandomSymbolName];
+    while ([randomName isEqualToString: name]){
+        randomName = [ACTION.gameState oneRandomSymbolName];
     }
-    return prototype;
+    return randomName;
 }
 
 

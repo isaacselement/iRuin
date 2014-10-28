@@ -8,7 +8,7 @@
 #define effect_AUDIO            @"audio.play"
 #define effect_ANIMATION        @"images.play"
 
-#define effect_ValueSet         @"value.set"
+#define effect_ValuesSet         @"values.set"
 #define effect_ValuesAnimation  @"values.animation"
 
 #define effect_Movement         @"positions.move"
@@ -72,11 +72,14 @@ static ViewManager* sharedInstance = nil;
     [_actionExecutorManager registerActionExecutor: effect_Movement         executor:       [[NSClassFromString(@"PositionsExecutor") alloc] init]];
     
     // ELEMENT
-    [_actionExecutorManager registerActionExecutor: effect_ValueSet         executor:       [[NSClassFromString(@"ElementsExecutor") alloc] init]];
+    [_actionExecutorManager registerActionExecutor: effect_ValuesSet         executor:       [[NSClassFromString(@"ElementsExecutor") alloc] init]];
     [_actionExecutorManager registerActionExecutor: effect_Explode          executor:       [[NSClassFromString(@"ExplodesExecutor") alloc] init]];
     [_actionExecutorManager registerActionExecutor: effect_ANIMATION        executor:       [[NSClassFromString(@"ImageAnimator") alloc] init] ];
     [_actionExecutorManager registerActionExecutor: effect_AUDIO            executor:       [[NSClassFromString(@"AudioPlayer") alloc] init] ];
     [_actionExecutorManager registerActionExecutor: effect_Font             executor:       [[NSClassFromString(@"TextFormatter") alloc] init] ];
+    
+    [_actionExecutorManager registerActionExecutor: @"Invocation"             executor:       [[NSClassFromString(@"InvocationExecutor") alloc] init] ];
+    
     
     _actionDurations = [[QueueTimeCalculator alloc] init];
     NSDictionary* actionExecutors = [_actionExecutorManager getActionExecutors];

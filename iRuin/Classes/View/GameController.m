@@ -53,7 +53,7 @@
     [self.view addSubview: view];
     CATransition *transition = [CATransition animation];
     transition.duration = 0.5f;
-    transition.type = kCATransitionReveal;
+    transition.type = kCATransitionFade;
     [[self.view layer] addAnimation:transition forKey: nil];
 }
 
@@ -70,15 +70,13 @@
 -(void) deviceOrientationChangedRefreshSymbolsFramesWhileGameIsStarted
 {
     if (! ACTION.gameState.isGameStarted) return;
-    
-    NSArray* viewsRepository = QueueViewsHelper.viewsRepository;
-    NSArray* rectsRepository = QueuePositionsHelper.rectsRepository;
-    
+        
     // Temporary code here.
     [UIView animateWithDuration: 0.5 animations:^{
-        [IterateHelper iterateTwoDimensionArray:viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
+        [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
             SymbolView* symbolView = (SymbolView*)obj;
-            symbolView.frame = [rectsRepository[outterIndex][innerIndex] CGRectValue];
+            CGRect rect = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
+            symbolView.frame = rect;
             return NO;
         }];
     }];

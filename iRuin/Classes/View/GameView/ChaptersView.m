@@ -123,8 +123,7 @@
 
 -(void)lineScrollView:(LineScrollView *)lineScrollView didSelectIndex:(int)index
 {
-    [ACTION.currentEffect effectStartRollIn];
-    [VIEW.controller switchToView: VIEW.gameView];
+    [ACTION.gameEvent gameStartWithChapter: index];
 }
 
 @end

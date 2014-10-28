@@ -3,6 +3,8 @@
 @interface GameEvent : NSObject
 
 
+-(void) gameStartWithChapter: (int)chapterIndex;
+
 -(void) gameBack;
 
 -(void) gamePause;

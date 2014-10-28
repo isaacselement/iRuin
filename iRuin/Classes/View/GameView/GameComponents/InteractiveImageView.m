@@ -23,11 +23,16 @@
         _normalImage = self.image;
     }
     
-    if (_selected) {
-        if (self.selectedHighlightedImage) self.image = self.selectedHighlightedImage;
-    } else {
-        self.highlighted = YES;
-    }
+    // change image with transition
+    [UIView transitionWithView: self duration:0.2 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        
+        if (_selected) {
+            if (self.selectedHighlightedImage) self.image = self.selectedHighlightedImage;
+        } else {
+            self.highlighted = YES;
+        }
+        
+    } completion:nil];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -39,11 +44,16 @@
     if (isTouchInView) {
         
         _selected = !_selected;
-        if (_selected) {
-            if (self.selectedImage) self.image = self.selectedImage;
-        } else {
-            self.image = _normalImage;
-        }
+        
+        // change image with transition
+        [UIView transitionWithView: self duration:0.2 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+            if (_selected) {
+                if (self.selectedImage) self.image = self.selectedImage;
+            } else {
+                self.image = _normalImage;
+            }
+        } completion:nil];
+        
         
         // call the action
         if (self.didEndTouchAction) {
@@ -62,5 +72,6 @@
 {
     return _selected;
 }
+
 
 @end

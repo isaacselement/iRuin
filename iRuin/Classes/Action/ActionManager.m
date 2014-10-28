@@ -170,10 +170,7 @@ static ActionManager* sharedInstance = nil;
 -(void) initializeNewToContainerSymbolsPrototypesAppearance
 {
     // set up all symbols attributes
-    UIView* containerView = VIEW.gameView.containerView;
-    NSArray* viewRepository = QueueViewsHelper.viewsRepository;
-    NSArray* rectsRepository = QueuePositionsHelper.rectsRepository;
-    [IterateHelper iterateTwoDimensionArray:viewRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
+    [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
         SymbolView* symbolView = (SymbolView*)obj;
         
         // the new symbols
@@ -181,9 +178,9 @@ static ActionManager* sharedInstance = nil;
             // cause it's new , so should restore
             [symbolView restore];
             
-            [containerView addSubview: symbolView];
+            [VIEW.gameView.containerView addSubview: symbolView];
             
-            symbolView.frame = [rectsRepository[outterIndex][innerIndex] CGRectValue];
+            symbolView.frame = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
             [symbolView setValidArea: symbolView.bounds];
             
             symbolView.name = [ACTION.gameState oneRandomSymbolName];

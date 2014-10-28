@@ -17,9 +17,8 @@
     if (self) {
         // Initialization code
         lineScrollView = [[LineScrollView alloc] init];
-        lineScrollView.clipsToBounds = NO;
+//        lineScrollView.clipsToBounds = NO;
         lineScrollView.dataSource = self;
-        [ColorHelper setBorder: lineScrollView];
         
         [self addSubview: lineScrollView];
     }

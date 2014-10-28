@@ -44,6 +44,7 @@
 		4E4D4EC0181D5B8400886D75 /* ActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D4EBF181D5B8400886D75 /* ActionManager.m */; };
 		4E4D4EC3181D5B9000886D75 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D4EC2181D5B9000886D75 /* DataManager.m */; };
 		4E4D4EC6181D5B9C00886D75 /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D4EC5181D5B9C00886D75 /* ViewManager.m */; };
+		4E6162F319FFB06800302D98 /* InvocationExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6162F219FFB06800302D98 /* InvocationExecutor.m */; };
 		4E71D40518BF779900270180 /* BaseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E71D40418BF779900270180 /* BaseEvent.m */; };
 		4E71D40818BF80D200270180 /* MoveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E71D40718BF80D200270180 /* MoveEvent.m */; };
 		4E77862718B4F576003A1DAC /* LineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E77862418B4F576003A1DAC /* LineScrollView.m */; };
@@ -293,6 +294,8 @@
 		4E4D4EC2181D5B9000886D75 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		4E4D4EC4181D5B9C00886D75 /* ViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ViewManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4E4D4EC5181D5B9C00886D75 /* ViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewManager.m; sourceTree = "<group>"; };
+		4E6162F119FFB06800302D98 /* InvocationExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvocationExecutor.h; sourceTree = "<group>"; };
+		4E6162F219FFB06800302D98 /* InvocationExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvocationExecutor.m; sourceTree = "<group>"; };
 		4E71D40318BF779900270180 /* BaseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEvent.h; sourceTree = "<group>"; };
 		4E71D40418BF779900270180 /* BaseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEvent.m; sourceTree = "<group>"; };
 		4E71D40618BF80D200270180 /* MoveEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveEvent.h; sourceTree = "<group>"; };
@@ -1421,6 +1424,8 @@
 		4EE5FBAE19D858DD005E8736 /* Queue */ = {
 			isa = PBXGroup;
 			children = (
+				4E6162F119FFB06800302D98 /* InvocationExecutor.h */,
+				4E6162F219FFB06800302D98 /* InvocationExecutor.m */,
 				4ECB2A0C19FA5F5600D60219 /* ElementsExecutor.h */,
 				4ECB2A0D19FA5F5600D60219 /* ElementsExecutor.m */,
 				4EF6641D19F40A4A00C2B9FC /* ExplodesExecutor.h */,
@@ -1845,6 +1850,7 @@
 				4EE5FC0419D858DD005E8736 /* ScheduledTask.m in Sources */,
 				4E71D40518BF779900270180 /* BaseEvent.m in Sources */,
 				4E1FBA2A191BC0E40093BE25 /* TouchEffect.m in Sources */,
+				4E6162F319FFB06800302D98 /* InvocationExecutor.m in Sources */,
 				4EE5FC1719D858DD005E8736 /* CSVFileWriter.m in Sources */,
 				4EF282751908038800AA0C54 /* GameState.m in Sources */,
 				4EAB5A6119F79C440031F69D /* ChaptersView.m in Sources */,

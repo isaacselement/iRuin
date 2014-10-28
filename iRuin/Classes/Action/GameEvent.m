@@ -45,6 +45,11 @@
     
 }
 
+-(void) gameChat
+{
+    
+}
+
 
 #pragma mark - Private Methods
 

@@ -3,7 +3,11 @@
 
 @implementation SymbolView
 {
+    InteractiveImageView* imageView;
+    
+    
     CGMutablePathRef validAreaCGPath;
+    
     
 //    UILabel* rowLabel;
 //    UILabel* columnLabel;
@@ -12,7 +16,7 @@
 @synthesize row;
 @synthesize column;
 
-@synthesize containerLayer;
+//@synthesize containerLayer;
 
 
 
@@ -22,8 +26,14 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        containerLayer = [CATransformLayer layer];
-        [self.layer addSublayer: containerLayer];
+//        containerLayer = [CATransformLayer layer];
+//        [self.layer addSublayer: containerLayer];
+        
+        imageView = [[InteractiveImageView alloc] initWithFrame: self.bounds];
+        imageView.userInteractionEnabled = NO;
+        [self addSubview: imageView];
+        
+        
         [self restore];
         
 //        rowLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
@@ -55,7 +65,9 @@
 -(void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    containerLayer.frame = self.bounds;
+    
+    imageView.frame = self.bounds;
+//    containerLayer.frame = self.bounds;
 }
 
 -(NSString*) description {

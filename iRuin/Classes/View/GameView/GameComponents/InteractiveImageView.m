@@ -68,6 +68,8 @@
 }
 
 
+#pragma mark - Public Methods
+
 -(BOOL) isSelected
 {
     return _selected;

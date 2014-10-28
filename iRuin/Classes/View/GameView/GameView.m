@@ -3,9 +3,10 @@
 
 @implementation GameView
 {
-    InteractiveImageView* backActionView;
-    InteractiveImageView* pauseActionView;
-    InteractiveImageView* refreshActionView;
+    InteractiveView* backActionView;
+    InteractiveView* pauseActionView;
+    InteractiveView* refreshActionView;
+    InteractiveView* chatActionView;
 }
 
 @synthesize headerView;
@@ -23,24 +24,38 @@
         [self addSubview: headerView];
         
         // action views
-        backActionView = [[InteractiveImageView alloc] init];
-        backActionView.didEndTouchAction = ^void(InteractiveImageView* view){
+        
+        
+        // back
+        backActionView = [[InteractiveView alloc] init];
+        backActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view){
             [ACTION.gameEvent gameBack];
         };
         [self addSubview: backActionView];
         
-        pauseActionView = [[InteractiveImageView alloc] init];
-        pauseActionView.didEndTouchAction = ^void(InteractiveImageView* view){
+        
+        // pause
+        pauseActionView = [[InteractiveView alloc] init];
+        pauseActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view){
             [ACTION.gameEvent gamePause];
         };
         [self addSubview: pauseActionView];
         
-        refreshActionView = [[InteractiveImageView alloc] init];
-        refreshActionView.didEndTouchAction = ^void(InteractiveImageView* view){
+        
+        // refresh
+        refreshActionView = [[InteractiveView alloc] init];
+        refreshActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view){
             [ACTION.gameEvent gameRefresh];
         };
         [self addSubview: refreshActionView];
         
+        
+        // chat
+        chatActionView = [[InteractiveView alloc] init];
+        chatActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view) {
+            [ACTION.gameEvent gameChat];
+        };
+        [self addSubview: chatActionView];
     }
     return self;
 }

@@ -9,7 +9,7 @@
 @property(assign, nonatomic) int column;
 
 // sublayers
-@property(strong) CATransformLayer* containerLayer;
+//@property(strong) CATransformLayer* containerLayer;
 
 
 

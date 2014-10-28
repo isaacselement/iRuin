@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4E08AB8D19FDFCBB00F1F449 /* background_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E08AB8B19FDFCBB00F1F449 /* background_00.png */; };
-		4E08AB8E19FDFCBB00F1F449 /* background_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E08AB8C19FDFCBB00F1F449 /* background_01.png */; };
-		4E08AB9319FE619B00F1F449 /* back120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E08AB9019FE619B00F1F449 /* back120.png */; };
-		4E08AB9419FE619B00F1F449 /* pause120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E08AB9119FE619B00F1F449 /* pause120.png */; };
-		4E08AB9519FE619B00F1F449 /* refresh120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E08AB9219FE619B00F1F449 /* refresh120.png */; };
 		4E08AB9819FE66B300F1F449 /* SymbolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08AB9719FE66B300F1F449 /* SymbolView.m */; };
 		4E08AB9B19FE66F400F1F449 /* InteractiveImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08AB9A19FE66F400F1F449 /* InteractiveImageView.m */; };
 		4E0BFC5119260B9100F0E632 /* DotsState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5019260B9100F0E632 /* DotsState.m */; };
@@ -45,6 +41,11 @@
 		4E4D4EC3181D5B9000886D75 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D4EC2181D5B9000886D75 /* DataManager.m */; };
 		4E4D4EC6181D5B9C00886D75 /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D4EC5181D5B9C00886D75 /* ViewManager.m */; };
 		4E6162F319FFB06800302D98 /* InvocationExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6162F219FFB06800302D98 /* InvocationExecutor.m */; };
+		4E6162F819FFD8E600302D98 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E6162F419FFD8E600302D98 /* back.png */; };
+		4E6162F919FFD8E600302D98 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E6162F519FFD8E600302D98 /* chat.png */; };
+		4E6162FA19FFD8E600302D98 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E6162F619FFD8E600302D98 /* pause.png */; };
+		4E6162FB19FFD8E600302D98 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E6162F719FFD8E600302D98 /* refresh.png */; };
+		4E6162FE19FFDAB900302D98 /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6162FD19FFDAB900302D98 /* InteractiveView.m */; };
 		4E71D40518BF779900270180 /* BaseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E71D40418BF779900270180 /* BaseEvent.m */; };
 		4E71D40818BF80D200270180 /* MoveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E71D40718BF80D200270180 /* MoveEvent.m */; };
 		4E77862718B4F576003A1DAC /* LineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E77862418B4F576003A1DAC /* LineScrollView.m */; };
@@ -232,10 +233,6 @@
 
 /* Begin PBXFileReference section */
 		4E08AB8B19FDFCBB00F1F449 /* background_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_00.png; sourceTree = "<group>"; };
-		4E08AB8C19FDFCBB00F1F449 /* background_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_01.png; sourceTree = "<group>"; };
-		4E08AB9019FE619B00F1F449 /* back120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back120.png; sourceTree = "<group>"; };
-		4E08AB9119FE619B00F1F449 /* pause120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause120.png; sourceTree = "<group>"; };
-		4E08AB9219FE619B00F1F449 /* refresh120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh120.png; sourceTree = "<group>"; };
 		4E08AB9619FE66B300F1F449 /* SymbolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolView.h; sourceTree = "<group>"; };
 		4E08AB9719FE66B300F1F449 /* SymbolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolView.m; sourceTree = "<group>"; };
 		4E08AB9919FE66F400F1F449 /* InteractiveImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractiveImageView.h; sourceTree = "<group>"; };
@@ -296,6 +293,12 @@
 		4E4D4EC5181D5B9C00886D75 /* ViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewManager.m; sourceTree = "<group>"; };
 		4E6162F119FFB06800302D98 /* InvocationExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvocationExecutor.h; sourceTree = "<group>"; };
 		4E6162F219FFB06800302D98 /* InvocationExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvocationExecutor.m; sourceTree = "<group>"; };
+		4E6162F419FFD8E600302D98 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		4E6162F519FFD8E600302D98 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		4E6162F619FFD8E600302D98 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		4E6162F719FFD8E600302D98 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		4E6162FC19FFDAB900302D98 /* InteractiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractiveView.h; sourceTree = "<group>"; };
+		4E6162FD19FFDAB900302D98 /* InteractiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractiveView.m; sourceTree = "<group>"; };
 		4E71D40318BF779900270180 /* BaseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEvent.h; sourceTree = "<group>"; };
 		4E71D40418BF779900270180 /* BaseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEvent.m; sourceTree = "<group>"; };
 		4E71D40618BF80D200270180 /* MoveEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveEvent.h; sourceTree = "<group>"; };
@@ -684,7 +687,6 @@
 			isa = PBXGroup;
 			children = (
 				4E08AB8B19FDFCBB00F1F449 /* background_00.png */,
-				4E08AB8C19FDFCBB00F1F449 /* background_01.png */,
 			);
 			path = Background;
 			sourceTree = "<group>";
@@ -692,9 +694,10 @@
 		4E08AB8F19FE619B00F1F449 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				4E08AB9019FE619B00F1F449 /* back120.png */,
-				4E08AB9119FE619B00F1F449 /* pause120.png */,
-				4E08AB9219FE619B00F1F449 /* refresh120.png */,
+				4E6162F419FFD8E600302D98 /* back.png */,
+				4E6162F519FFD8E600302D98 /* chat.png */,
+				4E6162F619FFD8E600302D98 /* pause.png */,
+				4E6162F719FFD8E600302D98 /* refresh.png */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -725,6 +728,8 @@
 				4E2CCACE19FBF93500D2AAEC /* HeaderView.m */,
 				4E08AB9919FE66F400F1F449 /* InteractiveImageView.h */,
 				4E08AB9A19FE66F400F1F449 /* InteractiveImageView.m */,
+				4E6162FC19FFDAB900302D98 /* InteractiveView.h */,
+				4E6162FD19FFDAB900302D98 /* InteractiveView.m */,
 			);
 			path = GameComponents;
 			sourceTree = "<group>";
@@ -1712,25 +1717,25 @@
 			files = (
 				4ECB2A0119FA562A00D60219 /* iPad_Visual_Landscape_10x6.json in Resources */,
 				4ECB2A0419FA562A00D60219 /* iPhone_Visual_Portrait_10x6.json in Resources */,
-				4E08AB9419FE619B00F1F449 /* pause120.png in Resources */,
 				4EE5FC1219D858DD005E8736 /* Screen Shot  private_key info.png in Resources */,
 				4E08AB8D19FDFCBB00F1F449 /* background_00.png in Resources */,
 				4ECB2A0219FA562A00D60219 /* iPad_Visual_Portrait_10x6.json in Resources */,
 				4EA5C04B19EFB4A300008EED /* InAppIM.ttf in Resources */,
+				4E6162F919FFD8E600302D98 /* chat.png in Resources */,
 				4ECB2A0519FA562A00D60219 /* 1.png in Resources */,
 				4ECB29FF19FA562A00D60219 /* Config_Pull.json in Resources */,
 				4ECB2A0319FA562A00D60219 /* iPhone_Visual_Landscape_10x6.json in Resources */,
-				4E08AB8E19FDFCBB00F1F449 /* background_01.png in Resources */,
 				4ECB2A0A19FA562A00D60219 /* icon.png in Resources */,
 				4EE5FC0D19D858DD005E8736 /* rsa_public_key.pem in Resources */,
+				4E6162FB19FFD8E600302D98 /* refresh.png in Resources */,
 				4EF78DBE18C1609300E25A30 /* README.md in Resources */,
 				4ECB29FE19FA562A00D60219 /* Config_Explode.json in Resources */,
 				4EE5FC0A19D858DD005E8736 /* private_key.pem in Resources */,
 				4EE5FC1119D858DD005E8736 /* Screen Shot  p12_password.png in Resources */,
 				4EA5C04D19EFB4A400008EED /* InAppIMSDKBundle.bundle in Resources */,
 				4E4D4E94181D5AFB00886D75 /* InfoPlist.strings in Resources */,
-				4E08AB9319FE619B00F1F449 /* back120.png in Resources */,
 				4ECB2A0619FA562A00D60219 /* 2.png in Resources */,
+				4E6162F819FFD8E600302D98 /* back.png in Resources */,
 				4ECB2A0B19FA562A00D60219 /* icon@2x.png in Resources */,
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
 				4ECB29FC19FA562A00D60219 /* Config.json in Resources */,
@@ -1741,7 +1746,7 @@
 				4ECB2A0019FA562A00D60219 /* Config_Swipe.json in Resources */,
 				4EE5FC0F19D858DD005E8736 /* rsaCertReq.csr in Resources */,
 				4EA5C05119EFB4A400008EED /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				4E08AB9519FE619B00F1F449 /* refresh120.png in Resources */,
+				4E6162FA19FFD8E600302D98 /* pause.png in Resources */,
 				4EE5FC0819D858DD005E8736 /* pkcs8_private_key.pem in Resources */,
 				4EE5FC0B19D858DD005E8736 /* public_key.der in Resources */,
 				4EA5C04F19EFB4A400008EED /* WeiboSDK.bundle in Resources */,
@@ -1812,6 +1817,7 @@
 				4E4D4EC3181D5B9000886D75 /* DataManager.m in Sources */,
 				4EE5FC5A19D858DD005E8736 /* SearchBarView.m in Sources */,
 				4ED52C81191E61FF002ADA73 /* SwipeState.m in Sources */,
+				4E6162FE19FFDAB900302D98 /* InteractiveView.m in Sources */,
 				4E08AB9819FE66B300F1F449 /* SymbolView.m in Sources */,
 				4E4D4EC0181D5B8400886D75 /* ActionManager.m in Sources */,
 				4EE5FC4919D858DD005E8736 /* QueueTimeCalculator.m in Sources */,

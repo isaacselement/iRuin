@@ -1,5 +1,5 @@
-#import <UIKit/UIKit.h>
+#import "BaseController.h"
 
-@interface InAppIMRootController : UIViewController
+@interface InAppIMRootController : BaseController
 
 @end

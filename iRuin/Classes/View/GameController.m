@@ -14,9 +14,6 @@
         chaptersView = [[ChaptersView alloc] init];
         gameView = [[GameView alloc] init];
         
-        
-        // Hide status bar , for ios version <= ios 6.0
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         // Add the UIDeviceOrientationDidChangeNotification
         [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(deviceOrientationDidChangedWithNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
         
@@ -25,11 +22,6 @@
 }
 
 #pragma mark - Override Methods
-// Hide status bar , for ios version >= ios 7
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
 
 -(void)viewDidLoad {
     [super viewDidLoad];

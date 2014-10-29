@@ -227,6 +227,10 @@
 		4EF75E9F1A00D5630074E493 /* back_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9C1A00D5630074E493 /* back_h.png */; };
 		4EF75EA01A00D5630074E493 /* chat_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9D1A00D5630074E493 /* chat_h.png */; };
 		4EF75EA11A00D5630074E493 /* pause_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9E1A00D5630074E493 /* pause_h.png */; };
+		4EF75EA31A00F3250074E493 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75EA21A00F3250074E493 /* Default-Landscape.png */; };
+		4EF75EA51A00F32D0074E493 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75EA41A00F32D0074E493 /* Default.png */; };
+		4EF75EA71A00F43F0074E493 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75EA61A00F43F0074E493 /* Default-568h@2x.png */; };
+		4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75EA91A00F5A00074E493 /* BaseController.m */; };
 		4EF78DBE18C1609300E25A30 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4EF78DBD18C1609300E25A30 /* README.md */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
 /* End PBXBuildFile section */
@@ -649,6 +653,11 @@
 		4EF75E9C1A00D5630074E493 /* back_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_h.png; sourceTree = "<group>"; };
 		4EF75E9D1A00D5630074E493 /* chat_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_h.png; sourceTree = "<group>"; };
 		4EF75E9E1A00D5630074E493 /* pause_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_h.png; sourceTree = "<group>"; };
+		4EF75EA21A00F3250074E493 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		4EF75EA41A00F32D0074E493 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4EF75EA61A00F43F0074E493 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4EF75EA81A00F5A00074E493 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
+		4EF75EA91A00F5A00074E493 /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
 		4EF78DBD18C1609300E25A30 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4EF7943C18C21FE800E25A30 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
@@ -914,6 +923,8 @@
 				4EEAFF6618D419C1001FB745 /* FrameManager.m */,
 				4EA4DD38181EAFAE00BC1E6E /* GameController.h */,
 				4EA4DD39181EAFAE00BC1E6E /* GameController.m */,
+				4EF75EA81A00F5A00074E493 /* BaseController.h */,
+				4EF75EA91A00F5A00074E493 /* BaseController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1080,6 +1091,9 @@
 		4ECB29F319FA562A00D60219 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4EF75EA61A00F43F0074E493 /* Default-568h@2x.png */,
+				4EF75EA41A00F32D0074E493 /* Default.png */,
+				4EF75EA21A00F3250074E493 /* Default-Landscape.png */,
 				4E08AB8F19FE619B00F1F449 /* Buttons */,
 				4E08AB8A19FDFCBB00F1F449 /* Background */,
 				4ECB29F419FA562A00D60219 /* Chapters */,
@@ -1762,6 +1776,7 @@
 				4ECB29FF19FA562A00D60219 /* Config_Pull.json in Resources */,
 				4ECB2A0A19FA562A00D60219 /* icon.png in Resources */,
 				4EE5FC0D19D858DD005E8736 /* rsa_public_key.pem in Resources */,
+				4EF75EA31A00F3250074E493 /* Default-Landscape.png in Resources */,
 				4E6162FB19FFD8E600302D98 /* refresh.png in Resources */,
 				4EF78DBE18C1609300E25A30 /* README.md in Resources */,
 				4ECB29FE19FA562A00D60219 /* Config_Explode.json in Resources */,
@@ -1771,6 +1786,8 @@
 				4EE5FC1119D858DD005E8736 /* Screen Shot  p12_password.png in Resources */,
 				4EA5C04D19EFB4A400008EED /* InAppIMSDKBundle.bundle in Resources */,
 				4EF75E7A1A008E090074E493 /* iPhone_Portrait.json in Resources */,
+				4EF75EA51A00F32D0074E493 /* Default.png in Resources */,
+				4EF75EA71A00F43F0074E493 /* Default-568h@2x.png in Resources */,
 				4E4D4E94181D5AFB00886D75 /* InfoPlist.strings in Resources */,
 				4ECB2A0619FA562A00D60219 /* 2.png in Resources */,
 				4EF75EA11A00D5630074E493 /* pause_h.png in Resources */,
@@ -1863,6 +1880,7 @@
 				4EE5FC3419D858DD005E8736 /* KeyBoardHelper.m in Sources */,
 				4EE5FC4D19D858DD005E8736 /* FontHelper.m in Sources */,
 				4E4D4EC3181D5B9000886D75 /* DataManager.m in Sources */,
+				4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */,
 				4EE5FC5A19D858DD005E8736 /* SearchBarView.m in Sources */,
 				4ED52C81191E61FF002ADA73 /* SwipeState.m in Sources */,
 				4E6162FE19FFDAB900302D98 /* InteractiveView.m in Sources */,
@@ -2073,7 +2091,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2105,7 +2122,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

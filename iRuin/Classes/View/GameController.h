@@ -1,11 +1,11 @@
-#import "RotatableViewController.h"
+#import "BaseController.h"
 
 
 @class GameView;
 @class ChaptersView;
 
 
-@interface GameController : RotatableViewController
+@interface GameController : BaseController
 
 
 @property (strong) GameView* gameView;

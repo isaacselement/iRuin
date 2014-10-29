@@ -56,6 +56,12 @@
 //#ifdef DEBUG
 //    startTime = [NSDate date];
 //#endif
+    
+    int count = symbols.count;
+    LineScrollView* lineScrollView = VIEW.gameView.headerView.lineScrollView;
+    CGPoint currentOffset = lineScrollView.contentOffset;
+    CGPoint offset = CGPointMake(currentOffset.x + count * lineScrollView.eachCellWidth, currentOffset.y);
+    [lineScrollView setContentOffset: offset animated:YES];
 }
 
 -(void) eventSymbolsDidVanish: (NSArray*)symbols

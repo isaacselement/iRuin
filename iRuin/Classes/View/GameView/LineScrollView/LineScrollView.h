@@ -36,7 +36,7 @@
 @property (strong, readonly) UIView* contentView;
 
 
-@property (assign) CGFloat eachCellWidth;
+@property (assign) CGFloat eachCellWidth;   // should be CGFloat ! important !!! cause will raise the caculate problem
 
 
 

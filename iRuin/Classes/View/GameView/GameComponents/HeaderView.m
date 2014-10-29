@@ -34,8 +34,8 @@
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index
 {
     LineScrollViewCell* cell = [lineScrollViewObj visibleCellAtIndex: index];
-    [ColorHelper setBackGround: cell color:[ColorHelper parseColor:@[@(index*2), @(index*8), @(index*10)]]];
-    
+//    [ColorHelper setBackGround: cell color:[ColorHelper parseColor:@[@(index*2), @(index*8), @(index*10)]]];
+    [ColorHelper setBackGround: cell color: [UIColor whiteColor]];
     
     int indexLableTag = 2010;
     UILabel* indexLabel = (UILabel*)[cell viewWithTag: indexLableTag];
@@ -43,11 +43,11 @@
         indexLabel = [[UILabel alloc] initWithFrame: cell.bounds];
         indexLabel.tag = indexLableTag;
         [cell addSubview: indexLabel];
+        indexLabel.font = [UIFont fontWithName:@"Arial" size:CanvasFontSize(20)];
+        indexLabel.textAlignment = NSTextAlignmentCenter;
+        indexLabel.textColor = [UIColor blueColor];
     }
     indexLabel.text = [NSString stringWithFormat:@"%d", index];
-    indexLabel.font = [UIFont fontWithName:@"Arial" size:CanvasFontSize(20)];
-    indexLabel.textAlignment = NSTextAlignmentCenter;
-    indexLabel.textColor = [UIColor whiteColor];
 }
 
 @end

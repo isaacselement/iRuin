@@ -58,7 +58,7 @@
         
         __cellClass = [LineScrollViewCell class];
         
-        self.eachCellWidth = 100.0f;
+        self.eachCellWidth = 100;
     
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
@@ -196,7 +196,8 @@
         UIView* view = subviews[i];
         int j = isHeadingRight ?(i+1):(i-1);
         NSUInteger k = (j + count) % count;
-        [view setOriginX: xc[k]];
+        int x = xc[k];          // int will be better
+        [view setOriginX: x];
     }
     
     // sort the subviews by x coordinate
@@ -209,9 +210,9 @@
     }
 }
 
--(float) getCellWidthForIndex: (int)index
+-(int) getCellWidthForIndex: (int)index
 {
-    float cellWidth = self.eachCellWidth ;
+    CGFloat cellWidth = self.eachCellWidth ;
     if (dataSource && [dataSource respondsToSelector:@selector(lineScrollView:widthForCellAtIndex:)]) {
        cellWidth = [dataSource lineScrollView: self widthForCellAtIndex: index];
     }

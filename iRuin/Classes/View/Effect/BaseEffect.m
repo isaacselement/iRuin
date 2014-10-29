@@ -110,16 +110,16 @@
 -(void) startSymbolsRollIn
 {
     // start roll in effect
-    NSArray* lines = DATA.visualJSON[@"VISUAL.POSITIONS"][@"RollIn"];
-    NSDictionary* config = DATA.visualJSON[@"CONFIG.POSITIONS"][@"RollIn"];
+    NSArray* lines = DATA.config[@"VISUAL.POSITIONS"][@"RollIn"];
+    NSDictionary* config = DATA.config[@"CONFIG.POSITIONS"][@"RollIn"];
     NSArray* actionsConfig = DATA.config[@"SYMBOLS_ActionExecutors"][@"RollIn_ActionExecutors"];
     [self roll:lines config:config actionsConfig:actionsConfig];
 }
 -(void) startSymbolsRollOut
 {
     // start roll in effect
-    NSArray* lines = DATA.visualJSON[@"VISUAL.POSITIONS"][@"RollOut"];
-    NSDictionary* config = DATA.visualJSON[@"CONFIG.POSITIONS"][@"RollOut"];
+    NSArray* lines = DATA.config[@"VISUAL.POSITIONS"][@"RollOut"];
+    NSDictionary* config = DATA.config[@"CONFIG.POSITIONS"][@"RollOut"];
     NSArray* actionsConfig = DATA.config[@"SYMBOLS_ActionExecutors"][@"RollOut_ActionExecutors"];
     [self roll:lines config:config actionsConfig:actionsConfig];
 }
@@ -153,8 +153,8 @@
 -(void) startSymbolsAdjusts: (NSArray*)nullRowColumns
 {
     // start adjusts effect
-    NSArray* lines = DATA.visualJSON[@"VISUAL.POSITIONS"][@"Adjusts"];
-    NSDictionary* config = DATA.visualJSON[@"CONFIG.POSITIONS"][@"Adjusts"];
+    NSArray* lines = DATA.config[@"VISUAL.POSITIONS"][@"Adjusts"];
+    NSDictionary* config = DATA.config[@"CONFIG.POSITIONS"][@"Adjusts"];
     [self adjusts:lines config:config nullRowColumns:nullRowColumns actionsConfig:DATA.config[@"SYMBOLS_ActionExecutors"][@"Adjusts_ActionExecutors"]];
 }
 
@@ -184,8 +184,8 @@
 -(void) startSymbolsFillIn
 {
     // start fill in effect
-    NSArray* lines = DATA.visualJSON[@"VISUAL.POSITIONS"][@"FillIn"];
-    NSDictionary* config = DATA.visualJSON[@"CONFIG.POSITIONS"][@"FillIn"];
+    NSArray* lines = DATA.config[@"VISUAL.POSITIONS"][@"FillIn"];
+    NSDictionary* config = DATA.config[@"CONFIG.POSITIONS"][@"FillIn"];
     [self fillIn:lines config:config actionsConfig:DATA.config[@"SYMBOLS_ActionExecutors"][@"FillIn_ActionExecutors"]];
 }
 
@@ -226,12 +226,12 @@
 
 -(void) startSymbolsSqueeze: (NSArray*)nullRowColumns
 {
-    NSArray* linesAdjust = DATA.visualJSON[@"VISUAL.POSITIONS"][@"Squeeze.Adjust"];
-    NSDictionary* configAdjust = DATA.visualJSON[@"CONFIG.POSITIONS"][@"Squeeze.Adjust"];
+    NSArray* linesAdjust = DATA.config[@"VISUAL.POSITIONS"][@"Squeeze.Adjust"];
+    NSDictionary* configAdjust = DATA.config[@"CONFIG.POSITIONS"][@"Squeeze.Adjust"];
     [self adjusts: linesAdjust config:configAdjust nullRowColumns:nullRowColumns actionsConfig:DATA.config[@"SYMBOLS_ActionExecutors"][@"Squeeze.Adjust_ActionExecutors"]];
     
-    NSArray* linesFillIn = DATA.visualJSON[@"VISUAL.POSITIONS"][@"Squeeze.FillIn"];
-    NSDictionary* configFillIn = DATA.visualJSON[@"CONFIG.POSITIONS"][@"Squeeze.FillIn"];
+    NSArray* linesFillIn = DATA.config[@"VISUAL.POSITIONS"][@"Squeeze.FillIn"];
+    NSDictionary* configFillIn = DATA.config[@"CONFIG.POSITIONS"][@"Squeeze.FillIn"];
     [self fillIn: linesFillIn config:configFillIn actionsConfig:DATA.config[@"SYMBOLS_ActionExecutors"][@"Squeeze.FillIn_ActionExecutors"]];
 }
 

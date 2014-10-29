@@ -112,7 +112,7 @@ static ActionManager* sharedInstance = nil;
 -(void) switchFrameDesignChaptersViewGameViewFrames
 {
     // first, set up design/canvas size
-    [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.visualJSON[@"DESIGN"]]];
+    [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.config[@"DESIGN"]]];
     
     GameView* gameView = VIEW.gameView;
     gameView.frame = [RectHelper getScreenRectByControllerOrientation];
@@ -131,7 +131,7 @@ static ActionManager* sharedInstance = nil;
         }
         return result;
     }];
-    [FrameHelper setValues:VIEW.controller config:DATA.visualJSON[@"GameController"]];
+    [FrameHelper setValues:VIEW.controller config:DATA.config[@"GameController"]];
     
     // remove handler
     [KeyValueCodingHelper setTranslateValueHandler:nil];
@@ -145,7 +145,7 @@ static ActionManager* sharedInstance = nil;
     
     
     // set up the basic views and positions array
-    NSArray* matrixs = DATA.visualJSON[@"MATRIX"];
+    NSArray* matrixs = DATA.config[@"MATRIX"];
     [QueuePositionsHelper setRectsRepository: matrixs];
     [QueueViewsHelper setViewsRepository: matrixs viewClass:[SymbolView class]];
     [QueueViewsHelper setViewsInVisualArea: visualArea];

@@ -10,8 +10,6 @@
 -(void) initializeWithData ;
 
 
--(NSMutableDictionary*) visualJSON;
-
 -(NSMutableDictionary*) config;
 
 -(void) setConfigByMode: (NSString*)mode;

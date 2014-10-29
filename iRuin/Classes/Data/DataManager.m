@@ -3,10 +3,16 @@
 
 @implementation DataManager
 {
-    NSMutableDictionary* portraitVisualJSON;
-    NSMutableDictionary* landscapeVisualJSON;
+    NSMutableDictionary* portraitConfig;
+    NSMutableDictionary* landscapeConfig;
     
-    NSDictionary* sharedConfig;
+    
+    NSMutableDictionary* protraitShareConfig ;
+    NSMutableDictionary* landscapeShareConfig ;
+    
+    
+    
+//    NSDictionary* sharedConfig;
     NSMutableDictionary* config;
     NSMutableDictionary* modesConfigs;
 }
@@ -36,16 +42,21 @@ static DataManager* sharedInstance = nil;
 }
 
 
+#define JsonExtension(name) [name stringByAppendingPathExtension:@"json"]
+#define StringAppend(first, second) [first stringByAppendingString:second]
+
 #pragma mark - Public Methods
 -(void) initializeWithData {
+    
+    // file paths
     // universal
-    NSString* portraitDesignJsonFile = Visual_Portrait_JsonFile;
-    NSString* landscapeDesignJsonFile = Visual_Landscape_JsonFile;
+    NSString* portraitDesignJsonFile = JsonExtension(key_Portrait);
+    NSString* landscapeDesignJsonFile = JsonExtension(key_Landscape);
     
     // iPad
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        NSString* ipadPortraitDesignJsonFile = [IPad_Prefix stringByAppendingString: portraitDesignJsonFile];
-        NSString* ipadLandscapeDesignJsonFile = [IPad_Prefix stringByAppendingString: landscapeDesignJsonFile];
+        NSString* ipadPortraitDesignJsonFile = StringAppend(IPad_Prefix, portraitDesignJsonFile);
+        NSString* ipadLandscapeDesignJsonFile = StringAppend(IPad_Prefix, landscapeDesignJsonFile);
         
         // check if exist
         if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(ipadPortraitDesignJsonFile)]) {
@@ -56,8 +67,8 @@ static DataManager* sharedInstance = nil;
         }
     // iPhone
     } else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        NSString* iphonePortraitDesignJsonFile = [IPhone_Prefix stringByAppendingString: portraitDesignJsonFile];
-        NSString* iphoneLandscapeDesignJsonFile = [IPhone_Prefix stringByAppendingString: landscapeDesignJsonFile];
+        NSString* iphonePortraitDesignJsonFile = StringAppend(IPhone_Prefix, portraitDesignJsonFile);
+        NSString* iphoneLandscapeDesignJsonFile = StringAppend(IPhone_Prefix, landscapeDesignJsonFile);
         
         // check if exist
         if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(iphonePortraitDesignJsonFile)]) {
@@ -68,23 +79,27 @@ static DataManager* sharedInstance = nil;
         }
     }
     
-    // prepare the portrait and landscape design specifications
-    portraitVisualJSON = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromFile: portraitDesignJsonFile]];
-    landscapeVisualJSON = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromFile: landscapeDesignJsonFile]];
+    // prepare the share portrait/landscape config
+    NSDictionary* portraitJSON = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromFile: portraitDesignJsonFile]];
+    NSDictionary* landscapeJSON = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromFile: landscapeDesignJsonFile]];
     
-    // replace the indexPaths using IndexPathParser's indexPathsRepository
-    [QueueIndexPathParser setIndexPathsRepository: [ArrayHelper getMaxCount: portraitVisualJSON[@"MATRIX"]]];
-    [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:portraitVisualJSON];
-    [QueueIndexPathParser setIndexPathsRepository: [ArrayHelper getMaxCount: landscapeVisualJSON[@"MATRIX"]]];
-    [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:landscapeVisualJSON];
+    NSDictionary* shareConfig = [JsonFileManager getJsonFromFile: key_Config];
     
-    // prepare the shared config
-    sharedConfig = [JsonFileManager getJsonFromFile: Key_Config];
+    protraitShareConfig = [DictionaryHelper combines:shareConfig with:portraitJSON];
+    landscapeShareConfig = [DictionaryHelper combines:shareConfig with:landscapeJSON];
+    
+    // setup the IndexPathParser's indexPathsRepository, and replace the indexPaths using IndexPathParser's indexPathsRepository
+    int maxDimension = MAX([ArrayHelper getMaxCount: protraitShareConfig[@"MATRIX"]], [ArrayHelper getMaxCount: landscapeShareConfig[@"MATRIX"]]);
+    [QueueIndexPathParser setIndexPathsRepository: maxDimension];
+    
+    [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:protraitShareConfig];
+    [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:landscapeShareConfig];
+    
     
     // prepare the modes config
     modesConfigs = [NSMutableDictionary dictionary];
     for (NSString* mode in ACTION.gameModes) {
-        NSDictionary* modeConfig = [JsonFileManager getJsonFromFile: [NSString stringWithFormat:@"%@_%@", Key_Config, mode]];
+        NSDictionary* modeConfig = [JsonFileManager getJsonFromFile: [NSString stringWithFormat:@"%@_%@", key_Config, mode]];
         if (modeConfig) [modesConfigs setObject: modeConfig forKey:mode];
     }
 }
@@ -92,14 +107,9 @@ static DataManager* sharedInstance = nil;
 
 #pragma mark - Get and Set The Configs
 
--(NSMutableDictionary*) visualJSON
-{
-    return UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]) ? landscapeVisualJSON : portraitVisualJSON ;
-}
-
 -(NSMutableDictionary*) config
 {
-    return config;
+    return UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]) ? landscapeConfig : portraitConfig ;
 }
 
 -(void) setConfigByMode: (NSString*)mode
@@ -112,8 +122,13 @@ static DataManager* sharedInstance = nil;
         }
         return YES;
     };
+    
+    // set the handler
     [DictionaryHelper setCombineHandler: combineHandler];
-    config = [DictionaryHelper combines: sharedConfig with:modesConfigs[mode]];
+    // combine it
+    portraitConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
+    landscapeConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
+    // set the handler nil
     [DictionaryHelper setCombineHandler: nil];
 
 }

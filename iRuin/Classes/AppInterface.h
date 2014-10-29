@@ -20,12 +20,7 @@
 
 
 //InAppIMSDK
-#import "InAppIMSDK.h"
-#import "IAIExtDef.h"
-#import "IAITopNavSkin.h"
-#import "CConfigs.h"
-#import "AllSDKManager.h"
-#import "IAISimpleRoomInfo.h"
+#import "InAppIM.h"
 
 
 

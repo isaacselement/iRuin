@@ -1,13 +1,15 @@
 
 #pragma mark - Config Macro
 
-#define IPad_Prefix                 @"iPad_"
-#define IPhone_Prefix               @"iPhone_"
 
-#define Visual_Portrait_JsonFile    @"Visual_Portrait_10x6.json"
-#define Visual_Landscape_JsonFile   @"Visual_Landscape_10x6.json"
+#define key_Config      @"Config"
 
-#define Key_Config      @"Config"
+#define IPad_Prefix     @"iPad_"
+#define IPhone_Prefix   @"iPhone_"
+
+#define key_Portrait    @"Portrait"
+#define key_Landscape   @"Landscape"
+
 
 
 

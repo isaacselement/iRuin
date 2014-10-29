@@ -17,9 +17,7 @@
     if (self) {
         // Initialization code
         lineScrollView = [[LineScrollView alloc] init];
-//        lineScrollView.clipsToBounds = NO;
         lineScrollView.dataSource = self;
-        
         [self addSubview: lineScrollView];
     }
     return self;

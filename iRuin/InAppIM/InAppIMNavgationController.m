@@ -91,19 +91,8 @@ InAppIMNavgationController* sharedInstance = nil;
 -(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (navigationController.viewControllers.count == 1) {
-//
-//        [UIView animateWithDuration: 0.5 animations:^{
-//            navigationController.view.backgroundColor = [UIColor clearColor];
-//            viewController.view.backgroundColor = [UIColor clearColor];
-//            
-//            navigationController.view.superview.alpha = 0.0;
-//            navigationController.view.alpha = 0.0;
-//            viewController.view.alpha = 0.0;
-//        } completion:^(BOOL finished) {
-            [VIEW.controller dismissViewControllerAnimated: YES completion:nil];
-//        }];
+        [VIEW.controller dismissViewControllerAnimated: YES completion:nil];
     }
-    
 }
 
 

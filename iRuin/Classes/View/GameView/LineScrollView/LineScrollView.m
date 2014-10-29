@@ -63,8 +63,17 @@
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         
+        
+        [self addObserver: self forKeyPath:@"eachCellWidth" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"eachCellWidth"]) {
+        self.frame = self.frame;
+    }
 }
 
 -(void)setFrame:(CGRect)frame {
@@ -83,6 +92,9 @@
     
     // subviews are LineScrollViewCell
     NSArray* subviews = contentView.subviews;
+    for (UIView* view in subviews) {
+        [view removeFromSuperview];
+    }
     currentIndex = 0 ;
     currentDirection = NO;
     
@@ -93,19 +105,21 @@
     for ( ; (addLength - width) < [self getCellWidthForIndex: currentIndex + 1] ; )
     {
         // be aware of the infinite loop
+        CGFloat cellWidth = [self getCellWidthForIndex: currentIndex];
+        if (cellWidth <= 0) {
+            break;
+        }
         
         LineScrollViewCell* cell = [subviews safeObjectAtIndex: currentIndex];
         if (! cell) {
             cell = [[__cellClass alloc] init];
         }
-        float cellWidth = [self getCellWidthForIndex: currentIndex];
         
         cell.frame = CGRectMake(addLength, 0, cellWidth, height);
         
         [contentView addSubview: cell];
         
         addLength += cellWidth;
-        
         
         // first call
         currentIndex++;
@@ -117,7 +131,8 @@
     criticalWidth = [self getCellWidthForIndex: currentIndex];
     
     float lineLength = 0.0f;
-    for (UIView* view in contentView.subviews)  lineLength += [view sizeWidth];
+    for (UIView* view in contentView.subviews) {
+        lineLength += [view sizeWidth]; }
     self.contentSize = CGSizeMake(lineLength, height);
     contentView.frame = CGRectMake(0, 0, self.contentSize.width, self.contentSize.height);
     

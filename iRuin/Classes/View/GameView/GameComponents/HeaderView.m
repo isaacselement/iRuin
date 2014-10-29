@@ -18,6 +18,8 @@
         // Initialization code
         lineScrollView = [[LineScrollView alloc] init];
         lineScrollView.dataSource = self;
+        lineScrollView.clipsToBounds = NO;
+        [ColorHelper setBorder: lineScrollView];
         [self addSubview: lineScrollView];
     }
     return self;
@@ -25,17 +27,11 @@
 
 #pragma mark - LineScrollViewDataSource
 
--(float)lineScrollView:(LineScrollView *)lineScrollView widthForCellAtIndex:(int)index
-{
-    return [FrameTranslater convertCanvasWidth: 120] ;
-}
-
-
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index
 {
     LineScrollViewCell* cell = [lineScrollViewObj visibleCellAtIndex: index];
-//    [ColorHelper setBackGround: cell color:[ColorHelper parseColor:@[@(index*2), @(index*8), @(index*10)]]];
-    [ColorHelper setBackGround: cell color: [UIColor whiteColor]];
+    
+    [ColorHelper setBackGround: cell color: @(index % 5)];
     
     int indexLableTag = 2010;
     UILabel* indexLabel = (UILabel*)[cell viewWithTag: indexLableTag];
@@ -47,6 +43,7 @@
         indexLabel.textAlignment = NSTextAlignmentCenter;
         indexLabel.textColor = [UIColor blueColor];
     }
+    indexLabel.frame = cell.bounds;
     indexLabel.text = [NSString stringWithFormat:@"%d", index];
 }
 

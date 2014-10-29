@@ -8,7 +8,7 @@
 #pragma mark - Public Methods
 -(void) stateStartChaineVanish
 {
-    NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllSymbols];
+    NSMutableArray* vanishSymbols = [self getChaineVanishSymbols];
     
     if (vanishSymbols) {
         [self.effect effectStartVanish: vanishSymbols];
@@ -17,5 +17,19 @@
     }
 }
 
+
+
+
+#pragma mark - SubClass Override Methods
+
+-(NSMutableArray*) getChaineVanishSymbols
+{
+    int matchCount = MATCH_COUNT;
+    if (DATA.config[@"ChaineVanishCount"]) {
+        matchCount = [DATA.config[@"ChaineVanishCount"] intValue];
+    }
+    NSMutableArray* symbols = [SearchHelper searchMatchedInSameLine: matchCount];
+    return symbols;
+}
 
 @end

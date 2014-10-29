@@ -91,7 +91,7 @@
 
 
 // For Chainable Modes
-+(NSMutableArray*) searchMatchedInAllSymbols
++(NSMutableArray*) searchMatchedInSameLine:(int)matchCount
 {
     NSArray* symbolsAtContainer = VIEW.gameView.symbolsInContainer;
     NSMutableSet* resultsSet = [NSMutableSet set];
@@ -102,19 +102,20 @@
             SymbolView* symbol = [innerArray objectAtIndex: j];
 
             NSMutableArray* arrayHor = [self searchHorizontally: symbol];
-            if (arrayHor.count >= MATCH_COUNT) {
+            if (arrayHor.count >= matchCount) {
                 [resultsSet addObjectsFromArray: arrayHor];
             }
             NSMutableArray* arrayVer = [self searchVertically: symbol];
-            if (arrayVer.count >= MATCH_COUNT) {
+            if (arrayVer.count >= matchCount) {
                 [resultsSet addObjectsFromArray: arrayVer];
             }
         }
     }
     
     NSArray* matchedSymbols = [resultsSet allObjects];
-    return matchedSymbols.count >= MATCH_COUNT ? [NSMutableArray arrayWithArray: matchedSymbols] : nil;
+    return matchedSymbols.count >= matchCount ? [NSMutableArray arrayWithArray: matchedSymbols] : nil;
 }
+
 
 
 

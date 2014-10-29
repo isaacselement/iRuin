@@ -32,7 +32,8 @@ enum APPDirection : NSUInteger {
 +(NSMutableArray*) searchSwipeMatchedSymbols: (SymbolView*)firstSymbol secondSymbol:(SymbolView*)secondSymbol;
 
 
-+(NSMutableArray*) searchMatchedInAllSymbols;
+
++(NSMutableArray*) searchMatchedInSameLine:(int)matchCount;
 
 
 

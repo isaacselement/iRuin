@@ -9,7 +9,6 @@
 
 +(InAppIMNavgationController*) sharedInstance;
 
-
 +(void) show;
 
 

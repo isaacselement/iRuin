@@ -2,7 +2,6 @@
 
 @implementation InteractiveImageView
 {
-    BOOL _selected;
     UIImage* _normalImage;
 }
 
@@ -23,8 +22,11 @@
         _normalImage = self.image;
     }
     
-    if (_selected) {
-        if (self.selectedHighlightedImage) self.image = self.selectedHighlightedImage;
+    
+    // touch begin, highlighted
+
+    if (self.enableSelected && self.selected) {
+        [self setSelectedHighlighted: YES];
     } else {
         self.highlighted = YES;
     }
@@ -39,13 +41,14 @@
     BOOL isTouchInView = CGRectContainsPoint(self.bounds, point);
     if (isTouchInView) {
         
-        _selected = !_selected;
-        
-        if (_selected) {
-            if (self.selectedImage) self.image = self.selectedImage;
+        // change selected status
+        if (self.enableSelected) {
+            self.selected = !self.selected;
+            [self setSelectedHighlighted: NO];
         } else {
             self.image = _normalImage;
         }
+        
         
         // call the action
         if (self.didEndTouchAction) {
@@ -59,6 +62,29 @@
     self.highlighted = NO;
 }
 
+
+-(void) setSelectedHighlighted: (BOOL)selectedHighlighted
+{
+    if (selectedHighlighted) {
+        if (self.selectedHighlightedImage) self.image = self.selectedHighlightedImage;
+    } else {
+        self.image = self.selectedImage;
+    }
+}
+
+-(void)setSelected:(BOOL)selected
+{
+    _selected = selected;
+    
+    // chanage image
+    if (_selected) {
+        if (self.selectedImage) {
+            if (self.selectedImage) self.image = self.selectedImage;
+        }
+    } else {
+        if (self.image != _normalImage) self.image = _normalImage;
+    }
+}
 
 #define transitionImageTime 0.2
 
@@ -77,13 +103,5 @@
         [super setHighlighted:highlighted];
     } completion:nil];
 }
-
-#pragma mark - Public Methods
-
--(BOOL) isSelected
-{
-    return _selected;
-}
-
 
 @end

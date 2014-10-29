@@ -3,4 +3,11 @@
 
 @implementation InAppIMRootController
 
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+
 @end

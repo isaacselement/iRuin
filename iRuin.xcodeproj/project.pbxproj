@@ -223,6 +223,10 @@
 		4EF75E911A00BBF40074E493 /* Portrait.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E8F1A00BBF40074E493 /* Portrait.json */; };
 		4EF75E951A00BD520074E493 /* InAppIMNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75E941A00BD520074E493 /* InAppIMNavgationController.m */; };
 		4EF75E991A00C4260074E493 /* InAppIMRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75E981A00C4260074E493 /* InAppIMRootController.m */; };
+		4EF75E9B1A00CFF40074E493 /* refresh_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9A1A00CFF40074E493 /* refresh_h.png */; };
+		4EF75E9F1A00D5630074E493 /* back_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9C1A00D5630074E493 /* back_h.png */; };
+		4EF75EA01A00D5630074E493 /* chat_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9D1A00D5630074E493 /* chat_h.png */; };
+		4EF75EA11A00D5630074E493 /* pause_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9E1A00D5630074E493 /* pause_h.png */; };
 		4EF78DBE18C1609300E25A30 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4EF78DBD18C1609300E25A30 /* README.md */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
 /* End PBXBuildFile section */
@@ -641,6 +645,10 @@
 		4EF75E961A00BD860074E493 /* InAppIM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InAppIM.h; sourceTree = "<group>"; };
 		4EF75E971A00C4260074E493 /* InAppIMRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMRootController.h; sourceTree = "<group>"; };
 		4EF75E981A00C4260074E493 /* InAppIMRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppIMRootController.m; sourceTree = "<group>"; };
+		4EF75E9A1A00CFF40074E493 /* refresh_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_h.png; sourceTree = "<group>"; };
+		4EF75E9C1A00D5630074E493 /* back_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_h.png; sourceTree = "<group>"; };
+		4EF75E9D1A00D5630074E493 /* chat_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_h.png; sourceTree = "<group>"; };
+		4EF75E9E1A00D5630074E493 /* pause_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_h.png; sourceTree = "<group>"; };
 		4EF78DBD18C1609300E25A30 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4EF7943C18C21FE800E25A30 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
@@ -711,6 +719,10 @@
 		4E08AB8F19FE619B00F1F449 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				4EF75E9C1A00D5630074E493 /* back_h.png */,
+				4EF75E9D1A00D5630074E493 /* chat_h.png */,
+				4EF75E9E1A00D5630074E493 /* pause_h.png */,
+				4EF75E9A1A00CFF40074E493 /* refresh_h.png */,
 				4E6162F419FFD8E600302D98 /* back.png */,
 				4E6162F519FFD8E600302D98 /* chat.png */,
 				4E6162F619FFD8E600302D98 /* pause.png */,
@@ -1754,15 +1766,18 @@
 				4EF78DBE18C1609300E25A30 /* README.md in Resources */,
 				4ECB29FE19FA562A00D60219 /* Config_Explode.json in Resources */,
 				4EF75E7C1A00B4DE0074E493 /* background_01.png in Resources */,
+				4EF75E9F1A00D5630074E493 /* back_h.png in Resources */,
 				4EE5FC0A19D858DD005E8736 /* private_key.pem in Resources */,
 				4EE5FC1119D858DD005E8736 /* Screen Shot  p12_password.png in Resources */,
 				4EA5C04D19EFB4A400008EED /* InAppIMSDKBundle.bundle in Resources */,
 				4EF75E7A1A008E090074E493 /* iPhone_Portrait.json in Resources */,
 				4E4D4E94181D5AFB00886D75 /* InfoPlist.strings in Resources */,
 				4ECB2A0619FA562A00D60219 /* 2.png in Resources */,
+				4EF75EA11A00D5630074E493 /* pause_h.png in Resources */,
 				4E6162F819FFD8E600302D98 /* back.png in Resources */,
 				4ECB2A0B19FA562A00D60219 /* icon@2x.png in Resources */,
 				4EF75E901A00BBF40074E493 /* Landscape.json in Resources */,
+				4EF75E9B1A00CFF40074E493 /* refresh_h.png in Resources */,
 				4EF75E911A00BBF40074E493 /* Portrait.json in Resources */,
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
 				4ECB29FC19FA562A00D60219 /* Config.json in Resources */,
@@ -1777,6 +1792,7 @@
 				4E6162FA19FFD8E600302D98 /* pause.png in Resources */,
 				4EE5FC0819D858DD005E8736 /* pkcs8_private_key.pem in Resources */,
 				4EF75E791A008E090074E493 /* iPhone_Landscape.json in Resources */,
+				4EF75EA01A00D5630074E493 /* chat_h.png in Resources */,
 				4EE5FC0B19D858DD005E8736 /* public_key.der in Resources */,
 				4EA5C04F19EFB4A400008EED /* WeiboSDK.bundle in Resources */,
 				4ECB29FD19FA562A00D60219 /* Config_Dots.json in Resources */,

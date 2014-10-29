@@ -47,18 +47,7 @@
 
 -(void) gameChat
 {
-    
-    UIViewController* imController = [[UIViewController alloc] init];
-    UINavigationController* imNavController = [[InAppIMNavgationController alloc] initWithRootViewController:imController];
-    imNavController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    IAISimpleRoomInfo *roomInfo=[[IAISimpleRoomInfo alloc] init];
-    [roomInfo setTitle:@"自定义聊天室-C"];
-    [roomInfo setUniqueKey:@"cn.inappim.CustomRoom"];
-    [InAppIMSDK enterCustomRoomClient:roomInfo navigationController:imController animated:YES];
-    
-    [VIEW.controller presentViewController:imNavController animated:YES completion:nil];
-    
+    [InAppIMNavgationController show];
 }
 
 

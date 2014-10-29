@@ -57,8 +57,6 @@
         [self addSubview: contentView];
         
         __cellClass = [LineScrollViewCell class];
-        
-        self.eachCellWidth = 100;
     
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;

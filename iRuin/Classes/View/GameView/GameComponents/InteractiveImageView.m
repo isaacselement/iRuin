@@ -23,16 +23,12 @@
         _normalImage = self.image;
     }
     
-    // change image with transition
-    [UIView transitionWithView: self duration:0.2 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        
-        if (_selected) {
-            if (self.selectedHighlightedImage) self.image = self.selectedHighlightedImage;
-        } else {
-            self.highlighted = YES;
-        }
-        
-    } completion:nil];
+    if (_selected) {
+        if (self.selectedHighlightedImage) self.image = self.selectedHighlightedImage;
+    } else {
+        self.highlighted = YES;
+    }
+    
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -45,15 +41,11 @@
         
         _selected = !_selected;
         
-        // change image with transition
-        [UIView transitionWithView: self duration:0.2 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            if (_selected) {
-                if (self.selectedImage) self.image = self.selectedImage;
-            } else {
-                self.image = _normalImage;
-            }
-        } completion:nil];
-        
+        if (_selected) {
+            if (self.selectedImage) self.image = self.selectedImage;
+        } else {
+            self.image = _normalImage;
+        }
         
         // call the action
         if (self.didEndTouchAction) {
@@ -67,6 +59,24 @@
     self.highlighted = NO;
 }
 
+
+#define transitionImageTime 0.2
+
+-(void)setImage:(UIImage *)image
+{
+    // change image with transition
+    [UIView transitionWithView: self duration:transitionImageTime options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [super setImage:image];
+    } completion:nil];
+}
+
+-(void)setHighlighted:(BOOL)highlighted
+{
+    // change image with transition
+    [UIView transitionWithView: self duration:transitionImageTime options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [super setHighlighted:highlighted];
+    } completion:nil];
+}
 
 #pragma mark - Public Methods
 

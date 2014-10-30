@@ -89,27 +89,25 @@ InAppIMNavgationController* sharedInstance = nil;
 -(void)initInAppIMSDK:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [InAppIMSDK application:application didFinishLaunchingWithOptions:launchOptions];
-    [InAppIMSDK registerApp: @"543f77915fe8bd75b0436c42"];
+    [InAppIMSDK registerApp: iRuin_InAppIMAppKey];
     [InAppIMSDK enableDebugMode:NO];
     [InAppIMSDK enableAccessLocation:NO];
     
     {
         //sina
-        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"947521933",KHCAppKey,@"https://api.weibo.com/oauth2/default.html",KHCRedirectUri,IAI_SNS_SinaWeibo,KIAI_SNS_PlatformId, nil]];
+        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:iRuin_SinaWeiboAppKey,KHCAppKey,iRuin_SinaWeiboCallBackURL,KHCRedirectUri,IAI_SNS_SinaWeibo,KIAI_SNS_PlatformId, nil]];
         
         //baidu
-        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"Idhix6Yl5s0aSNocBzGzhX2A",KHCAppKey,@"3117382",KHCAppId,IAI_SNS_Baidu,KIAI_SNS_PlatformId, nil]];
+        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:iRuin_BaiduAPIKey,KHCAppKey,iRuin_BaiduAppID,KHCAppId,IAI_SNS_Baidu,KIAI_SNS_PlatformId, nil]];
         
         //qq
-        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"1101775317",KHCAppId,IAI_SNS_QQ,KIAI_SNS_PlatformId, nil]];
+        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:iRuin_TecentQQAppKey,KHCAppId,IAI_SNS_QQ,KIAI_SNS_PlatformId, nil]];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InAppIMWillAuth:) name:KIAI_InAppIMSDK_Will_AuthNtf object:nil];
     
     [InAppIMSDK init];
     
-    
-    //用户切换
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWillSwitch:) name:KIAIUserWillSwitchNtf object:nil];
 }
 

@@ -67,19 +67,107 @@ InAppIMNavgationController* sharedInstance = nil;
     return sharedInstance;
 }
 
-+(void) show
+
+#pragma mark - Public Methods
+
+-(void) showWith:(NSString*)title uniqueKey:(NSString*)uniqueKey
 {
+    if (!title) title = @"Chat For Free :)";
+    if (!uniqueKey) uniqueKey = @"com.iRuin.Room1";
+    
     InAppIMNavgationController* imNavController = [InAppIMNavgationController sharedInstance];
-//    imNavController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    imNavController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     IAISimpleRoomInfo *roomInfo=[[IAISimpleRoomInfo alloc] init];
-    [roomInfo setTitle:@"自定义聊天室-C"];
-    [roomInfo setUniqueKey:@"cn.inappim.CustomRoom"];
+    [roomInfo setTitle: title];
+    [roomInfo setUniqueKey: uniqueKey];
     [InAppIMSDK enterCustomRoomClient:roomInfo navigationController: imNavController.topViewController animated:YES];
     
     [VIEW.controller presentViewController:imNavController animated:YES completion:nil];
 }
 
+-(void)initInAppIMSDK:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [InAppIMSDK application:application didFinishLaunchingWithOptions:launchOptions];
+    [InAppIMSDK registerApp: @"543f77915fe8bd75b0436c42"];
+    [InAppIMSDK enableDebugMode:NO];
+    [InAppIMSDK enableAccessLocation:NO];
+    
+    {
+        //sina
+        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"947521933",KHCAppKey,@"https://api.weibo.com/oauth2/default.html",KHCRedirectUri,IAI_SNS_SinaWeibo,KIAI_SNS_PlatformId, nil]];
+        
+        //baidu
+        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"Idhix6Yl5s0aSNocBzGzhX2A",KHCAppKey,@"3117382",KHCAppId,IAI_SNS_Baidu,KIAI_SNS_PlatformId, nil]];
+        
+        //qq
+        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"1101775317",KHCAppId,IAI_SNS_QQ,KIAI_SNS_PlatformId, nil]];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InAppIMWillAuth:) name:KIAI_InAppIMSDK_Will_AuthNtf object:nil];
+    
+    [InAppIMSDK init];
+    
+    
+    //用户切换
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userWillSwitch:) name:KIAIUserWillSwitchNtf object:nil];
+}
+
+
+-(void) applicationWillEnterForeground:(UIApplication*)application
+{
+    [InAppIMSDK applicationWillEnterForeground:application];
+}
+
+-(void) applicationDidEnterBackground:(UIApplication*)application
+{
+    [InAppIMSDK applicationDidEnterBackground:application];
+}
+
+-(void) handleRegisterForRemoteNotificationsWithDeviceToken: (NSData *)deviceToken
+{
+    [InAppIMSDK handleRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+-(void) handleFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+    [InAppIMSDK handleFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+-(void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [InAppIMSDK application:application didReceiveRemoteNotification:userInfo navigationController:[InAppIMNavgationController sharedInstance]];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotatioe
+{
+    if ([AllSDKManager getCurrentSDKType] == AllSDKType_IAIIM) {
+        return [InAppIMSDK handleOpenURL:url delegate:self];
+    }
+    return YES;
+}
+
+#pragma mark - 
+
+-(void)InAppIMWillAuth:(NSNotification*)notification
+{
+    [AllSDKManager setCurrentSDKType:AllSDKType_IAIIM];
+}
+
+-(void)userWillSwitch:(NSNotification*)notification
+{
+    UIViewController *vc=nil;
+    if (notification.object  && [(NSDictionary*)notification.object objectForKey:KViewControllerBeforeEnterInAppIM]) {
+        vc=[(NSDictionary*)notification.object objectForKey:KViewControllerBeforeEnterInAppIM];
+    }
+    
+    //如果没有用户体系，直接使用InAppIM Sns授权界面
+    if(vc && vc==VIEW.controller){
+        [InAppIMSDK authWithIAIAuthView:^(BOOL sucess, NSDictionary *userInfo, NSError *error) {
+            
+        } navigationController:VIEW.controller animated:YES backAfterAuthed:NO];
+    }
+}
 
 
 #pragma mark - Delegate
@@ -90,9 +178,6 @@ InAppIMNavgationController* sharedInstance = nil;
 
 -(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    if (navigationController.viewControllers.count == 1) {
-        [VIEW.controller dismissViewControllerAnimated: YES completion:nil];
-    }
 }
 
 

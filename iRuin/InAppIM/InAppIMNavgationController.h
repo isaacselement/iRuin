@@ -9,7 +9,25 @@
 
 +(InAppIMNavgationController*) sharedInstance;
 
-+(void) show;
+
+#pragma mark - Public Methods
+
+-(void) showWith:(NSString*)title uniqueKey:(NSString*)uniqueKey;
+
+-(void)initInAppIMSDK:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+
+
+-(void) applicationWillEnterForeground:(UIApplication*)application;
+
+-(void) applicationDidEnterBackground:(UIApplication*)application;
+
+-(void) handleRegisterForRemoteNotificationsWithDeviceToken: (NSData *)deviceToken;
+
+-(void) handleFailToRegisterForRemoteNotificationsWithError:(NSError*)error;
+
+-(void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotatioe;
 
 
 @end

@@ -61,7 +61,6 @@
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         
-        
         [self addObserver: self forKeyPath:@"eachCellWidth" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;

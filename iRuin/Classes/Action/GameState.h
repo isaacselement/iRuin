@@ -7,6 +7,9 @@
 @property (assign) BOOL isGameStarted;
 
 
+@property (assign) int vanishAmount;
+
+
 -(NSString*) oneRandomSymbolName;
 
 @end

@@ -8,6 +8,8 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    
+    [VIEW.controller dismissViewControllerAnimated: YES completion:nil];
 }
 
 - (BOOL)prefersStatusBarHidden

@@ -12,7 +12,5 @@
 @property (strong) ChaptersView* chaptersView;
 
 
--(void) switchToView: (UIView*)view ;
-
 
 @end

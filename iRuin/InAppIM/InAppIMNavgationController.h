@@ -12,9 +12,9 @@
 
 #pragma mark - Public Methods
 
--(void) showWith:(NSString*)title uniqueKey:(NSString*)uniqueKey;
+-(void) showWithTilte:(NSString*)title uniqueKey:(NSString*)uniqueKey;
 
--(void)initInAppIMSDK:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+-(void) initInAppIMSDK:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 
 
 -(void) applicationWillEnterForeground:(UIApplication*)application;
@@ -27,7 +27,7 @@
 
 -(void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotatioe;
+-(BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotatioe;
 
 
 @end

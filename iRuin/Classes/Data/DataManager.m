@@ -48,45 +48,35 @@ static DataManager* sharedInstance = nil;
 #pragma mark - Public Methods
 -(void) initializeWithData {
     
-    // file paths
     // universal
-    NSString* portraitDesignJsonFile = JsonExtension(key_Portrait);
-    NSString* landscapeDesignJsonFile = JsonExtension(key_Landscape);
+    NSString* portraitDesignFile = JsonExtension(key_Portrait);
+    NSString* landscapeDesignFile = JsonExtension(key_Landscape);
+    
+    NSString* portraitDeviceJsonFile = nil;
+    NSString* landscapeDeviceJsonFile = nil;
     
     // iPad
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        NSString* ipadPortraitDesignJsonFile = StringAppend(IPad_Prefix, portraitDesignJsonFile);
-        NSString* ipadLandscapeDesignJsonFile = StringAppend(IPad_Prefix, landscapeDesignJsonFile);
+        portraitDeviceJsonFile = StringAppend(IPad_Prefix, portraitDesignFile);
+        landscapeDeviceJsonFile = StringAppend(IPad_Prefix, landscapeDesignFile);
         
-        // check if exist
-        if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(ipadPortraitDesignJsonFile)]) {
-            portraitDesignJsonFile = ipadPortraitDesignJsonFile;
-        }
-        if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(ipadLandscapeDesignJsonFile)]) {
-            landscapeDesignJsonFile = ipadLandscapeDesignJsonFile;
-        }
     // iPhone
     } else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        NSString* iphonePortraitDesignJsonFile = StringAppend(IPhone_Prefix, portraitDesignJsonFile);
-        NSString* iphoneLandscapeDesignJsonFile = StringAppend(IPhone_Prefix, landscapeDesignJsonFile);
-        
-        // check if exist
-        if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(iphonePortraitDesignJsonFile)]) {
-            portraitDesignJsonFile = iphonePortraitDesignJsonFile;
-        }
-        if ([[NSFileManager defaultManager] fileExistsAtPath: BUNDLEFILE_PATH(iphoneLandscapeDesignJsonFile)]) {
-            landscapeDesignJsonFile = iphoneLandscapeDesignJsonFile;
-        }
+        portraitDeviceJsonFile = StringAppend(IPhone_Prefix, portraitDesignFile);
+        landscapeDeviceJsonFile = StringAppend(IPhone_Prefix, landscapeDesignFile);
     }
     
     // prepare the share portrait/landscape config
-    NSDictionary* portraitJSON = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromFile: portraitDesignJsonFile]];
-    NSDictionary* landscapeJSON = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromFile: landscapeDesignJsonFile]];
+    NSDictionary* portraitDesign = [JsonFileManager getJsonFromFile: portraitDesignFile];
+    NSDictionary* landscapeDesign = [JsonFileManager getJsonFromFile: landscapeDesignFile];
+    
+    NSDictionary* portraitJSON = [JsonFileManager getJsonFromFile: portraitDeviceJsonFile];
+    NSDictionary* landscapeJSON = [JsonFileManager getJsonFromFile: landscapeDeviceJsonFile];
     
     NSDictionary* shareConfig = [JsonFileManager getJsonFromFile: key_Config];
     
-    protraitShareConfig = [DictionaryHelper combines:shareConfig with:portraitJSON];
-    landscapeShareConfig = [DictionaryHelper combines:shareConfig with:landscapeJSON];
+    protraitShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:portraitJSON with: portraitDesign]];
+    landscapeShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:landscapeJSON with: landscapeDesign]];
     
     // setup the IndexPathParser's indexPathsRepository, and replace the indexPaths using IndexPathParser's indexPathsRepository
     int maxDimension = MAX([ArrayHelper getMaxCount: protraitShareConfig[@"MATRIX"]], [ArrayHelper getMaxCount: landscapeShareConfig[@"MATRIX"]]);

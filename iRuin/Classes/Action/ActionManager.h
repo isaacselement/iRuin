@@ -17,6 +17,7 @@
 
 @class GameEvent;
 @class GameState;
+@class GameEffect;
 
 @class BaseEvent;
 @class BaseState;
@@ -26,6 +27,7 @@
 
 @property (strong) GameEvent* gameEvent;
 @property (strong) GameState* gameState;
+@property (strong) GameEffect* gameEffect;
 
 // modes
 @property (strong, readonly) NSArray* gameModes;

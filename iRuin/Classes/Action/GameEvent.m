@@ -4,8 +4,13 @@
 
 @implementation GameEvent
 
+-(void) gameLaunch
+{
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_Launch_ActionExecutors"]];
+}
 
--(void) gameStartWithChapter: (int)chapterIndex
+
+-(void) gameStart
 {
     [ACTION.currentEffect effectStartRollIn];
     
@@ -21,18 +26,14 @@
         return NO;
     }];
     
-    [self designateActionTo:VIEW.controller config:DATA.config[@"GAME_In_ActionExecutors"]];
-    
-    [VIEW.controller switchToView: VIEW.gameView];
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_Start_ActionExecutors"]];
 }
 
 -(void) gameBack
 {
     [ACTION.currentEffect effectStartRollOut];
     
-    [self designateActionTo:VIEW.controller config:DATA.config[@"GAME_Out_ActionExecutors"]];
-    
-    [VIEW.controller switchToView: VIEW.chaptersView];
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_Back_ActionExecutors"]];
 }
 
 -(void) gamePause
@@ -47,29 +48,10 @@
 
 -(void) gameChat
 {
-    [InAppIMNavgationController show];
+    [[InAppIMNavgationController sharedInstance] showWithTilte:nil uniqueKey:nil];;
 }
 
 
-#pragma mark - Private Methods
-
-#define kActionExecutors @"ActionExecutors"
-
--(void) designateActionTo: (id)object config:(NSDictionary*)config
-{
-    id actionsConfig = config[kActionExecutors];
-    if (actionsConfig && [object isKindOfClass:[UIView class]]) {
-        [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:@[object] values:nil baseTimes:nil];
-    }
-    
-    for (NSString* key in config) {
-        if ([key isEqualToString:kActionExecutors]) continue;
-        
-        NSObject* obj = [object valueForKey:key];
-        NSDictionary* conf = config[key];
-        [self designateActionTo: obj config:conf];
-    }
-}
 
 
 @end

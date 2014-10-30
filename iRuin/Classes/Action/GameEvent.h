@@ -2,8 +2,9 @@
 
 @interface GameEvent : NSObject
 
+-(void) gameLaunch;
 
--(void) gameStartWithChapter: (int)chapterIndex;
+-(void) gameStart;
 
 -(void) gameBack;
 

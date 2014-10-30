@@ -25,6 +25,7 @@
 		4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCACC19FBF93500D2AAEC /* ContainerView.m */; };
 		4E2CCAD019FBF93500D2AAEC /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCACE19FBF93500D2AAEC /* HeaderView.m */; };
 		4E2CCAD319FBF98B00D2AAEC /* GameBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAD219FBF98B00D2AAEC /* GameBaseView.m */; };
+		4E37286E1A023AEB00FA4E8C /* GameEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E37286D1A023AEB00FA4E8C /* GameEffect.m */; };
 		4E4D4E8A181D5AFB00886D75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E89181D5AFB00886D75 /* Foundation.framework */; };
 		4E4D4E8C181D5AFB00886D75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E8B181D5AFB00886D75 /* CoreGraphics.framework */; };
 		4E4D4E8E181D5AFB00886D75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E8D181D5AFB00886D75 /* UIKit.framework */; };
@@ -282,6 +283,8 @@
 		4E2CCAD119FBF98B00D2AAEC /* GameBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBaseView.h; sourceTree = "<group>"; };
 		4E2CCAD219FBF98B00D2AAEC /* GameBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBaseView.m; sourceTree = "<group>"; };
 		4E37286B1A01ECC300FA4E8C /* AppKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKeys.h; sourceTree = "<group>"; };
+		4E37286C1A023AEB00FA4E8C /* GameEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEffect.h; sourceTree = "<group>"; };
+		4E37286D1A023AEB00FA4E8C /* GameEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEffect.m; sourceTree = "<group>"; };
 		4E4D4E86181D5AFB00886D75 /* iRuin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRuin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4D4E89181D5AFB00886D75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4E4D4E8B181D5AFB00886D75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1690,6 +1693,8 @@
 				4E0BFC5619260BF900F0E632 /* DotsEffect.m */,
 				4EE4555A192B3B2900FA71B9 /* ExplodeEffect.h */,
 				4EE4555B192B3B2900FA71B9 /* ExplodeEffect.m */,
+				4E37286C1A023AEB00FA4E8C /* GameEffect.h */,
+				4E37286D1A023AEB00FA4E8C /* GameEffect.m */,
 			);
 			path = Effect;
 			sourceTree = "<group>";
@@ -1911,6 +1916,7 @@
 				4EE4555C192B3B2900FA71B9 /* ExplodeEffect.m in Sources */,
 				4E77862818B4F576003A1DAC /* LineScrollViewCell.m in Sources */,
 				4EE5FC5219D858DD005E8736 /* UILabel+AdjustWidth.m in Sources */,
+				4E37286E1A023AEB00FA4E8C /* GameEffect.m in Sources */,
 				4EE5FC4819D858DD005E8736 /* QueuePositionsHelper.m in Sources */,
 				4EE5FC3E19D858DD005E8736 /* ActionExecutorManager.m in Sources */,
 				4EDACDBF191FB18300A8E84E /* ChainableEvent.m in Sources */,

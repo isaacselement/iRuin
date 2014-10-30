@@ -81,6 +81,8 @@
 /** View */
 
 // effect
+#import "GameEffect.h"
+
 #import "BaseEffect.h"
 #import "ChainableEffect.h"
 

@@ -70,7 +70,7 @@ InAppIMNavgationController* sharedInstance = nil;
 
 #pragma mark - Public Methods
 
--(void) showWith:(NSString*)title uniqueKey:(NSString*)uniqueKey
+-(void) showWithTilte:(NSString*)title uniqueKey:(NSString*)uniqueKey
 {
     if (!title) title = @"Chat For Free :)";
     if (!uniqueKey) uniqueKey = @"com.iRuin.Room1";
@@ -137,7 +137,7 @@ InAppIMNavgationController* sharedInstance = nil;
     [InAppIMSDK application:application didReceiveRemoteNotification:userInfo navigationController:[InAppIMNavgationController sharedInstance]];
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotatioe
+-(BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotatioe
 {
     if ([AllSDKManager getCurrentSDKType] == AllSDKType_IAIIM) {
         return [InAppIMSDK handleOpenURL:url delegate:self];

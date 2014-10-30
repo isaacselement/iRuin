@@ -6,6 +6,7 @@
 
 @property (assign) BOOL isGameStarted;
 
+@property (assign) int currentChapter;
 
 @property (assign) int vanishAmount;
 

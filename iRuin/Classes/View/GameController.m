@@ -28,6 +28,9 @@
     // Give a new uiview , cause the origin is a strange mess thing
     self.view = [[GameBaseView alloc] initWithFrame:self.view.bounds];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.view addSubview: chaptersView];
+    [self.view addSubview: gameView];
 }
 
 -(void) deviceOrientationDidChangedWithNotification: (NSNotification*)notification
@@ -36,17 +39,6 @@
     
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(reRenderWithDeviceOrientation) object:nil];
     [self performSelector: @selector(reRenderWithDeviceOrientation) withObject:nil afterDelay: 0.5];
-}
-
-
-#pragma mark - Public Methods
-
--(void) switchToView: (UIView*)view {
-    [self.view addSubview: view];
-    CATransition *transition = [CATransition animation];
-    transition.duration = 0.5f;
-    transition.type = kCATransitionFade;
-    [[self.view layer] addAnimation:transition forKey: nil];
 }
 
 #pragma mark - Orientation Change

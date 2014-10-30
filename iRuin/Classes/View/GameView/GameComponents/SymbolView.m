@@ -99,7 +99,7 @@
 {
     _name = name;
     NSDictionary* specification = DATA.config[@"SYMBOLS"][name];
-    [FrameHelper setValues: self config:specification];
+    [ACTION.gameEffect designateValuesActionsTo:self config:specification];
 }
 
 -(void) setValidArea: (CGRect)rect

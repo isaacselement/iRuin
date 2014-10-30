@@ -69,7 +69,8 @@
 
 -(void)lineScrollView:(LineScrollView *)lineScrollView didSelectIndex:(int)index
 {
-    [ACTION.gameEvent gameStartWithChapter: index];
+    ACTION.gameState.currentChapter = index;
+    [ACTION.gameEvent gameStart];
 }
 
 @end

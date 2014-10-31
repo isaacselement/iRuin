@@ -6,7 +6,7 @@
 
 -(void) gameLaunch
 {
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_Launch_ActionExecutors"]];
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_LAUNCH"]];
 }
 
 
@@ -26,14 +26,14 @@
         return NO;
     }];
     
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_Start_ActionExecutors"]];
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];
 }
 
 -(void) gameBack
 {
     [ACTION.currentEffect effectStartRollOut];
     
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_Back_ActionExecutors"]];
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];
 }
 
 -(void) gamePause

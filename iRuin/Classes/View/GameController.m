@@ -15,7 +15,7 @@
         gameView = [[GameView alloc] init];
         
         // Add the UIDeviceOrientationDidChangeNotification
-        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(deviceOrientationDidChangedWithNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(deviceOrientationDidChangedWithNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
         
     }
     return self;
@@ -33,13 +33,29 @@
     [self.view addSubview: gameView];
 }
 
--(void) deviceOrientationDidChangedWithNotification: (NSNotification*)notification
+// <= ios 7
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    DLog(@"deviceOrientationDidChangedWithNotification: %d . %f X %f", [UIDevice currentDevice].orientation, self.view.bounds.size.width, self.view.bounds.size.height);
+//    [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(reRenderWithDeviceOrientation) object:nil];
+//    [self performSelector: @selector(reRenderWithDeviceOrientation) withObject:nil afterDelay: 0.5];
     
-    [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(reRenderWithDeviceOrientation) object:nil];
-    [self performSelector: @selector(reRenderWithDeviceOrientation) withObject:nil afterDelay: 0.5];
+        [self reRenderWithDeviceOrientation];
 }
+
+// >= ios 8
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
+{
+//    [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(reRenderWithDeviceOrientation) object:nil];
+//    [self performSelector: @selector(reRenderWithDeviceOrientation) withObject:nil afterDelay: 0.5];
+    
+    [self reRenderWithDeviceOrientation];
+}
+
+//-(void) deviceOrientationDidChangedWithNotification: (NSNotification*)notification
+//{
+//    [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(reRenderWithDeviceOrientation) object:nil];
+//    [self performSelector: @selector(reRenderWithDeviceOrientation) withObject:nil afterDelay: 0.5];
+//}
 
 #pragma mark - Orientation Change
 

@@ -113,15 +113,7 @@ static ActionManager* sharedInstance = nil;
 {
     // first, set up design/canvas size
     [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.config[@"DESIGN"]]];
-    
-    GameView* gameView = VIEW.gameView;
-    gameView.frame = [RectHelper getScreenRectByControllerOrientation];
-    
-    ChaptersView* chaptersView = VIEW.chaptersView;
-    chaptersView.frame = [RectHelper getScreenRectByControllerOrientation];
-    
-    
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME"]];
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_INITIALIZE"]];
 }
 
 -(void) createOrUpdateSymbolsWithFramesMatrix
@@ -139,9 +131,9 @@ static ActionManager* sharedInstance = nil;
     
     
     BOOL isContainerClipsToBounds = [DATA.config[@"ContainerClipsToBounds"] boolValue];
-#ifndef DEBUG    // Comment it for test , in production , open it .
+//#ifndef DEBUG    // Comment it for test , in production , open it .
     containerView.clipsToBounds = isContainerClipsToBounds;
-#endif
+//#endif
     if (! isContainerClipsToBounds) {
         [QueuePositionsHelper refreshRectsPositionsRepositoryWhenClipsToBoundsIsNO:visualFrame];
     }

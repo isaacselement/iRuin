@@ -4,6 +4,8 @@
 @interface GameState : NSObject
 
 
+@property (assign) int orientation;
+
 @property (assign) BOOL isGameStarted;
 
 @property (assign) int currentChapter;

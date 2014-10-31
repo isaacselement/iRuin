@@ -48,12 +48,25 @@ static DataManager* sharedInstance = nil;
 #pragma mark - Public Methods
 -(void) initializeWithData {
     
+    // set dictionary combine handler
+    BOOL (^combineHandler)(NSString* key, NSMutableDictionary* destination, NSDictionary* source) = ^BOOL(NSString *key, NSMutableDictionary *destination, NSDictionary *source) {
+        if ([key hasPrefix:@"_"] && [key hasSuffix:@"_"]) {
+            NSString* removeKey = [key substringWithRange:NSMakeRange(1, [key length] - 2)];
+            [destination removeObjectForKey: removeKey];
+            return NO;
+        }
+        return YES;
+    };
+    [DictionaryHelper setCombineHandler: combineHandler];
+    
+    
     // universal
     NSString* portraitDesignFile = JsonExtension(key_Portrait);
     NSString* landscapeDesignFile = JsonExtension(key_Landscape);
     
     NSString* portraitDeviceJsonFile = nil;
     NSString* landscapeDeviceJsonFile = nil;
+    
     
     // iPad
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -99,28 +112,14 @@ static DataManager* sharedInstance = nil;
 
 -(NSMutableDictionary*) config
 {
-    return UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]) ? landscapeConfig : portraitConfig ;
+//    return UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]) ? landscapeConfig : portraitConfig ;
+    return UIInterfaceOrientationIsLandscape([ViewHelper getTopViewController].interfaceOrientation) ? landscapeConfig : portraitConfig ;
 }
 
 -(void) setConfigByMode: (NSString*)mode
 {
-    BOOL (^combineHandler)(NSString* key, NSMutableDictionary* destination, NSDictionary* source) = ^BOOL(NSString *key, NSMutableDictionary *destination, NSDictionary *source) {
-        if ([key hasPrefix:@"_"] && [key hasSuffix:@"_"]) {
-            NSString* removeKey = [key substringWithRange:NSMakeRange(1, [key length] - 2)];
-            [destination removeObjectForKey: removeKey];
-            return NO;
-        }
-        return YES;
-    };
-    
-    // set the handler
-    [DictionaryHelper setCombineHandler: combineHandler];
-    // combine it
     portraitConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
     landscapeConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
-    // set the handler nil
-    [DictionaryHelper setCombineHandler: nil];
-
 }
 
 

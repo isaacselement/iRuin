@@ -21,10 +21,15 @@
             
             const char* rawType = [type UTF8String];
             if (strcmp(rawType, @encode(CGFloat)) == 0) {
-                if ([key rangeOfString:@"Width"].location != NSNotFound) {
+                
+                if ([key hasSuffix:@"Width"]) {
                     CGFloat num = [value floatValue];
                     result = @(CanvasW(num));
+                } else if ([key hasSuffix:@"X"]) {
+                    CGFloat x = [value floatValue];
+                    result = @(CanvasX(x));
                 }
+                
             }
             return result;
         }];

@@ -56,18 +56,6 @@
 		4E8067C518C3678B00AF71B5 /* MoveEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8067C418C3678B00AF71B5 /* MoveEffect.m */; };
 		4EA40A3B1821361B001539B8 /* GameEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA40A3A1821361B001539B8 /* GameEvent.m */; };
 		4EA4DD3A181EAFAE00BC1E6E /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4DD39181EAFAE00BC1E6E /* GameController.m */; };
-		4EA5C04619EFB4A300008EED /* AllSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5C02919EFB4A300008EED /* AllSDKManager.m */; };
-		4EA5C04719EFB4A300008EED /* IAISimplePrivateUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5C02D19EFB4A300008EED /* IAISimplePrivateUserInfo.m */; };
-		4EA5C04819EFB4A300008EED /* IAISimpleRoomInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5C02F19EFB4A300008EED /* IAISimpleRoomInfo.m */; };
-		4EA5C04919EFB4A300008EED /* IAITopNavSkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5C03119EFB4A300008EED /* IAITopNavSkin.m */; };
-		4EA5C04A19EFB4A300008EED /* IAIWelcomeMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5C03319EFB4A300008EED /* IAIWelcomeMessageData.m */; };
-		4EA5C04B19EFB4A300008EED /* InAppIM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EA5C03C19EFB4A300008EED /* InAppIM.ttf */; };
-		4EA5C04C19EFB4A300008EED /* InAppIMSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C03D19EFB4A300008EED /* InAppIMSDK.a */; };
-		4EA5C04D19EFB4A400008EED /* InAppIMSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4EA5C03E19EFB4A300008EED /* InAppIMSDKBundle.bundle */; };
-		4EA5C04E19EFB4A400008EED /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C04019EFB4A300008EED /* libWeiboSDK.a */; };
-		4EA5C04F19EFB4A400008EED /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4EA5C04119EFB4A300008EED /* WeiboSDK.bundle */; };
-		4EA5C05019EFB4A400008EED /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C04419EFB4A300008EED /* TencentOpenAPI.framework */; };
-		4EA5C05119EFB4A400008EED /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4EA5C04519EFB4A300008EED /* TencentOpenApi_IOS_Bundle.bundle */; };
 		4EA5C05319EFC1E400008EED /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C05219EFC1E400008EED /* libc++.1.dylib */; };
 		4EA5C05519EFC1EC00008EED /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C05419EFC1EC00008EED /* libstdc++.6.0.9.dylib */; };
 		4EA5C05719EFC1F500008EED /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C05619EFC1F500008EED /* libicucore.dylib */; };
@@ -170,7 +158,6 @@
 		4EE5FC3B19D858DD005E8736 /* ActionAnimateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB9C19D858DD005E8736 /* ActionAnimateHelper.m */; };
 		4EE5FC3C19D858DD005E8736 /* ActionExecutorBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB9E19D858DD005E8736 /* ActionExecutorBase.m */; };
 		4EE5FC3E19D858DD005E8736 /* ActionExecutorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBA219D858DD005E8736 /* ActionExecutorManager.m */; };
-		4EE5FC3F19D858DD005E8736 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBA519D858DD005E8736 /* AudioPlayer.m */; };
 		4EE5FC4219D858DD005E8736 /* ImageAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBAB19D858DD005E8736 /* ImageAnimator.m */; };
 		4EE5FC4319D858DD005E8736 /* TextFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBAD19D858DD005E8736 /* TextFormatter.m */; };
 		4EE5FC4419D858DD005E8736 /* PositionsExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBB019D858DD005E8736 /* PositionsExecutor.m */; };
@@ -222,8 +209,6 @@
 		4EF75E8D1A00B8AC0074E493 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75E8C1A00B8AC0074E493 /* UIImage+Additions.m */; };
 		4EF75E901A00BBF40074E493 /* Landscape.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E8E1A00BBF40074E493 /* Landscape.json */; };
 		4EF75E911A00BBF40074E493 /* Portrait.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E8F1A00BBF40074E493 /* Portrait.json */; };
-		4EF75E951A00BD520074E493 /* InAppIMNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75E941A00BD520074E493 /* InAppIMNavgationController.m */; };
-		4EF75E991A00C4260074E493 /* InAppIMRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75E981A00C4260074E493 /* InAppIMRootController.m */; };
 		4EF75E9B1A00CFF40074E493 /* refresh_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9A1A00CFF40074E493 /* refresh_h.png */; };
 		4EF75E9F1A00D5630074E493 /* back_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9C1A00D5630074E493 /* back_h.png */; };
 		4EF75EA01A00D5630074E493 /* chat_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E9D1A00D5630074E493 /* chat_h.png */; };
@@ -234,6 +219,22 @@
 		4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75EA91A00F5A00074E493 /* BaseController.m */; };
 		4EF78DBE18C1609300E25A30 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4EF78DBD18C1609300E25A30 /* README.md */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
+		4EF7F5481A06156B0096949F /* wave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EF7F5471A06156B0096949F /* wave.mp3 */; };
+		4EF7F54B1A06167F0096949F /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F54A1A06167F0096949F /* AudioPlayer.m */; };
+		4EF7F5541A061FEA0096949F /* InAppIMNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F5511A061FEA0096949F /* InAppIMNavgationController.m */; };
+		4EF7F5551A061FEA0096949F /* InAppIMRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F5531A061FEA0096949F /* InAppIMRootController.m */; };
+		4EF7F5751A061FEF0096949F /* AllSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F5581A061FEF0096949F /* AllSDKManager.m */; };
+		4EF7F5761A061FEF0096949F /* IAISimplePrivateUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F55C1A061FEF0096949F /* IAISimplePrivateUserInfo.m */; };
+		4EF7F5771A061FEF0096949F /* IAISimpleRoomInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F55E1A061FEF0096949F /* IAISimpleRoomInfo.m */; };
+		4EF7F5781A061FEF0096949F /* IAITopNavSkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F5601A061FEF0096949F /* IAITopNavSkin.m */; };
+		4EF7F5791A061FEF0096949F /* IAIWelcomeMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F5621A061FEF0096949F /* IAIWelcomeMessageData.m */; };
+		4EF7F57A1A061FEF0096949F /* InAppIM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EF7F56B1A061FEF0096949F /* InAppIM.ttf */; };
+		4EF7F57B1A061FEF0096949F /* InAppIMSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF7F56C1A061FEF0096949F /* InAppIMSDK.a */; };
+		4EF7F57C1A061FF00096949F /* InAppIMSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4EF7F56D1A061FEF0096949F /* InAppIMSDKBundle.bundle */; };
+		4EF7F57D1A061FF00096949F /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF7F56F1A061FEF0096949F /* libWeiboSDK.a */; };
+		4EF7F57E1A061FF00096949F /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4EF7F5701A061FEF0096949F /* WeiboSDK.bundle */; };
+		4EF7F57F1A061FF00096949F /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF7F5731A061FEF0096949F /* TencentOpenAPI.framework */; };
+		4EF7F5801A061FF00096949F /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4EF7F5741A061FEF0096949F /* TencentOpenApi_IOS_Bundle.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,32 +336,6 @@
 		4EA40A3A1821361B001539B8 /* GameEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEvent.m; sourceTree = "<group>"; };
 		4EA4DD38181EAFAE00BC1E6E /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		4EA4DD39181EAFAE00BC1E6E /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
-		4EA5C02819EFB4A300008EED /* AllSDKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllSDKManager.h; sourceTree = "<group>"; };
-		4EA5C02919EFB4A300008EED /* AllSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllSDKManager.m; sourceTree = "<group>"; };
-		4EA5C02A19EFB4A300008EED /* CConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CConfigs.h; sourceTree = "<group>"; };
-		4EA5C02C19EFB4A300008EED /* IAISimplePrivateUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAISimplePrivateUserInfo.h; sourceTree = "<group>"; };
-		4EA5C02D19EFB4A300008EED /* IAISimplePrivateUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAISimplePrivateUserInfo.m; sourceTree = "<group>"; };
-		4EA5C02E19EFB4A300008EED /* IAISimpleRoomInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAISimpleRoomInfo.h; sourceTree = "<group>"; };
-		4EA5C02F19EFB4A300008EED /* IAISimpleRoomInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAISimpleRoomInfo.m; sourceTree = "<group>"; };
-		4EA5C03019EFB4A300008EED /* IAITopNavSkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAITopNavSkin.h; sourceTree = "<group>"; };
-		4EA5C03119EFB4A300008EED /* IAITopNavSkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAITopNavSkin.m; sourceTree = "<group>"; };
-		4EA5C03219EFB4A300008EED /* IAIWelcomeMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIWelcomeMessageData.h; sourceTree = "<group>"; };
-		4EA5C03319EFB4A300008EED /* IAIWelcomeMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAIWelcomeMessageData.m; sourceTree = "<group>"; };
-		4EA5C03519EFB4A300008EED /* IAICreateRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAICreateRoom.h; sourceTree = "<group>"; };
-		4EA5C03619EFB4A300008EED /* IAIExtDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIExtDef.h; sourceTree = "<group>"; };
-		4EA5C03719EFB4A300008EED /* IAIHeadDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIHeadDefs.h; sourceTree = "<group>"; };
-		4EA5C03819EFB4A300008EED /* IAIMessageStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIMessageStruct.h; sourceTree = "<group>"; };
-		4EA5C03919EFB4A300008EED /* IAIPrivateUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIPrivateUserInfo.h; sourceTree = "<group>"; };
-		4EA5C03A19EFB4A300008EED /* IAITopSkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAITopSkin.h; sourceTree = "<group>"; };
-		4EA5C03B19EFB4A300008EED /* InAppIMSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMSDK.h; sourceTree = "<group>"; };
-		4EA5C03C19EFB4A300008EED /* InAppIM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InAppIM.ttf; sourceTree = "<group>"; };
-		4EA5C03D19EFB4A300008EED /* InAppIMSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = InAppIMSDK.a; sourceTree = "<group>"; };
-		4EA5C03E19EFB4A300008EED /* InAppIMSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppIMSDKBundle.bundle; sourceTree = "<group>"; };
-		4EA5C04019EFB4A300008EED /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
-		4EA5C04119EFB4A300008EED /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
-		4EA5C04219EFB4A300008EED /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
-		4EA5C04419EFB4A300008EED /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
-		4EA5C04519EFB4A300008EED /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		4EA5C05219EFC1E400008EED /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "usr/lib/libc++.1.dylib"; sourceTree = SDKROOT; };
 		4EA5C05419EFC1EC00008EED /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		4EA5C05619EFC1F500008EED /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -540,8 +515,6 @@
 		4EE5FB9E19D858DD005E8736 /* ActionExecutorBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionExecutorBase.m; sourceTree = "<group>"; };
 		4EE5FBA119D858DD005E8736 /* ActionExecutorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionExecutorManager.h; sourceTree = "<group>"; };
 		4EE5FBA219D858DD005E8736 /* ActionExecutorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionExecutorManager.m; sourceTree = "<group>"; };
-		4EE5FBA419D858DD005E8736 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
-		4EE5FBA519D858DD005E8736 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		4EE5FBAA19D858DD005E8736 /* ImageAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAnimator.h; sourceTree = "<group>"; };
 		4EE5FBAB19D858DD005E8736 /* ImageAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAnimator.m; sourceTree = "<group>"; };
 		4EE5FBAC19D858DD005E8736 /* TextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFormatter.h; sourceTree = "<group>"; };
@@ -648,11 +621,6 @@
 		4EF75E8C1A00B8AC0074E493 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		4EF75E8E1A00BBF40074E493 /* Landscape.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Landscape.json; sourceTree = "<group>"; };
 		4EF75E8F1A00BBF40074E493 /* Portrait.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Portrait.json; sourceTree = "<group>"; };
-		4EF75E931A00BD520074E493 /* InAppIMNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMNavgationController.h; sourceTree = "<group>"; };
-		4EF75E941A00BD520074E493 /* InAppIMNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppIMNavgationController.m; sourceTree = "<group>"; };
-		4EF75E961A00BD860074E493 /* InAppIM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InAppIM.h; sourceTree = "<group>"; };
-		4EF75E971A00C4260074E493 /* InAppIMRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMRootController.h; sourceTree = "<group>"; };
-		4EF75E981A00C4260074E493 /* InAppIMRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppIMRootController.m; sourceTree = "<group>"; };
 		4EF75E9A1A00CFF40074E493 /* refresh_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_h.png; sourceTree = "<group>"; };
 		4EF75E9C1A00D5630074E493 /* back_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_h.png; sourceTree = "<group>"; };
 		4EF75E9D1A00D5630074E493 /* chat_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_h.png; sourceTree = "<group>"; };
@@ -665,6 +633,40 @@
 		4EF78DBD18C1609300E25A30 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4EF7943C18C21FE800E25A30 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
+		4EF7F5471A06156B0096949F /* wave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wave.mp3; sourceTree = "<group>"; };
+		4EF7F5491A06167F0096949F /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		4EF7F54A1A06167F0096949F /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		4EF7F54F1A061FEA0096949F /* InAppIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIM.h; sourceTree = "<group>"; };
+		4EF7F5501A061FEA0096949F /* InAppIMNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMNavgationController.h; sourceTree = "<group>"; };
+		4EF7F5511A061FEA0096949F /* InAppIMNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppIMNavgationController.m; sourceTree = "<group>"; };
+		4EF7F5521A061FEA0096949F /* InAppIMRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMRootController.h; sourceTree = "<group>"; };
+		4EF7F5531A061FEA0096949F /* InAppIMRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppIMRootController.m; sourceTree = "<group>"; };
+		4EF7F5571A061FEF0096949F /* AllSDKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllSDKManager.h; sourceTree = "<group>"; };
+		4EF7F5581A061FEF0096949F /* AllSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllSDKManager.m; sourceTree = "<group>"; };
+		4EF7F5591A061FEF0096949F /* CConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CConfigs.h; sourceTree = "<group>"; };
+		4EF7F55B1A061FEF0096949F /* IAISimplePrivateUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAISimplePrivateUserInfo.h; sourceTree = "<group>"; };
+		4EF7F55C1A061FEF0096949F /* IAISimplePrivateUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAISimplePrivateUserInfo.m; sourceTree = "<group>"; };
+		4EF7F55D1A061FEF0096949F /* IAISimpleRoomInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAISimpleRoomInfo.h; sourceTree = "<group>"; };
+		4EF7F55E1A061FEF0096949F /* IAISimpleRoomInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAISimpleRoomInfo.m; sourceTree = "<group>"; };
+		4EF7F55F1A061FEF0096949F /* IAITopNavSkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAITopNavSkin.h; sourceTree = "<group>"; };
+		4EF7F5601A061FEF0096949F /* IAITopNavSkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAITopNavSkin.m; sourceTree = "<group>"; };
+		4EF7F5611A061FEF0096949F /* IAIWelcomeMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIWelcomeMessageData.h; sourceTree = "<group>"; };
+		4EF7F5621A061FEF0096949F /* IAIWelcomeMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAIWelcomeMessageData.m; sourceTree = "<group>"; };
+		4EF7F5641A061FEF0096949F /* IAICreateRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAICreateRoom.h; sourceTree = "<group>"; };
+		4EF7F5651A061FEF0096949F /* IAIExtDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIExtDef.h; sourceTree = "<group>"; };
+		4EF7F5661A061FEF0096949F /* IAIHeadDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIHeadDefs.h; sourceTree = "<group>"; };
+		4EF7F5671A061FEF0096949F /* IAIMessageStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIMessageStruct.h; sourceTree = "<group>"; };
+		4EF7F5681A061FEF0096949F /* IAIPrivateUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIPrivateUserInfo.h; sourceTree = "<group>"; };
+		4EF7F5691A061FEF0096949F /* IAITopSkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAITopSkin.h; sourceTree = "<group>"; };
+		4EF7F56A1A061FEF0096949F /* InAppIMSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMSDK.h; sourceTree = "<group>"; };
+		4EF7F56B1A061FEF0096949F /* InAppIM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InAppIM.ttf; sourceTree = "<group>"; };
+		4EF7F56C1A061FEF0096949F /* InAppIMSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = InAppIMSDK.a; sourceTree = "<group>"; };
+		4EF7F56D1A061FEF0096949F /* InAppIMSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppIMSDKBundle.bundle; sourceTree = "<group>"; };
+		4EF7F56F1A061FEF0096949F /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		4EF7F5701A061FEF0096949F /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		4EF7F5711A061FEF0096949F /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		4EF7F5731A061FEF0096949F /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		4EF7F5741A061FEF0096949F /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -689,19 +691,19 @@
 				4EA5C06919EFC2AE00008EED /* CoreTelephony.framework in Frameworks */,
 				4EA5C06519EFC29700008EED /* CoreText.framework in Frameworks */,
 				4E4D4E8C181D5AFB00886D75 /* CoreGraphics.framework in Frameworks */,
+				4EF7F57F1A061FF00096949F /* TencentOpenAPI.framework in Frameworks */,
 				4EA5C06319EFC28700008EED /* Security.framework in Frameworks */,
 				4EA5C06119EFC27E00008EED /* Accelerate.framework in Frameworks */,
 				4EA5C05F19EFC24500008EED /* libsqlite3.0.dylib in Frameworks */,
 				4EA5C05D19EFC23D00008EED /* libz.dylib in Frameworks */,
+				4EF7F57B1A061FEF0096949F /* InAppIMSDK.a in Frameworks */,
 				4EA5C05B19EFC23300008EED /* libiconv.dylib in Frameworks */,
+				4EF7F57D1A061FF00096949F /* libWeiboSDK.a in Frameworks */,
 				4EA5C05919EFC1FE00008EED /* libresolv.dylib in Frameworks */,
 				4EA5C05719EFC1F500008EED /* libicucore.dylib in Frameworks */,
 				4EA5C05519EFC1EC00008EED /* libstdc++.6.0.9.dylib in Frameworks */,
 				4EA5C05319EFC1E400008EED /* libc++.1.dylib in Frameworks */,
-				4EA5C05019EFB4A400008EED /* TencentOpenAPI.framework in Frameworks */,
 				4EDC3D8C18229FEB00CD1C04 /* QuartzCore.framework in Frameworks */,
-				4EA5C04E19EFB4A400008EED /* libWeiboSDK.a in Frameworks */,
-				4EA5C04C19EFB4A300008EED /* InAppIMSDK.a in Frameworks */,
 				4E4D4E8E181D5AFB00886D75 /* UIKit.framework in Frameworks */,
 				4E4D4E8A181D5AFB00886D75 /* Foundation.framework in Frameworks */,
 			);
@@ -837,9 +839,9 @@
 		4E4D4E8F181D5AFB00886D75 /* iRuin */ = {
 			isa = PBXGroup;
 			children = (
-				4EF75E921A00BD410074E493 /* InAppIM */,
+				4EF7F5561A061FEF0096949F /* InAppIMSDK1.0.0 */,
+				4EF7F54E1A061FEA0096949F /* InAppIM */,
 				4ECB29E719FA562A00D60219 /* iRuinResources */,
-				4EA5C02719EFB4A300008EED /* InAppIMSDK1.0.0 */,
 				4EE5FB0519D858DC005E8736 /* Modules */,
 				4E4D4EB8181D5B3C00886D75 /* Classes */,
 				4E4D4E98181D5AFB00886D75 /* AppDelegate.h */,
@@ -990,75 +992,10 @@
 			path = State;
 			sourceTree = "<group>";
 		};
-		4EA5C02719EFB4A300008EED /* InAppIMSDK1.0.0 */ = {
-			isa = PBXGroup;
-			children = (
-				4EA5C02819EFB4A300008EED /* AllSDKManager.h */,
-				4EA5C02919EFB4A300008EED /* AllSDKManager.m */,
-				4EA5C02A19EFB4A300008EED /* CConfigs.h */,
-				4EA5C02B19EFB4A300008EED /* Datas */,
-				4EA5C03419EFB4A300008EED /* Heads */,
-				4EA5C03C19EFB4A300008EED /* InAppIM.ttf */,
-				4EA5C03D19EFB4A300008EED /* InAppIMSDK.a */,
-				4EA5C03E19EFB4A300008EED /* InAppIMSDKBundle.bundle */,
-				4EA5C03F19EFB4A300008EED /* libWeiboSDK */,
-				4EA5C04319EFB4A300008EED /* TencentSDK */,
-			);
-			name = InAppIMSDK1.0.0;
-			path = ../../../InAppIMSDK1.0.0;
-			sourceTree = "<group>";
-		};
-		4EA5C02B19EFB4A300008EED /* Datas */ = {
-			isa = PBXGroup;
-			children = (
-				4EA5C02C19EFB4A300008EED /* IAISimplePrivateUserInfo.h */,
-				4EA5C02D19EFB4A300008EED /* IAISimplePrivateUserInfo.m */,
-				4EA5C02E19EFB4A300008EED /* IAISimpleRoomInfo.h */,
-				4EA5C02F19EFB4A300008EED /* IAISimpleRoomInfo.m */,
-				4EA5C03019EFB4A300008EED /* IAITopNavSkin.h */,
-				4EA5C03119EFB4A300008EED /* IAITopNavSkin.m */,
-				4EA5C03219EFB4A300008EED /* IAIWelcomeMessageData.h */,
-				4EA5C03319EFB4A300008EED /* IAIWelcomeMessageData.m */,
-			);
-			path = Datas;
-			sourceTree = "<group>";
-		};
-		4EA5C03419EFB4A300008EED /* Heads */ = {
-			isa = PBXGroup;
-			children = (
-				4EA5C03519EFB4A300008EED /* IAICreateRoom.h */,
-				4EA5C03619EFB4A300008EED /* IAIExtDef.h */,
-				4EA5C03719EFB4A300008EED /* IAIHeadDefs.h */,
-				4EA5C03819EFB4A300008EED /* IAIMessageStruct.h */,
-				4EA5C03919EFB4A300008EED /* IAIPrivateUserInfo.h */,
-				4EA5C03A19EFB4A300008EED /* IAITopSkin.h */,
-				4EA5C03B19EFB4A300008EED /* InAppIMSDK.h */,
-			);
-			path = Heads;
-			sourceTree = "<group>";
-		};
-		4EA5C03F19EFB4A300008EED /* libWeiboSDK */ = {
-			isa = PBXGroup;
-			children = (
-				4EA5C04019EFB4A300008EED /* libWeiboSDK.a */,
-				4EA5C04119EFB4A300008EED /* WeiboSDK.bundle */,
-				4EA5C04219EFB4A300008EED /* WeiboSDK.h */,
-			);
-			path = libWeiboSDK;
-			sourceTree = "<group>";
-		};
-		4EA5C04319EFB4A300008EED /* TencentSDK */ = {
-			isa = PBXGroup;
-			children = (
-				4EA5C04419EFB4A300008EED /* TencentOpenAPI.framework */,
-				4EA5C04519EFB4A300008EED /* TencentOpenApi_IOS_Bundle.bundle */,
-			);
-			path = TencentSDK;
-			sourceTree = "<group>";
-		};
 		4ECB29E719FA562A00D60219 /* iRuinResources */ = {
 			isa = PBXGroup;
 			children = (
+				4EF7F5461A06156B0096949F /* Musics */,
 				4ECB29E819FA562A00D60219 /* Configs */,
 				4ECB29EE19FA562A00D60219 /* Designs */,
 				4ECB29F319FA562A00D60219 /* Images */,
@@ -1443,8 +1380,6 @@
 		4EE5FBA319D858DD005E8736 /* Element */ = {
 			isa = PBXGroup;
 			children = (
-				4EE5FBA419D858DD005E8736 /* AudioPlayer.h */,
-				4EE5FBA519D858DD005E8736 /* AudioPlayer.m */,
 				4EE5FBAA19D858DD005E8736 /* ImageAnimator.h */,
 				4EE5FBAB19D858DD005E8736 /* ImageAnimator.m */,
 				4EE5FBAC19D858DD005E8736 /* TextFormatter.h */,
@@ -1456,6 +1391,8 @@
 		4EE5FBAE19D858DD005E8736 /* Queue */ = {
 			isa = PBXGroup;
 			children = (
+				4EF7F5491A06167F0096949F /* AudioPlayer.h */,
+				4EF7F54A1A06167F0096949F /* AudioPlayer.m */,
 				4E6162F119FFB06800302D98 /* InvocationExecutor.h */,
 				4E6162F219FFB06800302D98 /* InvocationExecutor.m */,
 				4ECB2A0C19FA5F5600D60219 /* ElementsExecutor.h */,
@@ -1662,18 +1599,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		4EF75E921A00BD410074E493 /* InAppIM */ = {
-			isa = PBXGroup;
-			children = (
-				4EF75E931A00BD520074E493 /* InAppIMNavgationController.h */,
-				4EF75E941A00BD520074E493 /* InAppIMNavgationController.m */,
-				4EF75E961A00BD860074E493 /* InAppIM.h */,
-				4EF75E971A00C4260074E493 /* InAppIMRootController.h */,
-				4EF75E981A00C4260074E493 /* InAppIMRootController.m */,
-			);
-			path = InAppIM;
-			sourceTree = "<group>";
-		};
 		4EF7943B18C21F6700E25A30 /* Effect */ = {
 			isa = PBXGroup;
 			children = (
@@ -1697,6 +1622,92 @@
 				4E37286D1A023AEB00FA4E8C /* GameEffect.m */,
 			);
 			path = Effect;
+			sourceTree = "<group>";
+		};
+		4EF7F5461A06156B0096949F /* Musics */ = {
+			isa = PBXGroup;
+			children = (
+				4EF7F5471A06156B0096949F /* wave.mp3 */,
+			);
+			path = Musics;
+			sourceTree = "<group>";
+		};
+		4EF7F54E1A061FEA0096949F /* InAppIM */ = {
+			isa = PBXGroup;
+			children = (
+				4EF7F54F1A061FEA0096949F /* InAppIM.h */,
+				4EF7F5501A061FEA0096949F /* InAppIMNavgationController.h */,
+				4EF7F5511A061FEA0096949F /* InAppIMNavgationController.m */,
+				4EF7F5521A061FEA0096949F /* InAppIMRootController.h */,
+				4EF7F5531A061FEA0096949F /* InAppIMRootController.m */,
+			);
+			path = InAppIM;
+			sourceTree = "<group>";
+		};
+		4EF7F5561A061FEF0096949F /* InAppIMSDK1.0.0 */ = {
+			isa = PBXGroup;
+			children = (
+				4EF7F5571A061FEF0096949F /* AllSDKManager.h */,
+				4EF7F5581A061FEF0096949F /* AllSDKManager.m */,
+				4EF7F5591A061FEF0096949F /* CConfigs.h */,
+				4EF7F55A1A061FEF0096949F /* Datas */,
+				4EF7F5631A061FEF0096949F /* Heads */,
+				4EF7F56B1A061FEF0096949F /* InAppIM.ttf */,
+				4EF7F56C1A061FEF0096949F /* InAppIMSDK.a */,
+				4EF7F56D1A061FEF0096949F /* InAppIMSDKBundle.bundle */,
+				4EF7F56E1A061FEF0096949F /* libWeiboSDK */,
+				4EF7F5721A061FEF0096949F /* TencentSDK */,
+			);
+			name = InAppIMSDK1.0.0;
+			path = ../../../InAppIMSDK1.0.0;
+			sourceTree = "<group>";
+		};
+		4EF7F55A1A061FEF0096949F /* Datas */ = {
+			isa = PBXGroup;
+			children = (
+				4EF7F55B1A061FEF0096949F /* IAISimplePrivateUserInfo.h */,
+				4EF7F55C1A061FEF0096949F /* IAISimplePrivateUserInfo.m */,
+				4EF7F55D1A061FEF0096949F /* IAISimpleRoomInfo.h */,
+				4EF7F55E1A061FEF0096949F /* IAISimpleRoomInfo.m */,
+				4EF7F55F1A061FEF0096949F /* IAITopNavSkin.h */,
+				4EF7F5601A061FEF0096949F /* IAITopNavSkin.m */,
+				4EF7F5611A061FEF0096949F /* IAIWelcomeMessageData.h */,
+				4EF7F5621A061FEF0096949F /* IAIWelcomeMessageData.m */,
+			);
+			path = Datas;
+			sourceTree = "<group>";
+		};
+		4EF7F5631A061FEF0096949F /* Heads */ = {
+			isa = PBXGroup;
+			children = (
+				4EF7F5641A061FEF0096949F /* IAICreateRoom.h */,
+				4EF7F5651A061FEF0096949F /* IAIExtDef.h */,
+				4EF7F5661A061FEF0096949F /* IAIHeadDefs.h */,
+				4EF7F5671A061FEF0096949F /* IAIMessageStruct.h */,
+				4EF7F5681A061FEF0096949F /* IAIPrivateUserInfo.h */,
+				4EF7F5691A061FEF0096949F /* IAITopSkin.h */,
+				4EF7F56A1A061FEF0096949F /* InAppIMSDK.h */,
+			);
+			path = Heads;
+			sourceTree = "<group>";
+		};
+		4EF7F56E1A061FEF0096949F /* libWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4EF7F56F1A061FEF0096949F /* libWeiboSDK.a */,
+				4EF7F5701A061FEF0096949F /* WeiboSDK.bundle */,
+				4EF7F5711A061FEF0096949F /* WeiboSDK.h */,
+			);
+			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
+		4EF7F5721A061FEF0096949F /* TencentSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4EF7F5731A061FEF0096949F /* TencentOpenAPI.framework */,
+				4EF7F5741A061FEF0096949F /* TencentOpenApi_IOS_Bundle.bundle */,
+			);
+			path = TencentSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1774,10 +1785,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF7F5801A061FF00096949F /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				4EF75E781A008E090074E493 /* iPad_Portrait.json in Resources */,
 				4EE5FC1219D858DD005E8736 /* Screen Shot  private_key info.png in Resources */,
 				4E08AB8D19FDFCBB00F1F449 /* background_00.png in Resources */,
-				4EA5C04B19EFB4A300008EED /* InAppIM.ttf in Resources */,
 				4E6162F919FFD8E600302D98 /* chat.png in Resources */,
 				4ECB2A0519FA562A00D60219 /* 1.png in Resources */,
 				4ECB29FF19FA562A00D60219 /* Config_Pull.json in Resources */,
@@ -1789,9 +1800,9 @@
 				4ECB29FE19FA562A00D60219 /* Config_Explode.json in Resources */,
 				4EF75E7C1A00B4DE0074E493 /* background_01.png in Resources */,
 				4EF75E9F1A00D5630074E493 /* back_h.png in Resources */,
+				4EF7F57E1A061FF00096949F /* WeiboSDK.bundle in Resources */,
 				4EE5FC0A19D858DD005E8736 /* private_key.pem in Resources */,
 				4EE5FC1119D858DD005E8736 /* Screen Shot  p12_password.png in Resources */,
-				4EA5C04D19EFB4A400008EED /* InAppIMSDKBundle.bundle in Resources */,
 				4EF75E7A1A008E090074E493 /* iPhone_Portrait.json in Resources */,
 				4EF75EA51A00F32D0074E493 /* Default.png in Resources */,
 				4EF75EA71A00F43F0074E493 /* Default-568h@2x.png in Resources */,
@@ -1801,9 +1812,12 @@
 				4E6162F819FFD8E600302D98 /* back.png in Resources */,
 				4ECB2A0B19FA562A00D60219 /* icon@2x.png in Resources */,
 				4EF75E901A00BBF40074E493 /* Landscape.json in Resources */,
+				4EF7F5481A06156B0096949F /* wave.mp3 in Resources */,
 				4EF75E9B1A00CFF40074E493 /* refresh_h.png in Resources */,
 				4EF75E911A00BBF40074E493 /* Portrait.json in Resources */,
+				4EF7F57A1A061FEF0096949F /* InAppIM.ttf in Resources */,
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
+				4EF7F57C1A061FF00096949F /* InAppIMSDKBundle.bundle in Resources */,
 				4ECB29FC19FA562A00D60219 /* Config.json in Resources */,
 				4EE5FC0919D858DD005E8736 /* private_key.p12 in Resources */,
 				4ECB2A0719FA562A00D60219 /* 3.png in Resources */,
@@ -1812,13 +1826,11 @@
 				4ECB2A0019FA562A00D60219 /* Config_Swipe.json in Resources */,
 				4EE5FC0F19D858DD005E8736 /* rsaCertReq.csr in Resources */,
 				4EF75E771A008E090074E493 /* iPad_Landscape.json in Resources */,
-				4EA5C05119EFB4A400008EED /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				4E6162FA19FFD8E600302D98 /* pause.png in Resources */,
 				4EE5FC0819D858DD005E8736 /* pkcs8_private_key.pem in Resources */,
 				4EF75E791A008E090074E493 /* iPhone_Landscape.json in Resources */,
 				4EF75EA01A00D5630074E493 /* chat_h.png in Resources */,
 				4EE5FC0B19D858DD005E8736 /* public_key.der in Resources */,
-				4EA5C04F19EFB4A400008EED /* WeiboSDK.bundle in Resources */,
 				4ECB29FD19FA562A00D60219 /* Config_Dots.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1838,6 +1850,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF7F5751A061FEF0096949F /* AllSDKManager.m in Sources */,
 				4E4D4E9A181D5AFB00886D75 /* AppDelegate.m in Sources */,
 				4EE5FC4F19D858DD005E8736 /* NormalLabel.m in Sources */,
 				4E14BC5719225AF7000CDB57 /* PullState.m in Sources */,
@@ -1847,7 +1860,6 @@
 				4EE5FC2519D858DD005E8736 /* SQLiteManager.m in Sources */,
 				4EE5FC4419D858DD005E8736 /* PositionsExecutor.m in Sources */,
 				4EE5FC5C19D858DD005E8736 /* TableViewBaseContentHelper.m in Sources */,
-				4EE5FC3F19D858DD005E8736 /* AudioPlayer.m in Sources */,
 				4EE45559192B3AF900FA71B9 /* ExplodeState.m in Sources */,
 				4EE5FC5819D858DD005E8736 /* HeaderSearchTableView.m in Sources */,
 				4EE5FC2C19D858DD005E8736 /* IterateHelper.m in Sources */,
@@ -1869,7 +1881,6 @@
 				4EE5FC5119D858DD005E8736 /* StrokeLabel.m in Sources */,
 				4EDACDC8191FB88C00A8E84E /* StateHelper.m in Sources */,
 				4EE5FC5B19D858DD005E8736 /* TableViewBase.m in Sources */,
-				4EA5C04619EFB4A300008EED /* AllSDKManager.m in Sources */,
 				4EE5FC3B19D858DD005E8736 /* ActionAnimateHelper.m in Sources */,
 				4EEAFF6718D419C1001FB745 /* FrameManager.m in Sources */,
 				4EE5FC5719D858DD005E8736 /* FilterTableView.m in Sources */,
@@ -1894,18 +1905,20 @@
 				4E08AB9819FE66B300F1F449 /* SymbolView.m in Sources */,
 				4E4D4EC0181D5B8400886D75 /* ActionManager.m in Sources */,
 				4EE5FC4919D858DD005E8736 /* QueueTimeCalculator.m in Sources */,
+				4EF7F54B1A06167F0096949F /* AudioPlayer.m in Sources */,
 				4EE5FC1B19D858DD005E8736 /* FileManager.m in Sources */,
 				4EE5FC2D19D858DD005E8736 /* DateHelper.m in Sources */,
 				4EE5FC0C19D858DD005E8736 /* rsa_main.m in Sources */,
+				4EF7F5781A061FEF0096949F /* IAITopNavSkin.m in Sources */,
 				4EE5FC3C19D858DD005E8736 /* ActionExecutorBase.m in Sources */,
 				4EE5FC3319D858DD005E8736 /* ImageHelper.m in Sources */,
 				4E4D4E96181D5AFB00886D75 /* main.m in Sources */,
 				4EE5FC4319D858DD005E8736 /* TextFormatter.m in Sources */,
 				4E2CCAD019FBF93500D2AAEC /* HeaderView.m in Sources */,
 				4EE5FC1619D858DD005E8736 /* CHCSVParser.m in Sources */,
+				4EF7F5551A061FEA0096949F /* InAppIMRootController.m in Sources */,
 				4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */,
 				4E71D40818BF80D200270180 /* MoveEvent.m in Sources */,
-				4EF75E951A00BD520074E493 /* InAppIMNavgationController.m in Sources */,
 				4E8067C518C3678B00AF71B5 /* MoveEffect.m in Sources */,
 				4EE5FC5519D858DD005E8736 /* ZoomableScrollView.m in Sources */,
 				4EE5FC2019D858DD005E8736 /* HTTPRequestBase.m in Sources */,
@@ -1924,7 +1937,6 @@
 				4EDACDC2191FB1A600A8E84E /* ChainableState.m in Sources */,
 				4EE5FC5D19D858DD005E8736 /* NormalTextField.m in Sources */,
 				4EE5FC4A19D858DD005E8736 /* QueueViewsHelper.m in Sources */,
-				4EA5C04919EFB4A300008EED /* IAITopNavSkin.m in Sources */,
 				4EE5FC0419D858DD005E8736 /* ScheduledTask.m in Sources */,
 				4E71D40518BF779900270180 /* BaseEvent.m in Sources */,
 				4E1FBA2A191BC0E40093BE25 /* TouchEffect.m in Sources */,
@@ -1934,22 +1946,23 @@
 				4EAB5A6119F79C440031F69D /* ChaptersView.m in Sources */,
 				4EE5FC3919D858DD005E8736 /* ViewHelper.m in Sources */,
 				4EE5FC3719D858DD005E8736 /* RectHelper.m in Sources */,
+				4EF7F5791A061FEF0096949F /* IAIWelcomeMessageData.m in Sources */,
 				4EE5FC3519D858DD005E8736 /* LayerHelper.m in Sources */,
 				4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */,
 				4EE5FC6219D858DD005E8736 /* FrameTranslater.m in Sources */,
 				4E1FBA24191BBBDD0093BE25 /* TouchEvent.m in Sources */,
 				4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */,
 				4EE5FC2419D858DD005E8736 /* LocalizeManager.m in Sources */,
+				4EF7F5761A061FEF0096949F /* IAISimplePrivateUserInfo.m in Sources */,
 				4EF75E871A00B86A0074E493 /* NSArray+Additions.m in Sources */,
 				4EE5FC3619D858DD005E8736 /* PopupViewHelper.m in Sources */,
-				4EA5C04719EFB4A300008EED /* IAISimplePrivateUserInfo.m in Sources */,
 				4EE5FC0619D858DD005E8736 /* NSString+Base64.m in Sources */,
 				4EF75E891A00B86A0074E493 /* NSMutableArray+Additions.m in Sources */,
 				4EE5FC4719D858DD005E8736 /* QueueIndexPathParser.m in Sources */,
-				4EA5C04819EFB4A300008EED /* IAISimpleRoomInfo.m in Sources */,
 				4EE5FC4219D858DD005E8736 /* ImageAnimator.m in Sources */,
 				4EE5FC1319D858DD005E8736 /* RSABase64Cryptor.m in Sources */,
 				4EE5FC3819D858DD005E8736 /* TableViewHelper.m in Sources */,
+				4EF7F5771A061FEF0096949F /* IAISimpleRoomInfo.m in Sources */,
 				4EE5FC1019D858DD005E8736 /* RSAKeysKeeper.m in Sources */,
 				4EE5FC5E19D858DD005E8736 /* RotatableScorllViewController.m in Sources */,
 				4E2CCAC719FB6DD900D2AAEC /* QueueValuesHelper.m in Sources */,
@@ -1964,15 +1977,14 @@
 				4EE5FC1519D858DD005E8736 /* NSString+SHA.m in Sources */,
 				4ED52C7E191E5DC4002ADA73 /* SwipeEvent.m in Sources */,
 				4EE5FC6119D858DD005E8736 /* FrameHelper.m in Sources */,
-				4EA5C04A19EFB4A300008EED /* IAIWelcomeMessageData.m in Sources */,
 				4E8067BF18C35C8A00AF71B5 /* BaseState.m in Sources */,
+				4EF7F5541A061FEA0096949F /* InAppIMNavgationController.m in Sources */,
 				4EE5FC2619D858DD005E8736 /* CharacterSetHelper.m in Sources */,
 				4ECB2A0E19FA5F5600D60219 /* ElementsExecutor.m in Sources */,
 				4EE5FC6319D858DD005E8736 /* UIView+Frame.m in Sources */,
 				4EE5FC5319D858DD005E8736 /* PickerViewBase.m in Sources */,
 				4EE5FC5619D858DD005E8736 /* AlignTableView.m in Sources */,
 				4EE5FC4619D858DD005E8736 /* EaseFunction.m in Sources */,
-				4EF75E991A00C4260074E493 /* InAppIMRootController.m in Sources */,
 				4EE5FC1F19D858DD005E8736 /* HTTPPostRequest.m in Sources */,
 				4E2CCAC419FB5C5100D2AAEC /* KeyValueCodingHelper.m in Sources */,
 				4ED52C84191E623A002ADA73 /* SwipeEffect.m in Sources */,
@@ -2103,6 +2115,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/TencentSDK,
+					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/TencentSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iRuin/iRuin-Prefix.pch";
@@ -2113,6 +2126,8 @@
 					"$(inherited)",
 					/Users/Isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0,
 					/Users/Isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/libWeiboSDK,
+					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0,
+					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/libWeiboSDK,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -2134,6 +2149,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/TencentSDK,
+					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/TencentSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iRuin/iRuin-Prefix.pch";
@@ -2143,6 +2159,8 @@
 					"$(inherited)",
 					/Users/Isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0,
 					/Users/Isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/libWeiboSDK,
+					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0,
+					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/libWeiboSDK,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (

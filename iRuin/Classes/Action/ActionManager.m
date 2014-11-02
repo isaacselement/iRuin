@@ -53,6 +53,9 @@ static ActionManager* sharedInstance = nil;
     [self renderFramesWithCurrentOrientation];
     
     [gameEvent gameLaunch];
+    
+    
+    [ScheduledTask]
 }
 
 -(void) establishGameModes

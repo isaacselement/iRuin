@@ -33,9 +33,9 @@
 
 
 #pragma mark - Public Methods
+
 -(void) effectStartRollIn
 {
-//    DLOG(@"effect - effectStartRollIn");
     [event performSelector:@selector(eventSymbolsWillRollIn) withObject:nil];
     
     [VIEW.actionDurations clear];
@@ -47,7 +47,6 @@
 
 -(void) effectStartRollOut
 {
-    //    DLOG(@"effect - effectStartRollOut");
     [event performSelector:@selector(eventSymbolsWillRollOut) withObject:nil];
     
     [VIEW.actionDurations clear];
@@ -60,14 +59,10 @@
 
 -(void)effectStartVanish: (NSMutableArray*)symbols
 {
-//    DLOG(@"effect - effectStartVanish");
     NSMutableArray* views = [ArrayHelper eliminateDuplicates: symbols];
     [event eventSymbolsWillVanish: views];
-    
-    NSArray* actionsConfig = DATA.config[@"SYMBOLS_ActionExecutors"][@"Vanish_ActionExecutors"];
-    
     [VIEW.actionDurations clear];
-    [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:nil baseTimes:nil];
+    [self startSymbolsVanish: views];
     double totalDuration = [VIEW.actionDurations take];
     
     [event performSelector: @selector(eventSymbolsDidVanish:) withObject:views afterDelay:totalDuration];
@@ -75,7 +70,6 @@
 
 -(void) effectStartAdjusts: (NSArray*)nullRowColumns
 {
-//    DLOG(@"effect - effectStartAdjusts");
     [VIEW.actionDurations clear];
     [self startSymbolsAdjusts: nullRowColumns];
     double totalDuration = [VIEW.actionDurations take];
@@ -85,7 +79,6 @@
 
 -(void) effectStartFillIn
 {
-//    DLOG(@"effect - effectStartFillIn");
     [VIEW.actionDurations clear];
     [self startSymbolsFillIn];
     double totalDuration = [VIEW.actionDurations take];
@@ -96,13 +89,17 @@
 
 -(void) effectStartSqueeze: (NSArray*)nullRowColumns
 {
-//    DLOG(@"effect - effectStartSqueeze");
     [VIEW.actionDurations clear];
     [self startSymbolsSqueeze: nullRowColumns];
     double totalDuration = [VIEW.actionDurations take];
     
     [event performSelector: @selector(eventSymbolsDidSqueeze) withObject:nil afterDelay:totalDuration];
 }
+
+
+
+
+
 
 
 #pragma mark - Private Methods
@@ -150,6 +147,19 @@
     [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:nil];
 }
 
+
+
+
+
+-(void) startSymbolsVanish: (NSArray*)views
+{
+    NSArray* actionsConfig = DATA.config[@"SYMBOLS_ActionExecutors"][@"Vanish_ActionExecutors"];
+    [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:nil baseTimes:nil];
+}
+
+
+
+
 -(void) startSymbolsAdjusts: (NSArray*)nullRowColumns
 {
     // start adjusts effect
@@ -180,6 +190,8 @@
     
     [PositionsHelper updateAdjustRowsColumnsInVisualArea: views];
 }
+
+
 
 -(void) startSymbolsFillIn
 {
@@ -223,6 +235,9 @@
     
     [PositionsHelper updateFillInRowsColumnsInVisualArea: views];
 }
+
+
+
 
 -(void) startSymbolsSqueeze: (NSArray*)nullRowColumns
 {

@@ -117,7 +117,7 @@
 {
     _identification = identification;
     
-    [SymbolView setSymbolIdentification: identification];
+    [SymbolView setSymbolIdentification: identification symbol:self];
 }
 
 
@@ -134,14 +134,14 @@
     return identification;
 }
 
-+(void) setSymbolIdentification: (int)identification
++(void) setSymbolIdentification: (int)identification symbol:(SymbolView*)symbol
 {
     int index = identification - 1;
     
     NSDictionary* commonSpec = DATA.config[@"SYMBOLS"][@"COMMON"];
-    [ACTION.gameEffect designateValuesActionsTo:self config:commonSpec];
+    [ACTION.gameEffect designateValuesActionsTo:symbol config:commonSpec];
     NSDictionary* specification = [[SymbolView getSymbolsSpecifications] objectAtIndex: index];
-    [ACTION.gameEffect designateValuesActionsTo:self config:specification];
+    [ACTION.gameEffect designateValuesActionsTo:symbol config:specification];
 }
 
 

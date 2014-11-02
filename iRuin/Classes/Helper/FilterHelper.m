@@ -64,19 +64,36 @@
 
 
 +(void) setDifferentPrototype: (SymbolView*)symbolView {
-    symbolView.name = [self getDifferentPrototype: symbolView];
+    symbolView.identification = [self getDifferentPrototype: symbolView];
 }
 
-+(NSString*) getDifferentPrototype: (SymbolView*)symbolView {
-    return [self getDifferentPrototypeByID: symbolView.name];
++(int) getDifferentPrototype: (SymbolView*)symbolView {
+    return [self getDifferentPrototypeByID: symbolView.identification];
 }
 
-+(NSString*) getDifferentPrototypeByID: (NSString*)name {
-    NSString* randomName = [ACTION.gameState oneRandomSymbolName];
-    while ([randomName isEqualToString: name]){
-        randomName = [ACTION.gameState oneRandomSymbolName];
++(int) getDifferentPrototypeByID: (int)identification {
+    int randomId = [SymbolView getOneRandomSymbolIdentification];
+    
+    // avoid the infinite loop
+    int depth = 0;
+    int loopMax = 10;
+    while (randomId == identification){
+        if (++depth == loopMax) break;
+        
+        randomId = [SymbolView getOneRandomSymbolIdentification];
     }
-    return randomName;
+    
+    // not finde , then get one
+    if (depth == loopMax) {
+        int count = [SymbolView getSymbolsPrototypeCount];
+        for (int i = 0; i < count ; i++ ) {
+            if (identification != i) {
+                randomId = i ;
+                break;
+            }
+        }
+    }
+    return randomId;
 }
 
 

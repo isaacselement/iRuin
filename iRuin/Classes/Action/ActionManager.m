@@ -148,7 +148,7 @@ static ActionManager* sharedInstance = nil;
             [VIEW.gameView.containerView addSubview: symbolView];
             symbolView.frame = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
             [symbolView setValidArea: symbolView.bounds];
-            symbolView.name = [ACTION.gameState oneRandomSymbolName];
+            symbolView.identification = [SymbolView getOneRandomSymbolIdentification];
         }
         return NO;
     }];

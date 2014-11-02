@@ -13,6 +13,4 @@
 @property (assign) int vanishAmount;
 
 
--(NSString*) oneRandomSymbolName;
-
 @end

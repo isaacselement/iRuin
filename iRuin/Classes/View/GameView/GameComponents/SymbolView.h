@@ -2,8 +2,8 @@
 
 @interface SymbolView : UIView
 
-@property(assign) int identification;
-@property(strong, nonatomic) NSString* name;
+// identification cannot be 0
+@property(assign, nonatomic) int identification;
 
 @property(assign, nonatomic) int row;
 @property(assign, nonatomic) int column;
@@ -23,9 +23,14 @@
 -(BOOL) isInValidArea: (CGPoint)location;
 
 
+
+
+
+#pragma mark - Class Methods
+
+
++(int) getOneRandomSymbolIdentification;
+
++(int) getSymbolsPrototypeCount;
+
 @end
-
-
-
-
-

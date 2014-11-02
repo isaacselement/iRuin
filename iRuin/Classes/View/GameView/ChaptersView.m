@@ -7,10 +7,7 @@
 
 @implementation ChaptersView
 {
-    
     LineScrollView* lineScrollView;
-    
-    UIView* testView;
 }
 
 

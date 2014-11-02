@@ -95,12 +95,6 @@
     [self.layer removeAllAnimations];
 }
 
--(void)setName:(NSString *)name
-{
-    _name = name;
-    NSDictionary* specification = DATA.config[@"SYMBOLS"][name];
-    [ACTION.gameEffect designateValuesActionsTo:self config:specification];
-}
 
 -(void) setValidArea: (CGRect)rect
 {
@@ -116,6 +110,58 @@
 {
     return CGPathContainsPoint(validAreaCGPath, NULL, location, true);
 }
+
+
+
+-(void)setIdentification: (int)identification
+{
+    _identification = identification;
+    
+    [SymbolView setSymbolIdentification: identification];
+}
+
+
+
+#pragma mark - Class Methods
+
++(int) getOneRandomSymbolIdentification
+{
+    int count = [SymbolView getSymbolsPrototypeCount];
+    int index = arc4random() % count;
+    
+    int identification = index + 1;
+    
+    return identification;
+}
+
++(void) setSymbolIdentification: (int)identification
+{
+    int index = identification - 1;
+    
+    NSDictionary* commonSpec = DATA.config[@"SYMBOLS"][@"COMMON"];
+    [ACTION.gameEffect designateValuesActionsTo:self config:commonSpec];
+    NSDictionary* specification = [[SymbolView getSymbolsSpecifications] objectAtIndex: index];
+    [ACTION.gameEffect designateValuesActionsTo:self config:specification];
+}
+
+
++(int) getSymbolsPrototypeCount
+{
+    return [[self getSymbolsSpecifications] count];
+}
+
++(NSArray*) getSymbolsSpecifications
+{
+    return DATA.config[@"SYMBOLS"][@"IDENTIFICAIONTS"];
+}
+
+
+
+
+
+
+
+
 
 
 #pragma mark - Private Methods

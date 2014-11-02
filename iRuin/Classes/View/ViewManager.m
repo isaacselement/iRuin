@@ -8,7 +8,7 @@
 #define effect_AUDIO            @"audio.play"
 #define effect_ANIMATION        @"images.play"
 
-#define effect_ValuesSet         @"values.set"
+#define effect_ValuesSet        @"values.set"
 #define effect_ValuesAnimation  @"values.animation"
 
 #define effect_Movement         @"positions.move"

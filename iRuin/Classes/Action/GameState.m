@@ -14,13 +14,4 @@
 }
 
 
-
--(NSString*) oneRandomSymbolName
-{
-    NSArray* keys = [DATA.config[@"SYMBOLS"] allKeys];
-    int index = arc4random() % keys.count;
-    NSString* name = [keys objectAtIndex: index];
-    return name;
-}
-
 @end

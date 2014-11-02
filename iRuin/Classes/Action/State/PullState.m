@@ -340,15 +340,13 @@
     SymbolView* view = isFirstView ? [currentMovingViews firstObject] : [currentMovingViews lastObject];
     BOOL isRandom = [DATA.config[@"IsRandom"] boolValue];           // random or not
     
-    NSString* symbolName = nil;
-    if (isRandom) {
-        symbolName = [ACTION.gameState oneRandomSymbolName];
-    } else {
+    int identification = [SymbolView getOneRandomSymbolIdentification];
+    if (!isRandom) {
         NSUInteger againstIndex = isFirstView ? currentMovingViews.count - 2 : 1 ;
         SymbolView* againstView = [currentMovingViews objectAtIndex: againstIndex];
-        symbolName = againstView.name;
+        identification = againstView.identification;
     }
-    view.name = symbolName;
+    view.identification = identification;
 }
 
 @end

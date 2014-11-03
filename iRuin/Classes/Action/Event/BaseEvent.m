@@ -59,9 +59,6 @@
     
     int count = symbols.count;
     ACTION.gameState.vanishAmount += count;
-    
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(scrollScoreBar) object:nil];
-    [self performSelector:@selector(scrollScoreBar) withObject:nil afterDelay:0.5];
 }
 
 -(void) eventSymbolsDidVanish: (NSArray*)symbols
@@ -86,18 +83,6 @@
 -(void) eventSymbolsDidSqueeze
 {
     DLOG(@" eventSymbolsDidSqueeze ");
-}
-
-
-
-#pragma mark -
-
--(void) scrollScoreBar
-{
-    LineScrollView* lineScrollView = VIEW.gameView.headerView.lineScrollView;
-    CGPoint currentOffset = lineScrollView.contentOffset;
-    CGPoint offset = CGPointMake(currentOffset.x + ACTION.gameState.vanishAmount * lineScrollView.eachCellWidth, currentOffset.y);
-    [lineScrollView setContentOffset: offset animated:YES];
 }
 
 

@@ -86,7 +86,7 @@
 		4EAB5A6119F79C440031F69D /* ChaptersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6019F79C440031F69D /* ChaptersView.m */; };
 		4ECB29FC19FA562A00D60219 /* Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29E919FA562A00D60219 /* Config.json */; };
 		4ECB29FD19FA562A00D60219 /* Config_Dots.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EA19FA562A00D60219 /* Config_Dots.json */; };
-		4ECB29FE19FA562A00D60219 /* Config_Explode.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EB19FA562A00D60219 /* Config_Explode.json */; };
+		4ECB29FE19FA562A00D60219 /* Config_Touch.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EB19FA562A00D60219 /* Config_Touch.json */; };
 		4ECB29FF19FA562A00D60219 /* Config_Pull.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EC19FA562A00D60219 /* Config_Pull.json */; };
 		4ECB2A0019FA562A00D60219 /* Config_Swipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29ED19FA562A00D60219 /* Config_Swipe.json */; };
 		4ECB2A0519FA562A00D60219 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29F519FA562A00D60219 /* 1.png */; };
@@ -106,9 +106,6 @@
 		4EDACDC8191FB88C00A8E84E /* StateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDACDC7191FB88C00A8E84E /* StateHelper.m */; };
 		4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDACDCA191FBCF600A8E84E /* FilterHelper.m */; };
 		4EDC3D8C18229FEB00CD1C04 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDC3D8B18229FEB00CD1C04 /* QuartzCore.framework */; };
-		4EE45556192B3AC600FA71B9 /* ExplodeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE45555192B3AC600FA71B9 /* ExplodeEvent.m */; };
-		4EE45559192B3AF900FA71B9 /* ExplodeState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE45558192B3AF900FA71B9 /* ExplodeState.m */; };
-		4EE4555C192B3B2900FA71B9 /* ExplodeEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE4555B192B3B2900FA71B9 /* ExplodeEffect.m */; };
 		4EE5FC0419D858DD005E8736 /* ScheduledTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB0B19D858DC005E8736 /* ScheduledTask.m */; };
 		4EE5FC0519D858DD005E8736 /* TaskObjectList.c in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB0C19D858DC005E8736 /* TaskObjectList.c */; };
 		4EE5FC0619D858DD005E8736 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB1519D858DD005E8736 /* NSString+Base64.m */; };
@@ -370,7 +367,7 @@
 		4ECA1EB0184E0EB90063545E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4ECB29E919FA562A00D60219 /* Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config.json; sourceTree = "<group>"; };
 		4ECB29EA19FA562A00D60219 /* Config_Dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Dots.json; sourceTree = "<group>"; };
-		4ECB29EB19FA562A00D60219 /* Config_Explode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Explode.json; sourceTree = "<group>"; };
+		4ECB29EB19FA562A00D60219 /* Config_Touch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Touch.json; sourceTree = "<group>"; };
 		4ECB29EC19FA562A00D60219 /* Config_Pull.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Pull.json; sourceTree = "<group>"; };
 		4ECB29ED19FA562A00D60219 /* Config_Swipe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Swipe.json; sourceTree = "<group>"; };
 		4ECB29F519FA562A00D60219 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
@@ -400,12 +397,6 @@
 		4EDACDC9191FBCF600A8E84E /* FilterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterHelper.h; sourceTree = "<group>"; };
 		4EDACDCA191FBCF600A8E84E /* FilterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterHelper.m; sourceTree = "<group>"; };
 		4EDC3D8B18229FEB00CD1C04 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4EE45554192B3AC600FA71B9 /* ExplodeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodeEvent.h; sourceTree = "<group>"; };
-		4EE45555192B3AC600FA71B9 /* ExplodeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplodeEvent.m; sourceTree = "<group>"; };
-		4EE45557192B3AF900FA71B9 /* ExplodeState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodeState.h; sourceTree = "<group>"; };
-		4EE45558192B3AF900FA71B9 /* ExplodeState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplodeState.m; sourceTree = "<group>"; };
-		4EE4555A192B3B2900FA71B9 /* ExplodeEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodeEffect.h; sourceTree = "<group>"; };
-		4EE4555B192B3B2900FA71B9 /* ExplodeEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplodeEffect.m; sourceTree = "<group>"; };
 		4EE5FB0719D858DC005E8736 /* _Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Action.h; sourceTree = "<group>"; };
 		4EE5FB0919D858DC005E8736 /* _Scheduled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Scheduled.h; sourceTree = "<group>"; };
 		4EE5FB0A19D858DC005E8736 /* ScheduledTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduledTask.h; sourceTree = "<group>"; };
@@ -969,8 +960,6 @@
 				4E14BC5319225AA0000CDB57 /* PullEvent.m */,
 				4E0BFC5219260BAA00F0E632 /* DotsEvent.h */,
 				4E0BFC5319260BAA00F0E632 /* DotsEvent.m */,
-				4EE45554192B3AC600FA71B9 /* ExplodeEvent.h */,
-				4EE45555192B3AC600FA71B9 /* ExplodeEvent.m */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -992,8 +981,6 @@
 				4E14BC5619225AF7000CDB57 /* PullState.m */,
 				4E0BFC4F19260B9100F0E632 /* DotsState.h */,
 				4E0BFC5019260B9100F0E632 /* DotsState.m */,
-				4EE45557192B3AF900FA71B9 /* ExplodeState.h */,
-				4EE45558192B3AF900FA71B9 /* ExplodeState.m */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -1016,7 +1003,7 @@
 			children = (
 				4ECB29E919FA562A00D60219 /* Config.json */,
 				4ECB29EA19FA562A00D60219 /* Config_Dots.json */,
-				4ECB29EB19FA562A00D60219 /* Config_Explode.json */,
+				4ECB29EB19FA562A00D60219 /* Config_Touch.json */,
 				4ECB29EC19FA562A00D60219 /* Config_Pull.json */,
 				4ECB29ED19FA562A00D60219 /* Config_Swipe.json */,
 			);
@@ -1622,8 +1609,6 @@
 				4E14BC5919225B3E000CDB57 /* PullEffect.m */,
 				4E0BFC5519260BF900F0E632 /* DotsEffect.h */,
 				4E0BFC5619260BF900F0E632 /* DotsEffect.m */,
-				4EE4555A192B3B2900FA71B9 /* ExplodeEffect.h */,
-				4EE4555B192B3B2900FA71B9 /* ExplodeEffect.m */,
 				4E37286C1A023AEB00FA4E8C /* GameEffect.h */,
 				4E37286D1A023AEB00FA4E8C /* GameEffect.m */,
 			);
@@ -1805,7 +1790,7 @@
 				4EF75EA31A00F3250074E493 /* Default-Landscape.png in Resources */,
 				4E6162FB19FFD8E600302D98 /* refresh.png in Resources */,
 				4EF78DBE18C1609300E25A30 /* README.md in Resources */,
-				4ECB29FE19FA562A00D60219 /* Config_Explode.json in Resources */,
+				4ECB29FE19FA562A00D60219 /* Config_Touch.json in Resources */,
 				4EF75E7C1A00B4DE0074E493 /* background_01.png in Resources */,
 				4EF75E9F1A00D5630074E493 /* back_h.png in Resources */,
 				4EF7F57E1A061FF00096949F /* WeiboSDK.bundle in Resources */,
@@ -1868,7 +1853,6 @@
 				4EE5FC2519D858DD005E8736 /* SQLiteManager.m in Sources */,
 				4EE5FC4419D858DD005E8736 /* PositionsExecutor.m in Sources */,
 				4EE5FC5C19D858DD005E8736 /* TableViewBaseContentHelper.m in Sources */,
-				4EE45559192B3AF900FA71B9 /* ExplodeState.m in Sources */,
 				4EE5FC5819D858DD005E8736 /* HeaderSearchTableView.m in Sources */,
 				4EE5FC2C19D858DD005E8736 /* IterateHelper.m in Sources */,
 				4EF75E8D1A00B8AC0074E493 /* UIImage+Additions.m in Sources */,
@@ -1881,7 +1865,6 @@
 				4ED3BE5F18E7043A00621666 /* PositionsHelper.m in Sources */,
 				4EE5FC4519D858DD005E8736 /* QueueExecutorBase.m in Sources */,
 				4EF75E881A00B86A0074E493 /* NSDate+Additions.m in Sources */,
-				4EE45556192B3AC600FA71B9 /* ExplodeEvent.m in Sources */,
 				4EE5FC2A19D858DD005E8736 /* CollectionHelper.m in Sources */,
 				4EE5FC3A19D858DD005E8736 /* README.md in Sources */,
 				4EE5FC1E19D858DD005E8736 /* HTTPGetRequest.m in Sources */,
@@ -1934,7 +1917,6 @@
 				4EE5FC5919D858DD005E8736 /* HeaderTableView.m in Sources */,
 				4EE5FC6019D858DD005E8736 /* ScrollViewController.m in Sources */,
 				4EE5FC2219D858DD005E8736 /* CategoriesLocalizer.m in Sources */,
-				4EE4555C192B3B2900FA71B9 /* ExplodeEffect.m in Sources */,
 				4E77862818B4F576003A1DAC /* LineScrollViewCell.m in Sources */,
 				4EE5FC5219D858DD005E8736 /* UILabel+AdjustWidth.m in Sources */,
 				4E37286E1A023AEB00FA4E8C /* GameEffect.m in Sources */,

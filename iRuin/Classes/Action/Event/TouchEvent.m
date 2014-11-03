@@ -3,4 +3,11 @@
 
 @implementation TouchEvent
 
+-(void)eventInitialize
+{
+    [super eventInitialize];
+    
+    self.isDisableChainable = YES;
+}
+
 @end

@@ -15,12 +15,6 @@
 
 #pragma mark - SEARCH
 
-+(NSMutableArray*) searchExplodeMatchedSymbols: (SymbolView*)symbol
-{
-    return [self searchTouchMatchedSymbols: symbol];
-}
-
-
 +(NSMutableArray*) searchTouchMatchedSymbols: (SymbolView*)symbol
 {
     NSMutableSet* repository = [NSMutableSet setWithCapacity: 1];

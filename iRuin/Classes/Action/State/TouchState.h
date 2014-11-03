@@ -1,5 +1,5 @@
-#import "BaseState.h"
+#import "ChainableState.h"
 
-@interface TouchState : BaseState
+@interface TouchState : ChainableState
 
 @end

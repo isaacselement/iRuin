@@ -1,5 +1,5 @@
-#import "BaseEvent.h"
+#import "ChainableEvent.h"
 
-@interface TouchEvent : BaseEvent
+@interface TouchEvent : ChainableEvent
 
 @end

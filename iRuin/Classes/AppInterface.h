@@ -50,7 +50,6 @@
 
 #import "TouchEvent.h"
 
-#import "ExplodeEvent.h"
 #import "DotsEvent.h"
 #import "PullEvent.h"
 #import "SwipeEvent.h"
@@ -64,7 +63,6 @@
 
 #import "TouchState.h"
 
-#import "ExplodeState.h"
 #import "DotsState.h"
 #import "PullState.h"
 #import "SwipeState.h"
@@ -90,7 +88,6 @@
 
 #import "TouchEffect.h"
 
-#import "ExplodeEffect.h"
 #import "DotsEffect.h"
 #import "PullEffect.h"
 #import "SwipeEffect.h"

@@ -4,35 +4,50 @@
 @implementation ChainableEvent
 
 #pragma mark - Override Methods
+
+-(void)eventInitialize
+{
+    [super eventInitialize];
+    
+    self.isDisableChainable = [DATA.config[@"isDisableChainable"] boolValue];
+}
+
 -(void) eventSymbolsWillRollIn
 {
     [super eventSymbolsWillRollIn];
     
-    // do the filter match symbols job
-    [FilterHelper forwardFilterMatchedObjects];
+    if (!self.isDisableChainable) {
+        // do the filter match symbols job
+        [FilterHelper forwardFilterMatchedObjects];
+    }
 }
-
 
 
 -(void) eventSymbolsDidAdjusts
 {
     [super eventSymbolsDidAdjusts];
     
-    [(ChainableState*)self.state stateStartChaineVanish];
+    if (!self.isDisableChainable) {
+        [(ChainableState*)self.state stateStartChaineVanish];
+    }
 }
 
 -(void) eventSymbolsDidFillIn
 {
     [super eventSymbolsDidFillIn];
     
-    [(ChainableState*)self.state stateStartChaineVanish];
+    if (!self.isDisableChainable) {
+        [(ChainableState*)self.state stateStartChaineVanish];
+    }
 }
 
 -(void) eventSymbolsDidSqueeze
 {
     [super eventSymbolsDidSqueeze];
     
-    [(ChainableState*)self.state stateStartChaineVanish];
+    if (!self.isDisableChainable) {
+        [(ChainableState*)self.state stateStartChaineVanish];
+    }
 }
 
 

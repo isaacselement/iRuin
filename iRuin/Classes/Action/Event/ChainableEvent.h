@@ -3,6 +3,10 @@
 @interface ChainableEvent : BaseEvent
 
 
+@property (assign) BOOL isDisableChainable;
+
+
+
 #pragma mark - Event Methods
 -(void) didChainVanish;
 

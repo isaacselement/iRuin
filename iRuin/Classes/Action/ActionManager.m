@@ -30,13 +30,12 @@ static ActionManager* sharedInstance = nil;
 {
     self = [super init];
     if (self) {
-        gameModes = @[MODE_MOVE, MODE_TOUCH, MODE_EXPLODE, MODE_DOTS, MODE_PULL, MODE_SWIPE];
+        gameModes = @[MODE_MOVE, MODE_TOUCH, MODE_DOTS, MODE_PULL, MODE_SWIPE];
         modesRepository = [[NSMutableDictionary alloc] init];
         
         gameEvent = [[GameEvent alloc] init];
         gameState = [[GameState alloc] init];
         gameEffect = [[GameEffect alloc] init];
-        
     }
     return self;
 }

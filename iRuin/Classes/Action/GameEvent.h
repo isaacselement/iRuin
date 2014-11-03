@@ -10,6 +10,8 @@
 
 -(void) gamePause;
 
+-(void) gameResume;
+
 -(void) gameRefresh;
 
 -(void) gameChat;

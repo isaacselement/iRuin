@@ -47,15 +47,13 @@ static ActionManager* sharedInstance = nil;
     
     // modes
     [self establishGameModes];
-    [self switchToMode: MODE_EXPLODE];
+    [self switchToMode: MODE_PULL];
     
     // when chapter config is ready
     [self renderFramesWithCurrentOrientation];
     
     [gameEvent gameLaunch];
     
-    
-    [ScheduledTask]
 }
 
 -(void) establishGameModes

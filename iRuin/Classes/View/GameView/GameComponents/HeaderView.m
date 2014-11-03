@@ -30,7 +30,7 @@
 {
     LineScrollViewCell* cell = [lineScrollViewObj visibleCellAtIndex: index];
     
-    [ColorHelper setBackGround: cell color: @(index % 5)];
+    [ColorHelper setBackGround: cell color: @(index % 5 + 10)];
     
 //    int indexLableTag = 2010;
 //    UILabel* indexLabel = (UILabel*)[cell viewWithTag: indexLableTag];

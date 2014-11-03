@@ -10,10 +10,10 @@
 @optional
 // be sure that LineScrollView.width = cell.width * int
 -(float)lineScrollView:(LineScrollView *)lineScrollView widthForCellAtIndex:(int)index;
-
--(void)lineScrollView:(LineScrollView *)lineScrollView willShowIndex:(int)index;
 -(BOOL)lineScrollView:(LineScrollView *)lineScrollView shouldShowIndex:(int)index;
+-(void)lineScrollView:(LineScrollView *)lineScrollView willShowIndex:(int)index;
 -(void)lineScrollView:(LineScrollView *)lineScrollView didSelectIndex:(int)index;
+
 
 @end
 
@@ -30,13 +30,19 @@
 
 @interface LineScrollView : UIScrollView
 
-@property (nonatomic, assign) id<LineScrollViewDataSource> dataSource;
-
-
+@property (assign) CGFloat eachCellWidth;   // should be CGFloat ! important !!! cause will raise the caculate problem
 @property (strong, readonly) UIView* contentView;
 
 
-@property (assign) CGFloat eachCellWidth;   // should be CGFloat ! important !!! cause will raise the caculate problem
+@property (nonatomic, assign) id<LineScrollViewDataSource> dataSource;
+
+
+@property (copy) float(^lineScrollViewWidthForCellAtIndex)(LineScrollView *lineScrollView, int index);
+@property (copy) BOOL(^lineScrollViewShouldShowIndex)(LineScrollView *lineScrollView, int index);
+@property (copy) void(^lineScrollViewWillShowIndex)(LineScrollView *lineScrollView, int index);
+@property (copy) void(^lineScrollViewDidSelectIndex)(LineScrollView *lineScrollView, int index);
+
+
 
 
 

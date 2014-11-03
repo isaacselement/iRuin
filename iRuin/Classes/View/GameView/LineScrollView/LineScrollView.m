@@ -43,7 +43,10 @@
     CGPoint location = [[touches anyObject] locationInView:self];
     LineScrollViewCell* view = (LineScrollViewCell*)[self hitTest:location withEvent:event];
     int index = [self indexOfVisibleCell: view];
-    if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:didSelectIndex:)]) {
+    
+    if (self.lineScrollViewDidSelectIndex) {
+        self.lineScrollViewDidSelectIndex(self, index);
+    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:didSelectIndex:)]) {
         [dataSource lineScrollView: self didSelectIndex:index];
     }
 }
@@ -120,7 +123,9 @@
         
         // first call
         currentIndex++;
-        if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:willShowIndex:)]) {
+        if (self.lineScrollViewWillShowIndex) {
+            self.lineScrollViewWillShowIndex(self, currentIndex);
+        } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:willShowIndex:)]) {
             [dataSource lineScrollView: self willShowIndex:currentIndex];
         }
     }
@@ -147,10 +152,15 @@
     
     // ask datasource
     int nextIndex = currentDirection ? currentIndex - 1 : currentIndex + 1;
-    if (dataSource && [dataSource respondsToSelector:@selector(lineScrollView:shouldShowIndex:)]) {
-        if (! [dataSource lineScrollView:self shouldShowIndex:nextIndex]) {
-            return;
-        }
+    
+    BOOL shouldShowNextIndex = YES;
+    if (self.lineScrollViewShouldShowIndex) {
+        shouldShowNextIndex = self.lineScrollViewShouldShowIndex(self, nextIndex);
+    } else if (dataSource && [dataSource respondsToSelector:@selector(lineScrollView:shouldShowIndex:)]) {
+        shouldShowNextIndex = [dataSource lineScrollView:self shouldShowIndex:nextIndex];
+    }
+    if (!shouldShowNextIndex) {
+        return;
     }
     
     // if no return , check and do relocate if necessary.
@@ -217,7 +227,9 @@
     
     
     // call delegate
-    if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:willShowIndex:)]) {
+    if (self.lineScrollViewWillShowIndex) {
+        self.lineScrollViewWillShowIndex(self, currentIndex);
+    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:willShowIndex:)]) {
         [dataSource lineScrollView: self willShowIndex:currentIndex];
     }
 }
@@ -225,7 +237,9 @@
 -(int) getCellWidthForIndex: (int)index
 {
     CGFloat cellWidth = self.eachCellWidth ;
-    if (dataSource && [dataSource respondsToSelector:@selector(lineScrollView:widthForCellAtIndex:)]) {
+    if (self.lineScrollViewWidthForCellAtIndex) {
+        cellWidth = self.lineScrollViewWidthForCellAtIndex(self, index);
+    } else if (dataSource && [dataSource respondsToSelector:@selector(lineScrollView:widthForCellAtIndex:)]) {
        cellWidth = [dataSource lineScrollView: self widthForCellAtIndex: index];
     }
     return cellWidth;

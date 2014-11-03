@@ -2,15 +2,15 @@
 #import "AppInterface.h"
 
 @implementation GameView
-{
-    InteractiveView* backActionView;
-    InteractiveView* pauseActionView;
-    InteractiveView* refreshActionView;
-    InteractiveView* chatActionView;
-}
 
 @synthesize headerView;
 @synthesize containerView;
+
+@synthesize backActionView;
+@synthesize pauseActionView;
+@synthesize refreshActionView;
+@synthesize chatActionView;
+
 
 - (id)init
 {
@@ -36,8 +36,13 @@
         
         // pause
         pauseActionView = [[InteractiveView alloc] init];
+        pauseActionView.imageView.enableSelected = YES;
         pauseActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view){
-            [ACTION.gameEvent gamePause];
+            if (view.selected) {
+                [ACTION.gameEvent gamePause];
+            } else {
+                [ACTION.gameEvent gameResume];
+            }
         };
         [self addSubview: pauseActionView];
         

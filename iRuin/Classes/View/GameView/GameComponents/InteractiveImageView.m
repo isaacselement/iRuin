@@ -26,7 +26,8 @@
     // touch begin, highlighted
 
     if (self.enableSelected && self.selected) {
-        [self setSelectedHighlighted: YES];
+//        [self setSelectedHighlighted: YES];
+        if (self.selectedHighlightedImage) self.image = self.selectedHighlightedImage;
     } else {
         self.highlighted = YES;
     }
@@ -44,7 +45,6 @@
         // change selected status
         if (self.enableSelected) {
             self.selected = !self.selected;
-            [self setSelectedHighlighted: NO];
         } else {
             self.image = _normalImage;
         }
@@ -60,16 +60,6 @@
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.highlighted = NO;
-}
-
-
--(void) setSelectedHighlighted: (BOOL)selectedHighlighted
-{
-    if (selectedHighlighted) {
-        if (self.selectedHighlightedImage) self.image = self.selectedHighlightedImage;
-    } else {
-        self.image = self.selectedImage;
-    }
 }
 
 -(void)setSelected:(BOOL)selected

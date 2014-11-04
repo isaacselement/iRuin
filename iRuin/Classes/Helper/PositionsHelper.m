@@ -30,7 +30,6 @@
 +(NSMutableArray*) translateToOneDimensionAndRemoveTheNull: (NSMutableArray*)viewsSequence
 {
     // translate to one dimension array .
-    // remove the [NSNull null] single instance
     NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
     [onedimensionViews removeObject:[NSNull null]];
     return onedimensionViews;

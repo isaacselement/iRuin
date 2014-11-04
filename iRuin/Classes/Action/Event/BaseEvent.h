@@ -26,8 +26,13 @@
 -(void) eventSymbolsWillVanish: (NSArray*)symbols;
 -(void) eventSymbolsDidVanish: (NSArray*)symbols;
 
+-(void) eventSymbolsWillAdjusts;
 -(void) eventSymbolsDidAdjusts;
+
+-(void) eventSymbolsWillFillIn;
 -(void) eventSymbolsDidFillIn;
+
+-(void) eventSymbolsWillSqueeze;
 -(void) eventSymbolsDidSqueeze;
 
 @end

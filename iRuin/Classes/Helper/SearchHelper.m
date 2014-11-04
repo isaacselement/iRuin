@@ -118,7 +118,7 @@
 // connected means just left, up, right , down , these four directions  .
 +(void) searchConnectedSymbols: (SymbolView*)symbol repository:(NSMutableSet*)repository
 {
-    if (!symbol) return ;
+    if (!symbol || (id)symbol == [NSNull null]) return;
     
     [repository addObject: symbol];
     NSMutableArray* results = [self searchBothHorizontallyAndVertically: symbol];
@@ -131,7 +131,7 @@
 
 +(NSMutableArray*) searchBothHorizontallyAndVertically: (SymbolView*)symbol
 {
-    if (!symbol) return nil;
+    if (!symbol || (id)symbol == [NSNull null]) return nil;
     
     NSMutableArray* results = [NSMutableArray array];
     NSMutableArray* verticals = [self searchVertically: symbol];
@@ -148,7 +148,7 @@
 
 +(NSMutableArray*) searchHorizontally: (SymbolView*)symbol
 {
-    if (!symbol) return nil;
+    if (!symbol || (id)symbol == [NSNull null]) return nil;
     
     NSMutableArray* array = [self searchSameLinesSymbols: symbol directions: DirectionRIGHT | DirectionLEFT];
     NSMutableArray* results = [ArrayHelper translateToOneDimension: array];
@@ -158,7 +158,7 @@
 
 +(NSMutableArray*) searchVertically: (SymbolView*)symbol
 {
-    if (!symbol) return nil;
+    if (!symbol || (id)symbol == [NSNull null]) return nil;
     
     NSMutableArray* array = [self searchSameLinesSymbols: symbol directions: DirectionUP | DirectionDOWN];
     NSMutableArray* results = [ArrayHelper translateToOneDimension: array];
@@ -198,6 +198,10 @@
     while (symbolGet) {
         symbolGet = [self getAdjacentSymbolByDirection: symbolGet direction:direction];
         if((symbol.identification == symbolGet.identification)) {
+            if ([array containsObject: symbolGet]) {
+                DLOG(@"ERROR !!!~~~~~~~  ++++");
+                break;
+            }
             [array addObject: symbolGet];
         } else {
             break;
@@ -220,7 +224,7 @@
 
 +(NSMutableArray*) getHorizontally: (SymbolView*)symbol
 {
-    if (!symbol) return nil;
+    if (!symbol || (id)symbol == [NSNull null]) return nil;
     
     NSMutableArray* array = [self getSameLinesSymbols: symbol directions: DirectionRIGHT | DirectionLEFT];
     NSMutableArray* results = [ArrayHelper translateToOneDimension: array];
@@ -230,7 +234,7 @@
 
 +(NSMutableArray*) getVertically: (SymbolView*)symbol
 {
-    if (!symbol) return nil;
+    if (!symbol || (id)symbol == [NSNull null]) return nil;
     
     NSMutableArray* array = [self getSameLinesSymbols: symbol directions: DirectionUP | DirectionDOWN];
     NSMutableArray* results = [ArrayHelper translateToOneDimension: array];
@@ -264,6 +268,10 @@
     
     while (symbolGet) {
         symbolGet = [self getAdjacentSymbolByDirection: symbolGet direction:direction];
+        if ([array containsObject: symbolGet]) {
+            DLOG(@"ERROR !!!!!!+++++++++");
+            break;
+        }
         if(symbolGet) [array addObject: symbolGet];
     }
     return array;
@@ -289,7 +297,7 @@
 
 +(SymbolView*) getAdjacentSymbolByDirection: (SymbolView*)symbol direction:(APPDirection)direction
 {
-    if(! symbol) return nil;
+    if(! symbol || (id)symbol == [NSNull null]) return nil;
     id obj = [self getAdjacentObjectByDirection: VIEW.gameView.symbolsInContainer row:symbol.row column:symbol.column direction:direction];
     return obj == [NSNull null] ? nil : obj;
 }

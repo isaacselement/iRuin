@@ -46,10 +46,8 @@ static ActionManager* sharedInstance = nil;
     
     // modes
     [self establishGameModes];
-    [self switchToMode: MODE_PULL];
     
-    // when chapter config is ready
-    [self renderFramesWithCurrentOrientation];
+    [self switchToMode: MODE_PULL];
     
     [gameEvent gameLaunch];
     
@@ -93,6 +91,9 @@ static ActionManager* sharedInstance = nil;
     self.currentEvent   = [[modesRepository objectForKey: mode] objectForKey: kEVENT];
     self.currentState   = [[modesRepository objectForKey: mode] objectForKey: kSTATE];
     self.currentEffect  = [[modesRepository objectForKey: mode] objectForKey: kEFFECT];
+    
+    // when chapter config is ready
+    [self renderFramesWithCurrentOrientation];
     
     // do some stuff
     [self.currentEvent eventInitialize];

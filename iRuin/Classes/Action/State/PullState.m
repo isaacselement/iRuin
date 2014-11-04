@@ -49,14 +49,16 @@
     
     xDistance = [xSymbol centerX] - [symbol centerX];
     yDistance = [ySymbol centerY] - [symbol centerY];
-    
 }
 
 - (void)stateTouchesBegan:(SymbolView*)symbol location:(CGPoint)location
 {
     [super stateTouchesBegan:symbol location:location];
     
-    // When the symbol is nil situation
+    // when the symbols is vanishing , adjusting , filling , squeezing ...
+    if (ACTION.gameState.isSymbolsOnMovement) {
+        return;
+    }
     
     touchingSymbol = symbol;
     
@@ -69,7 +71,11 @@
     
     // views
     currentVerticalViews = [SearchHelper getVertically: symbol];
+    if (currentVerticalViews.count == 0) currentVerticalViews = nil;
     currentHorizontalViews = [SearchHelper getHorizontally: symbol];
+    if (currentHorizontalViews.count == 0) currentHorizontalViews = nil;
+
+    // sort
     [currentHorizontalViews sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         UIView* view1 = (UIView*)obj1;
         UIView* view2 = (UIView*)obj2;
@@ -93,11 +99,14 @@
 {
     [super stateTouchesMoved:symbol location:location];
     
+    if (! touchingSymbol) return;
+    
+        
     if (! isCheckDirection) {
         [self checkDirection: location];
     } else {
-        if (! currentMovingViews) return;
         
+        if(! currentMovingViews) return;
         
         if (isVertical) {
 
@@ -131,6 +140,7 @@
 - (void)stateTouchesEnded:(SymbolView*)symbol location:(CGPoint)location
 {
     [super stateTouchesEnded:symbol location:location];
+    touchingSymbol = nil;
     
     
     // To the appropriate positions, and set the right row column
@@ -145,6 +155,7 @@
 - (void)stateTouchesCancelled:(SymbolView*)symbol location:(CGPoint)location
 {
     [super stateTouchesCancelled:symbol location:location];
+    touchingSymbol = nil;
     
     // To the appropriate positions, and set the right row column
     [self adjustMovingViewsPositions: YES];
@@ -161,19 +172,22 @@
     double distanceMove = sqrt((distanceX * distanceX) + (distanceY * distanceY));
     if (distanceMove >= shift_direction_nimidistance) {
         isCheckDirection = YES;
-        isVertical = fabsf(distanceY) > fabsf(distanceX) ;
         
+        isVertical = fabsf(distanceY) > fabsf(distanceX) ;
         
         // get the direction , then prepare the moving views
         currentMovingViews = isVertical ? currentVerticalViews : currentHorizontalViews;
         SymbolView* first = [currentMovingViews firstObject];
         SymbolView* last = [currentMovingViews lastObject];
         
+        if (!first || !last) return;
+        
         
         // the two additional views
         NSArray* twoViews = [self getTwoUselessViews];
         SymbolView* firstView = [twoViews firstObject];
         SymbolView* lastView = [twoViews lastObject];
+        
         // positions
         if (isVertical) {
             firstView.center = CGPointMake([first centerX], [first centerY] - yDistance);
@@ -211,6 +225,11 @@
         [results removeObject: obj];
         return NO;
     }];
+    
+    for (int i = 0; i < 2; i++) {
+        SymbolView* symbol = results[i];
+        [symbol restore];
+    }
     
     return results;
 }

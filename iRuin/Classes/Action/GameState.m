@@ -4,6 +4,19 @@
 @implementation GameState
 
 
+@synthesize orientation;
+
+@synthesize isGameStarted;
+
+@synthesize isSymbolsOnMovement;
+
+@synthesize currentChapter;
+
+@synthesize vanishAmount;
+
+
+
+
 - (instancetype)init
 {
     self = [super init];

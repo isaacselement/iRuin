@@ -36,7 +36,7 @@
 
 -(void) effectStartRollIn
 {
-    [event performSelector:@selector(eventSymbolsWillRollIn) withObject:nil];
+    [event eventSymbolsWillRollIn];
     
     [VIEW.actionDurations clear];
     [self startSymbolsRollIn];
@@ -47,7 +47,7 @@
 
 -(void) effectStartRollOut
 {
-    [event performSelector:@selector(eventSymbolsWillRollOut) withObject:nil];
+    [event eventSymbolsWillRollOut];
     
     [VIEW.actionDurations clear];
     [self startSymbolsRollOut];
@@ -70,6 +70,8 @@
 
 -(void) effectStartAdjusts: (NSArray*)nullRowColumns
 {
+    [event eventSymbolsWillAdjusts];
+    
     [VIEW.actionDurations clear];
     [self startSymbolsAdjusts: nullRowColumns];
     double totalDuration = [VIEW.actionDurations take];
@@ -79,6 +81,8 @@
 
 -(void) effectStartFillIn
 {
+    [event eventSymbolsWillFillIn];
+    
     [VIEW.actionDurations clear];
     [self startSymbolsFillIn];
     double totalDuration = [VIEW.actionDurations take];
@@ -89,6 +93,8 @@
 
 -(void) effectStartSqueeze: (NSArray*)nullRowColumns
 {
+    [event eventSymbolsWillSqueeze];
+    
     [VIEW.actionDurations clear];
     [self startSymbolsSqueeze: nullRowColumns];
     double totalDuration = [VIEW.actionDurations take];
@@ -149,8 +155,6 @@
 
 
 
-
-
 -(void) startSymbolsVanish: (NSArray*)views
 {
     NSArray* actionsConfig = DATA.config[@"SYMBOLS_ActionExecutors"][@"Vanish_ActionExecutors"];
@@ -172,11 +176,10 @@
 {
     NSDictionary* linesConfig = config[@"LINES"];
     NSDictionary* indexPathsConfig = config[@"INDEXPATHS"];
-    
-    NSMutableArray* nullIndexPaths = [QueueIndexPathParser getIndexPathsIn: lines elements:nullRowColumns];
-    
     BOOL isBackward = [indexPathsConfig[@"isBackward"] boolValue];
     BOOL isColumnBase = [indexPathsConfig[@"isColumnBase"] boolValue];
+    
+    NSMutableArray* nullIndexPaths = [QueueIndexPathParser getIndexPathsIn: lines elements:nullRowColumns];
     NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupTheNullIndexPaths: nullIndexPaths isNullIndexPathsBreakWhenNotCoterminous:NO isColumnBase:isColumnBase];
     NSArray* indexPaths = [QueueIndexPathParser assembleIndexPaths:lines groupedNullIndexpaths:groupedNullIndexpaths isBackward:isBackward isColumnBase:isColumnBase];
     
@@ -205,13 +208,12 @@
 {
     NSDictionary* linesConfig = config[@"LINES"];
     NSDictionary* indexPathsConfig = config[@"INDEXPATHS"];
+    BOOL isBackward = [indexPathsConfig[@"isBackward"] boolValue];
+    BOOL isColumnBase = [indexPathsConfig[@"isColumnBase"] boolValue];
     
     
     NSMutableArray* nullRowColumns = [PositionsHelper getIndexPathsNullInVisualAreaViews];
     NSMutableArray* nullIndexPaths = [QueueIndexPathParser getIndexPathsIn: lines elements:nullRowColumns];
-    
-    BOOL isBackward = [indexPathsConfig[@"isBackward"] boolValue];
-    BOOL isColumnBase = [indexPathsConfig[@"isColumnBase"] boolValue];
     NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupTheNullIndexPaths: nullIndexPaths isNullIndexPathsBreakWhenNotCoterminous:YES isColumnBase:isColumnBase];
     NSArray* indexPaths = [QueueIndexPathParser assembleIndexPaths:lines groupedNullIndexpaths:groupedNullIndexpaths isBackward:isBackward isColumnBase:isColumnBase];
     NSMutableArray* views = [QueueViewsHelper getReuseableViewsQueuesByGroupedNullIndexpaths:groupedNullIndexpaths];

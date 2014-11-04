@@ -57,8 +57,9 @@
 //    startTime = [NSDate date];
 //#endif
     
-    int count = symbols.count;
-    ACTION.gameState.vanishAmount += count;
+    ACTION.gameState.isSymbolsOnMovement = YES;
+    
+    ACTION.gameState.vanishAmount += symbols.count;
 }
 
 -(void) eventSymbolsDidVanish: (NSArray*)symbols
@@ -71,17 +72,36 @@
 }
 
 
+
+-(void) eventSymbolsWillAdjusts
+{
+    
+}
 -(void) eventSymbolsDidAdjusts
 {
     DLOG(@" eventSymbolsDidAdjusts ");
     [state stateStartFillIn];
 }
+
+
+-(void) eventSymbolsWillFillIn
+{
+
+}
 -(void) eventSymbolsDidFillIn
 {
+    ACTION.gameState.isSymbolsOnMovement = NO;
     DLOG(@" eventSymbolsDidFillIn ");
+}
+
+
+-(void) eventSymbolsWillSqueeze
+{
+
 }
 -(void) eventSymbolsDidSqueeze
 {
+    ACTION.gameState.isSymbolsOnMovement = NO;
     DLOG(@" eventSymbolsDidSqueeze ");
 }
 

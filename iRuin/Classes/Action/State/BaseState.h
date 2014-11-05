@@ -16,13 +16,6 @@
 
 
 #pragma mark - Public Methods
--(NSMutableArray*) ruinVanishedSymbols: (NSArray*)symbols;
--(void) stateStartNextPhase: (NSArray*)nullRowColumns;
 
-
-
--(void) stateStartAdjusts: (NSArray*)nullRowColumns;
--(void) stateStartFillIn;
--(void) stateStartSqueeze: (NSArray*)nullRowColumns;
 
 @end

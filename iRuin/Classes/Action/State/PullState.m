@@ -61,6 +61,7 @@
     }
     
     touchingSymbol = symbol;
+    currentMovingViews = nil;
     
     
     offsetX = location.x - symbol.center.x;
@@ -140,8 +141,9 @@
 - (void)stateTouchesEnded:(SymbolView*)symbol location:(CGPoint)location
 {
     [super stateTouchesEnded:symbol location:location];
-    touchingSymbol = nil;
     
+    if (!touchingSymbol || !currentMovingViews) return;
+    touchingSymbol = nil;
     
     // To the appropriate positions, and set the right row column
     [self adjustMovingViewsPositions: NO];
@@ -155,6 +157,8 @@
 - (void)stateTouchesCancelled:(SymbolView*)symbol location:(CGPoint)location
 {
     [super stateTouchesCancelled:symbol location:location];
+    
+    if (!touchingSymbol || !currentMovingViews) return;
     touchingSymbol = nil;
     
     // To the appropriate positions, and set the right row column

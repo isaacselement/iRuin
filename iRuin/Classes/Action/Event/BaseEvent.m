@@ -36,7 +36,7 @@
 }
 -(void) eventSymbolsDidRollIn
 {
-    DLOG(@" eventSymbolsDidRollIn ");
+
 }
 
 -(void) eventSymbolsWillRollOut
@@ -45,7 +45,7 @@
 }
 -(void) eventSymbolsDidRollOut
 {
-    DLOG(@" eventSymbolsDidRollOut ");
+
 }
 
 //#ifdef DEBUG
@@ -67,8 +67,8 @@
 //#ifdef DEBUG
 //    NSLog(@"eventSymbolsDidVanish duration: %f", [[NSDate date] timeIntervalSinceDate: startTime]);
 //#endif
-//    DLOG(@" eventSymbolsDidVanish ");
-    [state stateStartNextPhase: [state ruinVanishedSymbols: symbols]];
+    
+    for (SymbolView* symbol in symbols) [symbol restore];
 }
 
 
@@ -79,8 +79,7 @@
 }
 -(void) eventSymbolsDidAdjusts
 {
-    DLOG(@" eventSymbolsDidAdjusts ");
-    [state stateStartFillIn];
+    
 }
 
 
@@ -91,7 +90,6 @@
 -(void) eventSymbolsDidFillIn
 {
     ACTION.gameState.isSymbolsOnMovement = NO;
-    DLOG(@" eventSymbolsDidFillIn ");
 }
 
 
@@ -102,7 +100,6 @@
 -(void) eventSymbolsDidSqueeze
 {
     ACTION.gameState.isSymbolsOnMovement = NO;
-    DLOG(@" eventSymbolsDidSqueeze ");
 }
 
 

@@ -27,27 +27,27 @@
 {
     [super eventSymbolsDidAdjusts];
     
-    if (!self.isDisableChainable) {
-        [(ChainableState*)self.state stateStartChaineVanish];
-    }
+//    if (!self.isDisableChainable) {
+//        [(ChainableState*)self.state stateStartChaineVanish];
+//    }
 }
 
 -(void) eventSymbolsDidFillIn
 {
     [super eventSymbolsDidFillIn];
     
-    if (!self.isDisableChainable) {
-        [(ChainableState*)self.state stateStartChaineVanish];
-    }
+//    if (!self.isDisableChainable) {
+//        [(ChainableState*)self.state stateStartChaineVanish];
+//    }
 }
 
 -(void) eventSymbolsDidSqueeze
 {
     [super eventSymbolsDidSqueeze];
     
-    if (!self.isDisableChainable) {
-        [(ChainableState*)self.state stateStartChaineVanish];
-    }
+//    if (!self.isDisableChainable) {
+//        [(ChainableState*)self.state stateStartChaineVanish];
+//    }
 }
 
 

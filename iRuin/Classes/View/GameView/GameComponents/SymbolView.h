@@ -15,7 +15,6 @@
 
 
 #pragma mark - Public Methods
--(void) vanish;
 -(void) restore;
 -(void) addEllipseInRectWithAnimation;
 

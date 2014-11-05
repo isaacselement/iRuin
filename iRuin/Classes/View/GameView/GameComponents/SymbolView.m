@@ -82,10 +82,6 @@
 //}
 
 #pragma mark - Public Methods
--(void) vanish
-{
-    [self restore];
-}
 
 -(void) restore
 {

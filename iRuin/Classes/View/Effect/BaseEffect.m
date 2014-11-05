@@ -195,6 +195,9 @@
     
     // start , trigger event
     [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:nil];
+    
+    
+//    [PositionsHelper updateAdjustRowsColumnsInVisualArea: views];
 }
 
 

@@ -139,6 +139,7 @@ static ActionManager* sharedInstance = nil;
         [QueuePositionsHelper refreshRectsPositionsRepositoryWhenClipsToBoundsIsNO:visualFrame];
     }
     
+    
     // A
     [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
         SymbolView* symbolView = (SymbolView*)obj;
@@ -153,6 +154,7 @@ static ActionManager* sharedInstance = nil;
         }
         return NO;
     }];
+    
     
     // B
     [IterateHelper iterateTwoDimensionArray: QueueViewsHelper.viewsInVisualArea handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {

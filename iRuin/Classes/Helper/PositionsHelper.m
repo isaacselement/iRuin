@@ -86,9 +86,13 @@
             
             CGRect rect = [[innerRects objectAtIndex: j] CGRectValue];
             if ([QueuePositionsHelper isPointInclude: center inRect:rect]) {
-                symbol.row = i;
-                symbol.column = j;
-                [[viewsInVisualArea objectAtIndex: i] replaceObjectAtIndex: j withObject:symbol];
+                if (i < [viewsInVisualArea count]) {
+                    if (j < [viewsInVisualArea[i] count]) {
+                        symbol.row = i;
+                        symbol.column = j;
+                        [[viewsInVisualArea objectAtIndex: i] replaceObjectAtIndex: j withObject:symbol];
+                    }
+                }
                 return;
             }
         }

@@ -20,18 +20,6 @@
     
     [ACTION.currentEffect effectStartRollIn];
     
-    // for the no roll in symbols ...
-    [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-        SymbolView* symbolView = (SymbolView*)obj;
-        CGRect rect = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
-        
-        if (!CGRectEqualToRect(rect, symbolView.frame)) {
-            symbolView.frame = rect;
-        }
-
-        return NO;
-    }];
-    
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];
 }
 

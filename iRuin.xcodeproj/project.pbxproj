@@ -194,6 +194,7 @@
 		4EEAFF6718D419C1001FB745 /* FrameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF6618D419C1001FB745 /* FrameManager.m */; };
 		4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7018D47D96001FB745 /* EffectHelper.m */; };
 		4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7418D47D96001FB745 /* SearchHelper.m */; };
+		4EEE51A31A0BB166002CD333 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE51A21A0BB166002CD333 /* TimerView.m */; };
 		4EF282751908038800AA0C54 /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF282741908038800AA0C54 /* GameState.m */; };
 		4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6641E19F40A4A00C2B9FC /* ExplodesExecutor.m */; };
 		4EF75E771A008E090074E493 /* iPad_Landscape.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E731A008E090074E493 /* iPad_Landscape.json */; };
@@ -594,6 +595,8 @@
 		4EEAFF7018D47D96001FB745 /* EffectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectHelper.m; sourceTree = "<group>"; };
 		4EEAFF7318D47D96001FB745 /* SearchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHelper.h; sourceTree = "<group>"; };
 		4EEAFF7418D47D96001FB745 /* SearchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHelper.m; sourceTree = "<group>"; };
+		4EEE51A11A0BB166002CD333 /* TimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerView.h; sourceTree = "<group>"; };
+		4EEE51A21A0BB166002CD333 /* TimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerView.m; sourceTree = "<group>"; };
 		4EF282731908038800AA0C54 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
 		4EF282741908038800AA0C54 /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
 		4EF6641D19F40A4A00C2B9FC /* ExplodesExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodesExecutor.h; sourceTree = "<group>"; };
@@ -771,6 +774,8 @@
 				4E08AB9A19FE66F400F1F449 /* InteractiveImageView.m */,
 				4E6162FC19FFDAB900302D98 /* InteractiveView.h */,
 				4E6162FD19FFDAB900302D98 /* InteractiveView.m */,
+				4EEE51A11A0BB166002CD333 /* TimerView.h */,
+				4EEE51A21A0BB166002CD333 /* TimerView.m */,
 			);
 			path = GameComponents;
 			sourceTree = "<group>";
@@ -1923,6 +1928,7 @@
 				4EE5FC4819D858DD005E8736 /* QueuePositionsHelper.m in Sources */,
 				4EE5FC3E19D858DD005E8736 /* ActionExecutorManager.m in Sources */,
 				4EDACDBF191FB18300A8E84E /* ChainableEvent.m in Sources */,
+				4EEE51A31A0BB166002CD333 /* TimerView.m in Sources */,
 				4E8067C218C35CB900AF71B5 /* MoveState.m in Sources */,
 				4EDACDC2191FB1A600A8E84E /* ChainableState.m in Sources */,
 				4EE5FC5D19D858DD005E8736 /* NormalTextField.m in Sources */,

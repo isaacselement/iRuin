@@ -13,6 +13,7 @@
 //    UILabel* columnLabel;
 }
 
+
 @synthesize row;
 @synthesize column;
 
@@ -28,6 +29,8 @@
     if (self) {
 //        containerLayer = [CATransformLayer layer];
 //        [self.layer addSublayer: containerLayer];
+        
+        self.score = 1.0;
         
         imageView = [[InteractiveImageView alloc] initWithFrame: self.bounds];
         imageView.userInteractionEnabled = NO;
@@ -71,7 +74,7 @@
 }
 
 -(NSString*) description {
-    return [NSString stringWithFormat: @"[[%s]%p(%d,%d) ,id: %d]", object_getClassName(self), self, row, column, self.identification];
+    return [NSString stringWithFormat: @"[[%s] %p (%d,%d) ,id: %d]", object_getClassName(self), self, row, column, self.identification];
 }
 
 // Only override drawRect: if you perform custom drawing.

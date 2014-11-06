@@ -18,6 +18,8 @@
 {
     [[ScheduledTask sharedInstance] start];
     
+    VIEW.gameView.headerView.timerView.totalTime = 120;
+    
     [ACTION.currentEffect effectStartRollIn];
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];

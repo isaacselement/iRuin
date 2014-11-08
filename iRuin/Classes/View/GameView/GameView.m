@@ -3,7 +3,8 @@
 
 @implementation GameView
 
-@synthesize headerView;
+@synthesize timerView;
+@synthesize scoreLabel;
 @synthesize containerView;
 
 @synthesize backActionView;
@@ -20,8 +21,14 @@
         containerView = [[ContainerView alloc] init];
         [self addSubview: containerView];
         
-        headerView = [[HeaderView alloc] init];
-        [self addSubview: headerView];
+        
+        // header views
+        
+        timerView = [[TimerView alloc] init];
+        [self addSubview: timerView];
+        
+        scoreLabel = [[NumberLabel alloc] init];
+        [self addSubview: scoreLabel];
         
         // action views
         

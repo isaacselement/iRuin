@@ -3,18 +3,21 @@
 
 @implementation GameEffect
 
+
 #define kIgnore @"_"
 #define kFrame @"Frame"
 #define kExecutors @"Executors"
+#define kTextFormatter @"kTextFormatter"
+
+
 
 -(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config
 {
-    if (!config) return;
+    if (!config || config.count == 0) return;
     
     KeyValueCodingHelper* keyValueCodingHelper = [KeyValueCodingHelper sharedInstance];
     
     if (! [keyValueCodingHelper translateValueHandler]) {
-        
         // set handler, for LineScrollView's "eachCellWidth" now
         [keyValueCodingHelper setTranslateValueHandler:^id(id value, NSString *type, NSString *key) {
             id result = [KeyValueCodingHelper translateValue: value type:type];
@@ -33,7 +36,6 @@
             }
             return result;
         }];
-        
     }
     
     
@@ -48,10 +50,16 @@
         [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:@[object] values:nil baseTimes:nil];
     }
     
+    id textFormatterConfig = config[kTextFormatter];
+    if (textFormatterConfig && [object isKindOfClass:[UILabel class]]) {
+        [[TextFormatter sharedInstance] execute: textFormatterConfig onObject:object];
+    }
+    
     for (NSString* key in config) {
         if ([key hasSuffix:kIgnore]) continue;
         if ([key isEqualToString:kFrame]) continue;
         if ([key isEqualToString:kExecutors]) continue;
+        if ([key isEqualToString:kTextFormatter]) continue;
         
         id value = config[key];
         
@@ -65,7 +73,6 @@
     }
     
 }
-
 
 
 @end

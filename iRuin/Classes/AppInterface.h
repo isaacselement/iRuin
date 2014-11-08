@@ -20,6 +20,8 @@
 
 #import "Modules.h"
 
+#import "TextFormatter.h"
+
 
 //InAppIMSDK
 #import "InAppIM.h"
@@ -104,7 +106,6 @@
 // GameView
 #import "ChaptersView.h"
 #import "GameView.h"
-#import "HeaderView.h"
 #import "ContainerView.h"
 #import "SymbolView.h"
 
@@ -113,6 +114,8 @@
 
 #import "InteractiveView.h"
 #import "InteractiveImageView.h"
+
+#import "ImageLabelLineScrollCell.h"
 
 // LineScrollView
 #import "LineScrollView.h"

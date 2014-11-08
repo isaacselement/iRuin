@@ -26,7 +26,6 @@
     // touch begin, highlighted
 
     if (self.enableSelected && self.selected) {
-//        [self setSelectedHighlighted: YES];
         if (self.selectedHighlightedImage) self.image = self.selectedHighlightedImage;
     } else {
         self.highlighted = YES;
@@ -65,6 +64,10 @@
 -(void)setSelected:(BOOL)selected
 {
     _selected = selected;
+    
+    if (!_normalImage) {
+        _normalImage = self.image;
+    }
     
     // chanage image
     if (_selected) {

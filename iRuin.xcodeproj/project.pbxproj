@@ -23,7 +23,6 @@
 		4E2CCAC419FB5C5100D2AAEC /* KeyValueCodingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAC319FB5C5100D2AAEC /* KeyValueCodingHelper.m */; };
 		4E2CCAC719FB6DD900D2AAEC /* QueueValuesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAC619FB6DD900D2AAEC /* QueueValuesHelper.m */; };
 		4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCACC19FBF93500D2AAEC /* ContainerView.m */; };
-		4E2CCAD019FBF93500D2AAEC /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCACE19FBF93500D2AAEC /* HeaderView.m */; };
 		4E2CCAD319FBF98B00D2AAEC /* GameBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CCAD219FBF98B00D2AAEC /* GameBaseView.m */; };
 		4E37286E1A023AEB00FA4E8C /* GameEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E37286D1A023AEB00FA4E8C /* GameEffect.m */; };
 		4E4D4E8A181D5AFB00886D75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4D4E89181D5AFB00886D75 /* Foundation.framework */; };
@@ -92,10 +91,10 @@
 		4ECB2A0519FA562A00D60219 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29F519FA562A00D60219 /* 1.png */; };
 		4ECB2A0619FA562A00D60219 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29F619FA562A00D60219 /* 2.png */; };
 		4ECB2A0719FA562A00D60219 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29F719FA562A00D60219 /* 3.png */; };
-		4ECB2A0819FA562A00D60219 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29F819FA562A00D60219 /* 4.png */; };
 		4ECB2A0A19FA562A00D60219 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29FA19FA562A00D60219 /* icon.png */; };
 		4ECB2A0B19FA562A00D60219 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29FB19FA562A00D60219 /* icon@2x.png */; };
 		4ECB2A0E19FA5F5600D60219 /* ElementsExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB2A0D19FA5F5600D60219 /* ElementsExecutor.m */; };
+		4ED237761A0E131B002B9C9D /* ImageLabelLineScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED237751A0E131B002B9C9D /* ImageLabelLineScrollCell.m */; };
 		4ED3BE5F18E7043A00621666 /* PositionsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3BE5E18E7043A00621666 /* PositionsHelper.m */; };
 		4ED52C7E191E5DC4002ADA73 /* SwipeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED52C7D191E5DC4002ADA73 /* SwipeEvent.m */; };
 		4ED52C81191E61FF002ADA73 /* SwipeState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED52C80191E61FF002ADA73 /* SwipeState.m */; };
@@ -196,6 +195,7 @@
 		4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7418D47D96001FB745 /* SearchHelper.m */; };
 		4EEE51A31A0BB166002CD333 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE51A21A0BB166002CD333 /* TimerView.m */; };
 		4EF282751908038800AA0C54 /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF282741908038800AA0C54 /* GameState.m */; };
+		4EF338781A0D205C00FAABC5 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF338771A0D205C00FAABC5 /* 0.png */; };
 		4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6641E19F40A4A00C2B9FC /* ExplodesExecutor.m */; };
 		4EF75E771A008E090074E493 /* iPad_Landscape.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E731A008E090074E493 /* iPad_Landscape.json */; };
 		4EF75E781A008E090074E493 /* iPad_Portrait.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EF75E741A008E090074E493 /* iPad_Portrait.json */; };
@@ -279,8 +279,6 @@
 		4E2CCAC619FB6DD900D2AAEC /* QueueValuesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueValuesHelper.m; sourceTree = "<group>"; };
 		4E2CCACB19FBF93500D2AAEC /* ContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerView.h; sourceTree = "<group>"; };
 		4E2CCACC19FBF93500D2AAEC /* ContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
-		4E2CCACD19FBF93500D2AAEC /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
-		4E2CCACE19FBF93500D2AAEC /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		4E2CCAD119FBF98B00D2AAEC /* GameBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBaseView.h; sourceTree = "<group>"; };
 		4E2CCAD219FBF98B00D2AAEC /* GameBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBaseView.m; sourceTree = "<group>"; };
 		4E37286B1A01ECC300FA4E8C /* AppKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKeys.h; sourceTree = "<group>"; };
@@ -374,11 +372,12 @@
 		4ECB29F519FA562A00D60219 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		4ECB29F619FA562A00D60219 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		4ECB29F719FA562A00D60219 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
-		4ECB29F819FA562A00D60219 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		4ECB29FA19FA562A00D60219 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		4ECB29FB19FA562A00D60219 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		4ECB2A0C19FA5F5600D60219 /* ElementsExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementsExecutor.h; sourceTree = "<group>"; };
 		4ECB2A0D19FA5F5600D60219 /* ElementsExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementsExecutor.m; sourceTree = "<group>"; };
+		4ED237741A0E131B002B9C9D /* ImageLabelLineScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLabelLineScrollCell.h; sourceTree = "<group>"; };
+		4ED237751A0E131B002B9C9D /* ImageLabelLineScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelLineScrollCell.m; sourceTree = "<group>"; };
 		4ED3BE5D18E7043A00621666 /* PositionsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionsHelper.h; sourceTree = "<group>"; };
 		4ED3BE5E18E7043A00621666 /* PositionsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionsHelper.m; sourceTree = "<group>"; };
 		4ED52C7C191E5DC4002ADA73 /* SwipeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeEvent.h; sourceTree = "<group>"; };
@@ -599,6 +598,7 @@
 		4EEE51A21A0BB166002CD333 /* TimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerView.m; sourceTree = "<group>"; };
 		4EF282731908038800AA0C54 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
 		4EF282741908038800AA0C54 /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
+		4EF338771A0D205C00FAABC5 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		4EF6641D19F40A4A00C2B9FC /* ExplodesExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplodesExecutor.h; sourceTree = "<group>"; };
 		4EF6641E19F40A4A00C2B9FC /* ExplodesExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplodesExecutor.m; sourceTree = "<group>"; };
 		4EF75E731A008E090074E493 /* iPad_Landscape.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iPad_Landscape.json; sourceTree = "<group>"; };
@@ -768,14 +768,14 @@
 				4E08AB9719FE66B300F1F449 /* SymbolView.m */,
 				4E2CCACB19FBF93500D2AAEC /* ContainerView.h */,
 				4E2CCACC19FBF93500D2AAEC /* ContainerView.m */,
-				4E2CCACD19FBF93500D2AAEC /* HeaderView.h */,
-				4E2CCACE19FBF93500D2AAEC /* HeaderView.m */,
 				4E08AB9919FE66F400F1F449 /* InteractiveImageView.h */,
 				4E08AB9A19FE66F400F1F449 /* InteractiveImageView.m */,
 				4E6162FC19FFDAB900302D98 /* InteractiveView.h */,
 				4E6162FD19FFDAB900302D98 /* InteractiveView.m */,
 				4EEE51A11A0BB166002CD333 /* TimerView.h */,
 				4EEE51A21A0BB166002CD333 /* TimerView.m */,
+				4ED237741A0E131B002B9C9D /* ImageLabelLineScrollCell.h */,
+				4ED237751A0E131B002B9C9D /* ImageLabelLineScrollCell.m */,
 			);
 			path = GameComponents;
 			sourceTree = "<group>";
@@ -1046,10 +1046,10 @@
 		4ECB29F419FA562A00D60219 /* Chapters */ = {
 			isa = PBXGroup;
 			children = (
+				4EF338771A0D205C00FAABC5 /* 0.png */,
 				4ECB29F519FA562A00D60219 /* 1.png */,
 				4ECB29F619FA562A00D60219 /* 2.png */,
 				4ECB29F719FA562A00D60219 /* 3.png */,
-				4ECB29F819FA562A00D60219 /* 4.png */,
 			);
 			path = Chapters;
 			sourceTree = "<group>";
@@ -1805,6 +1805,7 @@
 				4EF75EA51A00F32D0074E493 /* Default.png in Resources */,
 				4EF75EA71A00F43F0074E493 /* Default-568h@2x.png in Resources */,
 				4E4D4E94181D5AFB00886D75 /* InfoPlist.strings in Resources */,
+				4EF338781A0D205C00FAABC5 /* 0.png in Resources */,
 				4ECB2A0619FA562A00D60219 /* 2.png in Resources */,
 				4EF75EA11A00D5630074E493 /* pause_h.png in Resources */,
 				4E6162F819FFD8E600302D98 /* back.png in Resources */,
@@ -1819,7 +1820,6 @@
 				4ECB29FC19FA562A00D60219 /* Config.json in Resources */,
 				4EE5FC0919D858DD005E8736 /* private_key.p12 in Resources */,
 				4ECB2A0719FA562A00D60219 /* 3.png in Resources */,
-				4ECB2A0819FA562A00D60219 /* 4.png in Resources */,
 				4EE5FC0E19D858DD005E8736 /* rsaCert.crt in Resources */,
 				4ECB2A0019FA562A00D60219 /* Config_Swipe.json in Resources */,
 				4EE5FC0F19D858DD005E8736 /* rsaCertReq.csr in Resources */,
@@ -1910,7 +1910,6 @@
 				4EE5FC3319D858DD005E8736 /* ImageHelper.m in Sources */,
 				4E4D4E96181D5AFB00886D75 /* main.m in Sources */,
 				4EE5FC4319D858DD005E8736 /* TextFormatter.m in Sources */,
-				4E2CCAD019FBF93500D2AAEC /* HeaderView.m in Sources */,
 				4EE5FC1619D858DD005E8736 /* CHCSVParser.m in Sources */,
 				4EF7F5551A061FEA0096949F /* InAppIMRootController.m in Sources */,
 				4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */,
@@ -1924,6 +1923,7 @@
 				4EE5FC2219D858DD005E8736 /* CategoriesLocalizer.m in Sources */,
 				4E77862818B4F576003A1DAC /* LineScrollViewCell.m in Sources */,
 				4EE5FC5219D858DD005E8736 /* UILabel+AdjustWidth.m in Sources */,
+				4ED237761A0E131B002B9C9D /* ImageLabelLineScrollCell.m in Sources */,
 				4E37286E1A023AEB00FA4E8C /* GameEffect.m in Sources */,
 				4EE5FC4819D858DD005E8736 /* QueuePositionsHelper.m in Sources */,
 				4EE5FC3E19D858DD005E8736 /* ActionExecutorManager.m in Sources */,

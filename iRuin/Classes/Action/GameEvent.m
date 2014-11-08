@@ -4,25 +4,30 @@
 
 @implementation GameEvent
 
+
 -(void) gameLaunch
 {
     [ScheduledTask sharedInstance].timeInterval = 0.2;
     
-//    [ScheduledTask.sharedInstance registerSchedule:self timeElapsed: 0.1 repeats:0];
-    
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_LAUNCH"]];
+    
+    // chapters cells effect
+    [self chaptersValuesActions: DATA.config[@"GAME_LAUNCH_Chapters_Cells"]];
 }
+
+
 
 
 -(void) gameStart
 {
     [[ScheduledTask sharedInstance] start];
     
-    VIEW.gameView.headerView.timerView.totalTime = 120;
-    
     [ACTION.currentEffect effectStartRollIn];
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];
+    
+    // chapters cells effect
+    [self chaptersValuesActions: DATA.config[@"GAME_START_Chapters_Cells"]];
 }
 
 -(void) gameBack
@@ -34,7 +39,15 @@
     [ACTION.currentEffect effectStartRollOut];
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];
+    
+    // chapters cells effect
+    [self chaptersValuesActions: DATA.config[@"GAME_BACK_Chapters_Cells"]];
 }
+
+
+
+
+
 
 -(void) gamePause
 {
@@ -48,10 +61,13 @@
 
 -(void) gameRefresh
 {
-    // for test now
     [ACTION.currentEffect performSelector:@selector(effectStartRollOut)];
     [ACTION.currentEffect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:2];
 }
+
+
+
+
 
 -(void) gameChat
 {
@@ -60,17 +76,30 @@
 
 
 
-//#pragma mark - Scheduled Action
-//
-//-(void) scheduledTask
-//{
-//    LineScrollView* lineScrollView = VIEW.gameView.headerView.lineScrollView;
-//    CGPoint currentOffset = lineScrollView.contentOffset;
-//    CGPoint offset = CGPointMake(currentOffset.x + 10, currentOffset.y);
-//    [lineScrollView setContentOffset: offset animated:YES];
-//}
+#pragma mark -
 
-
+-(void) chaptersValuesActions: (NSDictionary*)cellsConfigs
+{
+    NSArray* chaptersCells = VIEW.chaptersView.lineScrollView.contentView.subviews;
+    for (int i = 0 ; i < chaptersCells.count; i++) {
+        ImageLabelLineScrollCell* cell = [chaptersCells objectAtIndex:i];
+        
+        // restore the status
+        [cell.layer removeAllAnimations];
+        
+        // values and actions
+        NSString* iKey = [NSString stringWithFormat:@"%d", i];
+        NSDictionary* config = cellsConfigs[iKey];
+        if (! config) {
+            config = cellsConfigs[@"default"];
+        }
+        if (cellsConfigs[@"common"]) {
+            config = [DictionaryHelper combines:cellsConfigs[@"common"] with:config];
+        }
+        
+        [ACTION.gameEffect designateValuesActionsTo:cell config: config];
+    }
+}
 
 
 @end

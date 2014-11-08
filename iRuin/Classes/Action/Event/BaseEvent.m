@@ -36,7 +36,7 @@
 }
 -(void) eventSymbolsDidRollIn
 {
-    [VIEW.gameView.headerView.timerView resumeTimer];
+    [VIEW.gameView.timerView resumeTimer];
 }
 
 -(void) eventSymbolsWillRollOut
@@ -68,7 +68,7 @@
 //    NSLog(@"eventSymbolsDidVanish duration: %f", [[NSDate date] timeIntervalSinceDate: startTime]);
 //#endif
     
-    NumberLabel* scoreLabel = VIEW.gameView.headerView.scoreLabel;
+    NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
     for (SymbolView* symbol in symbols){
         scoreLabel.number += symbol.score;
         [symbol restore];

@@ -79,6 +79,10 @@
 -(void)setFrame:(CGRect)frame {
     [super setFrame: frame];
     
+    if (CGRectEqualToRect(frame, CGRectNull) || CGRectEqualToRect(frame, CGRectZero)) {
+        return;
+    }
+    
     [self initializeLineCells];
 }
 
@@ -95,12 +99,10 @@
     for (UIView* view in subviews) {
         [view removeFromSuperview];
     }
-    currentIndex = 0 ;
+
     currentDirection = NO;
     
-    
     // begin
-    
     float addLength = 0.0f;
     for ( ; (addLength - width) < [self getCellWidthForIndex: currentIndex + 1] ; )
     {
@@ -256,7 +258,7 @@
 {
     NSArray* cells = contentView.subviews;
     int mostLeftIndex = currentDirection ? currentIndex : currentIndex - ((int)cells.count - 1) ;
-    return [contentView.subviews objectAtIndex: (index - mostLeftIndex)];
+    return [contentView.subviews safeObjectAtIndex: (index - mostLeftIndex)];
 }
 
 -(int) indexOfVisibleCell: (LineScrollViewCell*)cell

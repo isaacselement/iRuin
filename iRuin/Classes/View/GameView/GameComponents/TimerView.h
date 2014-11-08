@@ -1,11 +1,13 @@
-#import "StrokeLabel.h"
+#import "GradientLabel.h"
 
-@interface TimerView : StrokeLabel
+@interface TimerView : GradientLabel
 
 
 @property (assign, nonatomic) double totalTime;
 
 @property (assign, readonly) double currentTime;
+
+@property (strong) NSString* timerFormat;
 
 @property (copy) void(^timeIsOverAction)(TimerView* timerView);
 

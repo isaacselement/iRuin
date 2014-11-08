@@ -6,10 +6,12 @@
 @end
 
 @implementation ChaptersView
-{
-    LineScrollView* lineScrollView;
+{    
+    NSMutableDictionary* imagesCache;
 }
 
+
+@synthesize lineScrollView;
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -18,8 +20,11 @@
         
         // chapter views
         lineScrollView = [[LineScrollView alloc] init];
+        [lineScrollView registerCellClass: [ImageLabelLineScrollCell class]];
         lineScrollView.dataSource = self;
         [self addSubview: lineScrollView];
+        
+        imagesCache = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -28,39 +33,47 @@
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index
 {
-    LineScrollViewCell* cell = [lineScrollViewObj visibleCellAtIndex: index];
+    ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
     
+    int circel = [DATA.config[@"Chapters_Cells_Circle"] intValue];
+    NSDictionary* specifications = DATA.config[@"Chapters_Cells"];
+    
+    int i = abs(index) % circel;
+    NSString* iKey = [NSString stringWithFormat:@"%d", i];
+    NSString* indexKey = [NSString stringWithFormat: @"%d", index];
+    NSDictionary* config = specifications[indexKey] ? specifications[indexKey] : specifications[iKey];
+    NSDictionary* imageConfig = config[@"image"] ;
+    if (!imageConfig) {
+        imageConfig = specifications[@"default"][@"image"];
+    }
+    NSDictionary* labelConfig = config[@"label"] ;
+    if (!labelConfig) {
+        labelConfig = specifications[@"default"][@"label"];
+    }
     
     // image
-    int i = index % 4;
-    NSString* imageName = [NSString stringWithFormat:@"%d", abs(i) + 1];
-    UIImage* image = [UIImage imageNamed: imageName];
-    
+    NSString* imageName = imageConfig[@"image"];
+    UIImage* image = imagesCache[imageName];
+    if (! image) {
+        image = [KeyValueCodingHelper getUIImage: imageName];
+        if (image) [imagesCache setObject: image forKey:imageName];
+    }
     
     // imageView
-    int imageViewTag = 2008;
-    UIImageView* imageView = (UIImageView*)[cell viewWithTag:imageViewTag];
-    if (!imageView) {
-        imageView = [[UIImageView alloc] initWithFrame: cell.bounds];
-        imageView.tag = imageViewTag;
-        [cell addSubview: imageView];
-    }
+    UIImageView* imageView = cell.imageView;
     imageView.image = image;
+    
+    // for optimize the following 'designateValuesActionsTo'
+    [DictionaryHelper replaceKey: (NSMutableDictionary*)imageConfig key:@"image" withKey:@"image_"];
+    [ACTION.gameEffect designateValuesActionsTo: imageView config: imageConfig];
+    [DictionaryHelper replaceKey: (NSMutableDictionary*)imageConfig key:@"image_" withKey:@"image"];
     
     
     // index label
-    int indexLableTag = 2010;
-    UILabel* indexLabel = (UILabel*)[cell viewWithTag: indexLableTag];
-    if (!indexLabel) {
-        indexLabel = [[UILabel alloc] initWithFrame: cell.bounds];
-        indexLabel.tag = indexLableTag;
-        [cell addSubview: indexLabel];
-    }
-    indexLabel.font = [UIFont fontWithName:@"Arial" size:CanvasFontSize(100)];
-    indexLabel.text = [NSString stringWithFormat:@"%d", index];
-    indexLabel.textAlignment = NSTextAlignmentCenter;
-    indexLabel.textColor = [UIColor whiteColor];
-    //    [indexLabel adjustsFontSizeToFitWidth];
+    GradientLabel* label = cell.label;
+    
+    [ACTION.gameEffect designateValuesActionsTo: label config:labelConfig];
+    label.text = [NSString stringWithFormat:@"%d", index];
 }
 
 

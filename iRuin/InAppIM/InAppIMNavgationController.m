@@ -52,19 +52,19 @@
 
 #pragma mark - Class Methods
 
-InAppIMNavgationController* sharedInstance = nil;
+InAppIMNavgationController* inAppControllerSharedInstance = nil;
 
 +(void)initialize
 {
     if (self == [InAppIMNavgationController class]) {
         InAppIMRootController* inAppIMRootController = [[InAppIMRootController alloc] init];
-        sharedInstance = [[InAppIMNavgationController alloc] initWithRootViewController: inAppIMRootController];
+        inAppControllerSharedInstance = [[InAppIMNavgationController alloc] initWithRootViewController: inAppIMRootController];
     }
 }
 
 +(InAppIMNavgationController*) sharedInstance
 {
-    return sharedInstance;
+    return inAppControllerSharedInstance;
 }
 
 

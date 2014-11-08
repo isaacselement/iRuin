@@ -1,12 +1,14 @@
 #import "GameBaseView.h"
 
-@class HeaderView;
+@class TimerView;
+@class NumberLabel;
 @class ContainerView;
 @class InteractiveView;
 
 @interface GameView : GameBaseView
 
-@property (strong, readonly) HeaderView* headerView;
+@property (strong) TimerView* timerView;
+@property (strong) NumberLabel* scoreLabel;
 @property (strong, readonly) ContainerView* containerView;
 
 

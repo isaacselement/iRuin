@@ -2,9 +2,10 @@
 #import "ScheduledTask.h"
 
 @implementation TimerView
-{
-    NSString* timerFormat;
-}
+
+
+@synthesize timerFormat;
+
 
 - (id)init{
     if (self = [super init]) {
@@ -13,7 +14,7 @@
         self.backgroundColor = [UIColor clearColor];
         self.textAlignment = NSTextAlignmentCenter;
         
-        timerFormat = @"%02d:%02d";
+        timerFormat = @"%02d : %02d";
     }
     return self;
 }

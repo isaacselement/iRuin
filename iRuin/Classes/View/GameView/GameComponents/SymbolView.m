@@ -128,14 +128,14 @@
     int count = [SymbolView getSymbolsPrototypeCount];
     int index = arc4random() % count;
     
-    int identification = index + 1;
+    int identification = index + 1;         // HERE!!!!!
     
     return identification;
 }
 
 +(void) setSymbolIdentification: (int)identification symbol:(SymbolView*)symbol
 {
-    int index = identification - 1;
+    int index = identification - 1;         // HERE!!!!! (and~~~~~~)
     
     NSDictionary* commonSpec = DATA.config[@"SYMBOLS"][@"COMMON"];
     [ACTION.gameEffect designateValuesActionsTo:symbol config:commonSpec];

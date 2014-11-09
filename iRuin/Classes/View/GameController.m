@@ -13,10 +13,6 @@
     if (self) {
         chaptersView = [[ChaptersView alloc] init];
         gameView = [[GameView alloc] init];
-        
-        // Add the UIDeviceOrientationDidChangeNotification
-//        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(deviceOrientationDidChangedWithNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
-        
     }
     return self;
 }
@@ -31,6 +27,10 @@
     
     [self.view addSubview: chaptersView];
     [self.view addSubview: gameView];
+}
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 // <= ios 7
@@ -51,35 +51,24 @@
     [self reRenderWithDeviceOrientation];
 }
 
-//-(void) deviceOrientationDidChangedWithNotification: (NSNotification*)notification
-//{
-//    [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(reRenderWithDeviceOrientation) object:nil];
-//    [self performSelector: @selector(reRenderWithDeviceOrientation) withObject:nil afterDelay: 0.5];
-//}
-
 #pragma mark - Orientation Change
 
 -(void) reRenderWithDeviceOrientation
 {
     [ACTION renderFramesWithCurrentOrientation];
     
-    [self deviceOrientationChangedRefreshSymbolsFramesWhileGameIsStarted];
-}
-
-
--(void) deviceOrientationChangedRefreshSymbolsFramesWhileGameIsStarted
-{
-    if (! ACTION.gameState.isGameStarted) return;
+    if (! ACTION.gameState.isGameStarted) {
         
-    // Temporary code here.
-    [UIView animateWithDuration: 0.5 animations:^{
-        [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-            SymbolView* symbolView = (SymbolView*)obj;
-            CGRect rect = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
-            symbolView.frame = rect;
-            return NO;
+        // Temporary code here.
+        [UIView animateWithDuration: 0.5 animations:^{
+            [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
+                SymbolView* symbolView = (SymbolView*)obj;
+                CGRect rect = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
+                symbolView.frame = rect;
+                return NO;
+            }];
         }];
-    }];
+    }
 }
 
 @end

@@ -88,6 +88,11 @@
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj didSelectIndex:(int)index
 {
     ACTION.gameState.currentChapter = index;
+    
+    int modeIndex = index % ACTION.gameModes.count;
+    NSString* mode = [ACTION.gameModes safeObjectAtIndex: modeIndex];
+    [ACTION switchToMode: mode];
+    
     [ACTION.gameEvent gameStart];
 }
 

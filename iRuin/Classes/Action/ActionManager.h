@@ -8,10 +8,10 @@
 #define kEFFECT    @"Effect"
 
 #define MODE_MOVE   @"Move"
-#define MODE_TOUCH  @"Touch"
-#define MODE_SWIPE  @"Swipe"
-#define MODE_PULL   @"Pull"
 #define MODE_DOTS   @"Dots"
+#define MODE_TOUCH  @"Touch"
+#define MODE_PULL   @"Pull"
+#define MODE_SWIPE  @"Swipe"
 
 
 @class GameEvent;
@@ -45,7 +45,10 @@
 
 
 #pragma mark -
+
 -(void) renderFramesWithCurrentOrientation;
+
+-(void) switchToMode: (NSString*)mode;
 
 
 @end

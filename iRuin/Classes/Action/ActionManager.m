@@ -43,17 +43,15 @@ static ActionManager* sharedInstance = nil;
 -(void) launchAppProcedures {
     [DATA initializeWithData];
     [VIEW initializeWithData];
+    [self initializeGameModes];
     
-    // modes
-    [self establishGameModes];
+    [self renderFramesWithCurrentOrientation];
     
-    [self switchToMode: MODE_PULL];
     
     [gameEvent gameLaunch];
-    
 }
 
--(void) establishGameModes
+-(void) initializeGameModes
 {
     NSArray* modes = gameModes;
     NSString* eventStr = kEVENT;
@@ -92,9 +90,6 @@ static ActionManager* sharedInstance = nil;
     self.currentState   = [[modesRepository objectForKey: mode] objectForKey: kSTATE];
     self.currentEffect  = [[modesRepository objectForKey: mode] objectForKey: kEFFECT];
     
-    // when chapter config is ready
-    [self renderFramesWithCurrentOrientation];
-    
     // do some stuff
     [self.currentEvent eventInitialize];
     [self.currentState stateInitialize];
@@ -106,16 +101,13 @@ static ActionManager* sharedInstance = nil;
 
 -(void) renderFramesWithCurrentOrientation
 {
-    [self switchFrameDesignChaptersViewGameViewFrames];
-    [self createOrUpdateSymbolsWithFramesMatrix];
-}
-
--(void) switchFrameDesignChaptersViewGameViewFrames
-{
     // first, set up design/canvas size
     [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.config[@"DESIGN"]]];
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_INITIALIZE"]];
+    
+    [self createOrUpdateSymbolsWithFramesMatrix];
 }
+
 
 -(void) createOrUpdateSymbolsWithFramesMatrix
 {
@@ -123,19 +115,22 @@ static ActionManager* sharedInstance = nil;
     CGRect visualArea = containerView.bounds;
     CGRect visualFrame = containerView.frame;
     
-    
     // set up the basic views and positions array
     NSArray* matrixs = DATA.config[@"MATRIX"];
     [QueuePositionsHelper setRectsRepository: matrixs];
-    [QueueViewsHelper setViewsRepository: matrixs viewClass:[SymbolView class]];    // A. will update or create views in QueueViewsHelper.viewsRepository
-    [QueueViewsHelper setViewsInVisualArea: visualArea];                            // B. will update views in QueueViewsHelper.viewsInVisualArea
+    
+    // A. will update or create views in QueueViewsHelper.viewsRepository
+    [QueueViewsHelper setViewsRepository: matrixs viewClass:[SymbolView class]];
+    
+    // B. will update views in QueueViewsHelper.viewsInVisualArea
+    [QueueViewsHelper setViewsInVisualArea: visualArea];
     
     
-    BOOL isContainerClipsToBounds = [DATA.config[@"ContainerClipsToBounds"] boolValue];
+    BOOL isVisualAreaClipsToBounds = [DATA.config[@"IsVisualAreaClipsToBounds"] boolValue];
 //#ifndef DEBUG    // Comment it for test , in production , open it .
-    containerView.clipsToBounds = isContainerClipsToBounds;
+    containerView.clipsToBounds = isVisualAreaClipsToBounds;
 //#endif
-    if (! isContainerClipsToBounds) {
+    if (! isVisualAreaClipsToBounds) {
         [QueuePositionsHelper refreshRectsPositionsRepositoryWhenClipsToBoundsIsNO:visualFrame];
     }
     

@@ -28,19 +28,23 @@
     
     if (! symbol) return;
     
-    if (touchingSymbol && touchingSymbol != symbol) {
-        [self startExchangeEffectAndRestoreStates];
+    if (touchingSymbol == symbol) {
         
-    } else if (touchingSymbol == symbol) {
-
         if (!waitingSymbol) {
+            
             waitingSymbol = symbol;
             
         } else {
+            
             [self startExchangeEffectAndRestoreStates];
+            
         }
-
-
+        
+    } else {
+        
+        waitingSymbol = nil;
+        touchingSymbol = nil;
+        
     }
 }
 
@@ -48,6 +52,8 @@
 {
     [super stateTouchesCancelled:symbol location:location];
     
+    waitingSymbol = nil;
+    touchingSymbol = nil;
 }
 
 
@@ -71,6 +77,19 @@
 
 -(void) exchange: (SymbolView*)symbol with:(SymbolView*)withSymbol
 {
+    
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.5;
+    animation.removedOnCompletion = YES;
+    animation.fillMode = kCAFillModeRemoved;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    [symbol.layer removeAnimationForKey:@"changeTextTransition"];
+    [symbol.layer addAnimation:animation forKey:@"changeTextTransition"];
+    
+    [withSymbol.layer removeAnimationForKey:@"changeTextTransition"];
+    [withSymbol.layer addAnimation:animation forKey:@"changeTextTransition"];
+    
     // TODO. Apply the effect ...
     int tempId = symbol.identification;
     symbol.identification = withSymbol.identification;

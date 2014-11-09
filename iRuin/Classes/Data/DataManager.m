@@ -112,8 +112,11 @@ static DataManager* sharedInstance = nil;
 
 -(NSMutableDictionary*) config
 {
-//    return UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]) ? landscapeConfig : portraitConfig ;
-    return UIInterfaceOrientationIsLandscape([ViewHelper getTopViewController].interfaceOrientation) ? landscapeConfig : portraitConfig ;
+    if (UIInterfaceOrientationIsLandscape([ViewHelper getTopViewController].interfaceOrientation)) {
+        return landscapeConfig ? landscapeConfig : landscapeShareConfig;
+    } else {
+        return portraitConfig ? portraitConfig : protraitShareConfig;
+    }
 }
 
 -(void) setConfigByMode: (NSString*)mode

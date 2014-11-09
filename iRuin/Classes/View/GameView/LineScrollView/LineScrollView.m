@@ -68,7 +68,7 @@
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         
-        [self addObserver: self forKeyPath:@"eachCellWidth" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver: self forKeyPath:@"eachCellWidth" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -76,32 +76,37 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"eachCellWidth"]) {
-        [self reload];
+        if ([change[@"old"] floatValue] != [change[@"new"] floatValue]) {
+            [self reloadCells];
+        }
     }
 }
 
 -(void)setCurrentIndex:(int)index
 {
     currentIndex = index;
-    [self reload];
+
+    [self reloadCells];
 }
 
--(void) reload
-{
-    self.frame = self.frame;
-}
 
 -(void)setFrame:(CGRect)frame {
+    
+    if (CGRectEqualToRect(frame, self.frame)) {
+        return;
+    }
+    
+    // call super
     [super setFrame: frame];
     
     if (CGRectEqualToRect(frame, CGRectNull) || CGRectEqualToRect(frame, CGRectZero)) {
         return;
     }
     
-    [self initializeLineCells];
+    [self reloadCells];
 }
 
--(void) initializeLineCells
+-(void) reloadCells
 {
     CGRect frame = self.frame;
     float width = frame.size.width;

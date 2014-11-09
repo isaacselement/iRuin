@@ -196,6 +196,7 @@
 		4EEE51A31A0BB166002CD333 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE51A21A0BB166002CD333 /* TimerView.m */; };
 		4EEFD9B21A0F5856006A76C8 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEFD9AF1A0F5856006A76C8 /* FBShimmeringLayer.m */; };
 		4EEFD9B31A0F5856006A76C8 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEFD9B11A0F5856006A76C8 /* FBShimmeringView.m */; };
+		4EEFD9B51A0FB157006A76C8 /* canon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EEFD9B41A0FB157006A76C8 /* canon.mp3 */; };
 		4EF282751908038800AA0C54 /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF282741908038800AA0C54 /* GameState.m */; };
 		4EF338781A0D205C00FAABC5 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF338771A0D205C00FAABC5 /* 0.png */; };
 		4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6641E19F40A4A00C2B9FC /* ExplodesExecutor.m */; };
@@ -603,6 +604,7 @@
 		4EEFD9AF1A0F5856006A76C8 /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
 		4EEFD9B01A0F5856006A76C8 /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
 		4EEFD9B11A0F5856006A76C8 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
+		4EEFD9B41A0FB157006A76C8 /* canon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = canon.mp3; sourceTree = "<group>"; };
 		4EF282731908038800AA0C54 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
 		4EF282741908038800AA0C54 /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
 		4EF338771A0D205C00FAABC5 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
@@ -1643,6 +1645,7 @@
 		4EF7F5461A06156B0096949F /* Musics */ = {
 			isa = PBXGroup;
 			children = (
+				4EEFD9B41A0FB157006A76C8 /* canon.mp3 */,
 				4EF7F5471A06156B0096949F /* wave.mp3 */,
 			);
 			path = Musics;
@@ -1817,6 +1820,7 @@
 				4EF78DBE18C1609300E25A30 /* README.md in Resources */,
 				4ECB29FE19FA562A00D60219 /* Config_Touch.json in Resources */,
 				4EF75E7C1A00B4DE0074E493 /* background_01.png in Resources */,
+				4EEFD9B51A0FB157006A76C8 /* canon.mp3 in Resources */,
 				4EF75E9F1A00D5630074E493 /* back_h.png in Resources */,
 				4EF7F57E1A061FF00096949F /* WeiboSDK.bundle in Resources */,
 				4EE5FC0A19D858DD005E8736 /* private_key.pem in Resources */,

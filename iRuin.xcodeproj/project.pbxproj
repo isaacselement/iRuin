@@ -194,6 +194,8 @@
 		4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7018D47D96001FB745 /* EffectHelper.m */; };
 		4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7418D47D96001FB745 /* SearchHelper.m */; };
 		4EEE51A31A0BB166002CD333 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE51A21A0BB166002CD333 /* TimerView.m */; };
+		4EEFD9B21A0F5856006A76C8 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEFD9AF1A0F5856006A76C8 /* FBShimmeringLayer.m */; };
+		4EEFD9B31A0F5856006A76C8 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEFD9B11A0F5856006A76C8 /* FBShimmeringView.m */; };
 		4EF282751908038800AA0C54 /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF282741908038800AA0C54 /* GameState.m */; };
 		4EF338781A0D205C00FAABC5 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF338771A0D205C00FAABC5 /* 0.png */; };
 		4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6641E19F40A4A00C2B9FC /* ExplodesExecutor.m */; };
@@ -596,6 +598,11 @@
 		4EEAFF7418D47D96001FB745 /* SearchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHelper.m; sourceTree = "<group>"; };
 		4EEE51A11A0BB166002CD333 /* TimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerView.h; sourceTree = "<group>"; };
 		4EEE51A21A0BB166002CD333 /* TimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerView.m; sourceTree = "<group>"; };
+		4EEFD9AD1A0F5856006A76C8 /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
+		4EEFD9AE1A0F5856006A76C8 /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
+		4EEFD9AF1A0F5856006A76C8 /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
+		4EEFD9B01A0F5856006A76C8 /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
+		4EEFD9B11A0F5856006A76C8 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 		4EF282731908038800AA0C54 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
 		4EF282741908038800AA0C54 /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
 		4EF338771A0D205C00FAABC5 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
@@ -764,6 +771,7 @@
 		4E2CCACA19FBF93500D2AAEC /* GameComponents */ = {
 			isa = PBXGroup;
 			children = (
+				4EEFD9AC1A0F5856006A76C8 /* FBShimmering */,
 				4E08AB9619FE66B300F1F449 /* SymbolView.h */,
 				4E08AB9719FE66B300F1F449 /* SymbolView.m */,
 				4E2CCACB19FBF93500D2AAEC /* ContainerView.h */,
@@ -1579,6 +1587,18 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		4EEFD9AC1A0F5856006A76C8 /* FBShimmering */ = {
+			isa = PBXGroup;
+			children = (
+				4EEFD9AD1A0F5856006A76C8 /* FBShimmering.h */,
+				4EEFD9AE1A0F5856006A76C8 /* FBShimmeringLayer.h */,
+				4EEFD9AF1A0F5856006A76C8 /* FBShimmeringLayer.m */,
+				4EEFD9B01A0F5856006A76C8 /* FBShimmeringView.h */,
+				4EEFD9B11A0F5856006A76C8 /* FBShimmeringView.m */,
+			);
+			path = FBShimmering;
+			sourceTree = "<group>";
+		};
 		4EF75E7D1A00B86A0074E493 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1948,6 +1968,7 @@
 				4EE5FC6219D858DD005E8736 /* FrameTranslater.m in Sources */,
 				4E1FBA24191BBBDD0093BE25 /* TouchEvent.m in Sources */,
 				4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */,
+				4EEFD9B21A0F5856006A76C8 /* FBShimmeringLayer.m in Sources */,
 				4EE5FC2419D858DD005E8736 /* LocalizeManager.m in Sources */,
 				4EF7F5761A061FEF0096949F /* IAISimplePrivateUserInfo.m in Sources */,
 				4EF75E871A00B86A0074E493 /* NSArray+Additions.m in Sources */,
@@ -1962,6 +1983,7 @@
 				4EE5FC1019D858DD005E8736 /* RSAKeysKeeper.m in Sources */,
 				4EE5FC5E19D858DD005E8736 /* RotatableScorllViewController.m in Sources */,
 				4E2CCAC719FB6DD900D2AAEC /* QueueValuesHelper.m in Sources */,
+				4EEFD9B31A0F5856006A76C8 /* FBShimmeringView.m in Sources */,
 				4EA40A3B1821361B001539B8 /* GameEvent.m in Sources */,
 				4E08AB9B19FE66F400F1F449 /* InteractiveImageView.m in Sources */,
 				4EE5FC2319D858DD005E8736 /* LocalizeHelper.m in Sources */,

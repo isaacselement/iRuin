@@ -60,6 +60,15 @@
     int minute = time / 60;
     int second = time - ( 60 * minute );
     NSString* strTime = [NSString stringWithFormat: timerFormat, minute, second];
+    
+//    CATransition *animation = [CATransition animation];
+//    animation.duration = 0.1;
+//    animation.removedOnCompletion = YES;
+//    animation.fillMode = kCAFillModeRemoved;
+//    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    [self.layer removeAnimationForKey:@"changeTextTransition"];
+//    [self.layer addAnimation:animation forKey:@"changeTextTransition"];
+    
     self.text = strTime;
 }
 

@@ -71,13 +71,21 @@
     
     // index label
     GradientLabel* label = cell.label;
-    
     [ACTION.gameEffect designateValuesActionsTo: label config:labelConfig];
     label.text = [NSString stringWithFormat:@"%d", index];
+    
+    // change the font to fix , cause the previous 'designate' will set font again
+    while ( [label.text sizeWithAttributes:@{NSFontAttributeName: label.font}].width > (label.frame.size.width - CanvasW(50))) {
+        label.font = [label.font fontWithSize: (label.font.pointSize - 8)];
+        // be aware of infinite loop
+        if (label.font.pointSize < 8) {
+            break;
+        }
+    }
 }
 
 
--(void)lineScrollView:(LineScrollView *)lineScrollView didSelectIndex:(int)index
+-(void)lineScrollView:(LineScrollView *)lineScrollViewObj didSelectIndex:(int)index
 {
     ACTION.gameState.currentChapter = index;
     [ACTION.gameEvent gameStart];

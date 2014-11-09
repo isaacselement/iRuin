@@ -13,6 +13,9 @@
     
     // chapters cells effect
     [self chaptersValuesActions: DATA.config[@"GAME_LAUNCH_Chapters_Cells"]];
+    
+    
+    [VIEW.chaptersView.lineScrollView setCurrentIndex: [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue]];
 }
 
 
@@ -42,6 +45,9 @@
     
     // chapters cells effect
     [self chaptersValuesActions: DATA.config[@"GAME_BACK_Chapters_Cells"]];
+    
+    
+    [VIEW.chaptersView.lineScrollView setCurrentIndex: [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue]];
 }
 
 

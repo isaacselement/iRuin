@@ -29,13 +29,17 @@
 
     float previousOffsetx;
     
-    int currentIndex;
+//    int currentIndex;
     BOOL currentDirection;      // Yes : is heading right, currentIndex is decrease, contentOffset.x is decrease
 }
 
-@synthesize dataSource;
+
+@synthesize currentIndex;
 
 @synthesize contentView;
+
+@synthesize dataSource;
+
 
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -72,8 +76,19 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"eachCellWidth"]) {
-        self.frame = self.frame;
+        [self reload];
     }
+}
+
+-(void)setCurrentIndex:(int)index
+{
+    currentIndex = index;
+    [self reload];
+}
+
+-(void) reload
+{
+    self.frame = self.frame;
 }
 
 -(void)setFrame:(CGRect)frame {

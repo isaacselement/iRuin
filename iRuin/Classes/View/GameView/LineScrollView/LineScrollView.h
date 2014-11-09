@@ -30,11 +30,16 @@
 
 @interface LineScrollView : UIScrollView
 
+
 @property (assign) CGFloat eachCellWidth;   // should be CGFloat ! important !!! cause will raise the caculate problem
+
+@property (assign, nonatomic) int currentIndex;
+
+
 @property (strong, readonly) UIView* contentView;
 
 
-@property (nonatomic, assign) id<LineScrollViewDataSource> dataSource;
+@property (assign) id<LineScrollViewDataSource> dataSource;
 
 
 @property (copy) float(^lineScrollViewWidthForCellAtIndex)(LineScrollView *lineScrollView, int index);

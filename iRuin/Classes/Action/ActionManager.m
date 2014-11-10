@@ -119,6 +119,7 @@ static ActionManager* sharedInstance = nil;
     NSArray* matrixs = DATA.config[@"MATRIX"];
     [QueuePositionsHelper setRectsRepository: matrixs];
     
+    
     // A. will update or create views in QueueViewsHelper.viewsRepository
     [QueueViewsHelper setViewsRepository: matrixs viewClass:[SymbolView class]];
     
@@ -143,7 +144,8 @@ static ActionManager* sharedInstance = nil;
             // cause it's new , so should restore
             [symbolView restore];
             [VIEW.gameView.containerView addSubview: symbolView];
-            symbolView.frame = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
+            [symbolView setSize:[QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue].size];
+//            symbolView.frame = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
             [symbolView setValidArea: symbolView.bounds];
             symbolView.identification = [SymbolView getOneRandomSymbolIdentification];
         }

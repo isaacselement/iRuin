@@ -10,30 +10,42 @@
     return [QueueIndexPathParser getIndexPathsIn: QueueViewsHelper.viewsInVisualArea element:[NSNull null]];
 }
 
-
 +(void) updateAdjustRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
 {
-    NSMutableArray* onedimensionViews =[self translateToOneDimensionAndRemoveTheNull:viewsSequence];
+    NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
+    [onedimensionViews removeObject:[NSNull null]];
+    
     // replace the original location symbol (just a copy) with null
     [self replaceOutdatedPositionsWithNullInVisualArea: onedimensionViews];
+    
     // reset the row column properties
     [self updateRowsColumnsInVisualArea: onedimensionViews];
 }
 
 +(void) updateFillInRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
 {
-    NSMutableArray* onedimensionViews =[self translateToOneDimensionAndRemoveTheNull:viewsSequence];
+    NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
+    [onedimensionViews removeObject:[NSNull null]];
+    
     // reset the row column properties
     [self updateRowsColumnsInVisualArea: onedimensionViews];
 }
 
-+(NSMutableArray*) translateToOneDimensionAndRemoveTheNull: (NSMutableArray*)viewsSequence
++(void) updateRollInRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
 {
-    // translate to one dimension array .
     NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
-    [onedimensionViews removeObject:[NSNull null]];
-    return onedimensionViews;
+    
+    [self updateRowsColumnsInVisualArea: onedimensionViews];
 }
+
++(void) updateRollOutRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
+{
+    NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
+    
+    [self replaceOutdatedPositionsWithNullInVisualArea: onedimensionViews];
+}
+
+
 
 
 

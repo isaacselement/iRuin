@@ -10,6 +10,10 @@
 +(void) updateFillInRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
 
 
++(void) updateRollInRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
++(void) updateRollOutRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
+
+
 +(void) updateRowsColumnsInVisualArea: (NSArray*)oneDimensionSymbols;
 
 

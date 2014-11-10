@@ -47,7 +47,9 @@
     [self chaptersValuesActions: DATA.config[@"GAME_BACK_Chapters_Cells"]];
     
     
-    [VIEW.chaptersView.lineScrollView setCurrentIndex: [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue]];
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue] > VIEW.chaptersView.lineScrollView.currentIndex) {
+        [VIEW.chaptersView.lineScrollView setCurrentIndex: [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue]];
+    }
 }
 
 

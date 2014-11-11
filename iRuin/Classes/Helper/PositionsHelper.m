@@ -10,7 +10,7 @@
     return [QueueIndexPathParser getIndexPathsIn: QueueViewsHelper.viewsInVisualArea element:[NSNull null]];
 }
 
-+(void) updateAdjustRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
++(void) updateViewsRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
 {
     NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
     [onedimensionViews removeObject:[NSNull null]];
@@ -21,32 +21,6 @@
     // reset the row column properties
     [self updateRowsColumnsInVisualArea: onedimensionViews];
 }
-
-+(void) updateFillInRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
-{
-    NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
-    [onedimensionViews removeObject:[NSNull null]];
-    
-    // reset the row column properties
-    [self updateRowsColumnsInVisualArea: onedimensionViews];
-}
-
-+(void) updateRollInRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
-{
-    NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
-    
-    [self updateRowsColumnsInVisualArea: onedimensionViews];
-}
-
-+(void) updateRollOutRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
-{
-    NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
-    
-    [self replaceOutdatedPositionsWithNullInVisualArea: onedimensionViews];
-}
-
-
-
 
 
 #pragma mark -
@@ -66,6 +40,7 @@
     for (int i = 0; i < viewsInVisualArea.count; i++) {
         NSMutableArray* innerArray = [viewsInVisualArea objectAtIndex: i];
         if (! [innerArray containsObject: symbolObj]) continue;
+        
         for (int j = 0; j < innerArray.count; j++) {
             SymbolView* symbol = [innerArray objectAtIndex: j];
             if (symbolObj == symbol) {

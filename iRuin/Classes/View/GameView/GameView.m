@@ -73,11 +73,4 @@
 }
 
 
--(NSMutableArray*) symbolsInContainer
-{
-    return [QueueViewsHelper viewsInVisualArea];
-}
-
-
-
 @end

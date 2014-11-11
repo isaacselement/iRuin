@@ -5,14 +5,7 @@
 
 +(NSMutableArray*) getIndexPathsNullInVisualAreaViews;
 
-
-+(void) updateAdjustRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
-+(void) updateFillInRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
-
-
-+(void) updateRollInRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
-+(void) updateRollOutRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
-
++(void) updateViewsRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
 
 +(void) updateRowsColumnsInVisualArea: (NSArray*)oneDimensionSymbols;
 

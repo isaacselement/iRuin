@@ -82,10 +82,21 @@
 
 -(SymbolView*) getSymbolView: (CGPoint)location event:(UIEvent*)event
 {
+    // hit test, may nil , or may self
     SymbolView* symbol = (SymbolView*)[self hitTest: location withEvent:event];
-    if ((id)symbol == self || ![symbol isInValidArea:[self convertPoint: location toView:symbol]]) {
-        symbol = nil;
+    
+    if (! symbol) {
+        return nil;
     }
+    
+    if ((id)symbol == self) {
+        return nil;
+    }
+    
+    if (![symbol isInValidArea:[self convertPoint: location toView:symbol]]) {
+        return nil;
+    }
+    
     return symbol;
 }
 

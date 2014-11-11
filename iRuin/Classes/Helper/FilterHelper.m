@@ -6,7 +6,7 @@
 
 // it semm has some problem ... need a long time to think ...
 +(void) forwardFilterMatchedObjects {
-    NSArray* symbolsAtContainer = VIEW.gameView.symbolsInContainer;
+    NSArray* symbolsAtContainer = [QueueViewsHelper viewsInVisualArea];
     for (int i = 0; i < symbolsAtContainer.count; i++) {
         NSArray* innerArray = [symbolsAtContainer objectAtIndex: i];
         for (int j = 0; j < innerArray.count; j++) {

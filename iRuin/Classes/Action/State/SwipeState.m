@@ -141,7 +141,7 @@
     [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Swipe_Second_ActionExecutors"] onObjects:@[withSymbol] values:withSymbolPositions baseTimes:nil];
     swapEffectDuration += [timeCalculator takeThenClear];
     
-    // update the row and column attribute , and the position in symbolsInContainer
+    // update the row and column attribute , and the position in viewsInVisualArea
     [PositionsHelper updateRowsColumnsInVisualArea: @[symbol, withSymbol]];
     
     // start the vanish effect

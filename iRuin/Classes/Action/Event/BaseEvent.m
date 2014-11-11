@@ -71,7 +71,13 @@
     NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
     for (SymbolView* symbol in symbols){
         scoreLabel.number += symbol.score;
-        [symbol restore];
+        
+        if (![QueueViewsHelper isViewsInVisualAreaContains: symbol]) {
+            DLog(@"eventSymbolsDidVanish: %@", symbol);
+            symbol.center = VIEW.frame.blackPoint;
+        }
+        
+//        [symbol.layer removeAllAnimations];
     }
 }
 

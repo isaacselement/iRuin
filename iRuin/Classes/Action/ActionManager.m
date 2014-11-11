@@ -123,8 +123,9 @@ static ActionManager* sharedInstance = nil;
     // A. will update or create views in QueueViewsHelper.viewsRepository
     [QueueViewsHelper setViewsRepository: matrixs viewClass:[SymbolView class]];
     
-    // B. will update views in QueueViewsHelper.viewsInVisualArea
+    // B. will update views in QueueViewsHelper.viewsInVisualArea , we need the structures
     [QueueViewsHelper setViewsInVisualArea: visualArea];
+    [QueueViewsHelper setViewsInVisualAreaWithNull];
     
     
     BOOL isVisualAreaClipsToBounds = [DATA.config[@"IsVisualAreaClipsToBounds"] boolValue];
@@ -145,19 +146,9 @@ static ActionManager* sharedInstance = nil;
             [symbolView restore];
             [VIEW.gameView.containerView addSubview: symbolView];
             [symbolView setSize:[QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue].size];
-//            symbolView.frame = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
             [symbolView setValidArea: symbolView.bounds];
             symbolView.identification = [SymbolView getOneRandomSymbolIdentification];
         }
-        return NO;
-    }];
-    
-    
-    // B
-    [IterateHelper iterateTwoDimensionArray: QueueViewsHelper.viewsInVisualArea handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-        SymbolView* symbolView = (SymbolView*)obj;
-        symbolView.row = (int)outterIndex;
-        symbolView.column = (int)innerIndex;
         return NO;
     }];
     

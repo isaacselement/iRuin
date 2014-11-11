@@ -17,7 +17,4 @@
 @property (strong, readonly) InteractiveView* refreshActionView;
 @property (strong, readonly) InteractiveView* chatActionView;
 
-
--(NSMutableArray*) symbolsInContainer;
-
 @end

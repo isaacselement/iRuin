@@ -74,7 +74,18 @@
 }
 
 -(NSString*) description {
-    return [NSString stringWithFormat: @"[[%s] %p (%d,%d) ,id: %d]", object_getClassName(self), self, row, column, self.identification];
+    return [NSString stringWithFormat: @"[[%s] %p (%d,%d) ,id: %d]  (%.1f, %.1f)", object_getClassName(self), self, row, column, self.identification, [self centerX], [self centerY]];
+}
+
+-(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+{
+    BOOL isPointInside = [super pointInside:point withEvent:event];
+
+    if (row == -1 || column == -1) {
+        isPointInside = NO;
+    }
+    
+    return isPointInside;
 }
 
 // Only override drawRect: if you perform custom drawing.

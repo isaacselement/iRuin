@@ -43,12 +43,13 @@
 {
     [super stateInitialize];
     
-    SymbolView* symbol = [[VIEW.gameView.symbolsInContainer firstObject] firstObject];
-    SymbolView* xSymbol = [SearchHelper getAdjacentSymbolByDirection: symbol direction:DirectionRIGHT];
-    SymbolView* ySymbol = [SearchHelper getAdjacentSymbolByDirection: symbol direction:DirectionDOWN];
+    NSArray* positionsRepository = [QueuePositionsHelper positionsRepository];
+    CGPoint center = [[[positionsRepository firstObject] safeObjectAtIndex:0] CGPointValue];
+    CGPoint xCenter = [[[positionsRepository firstObject] safeObjectAtIndex:1] CGPointValue];
+    CGPoint yCenter = [[[positionsRepository safeObjectAtIndex: 1] safeObjectAtIndex:0] CGPointValue];
     
-    xDistance = [xSymbol centerX] - [symbol centerX];
-    yDistance = [ySymbol centerY] - [symbol centerY];
+    xDistance = xCenter.x - center.x;
+    yDistance = yCenter.y - center.y;
 }
 
 - (void)stateTouchesBegan:(SymbolView*)symbol location:(CGPoint)location
@@ -216,7 +217,7 @@
 {
     if (! _operatingViews) {
         _operatingViews = [NSMutableArray array];
-        [IterateHelper iterate: VIEW.gameView.symbolsInContainer handler:^BOOL(int index, id obj, int count) {
+        [IterateHelper iterate: [QueueViewsHelper viewsInVisualArea] handler:^BOOL(int index, id obj, int count) {
             [_operatingViews addObjectsFromArray: obj];
             return NO;
         }];
@@ -225,7 +226,7 @@
     }
     
     NSMutableArray* results = [NSMutableArray arrayWithArray: _operatingViews];
-    [IterateHelper iterateTwoDimensionArray:VIEW.gameView.symbolsInContainer handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
+    [IterateHelper iterateTwoDimensionArray:[QueueViewsHelper viewsInVisualArea] handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
         [results removeObject: obj];
         return NO;
     }];

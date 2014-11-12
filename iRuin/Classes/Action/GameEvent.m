@@ -9,6 +9,9 @@
 {
     [ScheduledTask sharedInstance].timeInterval = 0.2;
     
+    
+    
+    //
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_LAUNCH"]];
     
     // chapters cells effect
@@ -25,6 +28,9 @@
 {
     [[ScheduledTask sharedInstance] start];
     
+    
+    
+    //
     [ACTION.currentEffect effectStartRollIn];
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];
@@ -37,6 +43,9 @@
 {
     [[ScheduledTask sharedInstance] pause];
     
+    
+    
+    //
     VIEW.gameView.pauseActionView.imageView.selected = NO;
     
     [ACTION.currentEffect effectStartRollOut];
@@ -47,9 +56,9 @@
     [self chaptersValuesActions: DATA.config[@"GAME_BACK_Chapters_Cells"]];
     
     
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue] > VIEW.chaptersView.lineScrollView.currentIndex) {
-        [VIEW.chaptersView.lineScrollView setCurrentIndex: [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue]];
-    }
+//    if ([[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue] > VIEW.chaptersView.lineScrollView.currentIndex) {
+//        [VIEW.chaptersView.lineScrollView setCurrentIndex: [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue]];
+//    }
 }
 
 
@@ -67,10 +76,32 @@
     [[ScheduledTask sharedInstance] start];
 }
 
+-(void) gameOver
+{
+    int score = VIEW.gameView.scoreLabel.number;
+    int vanishCount = ACTION.gameState.vanishAmount;
+    
+    float rate = score / vanishCount;
+    
+    DLOG(@"%.2f", rate);
+    
+    float index = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] floatValue];
+    index += rate;
+    
+    [[NSUserDefaults standardUserDefaults] setObject: @(index) forKey:UserChapterIndex];
+    
+    
+    
+    [self gameBack];
+}
+
 -(void) gameRefresh
 {
-    [ACTION.currentEffect performSelector:@selector(effectStartRollOut)];
-    [ACTION.currentEffect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:2];
+    BaseEffect* effect = ACTION.currentEffect;
+    [VIEW.actionDurations clear];
+    [effect effectStartRollOut];
+    double duration = [VIEW.actionDurations take];
+    [effect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:duration];
 }
 
 

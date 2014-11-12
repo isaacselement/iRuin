@@ -37,6 +37,20 @@
     [routeView erase];
 }
 
+-(void)effectTouchesEnded:(SymbolView *)symbol location:(CGPoint)location
+{
+    [super effectTouchesEnded:symbol location:location];
+    
+    [routeView erase];
+}
+
+-(void)effectTouchesCancelled:(SymbolView *)symbol location:(CGPoint)location
+{
+    [super effectTouchesCancelled:symbol location:location];
+    
+    [routeView erase];
+}
+
 -(void)effectStartRollIn
 {
     [super effectStartRollIn];

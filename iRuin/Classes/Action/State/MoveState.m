@@ -48,12 +48,10 @@
     if (touchingSymbol == symbol) {
         return;
     } else {
-//        DLOG(@" ------- Gotcha -------");
         
         int abs_col = abs(touchingSymbol.column - symbol.column);
         int abs_row = abs(touchingSymbol.row - symbol.row);
         if (abs_col > 1 || abs_row > 1) {
-//            DLOG(@" ------- not adjacent -------");
             // do vanish
             [self startVanishProcedure];
             return;
@@ -75,7 +73,6 @@
             
             // not the same identification
             {
-//                DLOG(@"-- Not The same id ... ");
                 // do vanish
                 [self startVanishProcedure];
                 return;
@@ -120,8 +117,6 @@
 {
     if (engageSymbolRepository.count >= MATCH_COUNT) {
         NSMutableArray* vanishSymbols = [SearchHelper searchMoveMatchedSymbols: engageSymbolRepository];
-        DLOG(@"vanish count : %lu", (unsigned long)vanishSymbols.count);
-//        [vanishSymbols exchangeObjectAtIndex:vanishSymbols.count-1 withObjectAtIndex:0];
         if (vanishSymbols.count >= MATCH_COUNT) {
             [self.effect effectStartVanish: vanishSymbols];
         }

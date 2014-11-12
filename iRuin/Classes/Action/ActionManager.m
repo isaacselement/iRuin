@@ -98,6 +98,8 @@ static ActionManager* sharedInstance = nil;
     [self.currentEvent eventInitialize];
     [self.currentState stateInitialize];
     [self.currentEffect effectInitialize];
+    
+    VIEW.gameView.modelLabel.text = mode;
 }
 
 

@@ -85,8 +85,25 @@
 }
 
 
--(void)lineScrollView:(LineScrollView *)lineScrollViewObj didSelectIndex:(int)index
+-(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchBeganAtPoint:(CGPoint)point
 {
+    LineScrollViewCell* cell = (LineScrollViewCell*)[lineScrollViewObj hitTest:point withEvent:nil];
+    if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
+    
+    cell.alpha = 0.2;
+    [UIView animateWithDuration: 0.5 animations:^{
+        cell.alpha = 1.0;
+    }];
+}
+
+
+-(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchEndedAtPoint:(CGPoint)point
+{
+    LineScrollViewCell* cell = (LineScrollViewCell*)[lineScrollViewObj hitTest:point withEvent:nil];
+    if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
+    
+    int index = [lineScrollViewObj indexOfVisibleCell: cell];
+    
     ACTION.gameState.currentChapter = index;
     
     int modeIndex = index % ACTION.gameModes.count;
@@ -97,3 +114,5 @@
 }
 
 @end
+
+

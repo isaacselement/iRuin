@@ -2,39 +2,6 @@
 #import "AppInterface.h"
 
 
-#define VISUAL_POSITIONS @"VISUAL.POSITIONS"
-#define CONFIG_POSITIONS @"CONFIG.POSITIONS"
-#define SYMBOLS_ActionExecutors @"SYMBOLS_ActionExecutors"
-
-
-#define RollIn @"RollIn"
-#define RollOut @"RollOut"
-
-#define Vanish @"Vanish"
-
-#define Adjusts @"Adjusts"
-#define FillIn @"FillIn"
-
-#define Squeeze @"Squeeze"
-#define Squeeze_Adjust @"Squeeze.Adjust"
-#define Squeeze_FillIn @"Squeeze.FillIn"
-
-
-#define LINES @"LINES"
-#define INDEXPATHS @"INDEXPATHS"
-
-#define IsReverse @"isReverse"
-#define IsBackward @"isBackward"
-#define IsColumnBase @"isColumnBase"
-
-
-#define TouchesBegan @"TouchesBegan"
-#define TouchesMoved @"TouchesMoved"
-#define TouchesEnded @"TouchesEnded"
-#define TouchesCancelled @"TouchesCancelled"
-
-
-
 @implementation BaseEffect
 {
     NSDictionary* linesConfigs;
@@ -190,6 +157,10 @@
     [self startSymbolsRoll:linesConfigs[RollOut] config:positionsConfigs[RollOut] actionsConfig:actionsConfigs[RollOut] inViews:QueueViewsHelper.viewsInVisualArea];
 }
 
+
+
+
+
 -(void) startSymbolsRoll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig inViews:(NSArray*)inViews
 {
     NSMutableArray* nullRowColumns = [NSMutableArray array];
@@ -201,10 +172,14 @@
     [self roll:lines config:config actionsConfig:actionsConfig delay:0 nullRowColumns:nullRowColumns inViews:inViews];
 }
 
+
+
 -(void) startSymbolsAdjusts: (NSArray*)nullRowColumns delay:(double)delay
 {
     [self roll:linesConfigs[Adjusts] config:positionsConfigs[Adjusts] actionsConfig:actionsConfigs[Adjusts] delay:delay nullRowColumns:nullRowColumns inViews:QueueViewsHelper.viewsInVisualArea];
 }
+
+
 
 -(void) startSymbolsSqueeze: (NSArray*)nullRowColumns vanishingViews:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
@@ -212,6 +187,8 @@
     
     [self fillIn: linesConfigs[Squeeze_FillIn] config:positionsConfigs[Squeeze_FillIn] actionsConfig:actionsConfigs[Squeeze_FillIn] vanishingViews:vanishingViews delay:vanishDuration];
 }
+
+
 
 -(void) startSymbolsFillIn:(NSArray*)vanishingViews delay:(double)delay
 {

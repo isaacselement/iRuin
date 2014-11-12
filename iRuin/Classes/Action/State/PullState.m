@@ -152,7 +152,9 @@
     
     // after update row and column
     NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInSameLine: MATCH_COUNT];
-    if (vanishSymbols) [self.effect effectStartVanish: vanishSymbols];
+    if (vanishSymbols) {
+        [self.effect effectStartVanish: vanishSymbols];
+    }
 }
 
 - (void)stateTouchesCancelled:(SymbolView*)symbol location:(CGPoint)location

@@ -42,16 +42,25 @@
 
 
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint location = [[touches anyObject] locationInView:self];
+    
+    if (self.lineScrollViewTouchBeganAtPoint) {
+        self.lineScrollViewTouchBeganAtPoint(self, location);
+    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:touchBeganAtPoint:)]) {
+        [dataSource lineScrollView: self touchBeganAtPoint:location];
+    }
+}
+
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint location = [[touches anyObject] locationInView:self];
-    LineScrollViewCell* view = (LineScrollViewCell*)[self hitTest:location withEvent:event];
-    int index = [self indexOfVisibleCell: view];
-    
-    if (self.lineScrollViewDidSelectIndex) {
-        self.lineScrollViewDidSelectIndex(self, index);
-    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:didSelectIndex:)]) {
-        [dataSource lineScrollView: self didSelectIndex:index];
+
+    if (self.lineScrollViewTouchEndedAtPoint) {
+        self.lineScrollViewTouchEndedAtPoint(self, location);
+    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:touchEndedAtPoint:)]) {
+        [dataSource lineScrollView: self touchEndedAtPoint:location];
     }
 }
 

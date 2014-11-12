@@ -12,6 +12,8 @@
 
 -(void) gameResume;
 
+-(void) gameOver;
+
 -(void) gameRefresh;
 
 -(void) gameChat;

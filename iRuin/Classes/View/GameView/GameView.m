@@ -2,9 +2,13 @@
 #import "AppInterface.h"
 
 @implementation GameView
+{
+    FBShimmeringView* shimmeringView;
+}
 
 @synthesize timerView;
 @synthesize scoreLabel;
+@synthesize modelLabel;
 @synthesize containerView;
 
 @synthesize backActionView;
@@ -22,13 +26,23 @@
         [self addSubview: containerView];
         
         
-        // header views
-        
+        // timer view
         timerView = [[TimerView alloc] init];
         [self addSubview: timerView];
+        timerView.timeIsOverAction = ^void(TimerView* timer) {
+            [ACTION.gameEvent gameOver];
+        };
         
+        // score label
         scoreLabel = [[NumberLabel alloc] init];
         [self addSubview: scoreLabel];
+        
+        // mode label
+        modelLabel = [[GradientLabel alloc] init];
+        shimmeringView = [[FBShimmeringView alloc] init];
+        shimmeringView.contentView = modelLabel;
+        [self addSubview:shimmeringView];
+        
         
         // action views
         

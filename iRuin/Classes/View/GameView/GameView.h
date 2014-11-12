@@ -2,6 +2,7 @@
 
 @class TimerView;
 @class NumberLabel;
+@class GradientLabel;
 @class ContainerView;
 @class InteractiveView;
 
@@ -9,6 +10,7 @@
 
 @property (strong) TimerView* timerView;
 @property (strong) NumberLabel* scoreLabel;
+@property (strong) GradientLabel* modelLabel;
 @property (strong, readonly) ContainerView* containerView;
 
 

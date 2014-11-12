@@ -10,6 +10,7 @@
 
 #pragma mark - Subclass Override Methods
 - (void)eventInitialize;
+- (void)eventUnInitialize;
 - (void)eventTouchesBegan:(SymbolView*)symbol location:(CGPoint)location;
 - (void)eventTouchesMoved:(SymbolView*)symbol location:(CGPoint)location;
 - (void)eventTouchesEnded:(SymbolView*)symbol location:(CGPoint)location;

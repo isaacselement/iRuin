@@ -10,6 +10,7 @@
 
 #pragma mark - Subclass Override Methods
 - (void)effectInitialize;
+-(void) effectUnInitialize;
 - (void)effectTouchesBegan:(SymbolView*)symbol location:(CGPoint)location;
 - (void)effectTouchesMoved:(SymbolView*)symbol location:(CGPoint)location;
 - (void)effectTouchesEnded:(SymbolView*)symbol location:(CGPoint)location;

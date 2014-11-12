@@ -83,6 +83,8 @@
 		4EA5C08219EFC32400008EED /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C08019EFC32400008EED /* AddressBook.framework */; };
 		4EA5C08319EFC32400008EED /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C08119EFC32400008EED /* AddressBookUI.framework */; };
 		4EAB5A6119F79C440031F69D /* ChaptersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6019F79C440031F69D /* ChaptersView.m */; };
+		4EAEBF501A132665001D212C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAEBF4E1A132665001D212C /* GLKit.framework */; };
+		4EAEBF511A132665001D212C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAEBF4F1A132665001D212C /* OpenGLES.framework */; };
 		4ECB29FC19FA562A00D60219 /* Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29E919FA562A00D60219 /* Config.json */; };
 		4ECB29FD19FA562A00D60219 /* Config_Dots.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EA19FA562A00D60219 /* Config_Dots.json */; };
 		4ECB29FE19FA562A00D60219 /* Config_Touch.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EB19FA562A00D60219 /* Config_Touch.json */; };
@@ -105,6 +107,7 @@
 		4EDACDC8191FB88C00A8E84E /* StateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDACDC7191FB88C00A8E84E /* StateHelper.m */; };
 		4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDACDCA191FBCF600A8E84E /* FilterHelper.m */; };
 		4EDC3D8C18229FEB00CD1C04 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDC3D8B18229FEB00CD1C04 /* QuartzCore.framework */; };
+		4EDD80AE1A1268B8007422A0 /* PPSSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD80AD1A1268B8007422A0 /* PPSSignatureView.m */; };
 		4EE5FC0419D858DD005E8736 /* ScheduledTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB0B19D858DC005E8736 /* ScheduledTask.m */; };
 		4EE5FC0519D858DD005E8736 /* TaskObjectList.c in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB0C19D858DC005E8736 /* TaskObjectList.c */; };
 		4EE5FC0619D858DD005E8736 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB1519D858DD005E8736 /* NSString+Base64.m */; };
@@ -366,6 +369,8 @@
 		4EA5C08119EFC32400008EED /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		4EAB5A5F19F79C440031F69D /* ChaptersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaptersView.h; sourceTree = "<group>"; };
 		4EAB5A6019F79C440031F69D /* ChaptersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChaptersView.m; sourceTree = "<group>"; };
+		4EAEBF4E1A132665001D212C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		4EAEBF4F1A132665001D212C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		4ECA1EB0184E0EB90063545E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4ECB29E919FA562A00D60219 /* Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config.json; sourceTree = "<group>"; };
 		4ECB29EA19FA562A00D60219 /* Config_Dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Dots.json; sourceTree = "<group>"; };
@@ -400,6 +405,8 @@
 		4EDACDC9191FBCF600A8E84E /* FilterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterHelper.h; sourceTree = "<group>"; };
 		4EDACDCA191FBCF600A8E84E /* FilterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterHelper.m; sourceTree = "<group>"; };
 		4EDC3D8B18229FEB00CD1C04 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4EDD80AC1A1268B8007422A0 /* PPSSignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSSignatureView.h; sourceTree = "<group>"; };
+		4EDD80AD1A1268B8007422A0 /* PPSSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSSignatureView.m; sourceTree = "<group>"; };
 		4EE5FB0719D858DC005E8736 /* _Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Action.h; sourceTree = "<group>"; };
 		4EE5FB0919D858DC005E8736 /* _Scheduled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Scheduled.h; sourceTree = "<group>"; };
 		4EE5FB0A19D858DC005E8736 /* ScheduledTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduledTask.h; sourceTree = "<group>"; };
@@ -681,6 +688,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EAEBF501A132665001D212C /* GLKit.framework in Frameworks */,
+				4EAEBF511A132665001D212C /* OpenGLES.framework in Frameworks */,
 				4EA5C08219EFC32400008EED /* AddressBook.framework in Frameworks */,
 				4EA5C08319EFC32400008EED /* AddressBookUI.framework in Frameworks */,
 				4EA5C07F19EFC31800008EED /* AVFoundation.framework in Frameworks */,
@@ -773,6 +782,7 @@
 		4E2CCACA19FBF93500D2AAEC /* GameComponents */ = {
 			isa = PBXGroup;
 			children = (
+				4EDD80AB1A1268B8007422A0 /* PPSSignatureView */,
 				4EEFD9AC1A0F5856006A76C8 /* FBShimmering */,
 				4E08AB9619FE66B300F1F449 /* SymbolView.h */,
 				4E08AB9719FE66B300F1F449 /* SymbolView.m */,
@@ -813,6 +823,8 @@
 		4E4D4E88181D5AFB00886D75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4EAEBF4E1A132665001D212C /* GLKit.framework */,
+				4EAEBF4F1A132665001D212C /* OpenGLES.framework */,
 				4EA5C08019EFC32400008EED /* AddressBook.framework */,
 				4EA5C08119EFC32400008EED /* AddressBookUI.framework */,
 				4EA5C07E19EFC31800008EED /* AVFoundation.framework */,
@@ -1062,6 +1074,15 @@
 				4ECB29F719FA562A00D60219 /* 3.png */,
 			);
 			path = Chapters;
+			sourceTree = "<group>";
+		};
+		4EDD80AB1A1268B8007422A0 /* PPSSignatureView */ = {
+			isa = PBXGroup;
+			children = (
+				4EDD80AC1A1268B8007422A0 /* PPSSignatureView.h */,
+				4EDD80AD1A1268B8007422A0 /* PPSSignatureView.m */,
+			);
+			path = PPSSignatureView;
 			sourceTree = "<group>";
 		};
 		4EE5FB0519D858DC005E8736 /* Modules */ = {
@@ -1873,6 +1894,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF7F5751A061FEF0096949F /* AllSDKManager.m in Sources */,
+				4EDD80AE1A1268B8007422A0 /* PPSSignatureView.m in Sources */,
 				4E4D4E9A181D5AFB00886D75 /* AppDelegate.m in Sources */,
 				4EE5FC4F19D858DD005E8736 /* NormalLabel.m in Sources */,
 				4E14BC5719225AF7000CDB57 /* PullState.m in Sources */,

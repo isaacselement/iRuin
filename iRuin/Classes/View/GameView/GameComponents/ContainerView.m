@@ -1,88 +1,73 @@
 #import "ContainerView.h"
 #import "AppInterface.h"
 
-@interface ContainerView ()
-
-@property (strong, nonatomic) NSArray* testPath;
-
-@end
 
 @implementation ContainerView
 
 
-/// -------- Test ---------
-//-(void)drawRect:(CGRect)rect
-//{
-//    if (! self.testPath) return;
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextClearRect(context, rect);
-//    for (UIBezierPath* pathObj in self.testPath) {
-//        CGPathRef path = pathObj.CGPath;
-//        CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-//        CGContextSetLineWidth(context, 1);
-//        CGContextAddPath(context, path);
-//        CGContextStrokePath(context);
-//    }
-//}
-
--(void)setTestPath:(NSArray*)testPath
-{
-    _testPath = testPath;
-    [self setNeedsDisplay];
-}
-/// -------- Test ---------
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint location = [[touches anyObject] locationInView:self];
-    
-    /// -------- Test ---------
-//    ContainerView* containerView = VIEW.gameView.containerView;
-//    NSMutableArray* array = [NSMutableArray array];
-//    for (int i = 0; i < 10; i++) {
-//        UIBezierPath* path = [ExplodesExecutor pathFromPoint:location];
-//        [array addObject: path];
-//    }
-//    containerView.testPath = array;
-//    return;
-    /// -------- Test ---------
-    
-    
-    SymbolView* symbol = [self getSymbolView: location event:event];
-    
-    [ACTION.currentEvent eventTouchesBegan: symbol location:location];
+    [self touchesBegan:location event:event];
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint location = [[touches anyObject] locationInView:self];
-    
-    SymbolView* symbol = [self getSymbolView: location event:event];
-    
-    [ACTION.currentEvent eventTouchesMoved: symbol location:location];
+    [self touchesMoved:location event:event];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint location = [[touches anyObject] locationInView:self];
-    
-    SymbolView* symbol = [self getSymbolView: location event:event];
-    
-    [ACTION.currentEvent eventTouchesEnded: symbol location:location];
+    [self touchesEnded:location event:event];
 }
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint location = [[touches anyObject] locationInView:self];
+    [self touchesCancelled:location event:event];
+}
+
+
+
+
+#pragma mark - Public Methods
+
+- (void)touchesBegan:(CGPoint)location event:(UIEvent *)event
+{
+    SymbolView* symbol = [self getSymbolView: location event:event];
     
+    [ACTION.currentEvent eventTouchesBegan: symbol location:location];
+}
+
+- (void)touchesMoved:(CGPoint)location event:(UIEvent *)event
+{
+    SymbolView* symbol = [self getSymbolView: location event:event];
+    
+    [ACTION.currentEvent eventTouchesMoved: symbol location:location];
+}
+
+- (void)touchesEnded:(CGPoint)location event:(UIEvent *)event
+{
+    SymbolView* symbol = [self getSymbolView: location event:event];
+    
+    [ACTION.currentEvent eventTouchesEnded: symbol location:location];
+}
+
+- (void)touchesCancelled:(CGPoint)location event:(UIEvent *)event
+{
     SymbolView* symbol = [self getSymbolView: location event:event];
     
     [ACTION.currentEvent eventTouchesCancelled: symbol location:location];
 }
 
 
+
+
 #pragma mark -
 
 -(SymbolView*) getSymbolView: (CGPoint)location event:(UIEvent*)event
 {
-    // hit test, may nil , or may self
+    // hit test, may nil , or may container itself
     SymbolView* symbol = (SymbolView*)[self hitTest: location withEvent:event];
     
     if (! symbol) {

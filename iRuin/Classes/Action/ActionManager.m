@@ -30,7 +30,7 @@ static ActionManager* sharedInstance = nil;
 {
     self = [super init];
     if (self) {
-        gameModes = @[MODE_MOVE, MODE_TOUCH, MODE_DOTS, MODE_PULL, MODE_SWIPE];
+        gameModes = @[MODE_DOTS, MODE_MOVE, MODE_TOUCH, MODE_PULL, MODE_SWIPE];
         modesRepository = [[NSMutableDictionary alloc] init];
         
         gameEvent = [[GameEvent alloc] init];
@@ -84,13 +84,17 @@ static ActionManager* sharedInstance = nil;
 {
     _currentMode = mode;
     
-    [DATA setConfigByMode: mode];
+    // destroy initialize
+    [self.currentEvent eventUnInitialize];
+    [self.currentState stateUnInitialize];
+    [self.currentEffect effectUnInitialize];
     
+    [DATA setConfigByMode: mode];
     self.currentEvent   = [[modesRepository objectForKey: mode] objectForKey: kEVENT];
     self.currentState   = [[modesRepository objectForKey: mode] objectForKey: kSTATE];
     self.currentEffect  = [[modesRepository objectForKey: mode] objectForKey: kEFFECT];
     
-    // do some stuff
+    // initialize
     [self.currentEvent eventInitialize];
     [self.currentState stateInitialize];
     [self.currentEffect effectInitialize];

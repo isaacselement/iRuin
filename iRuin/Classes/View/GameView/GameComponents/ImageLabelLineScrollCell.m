@@ -1,8 +1,6 @@
 #import "ImageLabelLineScrollCell.h"
 #import "AppInterface.h"
 
-//#import "FBShimmeringView.h"
-
 @implementation ImageLabelLineScrollCell
 {
 //    FBShimmeringView* _shimmeringView;

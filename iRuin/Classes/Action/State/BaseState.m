@@ -9,6 +9,9 @@
 -(void) stateInitialize
 {
 }
+-(void) stateUnInitialize
+{
+}
 -(void) stateTouchesBegan:(SymbolView*)symbol location:(CGPoint)location
 {
     [effect effectTouchesBegan: symbol location:location];

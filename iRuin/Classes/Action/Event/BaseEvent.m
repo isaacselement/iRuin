@@ -10,6 +10,9 @@
 - (void)eventInitialize
 {
 }
+- (void)eventUnInitialize
+{
+}
 - (void)eventTouchesBegan:(SymbolView*)symbol location:(CGPoint)location
 {
     [state stateTouchesBegan: symbol location:location];
@@ -72,12 +75,11 @@
     for (SymbolView* symbol in symbols){
         scoreLabel.number += symbol.score;
         
+        // cause the view will be reused , so here we need to check ~~~~~~
         if (![QueueViewsHelper isViewsInVisualAreaContains: symbol]) {
-            DLog(@"eventSymbolsDidVanish: %@", symbol);
             symbol.center = VIEW.frame.blackPoint;
+            [symbol.layer removeAllAnimations];
         }
-        
-//        [symbol.layer removeAllAnimations];
     }
 }
 

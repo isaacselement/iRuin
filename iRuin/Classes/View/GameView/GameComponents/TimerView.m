@@ -38,7 +38,7 @@
 
 
 -(void) caculateRemainTime {
-    if (_currentTime <= 0.0) return;
+    if (_currentTime <= 0.0) return;    // forbid multi call
     
     _currentTime -= 1.0;
     

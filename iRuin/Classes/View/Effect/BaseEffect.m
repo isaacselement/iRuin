@@ -61,6 +61,10 @@
     [VIEW.actionDurations clear];
     [self startSymbolsRollIn];
     double totalDuration = [VIEW.actionDurations take];
+    
+    // cause , roll in before did roll out call (the game start again)
+    [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollOut) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollIn) object:nil];
     [event performSelector:@selector(eventSymbolsDidRollIn) withObject:nil afterDelay:totalDuration];
 }
 
@@ -70,6 +74,10 @@
     [VIEW.actionDurations clear];
     [self startSymbolsRollOut];
     double totalDuration = [VIEW.actionDurations take];
+    
+    // cause , roll out before did roll in call (the game back button clicked)
+    [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollIn) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollOut) object:nil];
     [event performSelector:@selector(eventSymbolsDidRollOut) withObject:nil afterDelay:totalDuration];
 }
 

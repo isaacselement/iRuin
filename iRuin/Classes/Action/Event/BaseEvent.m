@@ -35,17 +35,20 @@
 #pragma mark - Event Methods
 -(void) eventSymbolsWillRollIn
 {
-     ACTION.gameState.isGameStarted = YES;
 }
+
 -(void) eventSymbolsDidRollIn
 {
     [VIEW.gameView.timerView resumeTimer];
+    ACTION.gameState.isGameStarted = YES;
 }
 
 -(void) eventSymbolsWillRollOut
 {
+    [VIEW.gameView.timerView pauseTimer];
     ACTION.gameState.isGameStarted = NO;
 }
+
 -(void) eventSymbolsDidRollOut
 {
 

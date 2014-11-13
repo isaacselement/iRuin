@@ -11,9 +11,8 @@
 {
     SymbolView* touchingSymbol;
     
+    CGFloat gap;
     
-    CGFloat offsetX ;
-    CGFloat offsetY ;
     CGPoint startPoint;
     BOOL isCheckDirection;
     
@@ -24,16 +23,15 @@
     NSMutableArray* currentHorizontalViews;     // the touching symbol's horizontal views
     
     
-    NSMutableArray* _operatingViews;            // for reuse the two views
-    
-    
     int interval;
     
     CGFloat xDistance;
     CGFloat yDistance;
-
     
-    NSMutableArray* _originalPositions;
+    
+    NSMutableArray* _operatingViews;            // for reuse the two views
+    
+    NSMutableArray* _originalPositions;         // currentMovingViews's original positions
 }
 
 
@@ -64,9 +62,6 @@
     touchingSymbol = symbol;
     currentMovingViews = nil;
     
-    
-    offsetX = location.x - symbol.center.x;
-    offsetY = location.y - symbol.center.y;
     startPoint = location;
     isCheckDirection = NO;
     
@@ -112,10 +107,11 @@
         
         if (isVertical) {
 
-            float y = location.y - touchingSymbol.center.y - offsetY;
+            float y = location.y - gap;
             for (SymbolView* symbol in currentMovingViews) {
                 symbol.center = CGPointMake(symbol.center.x, symbol.center.y + y );
             }
+            gap = location.y;
             
             
             float length = location.y - startPoint.y;
@@ -126,10 +122,11 @@
             
         } else {
 
-            float x = location.x - touchingSymbol.center.x - offsetX;
+            float x = location.x - gap;
             for (SymbolView* symbol in currentMovingViews) {
                 symbol.center = CGPointMake(symbol.center.x + x, symbol.center.y);
             }
+            gap = location.x;
             
             
             float length = location.x - startPoint.x;
@@ -181,6 +178,7 @@
         isCheckDirection = YES;
         
         isVertical = fabsf(distanceY) > fabsf(distanceX) ;
+        gap = isVertical ? startPoint.y : startPoint.x;
         
         // get the direction , then prepare the moving views
         currentMovingViews = isVertical ? currentVerticalViews : currentHorizontalViews;
@@ -217,28 +215,7 @@
 
 -(NSArray*) getTwoUselessViews
 {
-    if (! _operatingViews) {
-        _operatingViews = [NSMutableArray array];
-        [IterateHelper iterate: [QueueViewsHelper viewsInVisualArea] handler:^BOOL(int index, id obj, int count) {
-            [_operatingViews addObjectsFromArray: obj];
-            return NO;
-        }];
-        NSArray* twoUselessViews = [QueueViewsHelper getUselessViews: 2];
-        [_operatingViews addObjectsFromArray: twoUselessViews];
-    }
-    
-    NSMutableArray* results = [NSMutableArray arrayWithArray: _operatingViews];
-    [IterateHelper iterateTwoDimensionArray:[QueueViewsHelper viewsInVisualArea] handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-        [results removeObject: obj];
-        return NO;
-    }];
-    
-    for (int i = 0; i < 2; i++) {
-        SymbolView* symbol = results[i];
-        [symbol restore];
-    }
-    
-    return results;
+    return [QueueViewsHelper getUselessViews: 2];
 }
 
 
@@ -300,17 +277,6 @@
 {
     NSMutableArray* views = [NSMutableArray arrayWithArray: currentMovingViews];
     
-    // a phone call come in or something happened ...
-    if (isCancel) {
-        [IterateHelper iterate: views handler:^BOOL(int index, id obj, int count) {
-            [(UIView*)obj setCenter: [[_originalPositions safeObjectAtIndex: index] CGPointValue]];
-            return NO;
-        }];
-        return;
-    }
-    
-    // else ...
-    
     SymbolView* first = [views firstObject];
     SymbolView* last = [views lastObject];
     if (![StateHelper isInContainer: first] && ![StateHelper isInContainer: last]) {
@@ -342,8 +308,25 @@
     
     [IterateHelper iterate: views handler:^BOOL(int index, id obj, int count) {
         NSValue* pointValue = [_originalPositions safeObjectAtIndex: index];
-        NSArray* symbolPositions = @[CGPointValue(((UIView*)obj).center), pointValue];
-        [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Adjust_Positions_ActionExecutors"] onObjects:@[obj] values:symbolPositions baseTimes:nil];
+        
+        // for the two useless symbols
+        if (index == 0 || index == count - 1) {
+            [((SymbolView*)obj) setCenter: VIEW.frame.blackPoint];
+            
+            return NO;
+        }
+        
+        // a phone call come in or something happened ...
+        if (isCancel) {
+            
+            [((SymbolView*)obj) setCenter: [pointValue CGPointValue]];
+            
+        } else {
+            
+            NSArray* symbolPositions = @[CGPointValue(((UIView*)obj).center), pointValue];
+            [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Adjust_Positions_ActionExecutors"] onObjects:@[obj] values:symbolPositions baseTimes:nil];
+        }
+        
         return NO;
     }];
 }

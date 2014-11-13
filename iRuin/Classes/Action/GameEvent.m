@@ -81,6 +81,8 @@
     int score = VIEW.gameView.scoreLabel.number;
     int vanishCount = ACTION.gameState.vanishAmount;
     
+    if (vanishCount == 0) return;
+    
     float rate = score / vanishCount;
     
     DLOG(@"%.2f", rate);

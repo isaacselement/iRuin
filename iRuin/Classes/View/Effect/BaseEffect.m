@@ -57,10 +57,11 @@
 
 -(void) effectStartRollIn
 {
-    [event eventSymbolsWillRollIn];
     [VIEW.actionDurations clear];
     [self startSymbolsRollIn];
     double totalDuration = [VIEW.actionDurations take];
+    
+    [event eventSymbolsWillRollIn];                     // for filter
     
     // cause , roll in before did roll out call (the game start again)
     [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollOut) object:nil];
@@ -70,10 +71,11 @@
 
 -(void) effectStartRollOut
 {
-    [event eventSymbolsWillRollOut];
     [VIEW.actionDurations clear];
     [self startSymbolsRollOut];
     double totalDuration = [VIEW.actionDurations take];
+
+    [event eventSymbolsWillRollOut];
     
     // cause , roll out before did roll in call (the game back button clicked)
     [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollIn) object:nil];

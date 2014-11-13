@@ -131,7 +131,7 @@ static ActionManager* sharedInstance = nil;
     
     // B. will update views in QueueViewsHelper.viewsInVisualArea , we need the structures
     [QueueViewsHelper setViewsInVisualArea: visualArea];
-    [QueueViewsHelper setViewsInVisualAreaWithNull];
+    [QueueViewsHelper replaceViewsInVisualAreaWithNull];
     
     
     BOOL isVisualAreaClipsToBounds = [DATA.config[@"IsVisualAreaClipsToBounds"] boolValue];

@@ -18,7 +18,17 @@
     [self chaptersValuesActions: DATA.config[@"GAME_LAUNCH_Chapters_Cells"]];
     
     
-    [VIEW.chaptersView.lineScrollView setCurrentIndex: [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue]];
+    // chapter cells
+    LineScrollView* chaptersCellViews = VIEW.chaptersView.lineScrollView;
+    chaptersCellViews.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
+        int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue];
+        return index <= userChapterIndex;
+    };
+    
+    int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue];
+    int cellsCount = chaptersCellViews.contentView.subviews.count;
+    DLOG(@"%d , %d", userChapterIndex, cellsCount);
+    [chaptersCellViews setCurrentIndex: userChapterIndex - cellsCount];
 }
 
 
@@ -54,11 +64,6 @@
     
     // chapters cells effect
     [self chaptersValuesActions: DATA.config[@"GAME_BACK_Chapters_Cells"]];
-    
-    
-//    if ([[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue] > VIEW.chaptersView.lineScrollView.currentIndex) {
-//        [VIEW.chaptersView.lineScrollView setCurrentIndex: [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue]];
-//    }
 }
 
 
@@ -78,23 +83,31 @@
 
 -(void) gameOver
 {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.dimBackground = YES;
+    hud.detailsLabelText = @"Game is Over :-P";
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay: 3.5];
+    
+    
+    float rate = 0;
+    float userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] floatValue];
+    
     int score = VIEW.gameView.scoreLabel.number;
     int vanishCount = ACTION.gameState.vanishAmount;
+    if (vanishCount != 0) {
+        float rate = score / vanishCount;
+        userChapterIndex += rate;
+        [[NSUserDefaults standardUserDefaults] setObject: @(userChapterIndex) forKey:UserChapterIndex];
+    }
     
-    if (vanishCount == 0) return;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSString* message = [NSString stringWithFormat:@"%.2f points up, season %d is ready for u :)", rate, (int)userChapterIndex];
+        hud.detailsLabelText = message;
+    });
     
-    float rate = score / vanishCount;
-    
-    DLOG(@"%.2f", rate);
-    
-    float index = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] floatValue];
-    index += rate;
-    
-    [[NSUserDefaults standardUserDefaults] setObject: @(index) forKey:UserChapterIndex];
-    
-    
-    
-    [self gameBack];
+    [self performSelector:@selector(gameBack) withObject:nil afterDelay: 1];
 }
 
 -(void) gameRefresh

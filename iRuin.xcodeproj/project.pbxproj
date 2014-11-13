@@ -86,6 +86,7 @@
 		4EAB5A6119F79C440031F69D /* ChaptersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6019F79C440031F69D /* ChaptersView.m */; };
 		4EAEBF501A132665001D212C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAEBF4E1A132665001D212C /* GLKit.framework */; };
 		4EAEBF511A132665001D212C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAEBF4F1A132665001D212C /* OpenGLES.framework */; };
+		4EBC39791A14E22700AFE71A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBC39781A14E22700AFE71A /* MBProgressHUD.m */; };
 		4ECB29FC19FA562A00D60219 /* Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29E919FA562A00D60219 /* Config.json */; };
 		4ECB29FD19FA562A00D60219 /* Config_Dots.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EA19FA562A00D60219 /* Config_Dots.json */; };
 		4ECB29FE19FA562A00D60219 /* Config_Touch.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EB19FA562A00D60219 /* Config_Touch.json */; };
@@ -373,6 +374,8 @@
 		4EAB5A6019F79C440031F69D /* ChaptersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChaptersView.m; sourceTree = "<group>"; };
 		4EAEBF4E1A132665001D212C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		4EAEBF4F1A132665001D212C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		4EBC39771A14E22700AFE71A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		4EBC39781A14E22700AFE71A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4ECA1EB0184E0EB90063545E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4ECB29E919FA562A00D60219 /* Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config.json; sourceTree = "<group>"; };
 		4ECB29EA19FA562A00D60219 /* Config_Dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Dots.json; sourceTree = "<group>"; };
@@ -785,6 +788,7 @@
 		4E2CCACA19FBF93500D2AAEC /* GameComponents */ = {
 			isa = PBXGroup;
 			children = (
+				4EBC39761A14E22700AFE71A /* MBProgressHUD */,
 				4EDD80AB1A1268B8007422A0 /* PPSSignatureView */,
 				4EEFD9AC1A0F5856006A76C8 /* FBShimmering */,
 				4E08AB9619FE66B300F1F449 /* SymbolView.h */,
@@ -1013,6 +1017,15 @@
 				4E0BFC5019260B9100F0E632 /* DotsState.m */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		4EBC39761A14E22700AFE71A /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4EBC39771A14E22700AFE71A /* MBProgressHUD.h */,
+				4EBC39781A14E22700AFE71A /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		4ECB29E719FA562A00D60219 /* iRuinResources */ = {
@@ -2040,6 +2053,7 @@
 				4E2CCAD319FBF98B00D2AAEC /* GameBaseView.m in Sources */,
 				4EE5FC1419D858DD005E8736 /* RSACryptor.m in Sources */,
 				4E14BC5A19225B3E000CDB57 /* PullEffect.m in Sources */,
+				4EBC39791A14E22700AFE71A /* MBProgressHUD.m in Sources */,
 				4EE5FC4E19D858DD005E8736 /* GradientLabel.m in Sources */,
 				4E1FBA27191BBC8D0093BE25 /* TouchState.m in Sources */,
 			);

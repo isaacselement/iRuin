@@ -15,16 +15,28 @@
 
 
 #pragma mark - Frameworks & Libraries
+
 /** Frameworks & Libraries */
 #import <QuartzCore/QuartzCore.h>
 
-#import "Modules.h"
 
+// Modules
+#import "Modules.h"
 #import "TextFormatter.h"
+
 
 
 //InAppIMSDK
 #import "InAppIM.h"
+
+
+
+// Third-Party
+#import "FBShimmeringView.h"
+#import "PPSSignatureView.h"
+#import "MBProgressHUD.h"
+
+
 
 
 
@@ -121,13 +133,6 @@
 #import "LineScrollView.h"
 #import "LineScrollViewCell.h"
 
-
-
-
-
-// Third-Party
-#import "FBShimmeringView.h"
-#import "PPSSignatureView.h"
 
 
 

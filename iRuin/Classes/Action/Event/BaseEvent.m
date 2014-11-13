@@ -35,6 +35,12 @@
 #pragma mark - Event Methods
 -(void) eventSymbolsWillRollIn
 {
+    [IterateHelper iterateTwoDimensionArray:[QueueViewsHelper viewsInVisualArea] handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
+        if (obj == [NSNull null]) return NO;
+        SymbolView* symbolView = (SymbolView*)obj;
+        symbolView.identification = [SymbolView getOneRandomSymbolIdentification];
+        return NO;
+    }];
 }
 
 -(void) eventSymbolsDidRollIn

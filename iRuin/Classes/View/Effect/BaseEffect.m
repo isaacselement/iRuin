@@ -7,10 +7,89 @@
     NSDictionary* linesConfigs;
     NSDictionary* actionsConfigs;
     NSDictionary* positionsConfigs;
+    
+    NSArray*(^viewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* indexPaths, NSDictionary* linesConfig, NSArray* vanishingViews);
+    NSArray*(^viewsInVisualPositionsHandler)(NSArray* lines, NSArray* indexPaths, NSDictionary* linesConfig, NSArray* vanishingViews);
+    NSArray*(^fillInViewsPositionsHandler)(NSArray* lines, NSArray* indexPaths, NSDictionary* linesConfig, NSArray* vanishingViews);
 }
 
 @synthesize event;
 
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        viewsInRepositoryPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
+            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsRepository lines:lines indexPaths:indexPaths];
+            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+            return @[views, positions];
+        };
+        
+        viewsInVisualPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
+            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsInVisualArea lines:lines indexPaths:indexPaths];
+            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+            return @[views, positions];
+        };
+        
+        fillInViewsPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
+            
+            // TODO: If not enough ~~~~~~ , cause may vanish many ~~~~~  !
+            NSMutableArray* uselessViews = [QueueViewsHelper getUselessViews];
+            for (UIView* vanishingView in vanishingViews) {
+                [uselessViews removeObject: vanishingView];
+            }
+            
+            int kcount = 0 ;
+            NSMutableArray* views = [NSMutableArray array];
+            for (int i = 0; i < indexPaths.count; i++) {
+                NSMutableArray* innerViews = [NSMutableArray array];
+                NSArray* innerIndexPaths = indexPaths[i];
+                for (int j = 0 ; j < innerIndexPaths.count; j++) {
+                    NSArray* indexPath = innerIndexPaths[j];
+                    int x = [[indexPath firstObject] intValue];
+                    int y = [[indexPath lastObject] intValue];
+                    
+                    NSArray* cellValue = [[lines objectAtIndex: x] objectAtIndex:y];
+                    int row = [[cellValue firstObject] intValue];
+                    int column = [[cellValue lastObject] intValue];
+                    
+                    id obj = [[QueueViewsHelper.viewsInVisualArea safeObjectAtIndex: row] safeObjectAtIndex: column] ;
+                    if (obj && obj == [NSNull null]) {
+                        kcount++;
+                        UIView* view = [uselessViews objectAtIndex:kcount];
+                        [innerViews addObject: view];
+                    }
+                }
+                if (innerViews.count) [views addObject: innerViews];
+            }
+            
+            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+            
+
+            // cause roll know how many view roll in , fill in need dynamic
+            for (int i = 0; i < views.count; i++) {
+                NSMutableArray* innverViews = [views objectAtIndex: i];
+                for (int j = 1; j < innverViews.count; j++) {
+                    [positions[i] insertObject:positions[i][0] atIndex:0];
+                }
+            }
+            
+            [IterateHelper iterateTwoDimensionArray: views handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
+                SymbolView* symbol = (SymbolView*)obj;
+                [symbol restore];
+                symbol.identification = [SymbolView getOneRandomSymbolIdentification];
+                return NO;
+            }];
+            
+
+            return @[views, positions];
+        };
+
+    }
+    return self;
+}
 
 
 
@@ -62,7 +141,6 @@
     double totalDuration = [VIEW.actionDurations take];
     
     [event eventSymbolsWillRollIn];                     // for filter
-    
     // cause , roll in before did roll out call (the game start again)
     [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollOut) object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollIn) object:nil];
@@ -76,7 +154,6 @@
     double totalDuration = [VIEW.actionDurations take];
 
     [event eventSymbolsWillRollOut];
-    
     // cause , roll out before did roll in call (the game back button clicked)
     [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollIn) object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollOut) object:nil];
@@ -87,8 +164,6 @@
 -(void)effectStartVanish: (NSMutableArray*)symbols
 {
     // get the null rows and columns
-    NSMutableArray* nullRowColumns = [NSMutableArray array];
-    NSArray* indexPathsRepository = QueueIndexPathParser.indexPathsRepository;
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
     for (NSInteger i = 0; i < symbols.count; i++) {
         SymbolView* symbol = symbols[i];
@@ -101,43 +176,47 @@
         int row = symbol.row;
         int column = symbol.column;
         [[symbolsAtContainer objectAtIndex: row] replaceObjectAtIndex: column withObject:[NSNull null]];
-        [nullRowColumns addObject: [[indexPathsRepository objectAtIndex: row] objectAtIndex: column]];
         
         symbol.row = -1;
         symbol.column = -1;
     }
     
+    NSMutableArray* nullRowColumns = [PositionsHelper getNullIndexPathsInVisualAreaViews];
     
     
     NSMutableArray* vanishingViews = [ArrayHelper eliminateDuplicates: symbols];
-    [event eventSymbolsWillVanish: vanishingViews];
     [VIEW.actionDurations clear];
     [self startSymbolsVanish: vanishingViews];
     double vanishTotalDuration = [VIEW.actionDurations take];
+    
+    [event eventSymbolsWillVanish: vanishingViews];
     [event performSelector: @selector(eventSymbolsDidVanish:) withObject:vanishingViews afterDelay:vanishTotalDuration];
     
     
     if ([DATA.config[Squeeze] boolValue]){
         
-        [event eventSymbolsWillSqueeze];
         [VIEW.actionDurations clear];
         [self startSymbolsSqueeze: nullRowColumns vanishingViews:vanishingViews vanishDuration:vanishTotalDuration];
         double squeezeTotalDuration = [VIEW.actionDurations take];
+        
+        [event eventSymbolsWillSqueeze];
         [event performSelector: @selector(eventSymbolsDidSqueeze) withObject:nil afterDelay:squeezeTotalDuration];
         
     } else {
 
-        [event eventSymbolsWillAdjusts];
         [VIEW.actionDurations clear];
-        [self startSymbolsAdjusts: nullRowColumns delay:vanishTotalDuration];
+        [self startSymbolsAdjusts: nullRowColumns delay:vanishTotalDuration vanishingViews:vanishingViews];
         double adjustTotalDuration = [VIEW.actionDurations take];
+
+        [event eventSymbolsWillAdjusts];
         [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustTotalDuration];
         
 
-        [event eventSymbolsWillFillIn];
         [VIEW.actionDurations clear];
         [self startSymbolsFillIn: vanishingViews delay:vanishTotalDuration + adjustTotalDuration];
         double filInTotalDuration = [VIEW.actionDurations take];
+
+        [event eventSymbolsWillFillIn];
         [event performSelector: @selector(eventSymbolsDidFillIn) withObject:nil afterDelay:filInTotalDuration];
         
     }
@@ -157,55 +236,46 @@
     [VIEW.actionExecutorManager runActionExecutors:actionsConfigs[Vanish] onObjects:views values:nil baseTimes:nil];
 }
 
+
 -(void) startSymbolsRollIn
 {
-    [self startSymbolsRoll:linesConfigs[RollIn] config:positionsConfigs[RollIn] actionsConfig:actionsConfigs[RollIn] inViews:QueueViewsHelper.viewsRepository];
+    [self startSymbolsRoll:linesConfigs[RollIn] config:positionsConfigs[RollIn] actionsConfig:actionsConfigs[RollIn] vanishingViews:nil viewspositionsHandler:viewsInRepositoryPositionsHandler];
 }
-
 -(void) startSymbolsRollOut
 {
-    [self startSymbolsRoll:linesConfigs[RollOut] config:positionsConfigs[RollOut] actionsConfig:actionsConfigs[RollOut] inViews:QueueViewsHelper.viewsInVisualArea];
+    [self startSymbolsRoll:linesConfigs[RollOut] config:positionsConfigs[RollOut] actionsConfig:actionsConfigs[RollOut] vanishingViews:nil viewspositionsHandler:viewsInVisualPositionsHandler];
 }
 
 
-
-
-
--(void) startSymbolsRoll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig inViews:(NSArray*)inViews
+-(void) startSymbolsRoll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig vanishingViews:(NSArray*)vanishingViews viewspositionsHandler:(NSArray*(^)(NSArray* lines, NSArray* indexPaths, NSDictionary* linesConfig, NSArray* vanishingViews))viewspositionsHandler
 {
-    NSMutableArray* nullRowColumns = [NSMutableArray array];
-    [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsInVisualArea handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-        [nullRowColumns addObject:[[QueueIndexPathParser.indexPathsRepository objectAtIndex:outterIndex] objectAtIndex: innerIndex]];
-        return NO;
-    }];
-    
-    [self roll:lines config:config actionsConfig:actionsConfig delay:0 nullRowColumns:nullRowColumns inViews:inViews];
+    NSArray* nullRowColumns = [PositionsHelper getAllNullIndexPathsInVisualAreaViews];
+    [self roll:lines config:config actionsConfig:actionsConfig delay:0 nullRowColumns:nullRowColumns vanishingViews:vanishingViews viewspositionsHandler:viewspositionsHandler];
 }
 
 
-
--(void) startSymbolsAdjusts: (NSArray*)nullRowColumns delay:(double)delay
+-(void) startSymbolsAdjusts: (NSArray*)nullRowColumns delay:(double)delay vanishingViews:(NSArray*)vanishingViews
 {
-    [self roll:linesConfigs[Adjusts] config:positionsConfigs[Adjusts] actionsConfig:actionsConfigs[Adjusts] delay:delay nullRowColumns:nullRowColumns inViews:QueueViewsHelper.viewsInVisualArea];
+    [self roll:linesConfigs[Adjusts] config:positionsConfigs[Adjusts] actionsConfig:actionsConfigs[Adjusts] delay:delay nullRowColumns:nullRowColumns vanishingViews:vanishingViews viewspositionsHandler:viewsInVisualPositionsHandler];
 }
 
 
 
 -(void) startSymbolsSqueeze: (NSArray*)nullRowColumns vanishingViews:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
-    [self roll: linesConfigs[Squeeze_Adjust] config:positionsConfigs[Squeeze_Adjust] actionsConfig:actionsConfigs[Squeeze_Adjust] delay:vanishDuration nullRowColumns:nullRowColumns inViews:[QueueViewsHelper viewsInVisualArea]];
+    [self roll: linesConfigs[Squeeze_Adjust] config:positionsConfigs[Squeeze_Adjust] actionsConfig:actionsConfigs[Squeeze_Adjust] delay:vanishDuration nullRowColumns:nullRowColumns vanishingViews:vanishingViews viewspositionsHandler:viewsInVisualPositionsHandler];
     
-    [self fillIn: linesConfigs[Squeeze_FillIn] config:positionsConfigs[Squeeze_FillIn] actionsConfig:actionsConfigs[Squeeze_FillIn] vanishingViews:vanishingViews delay:vanishDuration];
+    [self roll:linesConfigs[Squeeze_FillIn] config:positionsConfigs[Squeeze_FillIn] actionsConfig:actionsConfigs[Squeeze_FillIn] delay:vanishDuration nullRowColumns:[PositionsHelper getNullIndexPathsInVisualAreaViews] vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
 }
 
 
 
 -(void) startSymbolsFillIn:(NSArray*)vanishingViews delay:(double)delay
 {
-    [self fillIn:linesConfigs[FillIn] config:positionsConfigs[FillIn] actionsConfig:actionsConfigs[FillIn] vanishingViews:vanishingViews delay:delay];
+    [self roll:linesConfigs[FillIn] config:positionsConfigs[FillIn] actionsConfig:actionsConfigs[FillIn] delay:delay nullRowColumns:[PositionsHelper getNullIndexPathsInVisualAreaViews] vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
 }
 
--(void) roll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig delay:(double)delay nullRowColumns:(NSArray*)nullRowColumns inViews:(NSArray*)inViews
+-(void) roll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig delay:(double)delay nullRowColumns:(NSArray*)nullRowColumns vanishingViews:(NSArray*)vanishingViews viewspositionsHandler:(NSArray*(^)(NSArray* lines, NSArray* indexPaths, NSDictionary* linesConfig, NSArray* vanishingView))viewspositionsHandler
 {
     NSDictionary* linesConfig = config[LINES];
     
@@ -218,73 +288,14 @@
     NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupTheNullIndexPaths: nullIndexPaths isNullIndexPathsBreakWhenNotCoterminous:NO isColumnBase:isColumnBase];
     NSArray* indexPaths = [QueueIndexPathParser assembleIndexPaths:lines groupedNullIndexpaths:groupedNullIndexpaths isBackward:isBackward isColumnBase:isColumnBase isReverse:isReverse];
     
-    NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:inViews lines:lines indexPaths:indexPaths];
-    NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+    NSArray* array = viewspositionsHandler(lines, indexPaths, linesConfig, vanishingViews);
+    NSMutableArray* views = [array firstObject];
+    NSMutableArray* positions = [array lastObject];
     NSMutableArray* baseTimes = [self getBaseTimesAccordingToViews: views delay:delay];
     
     [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:baseTimes];
     [PositionsHelper updateViewsRowsColumnsInVisualArea: views];
 }
-
--(void) fillIn: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig vanishingViews:(NSArray*)vanishingViews delay:(double)delay
-{
-    NSDictionary* linesConfig = config[LINES];
-    
-    NSDictionary* indexPathsConfig = config[INDEXPATHS];
-    BOOL isReverse = [indexPathsConfig[IsReverse] boolValue];
-    BOOL isBackward = [indexPathsConfig[IsBackward] boolValue];
-    BOOL isColumnBase = [indexPathsConfig[IsColumnBase] boolValue];
-    
-    NSMutableArray* nullRowColumns = [PositionsHelper getIndexPathsNullInVisualAreaViews];
-    NSMutableArray* nullIndexPaths = [QueueIndexPathParser getIndexPathsIn: lines elements:nullRowColumns];
-    NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupTheNullIndexPaths: nullIndexPaths isNullIndexPathsBreakWhenNotCoterminous:YES isColumnBase:isColumnBase];
-    NSArray* indexPaths = [QueueIndexPathParser assembleIndexPaths:lines groupedNullIndexpaths:groupedNullIndexpaths isBackward:isBackward isColumnBase:isColumnBase isReverse:isReverse];
-    
-    // TODO: If not enough ~~~~~~, cause may vanish many ~~~~~  !
-    NSMutableArray* uselessViews = [QueueViewsHelper getUselessViews];
-    for (UIView* vanishingView in vanishingViews) {
-        [uselessViews removeObject: vanishingView];
-    }
-    
-    int count = 0 ;
-    NSMutableArray* views = [NSMutableArray array];
-    for (NSUInteger i = 0; i < groupedNullIndexpaths.count; i++) {
-        NSArray* oneGroupedNullIndexpaths = groupedNullIndexpaths[i];
-        NSMutableArray* innerViews = [NSMutableArray array];
-        for (NSUInteger j = 0; j < oneGroupedNullIndexpaths.count; j++) {
-            UIView* view = [uselessViews objectAtIndex:count];
-            [innerViews addObject: view];
-            count++;
-        }
-        [views addObject: innerViews];
-    }
-    
-    NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
-    
-    // cause roll know how many view roll in , fill in need dynamic
-    for (int i = 0; i < views.count; i++) {
-        NSMutableArray* innverViews = [views objectAtIndex: i];
-        for (int j = 1; j < innverViews.count; j++) {
-            [positions[i] insertObject:positions[i][0] atIndex:0];
-        }
-    }
-    
-    [IterateHelper iterateTwoDimensionArray: views handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-        SymbolView* symbol = (SymbolView*)obj;
-        [symbol restore];
-        symbol.identification = [SymbolView getOneRandomSymbolIdentification];
-        return NO;
-    }];
-    
-    NSMutableArray* baseTimes = [self getBaseTimesAccordingToViews: views delay:delay];
-    
-    [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:baseTimes];
-    [PositionsHelper updateViewsRowsColumnsInVisualArea: views];
-}
-
-
-
-
 
 
 #pragma mark - 

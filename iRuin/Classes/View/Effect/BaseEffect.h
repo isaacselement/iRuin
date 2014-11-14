@@ -66,6 +66,4 @@
 // Squeeze is the connected phase of Adjust and Fill , just not waiting until Adjust done and start the FillIn simultaneously. You should choose one of Adjust or Squeeze when vanish Done in 'stateStartNextPhase' .
 
 
--(void) roll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig delay:(double)delay nullRowColumns:(NSArray*)nullRowColumns inViews:(NSArray*)inViews;
-
 @end

@@ -3,8 +3,8 @@
 @interface PositionsHelper : NSObject
 
 
++(NSMutableArray*) getViewsInContainerInVisualArea;
 +(NSMutableArray*) getNullIndexPathsInVisualAreaViews;
-+(NSMutableArray*) getAllNullIndexPathsInVisualAreaViews;
 
 +(void) updateViewsRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
 

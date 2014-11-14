@@ -9,6 +9,15 @@
 {
     [ScheduledTask sharedInstance].timeInterval = 0.2;
     
+    // chapter cells
+    LineScrollView* chaptersCellViews = VIEW.chaptersView.lineScrollView;
+    chaptersCellViews.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
+        int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue];
+        return index <= userChapterIndex;
+    };
+    int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue];
+    [chaptersCellViews setCurrentIndex: userChapterIndex - chaptersCellViews.contentView.subviews.count];       //Should go first , affect the effect jump in
+    
     
     
     //
@@ -17,18 +26,6 @@
     // chapters cells effect
     [self chaptersValuesActions: DATA.config[@"GAME_LAUNCH_Chapters_Cells"]];
     
-    
-    // chapter cells
-    LineScrollView* chaptersCellViews = VIEW.chaptersView.lineScrollView;
-    chaptersCellViews.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
-        int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue];
-        return index <= userChapterIndex;
-    };
-    
-    int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue];
-    int cellsCount = chaptersCellViews.contentView.subviews.count;
-    DLOG(@"%d , %d", userChapterIndex, cellsCount);
-    [chaptersCellViews setCurrentIndex: userChapterIndex - cellsCount];
 }
 
 

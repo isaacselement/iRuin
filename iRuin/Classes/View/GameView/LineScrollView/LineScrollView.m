@@ -108,7 +108,7 @@
     // call super
     [super setFrame: frame];
     
-    if (CGRectEqualToRect(frame, CGRectNull) || CGRectEqualToRect(frame, CGRectZero)) {
+    if (CGRectEqualToRect(frame, CGRectZero)) {
         return;
     }
     
@@ -118,6 +118,8 @@
 -(void) reloadCells
 {
     CGRect frame = self.frame;
+    if (CGRectEqualToRect(frame, CGRectNull)) return;
+        
     float width = frame.size.width;
     float height = frame.size.height;
     if (width == 0 || height == 0) return;

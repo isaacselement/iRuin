@@ -10,14 +10,9 @@
     return [QueueIndexPathParser getIndexPathsIn: QueueViewsHelper.viewsInVisualArea element:[NSNull null]];
 }
 
-+(NSMutableArray*) getAllNullIndexPathsInVisualAreaViews
++(NSMutableArray*) getViewsInContainerInVisualArea
 {
-    NSMutableArray* nullRowColumns = [NSMutableArray array];
-    [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsInVisualArea handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-        [nullRowColumns addObject:[[QueueIndexPathParser.indexPathsRepository objectAtIndex:outterIndex] objectAtIndex: innerIndex]];
-        return NO;
-    }];
-    return nullRowColumns;
+    return [QueueViewsHelper getViewsInVisualAreaFromViewsRepository: VIEW.gameView.containerView.bounds];
 }
 
 +(void) updateViewsRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence

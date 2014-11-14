@@ -97,7 +97,7 @@
     int score = VIEW.gameView.scoreLabel.number;
     int vanishCount = ACTION.gameState.vanishAmount;
     if (vanishCount != 0) {
-        float rate = score / vanishCount;
+        rate = score / vanishCount;
         userChapterIndex += rate;
         [[NSUserDefaults standardUserDefaults] setObject: @(userChapterIndex) forKey:UserChapterIndex];
     }

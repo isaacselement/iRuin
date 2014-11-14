@@ -16,8 +16,8 @@
 {
     [super eventSymbolsWillRollIn];
     
+    // do the filter match symbols job
     if (!self.isDisableChainable) {
-        // do the filter match symbols job
         [FilterHelper forwardFilterMatchedObjects];
     }
 }

@@ -50,37 +50,20 @@
             
             // TODO: If not enough ~~~~~~ , cause may vanish many ~~~~~  !
             NSMutableArray* uselessViews = [QueueViewsHelper getUselessViews];
-            for (UIView* vanishingView in vanishingViews) {
-                [uselessViews removeObject: vanishingView];
+            for (UIView* vanishingSymbol in vanishingViews) {
+                [uselessViews removeObject: vanishingSymbol];
             }
             
-            int kcount = 0 ;
-            NSMutableArray* views = [NSMutableArray array];
-            for (int i = 0; i < indexPaths.count; i++) {
-                NSMutableArray* innerViews = [NSMutableArray array];
-                NSArray* innerIndexPaths = indexPaths[i];
-                for (int j = 0 ; j < innerIndexPaths.count; j++) {
-                    NSArray* indexPath = innerIndexPaths[j];
-                    int x = [[indexPath firstObject] intValue];
-                    int y = [[indexPath lastObject] intValue];
-                    
-                    NSArray* cellValue = [[lines objectAtIndex: x] objectAtIndex:y];
-                    int row = [[cellValue firstObject] intValue];
-                    int column = [[cellValue lastObject] intValue];
-                    
-                    id obj = [[QueueViewsHelper.viewsInVisualArea safeObjectAtIndex: row] safeObjectAtIndex: column] ;
-                    if (obj && obj == [NSNull null]) {
-                        kcount++;
-                        
-                        SymbolView* symbol = [uselessViews objectAtIndex:kcount];
-                        [symbol restore];
-                        symbol.identification = [SymbolView getOneRandomSymbolIdentification];
-                        
-                        [innerViews addObject: symbol];
-                    }
+            __block int count = 0 ;
+            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsInVisualArea lines:lines indexPaths:indexPaths handler:^(id obj, NSMutableArray *innerViews) {
+                if (obj && obj == [NSNull null]) {
+                    count++;
+                    SymbolView* symbol = [uselessViews objectAtIndex:count];
+                    [symbol restore];
+                    symbol.identification = [SymbolView getOneRandomSymbolIdentification];
+                    [innerViews addObject: symbol];
                 }
-                if (innerViews.count) [views addObject: innerViews];
-            }
+            }];
             
             NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
 

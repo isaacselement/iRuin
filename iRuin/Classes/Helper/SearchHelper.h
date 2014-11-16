@@ -33,7 +33,7 @@ enum APPDirection : NSUInteger {
 
 
 
-+(NSMutableArray*) searchMatchedInSameLine:(int)matchCount;
++(NSMutableArray*) searchMatchedInAllLines:(int)matchCount;
 
 
 
@@ -50,5 +50,6 @@ enum APPDirection : NSUInteger {
 
 +(SymbolView*) getAdjacentSymbolByDirection: (SymbolView*)symbol start:(CGPoint)start end:(CGPoint)end;
 +(SymbolView*) getAdjacentSymbolByDirection: (SymbolView*)symbol direction:(APPDirection)direction;
++(NSMutableArray*) getAdjacentSymbolByDirections: (SymbolView*)symbol directions:(APPDirection)directions;
 
 @end

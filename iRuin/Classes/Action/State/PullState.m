@@ -148,7 +148,7 @@
     [PositionsHelper updateRowsColumnsInVisualArea: [StateHelper getViewsInContainer: currentMovingViews]];
     
     // after update row and column
-    NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInSameLine: MATCH_COUNT];
+    NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
     if (vanishSymbols) {
         [self.effect effectStartVanish: vanishSymbols];
     }

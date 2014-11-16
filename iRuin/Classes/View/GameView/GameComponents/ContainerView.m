@@ -5,6 +5,26 @@
 @implementation ContainerView
 
 
+//- (void)drawRect:(CGRect)rect {
+//    [super drawRect:rect];
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextClearRect(context, rect);
+//
+//    
+//    [[UIColor whiteColor] set];
+//    CGContextSetFillColor(context, CGColorGetComponents([[UIColor whiteColor] CGColor]));
+//
+//    
+//    CGPathRef areaPathInContainer = self.areaPathInContainer;
+//    if (areaPathInContainer) {
+//        CGContextSetLineWidth(context, 0);
+//        CGContextAddPath(context, areaPathInContainer);
+//        CGContextFillPath(context);
+//    }
+//}
+
+
+#pragma mark - Override Methods
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

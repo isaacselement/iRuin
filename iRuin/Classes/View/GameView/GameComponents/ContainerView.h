@@ -3,6 +3,8 @@
 @interface ContainerView : UIView
 
 
+@property (assign) CGPathRef areaPathInContainer;
+
 
 #pragma mark - Public Methods
 

@@ -28,7 +28,7 @@
     if (DATA.config[@"ChaineVanishCount"]) {
         matchCount = [DATA.config[@"ChaineVanishCount"] intValue];
     }
-    NSMutableArray* symbols = [SearchHelper searchMatchedInSameLine: matchCount];
+    NSMutableArray* symbols = [SearchHelper searchMatchedInAllLines: matchCount];
     return symbols;
 }
 

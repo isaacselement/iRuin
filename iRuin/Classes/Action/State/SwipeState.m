@@ -143,12 +143,28 @@
     [PositionsHelper updateRowsColumnsInVisualArea: @[symbol, withSymbol]];
     
     // start the vanish effect
-    NSMutableArray* vanishSymbols = [SearchHelper searchSwipeMatchedSymbols: symbol secondSymbol:withSymbol];
+    [self performSelector:@selector(startVanishProcedure) withObject:nil afterDelay:swapEffectDuration];
     
+}
+
+
+
+
+
+#pragma mark - Private Methods
+
+-(void) startVanishProcedure
+{
+    // start the vanish effect
+    NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
     if (vanishSymbols.count >= MATCH_COUNT) {
-        [self.effect performSelector: @selector(effectStartVanish:) withObject:vanishSymbols afterDelay:swapEffectDuration];
+        [self.effect effectStartVanish: vanishSymbols];
     }
     
 }
+
+
+
+
 
 @end

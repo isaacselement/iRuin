@@ -85,7 +85,7 @@
 
 
 // For Chainable Modes
-+(NSMutableArray*) searchMatchedInSameLine:(int)matchCount
++(NSMutableArray*) searchMatchedInAllLines:(int)matchCount
 {
     NSArray* symbolsAtContainer = [QueueViewsHelper viewsInVisualArea];
     NSMutableSet* resultsSet = [NSMutableSet set];
@@ -300,6 +300,19 @@
     if(! symbol || (id)symbol == [NSNull null]) return nil;
     id obj = [self getAdjacentObjectByDirection: [QueueViewsHelper viewsInVisualArea] row:symbol.row column:symbol.column direction:direction];
     return obj == [NSNull null] ? nil : obj;
+}
+
++(NSMutableArray*) getAdjacentSymbolByDirections: (SymbolView*)symbol directions:(APPDirection)directions
+{
+    NSMutableArray* results = [NSMutableArray array];
+    [self iterateDirections:directions handler:^BOOL(APPDirection direction) {
+        id obj = [self getAdjacentSymbolByDirection: symbol direction:direction];
+        if (obj) {
+            [results addObject: obj];
+        }
+        return NO;
+    }];
+    return results;
 }
 
 

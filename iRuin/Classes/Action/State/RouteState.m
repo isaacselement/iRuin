@@ -1,7 +1,7 @@
-#import "DotsState.h"
+#import "RouteState.h"
 #import "AppInterface.h"
 
-@implementation DotsState
+@implementation RouteState
 {
     SymbolView* touchingSymbol;
     
@@ -102,6 +102,9 @@
     // got to the position
     NSValue* fromValue = CGPointValue(symbol.center);
     NSValue* toValue = [[[QueuePositionsHelper positionsRepository] objectAtIndex: symbol.row] objectAtIndex:symbol.column];
+    
+    [symbol.layer setValue: toValue forKey:@"position"];        // for the config is nil or no 'position' executor
+    
     [VIEW.actionExecutorManager runActionExecutors:config onObjects:@[symbol] values:@[fromValue, toValue] baseTimes:nil];
     
     // update the row and column attribute , and the position in viewsInVisualArea
@@ -125,9 +128,8 @@
     for (int i = 0; i < neighbourSymbols.count; i++) {
         SymbolView* symbol = [neighbourSymbols objectAtIndex: i];
         CGPathAddEllipseInRect(validNeighbourAreaInContainer, NULL, symbol.frame);
-        
-        VIEW.gameView.containerView.areaPathInContainer = validNeighbourAreaInContainer;
-        [VIEW.gameView.containerView setNeedsDisplay];
+//        VIEW.gameView.containerView.areaPathInContainer = validNeighbourAreaInContainer;
+//        [VIEW.gameView.containerView setNeedsDisplay];
     }
 }
 

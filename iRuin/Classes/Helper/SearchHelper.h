@@ -27,9 +27,7 @@ enum APPDirection : NSUInteger {
 #pragma mark - SEARCH
 
 +(NSMutableArray*) searchTouchMatchedSymbols: (SymbolView*)symbol;
-+(NSMutableArray*) searchMoveMatchedSymbols: (NSArray*)routeSymbols;
-+(NSMutableArray*) searchDotsMatchedSymbols: (SymbolView*)firstSymbol secondSymbol:(SymbolView*)secondSymbol;
-+(NSMutableArray*) searchSwipeMatchedSymbols: (SymbolView*)firstSymbol secondSymbol:(SymbolView*)secondSymbol;
++(NSMutableArray*) searchMoveMatchedSymbols: (NSArray*)moveSymbols;
 
 
 

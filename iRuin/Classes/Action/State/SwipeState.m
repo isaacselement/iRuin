@@ -130,8 +130,14 @@
     double swapEffectDuration = 0;
     QueueTimeCalculator* timeCalculator = VIEW.actionDurations;
     
-    NSArray* symbolPositions = @[CGPointValue(symbol.center),CGPointValue(withSymbol.center)];
-    NSArray* withSymbolPositions = @[CGPointValue(withSymbol.center),CGPointValue(symbol.center)];
+    NSValue* symbolCenter = CGPointValue(symbol.center);
+    NSValue* withSymbolCenter = CGPointValue(withSymbol.center);
+    
+    NSArray* symbolPositions = @[symbolCenter, withSymbolCenter];
+    NSArray* withSymbolPositions = @[withSymbolCenter, symbolCenter];
+    
+    [symbol.layer setValue:withSymbolCenter forKey:@"position"]; // for the config is nil or no 'position' executor
+    [withSymbol.layer setValue:symbolPositions forKey:@"position"]; // for the config is nil or no 'position' executor
     
     [timeCalculator clear];
     [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Swipe_First_ActionExecutors"] onObjects:@[symbol] values:symbolPositions baseTimes:nil];

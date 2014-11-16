@@ -10,9 +10,9 @@
 		4E08AB8D19FDFCBB00F1F449 /* background_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E08AB8B19FDFCBB00F1F449 /* background_00.png */; };
 		4E08AB9819FE66B300F1F449 /* SymbolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08AB9719FE66B300F1F449 /* SymbolView.m */; };
 		4E08AB9B19FE66F400F1F449 /* InteractiveImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08AB9A19FE66F400F1F449 /* InteractiveImageView.m */; };
-		4E0BFC5119260B9100F0E632 /* DotsState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5019260B9100F0E632 /* DotsState.m */; };
-		4E0BFC5419260BAA00F0E632 /* DotsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5319260BAA00F0E632 /* DotsEvent.m */; };
-		4E0BFC5719260BF900F0E632 /* DotsEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5619260BF900F0E632 /* DotsEffect.m */; };
+		4E0BFC5119260B9100F0E632 /* RouteState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5019260B9100F0E632 /* RouteState.m */; };
+		4E0BFC5419260BAA00F0E632 /* RouteEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5319260BAA00F0E632 /* RouteEvent.m */; };
+		4E0BFC5719260BF900F0E632 /* RouteEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5619260BF900F0E632 /* RouteEffect.m */; };
 		4E11D8DE181FE4F6007837F0 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E11D8DD181FE4F6007837F0 /* GameView.m */; };
 		4E14BC5419225AA0000CDB57 /* PullEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BC5319225AA0000CDB57 /* PullEvent.m */; };
 		4E14BC5719225AF7000CDB57 /* PullState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BC5619225AF7000CDB57 /* PullState.m */; };
@@ -88,7 +88,7 @@
 		4EAEBF511A132665001D212C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAEBF4F1A132665001D212C /* OpenGLES.framework */; };
 		4EBC39791A14E22700AFE71A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBC39781A14E22700AFE71A /* MBProgressHUD.m */; };
 		4ECB29FC19FA562A00D60219 /* Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29E919FA562A00D60219 /* Config.json */; };
-		4ECB29FD19FA562A00D60219 /* Config_Dots.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EA19FA562A00D60219 /* Config_Dots.json */; };
+		4ECB29FD19FA562A00D60219 /* Config_Route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EA19FA562A00D60219 /* Config_Route.json */; };
 		4ECB29FE19FA562A00D60219 /* Config_Touch.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EB19FA562A00D60219 /* Config_Touch.json */; };
 		4ECB29FF19FA562A00D60219 /* Config_Pull.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29EC19FA562A00D60219 /* Config_Pull.json */; };
 		4ECB2A0019FA562A00D60219 /* Config_Swipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29ED19FA562A00D60219 /* Config_Swipe.json */; };
@@ -261,12 +261,12 @@
 		4E08AB9719FE66B300F1F449 /* SymbolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolView.m; sourceTree = "<group>"; };
 		4E08AB9919FE66F400F1F449 /* InteractiveImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractiveImageView.h; sourceTree = "<group>"; };
 		4E08AB9A19FE66F400F1F449 /* InteractiveImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractiveImageView.m; sourceTree = "<group>"; };
-		4E0BFC4F19260B9100F0E632 /* DotsState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotsState.h; sourceTree = "<group>"; };
-		4E0BFC5019260B9100F0E632 /* DotsState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotsState.m; sourceTree = "<group>"; };
-		4E0BFC5219260BAA00F0E632 /* DotsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotsEvent.h; sourceTree = "<group>"; };
-		4E0BFC5319260BAA00F0E632 /* DotsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotsEvent.m; sourceTree = "<group>"; };
-		4E0BFC5519260BF900F0E632 /* DotsEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotsEffect.h; sourceTree = "<group>"; };
-		4E0BFC5619260BF900F0E632 /* DotsEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotsEffect.m; sourceTree = "<group>"; };
+		4E0BFC4F19260B9100F0E632 /* RouteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteState.h; sourceTree = "<group>"; };
+		4E0BFC5019260B9100F0E632 /* RouteState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteState.m; sourceTree = "<group>"; };
+		4E0BFC5219260BAA00F0E632 /* RouteEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteEvent.h; sourceTree = "<group>"; };
+		4E0BFC5319260BAA00F0E632 /* RouteEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteEvent.m; sourceTree = "<group>"; };
+		4E0BFC5519260BF900F0E632 /* RouteEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteEffect.h; sourceTree = "<group>"; };
+		4E0BFC5619260BF900F0E632 /* RouteEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteEffect.m; sourceTree = "<group>"; };
 		4E11D8DC181FE4F6007837F0 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
 		4E11D8DD181FE4F6007837F0 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
 		4E14BC5219225AA0000CDB57 /* PullEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullEvent.h; sourceTree = "<group>"; };
@@ -378,7 +378,7 @@
 		4EBC39781A14E22700AFE71A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4ECA1EB0184E0EB90063545E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4ECB29E919FA562A00D60219 /* Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config.json; sourceTree = "<group>"; };
-		4ECB29EA19FA562A00D60219 /* Config_Dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Dots.json; sourceTree = "<group>"; };
+		4ECB29EA19FA562A00D60219 /* Config_Route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Route.json; sourceTree = "<group>"; };
 		4ECB29EB19FA562A00D60219 /* Config_Touch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Touch.json; sourceTree = "<group>"; };
 		4ECB29EC19FA562A00D60219 /* Config_Pull.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Pull.json; sourceTree = "<group>"; };
 		4ECB29ED19FA562A00D60219 /* Config_Swipe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Swipe.json; sourceTree = "<group>"; };
@@ -992,8 +992,8 @@
 				4EDACDBE191FB18300A8E84E /* ChainableEvent.m */,
 				4E14BC5219225AA0000CDB57 /* PullEvent.h */,
 				4E14BC5319225AA0000CDB57 /* PullEvent.m */,
-				4E0BFC5219260BAA00F0E632 /* DotsEvent.h */,
-				4E0BFC5319260BAA00F0E632 /* DotsEvent.m */,
+				4E0BFC5219260BAA00F0E632 /* RouteEvent.h */,
+				4E0BFC5319260BAA00F0E632 /* RouteEvent.m */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -1013,8 +1013,8 @@
 				4ED52C80191E61FF002ADA73 /* SwipeState.m */,
 				4E14BC5519225AF7000CDB57 /* PullState.h */,
 				4E14BC5619225AF7000CDB57 /* PullState.m */,
-				4E0BFC4F19260B9100F0E632 /* DotsState.h */,
-				4E0BFC5019260B9100F0E632 /* DotsState.m */,
+				4E0BFC4F19260B9100F0E632 /* RouteState.h */,
+				4E0BFC5019260B9100F0E632 /* RouteState.m */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -1045,7 +1045,7 @@
 			isa = PBXGroup;
 			children = (
 				4ECB29E919FA562A00D60219 /* Config.json */,
-				4ECB29EA19FA562A00D60219 /* Config_Dots.json */,
+				4ECB29EA19FA562A00D60219 /* Config_Route.json */,
 				4ECB29EB19FA562A00D60219 /* Config_Touch.json */,
 				4ECB29EC19FA562A00D60219 /* Config_Pull.json */,
 				4ECB29ED19FA562A00D60219 /* Config_Swipe.json */,
@@ -1671,8 +1671,8 @@
 				4ED52C83191E623A002ADA73 /* SwipeEffect.m */,
 				4E14BC5819225B3E000CDB57 /* PullEffect.h */,
 				4E14BC5919225B3E000CDB57 /* PullEffect.m */,
-				4E0BFC5519260BF900F0E632 /* DotsEffect.h */,
-				4E0BFC5619260BF900F0E632 /* DotsEffect.m */,
+				4E0BFC5519260BF900F0E632 /* RouteEffect.h */,
+				4E0BFC5619260BF900F0E632 /* RouteEffect.m */,
 				4E37286C1A023AEB00FA4E8C /* GameEffect.h */,
 				4E37286D1A023AEB00FA4E8C /* GameEffect.m */,
 			);
@@ -1891,7 +1891,7 @@
 				4EF75E791A008E090074E493 /* iPhone_Landscape.json in Resources */,
 				4EF75EA01A00D5630074E493 /* chat_h.png in Resources */,
 				4EE5FC0B19D858DD005E8736 /* public_key.der in Resources */,
-				4ECB29FD19FA562A00D60219 /* Config_Dots.json in Resources */,
+				4ECB29FD19FA562A00D60219 /* Config_Route.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1947,7 +1947,7 @@
 				4EE5FC2719D858DD005E8736 /* StringHelper.m in Sources */,
 				4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */,
 				4EE5FC4C19D858DD005E8736 /* NormalButton.m in Sources */,
-				4E0BFC5119260B9100F0E632 /* DotsState.m in Sources */,
+				4E0BFC5119260B9100F0E632 /* RouteState.m in Sources */,
 				4EE5FC2119D858DD005E8736 /* HTTPUploader.m in Sources */,
 				4EE5FC1C19D858DD005E8736 /* JsonFileManager.m in Sources */,
 				4EE5FC0719D858DD005E8736 /* NSString+MD5.m in Sources */,
@@ -2030,9 +2030,9 @@
 				4EA40A3B1821361B001539B8 /* GameEvent.m in Sources */,
 				4E08AB9B19FE66F400F1F449 /* InteractiveImageView.m in Sources */,
 				4EE5FC2319D858DD005E8736 /* LocalizeHelper.m in Sources */,
-				4E0BFC5719260BF900F0E632 /* DotsEffect.m in Sources */,
+				4E0BFC5719260BF900F0E632 /* RouteEffect.m in Sources */,
 				4EE5FC5019D858DD005E8736 /* NumberLabel.m in Sources */,
-				4E0BFC5419260BAA00F0E632 /* DotsEvent.m in Sources */,
+				4E0BFC5419260BAA00F0E632 /* RouteEvent.m in Sources */,
 				4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */,
 				4E77862718B4F576003A1DAC /* LineScrollView.m in Sources */,
 				4EE5FC1519D858DD005E8736 /* NSString+SHA.m in Sources */,

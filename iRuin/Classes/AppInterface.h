@@ -64,7 +64,7 @@
 
 #import "TouchEvent.h"
 
-#import "DotsEvent.h"
+#import "RouteEvent.h"
 #import "PullEvent.h"
 #import "SwipeEvent.h"
 
@@ -77,7 +77,7 @@
 
 #import "TouchState.h"
 
-#import "DotsState.h"
+#import "RouteState.h"
 #import "PullState.h"
 #import "SwipeState.h"
 
@@ -102,7 +102,7 @@
 
 #import "TouchEffect.h"
 
-#import "DotsEffect.h"
+#import "RouteEffect.h"
 #import "PullEffect.h"
 #import "SwipeEffect.h"
 

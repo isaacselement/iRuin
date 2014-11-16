@@ -323,7 +323,11 @@
             
         } else {
             
-            NSArray* symbolPositions = @[CGPointValue(((UIView*)obj).center), pointValue];
+            SymbolView* symbol = (SymbolView*)obj;
+            NSArray* symbolPositions = @[CGPointValue(symbol.center), pointValue];
+            
+            [symbol.layer setValue:pointValue forKey:@"position"]; // for the config is nil or no 'position' executor
+            
             [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Adjust_Positions_ActionExecutors"] onObjects:@[obj] values:symbolPositions baseTimes:nil];
         }
         

@@ -24,30 +24,19 @@
 
 
 
-+(NSMutableArray*) searchMoveMatchedSymbols: (NSArray*)routeSymbols
++(NSMutableArray*) searchMoveMatchedSymbols: (NSArray*)moveSymbols
 {
-    SymbolView* baseSymbolView = [routeSymbols objectAtIndex: 0];
-    NSMutableArray* array = [NSMutableArray arrayWithCapacity: routeSymbols.count];
+    SymbolView* baseSymbolView = [moveSymbols objectAtIndex: 0];
+    NSMutableArray* array = [NSMutableArray arrayWithCapacity: moveSymbols.count];
     
-    for (int i = 0 ; i < routeSymbols.count ; i++) {
-        SymbolView* checkedSymbolView = [routeSymbols objectAtIndex: i];
+    for (int i = 0 ; i < moveSymbols.count ; i++) {
+        SymbolView* checkedSymbolView = [moveSymbols objectAtIndex: i];
         if (checkedSymbolView.identification != baseSymbolView.identification){
             break;
         }
         [array addObject:checkedSymbolView];
     }
     return array;
-}
-
-
-+(NSMutableArray*) searchDotsMatchedSymbols: (SymbolView*)firstSymbol secondSymbol:(SymbolView*)secondSymbol
-{
-    return [self searchMatchedAround: firstSymbol and:secondSymbol];
-}
-
-+(NSMutableArray*) searchSwipeMatchedSymbols: (SymbolView*)firstSymbol secondSymbol:(SymbolView*)secondSymbol
-{
-    return [self searchMatchedAround: firstSymbol and:secondSymbol];
 }
 
 

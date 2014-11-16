@@ -3,7 +3,7 @@
 
 @implementation MoveEffect
 {
-    PPSSignatureView* routeView;
+    PPSSignatureView* trackView;
 }
 
 
@@ -13,56 +13,56 @@
 {
     [super effectInitialize];
     
-    if (!routeView) {
-        routeView = [[PPSSignatureView alloc] init];
-        routeView.backgroundColor = [UIColor clearColor];
+    if (!trackView) {
+        trackView = [[PPSSignatureView alloc] init];
+        trackView.backgroundColor = [UIColor clearColor];
     }
     
-    [VIEW.gameView addSubview: routeView];
-    [routeView erase];
-    routeView.frame = VIEW.gameView.containerView.frame;
+    [VIEW.gameView addSubview: trackView];
+    [trackView erase];
+    trackView.frame = VIEW.gameView.containerView.frame;
 }
 
 -(void)effectUnInitialize
 {
     [super effectUnInitialize];
     
-    [routeView removeFromSuperview];
+    [trackView removeFromSuperview];
 }
 
 -(void)effectTouchesBegan:(SymbolView *)symbol location:(CGPoint)location
 {
     [super effectTouchesBegan:symbol location:location];
     
-    [routeView erase];
+    [trackView erase];
 }
 
 -(void)effectTouchesEnded:(SymbolView *)symbol location:(CGPoint)location
 {
     [super effectTouchesEnded:symbol location:location];
     
-    [routeView erase];
+    [trackView erase];
 }
 
 -(void)effectTouchesCancelled:(SymbolView *)symbol location:(CGPoint)location
 {
     [super effectTouchesCancelled:symbol location:location];
     
-    [routeView erase];
+    [trackView erase];
 }
 
 -(void)effectStartRollIn
 {
     [super effectStartRollIn];
     
-    [routeView erase];
+    [trackView erase];
 }
 
 -(void)effectStartRollOut
 {
     [super effectStartRollOut];
     
-    [routeView erase];
+    [trackView erase];
 }
 
 

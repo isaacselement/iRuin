@@ -8,7 +8,7 @@
 #define kEFFECT    @"Effect"
 
 #define MODE_MOVE   @"Move"
-#define MODE_DOTS   @"Dots"
+#define MODE_ROUTE  @"Route"
 #define MODE_TOUCH  @"Touch"
 #define MODE_PULL   @"Pull"
 #define MODE_SWIPE  @"Swipe"

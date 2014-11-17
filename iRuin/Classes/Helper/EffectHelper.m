@@ -10,7 +10,6 @@
     int imageIndex;
 }
 
-
 static EffectHelper* oneInstance = nil;
 
 +(EffectHelper*) getInstance

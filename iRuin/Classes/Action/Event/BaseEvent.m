@@ -41,12 +41,18 @@
         symbolView.identification = [SymbolView getOneRandomSymbolIdentification];
         return NO;
     }];
+    
+    VIEW.gameView.backActionView.userInteractionEnabled = NO;
+    VIEW.gameView.containerView.userInteractionEnabled = NO;
 }
 
 -(void) eventSymbolsDidRollIn
 {
     [VIEW.gameView.timerView startTimer];
     ACTION.gameState.isGameStarted = YES;
+    
+    VIEW.gameView.backActionView.userInteractionEnabled = YES;
+    VIEW.gameView.containerView.userInteractionEnabled = YES;
 }
 
 -(void) eventSymbolsWillRollOut

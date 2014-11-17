@@ -9,7 +9,7 @@
 {
     [super eventInitialize];
     
-    self.isDisableChainable = [DATA.config[@"isDisableChainable"] boolValue];
+    self.isDisableChainable = [DATA.config[@"isDisableChainable"] boolValue];       // so , default is NO !
 }
 
 -(void) eventSymbolsWillRollIn
@@ -36,25 +36,26 @@
 {
     [super eventSymbolsDidFillIn];
     
-//    if (!self.isDisableChainable) {
-//        [(ChainableState*)self.state stateStartChaineVanish];
-//    }
+    if (!self.isDisableChainable) {
+        [(ChainableState*)self.state stateStartChaineVanish];
+    }
 }
 
 -(void) eventSymbolsDidSqueeze
 {
     [super eventSymbolsDidSqueeze];
     
-//    if (!self.isDisableChainable) {
-//        [(ChainableState*)self.state stateStartChaineVanish];
-//    }
+    if (!self.isDisableChainable) {
+        [(ChainableState*)self.state stateStartChaineVanish];
+    }
 }
 
 
 #pragma mark - Event Methods
--(void) didChainVanish
+
+-(void) eventSymbolsDidChainVanish
 {
-    DLog(@"didChainVanish");
+    DLog(@"eventSymbolsDidChainVanish");
 }
 
 @end

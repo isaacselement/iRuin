@@ -6,30 +6,24 @@
 
 
 #pragma mark - Public Methods
+
 -(void) stateStartChaineVanish
 {
-    NSMutableArray* vanishSymbols = [self getChaineVanishSymbols];
-    
-    if (vanishSymbols) {
-        [self.effect effectStartVanish: vanishSymbols];
-    } else {
-        [(ChainableEvent*)ACTION.currentEvent didChainVanish];
-    }
-}
-
-
-
-
-#pragma mark - SubClass Override Methods
-
--(NSMutableArray*) getChaineVanishSymbols
-{
+    // 
     int matchCount = MATCH_COUNT;
     if (DATA.config[@"ChaineVanishCount"]) {
         matchCount = [DATA.config[@"ChaineVanishCount"] intValue];
     }
-    NSMutableArray* symbols = [SearchHelper searchMatchedInAllLines: matchCount];
-    return symbols;
+    
+    //
+    NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: matchCount];
+    
+    if (vanishSymbols) {
+        [self.effect effectStartVanish: vanishSymbols];
+    } else {
+        [(ChainableEvent*)ACTION.currentEvent eventSymbolsDidChainVanish];
+    }
 }
+
 
 @end

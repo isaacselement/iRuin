@@ -8,7 +8,7 @@
 
 
 #pragma mark - Event Methods
--(void) didChainVanish;
+-(void) eventSymbolsDidChainVanish;
 
 
 @end

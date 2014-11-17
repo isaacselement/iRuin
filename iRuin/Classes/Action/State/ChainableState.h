@@ -9,9 +9,4 @@
 
 
 
-#pragma mark - SubClass Override Methods
-
--(NSMutableArray*) getChaineVanishSymbols;
-
-
 @end

@@ -45,7 +45,7 @@
 
 -(void) eventSymbolsDidRollIn
 {
-    [VIEW.gameView.timerView resumeTimer];
+    [VIEW.gameView.timerView startTimer];
     ACTION.gameState.isGameStarted = YES;
 }
 

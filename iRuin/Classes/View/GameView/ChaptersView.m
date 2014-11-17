@@ -35,8 +35,10 @@
 {
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
     
-    int circel = [DATA.config[@"Chapters_Cells_Circle"] intValue];
-    NSDictionary* specifications = DATA.config[@"Chapters_Cells"];
+    NSDictionary* chapterCellsConfig = DATA.config[@"CHAPTERS"];
+    
+    int circel = [chapterCellsConfig[@"Chapters_Cells_Circle"] intValue];
+    NSDictionary* specifications = chapterCellsConfig[@"Chapters_Cells"];
     
     int i = abs(index) % circel;
     NSString* iKey = [NSString stringWithFormat:@"%d", i];

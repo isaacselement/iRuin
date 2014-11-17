@@ -59,10 +59,24 @@
         pauseActionView = [[InteractiveView alloc] init];
         pauseActionView.imageView.enableSelected = YES;
         pauseActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view){
+            // view.selected == NO is the paus image. 
+            // pause , forbid the timer not begin and tap pause
+            BOOL isTimerPausing = [VIEW.gameView.timerView isPausing];
+            
             if (view.selected) {
-                [ACTION.gameEvent gamePause];
+                if (isTimerPausing) {
+                    view.selected = !view.selected;
+                } else {
+                    [VIEW.gameView.timerView pauseTimer];
+                    [ACTION.gameEvent gamePause];
+                }
             } else {
-                [ACTION.gameEvent gameResume];
+                if (isTimerPausing) {
+                    [VIEW.gameView.timerView startTimer];
+                    [ACTION.gameEvent gameResume];
+                } else {
+                    view.selected = !view.selected;
+                }
             }
         };
         [self addSubview: pauseActionView];

@@ -63,8 +63,10 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
                 NSArray* oneGroupedNullIndexpaths = groupedNullIndexpaths[i];
                 NSMutableArray* innerViews = [NSMutableArray array];
                 for (NSUInteger j = 0; j < oneGroupedNullIndexpaths.count; j++) {
-                    UIView* view = [uselessViews objectAtIndex:count];
-                    [innerViews addObject: view];
+                    SymbolView* symbol = [uselessViews objectAtIndex:count];
+                    [symbol restore];
+                    symbol.identification = [SymbolView getOneRandomSymbolIdentification];
+                    [innerViews addObject: symbol];
                     count++;
                 }
                 [views addObject: innerViews];

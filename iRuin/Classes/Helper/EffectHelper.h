@@ -3,4 +3,12 @@
 @interface EffectHelper : NSObject
 
 
+
++(EffectHelper*) getInstance;
+
+
+-(void) updateScheduleTaskConfigAndRegistryToTask;
+
+
+
 @end

@@ -5,7 +5,7 @@
 @implementation GameEvent
 
 
--(void) gameLaunch
+-(void) launchGame
 {
     [ScheduledTask sharedInstance].timeInterval = 0.2;
     
@@ -18,6 +18,8 @@
     int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue];
     [chaptersCellViews setCurrentIndex: userChapterIndex - chaptersCellViews.contentView.subviews.count];       //Should go first , affect the effect jump in
     
+    //
+    [[EffectHelper getInstance] updateScheduleTaskConfigAndRegistryToTask];
     
     
     //
@@ -70,12 +72,12 @@
 
 -(void) gamePause
 {
-    [[ScheduledTask sharedInstance] pause];
+    VIEW.gameView.containerView.userInteractionEnabled = NO;
 }
 
 -(void) gameResume
 {
-    [[ScheduledTask sharedInstance] start];
+    VIEW.gameView.containerView.userInteractionEnabled = YES;
 }
 
 -(void) gameOver
@@ -151,6 +153,7 @@
         [ACTION.gameEffect designateValuesActionsTo:cell config: config];
     }
 }
+
 
 
 @end

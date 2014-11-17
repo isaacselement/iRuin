@@ -137,7 +137,7 @@
     NSArray* withSymbolPositions = @[withSymbolCenter, symbolCenter];
     
     [symbol.layer setValue:withSymbolCenter forKey:@"position"]; // for the config is nil or no 'position' executor
-    [withSymbol.layer setValue:symbolPositions forKey:@"position"]; // for the config is nil or no 'position' executor
+    [withSymbol.layer setValue:symbolCenter forKey:@"position"]; // for the config is nil or no 'position' executor
     
     [timeCalculator clear];
     [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Swipe_First_ActionExecutors"] onObjects:@[symbol] values:symbolPositions baseTimes:nil];

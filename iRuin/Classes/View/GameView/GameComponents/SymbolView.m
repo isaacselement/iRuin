@@ -134,9 +134,27 @@
 
 #pragma mark - Class Methods
 
++(void) setSymbolIdentification: (int)identification symbol:(SymbolView*)symbol
+{
+    int index = identification - 1;         // HERE!!!!! (and~~~~~~)
+    
+    NSDictionary* commonSpecifications = DATA.config[@"SYMBOLS"][@"COMMON"];
+    [ACTION.gameEffect designateValuesActionsTo:symbol config:commonSpecifications];
+    
+    NSDictionary* specification = [[SymbolView getSymbolsSpecifications] objectAtIndex: index];
+    [ACTION.gameEffect designateValuesActionsTo:symbol config:specification];
+}
+
+
++(NSArray*) getSymbolsSpecifications
+{
+    return DATA.config[@"SYMBOLS"][@"IDENTIFICAIONTS"];
+}
+
+
 +(int) getOneRandomSymbolIdentification
 {
-    int count = [SymbolView getSymbolsPrototypeCount];
+    int count = [SymbolView getSymbolsIdentificationsCount];
     int index = arc4random() % count;
     
     int identification = index + 1;         // HERE!!!!!
@@ -144,26 +162,12 @@
     return identification;
 }
 
-+(void) setSymbolIdentification: (int)identification symbol:(SymbolView*)symbol
-{
-    int index = identification - 1;         // HERE!!!!! (and~~~~~~)
-    
-    NSDictionary* commonSpec = DATA.config[@"SYMBOLS"][@"COMMON"];
-    [ACTION.gameEffect designateValuesActionsTo:symbol config:commonSpec];
-    NSDictionary* specification = [[SymbolView getSymbolsSpecifications] objectAtIndex: index];
-    [ACTION.gameEffect designateValuesActionsTo:symbol config:specification];
-}
 
-
-+(int) getSymbolsPrototypeCount
++(int) getSymbolsIdentificationsCount
 {
     return [[self getSymbolsSpecifications] count];
 }
 
-+(NSArray*) getSymbolsSpecifications
-{
-    return DATA.config[@"SYMBOLS"][@"IDENTIFICAIONTS"];
-}
 
 
 

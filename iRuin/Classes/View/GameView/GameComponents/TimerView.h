@@ -14,10 +14,11 @@
 
 
 
--(void) resumeTimer ;
+-(void) startTimer ;
 
 -(void) pauseTimer ;
 
+-(BOOL) isPausing ;
 
 
 @end

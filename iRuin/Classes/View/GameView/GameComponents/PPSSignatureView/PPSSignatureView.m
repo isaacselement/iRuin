@@ -236,7 +236,7 @@ static PPSSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 		
 		self.hasSignature = YES;
         
-        [VIEW.gameView.containerView touchesBegan:l event:nil];
+        [[self getGameContainerView] touchesBegan:l event:nil];
         
     } else if ([p state] == UIGestureRecognizerStateChanged) {
         
@@ -275,7 +275,7 @@ static PPSSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         previousPoint = l;
         previousMidPoint = mid;
         
-        [VIEW.gameView.containerView touchesMoved:l event:nil];
+        [[self getGameContainerView] touchesMoved:l event:nil];
 
     } else if (p.state == UIGestureRecognizerStateEnded | p.state == UIGestureRecognizerStateCancelled) {
         
@@ -286,14 +286,24 @@ static PPSSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         addVertex(&length, previousVertex);
         
         if (p.state == UIGestureRecognizerStateEnded) {
-            [VIEW.gameView.containerView touchesEnded:l event:nil];
+            [[self getGameContainerView] touchesEnded:l event:nil];
         } else if (p.state == UIGestureRecognizerStateCancelled) {
-            [VIEW.gameView.containerView touchesCancelled:l event:nil];
+            [[self getGameContainerView] touchesCancelled:l event:nil];
         }
         
     }
     
 	[self setNeedsDisplay];
+}
+
+-(ContainerView*) getGameContainerView
+{
+    ContainerView* containerView = VIEW.gameView.containerView;
+    if (! containerView.userInteractionEnabled) {
+        return nil;
+    } else {
+        return containerView;
+    }
 }
 
 

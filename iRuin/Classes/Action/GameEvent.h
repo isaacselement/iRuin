@@ -2,7 +2,7 @@
 
 @interface GameEvent : NSObject
 
--(void) gameLaunch;
+-(void) launchGame;
 
 -(void) gameStart;
 

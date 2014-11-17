@@ -30,7 +30,7 @@ static ActionManager* sharedInstance = nil;
 {
     self = [super init];
     if (self) {
-        gameModes = @[MODE_MOVE]; //@[MODE_ROUTE, MODE_MOVE, MODE_TOUCH, MODE_PULL, MODE_SWIPE];
+        gameModes = @[MODE_ROUTE, MODE_MOVE, MODE_TOUCH, MODE_PULL, MODE_SWIPE];
         modesRepository = [[NSMutableDictionary alloc] init];
         
         gameEvent = [[GameEvent alloc] init];
@@ -48,7 +48,7 @@ static ActionManager* sharedInstance = nil;
     [self renderFramesWithCurrentOrientation];
     
     
-    [gameEvent gameLaunch];
+    [gameEvent launchGame];
 }
 
 -(void) initializeGameModes

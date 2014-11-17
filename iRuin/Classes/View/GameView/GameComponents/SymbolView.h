@@ -31,6 +31,6 @@
 
 +(int) getOneRandomSymbolIdentification;
 
-+(int) getSymbolsPrototypeCount;
++(int) getSymbolsIdentificationsCount;
 
 @end

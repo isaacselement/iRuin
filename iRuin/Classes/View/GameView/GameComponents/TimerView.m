@@ -28,13 +28,22 @@
 }
 
 
--(void) resumeTimer {
-    [[ScheduledTask sharedInstance] registerSchedule: self timeElapsed:1 repeats:0];
+-(void) startTimer {
+    // forbid register many
+    if ([self isPausing]) [[ScheduledTask sharedInstance] registerSchedule: self timeElapsed:1 repeats:0];
 }
 
 -(void) pauseTimer {
     [[ScheduledTask sharedInstance] unRegisterSchedule: self];
 }
+
+
+-(BOOL) isPausing
+{
+    return ![[ScheduledTask sharedInstance] isRegisteredSchedule: self];
+}
+
+
 
 
 -(void) caculateRemainTime {

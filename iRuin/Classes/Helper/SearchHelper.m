@@ -189,7 +189,7 @@
         if((symbol.identification == symbolGet.identification)) {
             if ([array containsObject: symbolGet]) {
                 DLOG(@"ERROR !!!~~~~~~~  ++++");
-                break;
+                return nil;
             }
             [array addObject: symbolGet];
         } else {
@@ -259,7 +259,7 @@
         symbolGet = [self getAdjacentSymbolByDirection: symbolGet direction:direction];
         if ([array containsObject: symbolGet]) {
             DLOG(@"ERROR !!!!!!+++++++++");
-            break;
+            return nil;
         }
         if(symbolGet) [array addObject: symbolGet];
     }

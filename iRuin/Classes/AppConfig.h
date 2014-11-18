@@ -2,6 +2,9 @@
 #pragma mark - Config Macro
 
 
+#define IRuin_Bundle_ID   @"com.suchachinoiserie.iRuin"
+
+
 #define key_Config      @"Config"
 
 #define IPad_Prefix     @"iPad_"

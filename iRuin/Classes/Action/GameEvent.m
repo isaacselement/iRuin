@@ -124,7 +124,11 @@
 
 -(void) gameChat
 {
-    [[InAppIMNavgationController sharedInstance] showWithTilte:nil uniqueKey:nil];
+    int chapterIndex = ACTION.gameState.currentChapter;
+    NSString* title = [NSString stringWithFormat:@"%@ %d", @"Season", chapterIndex];
+    NSString* uniqueKey = [NSString stringWithFormat:@"%@.%d",IRuin_Bundle_ID, chapterIndex];
+    
+    [[InAppIMNavgationController sharedInstance] showWithTilte:title uniqueKey:uniqueKey];
 }
 
 

@@ -72,16 +72,17 @@ InAppIMNavgationController* inAppControllerSharedInstance = nil;
 
 -(void) showWithTilte:(NSString*)title uniqueKey:(NSString*)uniqueKey
 {
-    if (!title) title = @"Chat For Free :)";
-    if (!uniqueKey) uniqueKey = @"com.iRuin.Room1";
-    
-    InAppIMNavgationController* imNavController = [InAppIMNavgationController sharedInstance];
-    imNavController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
     IAISimpleRoomInfo *roomInfo=[[IAISimpleRoomInfo alloc] init];
     [roomInfo setTitle: title];
     [roomInfo setUniqueKey: uniqueKey];
-    [InAppIMSDK enterCustomRoomClient:roomInfo navigationController: imNavController.topViewController animated:YES];
+    
+    
+    InAppIMNavgationController* imNavController = [InAppIMNavgationController sharedInstance];
+    imNavController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    InAppIMRootController* imRootController = [imNavController.viewControllers firstObject];
+    imRootController.simpleRoomInfo = roomInfo;
+    imRootController.isComeFromOutside = YES;
+    
     
     [VIEW.controller presentViewController:imNavController animated:YES completion:nil];
 }

@@ -4,17 +4,6 @@
 @implementation GameState
 
 
-@synthesize orientation;
-
-@synthesize isGameStarted;
-
-@synthesize isSymbolsOnMovement;
-
-@synthesize currentChapter;
-
-@synthesize vanishAmount;
-
-
 
 
 - (instancetype)init
@@ -25,6 +14,9 @@
     }
     return self;
 }
+
+
+
 
 
 @end

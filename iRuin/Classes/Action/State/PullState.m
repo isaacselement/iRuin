@@ -55,7 +55,7 @@
     [super stateTouchesBegan:symbol location:location];
     
     // when the symbols is vanishing , adjusting , filling , squeezing ...
-    if (ACTION.gameState.isSymbolsOnMovement) {
+    if (ACTION.gameState.isSymbolsOnVAFSing) {
         return;
     }
     

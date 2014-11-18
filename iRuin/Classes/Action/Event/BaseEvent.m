@@ -73,7 +73,7 @@
 //    startTime = [NSDate date];
 //#endif
     
-    ACTION.gameState.isSymbolsOnMovement = YES;
+    ACTION.gameState.isSymbolsOnVAFSing = YES;
     
     ACTION.gameState.vanishAmount += symbols.count;
 }
@@ -114,7 +114,7 @@
 }
 -(void) eventSymbolsDidFillIn
 {
-    ACTION.gameState.isSymbolsOnMovement = NO;
+    ACTION.gameState.isSymbolsOnVAFSing = NO;
 }
 
 
@@ -124,7 +124,7 @@
 }
 -(void) eventSymbolsDidSqueeze
 {
-    ACTION.gameState.isSymbolsOnMovement = NO;
+    ACTION.gameState.isSymbolsOnVAFSing = NO;
 }
 
 

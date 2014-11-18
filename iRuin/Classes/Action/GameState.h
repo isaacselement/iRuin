@@ -8,7 +8,12 @@
 
 @property (assign) BOOL isGameStarted;
 
-@property (assign) BOOL isSymbolsOnMovement;
+
+@property (assign) BOOL isSymbolsOnVAFSing;
+
+@property (assign) BOOL isChainVanishing;
+
+
 
 @property (assign) int currentChapter;
 

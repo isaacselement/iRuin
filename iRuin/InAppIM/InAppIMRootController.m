@@ -7,36 +7,48 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // hide navigation bar
     self.navigationController.navigationBar.hidden = YES;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo: VIEW.window animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.dimBackground = YES;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay: 2.0];
+    [hud hide:YES afterDelay: 2.5];
     
     if (self.isComeFromOutside) {
-        self.isComeFromOutside = !self.isComeFromOutside;
-        
         hud.detailsLabelText = @"Twitter & Facebook are on the way :) ";
+    } else {
+        hud.detailsLabelText = @"Do u have a good chat ? :-P ";
+    }
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.isComeFromOutside) {
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.isComeFromOutside = !self.isComeFromOutside;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [InAppIMSDK enterCustomRoomClient: self.simpleRoomInfo navigationController: self animated:YES];
             
             [[ScheduledTask sharedInstance] pause];
         });
         
     } else {
-        hud.detailsLabelText = @"Do u have a good chat ? :-P ";
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [VIEW.controller dismissViewControllerAnimated: YES completion:nil];
 
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [VIEW.controller dismissViewControllerAnimated: YES completion:nil];
+            
             [[ScheduledTask sharedInstance] start];
         });
+        
     }
-    
 }
+
 
 - (BOOL)prefersStatusBarHidden
 {

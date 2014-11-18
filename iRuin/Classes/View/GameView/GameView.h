@@ -10,7 +10,7 @@
 
 @property (strong) TimerView* timerView;
 @property (strong) NumberLabel* scoreLabel;
-@property (strong) GradientLabel* modelLabel;
+@property (strong) GradientLabel* modeLabel;
 @property (strong, readonly) ContainerView* containerView;
 
 

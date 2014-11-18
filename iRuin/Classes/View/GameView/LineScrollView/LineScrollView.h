@@ -12,8 +12,8 @@
 -(float)lineScrollView:(LineScrollView *)lineScrollView widthForCellAtIndex:(int)index;
 -(BOOL)lineScrollView:(LineScrollView *)lineScrollView shouldShowIndex:(int)index;
 -(void)lineScrollView:(LineScrollView *)lineScrollView willShowIndex:(int)index;
--(void)lineScrollView:(LineScrollView *)lineScrollView touchEndedAtPoint:(CGPoint)point;
 -(void)lineScrollView:(LineScrollView *)lineScrollView touchBeganAtPoint:(CGPoint)point;
+-(void)lineScrollView:(LineScrollView *)lineScrollView touchEndedAtPoint:(CGPoint)point;
 
 
 @end
@@ -46,8 +46,8 @@
 @property (copy) float(^lineScrollViewWidthForCellAtIndex)(LineScrollView *lineScrollView, int index);
 @property (copy) BOOL(^lineScrollViewShouldShowIndex)(LineScrollView *lineScrollView, int index);
 @property (copy) void(^lineScrollViewWillShowIndex)(LineScrollView *lineScrollView, int index);
-@property (copy) void(^lineScrollViewTouchEndedAtPoint)(LineScrollView *lineScrollView, CGPoint point);
 @property (copy) void(^lineScrollViewTouchBeganAtPoint)(LineScrollView *lineScrollView, CGPoint point);
+@property (copy) void(^lineScrollViewTouchEndedAtPoint)(LineScrollView *lineScrollView, CGPoint point);
 
 
 

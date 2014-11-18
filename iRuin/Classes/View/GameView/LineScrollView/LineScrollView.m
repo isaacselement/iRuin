@@ -41,7 +41,6 @@
 @synthesize dataSource;
 
 
-
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint location = [[touches anyObject] locationInView:self];
@@ -56,7 +55,7 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint location = [[touches anyObject] locationInView:self];
-
+    
     if (self.lineScrollViewTouchEndedAtPoint) {
         self.lineScrollViewTouchEndedAtPoint(self, location);
     } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:touchEndedAtPoint:)]) {
@@ -76,7 +75,8 @@
     
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
-        
+        self.delaysContentTouches = NO;
+
         [self addObserver: self forKeyPath:@"eachCellWidth" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     }
     return self;

@@ -98,11 +98,13 @@
     }];
 }
 
-
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchEndedAtPoint:(CGPoint)point
 {
-    LineScrollViewCell* cell = (LineScrollViewCell*)[lineScrollViewObj hitTest:point withEvent:nil];
+    ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj hitTest:point withEvent:nil];
     if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
+    
+//    ActionExecutorBase* executor = [VIEW.actionExecutorManager getActionExecutor:@"values.animation"];
+//    [executor execute:@{@"keyPath": @"transform.scale", @"element.totalTransitTime": @(0.3)} objects:@[cell.imageView] values:@[@(1), @(0.2), @(1)] times:nil];
     
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
     

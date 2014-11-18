@@ -66,7 +66,6 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
                     SymbolView* symbol = [uselessViews objectAtIndex:count];
                     [symbol restore];
                     symbol.identification = [SymbolView getOneRandomSymbolIdentification];
-                    [symbol.superview bringSubviewToFront: symbol];
                     [innerViews addObject: symbol];
                     count++;
                 }

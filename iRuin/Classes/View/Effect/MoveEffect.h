@@ -1,5 +1,5 @@
-#import "BaseEffect.h"
+#import "ChainableEffect.h"
 
-@interface MoveEffect : BaseEffect
+@interface MoveEffect : ChainableEffect
 
 @end

@@ -1,5 +1,5 @@
-#import "ChainableEvent.h"
+#import "BaseEvent.h"
 
-@interface RouteEvent : ChainableEvent
+@interface RouteEvent : BaseEvent
 
 @end

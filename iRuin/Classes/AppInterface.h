@@ -60,11 +60,11 @@
 #import "BaseEvent.h"
 #import "ChainableEvent.h"
 
-#import "MoveEvent.h"
+#import "RouteEvent.h"
 
 #import "TouchEvent.h"
 
-#import "RouteEvent.h"
+#import "MoveEvent.h"
 #import "PullEvent.h"
 #import "SwipeEvent.h"
 
@@ -73,11 +73,11 @@
 #import "BaseState.h"
 #import "ChainableState.h"
 
-#import "MoveState.h"
+#import "RouteState.h"
 
 #import "TouchState.h"
 
-#import "RouteState.h"
+#import "MoveState.h"
 #import "PullState.h"
 #import "SwipeState.h"
 
@@ -98,11 +98,11 @@
 #import "BaseEffect.h"
 #import "ChainableEffect.h"
 
-#import "MoveEffect.h"
+#import "RouteEffect.h"
 
 #import "TouchEffect.h"
 
-#import "RouteEffect.h"
+#import "MoveEffect.h"
 #import "PullEffect.h"
 #import "SwipeEffect.h"
 

@@ -1,5 +1,5 @@
-#import "ChainableState.h"
+#import "BaseState.h"
 
-@interface RouteState : ChainableState
+@interface RouteState : BaseState
 
 @end

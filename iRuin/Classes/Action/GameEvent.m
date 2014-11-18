@@ -12,11 +12,12 @@
     // chapter cells
     LineScrollView* chaptersCellViews = VIEW.chaptersView.lineScrollView;
     chaptersCellViews.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
-        int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue];
+        int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:User_ChapterIndex] intValue];
         return index <= userChapterIndex;
     };
-    int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] intValue];
-    [chaptersCellViews setCurrentIndex: userChapterIndex - chaptersCellViews.contentView.subviews.count];       //Should go first , affect the effect jump in
+    int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:User_ChapterIndex] intValue];
+    //Should go first , affect the effect jump in
+    [chaptersCellViews setCurrentIndex: userChapterIndex - chaptersCellViews.contentView.subviews.count];
     
     //
     [[EffectHelper getInstance] updateScheduleTaskConfigAndRegistryToTask];
@@ -28,6 +29,12 @@
     // chapters cells effect
     [self chaptersValuesActions: DATA.config[@"GAME_LAUNCH_Chapters_Cells"]];
     
+    
+    /*
+    BOOL isMuteMusic = [[[NSUserDefaults standardUserDefaults] objectForKey:User_IsMuteMusic] boolValue];
+    VIEW.chaptersView.muteActionView.imageView.selected = isMuteMusic;
+    [[EffectHelper getInstance] muteBackGroundMusic: isMuteMusic];
+     */
 }
 
 
@@ -91,14 +98,14 @@
     
     
     float rate = 0;
-    float userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:UserChapterIndex] floatValue];
+    float userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:User_ChapterIndex] floatValue];
     
     int score = VIEW.gameView.scoreLabel.number;
     int vanishCount = ACTION.gameState.vanishAmount;
     if (vanishCount != 0) {
         rate = score / vanishCount;
         userChapterIndex += rate;
-        [[NSUserDefaults standardUserDefaults] setObject: @(userChapterIndex) forKey:UserChapterIndex];
+        [[NSUserDefaults standardUserDefaults] setObject: @(userChapterIndex) forKey:User_ChapterIndex];
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

@@ -42,7 +42,6 @@
         return NO;
     }];
     
-    VIEW.gameView.backActionView.userInteractionEnabled = NO;
     VIEW.gameView.containerView.userInteractionEnabled = NO;
 }
 
@@ -51,7 +50,6 @@
     [VIEW.gameView.timerView startTimer];
     ACTION.gameState.isGameStarted = YES;
     
-    VIEW.gameView.backActionView.userInteractionEnabled = YES;
     VIEW.gameView.containerView.userInteractionEnabled = YES;
 }
 

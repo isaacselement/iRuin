@@ -2,12 +2,17 @@
 
 
 @class LineScrollView;
+@class InteractiveView;
 
 
 @interface ChaptersView : GameBaseView
 
 
-@property (strong) LineScrollView* lineScrollView;
+
+@property (strong, readonly) LineScrollView* lineScrollView;
+
+@property (strong, readonly) InteractiveView* muteActionView;
+
 
 
 @end

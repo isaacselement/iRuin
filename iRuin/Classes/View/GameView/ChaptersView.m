@@ -13,18 +13,31 @@
 
 @synthesize lineScrollView;
 
+@synthesize muteActionView;
+
+
+
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        // images caches
+        imagesCache = [NSMutableDictionary dictionary];
         
-        // chapter views
+        // chapters cell views
         lineScrollView = [[LineScrollView alloc] init];
         [lineScrollView registerCellClass: [ImageLabelLineScrollCell class]];
         lineScrollView.dataSource = self;
         [self addSubview: lineScrollView];
         
-        imagesCache = [NSMutableDictionary dictionary];
+        // mute action view
+        muteActionView = [[InteractiveView alloc] init];
+        muteActionView.imageView.enableSelected = YES;
+        muteActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view){
+            [[EffectHelper getInstance] muteBackGroundMusic: view.selected];
+            [[NSUserDefaults standardUserDefaults] setObject: @(view.selected) forKey:User_IsMuteMusic];
+        };
+        [self addSubview: muteActionView];
     }
     return self;
 }
@@ -86,7 +99,6 @@
     }
 }
 
-
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchBeganAtPoint:(CGPoint)point
 {
     LineScrollViewCell* cell = (LineScrollViewCell*)[lineScrollViewObj hitTest:point withEvent:nil];
@@ -102,9 +114,6 @@
 {
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj hitTest:point withEvent:nil];
     if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
-    
-//    ActionExecutorBase* executor = [VIEW.actionExecutorManager getActionExecutor:@"values.animation"];
-//    [executor execute:@{@"keyPath": @"transform.scale", @"element.totalTransitTime": @(0.3)} objects:@[cell.imageView] values:@[@(1), @(0.2), @(1)] times:nil];
     
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
     

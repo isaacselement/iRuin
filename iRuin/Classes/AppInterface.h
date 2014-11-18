@@ -19,10 +19,14 @@
 /** Frameworks & Libraries */
 #import <QuartzCore/QuartzCore.h>
 
+#import <AVFoundation/AVFoundation.h>
+
 
 // Modules
 #import "Modules.h"
+
 #import "TextFormatter.h"
+#import "AudiosExecutor.h"
 
 
 

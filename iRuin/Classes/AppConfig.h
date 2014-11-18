@@ -21,7 +21,9 @@
 
 #pragma mark - 
 
-#define UserChapterIndex @"UserChapterIndex"
+#define User_ChapterIndex @"User_ChapterIndex"
+
+#define User_IsMuteMusic @"User_IsMuteMusic"
 
 
 

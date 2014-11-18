@@ -58,4 +58,32 @@ static EffectHelper* oneInstance = nil;
 
 
 
+
+
+
+#pragma mark - Public Methods
+
+
+
+-(void) muteBackGroundMusic: (BOOL)isMute
+{
+    AudiosExecutor* audiosExector = (AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO];
+    NSDictionary* audioPlayers = audiosExector.audioPlayers;
+    NSArray* musics = DATA.config[@"MuteMusic"];
+    for (int i = 0; i < musics.count; i++) {
+        NSString* key = musics[i];
+        AVAudioPlayer* player = audioPlayers[key];
+        if (isMute) {
+            [player pause];
+        } else {
+            [player play];
+        }
+    }
+}
+
+
+
+
+
+
 @end

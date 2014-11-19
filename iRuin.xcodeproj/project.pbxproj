@@ -125,6 +125,8 @@
 		4EDCA9C91A18EDE400931446 /* Background_013.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EDCA9B91A18EDE400931446 /* Background_013.png */; };
 		4EDCA9CA1A18EDE400931446 /* Background_014.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EDCA9BA1A18EDE400931446 /* Background_014.png */; };
 		4EDD80AE1A1268B8007422A0 /* PPSSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD80AD1A1268B8007422A0 /* PPSSignatureView.m */; };
+		4EDE1EC11A1C36EF00865CE5 /* AudioHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE1EC01A1C36EF00865CE5 /* AudioHandler.m */; };
+		4EDE1EC41A1C3BE000865CE5 /* MXAudioPlayerFadeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDE1EC31A1C3BE000865CE5 /* MXAudioPlayerFadeOperation.m */; };
 		4EE5FC0419D858DD005E8736 /* ScheduledTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB0B19D858DC005E8736 /* ScheduledTask.m */; };
 		4EE5FC0519D858DD005E8736 /* TaskObjectList.c in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB0C19D858DC005E8736 /* TaskObjectList.c */; };
 		4EE5FC0619D858DD005E8736 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB1519D858DD005E8736 /* NSString+Base64.m */; };
@@ -439,6 +441,10 @@
 		4EDCA9BA1A18EDE400931446 /* Background_014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_014.png; sourceTree = "<group>"; };
 		4EDD80AC1A1268B8007422A0 /* PPSSignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSSignatureView.h; sourceTree = "<group>"; };
 		4EDD80AD1A1268B8007422A0 /* PPSSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSSignatureView.m; sourceTree = "<group>"; };
+		4EDE1EBF1A1C36EF00865CE5 /* AudioHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioHandler.h; sourceTree = "<group>"; };
+		4EDE1EC01A1C36EF00865CE5 /* AudioHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioHandler.m; sourceTree = "<group>"; };
+		4EDE1EC21A1C3BE000865CE5 /* MXAudioPlayerFadeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXAudioPlayerFadeOperation.h; sourceTree = "<group>"; };
+		4EDE1EC31A1C3BE000865CE5 /* MXAudioPlayerFadeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXAudioPlayerFadeOperation.m; sourceTree = "<group>"; };
 		4EE5FB0719D858DC005E8736 /* _Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Action.h; sourceTree = "<group>"; };
 		4EE5FB0919D858DC005E8736 /* _Scheduled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Scheduled.h; sourceTree = "<group>"; };
 		4EE5FB0A19D858DC005E8736 /* ScheduledTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduledTask.h; sourceTree = "<group>"; };
@@ -1466,6 +1472,10 @@
 				4EE5FBAB19D858DD005E8736 /* ImageAnimator.m */,
 				4EE5FBAC19D858DD005E8736 /* TextFormatter.h */,
 				4EE5FBAD19D858DD005E8736 /* TextFormatter.m */,
+				4EDE1EBF1A1C36EF00865CE5 /* AudioHandler.h */,
+				4EDE1EC01A1C36EF00865CE5 /* AudioHandler.m */,
+				4EDE1EC21A1C3BE000865CE5 /* MXAudioPlayerFadeOperation.h */,
+				4EDE1EC31A1C3BE000865CE5 /* MXAudioPlayerFadeOperation.m */,
 			);
 			path = Element;
 			sourceTree = "<group>";
@@ -2055,6 +2065,7 @@
 				4EE5FC3719D858DD005E8736 /* RectHelper.m in Sources */,
 				4EF7F5791A061FEF0096949F /* IAIWelcomeMessageData.m in Sources */,
 				4EE5FC3519D858DD005E8736 /* LayerHelper.m in Sources */,
+				4EDE1EC11A1C36EF00865CE5 /* AudioHandler.m in Sources */,
 				4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */,
 				4EE5FC6219D858DD005E8736 /* FrameTranslater.m in Sources */,
 				4E1FBA24191BBBDD0093BE25 /* TouchEvent.m in Sources */,
@@ -2085,6 +2096,7 @@
 				4E77862718B4F576003A1DAC /* LineScrollView.m in Sources */,
 				4EE5FC1519D858DD005E8736 /* NSString+SHA.m in Sources */,
 				4ED52C7E191E5DC4002ADA73 /* SwipeEvent.m in Sources */,
+				4EDE1EC41A1C3BE000865CE5 /* MXAudioPlayerFadeOperation.m in Sources */,
 				4EE5FC6119D858DD005E8736 /* FrameHelper.m in Sources */,
 				4E8067BF18C35C8A00AF71B5 /* BaseState.m in Sources */,
 				4EF7F5541A061FEA0096949F /* InAppIMNavgationController.m in Sources */,

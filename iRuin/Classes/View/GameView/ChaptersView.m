@@ -48,7 +48,7 @@
 {
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
     
-    NSDictionary* chapterCellsConfig = DATA.config[@"CHAPTERS"];
+    NSDictionary* chapterCellsConfig = DATA.config[@"CHAPTERS_WILL_SHOW"];
     
     int circel = [chapterCellsConfig[@"Chapters_Cells_Circle"] intValue];
     NSDictionary* specifications = chapterCellsConfig[@"Chapters_Cells"];
@@ -104,10 +104,8 @@
     LineScrollViewCell* cell = (LineScrollViewCell*)[lineScrollViewObj hitTest:point withEvent:nil];
     if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
     
-    cell.alpha = 0.2;
-    [UIView animateWithDuration: 0.5 animations:^{
-        cell.alpha = 1.0;
-    }];
+    // chapters cell effect
+    [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchBegan"]];
 }
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchEndedAtPoint:(CGPoint)point
@@ -115,6 +113,12 @@
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj hitTest:point withEvent:nil];
     if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
     
+    // chapters cell effect
+    [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchEnded"]];
+    
+    
+    // ---------------------
+//    return;
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
     
     ACTION.gameState.currentChapter = index;

@@ -108,6 +108,10 @@
 		4ED42D3D1A1D8995006149C9 /* Tock.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED42D3A1A1D8995006149C9 /* Tock.caf */; };
 		4ED42D401A1D9D07006149C9 /* Bottle.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED42D3E1A1D9D07006149C9 /* Bottle.aiff */; };
 		4ED42D411A1D9D07006149C9 /* Pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED42D3F1A1D9D07006149C9 /* Pop.aiff */; };
+		4ED42D441A1DCE21006149C9 /* SymbolImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED42D431A1DCE21006149C9 /* SymbolImageView.m */; };
+		4ED4FD1C1A1E2E9900BB89C6 /* Frog.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED4FD191A1E2E9900BB89C6 /* Frog.aiff */; };
+		4ED4FD1D1A1E2E9900BB89C6 /* Funk.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED4FD1A1A1E2E9900BB89C6 /* Funk.aiff */; };
+		4ED4FD1E1A1E2E9900BB89C6 /* Morse.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED4FD1B1A1E2E9900BB89C6 /* Morse.aiff */; };
 		4ED52C7E191E5DC4002ADA73 /* SwipeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED52C7D191E5DC4002ADA73 /* SwipeEvent.m */; };
 		4ED52C81191E61FF002ADA73 /* SwipeState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED52C80191E61FF002ADA73 /* SwipeState.m */; };
 		4ED52C84191E623A002ADA73 /* SwipeEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED52C83191E623A002ADA73 /* SwipeEffect.m */; };
@@ -420,6 +424,11 @@
 		4ED42D3A1A1D8995006149C9 /* Tock.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tock.caf; sourceTree = "<group>"; };
 		4ED42D3E1A1D9D07006149C9 /* Bottle.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Bottle.aiff; sourceTree = "<group>"; };
 		4ED42D3F1A1D9D07006149C9 /* Pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Pop.aiff; sourceTree = "<group>"; };
+		4ED42D421A1DCE21006149C9 /* SymbolImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolImageView.h; sourceTree = "<group>"; };
+		4ED42D431A1DCE21006149C9 /* SymbolImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolImageView.m; sourceTree = "<group>"; };
+		4ED4FD191A1E2E9900BB89C6 /* Frog.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Frog.aiff; sourceTree = "<group>"; };
+		4ED4FD1A1A1E2E9900BB89C6 /* Funk.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Funk.aiff; sourceTree = "<group>"; };
+		4ED4FD1B1A1E2E9900BB89C6 /* Morse.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Morse.aiff; sourceTree = "<group>"; };
 		4ED52C7C191E5DC4002ADA73 /* SwipeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeEvent.h; sourceTree = "<group>"; };
 		4ED52C7D191E5DC4002ADA73 /* SwipeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeEvent.m; sourceTree = "<group>"; };
 		4ED52C7F191E61FF002ADA73 /* SwipeState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeState.h; sourceTree = "<group>"; };
@@ -827,6 +836,8 @@
 				4EEFD9AC1A0F5856006A76C8 /* FBShimmering */,
 				4E08AB9619FE66B300F1F449 /* SymbolView.h */,
 				4E08AB9719FE66B300F1F449 /* SymbolView.m */,
+				4ED42D421A1DCE21006149C9 /* SymbolImageView.h */,
+				4ED42D431A1DCE21006149C9 /* SymbolImageView.m */,
 				4E2CCACB19FBF93500D2AAEC /* ContainerView.h */,
 				4E2CCACC19FBF93500D2AAEC /* ContainerView.m */,
 				4E08AB9919FE66F400F1F449 /* InteractiveImageView.h */,
@@ -1137,6 +1148,9 @@
 		4ED42D371A1D8995006149C9 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				4ED4FD191A1E2E9900BB89C6 /* Frog.aiff */,
+				4ED4FD1A1A1E2E9900BB89C6 /* Funk.aiff */,
+				4ED4FD1B1A1E2E9900BB89C6 /* Morse.aiff */,
 				4ED42D3E1A1D9D07006149C9 /* Bottle.aiff */,
 				4ED42D3F1A1D9D07006149C9 /* Pop.aiff */,
 				4ED42D381A1D8995006149C9 /* lock.caf */,
@@ -1940,6 +1954,7 @@
 				4EDCA9C51A18EDE400931446 /* Background_009.png in Resources */,
 				4EDCA9C81A18EDE400931446 /* Background_012.png in Resources */,
 				4EE5FC1119D858DD005E8736 /* Screen Shot  p12_password.png in Resources */,
+				4ED4FD1C1A1E2E9900BB89C6 /* Frog.aiff in Resources */,
 				4EF75E7A1A008E090074E493 /* iPhone_Portrait.json in Resources */,
 				4ED42D411A1D9D07006149C9 /* Pop.aiff in Resources */,
 				4EF75EA51A00F32D0074E493 /* Default.png in Resources */,
@@ -1958,7 +1973,9 @@
 				4EF75E9B1A00CFF40074E493 /* refresh_h.png in Resources */,
 				4EF75E911A00BBF40074E493 /* Portrait.json in Resources */,
 				4EF7F57A1A061FEF0096949F /* InAppIM.ttf in Resources */,
+				4ED4FD1D1A1E2E9900BB89C6 /* Funk.aiff in Resources */,
 				4E832E1D1A1B381300E2A73E /* mute.png in Resources */,
+				4ED4FD1E1A1E2E9900BB89C6 /* Morse.aiff in Resources */,
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
 				4EF7F57C1A061FF00096949F /* InAppIMSDKBundle.bundle in Resources */,
 				4ECB29FC19FA562A00D60219 /* Config.json in Resources */,
@@ -2096,6 +2113,7 @@
 				4EDE1EC11A1C36EF00865CE5 /* AudioHandler.m in Sources */,
 				4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */,
 				4EE5FC6219D858DD005E8736 /* FrameTranslater.m in Sources */,
+				4ED42D441A1DCE21006149C9 /* SymbolImageView.m in Sources */,
 				4E1FBA24191BBBDD0093BE25 /* TouchEvent.m in Sources */,
 				4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */,
 				4EEFD9B21A0F5856006A76C8 /* FBShimmeringLayer.m in Sources */,

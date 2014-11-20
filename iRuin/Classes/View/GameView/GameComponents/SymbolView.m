@@ -3,7 +3,7 @@
 
 @implementation SymbolView
 {
-    InteractiveImageView* imageView;
+    SymbolImageView* symbolImageView;
     
     
     CGMutablePathRef validAreaCGPath;
@@ -32,9 +32,9 @@
         
         self.score = 1.0;
         
-        imageView = [[InteractiveImageView alloc] initWithFrame: self.bounds];
-        imageView.userInteractionEnabled = NO;
-        [self addSubview: imageView];
+        symbolImageView = [[SymbolImageView alloc] initWithFrame: self.bounds];
+        symbolImageView.userInteractionEnabled = NO;
+        [self addSubview: symbolImageView];
         
         
         [self restore];
@@ -68,8 +68,7 @@
 -(void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    
-    imageView.frame = self.bounds;
+    symbolImageView.frame = self.bounds;
 //    containerLayer.frame = self.bounds;
 }
 
@@ -101,10 +100,11 @@
 {
     row = -1;
     column = -1;
+    
     self.center = VIEW.frame.blackPoint;
     [self.layer removeAllAnimations];
+    
 }
-
 
 -(void) setValidArea: (CGRect)rect
 {
@@ -121,18 +121,25 @@
     return CGPathContainsPoint(validAreaCGPath, NULL, location, true);
 }
 
-
-
 -(void)setIdentification: (int)identification
 {
     _identification = identification;
+
+    CAGradientLayer* layer = (CAGradientLayer*)symbolImageView.layer;
+    layer.locations = nil;
+    layer.colors = nil;
     
     [SymbolView setSymbolIdentification: identification symbol:self];
 }
 
 
 
+
+
+
+
 #pragma mark - Class Methods
+
 
 +(void) setSymbolIdentification: (int)identification symbol:(SymbolView*)symbol
 {

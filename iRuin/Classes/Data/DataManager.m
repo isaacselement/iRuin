@@ -45,7 +45,9 @@ static DataManager* sharedInstance = nil;
 #define JsonExtension(name) [name stringByAppendingPathExtension:@"json"]
 #define StringAppend(first, second) [first stringByAppendingString:second]
 
+
 #pragma mark - Public Methods
+
 -(void) initializeWithData {
     
     // set dictionary combine handler

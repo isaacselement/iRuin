@@ -122,12 +122,15 @@
 #import "GameController.h"
 
 // GameView
-#import "ChaptersView.h"
 #import "GameView.h"
+#import "ChaptersView.h"
 #import "ContainerView.h"
-#import "SymbolView.h"
 
 #import "TimerView.h"
+
+
+#import "SymbolView.h"
+#import "SymbolImageView.h"
 
 
 #import "InteractiveView.h"

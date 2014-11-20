@@ -18,7 +18,7 @@
 }
 -(void) stateTouchesMoved:(SymbolView*)symbol location:(CGPoint)location
 {
-    [effect effectTouchesMoved: symbol location:location];
+//    [effect effectTouchesMoved: symbol location:location];    // give to everyone state to handle it.
 }
 -(void) stateTouchesEnded:(SymbolView*)symbol location:(CGPoint)location
 {

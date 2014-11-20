@@ -14,7 +14,7 @@
     hud.mode = MBProgressHUDModeText;
     hud.dimBackground = YES;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay: 2.5];
+    [hud hide:YES afterDelay: 2];
     
     if (self.isComeFromOutside) {
         hud.detailsLabelText = @"Twitter & Facebook are on the way :) ";

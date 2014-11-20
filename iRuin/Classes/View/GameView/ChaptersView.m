@@ -70,7 +70,7 @@
     NSString* imageName = imageConfig[@"image"];
     UIImage* image = imagesCache[imageName];
     if (! image) {
-        image = [KeyValueCodingHelper getUIImage: imageName];
+        image = [KeyValueCodingHelper getUIImageByPath: imageName];
         if (image) [imagesCache setObject: image forKey:imageName];
     }
     

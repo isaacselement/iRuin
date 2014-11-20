@@ -116,8 +116,11 @@
             
             float length = location.y - startPoint.y;
             
-            [self setInterval: length / yDistance];
-            
+            // -----------------------------
+            int value = length / yDistance;
+            if (interval == value) return;
+            [self.effect effectTouchesMoved:touchingSymbol location:location];
+            [self setInterval: value];
             
             
         } else {
@@ -131,7 +134,11 @@
             
             float length = location.x - startPoint.x;
             
-            [self setInterval: length / xDistance];
+            // -----------------------------
+            int value = length / xDistance;
+            if (interval == value) return;
+            [self.effect effectTouchesMoved:touchingSymbol location:location];
+            [self setInterval: value];
         }
     }
 }
@@ -235,9 +242,8 @@
 
 // When touch moving
 -(void) setInterval: (int)value
-{
+{    
     if (interval == value) return;
-    
     int count = abs(interval - value);
     for (int i = 0; i < count; i++) {
         
@@ -267,7 +273,6 @@
         }
         
     }
-    
     interval = value;
 }
 

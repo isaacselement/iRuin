@@ -70,13 +70,18 @@ static EffectHelper* oneInstance = nil;
     AudiosExecutor* audiosExector = (AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO];
     NSDictionary* audioPlayers = audiosExector.audiosPlayers;
     NSArray* musics = DATA.config[@"MuteMusic"];
+    
+    NSOperationQueue *audioFaderQueue = [AudioHandler audioCrossFadeQueue];
+    
     for (int i = 0; i < musics.count; i++) {
         NSString* key = musics[i];
         AVAudioPlayer* player = audioPlayers[key];
         if (isMute) {
-            [player pause];
+            MXAudioPlayerFadeOperation *fadeOut = [[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:0.0 overDuration:2.0];
+            [audioFaderQueue addOperation:fadeOut];
         } else {
-            [player play];
+            MXAudioPlayerFadeOperation *fadeIn = [[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:0.7 overDuration:2.0];
+            [audioFaderQueue addOperation:fadeIn];
         }
     }
 }

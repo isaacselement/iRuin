@@ -47,6 +47,17 @@
     [self performSelector: @selector(reRenderWithDeviceOrientation) withObject:nil afterDelay: 0.5];
 }
 
+
+-(void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    AudiosExecutor* audiosExector = (AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO];
+    [audiosExector clearCaches];
+}
+
+
+
 #pragma mark - Orientation Change
 
 -(void) reRenderWithDeviceOrientation

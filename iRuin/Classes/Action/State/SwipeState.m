@@ -98,16 +98,17 @@
 #define swap_swipe_minispeed (200.0)
 #define swap_swipe_nimidistance (25.0)
 #pragma mark - Private Methods
--(void) checkIsSwipeThenSwipe: (CGPoint)checkLocation {
-    float xDistance = fabsf(checkLocation.x - startPoint.x);
-    float yDistance = fabsf(checkLocation.y - startPoint.y);
+-(void) checkIsSwipeThenSwipe: (CGPoint)location {
+    float xDistance = fabsf(location.x - startPoint.x);
+    float yDistance = fabsf(location.y - startPoint.y);
     double distance = sqrt((xDistance * xDistance) + (yDistance * yDistance));
     if (distance >= swap_swipe_nimidistance) {
         isHaveCheckSwipe = YES;
         NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate: startTime];
         double speed = distance / interval ;
         if (speed > swap_swipe_minispeed) {
-            SymbolView* symbol = [SearchHelper getAdjacentSymbolByDirection: touchingSymbol start:startPoint end:checkLocation];
+            SymbolView* symbol = [SearchHelper getAdjacentSymbolByDirection: touchingSymbol start:startPoint end:location];
+            
             // do swipe
             [self swipe: touchingSymbol with:symbol];
             

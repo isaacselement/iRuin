@@ -60,6 +60,10 @@
         
         // second , reset validNeighbourAreaInContainer & neighbourSymbols
         [self setNeighbourAreaAndSymbols: touchingSymbol];
+        
+        
+        // do effect 
+        [self.effect effectTouchesMoved:exchangeSymbol location:location];
     }
     
 }

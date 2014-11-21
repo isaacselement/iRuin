@@ -33,7 +33,7 @@
     /*
     BOOL isMuteMusic = [[[NSUserDefaults standardUserDefaults] objectForKey:User_IsMuteMusic] boolValue];
     VIEW.chaptersView.muteActionView.imageView.selected = isMuteMusic;
-    [[EffectHelper getInstance] muteBackGroundMusic: isMuteMusic];
+    [[EffectHelper getInstance] faceBackGroundMusic: isMuteMusic];
      */
 }
 

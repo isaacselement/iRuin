@@ -34,7 +34,7 @@
         muteActionView = [[InteractiveView alloc] init];
         muteActionView.imageView.enableSelected = YES;
         muteActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view){
-            [[EffectHelper getInstance] muteBackGroundMusic: view.selected];
+            [[EffectHelper getInstance] faceBackGroundMusic: view.selected];
             [[NSUserDefaults standardUserDefaults] setObject: @(view.selected) forKey:User_IsMuteMusic];
         };
         [self addSubview: muteActionView];

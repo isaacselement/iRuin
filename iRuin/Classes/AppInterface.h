@@ -130,7 +130,7 @@
 
 
 #import "SymbolView.h"
-#import "SymbolImageView.h"
+#import "GradientImageView.h"
 
 
 #import "InteractiveView.h"

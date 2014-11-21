@@ -1,6 +1,6 @@
-#import "SymbolImageView.h"
+#import "GradientImageView.h"
 
-@implementation SymbolImageView
+@implementation GradientImageView
 
 
 

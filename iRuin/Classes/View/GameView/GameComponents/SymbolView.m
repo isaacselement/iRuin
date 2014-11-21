@@ -3,7 +3,7 @@
 
 @implementation SymbolView
 {
-    SymbolImageView* symbolImageView;
+    GradientImageView* symbolImageView;
     
     
     CGMutablePathRef validAreaCGPath;
@@ -32,7 +32,7 @@
         
         self.score = 1.0;
         
-        symbolImageView = [[SymbolImageView alloc] initWithFrame: self.bounds];
+        symbolImageView = [[GradientImageView alloc] initWithFrame: self.bounds];
         symbolImageView.userInteractionEnabled = NO;
         [self addSubview: symbolImageView];
         

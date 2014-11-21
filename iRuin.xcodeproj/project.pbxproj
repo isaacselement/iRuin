@@ -108,7 +108,7 @@
 		4ED42D3D1A1D8995006149C9 /* Tock.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED42D3A1A1D8995006149C9 /* Tock.caf */; };
 		4ED42D401A1D9D07006149C9 /* Bottle.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED42D3E1A1D9D07006149C9 /* Bottle.aiff */; };
 		4ED42D411A1D9D07006149C9 /* Pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED42D3F1A1D9D07006149C9 /* Pop.aiff */; };
-		4ED42D441A1DCE21006149C9 /* SymbolImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED42D431A1DCE21006149C9 /* SymbolImageView.m */; };
+		4ED42D441A1DCE21006149C9 /* GradientImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED42D431A1DCE21006149C9 /* GradientImageView.m */; };
 		4ED4FD1C1A1E2E9900BB89C6 /* Frog.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED4FD191A1E2E9900BB89C6 /* Frog.aiff */; };
 		4ED4FD1D1A1E2E9900BB89C6 /* Funk.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED4FD1A1A1E2E9900BB89C6 /* Funk.aiff */; };
 		4ED4FD1E1A1E2E9900BB89C6 /* Morse.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 4ED4FD1B1A1E2E9900BB89C6 /* Morse.aiff */; };
@@ -424,8 +424,8 @@
 		4ED42D3A1A1D8995006149C9 /* Tock.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tock.caf; sourceTree = "<group>"; };
 		4ED42D3E1A1D9D07006149C9 /* Bottle.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Bottle.aiff; sourceTree = "<group>"; };
 		4ED42D3F1A1D9D07006149C9 /* Pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Pop.aiff; sourceTree = "<group>"; };
-		4ED42D421A1DCE21006149C9 /* SymbolImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolImageView.h; sourceTree = "<group>"; };
-		4ED42D431A1DCE21006149C9 /* SymbolImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolImageView.m; sourceTree = "<group>"; };
+		4ED42D421A1DCE21006149C9 /* GradientImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientImageView.h; sourceTree = "<group>"; };
+		4ED42D431A1DCE21006149C9 /* GradientImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientImageView.m; sourceTree = "<group>"; };
 		4ED4FD191A1E2E9900BB89C6 /* Frog.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Frog.aiff; sourceTree = "<group>"; };
 		4ED4FD1A1A1E2E9900BB89C6 /* Funk.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Funk.aiff; sourceTree = "<group>"; };
 		4ED4FD1B1A1E2E9900BB89C6 /* Morse.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Morse.aiff; sourceTree = "<group>"; };
@@ -836,8 +836,8 @@
 				4EEFD9AC1A0F5856006A76C8 /* FBShimmering */,
 				4E08AB9619FE66B300F1F449 /* SymbolView.h */,
 				4E08AB9719FE66B300F1F449 /* SymbolView.m */,
-				4ED42D421A1DCE21006149C9 /* SymbolImageView.h */,
-				4ED42D431A1DCE21006149C9 /* SymbolImageView.m */,
+				4ED42D421A1DCE21006149C9 /* GradientImageView.h */,
+				4ED42D431A1DCE21006149C9 /* GradientImageView.m */,
 				4E2CCACB19FBF93500D2AAEC /* ContainerView.h */,
 				4E2CCACC19FBF93500D2AAEC /* ContainerView.m */,
 				4E08AB9919FE66F400F1F449 /* InteractiveImageView.h */,
@@ -2113,7 +2113,7 @@
 				4EDE1EC11A1C36EF00865CE5 /* AudioHandler.m in Sources */,
 				4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */,
 				4EE5FC6219D858DD005E8736 /* FrameTranslater.m in Sources */,
-				4ED42D441A1DCE21006149C9 /* SymbolImageView.m in Sources */,
+				4ED42D441A1DCE21006149C9 /* GradientImageView.m in Sources */,
 				4E1FBA24191BBBDD0093BE25 /* TouchEvent.m in Sources */,
 				4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */,
 				4EEFD9B21A0F5856006A76C8 /* FBShimmeringLayer.m in Sources */,

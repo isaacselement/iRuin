@@ -13,7 +13,7 @@
 
 #pragma mark - Public Methods
 
--(void) muteBackGroundMusic: (BOOL)isMute;
+-(void) faceBackGroundMusic: (BOOL)isMute;
 
 
 

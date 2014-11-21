@@ -21,6 +21,9 @@ static EffectHelper* oneInstance = nil;
 }
 
 
+
+
+#pragma mark - 
 -(void) updateScheduleTaskConfigAndRegistryToTask
 {
     // handler the config
@@ -30,7 +33,6 @@ static EffectHelper* oneInstance = nil;
     [scheduleTaskConfig removeObjectForKey:@"ScheduleTask_Interval"];
     
     imagesValues = [scheduleTaskConfig objectForKey:@"view.backgroundView.values"];
-    
     [scheduleTaskConfig removeObjectForKey:@"view.backgroundView.values"];
     
     // schedule task
@@ -65,24 +67,24 @@ static EffectHelper* oneInstance = nil;
 
 
 
--(void) muteBackGroundMusic: (BOOL)isMute
+-(void) faceBackGroundMusic: (BOOL)isMute
 {
-    AudiosExecutor* audiosExector = (AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO];
-    NSDictionary* audioPlayers = audiosExector.audiosPlayers;
-    NSArray* musics = DATA.config[@"MuteMusic"];
+    NSDictionary* audioPlayers = ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).audiosPlayers;
+    NSDictionary* fadeSpecifications = DATA.config[@"FadeActions"];
     
-    NSOperationQueue *audioFaderQueue = [AudioHandler audioCrossFadeQueue];
-    
-    for (int i = 0; i < musics.count; i++) {
-        NSString* key = musics[i];
+    for (NSString* key in fadeSpecifications) {
+        NSDictionary* dictionary = fadeSpecifications[key];
         AVAudioPlayer* player = audioPlayers[key];
+        
+        NSDictionary* dic = nil;
         if (isMute) {
-            MXAudioPlayerFadeOperation *fadeOut = [[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:0.0 overDuration:2.0];
-            [audioFaderQueue addOperation:fadeOut];
+            dic = dictionary[@"OFF"];
         } else {
-            MXAudioPlayerFadeOperation *fadeIn = [[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:0.7 overDuration:2.0];
-            [audioFaderQueue addOperation:fadeIn];
+            dic = dictionary[@"ON"];
         }
+        float toVolume = [dic[@"fadeToVolume"] floatValue];
+        float overDuration = [dic[@"fadeOverDuration"] floatValue];
+        [[AudioHandler audioCrossFadeQueue] addOperation:[[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:toVolume overDuration:overDuration]];
     }
 }
 

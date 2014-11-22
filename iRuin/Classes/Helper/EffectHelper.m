@@ -3,12 +3,20 @@
 
 @implementation EffectHelper
 {
+    // schedule action
+    int imageIndex;
+    NSArray* imagesValues ;
     NSMutableDictionary* scheduleTaskConfig;
     
-    NSArray* imagesValues ;
-    
-    int imageIndex;
+    // queue views positions handler
+    ViewsInRepositoryPositionsHandler fillInViewsPositionsHandler;
+    ViewsInRepositoryPositionsHandler adjustViewsInVisualPositionsHandler;
+    ViewsInRepositoryPositionsHandler rollInViewsInRepositoryPositionsHandler;
+    ViewsInRepositoryPositionsHandler rollOutViewsInRepositoryPositionsHandler;
 }
+
+
+
 
 static EffectHelper* oneInstance = nil;
 
@@ -22,8 +30,96 @@ static EffectHelper* oneInstance = nil;
 
 
 
+#pragma mark - Queue Views Positiosn Handler
 
-#pragma mark - 
+-(ViewsInRepositoryPositionsHandler) fillInViewsPositionsHandler
+{
+    if (! fillInViewsPositionsHandler) {
+        fillInViewsPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
+            
+            // TODO: If not enough ~~~~~~ , cause may vanish many ~~~~~  !
+            NSMutableArray* uselessViews = [QueueViewsHelper getUselessViews];
+            for (UIView* vanishingSymbol in vanishingViews) {
+                [uselessViews removeObject: vanishingSymbol];
+            }
+            
+            int count = 0 ;
+            NSMutableArray* views = [NSMutableArray array];
+            for (NSUInteger i = 0; i < groupedNullIndexpaths.count; i++) {
+                NSArray* oneGroupedNullIndexpaths = groupedNullIndexpaths[i];
+                NSMutableArray* innerViews = [NSMutableArray array];
+                for (NSUInteger j = 0; j < oneGroupedNullIndexpaths.count; j++) {
+                    SymbolView* symbol = [uselessViews objectAtIndex:count];
+                    [symbol restore];
+                    symbol.identification = [SymbolView getOneRandomSymbolIdentification];
+                    [innerViews addObject: symbol];
+                    count++;
+                }
+                [views addObject: innerViews];
+            }
+            
+            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+            
+            // cause roll know how many view roll in , fill in need dynamic
+            for (int i = 0; i < views.count; i++) {
+                NSMutableArray* innverViews = [views objectAtIndex: i];
+                for (int j = 1; j < innverViews.count; j++) {
+                    [positions[i] insertObject:positions[i][0] atIndex:0];
+                }
+            }
+            return @[views, positions];
+        };
+    }
+    return fillInViewsPositionsHandler;
+}
+
+-(ViewsInRepositoryPositionsHandler) adjustViewsInVisualPositionsHandler
+{
+    if (! adjustViewsInVisualPositionsHandler) {
+        adjustViewsInVisualPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
+            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsInVisualArea lines:lines indexPaths:indexPaths];
+            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+            return @[views, positions];
+        };
+    }
+    return adjustViewsInVisualPositionsHandler;
+}
+
+-(ViewsInRepositoryPositionsHandler) rollInViewsInRepositoryPositionsHandler
+{
+    if (! rollInViewsInRepositoryPositionsHandler) {
+        rollInViewsInRepositoryPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
+            // move all symbols to black point , cause roll out may be some time not roll all out . cause the line defined difference ...
+            [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
+                ((UIView*)obj).center = VIEW.frame.blackPoint;
+                return NO;
+            }];
+            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsRepository lines:lines indexPaths:indexPaths];
+            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+            return @[views, positions];
+        };
+    }
+    return rollInViewsInRepositoryPositionsHandler;
+}
+
+-(ViewsInRepositoryPositionsHandler) rollOutViewsInRepositoryPositionsHandler
+{
+    if (! rollOutViewsInRepositoryPositionsHandler) {
+        rollOutViewsInRepositoryPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
+            NSMutableArray* viewsInVisualArea = [PositionsHelper getViewsInContainerInVisualArea];
+            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:viewsInVisualArea lines:lines indexPaths:indexPaths];
+            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+            return @[views, positions];
+        };
+    }
+    return rollOutViewsInRepositoryPositionsHandler;
+}
+
+
+
+
+#pragma mark - Schedule Action
+
 -(void) updateScheduleTaskConfigAndRegistryToTask
 {
     // handler the config
@@ -41,10 +137,6 @@ static EffectHelper* oneInstance = nil;
     [[ScheduledTask sharedInstance] registerSchedule: self timeElapsed:interval repeats:0];
 }
 
-
-
-#pragma mark - Scheduled Action
-
 -(void) scheduledTask
 {
     imageIndex = imageIndex % imagesValues.count;
@@ -59,6 +151,8 @@ static EffectHelper* oneInstance = nil;
 
 
 
+
+#pragma mark - 
 
 
 

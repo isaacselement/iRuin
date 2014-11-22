@@ -4,35 +4,28 @@
 @implementation ChainableState
 
 
-
 #pragma mark - Public Methods
 
 -(void) stateStartChainVanish
 {
+    // get symbols ...
+    NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
     
-    int matchCount = MATCH_COUNT;
-    if (DATA.config[@"ChaineVanishCount"]) {
-        matchCount = [DATA.config[@"ChaineVanishCount"] intValue];
-    }
-    
-    // get symbols and start vanish
-    NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: matchCount];
-    
-    if (vanishSymbols) {
-        ACTION.gameState.isChainVanishing = YES;
-        
-        DLog(@"---------- ChainVanish YES");
-        
-        [self.effect effectStartVanish: vanishSymbols];
-        
-    } else {
+    // check if end chain vanish ~~~
+    BOOL noVanishViews = vanishSymbols == nil;
+    BOOL isContainsNull = [QueueViewsHelper isViewsInVisualAreaContains: [NSNull null]];
+    if (noVanishViews && !isContainsNull) {
+        if (ACTION.gameState.isChainVanishing) {
+            [(ChainableEvent*)ACTION.currentEvent eventSymbolsDidChainVanish];
+        }
         ACTION.gameState.isChainVanishing = NO;
-
-        DLog(@"---------- ChainVanish NO");
-        
-        [(ChainableEvent*)ACTION.currentEvent eventSymbolsDidChainVanish];
+        return;
     }
     
+    // then start , the vanish symbols maybe nil ~~~
+    DLog(@"------- stateStartChainVanish");
+    ACTION.gameState.isChainVanishing = YES;
+    [self.effect effectStartVanish: vanishSymbols];
 }
 
 

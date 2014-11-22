@@ -1,93 +1,20 @@
 #import "BaseEffect.h"
 #import "AppInterface.h"
 
-
-typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* indexPaths, NSArray* groupedNullIndexpaths, NSDictionary* linesConfig, NSArray* vanishingViews);
-
 @implementation BaseEffect
 {
     NSDictionary* linesConfigs;
     NSDictionary* actionsConfigs;
     NSDictionary* positionsConfigs;
     
-    ViewsInRepositoryPositionsHandler rollOutViewsInRepositoryPositionsHandler;
-    ViewsInRepositoryPositionsHandler rollInViewsInRepositoryPositionsHandler;
-    ViewsInRepositoryPositionsHandler adjustViewsInVisualPositionsHandler;
     ViewsInRepositoryPositionsHandler fillInViewsPositionsHandler;
+    ViewsInRepositoryPositionsHandler adjustViewsInVisualPositionsHandler;
+    ViewsInRepositoryPositionsHandler rollInViewsInRepositoryPositionsHandler;
+    ViewsInRepositoryPositionsHandler rollOutViewsInRepositoryPositionsHandler;
 
 }
 
 @synthesize event;
-
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        
-        rollInViewsInRepositoryPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
-            // move all symbols to black point , cause roll out may be some time not roll all out . cause the line defined difference ...
-            [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-                ((UIView*)obj).center = VIEW.frame.blackPoint;
-                return NO;
-            }];
-            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsRepository lines:lines indexPaths:indexPaths];
-            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
-            return @[views, positions];
-        };
-        
-        rollOutViewsInRepositoryPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
-            NSMutableArray* viewsInVisualArea = [PositionsHelper getViewsInContainerInVisualArea];
-            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:viewsInVisualArea lines:lines indexPaths:indexPaths];
-            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
-            return @[views, positions];
-        };
-        
-        adjustViewsInVisualPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
-            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsInVisualArea lines:lines indexPaths:indexPaths];
-            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
-            return @[views, positions];
-        };
-        
-        fillInViewsPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
-            
-            // TODO: If not enough ~~~~~~ , cause may vanish many ~~~~~  !
-            NSMutableArray* uselessViews = [QueueViewsHelper getUselessViews];
-            for (UIView* vanishingSymbol in vanishingViews) {
-                [uselessViews removeObject: vanishingSymbol];
-            }
-            
-            int count = 0 ;
-            NSMutableArray* views = [NSMutableArray array];
-            for (NSUInteger i = 0; i < groupedNullIndexpaths.count; i++) {
-                NSArray* oneGroupedNullIndexpaths = groupedNullIndexpaths[i];
-                NSMutableArray* innerViews = [NSMutableArray array];
-                for (NSUInteger j = 0; j < oneGroupedNullIndexpaths.count; j++) {
-                    SymbolView* symbol = [uselessViews objectAtIndex:count];
-                    [symbol restore];
-                    symbol.identification = [SymbolView getOneRandomSymbolIdentification];
-                    [innerViews addObject: symbol];
-                    count++;
-                }
-                [views addObject: innerViews];
-            }
-                        
-            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
-
-            // cause roll know how many view roll in , fill in need dynamic
-            for (int i = 0; i < views.count; i++) {
-                NSMutableArray* innverViews = [views objectAtIndex: i];
-                for (int j = 1; j < innverViews.count; j++) {
-                    [positions[i] insertObject:positions[i][0] atIndex:0];
-                }
-            }
-            return @[views, positions];
-        };
-
-    }
-    return self;
-}
-
 
 
 #pragma mark - Subclass Override Methods
@@ -98,6 +25,11 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
     positionsConfigs = DATA.config[CONFIG_POSITIONS];
     actionsConfigs = DATA.config[SYMBOLS_ActionExecutors];
     
+    EffectHelper* effectHelper = [EffectHelper getInstance];
+    fillInViewsPositionsHandler = [effectHelper fillInViewsPositionsHandler];
+    adjustViewsInVisualPositionsHandler = [effectHelper adjustViewsInVisualPositionsHandler];;
+    rollInViewsInRepositoryPositionsHandler = [effectHelper rollInViewsInRepositoryPositionsHandler];
+    rollOutViewsInRepositoryPositionsHandler = [effectHelper rollOutViewsInRepositoryPositionsHandler];
 }
 -(void) effectUnInitialize
 {
@@ -159,17 +91,14 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 -(void)effectStartVanish: (NSMutableArray*)symbols
 {
-    NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: symbols];
-    
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
+    NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: symbols];
     for (NSInteger i = 0; i < vanishViews.count; i++) {
         SymbolView* symbol = vanishViews[i];
-        
         if (symbol.row == -1 || symbol.column == -1) {
             DLOG(@"ERROR!!!! ++++");
             continue;
         }
-        
         int row = symbol.row;
         int column = symbol.column;
         [[symbolsAtContainer objectAtIndex: row] replaceObjectAtIndex: column withObject:[NSNull null]];
@@ -177,45 +106,45 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
         symbol.column = -1;
     }
     
+    // vanish
+    [VIEW.actionDurations clear];
+    [self startSymbolsVanish: vanishViews];
+    double vanishDuration = [VIEW.actionDurations take];
+    [event eventSymbolsWillVanish: vanishViews];
+    [event performSelector: @selector(eventSymbolsDidVanish:) withObject:vanishViews afterDelay:vanishDuration];
     
-    [self startVanishAdjustFillSqueeze: vanishViews];
+    // adjust , fill or squeeze
+    [self startSymbolsAdjustFillSqueeze:vanishViews vanishDuration:vanishDuration];
 }
 
 
--(void) startVanishAdjustFillSqueeze: (NSArray*)vanishingViews
+-(void) startSymbolsAdjustFillSqueeze: (NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
-    [VIEW.actionDurations clear];
-    [self startSymbolsVanish: vanishingViews];
-    double vanishTotalDuration = [VIEW.actionDurations take];
-    [event eventSymbolsWillVanish: vanishingViews];
-    [event performSelector: @selector(eventSymbolsDidVanish:) withObject:vanishingViews afterDelay:vanishTotalDuration];
-    
-    
     if ([DATA.config[Squeeze] boolValue]){
         
         [VIEW.actionDurations clear];
-        [self startSymbolsSqueeze:vanishingViews vanishDuration:vanishTotalDuration];
-        double squeezeTotalDuration = [VIEW.actionDurations take];
+        [self startSymbolsSqueeze:vanishingViews vanishDuration:vanishDuration];
+        double squeezeDuration = [VIEW.actionDurations take];
         [event eventSymbolsWillSqueeze];
         [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidSqueeze) object:nil];
-        [event performSelector: @selector(eventSymbolsDidSqueeze) withObject:nil afterDelay:squeezeTotalDuration];
+        [event performSelector: @selector(eventSymbolsDidSqueeze) withObject:nil afterDelay:squeezeDuration];
         
     } else {
         
         [VIEW.actionDurations clear];
-        [self startSymbolsAdjusts:vanishingViews delay:vanishTotalDuration];
-        double adjustTotalDuration = [VIEW.actionDurations take];
+        [self startSymbolsAdjusts:vanishingViews delay:vanishDuration];
+        double adjustDuration = [VIEW.actionDurations take];
         [event eventSymbolsWillAdjusts];
         [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidAdjusts) object:nil];
-        [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustTotalDuration];
+        [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustDuration];
         
         
         [VIEW.actionDurations clear];
-        [self startSymbolsFillIn: vanishingViews delay:(vanishTotalDuration + adjustTotalDuration)];
-        double filInTotalDuration = [VIEW.actionDurations take];
+        [self startSymbolsFillIn: vanishingViews delay:(vanishDuration + adjustDuration)];
+        double filInDuration = [VIEW.actionDurations take];
         [event eventSymbolsWillFillIn];
         [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidFillIn) object:nil];
-        [event performSelector: @selector(eventSymbolsDidFillIn) withObject:nil afterDelay:filInTotalDuration];
+        [event performSelector: @selector(eventSymbolsDidFillIn) withObject:nil afterDelay:filInDuration];
         
     }
 }

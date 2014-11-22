@@ -62,12 +62,18 @@
 }
 
 
+
+
 #pragma mark - Event Methods
 
 -(void) eventSymbolsDidChainVanish
 {
-    DLog(@"eventSymbolsDidChainVanish");
+    DLog(@"+++ eventSymbolsDidChainVanish");
 }
+
+
+
+
 
 
 #pragma mark - 

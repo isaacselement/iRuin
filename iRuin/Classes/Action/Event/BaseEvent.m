@@ -88,7 +88,7 @@
 -(void) eventSymbolsDidVanish: (NSArray*)symbols
 {
 //#ifdef DEBUG
-//    NSLog(@"eventSymbolsDidVanish duration: %f", [[NSDate date] timeIntervalSinceDate: startTime]);
+//    DLog(@"eventSymbolsDidVanish duration: %f", [[NSDate date] timeIntervalSinceDate: startTime]);
 //#endif
     
     DLog(@"eventSymbolsDidVanish"); 

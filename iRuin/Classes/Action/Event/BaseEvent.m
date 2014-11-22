@@ -32,7 +32,9 @@
 
 
 
+
 #pragma mark - Event Methods
+
 -(void) eventSymbolsWillRollIn
 {
     [IterateHelper iterateTwoDimensionArray:[QueueViewsHelper viewsInVisualArea] handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
@@ -51,6 +53,8 @@
     ACTION.gameState.isGameStarted = YES;
     
     VIEW.gameView.containerView.userInteractionEnabled = YES;
+    
+    DLog(@"eventSymbolsDidRollIn");
 }
 
 -(void) eventSymbolsWillRollOut
@@ -61,7 +65,7 @@
 
 -(void) eventSymbolsDidRollOut
 {
-
+    DLog(@"eventSymbolsDidRollOut");
 }
 
 //#ifdef DEBUG
@@ -76,6 +80,9 @@
     ACTION.gameState.isSymbolsOnVAFSing = YES;
     
     ACTION.gameState.vanishAmount += symbols.count;
+    
+    NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
+    for (SymbolView* symbol in symbols) scoreLabel.number += symbol.score;
 }
 
 -(void) eventSymbolsDidVanish: (NSArray*)symbols
@@ -84,14 +91,12 @@
 //    NSLog(@"eventSymbolsDidVanish duration: %f", [[NSDate date] timeIntervalSinceDate: startTime]);
 //#endif
     
-    NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
+    DLog(@"eventSymbolsDidVanish"); 
+    
     for (SymbolView* symbol in symbols){
-        scoreLabel.number += symbol.score;
-        
         // cause the view will be reused , so here we need to check ~~~~~~
         if (![QueueViewsHelper isViewsInVisualAreaContains: symbol]) {
-            symbol.center = VIEW.frame.blackPoint;
-            [symbol.layer removeAllAnimations];
+            [symbol restore];
         }
     }
 }
@@ -104,7 +109,7 @@
 }
 -(void) eventSymbolsDidAdjusts
 {
-    
+    DLog(@"eventSymbolsDidAdjusts");   
 }
 
 
@@ -115,6 +120,7 @@
 -(void) eventSymbolsDidFillIn
 {
     ACTION.gameState.isSymbolsOnVAFSing = NO;
+    DLog(@"eventSymbolsDidFillIn");
 }
 
 
@@ -125,6 +131,7 @@
 -(void) eventSymbolsDidSqueeze
 {
     ACTION.gameState.isSymbolsOnVAFSing = NO;
+    DLog(@"eventSymbolsDidSqueeze"); 
 }
 
 

@@ -63,34 +63,4 @@ static EffectHelper* oneInstance = nil;
 
 
 
-#pragma mark - Public Methods
-
-
-
--(void) faceBackGroundMusic: (BOOL)isMute
-{
-    NSDictionary* audioPlayers = ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).audiosPlayers;
-    NSDictionary* fadeSpecifications = DATA.config[@"FadeActions"];
-    
-    for (NSString* key in fadeSpecifications) {
-        NSDictionary* dictionary = fadeSpecifications[key];
-        AVAudioPlayer* player = audioPlayers[key];
-        
-        NSDictionary* dic = nil;
-        if (isMute) {
-            dic = dictionary[@"OFF"];
-        } else {
-            dic = dictionary[@"ON"];
-        }
-        float toVolume = [dic[@"fadeToVolume"] floatValue];
-        float overDuration = [dic[@"fadeOverDuration"] floatValue];
-        [[AudioHandler audioCrossFadeQueue] addOperation:[[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:toVolume overDuration:overDuration]];
-    }
-}
-
-
-
-
-
-
 @end

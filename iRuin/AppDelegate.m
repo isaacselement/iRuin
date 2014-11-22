@@ -7,6 +7,12 @@
 void uncaughtExceptionHandler(NSException *exception) {
     NSLog(@"Crash : %@", exception);
     NSLog(@"Stack Trace : %@", [exception callStackSymbols]);
+    
+    NSString* description = [[NSString alloc] initWithFormat:@"%@: %@", exception, exception.callStackSymbols ];
+    NSData* data = [description dataUsingEncoding: NSUTF8StringEncoding];
+    NSString* errorFilePath = [DateHelper stringFromDate:[NSDate date] pattern:PATTERN_DATE_TIME];
+    errorFilePath = [[NSTemporaryDirectory() stringByAppendingPathComponent: errorFilePath] stringByAppendingPathExtension:@"txt"];
+    [FileManager writeDataToFile: errorFilePath data:data];
 }
 #endif
 

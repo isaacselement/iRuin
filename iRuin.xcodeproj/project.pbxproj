@@ -101,6 +101,7 @@
 		4ECB2A0B19FA562A00D60219 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB29FB19FA562A00D60219 /* icon@2x.png */; };
 		4ECB2A0E19FA5F5600D60219 /* ElementsExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB2A0D19FA5F5600D60219 /* ElementsExecutor.m */; };
 		4ED237761A0E131B002B9C9D /* ImageLabelLineScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED237751A0E131B002B9C9D /* ImageLabelLineScrollCell.m */; };
+		4ED380BB1A1F5966006AE91B /* Config_Route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ED380BA1A1F5966006AE91B /* Config_Route.json */; };
 		4ED3BE5F18E7043A00621666 /* PositionsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3BE5E18E7043A00621666 /* PositionsHelper.m */; };
 		4ED42D361A1D8990006149C9 /* canon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4ED42D351A1D8990006149C9 /* canon.mp3 */; };
 		4ED42D3B1A1D8995006149C9 /* lock.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED42D381A1D8995006149C9 /* lock.caf */; };
@@ -416,6 +417,7 @@
 		4ECB2A0D19FA5F5600D60219 /* ElementsExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementsExecutor.m; sourceTree = "<group>"; };
 		4ED237741A0E131B002B9C9D /* ImageLabelLineScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLabelLineScrollCell.h; sourceTree = "<group>"; };
 		4ED237751A0E131B002B9C9D /* ImageLabelLineScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelLineScrollCell.m; sourceTree = "<group>"; };
+		4ED380BA1A1F5966006AE91B /* Config_Route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Route.json; sourceTree = "<group>"; };
 		4ED3BE5D18E7043A00621666 /* PositionsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionsHelper.h; sourceTree = "<group>"; };
 		4ED3BE5E18E7043A00621666 /* PositionsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionsHelper.m; sourceTree = "<group>"; };
 		4ED42D351A1D8990006149C9 /* canon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = canon.mp3; sourceTree = "<group>"; };
@@ -1089,6 +1091,7 @@
 		4ECB29E819FA562A00D60219 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
+				4ED380BA1A1F5966006AE91B /* Config_Route.json */,
 				4ECB29E919FA562A00D60219 /* Config.json */,
 				4ECB29EA19FA562A00D60219 /* Config_Move.json */,
 				4ECB29EB19FA562A00D60219 /* Config_Touch.json */,
@@ -1961,6 +1964,7 @@
 				4EDCA9C61A18EDE400931446 /* Background_010.png in Resources */,
 				4EF75EA71A00F43F0074E493 /* Default-568h@2x.png in Resources */,
 				4E4D4E94181D5AFB00886D75 /* InfoPlist.strings in Resources */,
+				4ED380BB1A1F5966006AE91B /* Config_Route.json in Resources */,
 				4EDCA9BF1A18EDE400931446 /* Background_003.png in Resources */,
 				4EF338781A0D205C00FAABC5 /* 0.png in Resources */,
 				4ECB2A0619FA562A00D60219 /* 2.png in Resources */,

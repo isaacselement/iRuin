@@ -34,8 +34,19 @@
         muteActionView = [[InteractiveView alloc] init];
         muteActionView.imageView.enableSelected = YES;
         muteActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view){
-            [[EffectHelper getInstance] faceBackGroundMusic: view.selected];
-            [[NSUserDefaults standardUserDefaults] setObject: @(view.selected) forKey:User_IsMuteMusic];
+            
+            BOOL isMute = view.selected;
+            NSDictionary* audioPlayers = ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).audiosPlayers;
+            NSDictionary* fadeSpecifications = DATA.config[@"FadeActions"];
+            for (NSString* key in fadeSpecifications) {
+                AVAudioPlayer* player = audioPlayers[key];
+                NSDictionary* dictionary = fadeSpecifications[key];
+                NSDictionary* dic = isMute ? dictionary[@"OFF"]: dictionary[@"ON"];
+                float toVolume = [dic[@"fadeToVolume"] floatValue];
+                float overDuration = [dic[@"fadeOverDuration"] floatValue];
+                [[AudioHandler audioCrossFadeQueue] addOperation:[[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:toVolume overDuration:overDuration]];
+            }
+            
         };
         [self addSubview: muteActionView];
     }

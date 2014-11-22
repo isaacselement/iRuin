@@ -11,11 +11,4 @@
 
 
 
-#pragma mark - Public Methods
-
--(void) faceBackGroundMusic: (BOOL)isMute;
-
-
-
-
 @end

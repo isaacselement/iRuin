@@ -40,7 +40,6 @@
 // symbolObj was move to new position, then its old position use null to feed .
 +(void) replaceOutdatedPositionWithNullInVisualArea: (SymbolView*)symbolObj
 {
-//    DLog(@"row column : %d,%d", symbolObj.row, symbolObj.column);
     NSArray* viewsInVisualArea = QueueViewsHelper.viewsInVisualArea;
     for (int i = 0; i < viewsInVisualArea.count; i++) {
         NSMutableArray* innerArray = [viewsInVisualArea objectAtIndex: i];
@@ -50,7 +49,6 @@
             SymbolView* symbol = [innerArray objectAtIndex: j];
             if (symbolObj == symbol) {
                 [innerArray replaceObjectAtIndex: j withObject:[NSNull null]];
-//                DLog(@"i j : %d,%d", i, j);
                 return;
             }
         }

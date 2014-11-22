@@ -59,7 +59,7 @@
                 int abs_row = abs(touchingSymbol.row - secondSymbol.row);
                 
                 if (abs_col > 1 || abs_row > 1 || (abs_row == 1 && abs_col == 1) ) {
-                    DLOG(@"Not adjacent");
+                    DLog(@"Not adjacent");
                 } else {
                     [self swipe: touchingSymbol with:secondSymbol];
                 }

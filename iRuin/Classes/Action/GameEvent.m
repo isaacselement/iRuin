@@ -2,6 +2,11 @@
 #import "AppInterface.h"
 
 
+
+#define StandUserDefaults [NSUserDefaults standardUserDefaults]
+
+
+
 @implementation GameEvent
 
 
@@ -9,32 +14,38 @@
 {
     [ScheduledTask sharedInstance].timeInterval = 0.2;
     
-    // chapter cells
     LineScrollView* chaptersCellViews = VIEW.chaptersView.lineScrollView;
+    
+    // first time launch app
+    if (![StandUserDefaults objectForKey: User_LastTimeLaunch]) {
+        [StandUserDefaults setObject:@(chaptersCellViews.contentView.subviews.count - 1) forKey:User_ChapterIndex];
+    }
+    [StandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
+    
+    // chapter cells
     chaptersCellViews.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
-        int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:User_ChapterIndex] intValue];
+        int userChapterIndex = [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
         return index <= userChapterIndex;
     };
-    int userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:User_ChapterIndex] intValue];
+    int userChapterIndex = [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
     //Should go first , affect the effect jump in
     [chaptersCellViews setCurrentIndex: userChapterIndex - chaptersCellViews.contentView.subviews.count];
     
-    //
+    
+    // 
     [[EffectHelper getInstance] updateScheduleTaskConfigAndRegistryToTask];
     
     
     //
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_LAUNCH"]];
     
-    // chapters cells effect
+    
+    // chapters cells jumb in effect
     [self chaptersValuesActions: DATA.config[@"GAME_LAUNCH_Chapters_Cells"]];
     
     
-    /*
-    BOOL isMuteMusic = [[[NSUserDefaults standardUserDefaults] objectForKey:User_IsMuteMusic] boolValue];
-    VIEW.chaptersView.muteActionView.imageView.selected = isMuteMusic;
-    [[EffectHelper getInstance] faceBackGroundMusic: isMuteMusic];
-     */
+    // about mute music
+    [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"PlayActions"] onObjects:@[@""] values:nil baseTimes:nil];
 }
 
 
@@ -98,14 +109,14 @@
     
     
     float rate = 0;
-    float userChapterIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:User_ChapterIndex] floatValue];
+    float userChapterIndex = [[StandUserDefaults objectForKey:User_ChapterIndex] floatValue];
     
     int score = VIEW.gameView.scoreLabel.number;
     int vanishCount = ACTION.gameState.vanishAmount;
     if (vanishCount != 0) {
         rate = score / vanishCount;
         userChapterIndex += rate;
-        [[NSUserDefaults standardUserDefaults] setObject: @(userChapterIndex) forKey:User_ChapterIndex];
+        [StandUserDefaults setObject: @(userChapterIndex) forKey:User_ChapterIndex];
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

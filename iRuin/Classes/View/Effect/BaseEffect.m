@@ -137,7 +137,7 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
     [VIEW.actionDurations clear];
     [self startSymbolsRollIn];
     double totalDuration = [VIEW.actionDurations take];
-    [event eventSymbolsWillRollIn];                     // for filter the symbols
+    [event eventSymbolsWillRollIn];
     // cause , roll in before did roll out call (the game start again)
     [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollOut) object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidRollIn) object:nil];
@@ -159,10 +159,11 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 -(void)effectStartVanish: (NSMutableArray*)symbols
 {
-    // get the null rows and columns
+    NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: symbols];
+    
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
-    for (NSInteger i = 0; i < symbols.count; i++) {
-        SymbolView* symbol = symbols[i];
+    for (NSInteger i = 0; i < vanishViews.count; i++) {
+        SymbolView* symbol = vanishViews[i];
         
         if (symbol.row == -1 || symbol.column == -1) {
             DLOG(@"ERROR!!!! ++++");
@@ -176,7 +177,13 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
         symbol.column = -1;
     }
     
-    NSMutableArray* vanishingViews = [ArrayHelper eliminateDuplicates: symbols];
+    
+    [self startVanishAdjustFillSqueeze: vanishViews];
+}
+
+
+-(void) startVanishAdjustFillSqueeze: (NSArray*)vanishingViews
+{
     [VIEW.actionDurations clear];
     [self startSymbolsVanish: vanishingViews];
     double vanishTotalDuration = [VIEW.actionDurations take];
@@ -190,28 +197,28 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
         [self startSymbolsSqueeze:vanishingViews vanishDuration:vanishTotalDuration];
         double squeezeTotalDuration = [VIEW.actionDurations take];
         [event eventSymbolsWillSqueeze];
+        [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidSqueeze) object:nil];
         [event performSelector: @selector(eventSymbolsDidSqueeze) withObject:nil afterDelay:squeezeTotalDuration];
         
     } else {
-
+        
         [VIEW.actionDurations clear];
         [self startSymbolsAdjusts:vanishingViews delay:vanishTotalDuration];
         double adjustTotalDuration = [VIEW.actionDurations take];
         [event eventSymbolsWillAdjusts];
+        [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidAdjusts) object:nil];
         [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustTotalDuration];
         
-
+        
         [VIEW.actionDurations clear];
         [self startSymbolsFillIn: vanishingViews delay:(vanishTotalDuration + adjustTotalDuration)];
         double filInTotalDuration = [VIEW.actionDurations take];
         [event eventSymbolsWillFillIn];
+        [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidFillIn) object:nil];
         [event performSelector: @selector(eventSymbolsDidFillIn) withObject:nil afterDelay:filInTotalDuration];
         
     }
-    
 }
-
-
 
 
 
@@ -258,11 +265,6 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 
 
-
-
-
-
-
 -(void) roll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig isGroupBreak:(BOOL)isGroupBreak delay:(double)delay vanishingViews:(NSArray*)vanishingViews viewspositionsHandler:(NSArray*(^)(NSArray* lines, NSArray* indexPaths, NSArray* groupedNullIndexpaths, NSDictionary* linesConfig, NSArray* vanishingView))viewspositionsHandler
 {
     NSDictionary* linesConfig = config[LINES];
@@ -280,30 +282,10 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
     NSArray* array = viewspositionsHandler(lines, indexPaths, groupedNullIndexpaths, linesConfig, vanishingViews);
     NSMutableArray* views = [array firstObject];
     NSMutableArray* positions = [array lastObject];
-    NSMutableArray* baseTimes = [self getBaseTimesAccordingToViews: views delay:delay];
+    NSMutableArray* baseTimes = [QueueTimeCalculator getBaseTimesAccordingToViews: views delay:delay];
     
     [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:baseTimes];
     [PositionsHelper updateViewsRowsColumnsInVisualArea: views];
-}
-
-
-#pragma mark - 
-
-
--(NSMutableArray*) getBaseTimesAccordingToViews: (NSArray*)views delay:(double)delay
-{
-    if (delay == 0) return nil;
-    
-    NSNumber* delayNum = @(delay);
-    NSMutableArray* baseTimes = [NSMutableArray array];
-    for (NSArray* innerViews in views) {
-        NSMutableArray* innerBaseTimes = [NSMutableArray array];
-        for (int i = 0; i < innerViews.count; i++) {
-            [innerBaseTimes addObject:delayNum];
-        }
-        [baseTimes addObject: innerBaseTimes];
-    }
-    return baseTimes;
 }
 
 

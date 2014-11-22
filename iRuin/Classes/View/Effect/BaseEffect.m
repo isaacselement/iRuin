@@ -138,7 +138,6 @@
         [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidAdjusts) object:nil];
         [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustDuration];
         
-        
         [VIEW.actionDurations clear];
         [self startSymbolsFillIn: vanishingViews delay:(vanishDuration + adjustDuration)];
         double filInDuration = [VIEW.actionDurations take];
@@ -190,8 +189,6 @@
     
     [self roll:linesConfigs[Squeeze_FillIn] config:positionsConfigs[Squeeze_FillIn] actionsConfig:actionsConfigs[Squeeze_FillIn] isGroupBreak:YES delay:vanishDuration vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
 }
-
-
 
 
 -(void) roll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig isGroupBreak:(BOOL)isGroupBreak delay:(double)delay vanishingViews:(NSArray*)vanishingViews viewspositionsHandler:(NSArray*(^)(NSArray* lines, NSArray* indexPaths, NSArray* groupedNullIndexpaths, NSDictionary* linesConfig, NSArray* vanishingView))viewspositionsHandler

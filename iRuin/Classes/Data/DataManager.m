@@ -6,13 +6,9 @@
     NSMutableDictionary* portraitConfig;
     NSMutableDictionary* landscapeConfig;
     
-    
     NSMutableDictionary* protraitShareConfig ;
     NSMutableDictionary* landscapeShareConfig ;
     
-    
-    
-//    NSDictionary* sharedConfig;
     NSMutableDictionary* config;
     NSMutableDictionary* modesConfigs;
 }
@@ -30,19 +26,7 @@ static DataManager* sharedInstance = nil;
     return sharedInstance;
 }
 
-#pragma mark - initialization
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-
-    }
-    return self;
-}
-
-
-#define JsonExtension(name) [name stringByAppendingPathExtension:@"json"]
 #define StringAppend(first, second) [first stringByAppendingString:second]
 
 
@@ -51,34 +35,26 @@ static DataManager* sharedInstance = nil;
 -(void) initializeWithData {
     
     // set dictionary combine handler
-    BOOL (^combineHandler)(NSString* key, NSMutableDictionary* destination, NSDictionary* source) = ^BOOL(NSString *key, NSMutableDictionary *destination, NSDictionary *source) {
+    [DictionaryHelper setCombineHandler:^BOOL(NSString *key, NSMutableDictionary *destination, NSDictionary *source) {
         if ([key hasPrefix:@"_"] && [key hasSuffix:@"_"]) {
             NSString* removeKey = [key substringWithRange:NSMakeRange(1, [key length] - 2)];
             [destination removeObjectForKey: removeKey];
             return NO;
         }
         return YES;
-    };
-    [DictionaryHelper setCombineHandler: combineHandler];
-    
+    }];
     
     // universal
-    NSString* portraitDesignFile = JsonExtension(key_Portrait);
-    NSString* landscapeDesignFile = JsonExtension(key_Landscape);
+    NSString* portraitDesignFile = StringAppend(key_Portrait, @".json");
+    NSString* landscapeDesignFile = StringAppend(key_Landscape, @".json");
     
-    NSString* portraitDeviceJsonFile = nil;
-    NSString* landscapeDeviceJsonFile = nil;
-    
-    
+    // default iPhone
+    NSString* portraitDeviceJsonFile = StringAppend(IPhone_Prefix, portraitDesignFile);
+    NSString* landscapeDeviceJsonFile = StringAppend(IPhone_Prefix, landscapeDesignFile);
     // iPad
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         portraitDeviceJsonFile = StringAppend(IPad_Prefix, portraitDesignFile);
         landscapeDeviceJsonFile = StringAppend(IPad_Prefix, landscapeDesignFile);
-        
-    // iPhone
-    } else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        portraitDeviceJsonFile = StringAppend(IPhone_Prefix, portraitDesignFile);
-        landscapeDeviceJsonFile = StringAppend(IPhone_Prefix, landscapeDesignFile);
     }
     
     // prepare the share portrait/landscape config

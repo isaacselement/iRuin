@@ -123,15 +123,11 @@ static EffectHelper* oneInstance = nil;
 -(void) updateScheduleTaskConfigAndRegistryToTask
 {
     // handler the config
+    imagesValues = DATA.config[@"Utilities"][@"ScheduleTask.view.backgroundView.images"];
     scheduleTaskConfig = [DictionaryHelper deepCopy:DATA.config[@"GAME_LAUNCH_ScheduleTask"]];
     
-    int interval = [scheduleTaskConfig[@"ScheduleTask_Interval"] intValue];
-    [scheduleTaskConfig removeObjectForKey:@"ScheduleTask_Interval"];
-    
-    imagesValues = [scheduleTaskConfig objectForKey:@"view.backgroundView.values"];
-    [scheduleTaskConfig removeObjectForKey:@"view.backgroundView.values"];
-    
     // schedule task
+    int interval = [DATA.config[@"Utilities"][@"ScheduleTask_Interval"] intValue];
     if (interval == 0) interval = 60;
     [[ScheduledTask sharedInstance] unRegisterSchedule: self];
     [[ScheduledTask sharedInstance] registerSchedule: self timeElapsed:interval repeats:0];
@@ -140,11 +136,11 @@ static EffectHelper* oneInstance = nil;
 -(void) scheduledTask
 {
     imageIndex = imageIndex % imagesValues.count;
-    NSString* currentImage = [imagesValues objectAtIndex: imageIndex];
+    NSString* imageName = [imagesValues objectAtIndex: imageIndex];
     imageIndex++;
     
     NSMutableDictionary* config = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
-    [config setObject: currentImage forKey:@"values"];
+    [config setObject: imageName forKey:@"values"];
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
 }

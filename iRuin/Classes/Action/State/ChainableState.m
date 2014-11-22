@@ -23,7 +23,7 @@
     }
     
     // then start , the vanish symbols maybe nil ~~~
-    DLog(@"------- stateStartChainVanish");
+    DLog(@"--- stateStartChainVanish");
     ACTION.gameState.isChainVanishing = YES;
     [self.effect effectStartVanish: vanishSymbols];
 }

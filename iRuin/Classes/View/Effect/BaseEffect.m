@@ -114,11 +114,11 @@
     [event performSelector: @selector(eventSymbolsDidVanish:) withObject:vanishViews afterDelay:vanishDuration];
     
     // adjust , fill or squeeze
-    [self startSymbolsAdjustFillSqueeze:vanishViews vanishDuration:vanishDuration];
+    [self effectStartAdjustFillSqueeze:vanishViews vanishDuration:vanishDuration];
 }
 
 
--(void) startSymbolsAdjustFillSqueeze: (NSArray*)vanishingViews vanishDuration:(double)vanishDuration
+-(void) effectStartAdjustFillSqueeze: (NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
     if ([DATA.config[Squeeze] boolValue]){
         

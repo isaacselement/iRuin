@@ -60,8 +60,6 @@
 -(void) effectStartVanish: (NSMutableArray*)symbols;
 
 
--(void) startSymbolsAdjustFillSqueeze: (NSArray*)vanishingViews vanishDuration:(double)vanishDuration;
-
 
 // Adjust is the phase of adjusting the empty
 // FillIn is the pahse of filling the empty, waiting until Adjust done , do FillIn

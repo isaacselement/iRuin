@@ -17,7 +17,7 @@
     [hud hide:YES afterDelay: 2];
     
     if (self.isComeFromOutside) {
-        hud.detailsLabelText = @"Twitter & Facebook are on the way :) ";
+        hud.detailsLabelText = @"Other SNS are coming on the way :) ";
     } else {
         hud.detailsLabelText = @"Do u have a good chat ? :-P ";
     }

@@ -57,8 +57,11 @@
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index isReload:(BOOL)isReload
 {
-    // mute the sound on launch
-    ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disable = isReload;
+    // -------------- mute the sound on reload Begin
+    if (isReload) {
+        ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disable = YES;
+    }
+    
      
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
     
@@ -111,7 +114,15 @@
             break;
         }
     }
+    
+    
+    // -------------- mute the sound on reload End
+    if (isReload) {
+        ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disable = NO;
+    }
 }
+
+
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchBeganAtPoint:(CGPoint)point
 {
@@ -121,6 +132,8 @@
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchBegan"]];
 }
+
+
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchEndedAtPoint:(CGPoint)point
 {
@@ -135,6 +148,7 @@
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
     ACTION.gameState.currentChapter = index;
     
+    // get mode and switch config
     int switchModeCount = [DATA.config[@"Utilities"][@"SwitchModeChapters"] intValue];
     if (switchModeCount == 0) switchModeCount = 1;
     int modeCount = ACTION.gameModes.count;

@@ -222,6 +222,11 @@
 		4EE5FC6119D858DD005E8736 /* FrameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBFF19D858DD005E8736 /* FrameHelper.m */; };
 		4EE5FC6219D858DD005E8736 /* FrameTranslater.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FC0119D858DD005E8736 /* FrameTranslater.m */; };
 		4EE5FC6319D858DD005E8736 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FC0319D858DD005E8736 /* UIView+Frame.m */; };
+		4EE635961A234F3100019C58 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6358C1A234F3100019C58 /* ioapi.c */; };
+		4EE635971A234F3100019C58 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6358E1A234F3100019C58 /* mztools.c */; };
+		4EE635981A234F3100019C58 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4EE635901A234F3100019C58 /* unzip.c */; };
+		4EE635991A234F3100019C58 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4EE635921A234F3100019C58 /* zip.c */; };
+		4EE6359A1A234F3100019C58 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE635951A234F3100019C58 /* SSZipArchive.m */; };
 		4EEAFF6718D419C1001FB745 /* FrameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF6618D419C1001FB745 /* FrameManager.m */; };
 		4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7018D47D96001FB745 /* EffectHelper.m */; };
 		4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7418D47D96001FB745 /* SearchHelper.m */; };
@@ -660,6 +665,17 @@
 		4EE6354D1A22E2B200019C58 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4EE6354E1A22E2BE00019C58 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4EE6354F1A22E2BE00019C58 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		4EE6358B1A234F3100019C58 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		4EE6358C1A234F3100019C58 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		4EE6358D1A234F3100019C58 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		4EE6358E1A234F3100019C58 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		4EE6358F1A234F3100019C58 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		4EE635901A234F3100019C58 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		4EE635911A234F3100019C58 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		4EE635921A234F3100019C58 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		4EE635931A234F3100019C58 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		4EE635941A234F3100019C58 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		4EE635951A234F3100019C58 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		4EEAFF6518D419C1001FB745 /* FrameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameManager.h; sourceTree = "<group>"; };
 		4EEAFF6618D419C1001FB745 /* FrameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameManager.m; sourceTree = "<group>"; };
 		4EEAFF6F18D47D96001FB745 /* EffectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectHelper.h; sourceTree = "<group>"; };
@@ -1232,6 +1248,7 @@
 		4EE5FB0E19D858DC005E8736 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4EE635891A234F3100019C58 /* SSZipArchive */,
 				4EE5FB0F19D858DC005E8736 /* _Data.h */,
 				4EE5FB1019D858DC005E8736 /* Crypto */,
 				4EE5FB2F19D858DD005E8736 /* CSVParser */,
@@ -1705,6 +1722,32 @@
 			path = Frame;
 			sourceTree = "<group>";
 		};
+		4EE635891A234F3100019C58 /* SSZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				4EE6358A1A234F3100019C58 /* minizip */,
+				4EE635941A234F3100019C58 /* SSZipArchive.h */,
+				4EE635951A234F3100019C58 /* SSZipArchive.m */,
+			);
+			path = SSZipArchive;
+			sourceTree = "<group>";
+		};
+		4EE6358A1A234F3100019C58 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				4EE6358B1A234F3100019C58 /* crypt.h */,
+				4EE6358C1A234F3100019C58 /* ioapi.c */,
+				4EE6358D1A234F3100019C58 /* ioapi.h */,
+				4EE6358E1A234F3100019C58 /* mztools.c */,
+				4EE6358F1A234F3100019C58 /* mztools.h */,
+				4EE635901A234F3100019C58 /* unzip.c */,
+				4EE635911A234F3100019C58 /* unzip.h */,
+				4EE635921A234F3100019C58 /* zip.c */,
+				4EE635931A234F3100019C58 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
 		4EEAFF6E18D47D96001FB745 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -2022,6 +2065,7 @@
 			files = (
 				4EF7F5751A061FEF0096949F /* AllSDKManager.m in Sources */,
 				4EDD80AE1A1268B8007422A0 /* PPSSignatureView.m in Sources */,
+				4EE635961A234F3100019C58 /* ioapi.c in Sources */,
 				4E4D4E9A181D5AFB00886D75 /* AppDelegate.m in Sources */,
 				4EE5FC4F19D858DD005E8736 /* NormalLabel.m in Sources */,
 				4E14BC5719225AF7000CDB57 /* PullState.m in Sources */,
@@ -2039,11 +2083,13 @@
 				4EE5FC1D19D858DD005E8736 /* LocalizeFileManager.m in Sources */,
 				4EDACDC5191FB1C200A8E84E /* ChainableEffect.m in Sources */,
 				4EE5FC2919D858DD005E8736 /* ArrayListHelper.c in Sources */,
+				4EE6359A1A234F3100019C58 /* SSZipArchive.m in Sources */,
 				4EF75E8A1A00B86A0074E493 /* NSTimer+Additions.m in Sources */,
 				4ED3BE5F18E7043A00621666 /* PositionsHelper.m in Sources */,
 				4EE5FC4519D858DD005E8736 /* QueueExecutorBase.m in Sources */,
 				4EF75E881A00B86A0074E493 /* NSDate+Additions.m in Sources */,
 				4EE5FC2A19D858DD005E8736 /* CollectionHelper.m in Sources */,
+				4EE635991A234F3100019C58 /* zip.c in Sources */,
 				4EE5FC1E19D858DD005E8736 /* HTTPGetRequest.m in Sources */,
 				4EE5FC2819D858DD005E8736 /* ArrayHelper.m in Sources */,
 				4EE5FC5119D858DD005E8736 /* StrokeLabel.m in Sources */,
@@ -2074,6 +2120,7 @@
 				4E4D4EC0181D5B8400886D75 /* ActionManager.m in Sources */,
 				4EE5FC4919D858DD005E8736 /* QueueTimeCalculator.m in Sources */,
 				4EF7F54B1A06167F0096949F /* AudiosExecutor.m in Sources */,
+				4EE635981A234F3100019C58 /* unzip.c in Sources */,
 				4EE5FC1B19D858DD005E8736 /* FileManager.m in Sources */,
 				4EE5FC2D19D858DD005E8736 /* DateHelper.m in Sources */,
 				4EE5FC0C19D858DD005E8736 /* rsa_main.m in Sources */,
@@ -2153,6 +2200,7 @@
 				4E8067BF18C35C8A00AF71B5 /* BaseState.m in Sources */,
 				4EF7F5541A061FEA0096949F /* InAppIMNavgationController.m in Sources */,
 				4EE5FC2619D858DD005E8736 /* CharacterSetHelper.m in Sources */,
+				4EE635971A234F3100019C58 /* mztools.c in Sources */,
 				4ECB2A0E19FA5F5600D60219 /* ElementsExecutor.m in Sources */,
 				4EE5FC6319D858DD005E8736 /* UIView+Frame.m in Sources */,
 				4EE5FC5319D858DD005E8736 /* PickerViewBase.m in Sources */,
@@ -2307,10 +2355,11 @@
 					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0,
 					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/libWeiboSDK,
 				);
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0e671167-e1be-4fc1-8cd0-d507f79a28eb";
@@ -2340,10 +2389,11 @@
 					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0,
 					/Users/isaacs/Workspaces/ios_projects/InAppIMSDK1.0.0/libWeiboSDK,
 				);
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0e671167-e1be-4fc1-8cd0-d507f79a28eb";

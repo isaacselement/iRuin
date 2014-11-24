@@ -89,7 +89,9 @@ static ActionManager* sharedInstance = nil;
     [self.currentState stateUnInitialize];
     [self.currentEffect effectUnInitialize];
     
+    // change the config
     [DATA setConfigByMode: mode];
+    
     self.currentEvent   = [[modesRepository objectForKey: mode] objectForKey: kEVENT];
     self.currentState   = [[modesRepository objectForKey: mode] objectForKey: kSTATE];
     self.currentEffect  = [[modesRepository objectForKey: mode] objectForKey: kEFFECT];

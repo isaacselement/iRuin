@@ -151,7 +151,7 @@ static EffectHelper* oneInstance = nil;
 
 #pragma mark - Bonus Effect
 
--(void) effectWithBonusScore: (int)bonusScore
+-(void) bonusEffectWithScore: (int)bonusScore
 {
     NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
     
@@ -170,7 +170,7 @@ static EffectHelper* oneInstance = nil;
     // animation
     CABasicAnimation* scaleAnimation = [CABasicAnimation animationWithKeyPath: @"transform.scale"];
     scaleAnimation.fromValue = @(1.0);
-    scaleAnimation.toValue = @(5.0);
+    scaleAnimation.toValue = @(3.0);
     scaleAnimation.duration = 0.5;
     [bonusLabel.layer addAnimation: scaleAnimation forKey:@""];
     

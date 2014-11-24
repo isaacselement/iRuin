@@ -82,7 +82,9 @@
     ACTION.gameState.vanishAmount += symbols.count;
     
     NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
-    for (SymbolView* symbol in symbols) scoreLabel.number += symbol.score;
+    for (SymbolView* symbol in symbols) {
+        scoreLabel.number += symbol.score;
+    }
 }
 
 -(void) eventSymbolsDidVanish: (NSArray*)symbols

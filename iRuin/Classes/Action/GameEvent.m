@@ -103,7 +103,7 @@
     int score = VIEW.gameView.scoreLabel.number;
     int vanishCount = ACTION.gameState.vanishAmount;
     if (vanishCount != 0) {
-        rate = score / vanishCount;
+        rate = (float)score / vanishCount;
         userChapterIndex += rate;
         [StandUserDefaults setObject: @(userChapterIndex) forKey:User_ChapterIndex];
     }

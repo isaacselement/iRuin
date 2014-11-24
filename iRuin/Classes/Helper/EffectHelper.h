@@ -32,6 +32,6 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 #pragma mark - Bonus Effect
 
--(void) effectWithBonusScore: (int)bonusScore;
+-(void) bonusEffectWithScore: (int)bonusScore;
 
 @end

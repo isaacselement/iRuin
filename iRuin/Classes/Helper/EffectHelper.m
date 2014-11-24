@@ -170,7 +170,7 @@ static EffectHelper* oneInstance = nil;
     // animation
     CABasicAnimation* scaleAnimation = [CABasicAnimation animationWithKeyPath: @"transform.scale"];
     scaleAnimation.fromValue = @(1.0);
-    scaleAnimation.toValue = @(3.0);
+    scaleAnimation.toValue = @(2.0);
     scaleAnimation.duration = 0.5;
     [bonusLabel.layer addAnimation: scaleAnimation forKey:@""];
     

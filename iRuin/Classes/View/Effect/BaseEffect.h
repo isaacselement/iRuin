@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 
 #define VISUAL_POSITIONS @"VISUAL.POSITIONS"
+#define PHASES_POSITIONS @"PHASES.POSITIONS"
 #define CONFIG_POSITIONS @"CONFIG.POSITIONS"
 #define SYMBOLS_ActionExecutors @"SYMBOLS_ActionExecutors"
 

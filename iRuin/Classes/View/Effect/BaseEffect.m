@@ -4,6 +4,7 @@
 @implementation BaseEffect
 {
     NSDictionary* linesConfigs;
+    NSDictionary* phasesConfigs;
     NSDictionary* actionsConfigs;
     NSDictionary* positionsConfigs;
     
@@ -22,6 +23,7 @@
 - (void)effectInitialize
 {
     linesConfigs = DATA.config[VISUAL_POSITIONS];
+    phasesConfigs = DATA.config[PHASES_POSITIONS];
     positionsConfigs = DATA.config[CONFIG_POSITIONS];
     actionsConfigs = DATA.config[SYMBOLS_ActionExecutors];
     
@@ -163,31 +165,31 @@
 {
     [QueueViewsHelper replaceViewsInVisualAreaWithNull];
     
-    [self roll:linesConfigs[RollIn] config:positionsConfigs[RollIn] actionsConfig:actionsConfigs[RollIn] isGroupBreak:NO delay:0 vanishingViews:nil viewspositionsHandler:rollInViewsInRepositoryPositionsHandler];
+    [self roll:linesConfigs[phasesConfigs[RollIn]] config:positionsConfigs[RollIn] actionsConfig:actionsConfigs[RollIn] isGroupBreak:NO delay:0 vanishingViews:nil viewspositionsHandler:rollInViewsInRepositoryPositionsHandler];
 }
 
 -(void) startSymbolsRollOut
 {
     [QueueViewsHelper replaceViewsInVisualAreaWithNull];
     
-    [self roll:linesConfigs[RollOut] config:positionsConfigs[RollOut] actionsConfig:actionsConfigs[RollOut] isGroupBreak:NO delay:0 vanishingViews:nil viewspositionsHandler:rollOutViewsInRepositoryPositionsHandler];
+    [self roll:linesConfigs[phasesConfigs[RollOut]] config:positionsConfigs[RollOut] actionsConfig:actionsConfigs[RollOut] isGroupBreak:NO delay:0 vanishingViews:nil viewspositionsHandler:rollOutViewsInRepositoryPositionsHandler];
 }
 
 -(void) startSymbolsAdjusts:(NSArray*)vanishingViews delay:(double)delay
 {
-    [self roll:linesConfigs[Adjusts] config:positionsConfigs[Adjusts] actionsConfig:actionsConfigs[Adjusts] isGroupBreak:NO delay:delay vanishingViews:vanishingViews viewspositionsHandler:adjustViewsInVisualPositionsHandler];
+    [self roll:linesConfigs[phasesConfigs[Adjusts]] config:positionsConfigs[Adjusts] actionsConfig:actionsConfigs[Adjusts] isGroupBreak:NO delay:delay vanishingViews:vanishingViews viewspositionsHandler:adjustViewsInVisualPositionsHandler];
 }
 
 -(void) startSymbolsFillIn:(NSArray*)vanishingViews delay:(double)delay
 {
-    [self roll:linesConfigs[FillIn] config:positionsConfigs[FillIn] actionsConfig:actionsConfigs[FillIn] isGroupBreak:YES delay:delay vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
+    [self roll:linesConfigs[phasesConfigs[FillIn]] config:positionsConfigs[FillIn] actionsConfig:actionsConfigs[FillIn] isGroupBreak:YES delay:delay vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
 }
 
 -(void) startSymbolsSqueeze:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
-    [self roll:linesConfigs[Squeeze_Adjust] config:positionsConfigs[Squeeze_Adjust] actionsConfig:actionsConfigs[Squeeze_Adjust] isGroupBreak:NO delay:vanishDuration vanishingViews:vanishingViews viewspositionsHandler:adjustViewsInVisualPositionsHandler];
+    [self roll:linesConfigs[phasesConfigs[Squeeze_Adjust]] config:positionsConfigs[Squeeze_Adjust] actionsConfig:actionsConfigs[Squeeze_Adjust] isGroupBreak:NO delay:vanishDuration vanishingViews:vanishingViews viewspositionsHandler:adjustViewsInVisualPositionsHandler];
     
-    [self roll:linesConfigs[Squeeze_FillIn] config:positionsConfigs[Squeeze_FillIn] actionsConfig:actionsConfigs[Squeeze_FillIn] isGroupBreak:YES delay:vanishDuration vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
+    [self roll:linesConfigs[phasesConfigs[Squeeze_FillIn]] config:positionsConfigs[Squeeze_FillIn] actionsConfig:actionsConfigs[Squeeze_FillIn] isGroupBreak:YES delay:vanishDuration vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
 }
 
 

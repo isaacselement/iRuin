@@ -185,7 +185,6 @@
 		4EE5FC3719D858DD005E8736 /* RectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB8E19D858DD005E8736 /* RectHelper.m */; };
 		4EE5FC3819D858DD005E8736 /* TableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB9019D858DD005E8736 /* TableViewHelper.m */; };
 		4EE5FC3919D858DD005E8736 /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB9219D858DD005E8736 /* ViewHelper.m */; };
-		4EE5FC3A19D858DD005E8736 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB9519D858DD005E8736 /* README.md */; };
 		4EE5FC3B19D858DD005E8736 /* ActionAnimateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB9C19D858DD005E8736 /* ActionAnimateHelper.m */; };
 		4EE5FC3C19D858DD005E8736 /* ActionExecutorBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB9E19D858DD005E8736 /* ActionExecutorBase.m */; };
 		4EE5FC3E19D858DD005E8736 /* ActionExecutorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FBA219D858DD005E8736 /* ActionExecutorManager.m */; };
@@ -570,7 +569,6 @@
 		4EE5FB9219D858DD005E8736 /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHelper.m; sourceTree = "<group>"; };
 		4EE5FB9319D858DD005E8736 /* Modules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Modules.h; sourceTree = "<group>"; };
 		4EE5FB9419D858DD005E8736 /* ModulesMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModulesMacro.h; sourceTree = "<group>"; };
-		4EE5FB9519D858DD005E8736 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4EE5FB9719D858DD005E8736 /* _View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _View.h; sourceTree = "<group>"; };
 		4EE5FB9919D858DD005E8736 /* _ActionExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ActionExecutor.h; sourceTree = "<group>"; };
 		4EE5FB9A19D858DD005E8736 /* _ActionExecutor_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ActionExecutor_.h; sourceTree = "<group>"; };
@@ -1204,7 +1202,6 @@
 				4EE5FB5D19D858DD005E8736 /* Helper */,
 				4EE5FB9319D858DD005E8736 /* Modules.h */,
 				4EE5FB9419D858DD005E8736 /* ModulesMacro.h */,
-				4EE5FB9519D858DD005E8736 /* README.md */,
 				4EE5FB9619D858DD005E8736 /* View */,
 			);
 			name = Modules;
@@ -2047,7 +2044,6 @@
 				4EE5FC4519D858DD005E8736 /* QueueExecutorBase.m in Sources */,
 				4EF75E881A00B86A0074E493 /* NSDate+Additions.m in Sources */,
 				4EE5FC2A19D858DD005E8736 /* CollectionHelper.m in Sources */,
-				4EE5FC3A19D858DD005E8736 /* README.md in Sources */,
 				4EE5FC1E19D858DD005E8736 /* HTTPGetRequest.m in Sources */,
 				4EE5FC2819D858DD005E8736 /* ArrayHelper.m in Sources */,
 				4EE5FC5119D858DD005E8736 /* StrokeLabel.m in Sources */,

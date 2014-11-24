@@ -57,6 +57,9 @@
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index isReload:(BOOL)isReload
 {
+    // mute the sound on launch
+    ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disable = isReload;
+     
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
     
     NSDictionary* chapterCellsConfig = DATA.config[@"CHAPTERS_WILL_SHOW"];

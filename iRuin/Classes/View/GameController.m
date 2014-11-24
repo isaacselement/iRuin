@@ -52,8 +52,7 @@
 {
     [super didReceiveMemoryWarning];
     
-    AudiosExecutor* audiosExector = (AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO];
-    [audiosExector clearCaches];
+    [(AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO] clearCaches];
 }
 
 
@@ -62,10 +61,9 @@
 
 -(void) reRenderWithDeviceOrientation
 {
-    return;
-    
     [ACTION renderFramesWithCurrentOrientation];
     
+    return;
     if (! ACTION.gameState.isGameStarted) {
         
         // Temporary code here.

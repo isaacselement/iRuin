@@ -8,7 +8,7 @@
 
 @synthesize timerView;
 @synthesize scoreLabel;
-@synthesize modeLabel;
+@synthesize seasonLabel;
 @synthesize containerView;
 
 @synthesize backActionView;
@@ -38,9 +38,9 @@
         [self addSubview: scoreLabel];
         
         // mode label
-        modeLabel = [[GradientLabel alloc] init];
+        seasonLabel = [[GradientLabel alloc] init];
         shimmeringView = [[FBShimmeringView alloc] init];
-        shimmeringView.contentView = modeLabel;
+        shimmeringView.contentView = seasonLabel;
         [self addSubview:shimmeringView];
         
         

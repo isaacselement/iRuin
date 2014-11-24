@@ -23,11 +23,15 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 -(ViewsInRepositoryPositionsHandler) rollOutViewsInRepositoryPositionsHandler;
 
 
+
 #pragma mark - Schedule Action
 
 -(void) updateScheduleTaskConfigAndRegistryToTask;
 
 
 
+#pragma mark - Bonus Effect
+
+-(void) effectWithBonusScore: (int)bonusScore;
 
 @end

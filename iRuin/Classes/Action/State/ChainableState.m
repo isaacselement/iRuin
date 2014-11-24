@@ -26,7 +26,20 @@
     DLog(@"--- stateStartChainVanish");
     ACTION.gameState.isChainVanishing = YES;
     [self.effect effectStartVanish: vanishSymbols];
+    
+    
+    
+    
+    
+    
+    //TODO: ---------------- temp code here ----------------------------------------------
+    if (vanishSymbols) {
+        int bonusScore = vanishSymbols.count * 5;
+        [[EffectHelper getInstance] effectWithBonusScore: bonusScore];
+    }
 }
 
 
+
 @end
+

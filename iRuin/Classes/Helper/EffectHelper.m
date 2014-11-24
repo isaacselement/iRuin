@@ -30,6 +30,7 @@ static EffectHelper* oneInstance = nil;
 
 
 
+
 #pragma mark - Queue Views Positiosn Handler
 
 -(ViewsInRepositoryPositionsHandler) fillInViewsPositionsHandler
@@ -148,7 +149,41 @@ static EffectHelper* oneInstance = nil;
 
 
 
-#pragma mark - 
+#pragma mark - Bonus Effect
+
+-(void) effectWithBonusScore: (int)bonusScore
+{
+    NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
+    
+    // bonus label
+    UILabel* bonusLabel = [[UILabel alloc] initWithFrame: CanvasRect(0, 0, 100, 100)];
+    bonusLabel.font = [UIFont systemFontOfSize: CanvasFontSize(100)];
+    bonusLabel.textColor = [UIColor flatGreenColor];
+    [scoreLabel addSubview: bonusLabel];
+    
+    scoreLabel.number += bonusScore;
+    
+    bonusLabel.text = [NSString stringWithFormat:@"+%d", bonusScore];
+    [bonusLabel adjustWidthToFontText];
+    bonusLabel.center = [scoreLabel middlePoint];
+    
+    // animation
+    CABasicAnimation* scaleAnimation = [CABasicAnimation animationWithKeyPath: @"transform.scale"];
+    scaleAnimation.fromValue = @(1.0);
+    scaleAnimation.toValue = @(5.0);
+    scaleAnimation.duration = 0.5;
+    [bonusLabel.layer addAnimation: scaleAnimation forKey:@""];
+    
+    [UIView animateWithDuration: 0.6 animations:^{
+        
+        bonusLabel.alpha = 0;
+        
+    } completion:^(BOOL finished) {
+        
+        [bonusLabel removeFromSuperview];
+        
+    }];
+}
 
 
 

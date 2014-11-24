@@ -37,9 +37,11 @@
 
 #define MATCH_COUNT 3
 
-#define CGPointValue(_point) [NSValue valueWithCGPoint: _point ]
+#define CGPointValue(_point) [NSValue valueWithCGPoint: _point]
 
+#define StandUserDefaults [NSUserDefaults standardUserDefaults]
 
+#define StringAppend(first, second) [first stringByAppendingString:second]
 
 
 

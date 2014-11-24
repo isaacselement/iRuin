@@ -41,12 +41,12 @@ static ActionManager* sharedInstance = nil;
 }
 
 -(void) launchAppProcedures {
+    
     [DATA initializeWithData];
     [VIEW initializeWithData];
     [self initializeGameModes];
     
     [self renderFramesWithCurrentOrientation];
-    
     
     [gameEvent launchGame];
 }
@@ -98,8 +98,6 @@ static ActionManager* sharedInstance = nil;
     [self.currentEvent eventInitialize];
     [self.currentState stateInitialize];
     [self.currentEffect effectInitialize];
-    
-    VIEW.gameView.modeLabel.text = mode;
 }
 
 

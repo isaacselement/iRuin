@@ -55,7 +55,7 @@
 
 #pragma mark - LineScrollViewDataSource Methods
 
--(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index
+-(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index isReload:(BOOL)isReload
 {
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
     
@@ -138,6 +138,9 @@
     int modeIndex = (index % (modeCount * switchModeCount)) / modeCount;
     NSString* mode = [ACTION.gameModes safeObjectAtIndex: modeIndex];
     [ACTION switchToMode: mode];
+    
+    NSString* indexString = [NSString stringWithFormat:@" %d", index];
+    VIEW.gameView.seasonLabel.text = StringAppend(@"Season", indexString);
     
     [ACTION.gameEvent gameStart];
 }

@@ -3,10 +3,6 @@
 
 
 
-#define StandUserDefaults [NSUserDefaults standardUserDefaults]
-
-
-
 @implementation GameEvent
 
 
@@ -14,30 +10,27 @@
 {
     [ScheduledTask sharedInstance].timeInterval = 0.2;
     
-    LineScrollView* chaptersCellViews = VIEW.chaptersView.lineScrollView;
     
-    // first time launch app
+    // chapter cells 
+    // first time launch app, set the chapter index
+    BOOL isFirstTimeLaunchApp = NO;
     if (![StandUserDefaults objectForKey: User_LastTimeLaunch]) {
-        [StandUserDefaults setObject:@(chaptersCellViews.contentView.subviews.count - 1) forKey:User_ChapterIndex];
+        [StandUserDefaults setObject:@(9) forKey:User_ChapterIndex];
+        isFirstTimeLaunchApp = YES;
     }
     [StandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
-    
-    // chapter cells
-    chaptersCellViews.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
-        int userChapterIndex = [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
-        return index <= userChapterIndex;
+    if (isFirstTimeLaunchApp) {
+        [VIEW.chaptersView.lineScrollView setCurrentIndex: 4];
+    } else {
+        [VIEW.chaptersView.lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
+    }
+    VIEW.chaptersView.lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
+        return index <= [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
     };
-    int userChapterIndex = [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
-    //Should go first , affect the effect jump in
-    [chaptersCellViews setCurrentIndex: userChapterIndex - chaptersCellViews.contentView.subviews.count];
     
     
-    // 
+    // the background animations
     [[EffectHelper getInstance] updateScheduleTaskConfigAndRegistryToTask];
-    
-    
-    //
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_LAUNCH"]];
     
     
     // chapters cells jumb in effect
@@ -55,8 +48,6 @@
 {
     [[ScheduledTask sharedInstance] start];
     
-    
-    
     //
     [ACTION.currentEffect effectStartRollIn];
     
@@ -70,7 +61,7 @@
 {
     [[ScheduledTask sharedInstance] pause];
     
-    
+    ACTION.gameState.vanishAmount = 0;
     
     //
     VIEW.gameView.pauseActionView.imageView.selected = NO;
@@ -82,8 +73,6 @@
     // chapters cells effect
     [self chaptersValuesActions: DATA.config[@"GAME_BACK_Chapters_Cells"]];
 }
-
-
 
 
 
@@ -103,9 +92,9 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.dimBackground = YES;
-    hud.detailsLabelText = @"Game is Over :-P";
+    hud.labelText = @"Game is Over :-P";
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay: 3.5];
+    [hud hide:YES afterDelay: 6];
     
     
     float rate = 0;
@@ -120,8 +109,14 @@
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString* message = [NSString stringWithFormat:@"%.2f points up, season %d is ready for u :)", rate, (int)userChapterIndex];
+        NSString* message = [NSString stringWithFormat:@" %d (score) ÷ %d (vanish count) = %.2f", score, vanishCount, rate];
         hud.detailsLabelText = message;
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSString* message = [NSString stringWithFormat:@"Season %d is unlocked :)", (int)userChapterIndex];
+        hud.labelText = message;
+        hud.detailsLabelText = nil;
     });
     
     [self performSelector:@selector(gameBack) withObject:nil afterDelay: 1];

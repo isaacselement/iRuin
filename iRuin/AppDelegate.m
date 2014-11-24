@@ -24,15 +24,13 @@ void uncaughtExceptionHandler(NSException *exception) {
 #endif
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = VIEW.controller;
     VIEW.window = self.window;
+    [self.window makeKeyAndVisible];
+    
     
     [ACTION launchAppProcedures];
-    
-    [self.window makeKeyAndVisible];
     
     
     [[InAppIMNavgationController sharedInstance] initInAppIMSDK:application didFinishLaunchingWithOptions:launchOptions];

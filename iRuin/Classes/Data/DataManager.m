@@ -2,9 +2,6 @@
 #import "AppInterface.h"
 
 
-#define StringAppend(first, second) [first stringByAppendingString:second]
-
-
 
 @implementation DataManager
 {

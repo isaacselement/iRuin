@@ -150,7 +150,7 @@
     
     
     // get mode and switch config
-    int switchModeCount = [DATA.config[@"Utilities"][@"SwitchModeChapters"] intValue];
+    int switchModeCount = [DATA.config[@"Utilities"][@"SwitchModeEveryChapters"] intValue];
     if (switchModeCount == 0) switchModeCount = 1;
     int modeCount = ACTION.gameModes.count;
     int modeIndex = (abs(index) % (modeCount * switchModeCount)) / modeCount;

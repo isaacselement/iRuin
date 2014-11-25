@@ -42,6 +42,15 @@ static DataManager* sharedInstance = nil;
         if ([key hasPrefix:@"_"] && [key hasSuffix:@"_"]) {
             NSString* removeKey = [key substringWithRange:NSMakeRange(1, [key length] - 2)];
             [destination removeObjectForKey: removeKey];
+            
+            if (source[removeKey]) {
+                [destination setObject: source[removeKey] forKey:removeKey];
+            }
+            
+            // firt , _key_ , remove the key object
+            // second , key , add the key object
+            // just aim that use a key to replace all , not combine ~~~~
+            
             return NO;
         }
         return YES;

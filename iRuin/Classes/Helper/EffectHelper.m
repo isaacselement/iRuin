@@ -4,9 +4,9 @@
 @implementation EffectHelper
 {
     // schedule action
-    int imageIndex;
-    NSArray* imagesValues ;
-    NSMutableDictionary* scheduleTaskConfig;
+    int valueIndex;
+//    NSArray* values ;
+//    NSMutableDictionary* scheduleTaskConfig;
     
     // queue views positions handler
     ViewsInRepositoryPositionsHandler fillInViewsPositionsHandler;
@@ -123,10 +123,6 @@ static EffectHelper* oneInstance = nil;
 
 -(void) updateScheduleTaskConfigAndRegistryToTask
 {
-    // handler the config
-    imagesValues = DATA.config[@"Utilities"][@"ScheduleTask.view.backgroundView.images"];
-    scheduleTaskConfig = [DictionaryHelper deepCopy:DATA.config[@"GAME_LAUNCH_ScheduleTask"]];
-    
     // schedule task
     int interval = [DATA.config[@"Utilities"][@"ScheduleTask_Interval"] intValue];
     if (interval == 0) interval = 60;
@@ -136,12 +132,13 @@ static EffectHelper* oneInstance = nil;
 
 -(void) scheduledTask
 {
-    imageIndex = imageIndex % imagesValues.count;
-    NSString* imageName = [imagesValues objectAtIndex: imageIndex];
-    imageIndex++;
+    NSArray* values = DATA.config[@"Utilities"][@"ScheduleTask.view.values"];
+    valueIndex = valueIndex % [values count];
     
-    NSMutableDictionary* config = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
-    [config setObject: imageName forKey:@"values"];
+    NSMutableDictionary* scheduleTaskConfig = DATA.config[@"GAME_LAUNCH_ScheduleTask"];
+    NSMutableDictionary* valuesConfig = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
+    [valuesConfig setObject: [values objectAtIndex: valueIndex] forKey:@"values"];
+    valueIndex++;
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
 }
@@ -168,15 +165,26 @@ static EffectHelper* oneInstance = nil;
     bonusLabel.center = [scoreLabel middlePoint];
     
     // animation
-    CABasicAnimation* scaleAnimation = [CABasicAnimation animationWithKeyPath: @"transform.scale"];
-    scaleAnimation.fromValue = @(1.0);
-    scaleAnimation.toValue = @(2.0);
-    scaleAnimation.duration = 0.5;
-    [bonusLabel.layer addAnimation: scaleAnimation forKey:@""];
+//    CABasicAnimation* scaleAnimation = [CABasicAnimation animationWithKeyPath: @"transform.scale"];
+//    scaleAnimation.fromValue = @(1.0);
+//    scaleAnimation.toValue = @(2.0);
+//    scaleAnimation.duration = 0.5;
+//    [bonusLabel.layer addAnimation: scaleAnimation forKey:@""];
+//    
+//    [UIView animateWithDuration: 0.6 animations:^{
+//        
+//        bonusLabel.alpha = 0;
+//        
+//    } completion:^(BOOL finished) {
+//        
+//        [bonusLabel removeFromSuperview];
+//        
+//    }];
     
-    [UIView animateWithDuration: 0.6 animations:^{
+    [UIView transitionWithView: bonusLabel duration:0.6 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         
         bonusLabel.alpha = 0;
+        bonusLabel.layer.transform = CATransform3DMakeScale(3, 3, 3);
         
     } completion:^(BOOL finished) {
         

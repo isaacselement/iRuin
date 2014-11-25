@@ -5,6 +5,7 @@
 #define IRuin_Bundle_ID   @"com.suchachinoiserie.iRuin"
 
 
+
 #define key_Config      @"Config"
 
 #define IPad_Prefix     @"iPad_"
@@ -12,6 +13,8 @@
 
 #define key_Portrait    @"Portrait"
 #define key_Landscape   @"Landscape"
+
+#define key_Chapters      @"Chapters"
 
 
 

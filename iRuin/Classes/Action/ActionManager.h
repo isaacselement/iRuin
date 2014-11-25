@@ -48,7 +48,7 @@
 
 -(void) renderFramesWithCurrentOrientation;
 
--(void) switchToMode: (NSString*)mode;
+-(void) switchToMode: (NSString*)mode chapter:(NSString*)chapter;
 
 
 @end

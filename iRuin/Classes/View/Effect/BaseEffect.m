@@ -12,7 +12,6 @@
     ViewsInRepositoryPositionsHandler adjustViewsInVisualPositionsHandler;
     ViewsInRepositoryPositionsHandler rollInViewsInRepositoryPositionsHandler;
     ViewsInRepositoryPositionsHandler rollOutViewsInRepositoryPositionsHandler;
-
 }
 
 @synthesize event;
@@ -33,9 +32,11 @@
     rollInViewsInRepositoryPositionsHandler = [effectHelper rollInViewsInRepositoryPositionsHandler];
     rollOutViewsInRepositoryPositionsHandler = [effectHelper rollOutViewsInRepositoryPositionsHandler];
 }
+
 -(void) effectUnInitialize
 {
 }
+
 - (void)effectTouchesBegan:(SymbolView*)symbol location:(CGPoint)location
 {
     if (symbol && actionsConfigs[TouchesBegan]) {

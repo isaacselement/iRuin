@@ -80,7 +80,7 @@ static ActionManager* sharedInstance = nil;
     }
 }
 
--(void) switchToMode: (NSString*)mode
+-(void) switchToMode: (NSString*)mode chapter:(NSString*)chapter
 {
     _currentMode = mode;
     
@@ -90,7 +90,7 @@ static ActionManager* sharedInstance = nil;
     [self.currentEffect effectUnInitialize];
     
     // change the config
-    [DATA setConfigByMode: mode];
+    [DATA setConfigByMode:mode chapter:chapter];
     
     self.currentEvent   = [[modesRepository objectForKey: mode] objectForKey: kEVENT];
     self.currentState   = [[modesRepository objectForKey: mode] objectForKey: kSTATE];

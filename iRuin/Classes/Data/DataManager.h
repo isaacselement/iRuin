@@ -1,8 +1,11 @@
 #import <Foundation/Foundation.h>
 
+
 #define DATA [DataManager getInstance]
 
+
 @interface DataManager : NSObject
+
 
 +(DataManager*) getInstance ;
 
@@ -12,6 +15,8 @@
 
 -(NSMutableDictionary*) config;
 
--(void) setConfigByMode: (NSString*)mode;
+
+-(void) setConfigByMode: (NSString*)mode chapter:(NSString*)chapter;
+
 
 @end

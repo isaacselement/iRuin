@@ -9,11 +9,13 @@
     NSMutableDictionary* landscapeShareConfig ;
     
     
-    NSMutableDictionary* modesConfigs;
-    
-    
     NSMutableDictionary* portraitModeConfig;
     NSMutableDictionary* landscapeModeConfig;
+    
+    
+    NSMutableDictionary* chaptersConfig;
+    
+    NSMutableDictionary* modesConfigs;
 }
 
 static DataManager* sharedInstance = nil;
@@ -32,7 +34,8 @@ static DataManager* sharedInstance = nil;
 
 #pragma mark - Public Methods
 
--(void) initializeWithData {
+-(void) initializeWithData 
+{
         
     // set dictionary combine handler
     [DictionaryHelper setCombineHandler:^BOOL(NSString *key, NSMutableDictionary *destination, NSDictionary *source) {
@@ -66,22 +69,22 @@ static DataManager* sharedInstance = nil;
     
     // designs downloaded from remote     
     if ([StandUserDefaults objectForKey: User_ResourcesDesignsPath]) {
-        NSString* p = [NSHomeDirectory() stringByAppendingPathComponent: [StandUserDefaults objectForKey: User_ResourcesDesignsPath]];
+        NSString* designsDirectory = [NSHomeDirectory() stringByAppendingPathComponent: [StandUserDefaults objectForKey: User_ResourcesDesignsPath]];
         NSString* path = nil;
         
-        path = PathAppend(p, portraitFile);
+        path = PathAppend(designsDirectory, portraitFile);
         if ([FileManager isFileExist: path]) {
             portraitFilePath = path;
         }
-        path = PathAppend(p, landscapeFile);
+        path = PathAppend(designsDirectory, landscapeFile);
         if ([FileManager isFileExist: path]) {
             landscapeFilePath = path;
         }
-        path = PathAppend(p, portraitDeviceFile);
+        path = PathAppend(designsDirectory, portraitDeviceFile);
         if ([FileManager isFileExist: path]) {
             portraitDeviceFilePath = path;
         }
-        path = PathAppend(p, landscapeDeviceFile);
+        path = PathAppend(designsDirectory, landscapeDeviceFile);
         if ([FileManager isFileExist: path]) {
             landscapeDeviceFilePath = path;
         }
@@ -100,12 +103,12 @@ static DataManager* sharedInstance = nil;
     NSString* configFilePath = BUNDLEFILE_PATH(configFile);
     
     // configs downloaded from remote 
-    NSString* p = nil;
+    NSString* configsDirectory = nil;
     if ([StandUserDefaults objectForKey: User_ResourcesConfigsPath]) {
-        p = [NSHomeDirectory() stringByAppendingPathComponent: [StandUserDefaults objectForKey: User_ResourcesConfigsPath]];
+        configsDirectory = [NSHomeDirectory() stringByAppendingPathComponent: [StandUserDefaults objectForKey: User_ResourcesConfigsPath]];
     }
-    if (p) {
-        NSString* path = PathAppend(p, configFile);
+    if (configsDirectory) {
+        NSString* path = PathAppend(configsDirectory, configFile);
         if ([FileManager isFileExist: path]) {
             configFilePath = path;
         }
@@ -119,8 +122,8 @@ static DataManager* sharedInstance = nil;
         modeFile = StringAppend(modeFile, @".json");
         
         NSString* modeFilePath = BUNDLEFILE_PATH(modeFile);
-        if (p) {
-            NSString* path = PathAppend(p, modeFile);
+        if (configsDirectory) {
+            NSString* path = PathAppend(configsDirectory, modeFile);
             if ([FileManager isFileExist: path]) {
                 modeFilePath = path;
             }
@@ -129,7 +132,18 @@ static DataManager* sharedInstance = nil;
         if (modeConfig) [modesConfigs setObject: modeConfig forKey:mode];
     }
     
+    // chapters config
+    NSString* chaptersFile = StringAppend(key_Chapters, @".json");
+    NSString* chaptersFilePath = BUNDLEFILE_PATH(chaptersFile);
+    if (configsDirectory) {
+        NSString* path = PathAppend(configsDirectory, chaptersFile);
+        if ([FileManager isFileExist: path]) {
+            chaptersFilePath = path;
+        }
+    }
+    chaptersConfig = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromPath: chaptersFilePath]];
     
+    //-------------------------------  Handler/Combine Config -------------------
     // combine the configs
     protraitShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:portraitDeviceJSON with: portraitDesign]];
     landscapeShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:landscapeDeviceJSON with: landscapeDesign]];
@@ -212,12 +226,21 @@ static DataManager* sharedInstance = nil;
     }
 }
 
--(void) setConfigByMode: (NSString*)mode
+-(void) setConfigByMode: (NSString*)mode chapter:(NSString*)chapter
 {
     portraitModeConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
     landscapeModeConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
+    
+    // combine with specific chapter
+    id config = chaptersConfig[chapter];
+    if ([config isKindOfClass:[NSString class]]) {
+        config = chaptersConfig[config];
+    }
+    if (![config isKindOfClass:[NSDictionary class]]) return;
+    
+    [DictionaryHelper combine: portraitModeConfig with:config];
+    [DictionaryHelper combine: landscapeModeConfig with:config];
 }
-
 
 
 @end

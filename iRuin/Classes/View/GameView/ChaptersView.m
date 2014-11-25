@@ -148,16 +148,18 @@
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
     ACTION.gameState.currentChapter = index;
     
+    
     // get mode and switch config
     int switchModeCount = [DATA.config[@"Utilities"][@"SwitchModeChapters"] intValue];
     if (switchModeCount == 0) switchModeCount = 1;
     int modeCount = ACTION.gameModes.count;
-    int modeIndex = (index % (modeCount * switchModeCount)) / modeCount;
+    int modeIndex = (abs(index) % (modeCount * switchModeCount)) / modeCount;
     NSString* mode = [ACTION.gameModes safeObjectAtIndex: modeIndex];
-    [ACTION switchToMode: mode];
+
+    NSString* indexString = [NSString stringWithFormat:@"%d", index];
+    [ACTION switchToMode: mode chapter:indexString];
     
-    NSString* indexString = [NSString stringWithFormat:@" %d", index];
-    VIEW.gameView.seasonLabel.text = StringAppend(@"Season", indexString);
+    VIEW.gameView.seasonLabel.text = StringAppend(@"Season ", indexString);
     
     [ACTION.gameEvent gameStart];
 }

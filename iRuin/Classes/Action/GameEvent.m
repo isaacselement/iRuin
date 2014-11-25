@@ -26,11 +26,8 @@
     }
     VIEW.chaptersView.lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
         return index <= [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
+//        return YES;
     };
-    
-    
-    // the background animations
-    [[EffectHelper getInstance] updateScheduleTaskConfigAndRegistryToTask];
     
     
     // chapters cells jumb in effect
@@ -48,6 +45,11 @@
 {
     [[ScheduledTask sharedInstance] start];
     
+    
+    // the background animations
+    [[EffectHelper getInstance] registerScheduleTaskAccordingConfig];
+    
+    
     //
     [ACTION.currentEffect effectStartRollIn];
     
@@ -60,6 +62,10 @@
 -(void) gameBack
 {
     [[ScheduledTask sharedInstance] pause];
+    
+    
+    // the background animations
+    [[EffectHelper getInstance] unRegisterScheduleTaskAccordingConfig];
     
     ACTION.gameState.vanishAmount = 0;
     

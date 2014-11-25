@@ -153,8 +153,10 @@
     int switchModeCount = [DATA.config[@"Utilities"][@"SwitchModeEveryChapters"] intValue];
     if (switchModeCount == 0) switchModeCount = 1;
     int modeCount = ACTION.gameModes.count;
-    int modeIndex = (abs(index) % (modeCount * switchModeCount)) / modeCount;
+    int modeIndex = (abs(index) % (modeCount * switchModeCount)) % modeCount;
     NSString* mode = [ACTION.gameModes safeObjectAtIndex: modeIndex];
+    
+    DLog(@"------- %@", mode);
 
     NSString* indexString = [NSString stringWithFormat:@"%d", index];
     [ACTION switchToMode: mode chapter:indexString];

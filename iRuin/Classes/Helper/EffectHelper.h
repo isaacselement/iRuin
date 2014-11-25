@@ -26,7 +26,9 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 #pragma mark - Schedule Action
 
--(void) updateScheduleTaskConfigAndRegistryToTask;
+-(void) unRegisterScheduleTaskAccordingConfig;
+
+-(void) registerScheduleTaskAccordingConfig;
 
 
 

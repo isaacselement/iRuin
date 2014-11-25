@@ -118,8 +118,12 @@ static EffectHelper* oneInstance = nil;
 
 
 #pragma mark - Schedule Action
+-(void) unRegisterScheduleTaskAccordingConfig
+{
+    [[ScheduledTask sharedInstance] unRegisterSchedule: self];
+}
 
--(void) updateScheduleTaskConfigAndRegistryToTask
+-(void) registerScheduleTaskAccordingConfig
 {
     // schedule task
     int interval = [DATA.config[@"Utilities"][@"ScheduleTask_Interval"] intValue];

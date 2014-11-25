@@ -4,10 +4,8 @@
 @implementation EffectHelper
 {
     // schedule action
-    int valueIndex;
-//    NSArray* values ;
-//    NSMutableDictionary* scheduleTaskConfig;
-    
+    int scheduleValueIndex;
+
     // queue views positions handler
     ViewsInRepositoryPositionsHandler fillInViewsPositionsHandler;
     ViewsInRepositoryPositionsHandler adjustViewsInVisualPositionsHandler;
@@ -133,12 +131,12 @@ static EffectHelper* oneInstance = nil;
 -(void) scheduledTask
 {
     NSArray* values = DATA.config[@"Utilities"][@"ScheduleTask.view.values"];
-    valueIndex = valueIndex % [values count];
-    
     NSMutableDictionary* scheduleTaskConfig = DATA.config[@"GAME_LAUNCH_ScheduleTask"];
     NSMutableDictionary* valuesConfig = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
-    [valuesConfig setObject: [values objectAtIndex: valueIndex] forKey:@"values"];
-    valueIndex++;
+    
+    scheduleValueIndex = scheduleValueIndex % [values count];
+    [valuesConfig setObject: [values objectAtIndex: scheduleValueIndex] forKey:@"values"];
+    scheduleValueIndex++;
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
 }
@@ -155,7 +153,7 @@ static EffectHelper* oneInstance = nil;
     // bonus label
     UILabel* bonusLabel = [[UILabel alloc] initWithFrame: CanvasRect(0, 0, 100, 100)];
     bonusLabel.font = [UIFont systemFontOfSize: CanvasFontSize(100)];
-    bonusLabel.textColor = [UIColor flatGreenColor];
+    bonusLabel.textColor = [ColorHelper parseColor:@(bonusScore)];
     [scoreLabel addSubview: bonusLabel];
     
     scoreLabel.number += bonusScore;

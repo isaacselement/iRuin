@@ -6,20 +6,6 @@
 #import "NSArray+Additions.h"
 
 
-#ifdef DEBUG
-
-#ifndef __DLog
-
-#define __DLog(format, ...) NSLog(format, ##__VA_ARGS__)
-
-#else
-
-#define __DLog(format, ...)
-
-#endif
-
-#endif
-
 
 @implementation LineScrollView {
     Class __cellClass;
@@ -171,7 +157,7 @@
     // check if change direction
     BOOL direction = self.contentOffset.x < previousOffsetx;
     if (currentDirection != direction) {
-        __DLog(@"directionDidChange - %d" , direction);
+//        NSLog(@"directionDidChange - %d" , direction);
         NSUInteger count = contentView.subviews.count ;
         if (direction) {
             currentIndex -= (count - 1);

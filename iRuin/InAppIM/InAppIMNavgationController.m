@@ -89,21 +89,21 @@ InAppIMNavgationController* inAppControllerSharedInstance = nil;
 
 -(void)initInAppIMSDK:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSDictionary* appKeys = DATA.config[@"SNS"];
+    
     [InAppIMSDK application:application didFinishLaunchingWithOptions:launchOptions];
-    [InAppIMSDK registerApp: iRuin_InAppIMAppKey];
+    [InAppIMSDK registerApp: appKeys[@"InAppIMAppKey"]];
     [InAppIMSDK enableDebugMode:NO];
     [InAppIMSDK enableAccessLocation:NO];
     
-    {
-        //sina
-        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:iRuin_SinaWeiboAppKey,KHCAppKey,iRuin_SinaWeiboCallBackURL,KHCRedirectUri,IAI_SNS_SinaWeibo,KIAI_SNS_PlatformId, nil]];
-        
-        //baidu
-        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:iRuin_BaiduAPIKey,KHCAppKey,iRuin_BaiduAppID,KHCAppId,IAI_SNS_Baidu,KIAI_SNS_PlatformId, nil]];
-        
-        //qq
-        [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:iRuin_TecentQQAppKey,KHCAppId,IAI_SNS_QQ,KIAI_SNS_PlatformId, nil]];
-    }
+    //sina
+    [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:appKeys[@"WeiboAppKey"],KHCAppKey,appKeys[@"WeiboCallBackURL"],KHCRedirectUri,IAI_SNS_SinaWeibo,KIAI_SNS_PlatformId, nil]];
+    
+    //baidu
+    [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:appKeys[@"BaiduAPIKey"],KHCAppKey,appKeys[@"BaiduAppID"],KHCAppId,IAI_SNS_Baidu,KIAI_SNS_PlatformId, nil]];
+    
+    //qq
+    [InAppIMSDK connectPlatformWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:appKeys[@"QQAppID"],KHCAppId,IAI_SNS_QQ,KIAI_SNS_PlatformId, nil]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InAppIMWillAuth:) name:KIAI_InAppIMSDK_Will_AuthNtf object:nil];
     

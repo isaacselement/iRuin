@@ -23,6 +23,7 @@
 // Modules
 #import "Modules.h"
 
+#import "SSZipArchive.h"
 
 #import "TextFormatter.h"
 #import "AudioHandler.h"

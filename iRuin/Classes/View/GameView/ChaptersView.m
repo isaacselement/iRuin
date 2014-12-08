@@ -161,7 +161,9 @@
     NSString* indexString = [NSString stringWithFormat:@"%d", index];
     [ACTION switchToMode: mode chapter:indexString];
     
-    VIEW.gameView.seasonLabel.text = StringAppend(@"Season ", indexString);
+    UILabel* label = VIEW.gameView.seasonLabel;
+    label.text = StringAppend(@"Season ", indexString);
+    [label adjustFontSizeToWidth];
     
     [ACTION.gameEvent gameStart];
 }

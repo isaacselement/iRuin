@@ -25,7 +25,7 @@
         [VIEW.chaptersView.lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
     }
     VIEW.chaptersView.lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
-        return index <= [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
+        return index >= 0 && index <= [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
 //        return YES;
     };
     

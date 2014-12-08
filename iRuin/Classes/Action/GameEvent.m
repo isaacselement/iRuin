@@ -9,6 +9,7 @@
 -(void) launchGame
 {
     [ScheduledTask sharedInstance].timeInterval = 0.2;
+    [[ScheduledTask sharedInstance] start];
     
     
     // chapter cells 
@@ -36,6 +37,10 @@
     
     // about mute music
     [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"PlayActions"] onObjects:@[@""] values:nil baseTimes:nil];
+    
+    
+    // about schedule task
+    [[EffectHelper getInstance] registerScheduleTaskAccordingConfig];
 }
 
 
@@ -43,12 +48,6 @@
 
 -(void) gameStart
 {
-    [[ScheduledTask sharedInstance] start];
-    
-    
-    // the background animations
-    [[EffectHelper getInstance] registerScheduleTaskAccordingConfig];
-    
     
     //
     [ACTION.currentEffect effectStartRollIn];
@@ -61,12 +60,6 @@
 
 -(void) gameBack
 {
-    [[ScheduledTask sharedInstance] pause];
-    
-    
-    // the background animations
-    [[EffectHelper getInstance] unRegisterScheduleTaskAccordingConfig];
-    
     ACTION.gameState.vanishAmount = 0;
     
     //

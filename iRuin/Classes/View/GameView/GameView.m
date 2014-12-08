@@ -2,13 +2,13 @@
 #import "AppInterface.h"
 
 @implementation GameView
-{
-    FBShimmeringView* shimmeringView;
-}
 
 @synthesize timerView;
 @synthesize scoreLabel;
+
 @synthesize seasonLabel;
+@synthesize seasonLabelShimmerView;
+
 @synthesize containerView;
 
 @synthesize backActionView;
@@ -37,11 +37,11 @@
         scoreLabel = [[NumberLabel alloc] init];
         [self addSubview: scoreLabel];
         
-        // mode label
+        // season label
         seasonLabel = [[GradientLabel alloc] init];
-        shimmeringView = [[FBShimmeringView alloc] init];
-        shimmeringView.contentView = seasonLabel;
-        [self addSubview:shimmeringView];
+        seasonLabelShimmerView = [[FBShimmeringView alloc] init];
+        seasonLabelShimmerView.contentView = seasonLabel;
+        [self addSubview:seasonLabelShimmerView];
         
         
         // action views

@@ -5,12 +5,16 @@
 @class GradientLabel;
 @class ContainerView;
 @class InteractiveView;
+@class FBShimmeringView;
 
 @interface GameView : GameBaseView
 
 @property (strong) TimerView* timerView;
 @property (strong) NumberLabel* scoreLabel;
+
 @property (strong) GradientLabel* seasonLabel;
+@property (strong) FBShimmeringView* seasonLabelShimmerView;
+
 @property (strong, readonly) ContainerView* containerView;
 
 

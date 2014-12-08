@@ -1,8 +1,9 @@
 #import "GameBaseView.h"
 
 
+@class GradientLabel;
 @class LineScrollView;
-@class InteractiveView;
+@class FBShimmeringView;
 
 
 @interface ChaptersView : GameBaseView
@@ -11,8 +12,8 @@
 
 @property (strong, readonly) LineScrollView* lineScrollView;
 
-@property (strong, readonly) InteractiveView* muteActionView;
-
+@property (strong, readonly) GradientLabel* cueLabel;
+@property (strong, readonly) FBShimmeringView* cueLabelShimmerView;
 
 
 @end

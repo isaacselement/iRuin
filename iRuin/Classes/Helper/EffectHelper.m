@@ -4,7 +4,9 @@
 @implementation EffectHelper
 {
     // schedule action
-    int scheduleValueIndex;
+    int scheduleTaskTimes;
+    
+    int scheduleViewValueIndex;
 
     // queue views positions handler
     ViewsInRepositoryPositionsHandler fillInViewsPositionsHandler;
@@ -125,24 +127,39 @@ static EffectHelper* oneInstance = nil;
 
 -(void) registerScheduleTaskAccordingConfig
 {
-    // schedule task
-    int interval = [DATA.config[@"Utilities"][@"ScheduleTask_Interval"] intValue];
-    if (interval == 0) interval = 60;
     [[ScheduledTask sharedInstance] unRegisterSchedule: self];
-    [[ScheduledTask sharedInstance] registerSchedule: self timeElapsed:interval repeats:0];
+    [[ScheduledTask sharedInstance] registerSchedule: self timeElapsed:1 repeats:0];
 }
 
 -(void) scheduledTask
 {
-    NSArray* values = DATA.config[@"Utilities"][@"ScheduleTask.view.values"];
-    NSMutableDictionary* scheduleTaskConfig = DATA.config[@"GAME_LAUNCH_ScheduleTask"];
-    NSMutableDictionary* valuesConfig = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
+    scheduleTaskTimes++;
     
-    scheduleValueIndex = scheduleValueIndex % [values count];
-    [valuesConfig setObject: [values objectAtIndex: scheduleValueIndex] forKey:@"values"];
-    scheduleValueIndex++;
     
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
+    // view
+    int viewInterval = [DATA.config[@"Utilities"][@"ScheduleTask.view.interval"] intValue];
+    if (viewInterval == 0) viewInterval = 60;
+    
+    if (scheduleTaskTimes % viewInterval == 0) {
+        NSArray* values = DATA.config[@"Utilities"][@"ScheduleTask.view.values"];
+        NSMutableDictionary* scheduleTaskConfig = DATA.config[@"GAME_LAUNCH_ScheduleTask"];
+        NSMutableDictionary* valuesConfig = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
+        
+        scheduleViewValueIndex = scheduleViewValueIndex % [values count];
+        [valuesConfig setObject: [values objectAtIndex: scheduleViewValueIndex] forKey:@"values"];
+        scheduleViewValueIndex++;
+        
+        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
+    }
+    
+    // cue
+    int cueInterval = [DATA.config[@"Utilities"][@"ScheduleTask.audioCue.interval"] intValue];
+    if (cueInterval == 0) cueInterval = 5;
+    if (scheduleTaskTimes % cueInterval == 0) {
+        NSMutableArray* values = DATA.config[@"Utilities"][@"AudioCues"];
+        VIEW.chaptersView.cueLabel.text = [values firstObject];
+    }
+    
 }
 
 
@@ -165,23 +182,6 @@ static EffectHelper* oneInstance = nil;
     bonusLabel.text = [NSString stringWithFormat:@"+%d", bonusScore];
     [bonusLabel adjustWidthToFontText];
     bonusLabel.center = [scoreLabel middlePoint];
-    
-    // animation
-//    CABasicAnimation* scaleAnimation = [CABasicAnimation animationWithKeyPath: @"transform.scale"];
-//    scaleAnimation.fromValue = @(1.0);
-//    scaleAnimation.toValue = @(2.0);
-//    scaleAnimation.duration = 0.5;
-//    [bonusLabel.layer addAnimation: scaleAnimation forKey:@""];
-//    
-//    [UIView animateWithDuration: 0.6 animations:^{
-//        
-//        bonusLabel.alpha = 0;
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        [bonusLabel removeFromSuperview];
-//        
-//    }];
     
     [UIView transitionWithView: bonusLabel duration:0.6 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         

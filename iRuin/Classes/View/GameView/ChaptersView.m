@@ -13,7 +13,9 @@
 
 @synthesize lineScrollView;
 
-@synthesize muteActionView;
+@synthesize cueLabel;
+
+@synthesize cueLabelShimmerView;
 
 
 
@@ -30,28 +32,64 @@
         lineScrollView.dataSource = self;
         [self addSubview: lineScrollView];
         
-        // mute action view
-        muteActionView = [[InteractiveView alloc] init];
-        muteActionView.imageView.enableSelected = YES;
-        muteActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view){
-            
-            BOOL isMute = view.selected;
-            NSDictionary* audioPlayers = ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).audiosPlayers;
-            NSDictionary* fadeSpecifications = DATA.config[@"FadeActions"];
-            for (NSString* key in fadeSpecifications) {
-                AVAudioPlayer* player = audioPlayers[key];
-                NSDictionary* dictionary = fadeSpecifications[key];
-                NSDictionary* dic = isMute ? dictionary[@"OFF"]: dictionary[@"ON"];
-                float toVolume = [dic[@"fadeToVolume"] floatValue];
-                float overDuration = [dic[@"fadeOverDuration"] floatValue];
-                [[AudioHandler audioCrossFadeQueue] addOperation:[[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:toVolume overDuration:overDuration]];
-            }
-            
-        };
-        [self addSubview: muteActionView];
+        
+        // cue label
+        cueLabel = [[GradientLabel alloc] init];
+        cueLabelShimmerView = [[FBShimmeringView alloc] init];
+        cueLabelShimmerView.contentView = cueLabel;
+        [self addSubview:cueLabelShimmerView];
+        
+        
+        // add swipe gesture
+        UISwipeGestureRecognizer* swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeAction:)];
+        swipeGestureRight.direction = UISwipeGestureRecognizerDirectionRight;
+        UISwipeGestureRecognizer* swipeGestureLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeAction:)];
+        swipeGestureLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+        [cueLabelShimmerView addGestureRecognizer:swipeGestureRight];
+        [cueLabelShimmerView addGestureRecognizer:swipeGestureLeft];
     }
     return self;
 }
+
+
+#pragma mark - Swipe Gesture Action
+
+-(void) swipeAction: (UISwipeGestureRecognizer*)sender
+{
+    if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
+        
+        NSDictionary* audioPlayers = ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).audiosPlayers;
+        NSDictionary* fadeSpecifications = DATA.config[@"FadeActions"];
+        for (NSString* key in fadeSpecifications) {
+            AVAudioPlayer* player = audioPlayers[key];
+            NSDictionary* dictionary = fadeSpecifications[key];
+            NSDictionary* dic = player.isPlaying ? dictionary[@"OFF"]: dictionary[@"ON"];
+            float toVolume = [dic[@"fadeToVolume"] floatValue];
+            float overDuration = [dic[@"fadeOverDuration"] floatValue];
+            [[AudioHandler audioCrossFadeQueue] addOperation:[[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:toVolume overDuration:overDuration]];
+        }
+        
+    } else if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+        
+    }
+    
+    NSString* tip = cueLabel.text;
+    NSString* muteString = @"Mute";
+    NSString* unMuteString = @"Unmute";
+    
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.5;
+    animation.type = kCATransitionFromTop;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [cueLabel.layer addAnimation:animation forKey:@"changeTextTransition"];
+    
+    if ([tip rangeOfString:muteString].location != NSNotFound) {
+        cueLabel.text = [cueLabel.text stringByReplacingOccurrencesOfString:muteString withString:unMuteString];
+    } else if ([tip rangeOfString:unMuteString].location != NSNotFound) {
+        cueLabel.text = [cueLabel.text stringByReplacingOccurrencesOfString:unMuteString withString:muteString];
+    }
+}
+
 
 #pragma mark - LineScrollViewDataSource Methods
 

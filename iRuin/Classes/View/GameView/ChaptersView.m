@@ -182,23 +182,21 @@
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchEnded"]];
     
     
-    // ---------------------
+    // --------------------- index
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
     ACTION.gameState.currentChapter = index;
     
     
-    // get mode and switch config
+    // --------------------- mode
     int switchModeCount = [DATA.config[@"Utilities"][@"SwitchModeEveryChapters"] intValue];
     if (switchModeCount == 0) switchModeCount = 1;
     int modeCount = ACTION.gameModes.count;
     int modeIndex = (abs(index) % (modeCount * switchModeCount)) % modeCount;
     NSString* mode = [ACTION.gameModes safeObjectAtIndex: modeIndex];
-    
-    DLog(@"------- %@", mode);
+    ACTION.gameState.currentMode = mode;
 
+    // switch config by mode and index
     NSString* indexString = [NSString stringWithFormat:@"%d", index];
-    [ACTION switchToMode: mode chapter:indexString];
-    
     UILabel* label = VIEW.gameView.seasonLabel;
     label.text = StringAppend(@"Season ", indexString);
     [label adjustFontSizeToWidth];

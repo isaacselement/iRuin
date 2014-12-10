@@ -215,7 +215,6 @@
 		5E9C118F1A3420B3007E3BB6 /* iPhone_Portrait.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11491A3420B3007E3BB6 /* iPhone_Portrait.json */; };
 		5E9C11901A3420B3007E3BB6 /* Landscape.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C114A1A3420B3007E3BB6 /* Landscape.json */; };
 		5E9C11911A3420B3007E3BB6 /* Portrait.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C114B1A3420B3007E3BB6 /* Portrait.json */; };
-		5E9C11921A3420B3007E3BB6 /* Background_000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C114E1A3420B3007E3BB6 /* Background_000.png */; };
 		5E9C11931A3420B3007E3BB6 /* Background_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C114F1A3420B3007E3BB6 /* Background_001.png */; };
 		5E9C11941A3420B3007E3BB6 /* Background_002.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11501A3420B3007E3BB6 /* Background_002.png */; };
 		5E9C11951A3420B3007E3BB6 /* Background_003.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11511A3420B3007E3BB6 /* Background_003.png */; };
@@ -278,6 +277,8 @@
 		5E9C11ED1A342227007E3BB6 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11DF1A342227007E3BB6 /* WeiboSDK.bundle */; };
 		5E9C11EE1A342227007E3BB6 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C11E21A342227007E3BB6 /* TencentOpenAPI.framework */; };
 		5E9C11EF1A342227007E3BB6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11E31A342227007E3BB6 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		5EBDCC1C1A38102F0002636F /* ScheduledHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */; };
+		5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EBDCC1D1A38210C0002636F /* Background_000.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -691,7 +692,6 @@
 		5E9C11491A3420B3007E3BB6 /* iPhone_Portrait.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iPhone_Portrait.json; sourceTree = "<group>"; };
 		5E9C114A1A3420B3007E3BB6 /* Landscape.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Landscape.json; sourceTree = "<group>"; };
 		5E9C114B1A3420B3007E3BB6 /* Portrait.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Portrait.json; sourceTree = "<group>"; };
-		5E9C114E1A3420B3007E3BB6 /* Background_000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_000.png; sourceTree = "<group>"; };
 		5E9C114F1A3420B3007E3BB6 /* Background_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_001.png; sourceTree = "<group>"; };
 		5E9C11501A3420B3007E3BB6 /* Background_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_002.png; sourceTree = "<group>"; };
 		5E9C11511A3420B3007E3BB6 /* Background_003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_003.png; sourceTree = "<group>"; };
@@ -768,6 +768,9 @@
 		5E9C11E01A342227007E3BB6 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		5E9C11E21A342227007E3BB6 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		5E9C11E31A342227007E3BB6 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		5EBDCC1A1A38102F0002636F /* ScheduledHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduledHelper.h; sourceTree = "<group>"; };
+		5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduledHelper.m; sourceTree = "<group>"; };
+		5EBDCC1D1A38210C0002636F /* Background_000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_000.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1644,6 +1647,8 @@
 				4EDACDC7191FB88C00A8E84E /* StateHelper.m */,
 				4EDACDC9191FBCF600A8E84E /* FilterHelper.h */,
 				4EDACDCA191FBCF600A8E84E /* FilterHelper.m */,
+				5EBDCC1A1A38102F0002636F /* ScheduledHelper.h */,
+				5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1777,7 +1782,7 @@
 		5E9C114D1A3420B3007E3BB6 /* Background */ = {
 			isa = PBXGroup;
 			children = (
-				5E9C114E1A3420B3007E3BB6 /* Background_000.png */,
+				5EBDCC1D1A38210C0002636F /* Background_000.png */,
 				5E9C114F1A3420B3007E3BB6 /* Background_001.png */,
 				5E9C11501A3420B3007E3BB6 /* Background_002.png */,
 				5E9C11511A3420B3007E3BB6 /* Background_003.png */,
@@ -2030,7 +2035,6 @@
 				5E9C11981A3420B3007E3BB6 /* Background_006.png in Resources */,
 				5E9C11C31A3420B3007E3BB6 /* Tink.caf in Resources */,
 				5E9C11A91A3420B3007E3BB6 /* resume.png in Resources */,
-				5E9C11921A3420B3007E3BB6 /* Background_000.png in Resources */,
 				5E9C11BA1A3420B3007E3BB6 /* icon.png in Resources */,
 				5E9C11ED1A342227007E3BB6 /* WeiboSDK.bundle in Resources */,
 				5E9C118C1A3420B3007E3BB6 /* iPad_Landscape.json in Resources */,
@@ -2044,6 +2048,7 @@
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
 				4EE5FC0919D858DD005E8736 /* private_key.p12 in Resources */,
 				5E9C11E91A342227007E3BB6 /* InAppIM.ttf in Resources */,
+				5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */,
 				5E9C11BB1A3420B3007E3BB6 /* icon@2x.png in Resources */,
 				5E9C119F1A3420B3007E3BB6 /* back.png in Resources */,
 				5E9C11961A3420B3007E3BB6 /* Background_004.png in Resources */,
@@ -2112,6 +2117,7 @@
 				4EE5FC3219D858DD005E8736 /* ColorHelper.m in Sources */,
 				4EE5FC5F19D858DD005E8736 /* RotatableViewController.m in Sources */,
 				4EE5FC1D19D858DD005E8736 /* LocalizeFileManager.m in Sources */,
+				5EBDCC1C1A38102F0002636F /* ScheduledHelper.m in Sources */,
 				4EDACDC5191FB1C200A8E84E /* ChainableEffect.m in Sources */,
 				4EE5FC2919D858DD005E8736 /* ArrayListHelper.c in Sources */,
 				4EE6359A1A234F3100019C58 /* SSZipArchive.m in Sources */,

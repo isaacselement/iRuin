@@ -9,13 +9,14 @@
     NSMutableDictionary* landscapeShareConfig ;
     
     
-    NSMutableDictionary* portraitModeConfig;
-    NSMutableDictionary* landscapeModeConfig;
+    
+    NSMutableDictionary* portraitModeChapterConfig;
+    NSMutableDictionary* landscapeModeChapterConfig;
     
     
-    NSMutableDictionary* chaptersConfig;
     
     NSMutableDictionary* modesConfigs;
+    NSMutableDictionary* chaptersConfig;
 }
 
 static DataManager* sharedInstance = nil;
@@ -229,26 +230,34 @@ static DataManager* sharedInstance = nil;
 -(NSMutableDictionary*) config
 {
     if (UIInterfaceOrientationIsLandscape([ViewHelper getTopViewController].interfaceOrientation)) {
-        return landscapeModeConfig ? landscapeModeConfig : landscapeShareConfig;
+        return landscapeModeChapterConfig ? landscapeModeChapterConfig : landscapeShareConfig;
     } else {
-        return portraitModeConfig ? portraitModeConfig : protraitShareConfig;
+        return portraitModeChapterConfig ? portraitModeChapterConfig : protraitShareConfig;
     }
 }
 
--(void) setConfigByMode: (NSString*)mode chapter:(NSString*)chapter
+-(void) unsetModeChapterConfig
 {
-    portraitModeConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
-    landscapeModeConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
+    // then , the landscapeShareConfig and protraitShareConfig will be reused.
+    landscapeModeChapterConfig = nil;
+    portraitModeChapterConfig = nil;
+}
+
+-(void) setConfigByMode: (NSString*)mode chapter:(int)chapter
+{
+    // combine with specific mode
+    portraitModeChapterConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
+    landscapeModeChapterConfig = [DictionaryHelper combines: protraitShareConfig with:modesConfigs[mode]];
     
     // combine with specific chapter
-    id config = chaptersConfig[chapter];
-    if ([config isKindOfClass:[NSString class]]) {
-        config = chaptersConfig[config];
+    NSString* chapterString = [NSString stringWithFormat:@"%d", chapter];
+    id seasonConfig = chaptersConfig[chapterString];
+    if ([seasonConfig isKindOfClass:[NSString class]]) {
+        seasonConfig = chaptersConfig[seasonConfig];
     }
-    if (![config isKindOfClass:[NSDictionary class]]) return;
-    
-    [DictionaryHelper combine: portraitModeConfig with:config];
-    [DictionaryHelper combine: landscapeModeConfig with:config];
+    if (![seasonConfig isKindOfClass:[NSDictionary class]]) return;
+    [DictionaryHelper combine: portraitModeChapterConfig with:seasonConfig];
+    [DictionaryHelper combine: landscapeModeChapterConfig with:seasonConfig];
 }
 
 

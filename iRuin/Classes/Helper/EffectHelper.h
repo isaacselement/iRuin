@@ -24,14 +24,6 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 
 
-#pragma mark - Schedule Action
-
--(void) unRegisterScheduleTaskAccordingConfig;
-
--(void) registerScheduleTaskAccordingConfig;
-
-
-
 #pragma mark - Bonus Effect
 
 -(void) bonusEffectWithScore: (int)bonusScore;

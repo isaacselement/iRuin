@@ -40,7 +40,7 @@
     
     
     // about schedule task
-    [[EffectHelper getInstance] registerScheduleTaskAccordingConfig];
+    [[ScheduledHelper sharedInstance] registerScheduleTaskAccordingConfig];
 }
 
 
@@ -48,6 +48,7 @@
 
 -(void) gameStart
 {
+    [ACTION switchToMode: ACTION.gameState.currentMode chapter:ACTION.gameState.currentChapter];
     
     //
     [ACTION.currentEffect effectStartRollIn];
@@ -60,6 +61,8 @@
 
 -(void) gameBack
 {
+    [DATA unsetModeChapterConfig];
+    
     ACTION.gameState.vanishAmount = 0;
     
     //

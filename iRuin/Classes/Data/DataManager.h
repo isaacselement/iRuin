@@ -12,11 +12,11 @@
 
 -(void) initializeWithData ;
 
-
 -(NSMutableDictionary*) config;
 
 
--(void) setConfigByMode: (NSString*)mode chapter:(NSString*)chapter;
+-(void) unsetModeChapterConfig;
+-(void) setConfigByMode: (NSString*)mode chapter:(int)chapter;
 
 
 @end

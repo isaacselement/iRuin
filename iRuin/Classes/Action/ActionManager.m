@@ -80,10 +80,8 @@ static ActionManager* sharedInstance = nil;
     }
 }
 
--(void) switchToMode: (NSString*)mode chapter:(NSString*)chapter
+-(void) switchToMode: (NSString*)mode chapter:(int)chapter
 {
-    _currentMode = mode;
-    
     // destroy initialize
     [self.currentEvent eventUnInitialize];
     [self.currentState stateUnInitialize];

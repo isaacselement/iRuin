@@ -153,7 +153,7 @@
 
 #import "StateHelper.h"
 #import "EffectHelper.h"
-
+#import "ScheduledHelper.h"
 
 #import "SearchHelper.h"
 #import "PositionsHelper.h"

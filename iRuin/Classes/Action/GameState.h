@@ -7,7 +7,10 @@
 @property (assign) BOOL isGameStarted;
 
 
+
 @property (assign) int currentChapter;
+
+@property (strong) NSString* currentMode;
 
 
 

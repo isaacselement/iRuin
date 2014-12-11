@@ -4,6 +4,12 @@
 @interface GameState : NSObject
 
 
+
+@property (assign) BOOL isMuteMusic;
+
+
+
+
 @property (assign) BOOL isGameStarted;
 
 
@@ -31,6 +37,8 @@
 @property (assign) int vanishTotalAmount;
 
 @property (assign) int vanishTotalScores;
+
+
 
 
 @end

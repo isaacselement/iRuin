@@ -58,36 +58,47 @@
 {
     if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
         
+        ACTION.gameState.isMuteMusic = !ACTION.gameState.isMuteMusic;
+        
         NSDictionary* audioPlayers = ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).audiosPlayers;
         NSDictionary* fadeSpecifications = DATA.config[@"FadeActions"];
         for (NSString* key in fadeSpecifications) {
             AVAudioPlayer* player = audioPlayers[key];
             NSDictionary* dictionary = fadeSpecifications[key];
-            NSDictionary* dic = player.isPlaying ? dictionary[@"OFF"]: dictionary[@"ON"];
+            NSDictionary* dic = ACTION.gameState.isMuteMusic ? dictionary[@"OFF"]: dictionary[@"ON"];
             float toVolume = [dic[@"fadeToVolume"] floatValue];
             float overDuration = [dic[@"fadeOverDuration"] floatValue];
             [[AudioHandler audioCrossFadeQueue] addOperation:[[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:toVolume overDuration:overDuration]];
         }
         
+        NSArray* values = DATA.config[@"Utilities"][@"AudioCues"];
+        
+        NSString* cueText = ACTION.gameState.isMuteMusic ? [values lastObject] : [values firstObject];
+        if (cueText) {
+            
+            // change text with animation
+            CATransition *animation = [CATransition animation];
+            animation.duration = 0.5;
+            animation.type = kCATransitionFromTop;
+            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            [cueLabel.layer addAnimation:animation forKey:@"changeTextTransition"];
+            
+            cueLabel.text = cueText;
+        }
+        
     } else if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
         
+        // change text with animation
+        CATransition *animation = [CATransition animation];
+        animation.duration = 0.5;
+        animation.type = kCATransitionFromTop;
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        [cueLabel.layer addAnimation:animation forKey:@"changeTextTransition"];
+        
+        cueLabel.text = nil;
     }
     
-    NSString* tip = cueLabel.text;
-    NSString* muteString = @"Mute";
-    NSString* unMuteString = @"Unmute";
     
-    CATransition *animation = [CATransition animation];
-    animation.duration = 0.5;
-    animation.type = kCATransitionFromTop;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    [cueLabel.layer addAnimation:animation forKey:@"changeTextTransition"];
-    
-    if ([tip rangeOfString:muteString].location != NSNotFound) {
-        cueLabel.text = [cueLabel.text stringByReplacingOccurrencesOfString:muteString withString:unMuteString];
-    } else if ([tip rangeOfString:unMuteString].location != NSNotFound) {
-        cueLabel.text = [cueLabel.text stringByReplacingOccurrencesOfString:unMuteString withString:muteString];
-    }
 }
 
 
@@ -97,7 +108,7 @@
 {
     // -------------- mute the sound on reload Begin
     if (isReload) {
-        ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disable = YES;
+        ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disableAudio = YES;
     }
     
      
@@ -156,7 +167,7 @@
     
     // -------------- mute the sound on reload End
     if (isReload) {
-        ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disable = NO;
+        ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disableAudio = NO;
     }
 }
 
@@ -169,6 +180,10 @@
     
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchBegan"]];
+    
+    
+    
+    DLog(@"----------------------------------");
 }
 
 
@@ -181,6 +196,11 @@
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchEnded"]];
     
+    
+    
+    
+    
+    // -------------------------- ++++++++++++++ -----------------------
     
     // --------------------- index
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
@@ -202,6 +222,7 @@
     [label adjustFontSizeToWidth];
     
     [ACTION.gameEvent gameStart];
+    DLog(@"++++++++++++++++++++++++++++++");
 }
 
 @end

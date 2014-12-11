@@ -5,6 +5,8 @@
 {
     // schedule action
     int scheduleTaskTimes;
+    
+    // for view
     int scheduleViewValueIndex;
 }
 
@@ -42,28 +44,29 @@ static ScheduledHelper* scheduledHelper = nil;
     if (viewInterval == 0) viewInterval = 60;
     
     if (scheduleTaskTimes % viewInterval == 0) {
-        NSArray* values = DATA.config[@"Utilities"][@"ScheduleTask.view.values"];
-        NSMutableDictionary* scheduleTaskConfig = DATA.config[@"GAME_LAUNCH_ScheduleTask"];
-        NSMutableDictionary* valuesConfig = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
-        
-        scheduleViewValueIndex = scheduleViewValueIndex % [values count];
-        [valuesConfig setObject: [values objectAtIndex: scheduleViewValueIndex] forKey:@"values"];
-        scheduleViewValueIndex++;
-        
-        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
+        [self refreshViewBackgroundJob];
     }
     
-    // cue
-    int cueInterval = [DATA.config[@"Utilities"][@"ScheduleTask.audioCue.interval"] intValue];
-    if (cueInterval == 0) cueInterval = 5;
-    if (scheduleTaskTimes % cueInterval == 0) {
-        NSMutableArray* values = DATA.config[@"Utilities"][@"AudioCues"];
-        VIEW.chaptersView.cueLabel.text = [values firstObject];
-    }
-    
-    
+    // count
     scheduleTaskTimes++;
 }
+
+
+#pragma mark - Scheduled Jobs
+
+-(void) refreshViewBackgroundJob
+{
+    NSArray* values = DATA.config[@"Utilities"][@"ScheduleTask.view.values"];
+    NSMutableDictionary* scheduleTaskConfig = DATA.config[@"GAME_LAUNCH_ScheduleTask"];
+    NSMutableDictionary* valuesConfig = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
+    
+    scheduleViewValueIndex = scheduleViewValueIndex % [values count];
+    [valuesConfig setObject: [values objectAtIndex: scheduleViewValueIndex] forKey:@"values"];
+    scheduleViewValueIndex++;
+    
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
+}
+
 
 
 @end

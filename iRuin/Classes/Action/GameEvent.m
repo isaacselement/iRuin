@@ -14,20 +14,18 @@
     
     // chapter cells 
     // first time launch app, set the chapter index
-    BOOL isFirstTimeLaunchApp = NO;
     if (![StandUserDefaults objectForKey: User_LastTimeLaunch]) {
-        [StandUserDefaults setObject:@(9) forKey:User_ChapterIndex];
-        isFirstTimeLaunchApp = YES;
+        [StandUserDefaults setObject:DATA.config[@"Utilities"][@"FirstTimeLaunchGiveChaptersCount"] forKey:User_ChapterIndex];
     }
     [StandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
-    if (isFirstTimeLaunchApp) {
-        [VIEW.chaptersView.lineScrollView setCurrentIndex: 4];
-    } else {
-        [VIEW.chaptersView.lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
-    }
+    
+    [VIEW.chaptersView.lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
     VIEW.chaptersView.lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
-        return index >= 0 && index <= [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
-//        return YES;
+        int minimalIndex = NSIntegerMin;
+        if (DATA.config[@"Utilities"][@"ChaptersMinimalIndex"]) {
+            minimalIndex = [DATA.config[@"Utilities"][@"ChaptersMinimalIndex"] intValue];
+        }
+        return index >= minimalIndex && index <= [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
     };
     
     

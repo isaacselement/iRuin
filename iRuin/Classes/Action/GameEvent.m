@@ -154,9 +154,6 @@
     for (int i = 0 ; i < chaptersCells.count; i++) {
         ImageLabelLineScrollCell* cell = [chaptersCells objectAtIndex:i];
         
-        // restore the status
-        [cell.layer removeAllAnimations];
-        
         // values and actions
         NSString* iKey = [NSString stringWithFormat:@"%d", i];
         NSDictionary* config = cellsConfigs[iKey];

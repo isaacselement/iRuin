@@ -24,28 +24,6 @@
 @synthesize dataSource;
 
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    CGPoint location = [[touches anyObject] locationInView:self];
-    
-    if (self.lineScrollViewTouchBeganAtPoint) {
-        self.lineScrollViewTouchBeganAtPoint(self, location);
-    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:touchBeganAtPoint:)]) {
-        [dataSource lineScrollView: self touchBeganAtPoint:location];
-    }
-}
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    CGPoint location = [[touches anyObject] locationInView:self];
-    
-    if (self.lineScrollViewTouchEndedAtPoint) {
-        self.lineScrollViewTouchEndedAtPoint(self, location);
-    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:touchEndedAtPoint:)]) {
-        [dataSource lineScrollView: self touchEndedAtPoint:location];
-    }
-}
-
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -56,11 +34,14 @@
         
         __cellClass = [LineScrollViewCell class];
     
+        self.delaysContentTouches = NO;             // call touchesBegan: immediately
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
-        self.delaysContentTouches = NO;
 
         [self addObserver: self forKeyPath:@"eachCellWidth" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+        
+        UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(aTapAction:)];
+        [self addGestureRecognizer: gesture];
     }
     return self;
 }
@@ -73,6 +54,43 @@
         }
     }
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint location = [[touches anyObject] locationInView:self];
+    
+    if (self.lineScrollViewTouchBeganAtPoint) {
+        self.lineScrollViewTouchBeganAtPoint(self, location);
+    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:touchBeganAtPoint:)]) {
+        [dataSource lineScrollView: self touchBeganAtPoint:location];
+    }
+}
+
+/*
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint location = [[touches anyObject] locationInView:self];
+    
+    if (self.lineScrollViewTouchEndedAtPoint) {
+        self.lineScrollViewTouchEndedAtPoint(self, location);
+    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:touchEndedAtPoint:)]) {
+        [dataSource lineScrollView: self touchEndedAtPoint:location];
+    }
+}
+*/
+
+-(void) aTapAction: (UITapGestureRecognizer*)gesture
+{
+    CGPoint location = [gesture locationInView: gesture.view];
+//    location = [gesture.view convertPoint: location toView:self];
+    
+    if (self.lineScrollViewTouchEndedAtPoint) {
+        self.lineScrollViewTouchEndedAtPoint(self, location);
+    } else if (dataSource && [dataSource respondsToSelector: @selector(lineScrollView:touchEndedAtPoint:)]) {
+        [dataSource lineScrollView: self touchEndedAtPoint:location];
+    }
+}
+
 
 
 -(void)setCurrentIndex:(int)index
@@ -158,7 +176,6 @@
     // check if change direction
     BOOL direction = self.contentOffset.x < previousOffsetx;
     if (currentDirection != direction) {
-//        NSLog(@"directionDidChange - %d" , direction);
         NSUInteger count = contentView.subviews.count ;
         if (direction) {
             currentIndex -= (count - 1);

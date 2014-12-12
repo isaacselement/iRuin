@@ -180,10 +180,6 @@
     
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchBegan"]];
-    
-    
-    
-    DLog(@"----------------------------------");
 }
 
 
@@ -195,7 +191,6 @@
     
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchEnded"]];
-    
     
     
     
@@ -222,7 +217,6 @@
     [label adjustFontSizeToWidth];
     
     [ACTION.gameEvent gameStart];
-    DLog(@"++++++++++++++++++++++++++++++");
 }
 
 @end

@@ -15,16 +15,16 @@
 
 #pragma mark - SEARCH
 
-+(NSMutableArray*) searchTouchMatchedSymbols: (SymbolView*)symbol
++(NSArray*) searchTouchMatchedSymbols: (SymbolView*)symbol
 {
     NSMutableSet* repository = [NSMutableSet setWithCapacity: 1];
     [self searchConnectedSymbols: symbol repository:repository];
-    return [NSMutableArray arrayWithArray: [repository allObjects]];
+    return [repository allObjects];
 }
 
 
 
-+(NSMutableArray*) searchMoveMatchedSymbols: (NSArray*)moveSymbols
++(NSMutableArray*) searchRouteMatchedSymbols: (NSArray*)moveSymbols
 {
     SymbolView* baseSymbolView = [moveSymbols objectAtIndex: 0];
     NSMutableArray* array = [NSMutableArray arrayWithCapacity: moveSymbols.count];
@@ -39,64 +39,55 @@
     return array;
 }
 
-
-// For two symbol exchange their positions
-+(NSMutableArray*) searchMatchedAround: (SymbolView*)firstSymbol and:(SymbolView*)secondSymbol
-{
-    NSMutableArray* array = [NSMutableArray array];
-    NSMutableArray *a = nil, *b = nil, *c = nil, *d = nil;
-    
-    a = [self searchHorizontally: firstSymbol];
-    if (a.count >= MATCH_COUNT) {
-        [array addObjectsFromArray: a];
-    }
-    c = [self searchVertically: firstSymbol];
-    if (c.count >= MATCH_COUNT) {
-        [array addObjectsFromArray: c];
-    }
-    
-    
-    if (![a containsObject: secondSymbol]){
-        b = [self searchHorizontally: secondSymbol];
-        if (b.count >= MATCH_COUNT) {
-            [array addObjectsFromArray: b];
-        }
-    }
-    if ( ![c containsObject: secondSymbol]){
-        d = [self searchVertically: secondSymbol];
-        if (d.count >= MATCH_COUNT) {
-            [array addObjectsFromArray: d];
-        }
-    }
-    
-    return [ArrayHelper eliminateDuplicates: array];
-}
-
-
-// For Chainable Modes
 +(NSMutableArray*) searchMatchedInAllLines:(int)matchCount
 {
     NSArray* symbolsAtContainer = [QueueViewsHelper viewsInVisualArea];
-    NSMutableSet* resultsSet = [NSMutableSet set];
+    NSMutableArray* horizontallyViews = [NSMutableArray array];
+    NSMutableArray* verticallyViews = [NSMutableArray array];
     
     for (int i = 0; i < symbolsAtContainer.count; i++) {
         NSArray* innerArray = [symbolsAtContainer objectAtIndex: i];
         for (int j = 0; j < innerArray.count; j++) {
             SymbolView* symbol = [innerArray objectAtIndex: j];
-
-            NSMutableArray* arrayHor = [self searchHorizontally: symbol];
-            if (arrayHor.count >= matchCount) {
-                [resultsSet addObjectsFromArray: arrayHor];
+            
+            if (![self isTwoDimensionArray: horizontallyViews contains:symbol]) {
+                
+                NSMutableArray* horInnerViews = [self searchHorizontally: symbol];
+                if (horInnerViews.count >= matchCount) {
+                    [horizontallyViews addObject: horInnerViews];
+                }
+                
             }
-            NSMutableArray* arrayVer = [self searchVertically: symbol];
-            if (arrayVer.count >= matchCount) {
-                [resultsSet addObjectsFromArray: arrayVer];
+            
+            if (![self isTwoDimensionArray: verticallyViews contains:symbol]) {
+                
+                NSMutableArray* verInnerView = [self searchVertically: symbol];
+                if (verInnerView.count >= matchCount) {
+                    [verticallyViews addObject: verInnerView];
+                }
+                
             }
         }
     }
     
-    NSArray* matchedSymbols = [resultsSet allObjects];
-    return matchedSymbols.count >= matchCount ? [NSMutableArray arrayWithArray: matchedSymbols] : nil;
+    // return nil is important !!!
+    if (horizontallyViews.count == 0 && verticallyViews.count == 0) {
+        return nil;
+    }
+    NSMutableArray* results = [NSMutableArray array];
+    [results addObjectsFromArray: horizontallyViews];
+    [results addObjectsFromArray: verticallyViews];
+    return results;
+}
+
++(BOOL) isTwoDimensionArray: (NSArray*)array contains:(id)obj
+{
+    for (NSArray* innerArray in array) {
+        if ([innerArray containsObject: obj]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 

@@ -35,8 +35,8 @@ static EffectHelper* oneInstance = nil;
             
             // TODO: If not enough ~~~~~~ , cause may vanish many ~~~~~  !
             NSMutableArray* uselessViews = [QueueViewsHelper getUselessViews];
-            for (UIView* vanishingSymbol in vanishingViews) {
-                [uselessViews removeObject: vanishingSymbol];
+            for (UIView* symbol in vanishingViews) {
+                [uselessViews removeObject: symbol];
             }
             
             int count = 0 ;

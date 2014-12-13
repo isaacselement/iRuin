@@ -37,10 +37,10 @@
     
     
     //TODO: ---------------- temp code here ----------------------------------------------
-    if (vanishSymbols) {
-        int bonusScore = vanishSymbols.count * continuous;
-        [[EffectHelper getInstance] bonusEffectWithScore: bonusScore];
-    }
+//    if (vanishSymbols) {
+//        int bonusScore = vanishSymbols.count * continuous;
+//        [[EffectHelper getInstance] bonusEffectWithScore: bonusScore];
+//    }
     //TODO: ---------------- temp code here ----------------------------------------------
     
     

@@ -92,14 +92,16 @@
 }
 
 
--(void)effectStartVanish: (NSMutableArray*)symbols
+-(void)effectStartVanish: (NSArray*)symbols
 {
+    // two dimension or one dimension
+    if (!symbols) return;
+    
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
-    NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: symbols];
+    NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
     for (NSInteger i = 0; i < vanishViews.count; i++) {
         SymbolView* symbol = vanishViews[i];
         if (symbol.row == -1 || symbol.column == -1) {
-            DLOG(@"ERROR!!!! ++++");
             continue;
         }
         int row = symbol.row;
@@ -111,7 +113,7 @@
     
     // vanish
     [VIEW.actionDurations clear];
-    [self startSymbolsVanish: vanishViews];
+    [self startSymbolsVanish: symbols];
     double vanishDuration = [VIEW.actionDurations take];
     [event eventSymbolsWillVanish: vanishViews];
     [event performSelector: @selector(eventSymbolsDidVanish:) withObject:vanishViews afterDelay:vanishDuration];

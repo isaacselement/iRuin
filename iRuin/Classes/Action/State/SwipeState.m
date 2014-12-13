@@ -150,6 +150,7 @@
     [PositionsHelper updateRowsColumnsInVisualArea: @[symbol, withSymbol]];
     
     // start the vanish effect
+    // here , need cancel previous or not ?
     [self performSelector:@selector(startVanishProcedure) withObject:nil afterDelay:swapEffectDuration];
     
 }
@@ -164,10 +165,7 @@
 {
     // start the vanish effect
     NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
-    if (vanishSymbols.count >= MATCH_COUNT) {
-        [self.effect effectStartVanish: vanishSymbols];
-    }
-    
+    [self.effect effectStartVanish: vanishSymbols];
 }
 
 

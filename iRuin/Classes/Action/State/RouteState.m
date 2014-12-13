@@ -116,7 +116,7 @@
 -(void) startVanishProcedure
 {
     if (engageSymbolRepository.count >= MATCH_COUNT) {
-        NSMutableArray* vanishSymbols = [SearchHelper searchMoveMatchedSymbols: engageSymbolRepository];
+        NSMutableArray* vanishSymbols = [SearchHelper searchRouteMatchedSymbols: engageSymbolRepository];
         if (vanishSymbols.count >= MATCH_COUNT) {
             [self.effect effectStartVanish: vanishSymbols];
         }

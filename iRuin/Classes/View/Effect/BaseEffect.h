@@ -58,7 +58,7 @@
 
 -(void) effectStartRollIn ;
 -(void) effectStartRollOut;
--(void) effectStartVanish: (NSMutableArray*)symbols;
+-(void) effectStartVanish: (NSArray*)symbols;
 
 
 

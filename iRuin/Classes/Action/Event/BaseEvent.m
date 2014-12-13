@@ -81,6 +81,14 @@
     
     ACTION.gameState.vanishAmount += symbols.count;
     
+    
+    // caculate the score
+    int viewsCount = symbols.count;
+    if (viewsCount == MATCH_COUNT) {
+        return;
+    }
+    
+    int scoresCount = viewsCount - MATCH_COUNT;
     NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
     for (SymbolView* symbol in symbols) {
         scoreLabel.number += symbol.score;

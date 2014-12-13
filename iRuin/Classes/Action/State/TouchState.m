@@ -36,7 +36,7 @@
 
 -(void) startVanishProcedure
 {
-    NSMutableArray* vanishSymbols = [SearchHelper searchTouchMatchedSymbols: touchingSymbol];
+    NSArray* vanishSymbols = [SearchHelper searchTouchMatchedSymbols: touchingSymbol];
     [self.effect effectStartVanish: vanishSymbols];
 }
 

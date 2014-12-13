@@ -154,9 +154,7 @@
 {
     // start the vanish effect
     NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
-    if (vanishSymbols.count >= MATCH_COUNT) {
-        [self.effect effectStartVanish: vanishSymbols];
-    }
+    [self.effect effectStartVanish: vanishSymbols];
     
 }
 

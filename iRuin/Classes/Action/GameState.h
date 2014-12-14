@@ -14,9 +14,13 @@
 
 
 
+
 @property (assign) int currentChapter;
 
 @property (strong) NSString* currentMode;
+
+@property (assign) int clearanceScore;
+
 
 
 

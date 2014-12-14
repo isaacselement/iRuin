@@ -19,14 +19,17 @@
     }
     [StandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
     
-    [VIEW.chaptersView.lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
-    VIEW.chaptersView.lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollView, int index) {
+    LineScrollView* lineScrollView = VIEW.chaptersView.lineScrollView;
+    [lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
+    
+    lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollViewObj, int index) {
         int minimalIndex = NSIntegerMin;
         if (DATA.config[@"Utilities"][@"ChaptersMinimalIndex"]) {
             minimalIndex = [DATA.config[@"Utilities"][@"ChaptersMinimalIndex"] intValue];
         }
         return index >= minimalIndex && index <= [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
     };
+    [lineScrollView setContentOffset: CGPointMake(lineScrollView.contentView.sizeWidth - lineScrollView.sizeWidth, 0) animated:NO];
     
     
     // chapters cells jumb in effect
@@ -57,6 +60,21 @@
     
     // chapters cells effect
     [self chaptersValuesActions: DATA.config[@"GAME_START_Chapters_Cells"]];
+    
+    
+    
+    
+    // show hint
+    int clearanceScore = 5 ; //300 + RANDOM(500);
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
+    hud.userInteractionEnabled = NO;
+    hud.mode = MBProgressHUDModeText;
+    hud.detailsLabelText = [NSString stringWithFormat: @"Season Clearance Score is %d", clearanceScore];
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay: 1 + RANDOM(3)];
+    
+    ACTION.gameState.clearanceScore = clearanceScore;
 }
 
 -(void) gameBack
@@ -96,29 +114,36 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.dimBackground = YES;
-    hud.labelText = @"Game is Over :-P";
+    hud.labelText = @"Game Over";
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay: 6];
     
     
-    float rate = 0;
-    float userChapterIndex = [[StandUserDefaults objectForKey:User_ChapterIndex] floatValue];
+    NSString* message = nil;
+    int currentPlayChapterIndex = ACTION.gameState.currentChapter;
     
-    int score = VIEW.gameView.scoreLabel.number;
-    int vanishCount = ACTION.gameState.vanishAmount;
-    if (vanishCount != 0) {
-        rate = (float)score / vanishCount;
-        userChapterIndex += rate;
-        [StandUserDefaults setObject: @(userChapterIndex) forKey:User_ChapterIndex];
+    float score = VIEW.gameView.scoreLabel.number;
+    int clearanceScore = ACTION.gameState.clearanceScore;
+    if (score >= ACTION.gameState.clearanceScore) {
+        
+        int userChapterIndex = [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
+        
+        if (currentPlayChapterIndex != userChapterIndex) {
+            message = [NSString stringWithFormat:@"Season %d already unlocked :)", currentPlayChapterIndex + 1];
+        } else {
+            userChapterIndex++;
+            [StandUserDefaults setObject: @(userChapterIndex) forKey:User_ChapterIndex];
+            message = [NSString stringWithFormat:@"Season %d now unlocked :)", userChapterIndex];
+        }
+    } else {
+        message = [NSString stringWithFormat:@"No new season unlocked :("];
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString* message = [NSString stringWithFormat:@" %d (score) ÷ %d (vanish count) = %.2f", score, vanishCount, rate];
-        hud.detailsLabelText = message;
+        hud.detailsLabelText = [NSString stringWithFormat:@"You got %.0f, clearance is %d", score, clearanceScore];
     });
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString* message = [NSString stringWithFormat:@"Season %d is unlocked :)", (int)userChapterIndex];
         hud.labelText = message;
         hud.detailsLabelText = nil;
     });

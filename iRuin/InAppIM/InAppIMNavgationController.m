@@ -54,16 +54,17 @@
 
 InAppIMNavgationController* inAppControllerSharedInstance = nil;
 
-+(void)initialize
++(InAppIMNavgationController*) sharedInstance
 {
-    if (self == [InAppIMNavgationController class]) {
+    if ([DATA.config[@"IsDisableChat"] boolValue]) {
+        return nil;
+    }
+    
+    if (! inAppControllerSharedInstance) {
         InAppIMRootController* inAppIMRootController = [[InAppIMRootController alloc] init];
         inAppControllerSharedInstance = [[InAppIMNavgationController alloc] initWithRootViewController: inAppIMRootController];
     }
-}
-
-+(InAppIMNavgationController*) sharedInstance
-{
+    
     return inAppControllerSharedInstance;
 }
 
@@ -77,14 +78,13 @@ InAppIMNavgationController* inAppControllerSharedInstance = nil;
     [roomInfo setUniqueKey: uniqueKey];
     
     
-    InAppIMNavgationController* imNavController = [InAppIMNavgationController sharedInstance];
-    imNavController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    InAppIMRootController* imRootController = [imNavController.viewControllers firstObject];
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    InAppIMRootController* imRootController = [self.viewControllers firstObject];
     imRootController.simpleRoomInfo = roomInfo;
     imRootController.isComeFromOutside = YES;
     
     
-    [VIEW.controller presentViewController:imNavController animated:YES completion:nil];
+    [VIEW.controller presentViewController:self animated:YES completion:nil];
 }
 
 -(void)initInAppIMSDK:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -135,7 +135,7 @@ InAppIMNavgationController* inAppControllerSharedInstance = nil;
 
 -(void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    [InAppIMSDK application:application didReceiveRemoteNotification:userInfo navigationController:[InAppIMNavgationController sharedInstance]];
+    [InAppIMSDK application:application didReceiveRemoteNotification:userInfo navigationController:self];
 }
 
 -(BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotatioe

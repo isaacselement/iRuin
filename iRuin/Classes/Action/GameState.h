@@ -21,13 +21,6 @@
 
 
 
-@property (assign) BOOL isChainVanishing;
-
-@property (assign) BOOL isSymbolsOnVAFSing;
-
-
-
-
 
 @property (assign) int vanishAmount;
 

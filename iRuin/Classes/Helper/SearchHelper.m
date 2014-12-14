@@ -19,24 +19,25 @@
 {
     NSMutableSet* repository = [NSMutableSet setWithCapacity: 1];
     [self searchConnectedSymbols: symbol repository:repository];
-    return [repository allObjects];
+    NSArray* reslut = [repository allObjects];
+    return reslut.count ? reslut : nil;
 }
 
 
 
-+(NSMutableArray*) searchRouteMatchedSymbols: (NSArray*)moveSymbols
++(NSMutableArray*) searchRouteMatchedSymbols: (NSArray*)symbols matchCount:(int)matchCount
 {
-    SymbolView* baseSymbolView = [moveSymbols objectAtIndex: 0];
-    NSMutableArray* array = [NSMutableArray arrayWithCapacity: moveSymbols.count];
+    SymbolView* baseSymbolView = [symbols objectAtIndex: 0];
+    NSMutableArray* results = [NSMutableArray array];
     
-    for (int i = 0 ; i < moveSymbols.count ; i++) {
-        SymbolView* checkedSymbolView = [moveSymbols objectAtIndex: i];
+    for (int i = 0 ; i < symbols.count ; i++) {
+        SymbolView* checkedSymbolView = [symbols objectAtIndex: i];
         if (checkedSymbolView.identification != baseSymbolView.identification){
             break;
         }
-        [array addObject:checkedSymbolView];
+        [results addObject:checkedSymbolView];
     }
-    return array;
+    return results.count >= matchCount ? results : nil;
 }
 
 +(NSMutableArray*) searchMatchedInAllLines:(int)matchCount
@@ -49,6 +50,7 @@
         NSArray* innerArray = [symbolsAtContainer objectAtIndex: i];
         for (int j = 0; j < innerArray.count; j++) {
             SymbolView* symbol = [innerArray objectAtIndex: j];
+            
             
             if (![self isTwoDimensionArray: horizontallyViews contains:symbol]) {
                 

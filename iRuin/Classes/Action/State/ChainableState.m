@@ -7,6 +7,20 @@
     int continuous;
 }
 
+#pragma mark - Override Methods
+
+-(void) stateSymbolsWillVanish: (NSArray*)symbols
+{
+    self.isSymbolsOnVAFSing = YES;
+    
+    if (self.isChainVanishing) {
+        [[EffectHelper getInstance] chainScoreWithEffect: symbols continuous:continuous];
+    } else {
+        [[EffectHelper getInstance] scoreWithEffect: symbols];
+    }
+}
+
+
 #pragma mark - Public Methods
 
 -(void) stateStartChainVanish
@@ -16,15 +30,13 @@
     
     
     // check if end chain vanish ~~~
-    BOOL noVanishViews = vanishSymbols == nil;
     BOOL isContainsNull = [QueueViewsHelper isViewsInVisualAreaContains: [NSNull null]];
-    if (noVanishViews && !isContainsNull) {
+    if (vanishSymbols == nil && !isContainsNull) {
         
         // the first time check , no chain vanish , so should check vanishing~~~
-        if (ACTION.gameState.isChainVanishing) {
+        if (self.isChainVanishing) {
             [(ChainableEvent*)ACTION.currentEvent eventSymbolsDidChainVanish];
-            ACTION.gameState.isChainVanishing = NO;
-            
+            self.isChainVanishing = NO;
             continuous = 0;
         }
         
@@ -36,27 +48,11 @@
     }
     
     
-    //TODO: ---------------- temp code here ----------------------------------------------
-//    if (vanishSymbols) {
-//        int bonusScore = vanishSymbols.count * continuous;
-//        [[EffectHelper getInstance] bonusEffectWithScore: bonusScore];
-//    }
-    //TODO: ---------------- temp code here ----------------------------------------------
-    
-    
     // then start , the vanish symbols maybe nil ~~~
     DLog(@"--- stateStartChainVanish");
-    ACTION.gameState.isChainVanishing = YES;
+    self.isChainVanishing = YES;
     [self.effect effectStartVanish: vanishSymbols];
-    
-    
-    
-    
-    
-    
 }
-
-
 
 @end
 

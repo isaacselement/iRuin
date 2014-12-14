@@ -5,7 +5,11 @@
 
 @interface BaseState : NSObject
 
+
 @property (assign) BaseEffect* effect;
+
+@property (assign) BOOL isSymbolsOnVAFSing;
+
 
 #pragma mark - Subclass Override Methods
 -(void) stateInitialize;
@@ -17,6 +21,24 @@
 
 
 #pragma mark - Public Methods
+
+-(void) stateSymbolsWillRollIn;
+-(void) stateSymbolsDidRollIn;
+
+-(void) stateSymbolsWillRollOut;
+-(void) stateSymbolsDidRollOut;
+
+-(void) stateSymbolsWillVanish: (NSArray*)symbols;
+-(void) stateSymbolsDidVanish: (NSArray*)symbols;
+
+-(void) stateSymbolsWillAdjusts;
+-(void) stateSymbolsDidAdjusts;
+
+-(void) stateSymbolsWillFillIn;
+-(void) stateSymbolsDidFillIn;
+
+-(void) stateSymbolsWillSqueeze;
+-(void) stateSymbolsDidSqueeze;
 
 
 @end

@@ -64,6 +64,7 @@
     [ACTION renderFramesWithCurrentOrientation];
     
     return;
+    // Temp -------------------------------
     if (! ACTION.gameState.isGameStarted) {
         
         // Temporary code here.

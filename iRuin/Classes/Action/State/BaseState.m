@@ -33,6 +33,66 @@
 
 #pragma mark - Public Methods
 
+-(void) stateSymbolsWillRollIn
+{
+    
+}
 
+-(void) stateSymbolsDidRollIn
+{
+    
+}
+
+-(void) stateSymbolsWillRollOut
+{
+    
+}
+
+-(void) stateSymbolsDidRollOut
+{
+    
+}
+
+-(void) stateSymbolsWillVanish: (NSArray*)symbols
+{
+    self.isSymbolsOnVAFSing = YES;
+    
+    [[EffectHelper getInstance] scoreWithEffect: symbols];
+}
+
+-(void) stateSymbolsDidVanish: (NSArray*)symbols
+{
+    
+}
+
+-(void) stateSymbolsWillAdjusts
+{
+    
+}
+
+-(void) stateSymbolsDidAdjusts
+{
+    
+}
+
+-(void) stateSymbolsWillFillIn
+{
+    
+}
+
+-(void) stateSymbolsDidFillIn
+{
+    self.isSymbolsOnVAFSing = NO;
+}
+
+-(void) stateSymbolsWillSqueeze
+{
+    
+}
+
+-(void) stateSymbolsDidSqueeze
+{
+    self.isSymbolsOnVAFSing = NO;
+}
 
 @end

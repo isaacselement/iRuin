@@ -18,6 +18,8 @@
 #define Squeeze_Adjust @"Squeeze.Adjust"
 #define Squeeze_FillIn @"Squeeze.FillIn"
 
+#define FillAdvanceAdjustTime @"FillAdvanceAdjustTime"
+
 
 #define LINES @"LINES"
 #define INDEXPATHS @"INDEXPATHS"

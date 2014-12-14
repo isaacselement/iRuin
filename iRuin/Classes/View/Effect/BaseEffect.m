@@ -12,6 +12,10 @@
     ViewsInRepositoryPositionsHandler adjustViewsInVisualPositionsHandler;
     ViewsInRepositoryPositionsHandler rollInViewsInRepositoryPositionsHandler;
     ViewsInRepositoryPositionsHandler rollOutViewsInRepositoryPositionsHandler;
+    
+    
+    BOOL isSqueeze ;
+    double fillAdvanceAdjustTime ;
 }
 
 @synthesize event;
@@ -31,6 +35,10 @@
     adjustViewsInVisualPositionsHandler = [effectHelper adjustViewsInVisualPositionsHandler];;
     rollInViewsInRepositoryPositionsHandler = [effectHelper rollInViewsInRepositoryPositionsHandler];
     rollOutViewsInRepositoryPositionsHandler = [effectHelper rollOutViewsInRepositoryPositionsHandler];
+    
+    
+    isSqueeze = [DATA.config[Squeeze] boolValue];
+    fillAdvanceAdjustTime = [DATA.config[FillAdvanceAdjustTime] doubleValue];
 }
 
 -(void) effectUnInitialize
@@ -98,10 +106,14 @@
     if (!symbols) return;
     
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
-    NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
+    NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
+    
+    ACTION.gameState.vanishAmount += vanishViews.count;
+    
     for (NSInteger i = 0; i < vanishViews.count; i++) {
         SymbolView* symbol = vanishViews[i];
         if (symbol.row == -1 || symbol.column == -1) {
+            DLOG(@"ERROR!!!! ++++");
             continue;
         }
         int row = symbol.row;
@@ -115,7 +127,7 @@
     [VIEW.actionDurations clear];
     [self startSymbolsVanish: symbols];
     double vanishDuration = [VIEW.actionDurations take];
-    [event eventSymbolsWillVanish: vanishViews];
+    [event eventSymbolsWillVanish: symbols];
     [event performSelector: @selector(eventSymbolsDidVanish:) withObject:vanishViews afterDelay:vanishDuration];
     
     // adjust , fill or squeeze
@@ -125,7 +137,7 @@
 
 -(void) effectStartAdjustFillSqueeze: (NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
-    if ([DATA.config[Squeeze] boolValue]){
+    if (isSqueeze){
         
         [VIEW.actionDurations clear];
         [self startSymbolsSqueeze:vanishingViews vanishDuration:vanishDuration];
@@ -143,8 +155,14 @@
         [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidAdjusts) object:nil];
         [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustDuration];
         
+        // maybe no adjust, if the top line symbol vanish
+        double fillDelayTime = vanishDuration + adjustDuration;
+        if (adjustDuration != 0) {
+            fillDelayTime -= fillAdvanceAdjustTime;
+        }
+        
         [VIEW.actionDurations clear];
-        [self startSymbolsFillIn: vanishingViews delay:(vanishDuration + adjustDuration)];
+        [self startSymbolsFillIn: vanishingViews delay:fillDelayTime];
         double filInDuration = [VIEW.actionDurations take];
         [event eventSymbolsWillFillIn];
         [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidFillIn) object:nil];

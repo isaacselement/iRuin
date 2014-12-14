@@ -45,103 +45,86 @@
     }];
     
     VIEW.gameView.containerView.userInteractionEnabled = NO;
+    
+    [state stateSymbolsWillRollIn];
 }
 
 -(void) eventSymbolsDidRollIn
 {
+    DLog(@"eventSymbolsDidRollIn");
     [VIEW.gameView.timerView startTimer];
-    ACTION.gameState.isGameStarted = YES;
     
     VIEW.gameView.containerView.userInteractionEnabled = YES;
     
-    DLog(@"eventSymbolsDidRollIn");
+    [state stateSymbolsDidRollIn];
 }
 
 -(void) eventSymbolsWillRollOut
 {
     [VIEW.gameView.timerView pauseTimer];
-    ACTION.gameState.isGameStarted = NO;
+    
+    [state stateSymbolsWillRollOut];
 }
 
 -(void) eventSymbolsDidRollOut
 {
     DLog(@"eventSymbolsDidRollOut");
+    [state stateSymbolsDidRollOut];
 }
 
-//#ifdef DEBUG
-//static NSDate* startTime;
-//#endif
 -(void) eventSymbolsWillVanish: (NSArray*)symbols
 {
-//#ifdef DEBUG
-//    startTime = [NSDate date];
-//#endif
-    
-    ACTION.gameState.isSymbolsOnVAFSing = YES;
-    
-    ACTION.gameState.vanishAmount += symbols.count;
-    
-    
-    // caculate the score
-    int viewsCount = symbols.count;
-    if (viewsCount == MATCH_COUNT) {
-        return;
-    }
-    
-    int scoresCount = viewsCount - MATCH_COUNT;
-    NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
-    for (SymbolView* symbol in symbols) {
-        scoreLabel.number += symbol.score;
-    }
+    [state stateSymbolsWillVanish: symbols];
 }
 
 -(void) eventSymbolsDidVanish: (NSArray*)symbols
 {
-//#ifdef DEBUG
-//    DLog(@"eventSymbolsDidVanish duration: %f", [[NSDate date] timeIntervalSinceDate: startTime]);
-//#endif
-    
-    DLog(@"eventSymbolsDidVanish"); 
+    DLog(@"eventSymbolsDidVanish");
     
     for (SymbolView* symbol in symbols){
         // cause the view will be reused , so here we need to check ~~~~~~
+        // get the no reuse symbol to restore
         if (![QueueViewsHelper isViewsInVisualAreaContains: symbol]) {
             [symbol restore];
         }
     }
+    
+    [state stateSymbolsDidVanish: symbols];
 }
 
 
 
 -(void) eventSymbolsWillAdjusts
 {
-    
-}
--(void) eventSymbolsDidAdjusts
-{
-    DLog(@"eventSymbolsDidAdjusts");   
+    [state stateSymbolsWillAdjusts];
 }
 
+-(void) eventSymbolsDidAdjusts
+{
+    DLog(@"eventSymbolsDidAdjusts");
+    [state stateSymbolsDidAdjusts];
+}
 
 -(void) eventSymbolsWillFillIn
 {
-
+    [state stateSymbolsWillFillIn];
 }
+
 -(void) eventSymbolsDidFillIn
 {
-    ACTION.gameState.isSymbolsOnVAFSing = NO;
     DLog(@"eventSymbolsDidFillIn");
+    [state stateSymbolsDidFillIn];
 }
-
 
 -(void) eventSymbolsWillSqueeze
 {
-
+    [state stateSymbolsWillSqueeze];
 }
+
 -(void) eventSymbolsDidSqueeze
 {
-    ACTION.gameState.isSymbolsOnVAFSing = NO;
-    DLog(@"eventSymbolsDidSqueeze"); 
+    DLog(@"eventSymbolsDidSqueeze");
+    [state stateSymbolsDidSqueeze];
 }
 
 

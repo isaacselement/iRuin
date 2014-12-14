@@ -38,6 +38,13 @@
     }
 }
 
+-(void) eventSymbolsWillRollOut
+{
+    [super eventSymbolsWillRollOut];
+    
+    // cance the chain vanish
+    [NSObject cancelPreviousPerformRequestsWithTarget:(ChainableState*)self.state selector:@selector(stateStartChainVanish) object:nil];
+}
 
 
 -(void) eventSymbolsDidAdjusts
@@ -84,7 +91,6 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:(ChainableState*)self.state selector:@selector(stateStartChainVanish) object:nil];
     [(ChainableState*)self.state performSelector:@selector(stateStartChainVanish) withObject:nil afterDelay:0.2];
 }
-
 
 
 @end

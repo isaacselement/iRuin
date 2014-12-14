@@ -26,6 +26,9 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 #pragma mark - Bonus Effect
 
--(void) bonusEffectWithScore: (int)bonusScore;
+-(void) scoreWithEffect:(NSArray*)symbols;
+
+-(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous;
+
 
 @end

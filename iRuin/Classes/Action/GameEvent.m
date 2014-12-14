@@ -46,6 +46,8 @@
 
 -(void) gameStart
 {
+    ACTION.gameState.isGameStarted = YES;
+    
     [ACTION switchToMode: ACTION.gameState.currentMode chapter:ACTION.gameState.currentChapter];
     
     //
@@ -59,6 +61,8 @@
 
 -(void) gameBack
 {
+    ACTION.gameState.isGameStarted = NO;
+    
     [DATA unsetModeChapterConfig];
     
     ACTION.gameState.vanishAmount = 0;

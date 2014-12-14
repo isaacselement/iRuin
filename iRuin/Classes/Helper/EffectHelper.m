@@ -117,35 +117,89 @@ static EffectHelper* oneInstance = nil;
 
 #pragma mark - Bonus Effect
 
--(void) bonusEffectWithScore: (int)bonusScore
+-(void) scoreWithEffect:(NSArray*)symbols
 {
-    NumberLabel* scoreLabel = VIEW.gameView.scoreLabel;
-    
-    // bonus label
-    UILabel* bonusLabel = [[UILabel alloc] initWithFrame: CanvasRect(0, 0, 100, 100)];
-    bonusLabel.font = [UIFont systemFontOfSize: CanvasFontSize(100)];
-    bonusLabel.textColor = [ColorHelper parseColor:@(bonusScore)];
-    [scoreLabel addSubview: bonusLabel];
-    
-    scoreLabel.number += bonusScore;
-    
-    bonusLabel.text = [NSString stringWithFormat:@"+%d", bonusScore];
-    [bonusLabel adjustWidthToFontText];
-    bonusLabel.center = [scoreLabel middlePoint];
-    
-    [UIView transitionWithView: bonusLabel duration:0.6 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
+
+    int multiple = 1;
+    // touch and route not two dimension
+    if ([ArrayHelper isTwoDimension: symbols]) {
+        multiple = symbols.count;
         
-        bonusLabel.alpha = 0;
-        bonusLabel.layer.transform = CATransform3DMakeScale(3, 3, 3);
+    } else {
+        multiple = vanishViews.count - MATCH_COUNT;
         
-    } completion:^(BOOL finished) {
-        
-        [bonusLabel removeFromSuperview];
-        
-    }];
+    }
+    multiple = multiple <= 0 ? 1 : multiple;
+    
+    float totalScore = 0;
+    for (int i = 0; i < vanishViews.count; i++) {
+        SymbolView* symbol = vanishViews[i];
+        float score = symbol.score * multiple;
+        totalScore += score;
+    }
+    VIEW.gameView.scoreLabel.number += totalScore;
+    
+    NSString* iKey = [NSString stringWithFormat:@"%d", multiple];
+    if (multiple > 1) {
+        int plus = 0;
+        if (!DATA.config[@"Utilities"][@"VanishBonus"][iKey]) {
+            plus = multiple;
+        }
+        [self showBonusHint: DATA.config[@"Utilities"][@"VanishBonus"] key:iKey plus:plus];
+    }
+}
+
+-(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous
+{
+    NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
+
+    float totalScore = 0;
+    for (int i = 0; i < vanishViews.count; i++) {
+        SymbolView* symbol = vanishViews[i];
+        float score = symbol.score * continuous;
+        totalScore += score;
+    }
+    VIEW.gameView.scoreLabel.number += totalScore;
+    
+    NSString* iKey = [NSString stringWithFormat:@"%d", continuous];
+    [self showBonusHint: DATA.config[@"Utilities"][@"ChainBonus"] key:iKey plus:continuous];
 }
 
 
+
+
+
+-(void) showBonusHint: (NSDictionary*)configs key:(NSString*)key plus:(int)plus
+{
+    NSDictionary* config = configs[key];
+    if (! config) {
+        config = configs[@"default"];
+    }
+    if (configs[@"common"]) {
+        config = [DictionaryHelper combines:configs[@"common"] with:config];
+    }
+    
+    
+    GradientLabel* bonusLabel = [[GradientLabel alloc] init];
+    
+    [VIEW.actionDurations clear];
+    [ACTION.gameEffect designateValuesActionsTo: bonusLabel config:config];
+    double totalDuration = [VIEW.actionDurations take];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [bonusLabel.layer removeAllAnimations];
+        [bonusLabel removeFromSuperview];
+    });
+    
+    // center and add to view
+    if (plus >= 1) {
+        bonusLabel.text = [bonusLabel.text stringByAppendingFormat: @" %d", plus];
+    }
+    [bonusLabel adjustWidthToFontText];
+    [VIEW.gameView addSubview: bonusLabel];
+    bonusLabel.center = [VIEW.gameView middlePoint];
+}
 
 
 @end

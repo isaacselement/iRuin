@@ -3,6 +3,8 @@
 @interface ChainableState : BaseState
 
 
+@property (assign) BOOL isChainVanishing;
+
 
 #pragma mark - Public Methods
 

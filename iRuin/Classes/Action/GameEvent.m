@@ -65,12 +65,15 @@
     
     
     // show hint
-    int clearanceScore = 5 ; //300 + RANDOM(500);
+    int clearanceScore = [DATA.config[@"Utilities"][@"ClearanceScoreBase"] intValue]  + RANDOM([DATA.config[@"Utilities"][@"ClearanceScoreRandom"] intValue]);
+    if (clearanceScore == 0) {
+        clearanceScore = RANDOM(1000);
+    }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
     hud.userInteractionEnabled = NO;
     hud.mode = MBProgressHUDModeText;
-    hud.detailsLabelText = [NSString stringWithFormat: @"Season Clearance Score is %d", clearanceScore];
+    hud.detailsLabelText = [NSString stringWithFormat: @"This Season Clearance Score is %d", clearanceScore];
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay: 1 + RANDOM(3)];
     
@@ -111,42 +114,7 @@
 
 -(void) gameOver
 {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.dimBackground = YES;
-    hud.labelText = @"Game Over";
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay: 6];
-    
-    
-    NSString* message = nil;
-    int currentPlayChapterIndex = ACTION.gameState.currentChapter;
-    
-    float score = VIEW.gameView.scoreLabel.number;
-    int clearanceScore = ACTION.gameState.clearanceScore;
-    if (score >= ACTION.gameState.clearanceScore) {
-        
-        int userChapterIndex = [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
-        
-        if (currentPlayChapterIndex != userChapterIndex) {
-            message = [NSString stringWithFormat:@"Season %d already unlocked :)", currentPlayChapterIndex + 1];
-        } else {
-            userChapterIndex++;
-            [StandUserDefaults setObject: @(userChapterIndex) forKey:User_ChapterIndex];
-            message = [NSString stringWithFormat:@"Season %d now unlocked :)", userChapterIndex];
-        }
-    } else {
-        message = [NSString stringWithFormat:@"No new season unlocked :("];
-    }
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        hud.detailsLabelText = [NSString stringWithFormat:@"You got %.0f, clearance is %d", score, clearanceScore];
-    });
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        hud.labelText = message;
-        hud.detailsLabelText = nil;
-    });
+    [[EffectHelper getInstance] showPassedSeasonHint:6 title:@"Game Over" scoreDelay:1 messageDelay:3.5];
     
     [self performSelector:@selector(gameBack) withObject:nil afterDelay: 1];
 }

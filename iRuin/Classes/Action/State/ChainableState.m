@@ -14,6 +14,9 @@
     self.isSymbolsOnVAFSing = YES;
     
     if (self.isChainVanishing) {
+        
+        continuous++;
+        
         [[EffectHelper getInstance] chainScoreWithEffect: symbols continuous:continuous];
     } else {
         [[EffectHelper getInstance] scoreWithEffect: symbols];
@@ -43,12 +46,9 @@
         return;
     }
     
-    if (vanishSymbols) {
-        continuous++;
-    }
-    
-    
     // then start , the vanish symbols maybe nil ~~~
+    // in effectStartVanish: , if nil , then return
+    // if you want no vanish and start adjust or fill , just call their method directly
     DLog(@"--- stateStartChainVanish");
     self.isChainVanishing = YES;
     [self.effect effectStartVanish: vanishSymbols];

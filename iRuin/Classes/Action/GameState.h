@@ -21,6 +21,7 @@
 
 @property (assign) int clearanceScore;
 
+@property (assign) BOOL isClearanced;
 
 
 

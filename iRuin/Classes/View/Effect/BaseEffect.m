@@ -102,7 +102,7 @@
 
 -(void)effectStartVanish: (NSArray*)symbols
 {
-    // two dimension or one dimension
+    // two dimension or one dimension, nil return
     if (!symbols) return;
     
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;

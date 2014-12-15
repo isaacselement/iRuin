@@ -128,6 +128,8 @@
 
 #import "TimerView.h"
 
+#import "ScoreLabel.h"
+
 
 #import "SymbolView.h"
 #import "GradientImageView.h"

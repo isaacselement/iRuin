@@ -34,7 +34,7 @@
         };
         
         // score label
-        scoreLabel = [[NumberLabel alloc] init];
+        scoreLabel = [[ScoreLabel alloc] init];
         [self addSubview: scoreLabel];
         
         // season label

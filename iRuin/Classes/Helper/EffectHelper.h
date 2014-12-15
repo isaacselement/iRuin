@@ -31,4 +31,8 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 -(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous;
 
 
+
+-(void) showPassedSeasonHint:(int)hideDelay title:(NSString*)title scoreDelay:(int)scoreDelay messageDelay:(int)messageDelay;
+
+
 @end

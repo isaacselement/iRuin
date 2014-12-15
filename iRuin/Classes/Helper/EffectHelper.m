@@ -1,6 +1,10 @@
 #import "EffectHelper.h"
 #import "AppInterface.h"
 
+
+#define SeasonHintHudTag 2008
+
+
 @implementation EffectHelper
 {
     // queue views positions handler
@@ -132,13 +136,7 @@ static EffectHelper* oneInstance = nil;
     }
     multiple = multiple <= 0 ? 1 : multiple;
     
-    float totalScore = 0;
-    for (int i = 0; i < vanishViews.count; i++) {
-        SymbolView* symbol = vanishViews[i];
-        float score = symbol.score * multiple;
-        totalScore += score;
-    }
-    VIEW.gameView.scoreLabel.number += totalScore;
+    [self caculateTheScore: vanishViews multiple:multiple];
     
     NSString* iKey = [NSString stringWithFormat:@"%d", multiple];
     if (multiple > 1) {
@@ -154,18 +152,97 @@ static EffectHelper* oneInstance = nil;
 {
     NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
 
-    float totalScore = 0;
-    for (int i = 0; i < vanishViews.count; i++) {
-        SymbolView* symbol = vanishViews[i];
-        float score = symbol.score * continuous;
-        totalScore += score;
-    }
-    VIEW.gameView.scoreLabel.number += totalScore;
+    [self caculateTheScore: vanishViews multiple:continuous];
     
     NSString* iKey = [NSString stringWithFormat:@"%d", continuous];
     [self showBonusHint: DATA.config[@"Utilities"][@"ChainBonus"] key:iKey plus:continuous];
 }
 
+
+
+-(void) caculateTheScore: (NSArray*)vanishViews multiple:(int)multiple
+{
+    float totalScore = 0;
+    for (int i = 0; i < vanishViews.count; i++) {
+        SymbolView* symbol = vanishViews[i];
+        float score = symbol.score * multiple;
+        totalScore += score;
+    }
+    VIEW.gameView.scoreLabel.number += totalScore;
+    
+    // check if passed this season
+    if (VIEW.gameView.scoreLabel.number >= ACTION.gameState.clearanceScore) {
+        
+        MBProgressHUD* hud = nil;
+        if (!ACTION.gameState.isClearanced) {
+            hud = [self getPassedSeasonHint: 4];
+        }
+        [self showSeasonHud: hud title:@"Congratulations" scoreDelay:0 messageDelay:2];
+        
+        ACTION.gameState.isClearanced = YES;
+    } else {
+        ACTION.gameState.isClearanced = NO;
+    }
+}
+
+
+
+
+-(void) showPassedSeasonHint:(int)hideDelay title:(NSString*)title scoreDelay:(int)scoreDelay messageDelay:(int)messageDelay
+{
+    MBProgressHUD *hud = [self getPassedSeasonHint: hideDelay];
+    [self showSeasonHud: hud title:title scoreDelay:scoreDelay messageDelay:messageDelay];
+}
+
+-(MBProgressHUD*) getPassedSeasonHint: (int)hideDelay
+{
+    MBProgressHUD *hud = (MBProgressHUD*)[[ViewHelper getTopView] viewWithTag:SeasonHintHudTag];
+    if (!hud) {
+        hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
+        hud.tag = SeasonHintHudTag;
+        hud.userInteractionEnabled = NO;
+        
+        hud.mode = MBProgressHUDModeText;
+        hud.dimBackground = YES;
+        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay: hideDelay];
+    }
+    return hud;
+}
+
+-(void) showSeasonHud: (MBProgressHUD*)hud title:(NSString*)title scoreDelay:(int)scoreDelay messageDelay:(int)messageDelay
+{
+    if (!hud) {
+        hud = (MBProgressHUD*)[[ViewHelper getTopView] viewWithTag:SeasonHintHudTag];
+    }
+    if (!hud) return;
+    
+    hud.labelText = title;
+    
+    NSString* message = nil;
+    if (VIEW.gameView.scoreLabel.number >= ACTION.gameState.clearanceScore) {
+        if (ACTION.gameState.currentChapter != [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]) {
+            message = [NSString stringWithFormat:@"Season %d already unlocked :)", ACTION.gameState.currentChapter + 1];
+        } else {
+            [StandUserDefaults setObject: @(ACTION.gameState.currentChapter + 1) forKey:User_ChapterIndex];  // do no put this in delay, important!!!
+            [VIEW.chaptersView.lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
+            
+            message = [NSString stringWithFormat:@"Season %d now unlocked :)", [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
+        }
+        
+    } else {
+        message = [NSString stringWithFormat:@"No new season unlocked :("];
+    }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(scoreDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        hud.detailsLabelText = [NSString stringWithFormat:@"You got %.0f, clearance is %d", VIEW.gameView.scoreLabel.number, ACTION.gameState.clearanceScore];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(messageDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        hud.labelText = message;
+        hud.detailsLabelText = nil;
+    });
+}
 
 
 

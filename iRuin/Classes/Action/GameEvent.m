@@ -23,7 +23,7 @@
     [lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
     
     lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollViewObj, int index) {
-        int minimalIndex = NSIntegerMin;
+        NSInteger minimalIndex = NSIntegerMin;
         if (DATA.config[@"Utilities"][@"ChaptersMinimalIndex"]) {
             minimalIndex = [DATA.config[@"Utilities"][@"ChaptersMinimalIndex"] intValue];
         }
@@ -126,15 +126,6 @@
     [effect effectStartRollOut];
     double duration = [VIEW.actionDurations take];
     [effect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:duration];
-}
-
-
-
--(void) gameChat
-{
-    NSString* title = VIEW.gameView.seasonLabel.text;
-    NSString* uniqueKey = [NSString stringWithFormat:@"%@.%d",IRuin_Bundle_ID, ACTION.gameState.currentChapter];
-    [[InAppIMNavgationController sharedInstance] showWithTilte:title uniqueKey:uniqueKey];
 }
 
 

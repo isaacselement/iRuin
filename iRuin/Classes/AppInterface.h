@@ -31,12 +31,6 @@
 #import "MXAudioPlayerFadeOperation.h"
 
 
-
-//InAppIMSDK
-#import "InAppIM.h"
-
-
-
 // Third-Party
 #import "FBShimmeringView.h"
 #import "PPSSignatureView.h"

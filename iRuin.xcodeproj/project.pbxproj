@@ -200,8 +200,6 @@
 		4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75EA91A00F5A00074E493 /* BaseController.m */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
 		4EF7F54B1A06167F0096949F /* AudiosExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F54A1A06167F0096949F /* AudiosExecutor.m */; };
-		4EF7F5541A061FEA0096949F /* InAppIMNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F5511A061FEA0096949F /* InAppIMNavgationController.m */; };
-		4EF7F5551A061FEA0096949F /* InAppIMRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F5531A061FEA0096949F /* InAppIMRootController.m */; };
 		5E34ED341A3E785E00022E45 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E34ED331A3E785E00022E45 /* ScoreLabel.m */; };
 		5E537BE91A3DDEB300C3F5A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE71A3DDEB300C3F5A7 /* Icon.png */; };
 		5E537BEA1A3DDEB300C3F5A7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */; };
@@ -268,20 +266,9 @@
 		5E9C11C21A3420B3007E3BB6 /* Pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11821A3420B3007E3BB6 /* Pop.aiff */; };
 		5E9C11C31A3420B3007E3BB6 /* Tink.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11831A3420B3007E3BB6 /* Tink.caf */; };
 		5E9C11C41A3420B3007E3BB6 /* Tock.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11841A3420B3007E3BB6 /* Tock.caf */; };
-		5E9C11E41A342227007E3BB6 /* AllSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C11C71A342227007E3BB6 /* AllSDKManager.m */; };
-		5E9C11E51A342227007E3BB6 /* IAISimplePrivateUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C11CB1A342227007E3BB6 /* IAISimplePrivateUserInfo.m */; };
-		5E9C11E61A342227007E3BB6 /* IAISimpleRoomInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C11CD1A342227007E3BB6 /* IAISimpleRoomInfo.m */; };
-		5E9C11E71A342227007E3BB6 /* IAITopNavSkin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C11CF1A342227007E3BB6 /* IAITopNavSkin.m */; };
-		5E9C11E81A342227007E3BB6 /* IAIWelcomeMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C11D11A342227007E3BB6 /* IAIWelcomeMessageData.m */; };
-		5E9C11E91A342227007E3BB6 /* InAppIM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11DA1A342227007E3BB6 /* InAppIM.ttf */; };
-		5E9C11EA1A342227007E3BB6 /* InAppIMSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C11DB1A342227007E3BB6 /* InAppIMSDK.a */; };
-		5E9C11EB1A342227007E3BB6 /* InAppIMSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11DC1A342227007E3BB6 /* InAppIMSDKBundle.bundle */; };
-		5E9C11EC1A342227007E3BB6 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C11DE1A342227007E3BB6 /* libWeiboSDK.a */; };
-		5E9C11ED1A342227007E3BB6 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11DF1A342227007E3BB6 /* WeiboSDK.bundle */; };
-		5E9C11EE1A342227007E3BB6 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C11E21A342227007E3BB6 /* TencentOpenAPI.framework */; };
-		5E9C11EF1A342227007E3BB6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11E31A342227007E3BB6 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		5EBDCC1C1A38102F0002636F /* ScheduledHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */; };
 		5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EBDCC1D1A38210C0002636F /* Background_000.png */; };
+		5EC906241A3EE06B009AE1CA /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC906231A3EE06B009AE1CA /* CoreDataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -677,11 +664,6 @@
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
 		4EF7F5491A06167F0096949F /* AudiosExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudiosExecutor.h; sourceTree = "<group>"; };
 		4EF7F54A1A06167F0096949F /* AudiosExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudiosExecutor.m; sourceTree = "<group>"; };
-		4EF7F54F1A061FEA0096949F /* InAppIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIM.h; sourceTree = "<group>"; };
-		4EF7F5501A061FEA0096949F /* InAppIMNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMNavgationController.h; sourceTree = "<group>"; };
-		4EF7F5511A061FEA0096949F /* InAppIMNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppIMNavgationController.m; sourceTree = "<group>"; };
-		4EF7F5521A061FEA0096949F /* InAppIMRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMRootController.h; sourceTree = "<group>"; };
-		4EF7F5531A061FEA0096949F /* InAppIMRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppIMRootController.m; sourceTree = "<group>"; };
 		5E34ED321A3E785E00022E45 /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
 		5E34ED331A3E785E00022E45 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
 		5E537BE71A3DDEB300C3F5A7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -749,35 +731,11 @@
 		5E9C11821A3420B3007E3BB6 /* Pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Pop.aiff; sourceTree = "<group>"; };
 		5E9C11831A3420B3007E3BB6 /* Tink.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tink.caf; sourceTree = "<group>"; };
 		5E9C11841A3420B3007E3BB6 /* Tock.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tock.caf; sourceTree = "<group>"; };
-		5E9C11C61A342227007E3BB6 /* AllSDKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllSDKManager.h; sourceTree = "<group>"; };
-		5E9C11C71A342227007E3BB6 /* AllSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllSDKManager.m; sourceTree = "<group>"; };
-		5E9C11C81A342227007E3BB6 /* CConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CConfigs.h; sourceTree = "<group>"; };
-		5E9C11CA1A342227007E3BB6 /* IAISimplePrivateUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAISimplePrivateUserInfo.h; sourceTree = "<group>"; };
-		5E9C11CB1A342227007E3BB6 /* IAISimplePrivateUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAISimplePrivateUserInfo.m; sourceTree = "<group>"; };
-		5E9C11CC1A342227007E3BB6 /* IAISimpleRoomInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAISimpleRoomInfo.h; sourceTree = "<group>"; };
-		5E9C11CD1A342227007E3BB6 /* IAISimpleRoomInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAISimpleRoomInfo.m; sourceTree = "<group>"; };
-		5E9C11CE1A342227007E3BB6 /* IAITopNavSkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAITopNavSkin.h; sourceTree = "<group>"; };
-		5E9C11CF1A342227007E3BB6 /* IAITopNavSkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAITopNavSkin.m; sourceTree = "<group>"; };
-		5E9C11D01A342227007E3BB6 /* IAIWelcomeMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIWelcomeMessageData.h; sourceTree = "<group>"; };
-		5E9C11D11A342227007E3BB6 /* IAIWelcomeMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAIWelcomeMessageData.m; sourceTree = "<group>"; };
-		5E9C11D31A342227007E3BB6 /* IAICreateRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAICreateRoom.h; sourceTree = "<group>"; };
-		5E9C11D41A342227007E3BB6 /* IAIExtDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIExtDef.h; sourceTree = "<group>"; };
-		5E9C11D51A342227007E3BB6 /* IAIHeadDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIHeadDefs.h; sourceTree = "<group>"; };
-		5E9C11D61A342227007E3BB6 /* IAIMessageStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIMessageStruct.h; sourceTree = "<group>"; };
-		5E9C11D71A342227007E3BB6 /* IAIPrivateUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAIPrivateUserInfo.h; sourceTree = "<group>"; };
-		5E9C11D81A342227007E3BB6 /* IAITopSkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAITopSkin.h; sourceTree = "<group>"; };
-		5E9C11D91A342227007E3BB6 /* InAppIMSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppIMSDK.h; sourceTree = "<group>"; };
-		5E9C11DA1A342227007E3BB6 /* InAppIM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InAppIM.ttf; sourceTree = "<group>"; };
-		5E9C11DB1A342227007E3BB6 /* InAppIMSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = InAppIMSDK.a; sourceTree = "<group>"; };
-		5E9C11DC1A342227007E3BB6 /* InAppIMSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppIMSDKBundle.bundle; sourceTree = "<group>"; };
-		5E9C11DE1A342227007E3BB6 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
-		5E9C11DF1A342227007E3BB6 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
-		5E9C11E01A342227007E3BB6 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
-		5E9C11E21A342227007E3BB6 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
-		5E9C11E31A342227007E3BB6 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		5EBDCC1A1A38102F0002636F /* ScheduledHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduledHelper.h; sourceTree = "<group>"; };
 		5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduledHelper.m; sourceTree = "<group>"; };
 		5EBDCC1D1A38210C0002636F /* Background_000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_000.png; sourceTree = "<group>"; };
+		5EC906221A3EE06B009AE1CA /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		5EC906231A3EE06B009AE1CA /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -786,19 +744,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EAEBF501A132665001D212C /* GLKit.framework in Frameworks */,
-				5E9C11EC1A342227007E3BB6 /* libWeiboSDK.a in Frameworks */,
 				4EAEBF511A132665001D212C /* OpenGLES.framework in Frameworks */,
 				4EA5C08219EFC32400008EED /* AddressBook.framework in Frameworks */,
 				4EA5C08319EFC32400008EED /* AddressBookUI.framework in Frameworks */,
 				4EA5C07F19EFC31800008EED /* AVFoundation.framework in Frameworks */,
 				4EA5C07D19EFC31100008EED /* CoreAudio.framework in Frameworks */,
-				5E9C11EE1A342227007E3BB6 /* TencentOpenAPI.framework in Frameworks */,
 				4EA5C07B19EFC30700008EED /* MediaPlayer.framework in Frameworks */,
 				4EA5C07919EFC2FE00008EED /* CFNetwork.framework in Frameworks */,
 				4EA5C07719EFC2F600008EED /* AssetsLibrary.framework in Frameworks */,
 				4EA5C07519EFC2EC00008EED /* SystemConfiguration.framework in Frameworks */,
 				4EA5C07319EFC2DB00008EED /* CoreLocation.framework in Frameworks */,
-				5E9C11EA1A342227007E3BB6 /* InAppIMSDK.a in Frameworks */,
 				4EA5C07119EFC2D300008EED /* MobileCoreServices.framework in Frameworks */,
 				4EA5C06F19EFC2CA00008EED /* MapKit.framework in Frameworks */,
 				4EA5C06D19EFC2C500008EED /* AudioToolbox.framework in Frameworks */,
@@ -938,9 +893,7 @@
 		4E4D4E8F181D5AFB00886D75 /* iRuin */ = {
 			isa = PBXGroup;
 			children = (
-				5E9C11C51A342227007E3BB6 /* InAppIMSDK1.0.0 */,
 				5E9C113C1A3420B3007E3BB6 /* iRuinResources */,
-				4EF7F54E1A061FEA0096949F /* InAppIM */,
 				4EE5FB0519D858DC005E8736 /* Modules */,
 				4E4D4EB8181D5B3C00886D75 /* Classes */,
 				4E4D4E98181D5AFB00886D75 /* AppDelegate.h */,
@@ -1143,6 +1096,7 @@
 		4EE5FB0E19D858DC005E8736 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5EC906211A3EE059009AE1CA /* CoreData */,
 				4EE635891A234F3100019C58 /* SSZipArchive */,
 				4EE5FB0F19D858DC005E8736 /* _Data.h */,
 				4EE5FB1019D858DC005E8736 /* Crypto */,
@@ -1715,18 +1669,6 @@
 			path = Effect;
 			sourceTree = "<group>";
 		};
-		4EF7F54E1A061FEA0096949F /* InAppIM */ = {
-			isa = PBXGroup;
-			children = (
-				4EF7F54F1A061FEA0096949F /* InAppIM.h */,
-				4EF7F5501A061FEA0096949F /* InAppIMNavgationController.h */,
-				4EF7F5511A061FEA0096949F /* InAppIMNavgationController.m */,
-				4EF7F5521A061FEA0096949F /* InAppIMRootController.h */,
-				4EF7F5531A061FEA0096949F /* InAppIMRootController.m */,
-			);
-			path = InAppIM;
-			sourceTree = "<group>";
-		};
 		5E9C113C1A3420B3007E3BB6 /* iRuinResources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1865,70 +1807,13 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		5E9C11C51A342227007E3BB6 /* InAppIMSDK1.0.0 */ = {
+		5EC906211A3EE059009AE1CA /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				5E9C11C61A342227007E3BB6 /* AllSDKManager.h */,
-				5E9C11C71A342227007E3BB6 /* AllSDKManager.m */,
-				5E9C11C81A342227007E3BB6 /* CConfigs.h */,
-				5E9C11C91A342227007E3BB6 /* Datas */,
-				5E9C11D21A342227007E3BB6 /* Heads */,
-				5E9C11DA1A342227007E3BB6 /* InAppIM.ttf */,
-				5E9C11DB1A342227007E3BB6 /* InAppIMSDK.a */,
-				5E9C11DC1A342227007E3BB6 /* InAppIMSDKBundle.bundle */,
-				5E9C11DD1A342227007E3BB6 /* libWeiboSDK */,
-				5E9C11E11A342227007E3BB6 /* TencentSDK */,
+				5EC906221A3EE06B009AE1CA /* CoreDataManager.h */,
+				5EC906231A3EE06B009AE1CA /* CoreDataManager.m */,
 			);
-			name = InAppIMSDK1.0.0;
-			path = ../../../InAppIMSDK1.0.0;
-			sourceTree = "<group>";
-		};
-		5E9C11C91A342227007E3BB6 /* Datas */ = {
-			isa = PBXGroup;
-			children = (
-				5E9C11CA1A342227007E3BB6 /* IAISimplePrivateUserInfo.h */,
-				5E9C11CB1A342227007E3BB6 /* IAISimplePrivateUserInfo.m */,
-				5E9C11CC1A342227007E3BB6 /* IAISimpleRoomInfo.h */,
-				5E9C11CD1A342227007E3BB6 /* IAISimpleRoomInfo.m */,
-				5E9C11CE1A342227007E3BB6 /* IAITopNavSkin.h */,
-				5E9C11CF1A342227007E3BB6 /* IAITopNavSkin.m */,
-				5E9C11D01A342227007E3BB6 /* IAIWelcomeMessageData.h */,
-				5E9C11D11A342227007E3BB6 /* IAIWelcomeMessageData.m */,
-			);
-			path = Datas;
-			sourceTree = "<group>";
-		};
-		5E9C11D21A342227007E3BB6 /* Heads */ = {
-			isa = PBXGroup;
-			children = (
-				5E9C11D31A342227007E3BB6 /* IAICreateRoom.h */,
-				5E9C11D41A342227007E3BB6 /* IAIExtDef.h */,
-				5E9C11D51A342227007E3BB6 /* IAIHeadDefs.h */,
-				5E9C11D61A342227007E3BB6 /* IAIMessageStruct.h */,
-				5E9C11D71A342227007E3BB6 /* IAIPrivateUserInfo.h */,
-				5E9C11D81A342227007E3BB6 /* IAITopSkin.h */,
-				5E9C11D91A342227007E3BB6 /* InAppIMSDK.h */,
-			);
-			path = Heads;
-			sourceTree = "<group>";
-		};
-		5E9C11DD1A342227007E3BB6 /* libWeiboSDK */ = {
-			isa = PBXGroup;
-			children = (
-				5E9C11DE1A342227007E3BB6 /* libWeiboSDK.a */,
-				5E9C11DF1A342227007E3BB6 /* WeiboSDK.bundle */,
-				5E9C11E01A342227007E3BB6 /* WeiboSDK.h */,
-			);
-			path = libWeiboSDK;
-			sourceTree = "<group>";
-		};
-		5E9C11E11A342227007E3BB6 /* TencentSDK */ = {
-			isa = PBXGroup;
-			children = (
-				5E9C11E21A342227007E3BB6 /* TencentOpenAPI.framework */,
-				5E9C11E31A342227007E3BB6 /* TencentOpenApi_IOS_Bundle.bundle */,
-			);
-			path = TencentSDK;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2022,7 +1907,6 @@
 				5E9C11AC1A3420B3007E3BB6 /* unMute_h.png in Resources */,
 				4EE5FC0D19D858DD005E8736 /* rsa_public_key.pem in Resources */,
 				5E9C11B51A3420B3007E3BB6 /* Icon-57.png in Resources */,
-				5E9C11EF1A342227007E3BB6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				5E9C11C41A3420B3007E3BB6 /* Tock.caf in Resources */,
 				5E9C11A61A3420B3007E3BB6 /* pause_h.png in Resources */,
 				5E9C11941A3420B3007E3BB6 /* Background_002.png in Resources */,
@@ -2048,7 +1932,6 @@
 				5E9C11981A3420B3007E3BB6 /* Background_006.png in Resources */,
 				5E9C11C31A3420B3007E3BB6 /* Tink.caf in Resources */,
 				5E9C11A91A3420B3007E3BB6 /* resume.png in Resources */,
-				5E9C11ED1A342227007E3BB6 /* WeiboSDK.bundle in Resources */,
 				5E537BEA1A3DDEB300C3F5A7 /* Icon@2x.png in Resources */,
 				5E9C118C1A3420B3007E3BB6 /* iPad_Landscape.json in Resources */,
 				5E9C11B11A3420B3007E3BB6 /* Default-568h@2x.png in Resources */,
@@ -2060,7 +1943,6 @@
 				5E9C11C01A3420B3007E3BB6 /* lock.caf in Resources */,
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
 				4EE5FC0919D858DD005E8736 /* private_key.p12 in Resources */,
-				5E9C11E91A342227007E3BB6 /* InAppIM.ttf in Resources */,
 				5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */,
 				5E9C119F1A3420B3007E3BB6 /* back.png in Resources */,
 				5E9C11961A3420B3007E3BB6 /* Background_004.png in Resources */,
@@ -2069,7 +1951,6 @@
 				5E9C11AA1A3420B3007E3BB6 /* resume_h.png in Resources */,
 				5E9C11B21A3420B3007E3BB6 /* Default-Landscape.png in Resources */,
 				5E9C11911A3420B3007E3BB6 /* Portrait.json in Resources */,
-				5E9C11EB1A342227007E3BB6 /* InAppIMSDKBundle.bundle in Resources */,
 				5E9C11901A3420B3007E3BB6 /* Landscape.json in Resources */,
 				5E9C118E1A3420B3007E3BB6 /* iPhone_Landscape.json in Resources */,
 				5E9C11B81A3420B3007E3BB6 /* Icon-Small-50.png in Resources */,
@@ -2117,7 +1998,6 @@
 				4EE5FC4F19D858DD005E8736 /* NormalLabel.m in Sources */,
 				4E14BC5719225AF7000CDB57 /* PullState.m in Sources */,
 				4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */,
-				5E9C11E81A342227007E3BB6 /* IAIWelcomeMessageData.m in Sources */,
 				4E11D8DE181FE4F6007837F0 /* GameView.m in Sources */,
 				4EE5FC5419D858DD005E8736 /* ZoomablePanView.m in Sources */,
 				4EE5FC2519D858DD005E8736 /* SQLiteManager.m in Sources */,
@@ -2126,7 +2006,6 @@
 				4EE5FC5819D858DD005E8736 /* HeaderSearchTableView.m in Sources */,
 				4EE5FC2C19D858DD005E8736 /* IterateHelper.m in Sources */,
 				4EF75E8D1A00B8AC0074E493 /* UIImage+Additions.m in Sources */,
-				5E9C11E61A342227007E3BB6 /* IAISimpleRoomInfo.m in Sources */,
 				4EE5FC3219D858DD005E8736 /* ColorHelper.m in Sources */,
 				4EE5FC5F19D858DD005E8736 /* RotatableViewController.m in Sources */,
 				4EE5FC1D19D858DD005E8736 /* LocalizeFileManager.m in Sources */,
@@ -2139,7 +2018,6 @@
 				4EE5FC4519D858DD005E8736 /* QueueExecutorBase.m in Sources */,
 				4EF75E881A00B86A0074E493 /* NSDate+Additions.m in Sources */,
 				4EE5FC2A19D858DD005E8736 /* CollectionHelper.m in Sources */,
-				5E9C11E71A342227007E3BB6 /* IAITopNavSkin.m in Sources */,
 				4EE635991A234F3100019C58 /* zip.c in Sources */,
 				4EE5FC1E19D858DD005E8736 /* HTTPGetRequest.m in Sources */,
 				4EE5FC2819D858DD005E8736 /* ArrayHelper.m in Sources */,
@@ -2171,18 +2049,16 @@
 				4E4D4EC0181D5B8400886D75 /* ActionManager.m in Sources */,
 				4EE5FC4919D858DD005E8736 /* QueueTimeCalculator.m in Sources */,
 				4EF7F54B1A06167F0096949F /* AudiosExecutor.m in Sources */,
-				5E9C11E51A342227007E3BB6 /* IAISimplePrivateUserInfo.m in Sources */,
-				5E9C11E41A342227007E3BB6 /* AllSDKManager.m in Sources */,
 				4EE635981A234F3100019C58 /* unzip.c in Sources */,
 				4EE5FC1B19D858DD005E8736 /* FileManager.m in Sources */,
 				4EE5FC2D19D858DD005E8736 /* DateHelper.m in Sources */,
 				4EE5FC0C19D858DD005E8736 /* rsa_main.m in Sources */,
+				5EC906241A3EE06B009AE1CA /* CoreDataManager.m in Sources */,
 				4EE5FC3C19D858DD005E8736 /* ActionExecutorBase.m in Sources */,
 				4EE5FC3319D858DD005E8736 /* ImageHelper.m in Sources */,
 				4E4D4E96181D5AFB00886D75 /* main.m in Sources */,
 				4EE5FC4319D858DD005E8736 /* TextFormatter.m in Sources */,
 				4EE5FC1619D858DD005E8736 /* CHCSVParser.m in Sources */,
-				4EF7F5551A061FEA0096949F /* InAppIMRootController.m in Sources */,
 				4EF6641F19F40A4A00C2B9FC /* ExplodesExecutor.m in Sources */,
 				4E71D40818BF80D200270180 /* RouteEvent.m in Sources */,
 				4E8067C518C3678B00AF71B5 /* RouteEffect.m in Sources */,
@@ -2247,7 +2123,6 @@
 				4EDE1EC41A1C3BE000865CE5 /* MXAudioPlayerFadeOperation.m in Sources */,
 				4EE5FC6119D858DD005E8736 /* FrameHelper.m in Sources */,
 				4E8067BF18C35C8A00AF71B5 /* BaseState.m in Sources */,
-				4EF7F5541A061FEA0096949F /* InAppIMNavgationController.m in Sources */,
 				4EE5FC2619D858DD005E8736 /* CharacterSetHelper.m in Sources */,
 				4EE635971A234F3100019C58 /* mztools.c in Sources */,
 				4ECB2A0E19FA5F5600D60219 /* ElementsExecutor.m in Sources */,
@@ -2380,6 +2255,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "1ddaa752-74d8-4d31-b332-e1c47b083e13";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2395,7 +2271,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jun Shen (TD97K9TR7H)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/suchavision/Workspaces/Xcode/InAppIMSDK1.0.0/TencentSDK,
+					/Users/suchavision/Workspaces/IOS/InAppIMSDK1.0.0/TencentSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iRuin/iRuin-Prefix.pch";
@@ -2404,18 +2280,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/suchavision/Workspaces/Xcode/InAppIMSDK1.0.0,
-					/Users/suchavision/Workspaces/Xcode/InAppIMSDK1.0.0/libWeiboSDK,
+					/Users/suchavision/Workspaces/IOS/InAppIMSDK1.0.0,
+					/Users/suchavision/Workspaces/IOS/InAppIMSDK1.0.0/libWeiboSDK,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "bea7030d-9bbe-4991-8573-7224130b96c5";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2428,7 +2304,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jun Shen (TD97K9TR7H)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/suchavision/Workspaces/Xcode/InAppIMSDK1.0.0/TencentSDK,
+					/Users/suchavision/Workspaces/IOS/InAppIMSDK1.0.0/TencentSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iRuin/iRuin-Prefix.pch";
@@ -2436,18 +2312,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/suchavision/Workspaces/Xcode/InAppIMSDK1.0.0,
-					/Users/suchavision/Workspaces/Xcode/InAppIMSDK1.0.0/libWeiboSDK,
+					/Users/suchavision/Workspaces/IOS/InAppIMSDK1.0.0,
+					/Users/suchavision/Workspaces/IOS/InAppIMSDK1.0.0/libWeiboSDK,
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "bea7030d-9bbe-4991-8573-7224130b96c5";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

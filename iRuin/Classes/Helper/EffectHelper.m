@@ -128,10 +128,10 @@ static EffectHelper* oneInstance = nil;
     int multiple = 1;
     // touch and route not two dimension
     if ([ArrayHelper isTwoDimension: symbols]) {
-        multiple = symbols.count;
+        multiple = (int)symbols.count;
         
     } else {
-        multiple = vanishViews.count - MATCH_COUNT;
+        multiple = (int)vanishViews.count - MATCH_COUNT;
         
     }
     multiple = multiple <= 0 ? 1 : multiple;

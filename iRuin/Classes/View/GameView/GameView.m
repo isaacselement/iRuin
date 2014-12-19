@@ -14,7 +14,6 @@
 @synthesize backActionView;
 @synthesize pauseActionView;
 @synthesize refreshActionView;
-@synthesize chatActionView;
 
 
 - (id)init
@@ -88,14 +87,6 @@
             [ACTION.gameEvent gameRefresh];
         };
         [self addSubview: refreshActionView];
-        
-        
-        // chat
-        chatActionView = [[InteractiveView alloc] init];
-        chatActionView.imageView.didEndTouchAction = ^void(InteractiveImageView* view) {
-            [ACTION.gameEvent gameChat];
-        };
-        [self addSubview: chatActionView];
     }
     return self;
 }

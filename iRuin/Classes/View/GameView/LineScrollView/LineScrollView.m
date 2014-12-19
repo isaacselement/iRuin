@@ -272,7 +272,7 @@
 
 -(int) indexOfVisibleCell: (LineScrollViewCell*)cell
 {
-    return [contentView.subviews indexOfObject: cell] + [self mostLeftIndex];
+    return (int)[contentView.subviews indexOfObject: cell] + [self mostLeftIndex];
 }
 
 

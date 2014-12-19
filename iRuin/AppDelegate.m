@@ -32,9 +32,6 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     [ACTION launchAppProcedures];
     
-    
-    [[InAppIMNavgationController sharedInstance] initInAppIMSDK:application didFinishLaunchingWithOptions:launchOptions];
-    
     return YES;
 }
 
@@ -53,8 +50,6 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-
-    [[InAppIMNavgationController sharedInstance] applicationWillEnterForeground:application];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -65,29 +60,23 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    
-    [[InAppIMNavgationController sharedInstance] applicationDidEnterBackground:application];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    [[InAppIMNavgationController sharedInstance] handleRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    [[InAppIMNavgationController sharedInstance] handleFailToRegisterForRemoteNotificationsWithError:error];
+
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    [[InAppIMNavgationController sharedInstance] application:application didReceiveRemoteNotification:userInfo ];
+
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return [[InAppIMNavgationController sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-}
 
 
 

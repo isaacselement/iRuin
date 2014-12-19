@@ -16,6 +16,4 @@
 
 -(void) gameRefresh;
 
--(void) gameChat;
-
 @end

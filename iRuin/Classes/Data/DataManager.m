@@ -37,10 +37,9 @@ static DataManager* sharedInstance = nil;
 
 -(void) initializeWithData 
 {
-        
     // set dictionary combine handler
     [DictionaryHelper setCombineHandler:^BOOL(NSString *key, NSMutableDictionary *destination, NSDictionary *source) {
-        if ([key hasPrefix:@"_"] && [key hasSuffix:@"_"]) {
+        if ([key hasPrefix:STR_UnderLine] && [key hasSuffix:STR_UnderLine]) {
             NSString* removeKey = [key substringWithRange:NSMakeRange(1, [key length] - 2)];
             [destination removeObjectForKey: removeKey];
             
@@ -57,163 +56,139 @@ static DataManager* sharedInstance = nil;
         return YES;
     }];
     
+    // set up designs and configs
+    [self setupBasicDesignsAndConfigs];
     
+    // check update and download
+    [self checkAndDowloadRemoteResources];
+}
+
+-(void) setupBasicDesignsAndConfigs
+{
     //--------------------------------   Designs   ---------------------------
-    // universal
-    NSString* portraitFile = StringAppend(key_Portrait, @".json");
-    NSString* landscapeFile = StringAppend(key_Landscape, @".json");
+    NSString* designKey = User_ResourcesDesignsPath;
     
     // default iPhone
-    NSString* portraitDeviceFile = StringAppend(IPhone_Prefix, portraitFile);
-    NSString* landscapeDeviceFile = StringAppend(IPhone_Prefix, landscapeFile);
-    // iPad
+    NSString* portraitDeviceFile = StringUnderlineAppend(key_IPhone, key_Portrait);
+    NSString* landscapeDeviceFile = StringUnderlineAppend(key_IPhone, key_Landscape);
+    // if iPad
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        portraitDeviceFile = StringAppend(IPad_Prefix, portraitFile);
-        landscapeDeviceFile = StringAppend(IPad_Prefix, landscapeFile);
+        portraitDeviceFile = StringUnderlineAppend(key_IPad, key_Portrait);
+        landscapeDeviceFile = StringUnderlineAppend(key_IPad, key_Landscape);
     }
-    
-    NSString* portraitFilePath = BUNDLEFILE_PATH(portraitFile);
-    NSString* landscapeFilePath = BUNDLEFILE_PATH(landscapeFile);
-    NSString* portraitDeviceFilePath = BUNDLEFILE_PATH(portraitDeviceFile);
-    NSString* landscapeDeviceFilePath = BUNDLEFILE_PATH(landscapeDeviceFile);
-    
-    // designs downloaded from remote     
-    if ([StandUserDefaults objectForKey: User_ResourcesDesignsPath]) {
-        NSString* designsDirectory = [NSHomeDirectory() stringByAppendingPathComponent: [StandUserDefaults objectForKey: User_ResourcesDesignsPath]];
-        NSString* path = nil;
-        
-        path = PathAppend(designsDirectory, portraitFile);
-        if ([FileManager isFileExist: path]) {
-            portraitFilePath = path;
-        }
-        path = PathAppend(designsDirectory, landscapeFile);
-        if ([FileManager isFileExist: path]) {
-            landscapeFilePath = path;
-        }
-        path = PathAppend(designsDirectory, portraitDeviceFile);
-        if ([FileManager isFileExist: path]) {
-            portraitDeviceFilePath = path;
-        }
-        path = PathAppend(designsDirectory, landscapeDeviceFile);
-        if ([FileManager isFileExist: path]) {
-            landscapeDeviceFilePath = path;
-        }
-    }
-    
     // prepare the share portrait/landscape config
-    NSDictionary* portraitDesign = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromPath: portraitFilePath]];
-    NSDictionary* landscapeDesign = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromPath: landscapeFilePath]];
-    NSDictionary* portraitDeviceJSON = [JsonFileManager getJsonFromPath: portraitDeviceFilePath];
-    NSDictionary* landscapeDeviceJSON = [JsonFileManager getJsonFromPath: landscapeDeviceFilePath];
-    
+    NSDictionary* portraitDesign = [DictionaryHelper deepCopy: [self getJson:key_Portrait key:designKey]];
+    NSDictionary* landscapeDesign = [DictionaryHelper deepCopy: [self getJson:key_Landscape key:designKey]];
+    NSDictionary* portraitDeviceJSON = [self getJson:portraitDeviceFile key:designKey];
+    NSDictionary* landscapeDeviceJSON = [self getJson:landscapeDeviceFile key:designKey];
     
     
     //--------------------------------   Configs   ---------------------------
-    NSString* configFile = StringAppend(key_Config, @".json");
-    NSString* configFilePath = BUNDLEFILE_PATH(configFile);
+    NSString* configKey = User_ResourcesConfigsPath;
     
-    // configs downloaded from remote 
-    NSString* configsDirectory = nil;
-    if ([StandUserDefaults objectForKey: User_ResourcesConfigsPath]) {
-        configsDirectory = [NSHomeDirectory() stringByAppendingPathComponent: [StandUserDefaults objectForKey: User_ResourcesConfigsPath]];
-    }
-    if (configsDirectory) {
-        NSString* path = PathAppend(configsDirectory, configFile);
-        if ([FileManager isFileExist: path]) {
-            configFilePath = path;
-        }
-    }
-    NSDictionary* shareConfig = [JsonFileManager getJsonFromPath: configFilePath];
-    
+    // share config
+    NSDictionary* shareConfig = [self getJson: key_Config key:configKey];
     // prepare the modes config
     modesConfigs = [NSMutableDictionary dictionary];
     for (NSString* mode in ACTION.gameModes) {
-        NSString* modeFile = [NSString stringWithFormat:@"%@_%@", key_Config, mode];
-        modeFile = StringAppend(modeFile, @".json");
-        
-        NSString* modeFilePath = BUNDLEFILE_PATH(modeFile);
-        if (configsDirectory) {
-            NSString* path = PathAppend(configsDirectory, modeFile);
-            if ([FileManager isFileExist: path]) {
-                modeFilePath = path;
-            }
-        }
-        NSDictionary* modeConfig = [JsonFileManager getJsonFromPath:modeFilePath];
+        NSDictionary* modeConfig = [self getJson: StringUnderlineAppend(key_Config, mode) key:configKey];
         if (modeConfig) [modesConfigs setObject: modeConfig forKey:mode];
     }
-    
     // chapters config
-    NSString* chaptersFile = StringAppend(key_Chapters, @".json");
-    NSString* chaptersFilePath = BUNDLEFILE_PATH(chaptersFile);
-    if (configsDirectory) {
-        NSString* path = PathAppend(configsDirectory, chaptersFile);
-        if ([FileManager isFileExist: path]) {
-            chaptersFilePath = path;
-        }
-    }
-    chaptersConfig = [DictionaryHelper deepCopy: [JsonFileManager getJsonFromPath: chaptersFilePath]];
+    chaptersConfig = [DictionaryHelper deepCopy: [self getJson: key_Chapters key:configKey]];
     
-    //-------------------------------  Handler/Combine Config -------------------
+    
+    //-------------------------------  Handler/Combine Configs and Designs -------------------
     // combine the configs
     protraitShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:portraitDeviceJSON with: portraitDesign]];
     landscapeShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:landscapeDeviceJSON with: landscapeDesign]];
-    
     // setup the IndexPathParser's indexPathsRepository, and replace the indexPaths using IndexPathParser's indexPathsRepository
     int maxDimension = MAX([ArrayHelper getMaxCount: protraitShareConfig[@"MATRIX"]], [ArrayHelper getMaxCount: landscapeShareConfig[@"MATRIX"]]);
     [QueueIndexPathParser setIndexPathsRepository: maxDimension];
     [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:protraitShareConfig];
     [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:landscapeShareConfig];
-    
-    
-    // TODO: ... in main thread now !~~~
-    [self getRemoteResources];
 }
 
--(void) getRemoteResources
+-(NSDictionary*) getJson: (NSString*)name key:(NSString*)key
 {
-    HTTPGetRequest* request = [[HTTPGetRequest alloc] initWithURLString: URL_JSON_iRuinResources parameters:nil];
-    [request startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
+    NSString* fileName = StringDotAppend(name, key_Json);
+    
+    NSString* sanboxFilePath = nil;
+    NSString* configsDirectory = nil;
+    NSString* subDirectory = [StandUserDefaults objectForKey: key];
+    if (subDirectory) {
+        configsDirectory = StringPathAppend(NSHomeDirectory(), subDirectory);
+        NSString* configFilePath = StringPathAppend(configsDirectory, fileName);
+        if ([FileManager isFileExist: configFilePath]) {
+            sanboxFilePath = configFilePath;
+        }
+    }
+    
+    if (sanboxFilePath) {
+        NSDictionary* result = [JsonFileManager getJsonFromPath: sanboxFilePath];
+        if (result) {
+            return result;
+        }
+    }
+    
+    return [JsonFileManager getJsonFromPath: BUNDLEFILE_PATH(fileName)];
+}
+
+-(void) checkAndDowloadRemoteResources
+{
+    NSString* definedURL = DATA.config[@"Utilities"][@"ResourcesSpecificationURL"];
+    HTTPGetRequest* definedRequest = [[HTTPGetRequest alloc] initWithURLString: definedURL parameters:nil];
+    
+    [definedRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (! connectionError && [(NSHTTPURLResponse*) response statusCode] < 400) {
             NSError* error = nil;
             NSDictionary* contents = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingAllowFragments error:&error];
-            if (!error) {
-                int currentVersion = [[StandUserDefaults objectForKey: User_ResourcesVersion] intValue];
-                int newVersion = [contents[@"version"] intValue];
-                BOOL isProductionVersion = [contents[@"isProductionVersion"] boolValue];
+            
+            if (!error && contents) {
+                int version = [contents[@"version"] intValue];
+                BOOL isProduction = [contents[@"isProduction"] boolValue];
                 
-                if (isProductionVersion && (newVersion > currentVersion )) {
-                    NSString* remoteURL = contents[@"remoteURL"];
-                    NSString* zipFileName = [remoteURL lastPathComponent];
+                int currentVersion = [[StandUserDefaults objectForKey: User_ResourcesVersion] intValue];
+                BOOL isNewerVersion = version > currentVersion;
+                
+                if (isProduction && isNewerVersion) {
+                    NSString* resourcesURL = contents[@"resourcesURL"];
+                    NSString* zipFileName = [resourcesURL lastPathComponent];
                     
-                    NSString* relativeLocalPATH = contents[@"localPATH"];
-                    NSString* absoluteLocalPATH = [NSHomeDirectory() stringByAppendingPathComponent: relativeLocalPATH];
-                    NSString* compressedFilePath = [absoluteLocalPATH stringByAppendingPathComponent: zipFileName];
+                    NSString* localPath = contents[@"localPath"];
+                    NSString* absLocalPATH = StringPathAppend(NSHomeDirectory(), localPath);
+                    NSString* zipFileLocalPATH = StringPathAppend(absLocalPATH, zipFileName);
                     
-                    // configs and designs path
-                    NSString* relativeConfigsPath = contents[@"configsPath"];
-                    NSString* relativeDesignsPath = contents[@"designsPath"];
+                    BOOL isSetupImmediately = [contents[@"isSetupImmediately"] boolValue];
                     
-                    // get resources
-                    HTTPGetRequest* resourcesRequest = [[HTTPGetRequest alloc] initWithURLString:remoteURL parameters:nil];
+                    // Get resources.zip
+                    HTTPGetRequest* resourcesRequest = [[HTTPGetRequest alloc] initWithURLString:resourcesURL parameters:nil];
+                    
                     [resourcesRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
                         if (! connectionError && [(NSHTTPURLResponse*) response statusCode] < 400) {
                             // save 
-                            [FileManager writeDataToFile:compressedFilePath data:data];
+                            [FileManager writeDataToFile:zipFileLocalPATH data:data];
                             
                             // un compress
-                            NSString* unCompressedFilePath = [compressedFilePath stringByDeletingLastPathComponent];
-                            [SSZipArchive unzipFileAtPath:compressedFilePath toDestination:unCompressedFilePath];
+                            NSString* unZipFilePath = [zipFileLocalPATH stringByDeletingLastPathComponent];
+                            [SSZipArchive unzipFileAtPath:zipFileLocalPATH toDestination:unZipFilePath];
                             
                             // delete
-                            [FileManager deleteFile:compressedFilePath];
+                            [FileManager deleteFile:zipFileLocalPATH];
                             
-                            // --------------
-                            [StandUserDefaults setObject:@(newVersion) forKey:User_ResourcesVersion];
+                            // save to user defaults
+                            NSString* resourceRootPath = [zipFileLocalPATH stringByDeletingPathExtension];
+                            NSString* relativeConfigsPath = StringPathAppend(resourceRootPath, @"Configs");
+                            NSString* relativeDesignsPath = StringPathAppend(resourceRootPath, @"Designs");
                             
+                            [StandUserDefaults setObject:@(version) forKey:User_ResourcesVersion];
                             [StandUserDefaults setObject: relativeConfigsPath forKey:User_ResourcesConfigsPath];
                             [StandUserDefaults setObject: relativeDesignsPath forKey:User_ResourcesDesignsPath];
                             
-                            DLog(@"+++++ %d : %@ : %@", newVersion, relativeConfigsPath, relativeDesignsPath);
+                            // if setup immediately
+                            if (isSetupImmediately) {
+                                [DATA setupBasicDesignsAndConfigs];
+                            }
                         }
                     }];
                     

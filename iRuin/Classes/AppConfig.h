@@ -1,28 +1,34 @@
 
+
+
 #pragma mark - Config Macro
 
 
-#define IRuin_Bundle_ID   @"com.suchachinoiserie.iRuin"
+
+#define IRuin_Bundle_ID @"com.suchachinoiserie.iRuin"
 
 
 
 #define key_Config      @"Config"
 
-#define IPad_Prefix     @"iPad_"
-#define IPhone_Prefix   @"iPhone_"
+#define key_IPad        @"iPad"
+#define key_IPhone      @"iPhone"
 
 #define key_Portrait    @"Portrait"
 #define key_Landscape   @"Landscape"
 
-#define key_Chapters      @"Chapters"
+#define key_Chapters    @"Chapters"
 
 
 
 
 
-#pragma mark - URLS
 
-#define URL_JSON_iRuinResources @"https://raw.githubusercontent.com/suchavision/Productions_Resources/master/iRuinResources.json"
+#define STR_Dot         @"."
+
+#define STR_UnderLine   @"_"
+
+#define key_Json        @"json"
 
 
 
@@ -58,12 +64,19 @@
 
 #define StandUserDefaults [NSUserDefaults standardUserDefaults]
 
-#define StringAppend(_first, _second) [_first stringByAppendingString: _second]
-
-#define PathAppend(_first, _second) [_first stringByAppendingPathComponent: _second];
 
 
 
+
+#define StringAppend(x, y) [x stringByAppendingString: y]
+
+#define StringPathAppend(x, y) [x stringByAppendingPathComponent: y]
+
+#define StringDotAppend(x, y) StringsAppend(x, STR_Dot, y)
+
+#define StringUnderlineAppend(x, y) StringsAppend(x, STR_UnderLine, y)
+
+#define StringsAppend(x, y, z) [NSString stringWithFormat:@"%@%@%@", x, y, z]
 
 
 

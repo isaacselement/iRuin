@@ -21,7 +21,6 @@
 
 static DataManager* sharedInstance = nil;
 
-
 +(void)initialize {
     if (self == [DataManager class]) {
         sharedInstance = [[DataManager alloc] init];
@@ -62,6 +61,9 @@ static DataManager* sharedInstance = nil;
     // check update and download
     [self checkAndDowloadRemoteResources];
 }
+
+
+#pragma mark - Private Methods
 
 -(void) setupBasicDesignsAndConfigs
 {

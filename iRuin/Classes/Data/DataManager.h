@@ -14,8 +14,8 @@
 
 -(NSMutableDictionary*) config;
 
-
 -(void) unsetModeChapterConfig;
+
 -(void) setConfigByMode: (NSString*)mode chapter:(int)chapter;
 
 

@@ -205,7 +205,7 @@
     // --------------------- mode
     int switchModeCount = [DATA.config[@"Utilities"][@"SwitchModeEveryChapters"] intValue];
     if (switchModeCount == 0) switchModeCount = 1;
-    int modeCount = ACTION.gameModes.count;
+    int modeCount = (int)ACTION.gameModes.count;
     int modeIndex = (abs(index) % (modeCount * switchModeCount)) % modeCount;
     NSString* mode = [ACTION.gameModes safeObjectAtIndex: modeIndex];
     ACTION.gameState.currentMode = mode;

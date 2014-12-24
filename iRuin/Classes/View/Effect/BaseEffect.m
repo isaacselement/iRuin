@@ -108,7 +108,7 @@
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
     NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
     
-    ACTION.gameState.vanishAmount += vanishViews.count;
+    ACTION.gameState.vanishAmount += (int)vanishViews.count;
     
     for (NSInteger i = 0; i < vanishViews.count; i++) {
         SymbolView* symbol = vanishViews[i];

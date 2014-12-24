@@ -172,7 +172,7 @@
 
 +(int) getSymbolsIdentificationsCount
 {
-    return [[self getSymbolsSpecifications] count];
+    return (int)[[self getSymbolsSpecifications] count];
 }
 
 

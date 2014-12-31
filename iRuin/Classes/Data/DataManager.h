@@ -12,6 +12,12 @@
 
 -(void) initializeWithData ;
 
+-(void) prepareShareDesignsConfigs ;
+
+
+
+
+
 -(NSMutableDictionary*) config;
 
 -(void) unsetModeChapterConfig;

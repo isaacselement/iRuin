@@ -56,51 +56,47 @@ static DataManager* sharedInstance = nil;
     }];
     
     // set up designs and configs
-    [self setupBasicDesignsAndConfigs];
+    [self prepareShareDesignsConfigs];
     
     // check update and download
-    [self checkAndDowloadRemoteResources];
+    [ConfigHelper requestDowloadRemoteResources];
 }
 
 
 #pragma mark - Private Methods
 
--(void) setupBasicDesignsAndConfigs
+-(void) prepareShareDesignsConfigs
 {
     //--------------------------------   Designs   ---------------------------
-    NSString* designKey = User_ResourcesDesignsPath;
-    
+
     // default iPhone
-    NSString* portraitDeviceFile = StringUnderlineAppend(key_IPhone, key_Portrait);
-    NSString* landscapeDeviceFile = StringUnderlineAppend(key_IPhone, key_Landscape);
-    // if iPad
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        portraitDeviceFile = StringUnderlineAppend(key_IPad, key_Portrait);
-        landscapeDeviceFile = StringUnderlineAppend(key_IPad, key_Landscape);
-    }
-    // prepare the share portrait/landscape config
-    NSDictionary* portraitDesign = [DictionaryHelper deepCopy: [self getJson:key_Portrait key:designKey]];
-    NSDictionary* landscapeDesign = [DictionaryHelper deepCopy: [self getJson:key_Landscape key:designKey]];
-    NSDictionary* portraitDeviceJSON = [self getJson:portraitDeviceFile key:designKey];
-    NSDictionary* landscapeDeviceJSON = [self getJson:landscapeDeviceFile key:designKey];
+    BOOL isIpad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+    
+    // portrait/landscape share/device config
+    NSDictionary* portraitDesign = [DictionaryHelper deepCopy: [ConfigHelper getDesignJson:key_Portrait ]];
+    NSDictionary* landscapeDesign = [DictionaryHelper deepCopy: [ConfigHelper getDesignJson:key_Landscape ]];
+    NSDictionary* portraitDeviceJSON = [ConfigHelper getDesignJson: StringUnderlineAppend(isIpad ? key_IPad : key_IPhone, key_Portrait) ];
+    NSDictionary* landscapeDeviceJSON = [ConfigHelper getDesignJson: StringUnderlineAppend(isIpad ? key_IPad : key_IPhone, key_Landscape) ];
+    
     
     
     //--------------------------------   Configs   ---------------------------
-    NSString* configKey = User_ResourcesConfigsPath;
-    
+
     // share config
-    NSDictionary* shareConfig = [self getJson: key_Config key:configKey];
-    // prepare the modes config
+    NSDictionary* shareConfig = [ConfigHelper getConfigJson: key_Config ];
+    // modes config
     modesConfigs = [NSMutableDictionary dictionary];
     for (NSString* mode in ACTION.gameModes) {
-        NSDictionary* modeConfig = [self getJson: StringUnderlineAppend(key_Config, mode) key:configKey];
+        NSDictionary* modeConfig = [ConfigHelper getConfigJson: StringUnderlineAppend(key_Config, mode) ];
         if (modeConfig) [modesConfigs setObject: modeConfig forKey:mode];
     }
     // chapters config
-    chaptersConfig = [DictionaryHelper deepCopy: [self getJson: key_Chapters key:configKey]];
+    chaptersConfig = [DictionaryHelper deepCopy: [ConfigHelper getConfigJson: key_Chapters ]];
+    
     
     
     //-------------------------------  Handler/Combine Configs and Designs -------------------
+    
     // combine the configs
     protraitShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:portraitDeviceJSON with: portraitDesign]];
     landscapeShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:landscapeDeviceJSON with: landscapeDesign]];
@@ -111,95 +107,6 @@ static DataManager* sharedInstance = nil;
     [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:landscapeShareConfig];
 }
 
--(NSDictionary*) getJson: (NSString*)name key:(NSString*)key
-{
-    NSString* fileName = StringDotAppend(name, key_Json);
-    
-    NSString* sanboxFilePath = nil;
-    NSString* configsDirectory = nil;
-    NSString* subDirectory = [StandUserDefaults objectForKey: key];
-    if (subDirectory) {
-        configsDirectory = StringPathAppend(NSHomeDirectory(), subDirectory);
-        NSString* configFilePath = StringPathAppend(configsDirectory, fileName);
-        if ([FileManager isFileExist: configFilePath]) {
-            sanboxFilePath = configFilePath;
-        }
-    }
-    
-    if (sanboxFilePath) {
-        NSDictionary* result = [JsonFileManager getJsonFromPath: sanboxFilePath];
-        if (result) {
-            return result;
-        }
-    }
-    
-    return [JsonFileManager getJsonFromPath: BUNDLEFILE_PATH(fileName)];
-}
-
--(void) checkAndDowloadRemoteResources
-{
-    NSString* definedURL = DATA.config[@"Utilities"][@"ResourcesSpecificationURL"];
-    HTTPGetRequest* definedRequest = [[HTTPGetRequest alloc] initWithURLString: definedURL parameters:nil];
-    
-    [definedRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (! connectionError && [(NSHTTPURLResponse*) response statusCode] < 400) {
-            NSError* error = nil;
-            NSDictionary* contents = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingAllowFragments error:&error];
-            
-            if (!error && contents) {
-                int version = [contents[@"version"] intValue];
-                BOOL isProduction = [contents[@"isProduction"] boolValue];
-                
-                int currentVersion = [[StandUserDefaults objectForKey: User_ResourcesVersion] intValue];
-                BOOL isNewerVersion = version > currentVersion;
-                
-                if (isProduction && isNewerVersion) {
-                    NSString* resourcesURL = contents[@"resourcesURL"];
-                    NSString* zipFileName = [resourcesURL lastPathComponent];
-                    
-                    NSString* localPath = contents[@"localPath"];
-                    NSString* absLocalPATH = StringPathAppend(NSHomeDirectory(), localPath);
-                    NSString* zipFileLocalPATH = StringPathAppend(absLocalPATH, zipFileName);
-                    
-                    BOOL isSetupImmediately = [contents[@"isSetupImmediately"] boolValue];
-                    
-                    // Get resources.zip
-                    HTTPGetRequest* resourcesRequest = [[HTTPGetRequest alloc] initWithURLString:resourcesURL parameters:nil];
-                    
-                    [resourcesRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
-                        if (! connectionError && [(NSHTTPURLResponse*) response statusCode] < 400) {
-                            // save 
-                            [FileManager writeDataToFile:zipFileLocalPATH data:data];
-                            
-                            // un compress
-                            NSString* unZipFilePath = [zipFileLocalPATH stringByDeletingLastPathComponent];
-                            [SSZipArchive unzipFileAtPath:zipFileLocalPATH toDestination:unZipFilePath];
-                            
-                            // delete
-                            [FileManager deleteFile:zipFileLocalPATH];
-                            
-                            // save to user defaults
-                            NSString* resourceRootPath = [zipFileLocalPATH stringByDeletingPathExtension];
-                            NSString* relativeConfigsPath = StringPathAppend(resourceRootPath, @"Configs");
-                            NSString* relativeDesignsPath = StringPathAppend(resourceRootPath, @"Designs");
-                            
-                            [StandUserDefaults setObject:@(version) forKey:User_ResourcesVersion];
-                            [StandUserDefaults setObject: relativeConfigsPath forKey:User_ResourcesConfigsPath];
-                            [StandUserDefaults setObject: relativeDesignsPath forKey:User_ResourcesDesignsPath];
-                            
-                            // if setup immediately
-                            if (isSetupImmediately) {
-                                [DATA setupBasicDesignsAndConfigs];
-                            }
-                        }
-                    }];
-                    
-                }
-                
-            }
-        }
-    }];
-}
 
 
 #pragma mark - Get and Set The Configs

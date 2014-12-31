@@ -200,7 +200,10 @@
 		4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75EA91A00F5A00074E493 /* BaseController.m */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
 		4EF7F54B1A06167F0096949F /* AudiosExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7F54A1A06167F0096949F /* AudiosExecutor.m */; };
+		5E0B435A1A530793006CC077 /* ConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0B43571A530793006CC077 /* ConcurrentOperation.m */; };
+		5E0B435B1A530793006CC077 /* SharedOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0B43591A530793006CC077 /* SharedOperationQueue.m */; };
 		5E34ED341A3E785E00022E45 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E34ED331A3E785E00022E45 /* ScoreLabel.m */; };
+		5E4899461A53973C007F3C12 /* ConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4899451A53973C007F3C12 /* ConfigHelper.m */; };
 		5E537BE91A3DDEB300C3F5A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE71A3DDEB300C3F5A7 /* Icon.png */; };
 		5E537BEA1A3DDEB300C3F5A7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */; };
 		5E6B16321A39D22B0087EA1D /* Bubble_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */; };
@@ -664,8 +667,15 @@
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
 		4EF7F5491A06167F0096949F /* AudiosExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudiosExecutor.h; sourceTree = "<group>"; };
 		4EF7F54A1A06167F0096949F /* AudiosExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudiosExecutor.m; sourceTree = "<group>"; };
+		5E0B43551A530793006CC077 /* _Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Operation.h; sourceTree = "<group>"; };
+		5E0B43561A530793006CC077 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcurrentOperation.h; sourceTree = "<group>"; };
+		5E0B43571A530793006CC077 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentOperation.m; sourceTree = "<group>"; };
+		5E0B43581A530793006CC077 /* SharedOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedOperationQueue.h; sourceTree = "<group>"; };
+		5E0B43591A530793006CC077 /* SharedOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedOperationQueue.m; sourceTree = "<group>"; };
 		5E34ED321A3E785E00022E45 /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
 		5E34ED331A3E785E00022E45 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
+		5E4899441A53973C007F3C12 /* ConfigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigHelper.h; sourceTree = "<group>"; };
+		5E4899451A53973C007F3C12 /* ConfigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigHelper.m; sourceTree = "<group>"; };
 		5E537BE71A3DDEB300C3F5A7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble_1.wav; sourceTree = "<group>"; };
@@ -966,6 +976,8 @@
 			children = (
 				4E4D4EC1181D5B9000886D75 /* DataManager.h */,
 				4E4D4EC2181D5B9000886D75 /* DataManager.m */,
+				5E4899441A53973C007F3C12 /* ConfigHelper.h */,
+				5E4899451A53973C007F3C12 /* ConfigHelper.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1075,6 +1087,7 @@
 		4EE5FB0619D858DC005E8736 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				5E0B43541A530793006CC077 /* Operation */,
 				4EE5FB0719D858DC005E8736 /* _Action.h */,
 				4EE5FB0819D858DC005E8736 /* Scheduled */,
 			);
@@ -1669,6 +1682,18 @@
 			path = Effect;
 			sourceTree = "<group>";
 		};
+		5E0B43541A530793006CC077 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				5E0B43551A530793006CC077 /* _Operation.h */,
+				5E0B43561A530793006CC077 /* ConcurrentOperation.h */,
+				5E0B43571A530793006CC077 /* ConcurrentOperation.m */,
+				5E0B43581A530793006CC077 /* SharedOperationQueue.h */,
+				5E0B43591A530793006CC077 /* SharedOperationQueue.m */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
 		5E9C113C1A3420B3007E3BB6 /* iRuinResources */ = {
 			isa = PBXGroup;
 			children = (
@@ -2003,6 +2028,7 @@
 				4EE5FC2519D858DD005E8736 /* SQLiteManager.m in Sources */,
 				4EE5FC4419D858DD005E8736 /* PositionsExecutor.m in Sources */,
 				4EE5FC5C19D858DD005E8736 /* TableViewBaseContentHelper.m in Sources */,
+				5E0B435B1A530793006CC077 /* SharedOperationQueue.m in Sources */,
 				4EE5FC5819D858DD005E8736 /* HeaderSearchTableView.m in Sources */,
 				4EE5FC2C19D858DD005E8736 /* IterateHelper.m in Sources */,
 				4EF75E8D1A00B8AC0074E493 /* UIImage+Additions.m in Sources */,
@@ -2042,6 +2068,7 @@
 				4EE5FC4D19D858DD005E8736 /* FontHelper.m in Sources */,
 				4E4D4EC3181D5B9000886D75 /* DataManager.m in Sources */,
 				4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */,
+				5E0B435A1A530793006CC077 /* ConcurrentOperation.m in Sources */,
 				4EE5FC5A19D858DD005E8736 /* SearchBarView.m in Sources */,
 				4ED52C81191E61FF002ADA73 /* SwipeState.m in Sources */,
 				4E6162FE19FFDAB900302D98 /* InteractiveView.m in Sources */,
@@ -2101,6 +2128,7 @@
 				4EF75E871A00B86A0074E493 /* NSArray+Additions.m in Sources */,
 				4EE5FC3619D858DD005E8736 /* PopupViewHelper.m in Sources */,
 				4EE5FC0619D858DD005E8736 /* NSString+Base64.m in Sources */,
+				5E4899461A53973C007F3C12 /* ConfigHelper.m in Sources */,
 				4EF75E891A00B86A0074E493 /* NSMutableArray+Additions.m in Sources */,
 				4EE5FC4719D858DD005E8736 /* QueueIndexPathParser.m in Sources */,
 				4EE5FC4219D858DD005E8736 /* ImageAnimator.m in Sources */,

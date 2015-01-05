@@ -206,6 +206,7 @@
 		5E4899461A53973C007F3C12 /* ConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4899451A53973C007F3C12 /* ConfigHelper.m */; };
 		5E537BE91A3DDEB300C3F5A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE71A3DDEB300C3F5A7 /* Icon.png */; };
 		5E537BEA1A3DDEB300C3F5A7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */; };
+		5E5A2EB21A56B22D007230E6 /* BytesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A2EB11A56B22D007230E6 /* BytesHelper.m */; };
 		5E6B16321A39D22B0087EA1D /* Bubble_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */; };
 		5E6B16331A39D22B0087EA1D /* Bubble_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B16301A39D22B0087EA1D /* Bubble_2.wav */; };
 		5E6B16341A39D22B0087EA1D /* sand.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B16311A39D22B0087EA1D /* sand.wav */; };
@@ -678,6 +679,9 @@
 		5E4899451A53973C007F3C12 /* ConfigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigHelper.m; sourceTree = "<group>"; };
 		5E537BE71A3DDEB300C3F5A7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		5E5A2EAF1A56B22D007230E6 /* _Bytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Bytes.h; sourceTree = "<group>"; };
+		5E5A2EB01A56B22D007230E6 /* BytesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BytesHelper.h; sourceTree = "<group>"; };
+		5E5A2EB11A56B22D007230E6 /* BytesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BytesHelper.m; sourceTree = "<group>"; };
 		5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble_1.wav; sourceTree = "<group>"; };
 		5E6B16301A39D22B0087EA1D /* Bubble_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble_2.wav; sourceTree = "<group>"; };
 		5E6B16311A39D22B0087EA1D /* sand.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sand.wav; sourceTree = "<group>"; };
@@ -1109,6 +1113,7 @@
 		4EE5FB0E19D858DC005E8736 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5E5A2EAE1A56B22D007230E6 /* Bytes */,
 				5EC906211A3EE059009AE1CA /* CoreData */,
 				4EE635891A234F3100019C58 /* SSZipArchive */,
 				4EE5FB0F19D858DC005E8736 /* _Data.h */,
@@ -1694,6 +1699,16 @@
 			path = Operation;
 			sourceTree = "<group>";
 		};
+		5E5A2EAE1A56B22D007230E6 /* Bytes */ = {
+			isa = PBXGroup;
+			children = (
+				5E5A2EAF1A56B22D007230E6 /* _Bytes.h */,
+				5E5A2EB01A56B22D007230E6 /* BytesHelper.h */,
+				5E5A2EB11A56B22D007230E6 /* BytesHelper.m */,
+			);
+			path = Bytes;
+			sourceTree = "<group>";
+		};
 		5E9C113C1A3420B3007E3BB6 /* iRuinResources */ = {
 			isa = PBXGroup;
 			children = (
@@ -2139,6 +2154,7 @@
 				4E2CCAC719FB6DD900D2AAEC /* QueueValuesHelper.m in Sources */,
 				4EEFD9B31A0F5856006A76C8 /* FBShimmeringView.m in Sources */,
 				4EA40A3B1821361B001539B8 /* GameEvent.m in Sources */,
+				5E5A2EB21A56B22D007230E6 /* BytesHelper.m in Sources */,
 				4E08AB9B19FE66F400F1F449 /* InteractiveImageView.m in Sources */,
 				4EE5FC2319D858DD005E8736 /* LocalizeHelper.m in Sources */,
 				4E0BFC5719260BF900F0E632 /* MoveEffect.m in Sources */,
@@ -2295,8 +2311,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jun Shen (TD97K9TR7H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jun Shen (TD97K9TR7H)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jun Shen (WY3JWHUWJH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jun Shen (WY3JWHUWJH)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iRuin/iRuin-Prefix.pch";
@@ -2311,7 +2327,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bea7030d-9bbe-4991-8573-7224130b96c5";
+				PROVISIONING_PROFILE = "3b619d41-04c7-43ee-9439-16fb1eeff5d0";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2321,8 +2337,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jun Shen (TD97K9TR7H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jun Shen (TD97K9TR7H)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jun Shen (WY3JWHUWJH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jun Shen (WY3JWHUWJH)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iRuin/iRuin-Prefix.pch";
@@ -2336,7 +2352,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bea7030d-9bbe-4991-8573-7224130b96c5";
+				PROVISIONING_PROFILE = "3b619d41-04c7-43ee-9439-16fb1eeff5d0";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

@@ -1,6 +1,7 @@
 #import "GameView.h"
 #import "AppInterface.h"
 
+
 @implementation GameView
 
 @synthesize timerView;
@@ -87,6 +88,7 @@
             [ACTION.gameEvent gameRefresh];
         };
         [self addSubview: refreshActionView];
+        
     }
     return self;
 }

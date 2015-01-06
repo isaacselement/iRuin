@@ -1,6 +1,9 @@
 #import "GameController.h"
 #import "AppInterface.h"
 
+#import "SharedMotionManager.h"
+
+
 @implementation GameController
 
 @synthesize gameView;
@@ -27,6 +30,15 @@
     
     [self.view addSubview: chaptersView];
     [self.view addSubview: gameView];
+    
+    
+    // monitore the battery
+    // if it work , upvote this: http://stackoverflow.com/a/14834620/1749293
+    [self performSelector:@selector(startGyroParallex) withObject:nil afterDelay: 1];
+    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus) name:UIDeviceBatteryStateDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus) name:UIDeviceBatteryLevelDidChangeNotification object:nil];
+    
 }
 
 -(NSUInteger) supportedInterfaceOrientations {
@@ -55,6 +67,40 @@
     [(AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO] clearCaches];
 }
 
+
+
+
+
+
+#pragma mark - 
+
+- (void)startGyroParallex
+{
+    SharedMotionManager* motionManager = [SharedMotionManager sharedInstance];
+    if (motionManager.deviceMotionAvailable) {  // same as motionManager.gyroAvailable, cause accelerometer always have , see the doc
+        motionManager.gyroUpdateInterval = 1/20;
+        [motionManager startGyroUpdatesToQueue: [SharedOperationQueue sharedInstance] withHandler:^(CMGyroData *gyroData, NSError *error) {
+            CMRotationRate rotationRate = gyroData.rotationRate;
+            
+            DLog(@"%f, %f, %f", rotationRate.x, rotationRate.y, rotationRate.z);
+        }];
+    }
+}
+
+- (void)batteryStatus
+{    
+    if ([[UIDevice currentDevice] batteryState] == UIDeviceBatteryStateUnknown) {
+
+    } else {
+        float batteryLevel = [[UIDevice currentDevice] batteryLevel];
+        DLog(@"batteryLevel: %f", batteryLevel);
+        if (batteryLevel < 0.1) {
+            [[SharedMotionManager sharedInstance] stopGyroUpdates];
+        } else {
+            [self startGyroParallex];
+        }
+    }
+}
 
 
 #pragma mark - Orientation Change

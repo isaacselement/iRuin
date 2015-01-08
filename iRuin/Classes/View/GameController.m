@@ -1,6 +1,7 @@
 #import "GameController.h"
 #import "AppInterface.h"
 
+#import "GameScrollView.h"
 #import "SharedMotionManager.h"
 
 
@@ -25,7 +26,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     // Give a new uiview , cause the origin is a strange mess thing
-    self.view = [[GameBaseView alloc] initWithFrame:self.view.bounds];
+    self.view = [[GameScrollView alloc] initWithFrame:self.view.bounds];
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview: chaptersView];

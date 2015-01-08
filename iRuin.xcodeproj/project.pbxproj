@@ -72,17 +72,6 @@
 		4EE5FC0519D858DD005E8736 /* TaskObjectList.c in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB0C19D858DC005E8736 /* TaskObjectList.c */; };
 		4EE5FC0619D858DD005E8736 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB1519D858DD005E8736 /* NSString+Base64.m */; };
 		4EE5FC0719D858DD005E8736 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB1819D858DD005E8736 /* NSString+MD5.m */; };
-		4EE5FC0819D858DD005E8736 /* pkcs8_private_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 4EE5FB1B19D858DD005E8736 /* pkcs8_private_key.pem */; };
-		4EE5FC0919D858DD005E8736 /* private_key.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 4EE5FB1C19D858DD005E8736 /* private_key.p12 */; };
-		4EE5FC0A19D858DD005E8736 /* private_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 4EE5FB1D19D858DD005E8736 /* private_key.pem */; };
-		4EE5FC0B19D858DD005E8736 /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = 4EE5FB1E19D858DD005E8736 /* public_key.der */; };
-		4EE5FC0C19D858DD005E8736 /* rsa_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2019D858DD005E8736 /* rsa_main.m */; };
-		4EE5FC0D19D858DD005E8736 /* rsa_public_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2119D858DD005E8736 /* rsa_public_key.pem */; };
-		4EE5FC0E19D858DD005E8736 /* rsaCert.crt in Resources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2219D858DD005E8736 /* rsaCert.crt */; };
-		4EE5FC0F19D858DD005E8736 /* rsaCertReq.csr in Resources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2319D858DD005E8736 /* rsaCertReq.csr */; };
-		4EE5FC1019D858DD005E8736 /* RSAKeysKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2519D858DD005E8736 /* RSAKeysKeeper.m */; };
-		4EE5FC1119D858DD005E8736 /* Screen Shot  p12_password.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2619D858DD005E8736 /* Screen Shot  p12_password.png */; };
-		4EE5FC1219D858DD005E8736 /* Screen Shot  private_key info.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2719D858DD005E8736 /* Screen Shot  private_key info.png */; };
 		4EE5FC1319D858DD005E8736 /* RSABase64Cryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2919D858DD005E8736 /* RSABase64Cryptor.m */; };
 		4EE5FC1419D858DD005E8736 /* RSACryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2B19D858DD005E8736 /* RSACryptor.m */; };
 		4EE5FC1519D858DD005E8736 /* NSString+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE5FB2E19D858DD005E8736 /* NSString+SHA.m */; };
@@ -221,8 +210,6 @@
 		5E9C119E1A3420B3007E3BB6 /* Background_012.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C115A1A3420B3007E3BB6 /* Background_012.png */; };
 		5E9C119F1A3420B3007E3BB6 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C115C1A3420B3007E3BB6 /* back.png */; };
 		5E9C11A01A3420B3007E3BB6 /* back_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C115D1A3420B3007E3BB6 /* back_h.png */; };
-		5E9C11A11A3420B3007E3BB6 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C115E1A3420B3007E3BB6 /* chat.png */; };
-		5E9C11A21A3420B3007E3BB6 /* chat_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C115F1A3420B3007E3BB6 /* chat_h.png */; };
 		5E9C11A31A3420B3007E3BB6 /* mute.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11601A3420B3007E3BB6 /* mute.png */; };
 		5E9C11A41A3420B3007E3BB6 /* mute_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11611A3420B3007E3BB6 /* mute_h.png */; };
 		5E9C11A51A3420B3007E3BB6 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11621A3420B3007E3BB6 /* pause.png */; };
@@ -231,8 +218,6 @@
 		5E9C11A81A3420B3007E3BB6 /* refresh_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11651A3420B3007E3BB6 /* refresh_h.png */; };
 		5E9C11A91A3420B3007E3BB6 /* resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11661A3420B3007E3BB6 /* resume.png */; };
 		5E9C11AA1A3420B3007E3BB6 /* resume_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11671A3420B3007E3BB6 /* resume_h.png */; };
-		5E9C11AB1A3420B3007E3BB6 /* unMute.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11681A3420B3007E3BB6 /* unMute.png */; };
-		5E9C11AC1A3420B3007E3BB6 /* unMute_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11691A3420B3007E3BB6 /* unMute_h.png */; };
 		5E9C11AD1A3420B3007E3BB6 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C116B1A3420B3007E3BB6 /* 0.png */; };
 		5E9C11AE1A3420B3007E3BB6 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C116C1A3420B3007E3BB6 /* 1.png */; };
 		5E9C11AF1A3420B3007E3BB6 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C116D1A3420B3007E3BB6 /* 2.png */; };
@@ -388,19 +373,6 @@
 		4EE5FB1519D858DD005E8736 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		4EE5FB1719D858DD005E8736 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		4EE5FB1819D858DD005E8736 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
-		4EE5FB1B19D858DD005E8736 /* pkcs8_private_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pkcs8_private_key.pem; sourceTree = "<group>"; };
-		4EE5FB1C19D858DD005E8736 /* private_key.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = private_key.p12; sourceTree = "<group>"; };
-		4EE5FB1D19D858DD005E8736 /* private_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = private_key.pem; sourceTree = "<group>"; };
-		4EE5FB1E19D858DD005E8736 /* public_key.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = public_key.der; sourceTree = "<group>"; };
-		4EE5FB1F19D858DD005E8736 /* rsa_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa_main.h; sourceTree = "<group>"; };
-		4EE5FB2019D858DD005E8736 /* rsa_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rsa_main.m; sourceTree = "<group>"; };
-		4EE5FB2119D858DD005E8736 /* rsa_public_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsa_public_key.pem; sourceTree = "<group>"; };
-		4EE5FB2219D858DD005E8736 /* rsaCert.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsaCert.crt; sourceTree = "<group>"; };
-		4EE5FB2319D858DD005E8736 /* rsaCertReq.csr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsaCertReq.csr; sourceTree = "<group>"; };
-		4EE5FB2419D858DD005E8736 /* RSAKeysKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAKeysKeeper.h; sourceTree = "<group>"; };
-		4EE5FB2519D858DD005E8736 /* RSAKeysKeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAKeysKeeper.m; sourceTree = "<group>"; };
-		4EE5FB2619D858DD005E8736 /* Screen Shot  p12_password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot  p12_password.png"; sourceTree = "<group>"; };
-		4EE5FB2719D858DD005E8736 /* Screen Shot  private_key info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot  private_key info.png"; sourceTree = "<group>"; };
 		4EE5FB2819D858DD005E8736 /* RSABase64Cryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSABase64Cryptor.h; sourceTree = "<group>"; };
 		4EE5FB2919D858DD005E8736 /* RSABase64Cryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSABase64Cryptor.m; sourceTree = "<group>"; };
 		4EE5FB2A19D858DD005E8736 /* RSACryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSACryptor.h; sourceTree = "<group>"; };
@@ -675,8 +647,6 @@
 		5E9C115A1A3420B3007E3BB6 /* Background_012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_012.png; sourceTree = "<group>"; };
 		5E9C115C1A3420B3007E3BB6 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		5E9C115D1A3420B3007E3BB6 /* back_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_h.png; sourceTree = "<group>"; };
-		5E9C115E1A3420B3007E3BB6 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
-		5E9C115F1A3420B3007E3BB6 /* chat_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_h.png; sourceTree = "<group>"; };
 		5E9C11601A3420B3007E3BB6 /* mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute.png; sourceTree = "<group>"; };
 		5E9C11611A3420B3007E3BB6 /* mute_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute_h.png; sourceTree = "<group>"; };
 		5E9C11621A3420B3007E3BB6 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -685,8 +655,6 @@
 		5E9C11651A3420B3007E3BB6 /* refresh_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_h.png; sourceTree = "<group>"; };
 		5E9C11661A3420B3007E3BB6 /* resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume.png; sourceTree = "<group>"; };
 		5E9C11671A3420B3007E3BB6 /* resume_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_h.png; sourceTree = "<group>"; };
-		5E9C11681A3420B3007E3BB6 /* unMute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unMute.png; sourceTree = "<group>"; };
-		5E9C11691A3420B3007E3BB6 /* unMute_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unMute_h.png; sourceTree = "<group>"; };
 		5E9C116B1A3420B3007E3BB6 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		5E9C116C1A3420B3007E3BB6 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		5E9C116D1A3420B3007E3BB6 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -1063,33 +1031,12 @@
 		4EE5FB1919D858DD005E8736 /* RSA */ = {
 			isa = PBXGroup;
 			children = (
-				4EE5FB1A19D858DD005E8736 /* Demo */,
 				4EE5FB2819D858DD005E8736 /* RSABase64Cryptor.h */,
 				4EE5FB2919D858DD005E8736 /* RSABase64Cryptor.m */,
 				4EE5FB2A19D858DD005E8736 /* RSACryptor.h */,
 				4EE5FB2B19D858DD005E8736 /* RSACryptor.m */,
 			);
 			path = RSA;
-			sourceTree = "<group>";
-		};
-		4EE5FB1A19D858DD005E8736 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				4EE5FB1B19D858DD005E8736 /* pkcs8_private_key.pem */,
-				4EE5FB1C19D858DD005E8736 /* private_key.p12 */,
-				4EE5FB1D19D858DD005E8736 /* private_key.pem */,
-				4EE5FB1E19D858DD005E8736 /* public_key.der */,
-				4EE5FB1F19D858DD005E8736 /* rsa_main.h */,
-				4EE5FB2019D858DD005E8736 /* rsa_main.m */,
-				4EE5FB2119D858DD005E8736 /* rsa_public_key.pem */,
-				4EE5FB2219D858DD005E8736 /* rsaCert.crt */,
-				4EE5FB2319D858DD005E8736 /* rsaCertReq.csr */,
-				4EE5FB2419D858DD005E8736 /* RSAKeysKeeper.h */,
-				4EE5FB2519D858DD005E8736 /* RSAKeysKeeper.m */,
-				4EE5FB2619D858DD005E8736 /* Screen Shot  p12_password.png */,
-				4EE5FB2719D858DD005E8736 /* Screen Shot  private_key info.png */,
-			);
-			path = Demo;
 			sourceTree = "<group>";
 		};
 		4EE5FB2C19D858DD005E8736 /* SHA1 */ = {
@@ -1729,8 +1676,6 @@
 			children = (
 				5E9C115C1A3420B3007E3BB6 /* back.png */,
 				5E9C115D1A3420B3007E3BB6 /* back_h.png */,
-				5E9C115E1A3420B3007E3BB6 /* chat.png */,
-				5E9C115F1A3420B3007E3BB6 /* chat_h.png */,
 				5E9C11601A3420B3007E3BB6 /* mute.png */,
 				5E9C11611A3420B3007E3BB6 /* mute_h.png */,
 				5E9C11621A3420B3007E3BB6 /* pause.png */,
@@ -1739,8 +1684,6 @@
 				5E9C11651A3420B3007E3BB6 /* refresh_h.png */,
 				5E9C11661A3420B3007E3BB6 /* resume.png */,
 				5E9C11671A3420B3007E3BB6 /* resume_h.png */,
-				5E9C11681A3420B3007E3BB6 /* unMute.png */,
-				5E9C11691A3420B3007E3BB6 /* unMute_h.png */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -1850,21 +1793,16 @@
 			files = (
 				5E6B16321A39D22B0087EA1D /* Bubble_1.wav in Resources */,
 				5E9C11AD1A3420B3007E3BB6 /* 0.png in Resources */,
-				4EE5FC1219D858DD005E8736 /* Screen Shot  private_key info.png in Resources */,
 				5E9C11AF1A3420B3007E3BB6 /* 2.png in Resources */,
 				5E9C119C1A3420B3007E3BB6 /* Background_010.png in Resources */,
 				5E9C119E1A3420B3007E3BB6 /* Background_012.png in Resources */,
 				5E9C11AE1A3420B3007E3BB6 /* 1.png in Resources */,
-				5E9C11AC1A3420B3007E3BB6 /* unMute_h.png in Resources */,
-				4EE5FC0D19D858DD005E8736 /* rsa_public_key.pem in Resources */,
 				5E9C11B51A3420B3007E3BB6 /* Icon-57.png in Resources */,
 				5E9C11C41A3420B3007E3BB6 /* Tock.caf in Resources */,
 				5E9C11A61A3420B3007E3BB6 /* pause_h.png in Resources */,
 				5E9C11941A3420B3007E3BB6 /* Background_002.png in Resources */,
-				4EE5FC0A19D858DD005E8736 /* private_key.pem in Resources */,
 				5E9C11851A3420B3007E3BB6 /* Chapters.json in Resources */,
 				5E9C119A1A3420B3007E3BB6 /* Background_008.png in Resources */,
-				4EE5FC1119D858DD005E8736 /* Screen Shot  p12_password.png in Resources */,
 				5E9C11B31A3420B3007E3BB6 /* Default.png in Resources */,
 				5E9C11BF1A3420B3007E3BB6 /* Funk.aiff in Resources */,
 				4E4D4E94181D5AFB00886D75 /* InfoPlist.strings in Resources */,
@@ -1888,12 +1826,9 @@
 				5E9C11B11A3420B3007E3BB6 /* Default-568h@2x.png in Resources */,
 				5E9C11951A3420B3007E3BB6 /* Background_003.png in Resources */,
 				5E9C118B1A3420B3007E3BB6 /* Config_Touch.json in Resources */,
-				5E9C11A11A3420B3007E3BB6 /* chat.png in Resources */,
-				5E9C11A21A3420B3007E3BB6 /* chat_h.png in Resources */,
 				5E9C11991A3420B3007E3BB6 /* Background_007.png in Resources */,
 				5E9C11C01A3420B3007E3BB6 /* lock.caf in Resources */,
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
-				4EE5FC0919D858DD005E8736 /* private_key.p12 in Resources */,
 				5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */,
 				5E9C119F1A3420B3007E3BB6 /* back.png in Resources */,
 				5E9C11961A3420B3007E3BB6 /* Background_004.png in Resources */,
@@ -1905,26 +1840,21 @@
 				5E9C11901A3420B3007E3BB6 /* Landscape.json in Resources */,
 				5E9C118E1A3420B3007E3BB6 /* iPhone_Landscape.json in Resources */,
 				5E9C11B81A3420B3007E3BB6 /* Icon-Small-50.png in Resources */,
-				4EE5FC0E19D858DD005E8736 /* rsaCert.crt in Resources */,
 				5E9C11861A3420B3007E3BB6 /* Config.json in Resources */,
 				5E9C11881A3420B3007E3BB6 /* Config_Pull.json in Resources */,
 				5E9C11BD1A3420B3007E3BB6 /* Bottle.aiff in Resources */,
-				4EE5FC0F19D858DD005E8736 /* rsaCertReq.csr in Resources */,
 				5E9C11A71A3420B3007E3BB6 /* refresh.png in Resources */,
 				5E9C11B01A3420B3007E3BB6 /* 3.png in Resources */,
 				5E9C11A51A3420B3007E3BB6 /* pause.png in Resources */,
-				4EE5FC0819D858DD005E8736 /* pkcs8_private_key.pem in Resources */,
 				5E6B16331A39D22B0087EA1D /* Bubble_2.wav in Resources */,
 				5E9C118F1A3420B3007E3BB6 /* iPhone_Portrait.json in Resources */,
 				5E9C11B91A3420B3007E3BB6 /* Icon-Small.png in Resources */,
 				5E9C118D1A3420B3007E3BB6 /* iPad_Portrait.json in Resources */,
 				5E9C119B1A3420B3007E3BB6 /* Background_009.png in Resources */,
-				5E9C11AB1A3420B3007E3BB6 /* unMute.png in Resources */,
 				5E9C11A41A3420B3007E3BB6 /* mute_h.png in Resources */,
 				5E9C118A1A3420B3007E3BB6 /* Config_Swipe.json in Resources */,
 				5E9C11B71A3420B3007E3BB6 /* Icon-76.png in Resources */,
 				5E9C119D1A3420B3007E3BB6 /* Background_011.png in Resources */,
-				4EE5FC0B19D858DD005E8736 /* public_key.der in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1999,7 +1929,6 @@
 				4EE635981A234F3100019C58 /* unzip.c in Sources */,
 				4EE5FC1B19D858DD005E8736 /* FileManager.m in Sources */,
 				4EE5FC2D19D858DD005E8736 /* DateHelper.m in Sources */,
-				4EE5FC0C19D858DD005E8736 /* rsa_main.m in Sources */,
 				5EC906241A3EE06B009AE1CA /* CoreDataManager.m in Sources */,
 				4EE5FC3C19D858DD005E8736 /* ActionExecutorBase.m in Sources */,
 				4EE5FC3319D858DD005E8736 /* ImageHelper.m in Sources */,
@@ -2055,7 +1984,6 @@
 				4EE5FC4219D858DD005E8736 /* ImageAnimator.m in Sources */,
 				4EE5FC1319D858DD005E8736 /* RSABase64Cryptor.m in Sources */,
 				4EE5FC3819D858DD005E8736 /* TableViewHelper.m in Sources */,
-				4EE5FC1019D858DD005E8736 /* RSAKeysKeeper.m in Sources */,
 				4EE5FC5E19D858DD005E8736 /* RotatableScorllViewController.m in Sources */,
 				4E2CCAC719FB6DD900D2AAEC /* QueueValuesHelper.m in Sources */,
 				4EEFD9B31A0F5856006A76C8 /* FBShimmeringView.m in Sources */,

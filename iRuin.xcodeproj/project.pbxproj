@@ -189,6 +189,7 @@
 		5E598A4B1A5B8A8C009E769D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4A1A5B8A8C009E769D /* libz.dylib */; };
 		5E598A4D1A5B8AB3009E769D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4C1A5B8AB3009E769D /* libsqlite3.dylib */; };
 		5E598A4F1A5B8BD3009E769D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4E1A5B8BD3009E769D /* SystemConfiguration.framework */; };
+		5E598A521A5BBA8E009E769D /* GameScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E598A511A5BBA8E009E769D /* GameScrollView.m */; };
 		5E5A2EB21A56B22D007230E6 /* BytesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A2EB11A56B22D007230E6 /* BytesHelper.m */; };
 		5E6B16321A39D22B0087EA1D /* Bubble_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */; };
 		5E6B16331A39D22B0087EA1D /* Bubble_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B16301A39D22B0087EA1D /* Bubble_2.wav */; };
@@ -639,6 +640,8 @@
 		5E598A4A1A5B8A8C009E769D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5E598A4C1A5B8AB3009E769D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5E598A4E1A5B8BD3009E769D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5E598A501A5BBA8E009E769D /* GameScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScrollView.h; sourceTree = "<group>"; };
+		5E598A511A5BBA8E009E769D /* GameScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScrollView.m; sourceTree = "<group>"; };
 		5E5A2EAF1A56B22D007230E6 /* _Bytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Bytes.h; sourceTree = "<group>"; };
 		5E5A2EB01A56B22D007230E6 /* BytesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BytesHelper.h; sourceTree = "<group>"; };
 		5E5A2EB11A56B22D007230E6 /* BytesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BytesHelper.m; sourceTree = "<group>"; };
@@ -747,6 +750,8 @@
 				4EAB5A6019F79C440031F69D /* ChaptersView.m */,
 				4E2CCAD119FBF98B00D2AAEC /* GameBaseView.h */,
 				4E2CCAD219FBF98B00D2AAEC /* GameBaseView.m */,
+				5E598A501A5BBA8E009E769D /* GameScrollView.h */,
+				5E598A511A5BBA8E009E769D /* GameScrollView.m */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -1977,6 +1982,7 @@
 				4EE5FC0719D858DD005E8736 /* NSString+MD5.m in Sources */,
 				4EE5FC0519D858DD005E8736 /* TaskObjectList.c in Sources */,
 				4EA4DD3A181EAFAE00BC1E6E /* GameController.m in Sources */,
+				5E598A521A5BBA8E009E769D /* GameScrollView.m in Sources */,
 				4E4D4EC6181D5B9C00886D75 /* ViewManager.m in Sources */,
 				4EE5FC3419D858DD005E8736 /* KeyBoardHelper.m in Sources */,
 				4EE5FC4D19D858DD005E8736 /* FontHelper.m in Sources */,

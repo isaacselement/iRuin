@@ -136,7 +136,7 @@
     NSString* imageName = imageConfig[@"image"];
     UIImage* image = imagesCache[imageName];
     if (! image) {
-        image = [KeyValueCodingHelper getUIImageByPath: imageName];
+        image = [ViewKeyValueHelper getUIImageByPath: imageName];
         if (image) [imagesCache setObject: image forKey:imageName];
     }
     

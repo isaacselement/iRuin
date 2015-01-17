@@ -15,7 +15,7 @@
 {
     if (!config || config.count == 0) return;
     
-    KeyValueCodingHelper* keyValueCodingHelper = [KeyValueCodingHelper sharedInstance];
+    ViewKeyValueHelper* keyValueCodingHelper = [ViewKeyValueHelper sharedInstance];
     
     if (! [keyValueCodingHelper translateValueHandler]) {
         // set handler, for LineScrollView's "eachCellWidth" now
@@ -38,7 +38,7 @@
                 
             } else if ([obj isKindOfClass:[CAGradientLayer class]] && [key isEqualToString:@"colors"]) {
                 
-                //            po [KeyValueCodingHelper getClassPropertieTypes:[CAGradientLayer class]]
+                //            po [ViewKeyValueHelper getClassPropertieTypes:[CAGradientLayer class]]
                 //            and find colors = "@\"NSArray\"";
                 //            print @encode(NSArray)
                 //            (const char [12]) $1 = "{NSArray=#}"
@@ -58,7 +58,7 @@
                 
             } else {
                 
-                result = [KeyValueCodingHelper translateValue: value type:type];
+                result = [ViewKeyValueHelper translateValue: value type:type];
                 
             }
                 
@@ -96,7 +96,7 @@
             id nextObject = [object valueForKey: key];
             [self designateValuesActionsTo: nextObject config:value];
         } else {
-            [[KeyValueCodingHelper sharedInstance] setValue:value keyPath:key object:object];
+            [[ViewKeyValueHelper sharedInstance] setValue:value keyPath:key object:object];
         }
         
     }

@@ -59,46 +59,43 @@
     if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
         
         ACTION.gameState.isMuteMusic = !ACTION.gameState.isMuteMusic;
+        BOOL isMuteMusic = ACTION.gameState.isMuteMusic;
         
         NSDictionary* audioPlayers = ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).audiosPlayers;
         NSDictionary* fadeSpecifications = DATA.config[@"FadeActions"];
         for (NSString* key in fadeSpecifications) {
             AVAudioPlayer* player = audioPlayers[key];
-            NSDictionary* dictionary = fadeSpecifications[key];
-            NSDictionary* dic = ACTION.gameState.isMuteMusic ? dictionary[@"OFF"]: dictionary[@"ON"];
+            if (!player) return;
+            
+            NSDictionary* spec = fadeSpecifications[key];
+            NSDictionary* dic = isMuteMusic ? spec[@"OFF"]: spec[@"ON"];
             float toVolume = [dic[@"fadeToVolume"] floatValue];
             float overDuration = [dic[@"fadeOverDuration"] floatValue];
-            [[AudioHandler audioCrossFadeQueue] addOperation:[[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:toVolume overDuration:overDuration]];
+            MXAudioPlayerFadeOperation* fadeOperation = [[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:toVolume overDuration:overDuration];
+            [[AudioHandler audioCrossFadeQueue] addOperation: fadeOperation];
         }
         
         NSArray* values = DATA.config[@"Utilities"][@"AudioCues"];
-        
-        NSString* cueText = ACTION.gameState.isMuteMusic ? [values lastObject] : [values firstObject];
-        if (cueText) {
-            
-            // change text with animation
-            CATransition *animation = [CATransition animation];
-            animation.duration = 0.5;
-            animation.type = kCATransitionFromTop;
-            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-            [cueLabel.layer addAnimation:animation forKey:@"changeTextTransition"];
-            
-            cueLabel.text = cueText;
-        }
+        NSString* cueText = isMuteMusic ? [values lastObject] : [values firstObject];
+        if (!cueText) return;
+        [self changeTextWithAnimation: cueText];
         
     } else if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
         
-        // change text with animation
-        CATransition *animation = [CATransition animation];
-        animation.duration = 0.5;
-        animation.type = kCATransitionFromTop;
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        [cueLabel.layer addAnimation:animation forKey:@"changeTextTransition"];
-        
-        cueLabel.text = nil;
+        [self changeTextWithAnimation: nil];
     }
+}
+
+-(void) changeTextWithAnimation: (NSString*)text
+{
+    // change text with animation
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.5;
+    animation.type = kCATransitionFromTop;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [cueLabel.layer addAnimation:animation forKey:@"changeTextTransition"];
     
-    
+    cueLabel.text = text;
 }
 
 

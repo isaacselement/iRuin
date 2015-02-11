@@ -1,7 +1,6 @@
 #import "GameController.h"
 #import "AppInterface.h"
 
-#import "GameScrollView.h"
 #import "SharedMotionManager.h"
 
 
@@ -26,7 +25,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     // Give a new uiview , cause the origin is a strange mess thing
-    self.view = [[GameScrollView alloc] initWithFrame:self.view.bounds];
+    self.view = [[GameBaseView alloc] initWithFrame:self.view.bounds];
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview: chaptersView];
@@ -35,10 +34,10 @@
     
     // monitore the battery
     // if it work , upvote this: http://stackoverflow.com/a/14834620/1749293
-    [self performSelector:@selector(startGyroParallex) withObject:nil afterDelay: 1];
     [UIDevice currentDevice].batteryMonitoringEnabled = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus) name:UIDeviceBatteryStateDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus) name:UIDeviceBatteryLevelDidChangeNotification object:nil];
+    [self startParallex];
     
 }
 
@@ -75,31 +74,64 @@
 
 #pragma mark - 
 
+- (void)batteryStatus
+{
+    if ([[UIDevice currentDevice] batteryState] != UIDeviceBatteryStateUnknown) {
+        float batteryLevel = [[UIDevice currentDevice] batteryLevel];
+        DLog(@"batteryLevel: %f", batteryLevel);
+        if (batteryLevel < 0.1) {
+            [self stopParallex];
+        } else {
+            [self startParallex];
+        }
+    }
+}
+
+-(void) startParallex
+{
+    [self performSelector:@selector(startGyroParallex) withObject:nil afterDelay: 1];
+}
+
+-(void) stopParallex
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(startGyroParallex) object:nil];
+    [[SharedMotionManager sharedInstance] stopGyroUpdates];
+}
+
+
 - (void)startGyroParallex
 {
+    GradientImageView* imageView = (GradientImageView*)[self.view valueForKey:@"backgroundView"];
+    CGRect rect = imageView.frame;
+
+    
     SharedMotionManager* motionManager = [SharedMotionManager sharedInstance];
     if (motionManager.deviceMotionAvailable) {  // same as motionManager.gyroAvailable, cause accelerometer always have , see the doc
         motionManager.gyroUpdateInterval = 1/20;
         [motionManager startGyroUpdatesToQueue: [SharedOperationQueue sharedInstance] withHandler:^(CMGyroData *gyroData, NSError *error) {
             CMRotationRate rotationRate = gyroData.rotationRate;
+//            DLog(@"%f, %f, %f", rotationRate.x, rotationRate.y, rotationRate.z);
             
-            DLog(@"%f, %f, %f", rotationRate.x, rotationRate.y, rotationRate.z);
+            // For animation to frequently ----------- Begin ---
+            static NSDate* startTime = nil;
+            if (startTime) {
+                if ([[NSDate date] timeIntervalSinceDate: startTime] < 0.2f) return ;
+            }
+            startTime = [NSDate date];
+            // For animation to frequently ----------- Begin ---
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.3f
+                                      delay:0.0f
+                                    options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveEaseOut
+                                 animations:^{
+                                     imageView.frame = CGRectMake(rect.origin.x + rotationRate.y * 10, rect.origin.y, rect.size.width, rect.size.height);
+                                 }
+                                 completion:nil];
+                
+            });
+            
         }];
-    }
-}
-
-- (void)batteryStatus
-{    
-    if ([[UIDevice currentDevice] batteryState] == UIDeviceBatteryStateUnknown) {
-
-    } else {
-        float batteryLevel = [[UIDevice currentDevice] batteryLevel];
-        DLog(@"batteryLevel: %f", batteryLevel);
-        if (batteryLevel < 0.1) {
-            [[SharedMotionManager sharedInstance] stopGyroUpdates];
-        } else {
-            [self startGyroParallex];
-        }
     }
 }
 

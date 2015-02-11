@@ -137,17 +137,8 @@
     NSArray* chaptersCells = VIEW.chaptersView.lineScrollView.contentView.subviews;
     for (int i = 0 ; i < chaptersCells.count; i++) {
         ImageLabelLineScrollCell* cell = [chaptersCells objectAtIndex:i];
-        
-        // values and actions
-        NSString* iKey = [NSString stringWithFormat:@"%d", i];
-        NSDictionary* config = cellsConfigs[iKey];
-        if (! config) {
-            config = cellsConfigs[@"default"];
-        }
-        if (cellsConfigs[@"common"]) {
-            config = [DictionaryHelper combines:cellsConfigs[@"common"] with:config];
-        }
-        
+        NSString* indexKey = [NSString stringWithFormat:@"%d", i];
+        NSDictionary* config = [ConfigHelper handleDefaultCommonConfig:cellsConfigs key:indexKey];
         [ACTION.gameEffect designateValuesActionsTo:cell config: config];
     }
 }

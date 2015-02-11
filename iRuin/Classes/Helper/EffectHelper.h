@@ -24,13 +24,14 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 
 
-#pragma mark - Bonus Effect
+#pragma mark - score
 
 -(void) scoreWithEffect:(NSArray*)symbols;
 
 -(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous;
 
 
+#pragma mark - pass season hint
 
 -(void) showPassedSeasonHint:(int)hideDelay title:(NSString*)title scoreDelay:(int)scoreDelay messageDelay:(int)messageDelay;
 

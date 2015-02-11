@@ -1,13 +1,20 @@
-//
-//  ConfigHelper.m
-//  iRuin
-//
-//  Created by suchavision on 2/11/15.
-//  Copyright (c) 2015 isaacs. All rights reserved.
-//
-
 #import "ConfigHelper.h"
+#import "DictionaryHelper.h"
 
 @implementation ConfigHelper
+
+
++(NSDictionary*) handleDefaultCommonConfig:(NSDictionary*)configs key:(NSString*)key
+{
+    NSDictionary* config = configs[key];
+    if (! config) {
+        config = configs[@"default"];
+    }
+    if (configs[@"common"]) {
+        config = [DictionaryHelper combines:configs[@"common"] with:config];
+    }
+    return config;
+}
+
 
 @end

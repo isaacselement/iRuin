@@ -15,8 +15,6 @@
 }
 
 
-
-
 static EffectHelper* oneInstance = nil;
 
 +(EffectHelper*) getInstance
@@ -26,8 +24,6 @@ static EffectHelper* oneInstance = nil;
     }
     return oneInstance;
 }
-
-
 
 
 #pragma mark - Queue Views Positiosn Handler
@@ -118,34 +114,19 @@ static EffectHelper* oneInstance = nil;
 
 
 
-
-#pragma mark - Bonus Effect
+#pragma mark - score
 
 -(void) scoreWithEffect:(NSArray*)symbols
 {
     NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
 
-    int multiple = 1;
     // touch and route not two dimension
-    if ([ArrayHelper isTwoDimension: symbols]) {
-        multiple = (int)symbols.count;
-        
-    } else {
-        multiple = (int)vanishViews.count - MATCH_COUNT;
-        
-    }
+    int multiple = [ArrayHelper isTwoDimension: symbols] ? (int)symbols.count : (int)vanishViews.count - MATCH_COUNT;
     multiple = multiple <= 0 ? 1 : multiple;
     
     [self caculateTheScore: vanishViews multiple:multiple];
-    
     NSString* iKey = [NSString stringWithFormat:@"%d", multiple];
-    if (multiple > 1) {
-        int plus = 0;
-        if (!DATA.config[@"Utilities"][@"VanishBonus"][iKey]) {
-            plus = multiple;
-        }
-        [self showBonusHint: DATA.config[@"Utilities"][@"VanishBonus"] key:iKey plus:plus];
-    }
+    [self showBonusHint: DATA.config[@"Utilities"][@"VanishBonus"] key:iKey multipleTip:0];
 }
 
 -(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous
@@ -153,12 +134,9 @@ static EffectHelper* oneInstance = nil;
     NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
 
     [self caculateTheScore: vanishViews multiple:continuous];
-    
     NSString* iKey = [NSString stringWithFormat:@"%d", continuous];
-    [self showBonusHint: DATA.config[@"Utilities"][@"ChainBonus"] key:iKey plus:continuous];
+    [self showBonusHint: DATA.config[@"Utilities"][@"ChainBonus"] key:iKey multipleTip:continuous];
 }
-
-
 
 -(void) caculateTheScore: (NSArray*)vanishViews multiple:(int)multiple
 {
@@ -185,8 +163,39 @@ static EffectHelper* oneInstance = nil;
     }
 }
 
+-(void) showBonusHint: (NSDictionary*)configs key:(NSString*)key multipleTip:(int)multiple
+{
+    NSDictionary* config = [ConfigHelper handleDefaultCommonConfig:configs key:key];
+    
+    GradientLabel* bonusLabel = [[GradientLabel alloc] init];
+    
+    [VIEW.actionDurations clear];
+    [ACTION.gameEffect designateValuesActionsTo: bonusLabel config:config];
+    double totalDuration = [VIEW.actionDurations take];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [bonusLabel.layer removeAllAnimations];
+        [bonusLabel removeFromSuperview];
+    });
+    
+    // center and add to view
+    if (multiple >= 1) {
+        NSString* appendFormat = config[@"~textMultiFormat"];
+        NSString* appendText = [NSString stringWithFormat:appendFormat, multiple];
+        bonusLabel.text = [bonusLabel.text stringByAppendingString: appendText];
+    }
+    [bonusLabel adjustWidthToFontText];
+    [VIEW.gameView addSubview: bonusLabel];
+    bonusLabel.center = [VIEW.gameView middlePoint];
+}
 
 
+
+
+
+
+
+#pragma mark - pass season hint
 
 -(void) showPassedSeasonHint:(int)hideDelay title:(NSString*)title scoreDelay:(int)scoreDelay messageDelay:(int)messageDelay
 {
@@ -242,40 +251,6 @@ static EffectHelper* oneInstance = nil;
         hud.labelText = message;
         hud.detailsLabelText = nil;
     });
-}
-
-
-
-
--(void) showBonusHint: (NSDictionary*)configs key:(NSString*)key plus:(int)plus
-{
-    NSDictionary* config = configs[key];
-    if (! config) {
-        config = configs[@"default"];
-    }
-    if (configs[@"common"]) {
-        config = [DictionaryHelper combines:configs[@"common"] with:config];
-    }
-    
-    
-    GradientLabel* bonusLabel = [[GradientLabel alloc] init];
-    
-    [VIEW.actionDurations clear];
-    [ACTION.gameEffect designateValuesActionsTo: bonusLabel config:config];
-    double totalDuration = [VIEW.actionDurations take];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [bonusLabel.layer removeAllAnimations];
-        [bonusLabel removeFromSuperview];
-    });
-    
-    // center and add to view
-    if (plus >= 1) {
-        bonusLabel.text = [bonusLabel.text stringByAppendingFormat: @" %d", plus];
-    }
-    [bonusLabel adjustWidthToFontText];
-    [VIEW.gameView addSubview: bonusLabel];
-    bonusLabel.center = [VIEW.gameView middlePoint];
 }
 
 

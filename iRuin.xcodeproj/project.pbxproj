@@ -74,6 +74,7 @@
 		5E01AFCD1A5AF68700F051D6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E01AFCC1A5AF68700F051D6 /* CoreMotion.framework */; };
 		5E06F7261A89F2D00083CBCA /* _canon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E06F7251A89F2D00083CBCA /* _canon.mp3 */; };
 		5E34ED341A3E785E00022E45 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E34ED331A3E785E00022E45 /* ScoreLabel.m */; };
+		5E4228641A8B539000FE5B7D /* ConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4228631A8B539000FE5B7D /* ConfigHelper.m */; };
 		5E4899461A53973C007F3C12 /* ConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4899451A53973C007F3C12 /* ConfigHelper.m */; };
 		5E4C9B5B1A87B9F900B500C1 /* ConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A1E1A87B9F900B500C1 /* ConcurrentOperation.m */; };
 		5E4C9B5C1A87B9F900B500C1 /* InputSourcesThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A201A87B9F900B500C1 /* InputSourcesThread.m */; };
@@ -198,7 +199,6 @@
 		5E598A4B1A5B8A8C009E769D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4A1A5B8A8C009E769D /* libz.dylib */; };
 		5E598A4D1A5B8AB3009E769D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4C1A5B8AB3009E769D /* libsqlite3.dylib */; };
 		5E598A4F1A5B8BD3009E769D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4E1A5B8BD3009E769D /* SystemConfiguration.framework */; };
-		5E598A521A5BBA8E009E769D /* GameScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E598A511A5BBA8E009E769D /* GameScrollView.m */; };
 		5E6B16321A39D22B0087EA1D /* Bubble_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */; };
 		5E6B16331A39D22B0087EA1D /* Bubble_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B16301A39D22B0087EA1D /* Bubble_2.wav */; };
 		5E6B16341A39D22B0087EA1D /* sand.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B16311A39D22B0087EA1D /* sand.wav */; };
@@ -381,6 +381,8 @@
 		5E06F7251A89F2D00083CBCA /* _canon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = _canon.mp3; sourceTree = "<group>"; };
 		5E34ED321A3E785E00022E45 /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
 		5E34ED331A3E785E00022E45 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
+		5E4228621A8B539000FE5B7D /* ConfigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigHelper.h; sourceTree = "<group>"; };
+		5E4228631A8B539000FE5B7D /* ConfigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigHelper.m; sourceTree = "<group>"; };
 		5E4899441A53973C007F3C12 /* ConfigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigHelper.h; sourceTree = "<group>"; };
 		5E4899451A53973C007F3C12 /* ConfigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigHelper.m; sourceTree = "<group>"; };
 		5E4C9A1A1A87B9F900B500C1 /* _Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Action.h; sourceTree = "<group>"; };
@@ -653,8 +655,6 @@
 		5E598A4A1A5B8A8C009E769D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5E598A4C1A5B8AB3009E769D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5E598A4E1A5B8BD3009E769D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		5E598A501A5BBA8E009E769D /* GameScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScrollView.h; sourceTree = "<group>"; };
-		5E598A511A5BBA8E009E769D /* GameScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScrollView.m; sourceTree = "<group>"; };
 		5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble_1.wav; sourceTree = "<group>"; };
 		5E6B16301A39D22B0087EA1D /* Bubble_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble_2.wav; sourceTree = "<group>"; };
 		5E6B16311A39D22B0087EA1D /* sand.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sand.wav; sourceTree = "<group>"; };
@@ -744,8 +744,6 @@
 				4EAB5A6019F79C440031F69D /* ChaptersView.m */,
 				4E2CCAD119FBF98B00D2AAEC /* GameBaseView.h */,
 				4E2CCAD219FBF98B00D2AAEC /* GameBaseView.m */,
-				5E598A501A5BBA8E009E769D /* GameScrollView.h */,
-				5E598A511A5BBA8E009E769D /* GameScrollView.m */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -980,6 +978,8 @@
 				4EDACDCA191FBCF600A8E84E /* FilterHelper.m */,
 				5EBDCC1A1A38102F0002636F /* ScheduledHelper.h */,
 				5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */,
+				5E4228621A8B539000FE5B7D /* ConfigHelper.h */,
+				5E4228631A8B539000FE5B7D /* ConfigHelper.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1972,13 +1972,13 @@
 				4EA4DD3A181EAFAE00BC1E6E /* GameController.m in Sources */,
 				5E4C9B5F1A87B9F900B500C1 /* TaskObjectList.c in Sources */,
 				5E4C9B9B1A87B9F900B500C1 /* NSString+Additions.m in Sources */,
-				5E598A521A5BBA8E009E769D /* GameScrollView.m in Sources */,
 				5E4C9BC71A87B9F900B500C1 /* FilterTableView.m in Sources */,
 				5E4C9B941A87B9F900B500C1 /* DictionaryHelper.m in Sources */,
 				4E4D4EC6181D5B9C00886D75 /* ViewManager.m in Sources */,
 				5E4C9B7C1A87B9F900B500C1 /* JsonFileManager.m in Sources */,
 				5E4C9BD41A87B9F900B500C1 /* UIView+Frame.m in Sources */,
 				4E4D4EC3181D5B9000886D75 /* DataManager.m in Sources */,
+				5E4228641A8B539000FE5B7D /* ConfigHelper.m in Sources */,
 				4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */,
 				4ED52C81191E61FF002ADA73 /* SwipeState.m in Sources */,
 				4E6162FE19FFDAB900302D98 /* InteractiveView.m in Sources */,

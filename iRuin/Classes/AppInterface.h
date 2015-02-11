@@ -148,18 +148,13 @@
 
 #pragma mark - Helper
 /** Helper */
-
 #import "StateHelper.h"
+#import "ConfigHelper.h"
 #import "EffectHelper.h"
-#import "ScheduledHelper.h"
-
+#import "FilterHelper.h"
 #import "SearchHelper.h"
+#import "ScheduledHelper.h"
 #import "PositionsHelper.h"
 
-#import "FilterHelper.h"
 
 #import "ExplodesExecutor.h"
-
-
-
-

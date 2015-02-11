@@ -4,7 +4,9 @@
 @implementation GameEffect
 
 
+
 #define kIgnore @"_"
+#define kReserved @"~"
 #define kFrame @"Frame"
 #define kExecutors @"Executors"
 #define kTextFormatter @"kTextFormatter"
@@ -86,6 +88,7 @@
     
     for (NSString* key in config) {
         if ([key hasSuffix:kIgnore]) continue;
+        if ([key hasPrefix:kReserved]) continue;
         if ([key isEqualToString:kFrame]) continue;
         if ([key isEqualToString:kExecutors]) continue;
         if ([key isEqualToString:kTextFormatter]) continue;
@@ -93,8 +96,7 @@
         id value = config[key];
         
         if ([value isKindOfClass:[NSDictionary class]]) {
-            id nextObject = [object valueForKey: key];
-            [self designateValuesActionsTo: nextObject config:value];
+            [self designateValuesActionsTo: [object valueForKey: key] config:value];
         } else {
             [[ViewKeyValueHelper sharedInstance] setValue:value keyPath:key object:object];
         }

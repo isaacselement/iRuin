@@ -173,6 +173,8 @@ static EffectHelper* oneInstance = nil;
     [ACTION.gameEffect designateValuesActionsTo: bonusLabel config:config];
     double totalDuration = [VIEW.actionDurations take];
     
+    if ([bonusLabel.text isEqualToString:@""]) return;
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [bonusLabel.layer removeAllAnimations];
         [bonusLabel removeFromSuperview];

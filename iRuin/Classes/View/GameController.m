@@ -31,14 +31,9 @@
     [self.view addSubview: chaptersView];
     [self.view addSubview: gameView];
     
+    [self registerBatteryAndParallex];
     
-    // monitore the battery
-    // if it work , upvote this: http://stackoverflow.com/a/14834620/1749293
-    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus) name:UIDeviceBatteryStateDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus) name:UIDeviceBatteryLevelDidChangeNotification object:nil];
-    [self startParallex];
-    
+//    self.view.layer.opacity = 0;
 }
 
 -(NSUInteger) supportedInterfaceOrientations {
@@ -72,13 +67,24 @@
 
 
 
-#pragma mark - 
+#pragma mark - Parallex
 
-- (void)batteryStatus
+-(void) registerBatteryAndParallex
+{
+    // monitore the battery
+    // if it work , upvote this: http://stackoverflow.com/a/14834620/1749293
+    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus) name:UIDeviceBatteryStateDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(batteryStatus) name:UIDeviceBatteryLevelDidChangeNotification object:nil];
+    [self startParallex];
+}
+
+-(void) batteryStatus
 {
     if ([[UIDevice currentDevice] batteryState] != UIDeviceBatteryStateUnknown) {
         float batteryLevel = [[UIDevice currentDevice] batteryLevel];
         DLog(@"batteryLevel: %f", batteryLevel);
+        
         if (batteryLevel < 0.1) {
             [self stopParallex];
         } else {
@@ -89,6 +95,7 @@
 
 -(void) startParallex
 {
+    if (![DATA.config[@"Utilities"][@"isParallexEnable"] boolValue]) return;
     [self performSelector:@selector(startGyroParallex) withObject:nil afterDelay: 1];
 }
 
@@ -98,12 +105,10 @@
     [[SharedMotionManager sharedInstance] stopGyroUpdates];
 }
 
-
-- (void)startGyroParallex
+-(void) startGyroParallex
 {
     GradientImageView* imageView = (GradientImageView*)[self.view valueForKey:@"backgroundView"];
-    CGRect rect = imageView.frame;
-
+    CGPoint center = imageView.center;
     
     SharedMotionManager* motionManager = [SharedMotionManager sharedInstance];
     if (motionManager.deviceMotionAvailable) {  // same as motionManager.gyroAvailable, cause accelerometer always have , see the doc
@@ -112,29 +117,22 @@
             CMRotationRate rotationRate = gyroData.rotationRate;
 //            DLog(@"%f, %f, %f", rotationRate.x, rotationRate.y, rotationRate.z);
             
-            // For animation to frequently ----------- Begin ---
             static NSDate* startTime = nil;
             if (startTime) {
                 if ([[NSDate date] timeIntervalSinceDate: startTime] < 0.2f) return ;
             }
             startTime = [NSDate date];
-            // For animation to frequently ----------- Begin ---
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:0.3f
                                       delay:0.0f
-                                    options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveEaseOut
-                                 animations:^{
-                                     imageView.frame = CGRectMake(rect.origin.x + rotationRate.y * 10, rect.origin.y, rect.size.width, rect.size.height);
-                                 }
+                                    options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseOut
+                                 animations:^{ [imageView setCenterX:center.x + rotationRate.y * 10]; }
                                  completion:nil];
-                
             });
-            
         }];
     }
 }
-
 
 #pragma mark - Orientation Change
 
@@ -143,6 +141,7 @@
     [ACTION renderFramesWithCurrentOrientation];
     
     return;
+    
     // Temp -------------------------------
     if (! ACTION.gameState.isGameStarted) {
         

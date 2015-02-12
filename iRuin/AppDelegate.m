@@ -27,10 +27,10 @@ void uncaughtExceptionHandler(NSException *exception) {
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = VIEW.controller;
     VIEW.window = self.window;
-    [self.window makeKeyAndVisible];
-    
     
     [ACTION launchAppProcedures];
+    
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

@@ -5,30 +5,31 @@
 
 +(NSDictionary*) getDesignJson: (NSString*)name
 {
-    return [self getJson: name key:User_ResourcesDesignsPath];
+    return [self getJson: name key:@"Designs"];
 }
 
 +(NSDictionary*) getConfigJson: (NSString*)name
 {
-    return [self getJson: name key:User_ResourcesConfigsPath];
+    return [self getJson: name key:@"Configs"];
 }
 
 +(NSDictionary*) getJson: (NSString*)name key:(NSString*)key
 {
-    return [self getJson: StringDotAppend(name, key_Json) directory:[StandUserDefaults objectForKey: key]];
+    NSString* resourceSandboxPath = [APPStandUserDefaults objectForKey:User_ResourcesSandboxPath];
+    NSString* relativeDirectory = StringPathAppend(resourceSandboxPath, key);
+    return [self getJson: StringDotAppend(name, key_Json) relativeDirectory:relativeDirectory];
 }
 
-+(NSDictionary*) getJson: (NSString*)fileName directory:(NSString*)directory
++(NSDictionary*) getJson: (NSString*)fileName relativeDirectory:(NSString*)relativeDirectory
 {
     NSString* sanboxFilePath = nil;
-    if (directory) {
-        NSString* configsDirectory = StringPathAppend(NSHomeDirectory(), directory);
-        NSString* configFilePath = StringPathAppend(configsDirectory, fileName);
+    if (relativeDirectory) {
+        NSString* configPath = StringPathAppend(NSHomeDirectory(), relativeDirectory);
+        NSString* configFilePath = StringPathAppend(configPath, fileName);
         if ([FileManager isFileExist: configFilePath]) {
             sanboxFilePath = configFilePath;
         }
     }
-    
     if (sanboxFilePath) {
         NSDictionary* result = [JsonFileManager getJsonFromPath: sanboxFilePath];
         if (result) {
@@ -45,29 +46,29 @@
 +(void) requestDowloadRemoteResources
 {
     NSString* definedURL = DATA.config[@"Utilities"][@"ResourcesSpecificationURL"];
+    if (!definedURL) return;
     HTTPGetRequest* definedRequest = [[HTTPGetRequest alloc] initWithURLString: definedURL parameters:nil];
     
     [definedRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (! connectionError && [(NSHTTPURLResponse*) response statusCode] < 400) {
             NSError* error = nil;
-            NSDictionary* contents = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingAllowFragments error:&error];
+            NSDictionary* specification = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingAllowFragments error:&error];
             
-            if (!error && contents) {
-                int version = [contents[@"version"] intValue];
-                BOOL isProduction = [contents[@"isProduction"] boolValue];
+            if (!error && specification) {
+                int version = [specification[@"version"] intValue];
+                NSString* resourcesURL = specification[@"resourcesURL"];
+                NSString* inSandboxPath = specification[@"inSandboxPath"];
+                BOOL isProduction = [specification[@"isProduction"] boolValue];
+                BOOL isSetupImmediately = [specification[@"isSetupImmediately"] boolValue];
                 
-                int currentVersion = [[StandUserDefaults objectForKey: User_ResourcesVersion] intValue];
+                int currentVersion = [[APPStandUserDefaults objectForKey: User_ResourcesVersion] intValue];
                 BOOL isNewerVersion = version > currentVersion;
                 
                 if (isProduction && isNewerVersion) {
-                    NSString* resourcesURL = contents[@"resourcesURL"];
                     NSString* zipFileName = [resourcesURL lastPathComponent];
+                    NSString* inSandboxFullPath = StringPathAppend(NSHomeDirectory(), inSandboxPath);
+                    NSString* zipFileFullPath = StringPathAppend(inSandboxFullPath, zipFileName);
                     
-                    NSString* localPath = contents[@"localPath"];
-                    NSString* absLocalPATH = StringPathAppend(NSHomeDirectory(), localPath);
-                    NSString* zipFileLocalPATH = StringPathAppend(absLocalPATH, zipFileName);
-                    
-                    BOOL isSetupImmediately = [contents[@"isSetupImmediately"] boolValue];
                     
                     // Get resources.zip
                     HTTPGetRequest* resourcesRequest = [[HTTPGetRequest alloc] initWithURLString:resourcesURL parameters:nil];
@@ -75,33 +76,25 @@
                     [resourcesRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
                         if (! connectionError && [(NSHTTPURLResponse*) response statusCode] < 400) {
                             // save
-                            [FileManager writeDataToFile:zipFileLocalPATH data:data];
+                            [FileManager writeDataToFile:zipFileFullPath data:data];
                             
                             // un compress
-                            NSString* unZipFilePath = [zipFileLocalPATH stringByDeletingLastPathComponent];
-                            [SSZipArchive unzipFileAtPath:zipFileLocalPATH toDestination:unZipFilePath];
+                            NSError* unZipError = nil;
+                            [SSZipArchive unzipFileAtPath:zipFileFullPath toDestination:inSandboxFullPath overwrite:YES password:nil error:&unZipError];
                             
                             // delete
-                            [FileManager deleteFile:zipFileLocalPATH];
+                            [FileManager deleteFile:zipFileFullPath];
                             
                             // save to user defaults
-                            NSString* resourceRootPath = [zipFileLocalPATH stringByDeletingPathExtension];
-                            NSString* relativeConfigsPath = StringPathAppend(resourceRootPath, @"Configs");
-                            NSString* relativeDesignsPath = StringPathAppend(resourceRootPath, @"Designs");
-                            
-                            [StandUserDefaults setObject:@(version) forKey:User_ResourcesVersion];
-                            [StandUserDefaults setObject: relativeConfigsPath forKey:User_ResourcesConfigsPath];
-                            [StandUserDefaults setObject: relativeDesignsPath forKey:User_ResourcesDesignsPath];
+                            NSString* resourceSandboxPath = StringPathAppend(inSandboxPath, [zipFileName stringByDeletingPathExtension]);
+                            [APPStandUserDefaults setObject: @(version) forKey:User_ResourcesVersion];
+                            [APPStandUserDefaults setObject: resourceSandboxPath forKey:User_ResourcesSandboxPath];
                             
                             // if setup immediately
-                            if (isSetupImmediately) {
-                                [DATA prepareShareDesignsConfigs];
-                            }
+                            if (isSetupImmediately) [DATA prepareShareDesignsConfigs];
                         }
                     }];
-                    
                 }
-                
             }
         }
     }];

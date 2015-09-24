@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A0DD2EED7C7ED37B02BF747EC8AD12626E0A6249",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "382CF808FA8CFA837D2AEBBBB6B28956273A1D3B" : 0,
+    "A0DD2EED7C7ED37B02BF747EC8AD12626E0A6249" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "49D1E22F-44F7-4CF6-875F-A4918C513FB7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "382CF808FA8CFA837D2AEBBBB6B28956273A1D3B" : "Modules",
+    "A0DD2EED7C7ED37B02BF747EC8AD12626E0A6249" : "iRuin"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "iRuin",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iRuin.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/isaacselement\/Modules.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "382CF808FA8CFA837D2AEBBBB6B28956273A1D3B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/isaacselement\/iRuin.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A0DD2EED7C7ED37B02BF747EC8AD12626E0A6249"
+    }
+  ]
+}

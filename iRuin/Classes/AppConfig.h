@@ -46,10 +46,7 @@
 
 #define User_ResourcesVersion @"User_ResourcesVersion"
 
-#define User_ResourcesConfigsPath @"User_ResourcesConfigsPath"
-
-#define User_ResourcesDesignsPath @"User_ResourcesDesignsPath"
-
+#define User_ResourcesSandboxPath @"User_ResourcesSandboxPath"
 
 
 
@@ -62,7 +59,7 @@
 
 #define CGPointValue(_point) [NSValue valueWithCGPoint: _point]
 
-#define StandUserDefaults [NSUserDefaults standardUserDefaults]
+#define APPStandUserDefaults [NSUserDefaults standardUserDefaults]
 
 
 

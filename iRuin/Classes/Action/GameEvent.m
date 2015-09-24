@@ -14,20 +14,20 @@
     
     // chapter cells 
     // first time launch app, set the chapter index
-    if (![StandUserDefaults objectForKey: User_LastTimeLaunch]) {
-        [StandUserDefaults setObject:DATA.config[@"Utilities"][@"FirstTimeLaunchGiveChaptersCount"] forKey:User_ChapterIndex];
+    if (![APPStandUserDefaults objectForKey: User_LastTimeLaunch]) {
+        [APPStandUserDefaults setObject:DATA.config[@"Utilities"][@"FirstTimeLaunchGiveChaptersCount"] forKey:User_ChapterIndex];
     }
-    [StandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
+    [APPStandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
     
     LineScrollView* lineScrollView = VIEW.chaptersView.lineScrollView;
-    [lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
+    [lineScrollView setCurrentIndex: [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]];
     
     lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollViewObj, int index) {
         NSInteger minimalIndex = NSIntegerMin;
         if (DATA.config[@"Utilities"][@"ChaptersMinimalIndex"]) {
             minimalIndex = [DATA.config[@"Utilities"][@"ChaptersMinimalIndex"] intValue];
         }
-        return index >= minimalIndex && index <= [[StandUserDefaults objectForKey:User_ChapterIndex] intValue];
+        return index >= minimalIndex && index <= [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
     };
     [lineScrollView setContentOffset: CGPointMake(lineScrollView.contentView.sizeWidth - lineScrollView.sizeWidth, 0) animated:NO];
     

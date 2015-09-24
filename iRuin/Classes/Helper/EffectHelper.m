@@ -232,13 +232,13 @@ static EffectHelper* oneInstance = nil;
     
     NSString* message = nil;
     if (VIEW.gameView.scoreLabel.number >= ACTION.gameState.clearanceScore) {
-        if (ACTION.gameState.currentChapter != [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]) {
+        if (ACTION.gameState.currentChapter != [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]) {
             message = [NSString stringWithFormat:@"Season %d already unlocked :)", ACTION.gameState.currentChapter + 1];
         } else {
-            [StandUserDefaults setObject: @(ACTION.gameState.currentChapter + 1) forKey:User_ChapterIndex];  // do no put this in delay, important!!!
-            [VIEW.chaptersView.lineScrollView setCurrentIndex: [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
+            [APPStandUserDefaults setObject: @(ACTION.gameState.currentChapter + 1) forKey:User_ChapterIndex];  // do no put this in delay, important!!!
+            [VIEW.chaptersView.lineScrollView setCurrentIndex: [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]];
             
-            message = [NSString stringWithFormat:@"Season %d now unlocked :)", [[StandUserDefaults objectForKey:User_ChapterIndex] intValue]];
+            message = [NSString stringWithFormat:@"Season %d now unlocked :)", [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]];
         }
         
     } else {

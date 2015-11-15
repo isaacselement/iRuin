@@ -36,7 +36,7 @@
 //    self.view.layer.opacity = 0;
 }
 
--(NSUInteger) supportedInterfaceOrientations {
+-(UIInterfaceOrientationMask) supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
 

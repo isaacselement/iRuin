@@ -389,7 +389,6 @@
 		5E34ED331A3E785E00022E45 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
 		5E4228651A8B69D700FE5B7D /* ConfigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigHelper.h; sourceTree = "<group>"; };
 		5E4228661A8B69D700FE5B7D /* ConfigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigHelper.m; sourceTree = "<group>"; };
-		5E4C9A1A1A87B9F900B500C1 /* _Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Action.h; sourceTree = "<group>"; };
 		5E4C9A1C1A87B9F900B500C1 /* _Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Operation.h; sourceTree = "<group>"; };
 		5E4C9A1D1A87B9F900B500C1 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcurrentOperation.h; sourceTree = "<group>"; };
 		5E4C9A1E1A87B9F900B500C1 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentOperation.m; sourceTree = "<group>"; };
@@ -402,7 +401,6 @@
 		5E4C9A261A87B9F900B500C1 /* ScheduledTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduledTask.m; sourceTree = "<group>"; };
 		5E4C9A271A87B9F900B500C1 /* TaskObjectList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TaskObjectList.c; sourceTree = "<group>"; };
 		5E4C9A281A87B9F900B500C1 /* TaskObjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskObjectList.h; sourceTree = "<group>"; };
-		5E4C9A2A1A87B9F900B500C1 /* _Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Data.h; sourceTree = "<group>"; };
 		5E4C9A2C1A87B9F900B500C1 /* _Bytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Bytes.h; sourceTree = "<group>"; };
 		5E4C9A2D1A87B9F900B500C1 /* BytesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BytesHelper.h; sourceTree = "<group>"; };
 		5E4C9A2E1A87B9F900B500C1 /* BytesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BytesHelper.m; sourceTree = "<group>"; };
@@ -446,7 +444,6 @@
 		5E4C9A5F1A87B9F900B500C1 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		5E4C9A611A87B9F900B500C1 /* CSVFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVFileWriter.h; sourceTree = "<group>"; };
 		5E4C9A621A87B9F900B500C1 /* CSVFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVFileWriter.m; sourceTree = "<group>"; };
-		5E4C9A6C1A87B9F900B500C1 /* _File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _File.h; sourceTree = "<group>"; };
 		5E4C9A6D1A87B9F900B500C1 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		5E4C9A6E1A87B9F900B500C1 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
 		5E4C9A6F1A87B9F900B500C1 /* JsonFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonFileManager.h; sourceTree = "<group>"; };
@@ -485,7 +482,6 @@
 		5E4C9A9D1A87B9F900B500C1 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		5E4C9A9E1A87B9F900B500C1 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
 		5E4C9A9F1A87B9F900B500C1 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
-		5E4C9AA11A87B9F900B500C1 /* _Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Helper.h; sourceTree = "<group>"; };
 		5E4C9AA31A87B9F900B500C1 /* _CharacterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CharacterHelper.h; sourceTree = "<group>"; };
 		5E4C9AA41A87B9F900B500C1 /* CharacterSetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterSetHelper.h; sourceTree = "<group>"; };
 		5E4C9AA51A87B9F900B500C1 /* CharacterSetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterSetHelper.m; sourceTree = "<group>"; };
@@ -544,7 +540,6 @@
 		5E4C9AE11A87B9F900B500C1 /* ViewKeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewKeyValueHelper.m; sourceTree = "<group>"; };
 		5E4C9AE21A87B9F900B500C1 /* Modules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Modules.h; sourceTree = "<group>"; };
 		5E4C9AE31A87B9F900B500C1 /* ModulesMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModulesMacro.h; sourceTree = "<group>"; };
-		5E4C9AE61A87B9F900B500C1 /* _View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _View.h; sourceTree = "<group>"; };
 		5E4C9AE81A87B9F900B500C1 /* _ActionExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ActionExecutor.h; sourceTree = "<group>"; };
 		5E4C9AE91A87B9F900B500C1 /* _ActionExecutor_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ActionExecutor_.h; sourceTree = "<group>"; };
 		5E4C9AEA1A87B9F900B500C1 /* ActionAnimateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionAnimateHelper.h; sourceTree = "<group>"; };
@@ -1034,7 +1029,6 @@
 		5E4C9A191A87B9F900B500C1 /* Action */ = {
 			isa = PBXGroup;
 			children = (
-				5E4C9A1A1A87B9F900B500C1 /* _Action.h */,
 				5E4C9A1B1A87B9F900B500C1 /* Operation */,
 				5E4C9A231A87B9F900B500C1 /* Scheduled */,
 			);
@@ -1071,7 +1065,6 @@
 			isa = PBXGroup;
 			children = (
 				5E1919041B6C7297002F0A3D /* Network */,
-				5E4C9A2A1A87B9F900B500C1 /* _Data.h */,
 				5E4C9A2B1A87B9F900B500C1 /* Bytes */,
 				5E4C9A2F1A87B9F900B500C1 /* CoreData */,
 				5E4C9A321A87B9F900B500C1 /* CoreMotion */,
@@ -1231,7 +1224,6 @@
 		5E4C9A6B1A87B9F900B500C1 /* File */ = {
 			isa = PBXGroup;
 			children = (
-				5E4C9A6C1A87B9F900B500C1 /* _File.h */,
 				5E4C9A6D1A87B9F900B500C1 /* FileManager.h */,
 				5E4C9A6E1A87B9F900B500C1 /* FileManager.m */,
 				5E4C9A6F1A87B9F900B500C1 /* JsonFileManager.h */,
@@ -1313,7 +1305,6 @@
 		5E4C9AA01A87B9F900B500C1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				5E4C9AA11A87B9F900B500C1 /* _Helper.h */,
 				5E4C9AA21A87B9F900B500C1 /* Character */,
 				5E4C9AA81A87B9F900B500C1 /* Collection */,
 				5E4C9AB41A87B9F900B500C1 /* Date */,
@@ -1441,7 +1432,6 @@
 		5E4C9AE51A87B9F900B500C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5E4C9AE61A87B9F900B500C1 /* _View.h */,
 				5E4C9AE71A87B9F900B500C1 /* ActionExecutor */,
 				5E4C9B131A87B9F900B500C1 /* Color */,
 				5E4C9B171A87B9F900B500C1 /* Components */,

@@ -99,8 +99,8 @@
 #define swap_swipe_nimidistance (25.0)
 #pragma mark - Private Methods
 -(void) checkIsSwipeThenSwipe: (CGPoint)location {
-    float xDistance = fabsf(location.x - startPoint.x);
-    float yDistance = fabsf(location.y - startPoint.y);
+    float xDistance = fabs(location.x - startPoint.x);
+    float yDistance = fabs(location.y - startPoint.y);
     double distance = sqrt((xDistance * xDistance) + (yDistance * yDistance));
     if (distance >= swap_swipe_nimidistance) {
         isHaveCheckSwipe = YES;

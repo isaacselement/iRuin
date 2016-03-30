@@ -8,6 +8,7 @@
 */
 
 #import "AppDelegate.h"
+#import "IRuinApplication.h"
 
 #import "AppConfig.h"
 
@@ -52,8 +53,6 @@
 #pragma mark - Helper
 
 #import "_NSCategories.h"
-
-#import "_UICategories.h"
 
 
 

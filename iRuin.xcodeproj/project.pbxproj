@@ -70,7 +70,6 @@
 		4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75EA91A00F5A00074E493 /* BaseController.m */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
 		5E01AFCD1A5AF68700F051D6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E01AFCC1A5AF68700F051D6 /* CoreMotion.framework */; };
-		5E06F7261A89F2D00083CBCA /* _canon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E06F7251A89F2D00083CBCA /* _canon.mp3 */; };
 		5E19190E1B6C7297002F0A3D /* IPAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E1919061B6C7297002F0A3D /* IPAddress.c */; };
 		5E19190F1B6C7297002F0A3D /* NetworkInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1919091B6C7297002F0A3D /* NetworkInformation.m */; };
 		5E1919101B6C7297002F0A3D /* NetworkObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E19190B1B6C7297002F0A3D /* NetworkObserver.m */; };
@@ -248,6 +247,8 @@
 		5E9C11C41A3420B3007E3BB6 /* Tock.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11841A3420B3007E3BB6 /* Tock.caf */; };
 		5EBDCC1C1A38102F0002636F /* ScheduledHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */; };
 		5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EBDCC1D1A38210C0002636F /* Background_000.png */; };
+		5EC8B2B31C8D2C7D00B736B4 /* IRuinApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC8B2B21C8D2C7D00B736B4 /* IRuinApplication.m */; };
+		5EC9DDA71C020B9B0094B246 /* BeaTsGOy - Piano Beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EC9DDA61C020B9B0094B246 /* BeaTsGOy - Piano Beat.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -372,7 +373,6 @@
 		4EF7943C18C21FE800E25A30 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
 		5E01AFCC1A5AF68700F051D6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		5E06F7251A89F2D00083CBCA /* _canon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = _canon.mp3; sourceTree = "<group>"; };
 		5E1919051B6C7297002F0A3D /* _Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Network.h; sourceTree = "<group>"; };
 		5E1919061B6C7297002F0A3D /* IPAddress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = IPAddress.c; sourceTree = "<group>"; };
 		5E1919071B6C7297002F0A3D /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddress.h; sourceTree = "<group>"; };
@@ -698,6 +698,9 @@
 		5EBDCC1A1A38102F0002636F /* ScheduledHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduledHelper.h; sourceTree = "<group>"; };
 		5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduledHelper.m; sourceTree = "<group>"; };
 		5EBDCC1D1A38210C0002636F /* Background_000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_000.png; sourceTree = "<group>"; };
+		5EC8B2B11C8D2C7D00B736B4 /* IRuinApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRuinApplication.h; sourceTree = "<group>"; };
+		5EC8B2B21C8D2C7D00B736B4 /* IRuinApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRuinApplication.m; sourceTree = "<group>"; };
+		5EC9DDA61C020B9B0094B246 /* BeaTsGOy - Piano Beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "BeaTsGOy - Piano Beat.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -835,6 +838,8 @@
 				4E4D4EBB181D5B3C00886D75 /* View */,
 				4E4D4EBC181D5B4B00886D75 /* AppInterface.h */,
 				4E4D4EBD181D5B5600886D75 /* AppConfig.h */,
+				5EC8B2B11C8D2C7D00B736B4 /* IRuinApplication.h */,
+				5EC8B2B21C8D2C7D00B736B4 /* IRuinApplication.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1763,7 +1768,7 @@
 		5E9C117A1A3420B3007E3BB6 /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				5E06F7251A89F2D00083CBCA /* _canon.mp3 */,
+				5EC9DDA61C020B9B0094B246 /* BeaTsGOy - Piano Beat.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -1860,7 +1865,6 @@
 				5E4C9B6A1A87B9F900B500C1 /* private_key.pem in Resources */,
 				5E9C11C21A3420B3007E3BB6 /* Pop.aiff in Resources */,
 				5E4C9B711A87B9F900B500C1 /* Screen Shot  p12_password.png in Resources */,
-				5E06F7261A89F2D00083CBCA /* _canon.mp3 in Resources */,
 				5E4C9B6F1A87B9F900B500C1 /* rsaCertReq.csr in Resources */,
 				5E9C11C11A3420B3007E3BB6 /* Morse.aiff in Resources */,
 				5E6B16341A39D22B0087EA1D /* sand.wav in Resources */,
@@ -1891,6 +1895,7 @@
 				5E9C11861A3420B3007E3BB6 /* Config.json in Resources */,
 				5E9C11881A3420B3007E3BB6 /* Config_Pull.json in Resources */,
 				5E9C11BD1A3420B3007E3BB6 /* Bottle.aiff in Resources */,
+				5EC9DDA71C020B9B0094B246 /* BeaTsGOy - Piano Beat.mp3 in Resources */,
 				5E4C9B691A87B9F900B500C1 /* private_key.p12 in Resources */,
 				5E9C11A71A3420B3007E3BB6 /* refresh.png in Resources */,
 				5E9C11B01A3420B3007E3BB6 /* 3.png in Resources */,
@@ -1931,6 +1936,7 @@
 				5E4C9B771A87B9F900B500C1 /* CSVFileWriter.m in Sources */,
 				5E4C9B931A87B9F900B500C1 /* CollectionHelper.m in Sources */,
 				5E4C9B7E1A87B9F900B500C1 /* HTTPGetRequest.m in Sources */,
+				5EC8B2B31C8D2C7D00B736B4 /* IRuinApplication.m in Sources */,
 				5E4C9BB91A87B9F900B500C1 /* QueueValuesHelper.m in Sources */,
 				4E11D8DE181FE4F6007837F0 /* GameView.m in Sources */,
 				5EBDCC1C1A38102F0002636F /* ScheduledHelper.m in Sources */,
@@ -2182,14 +2188,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jun Shen (TD97K9TR7H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jun Shen (WY3JWHUWJH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iRuin/iRuin-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "iRuin/iRuin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2199,7 +2205,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.suchachinoiserie.iRuin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bea7030d-9bbe-4991-8573-7224130b96c5";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2209,13 +2215,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jun Shen (TD97K9TR7H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jun Shen (WY3JWHUWJH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iRuin/iRuin-Prefix.pch";
 				INFOPLIST_FILE = "iRuin/iRuin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -2225,7 +2231,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.suchachinoiserie.iRuin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bea7030d-9bbe-4991-8573-7224130b96c5";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

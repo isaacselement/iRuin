@@ -100,17 +100,26 @@
     }];
 }
 
-
-
-
-+(NSDictionary*) handleDefaultCommonConfig:(NSDictionary*)configs key:(NSString*)key
++(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key
 {
+    return [self getSubConfig:configs key:key alternateKey:nil];
+}
+
++(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key alternateKey:(NSString*)alternateKey
+{
+    NSDictionary* defaultConfig = configs[@"default"];
+    NSDictionary* commonConfig = configs[@"common"];
+    
     NSDictionary* config = configs[key];
-    if (! config) {
-        config = configs[@"default"];
+    if (!config) {
+        if (alternateKey) config = configs[alternateKey];
     }
-    if (configs[@"common"]) {
-        config = [DictionaryHelper combines:configs[@"common"] with:config];
+    if (!config) {
+        config = defaultConfig;
+    }
+    
+    if (commonConfig) {
+        config = [DictionaryHelper combines:commonConfig with:config];
     }
     return config;
 }

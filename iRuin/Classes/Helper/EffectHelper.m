@@ -165,7 +165,7 @@ static EffectHelper* oneInstance = nil;
 
 -(void) showBonusHint: (NSDictionary*)configs key:(NSString*)key multipleTip:(int)multiple
 {
-    NSDictionary* config = [ConfigHelper handleDefaultCommonConfig:configs key:key];
+    NSDictionary* config = [ConfigHelper getSubConfig:configs key:key];
     
     GradientLabel* bonusLabel = [[GradientLabel alloc] init];
     

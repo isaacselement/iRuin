@@ -13,6 +13,12 @@
 
 
 
+-(void) designateLoopValuesActionsTo: (id)object config:(NSDictionary*)config
+{
+    
+}
+
+
 -(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config
 {
     if (!config || config.count == 0) return;
@@ -54,16 +60,11 @@
                 result = colors;
                 
             } else if ([obj isKindOfClass:[CAGradientLayer class]] && ([key isEqualToString:@"startPoint"] || [key isEqualToString:@"endPoint"])) {
-                
                 CGPoint point = [RectHelper parsePoint: value];
                 result = CGPointValue(point);
-                
             } else {
-                
                 result = [ViewKeyValueHelper translateValue: value type:type];
-                
             }
-                
 
             return result;
         }];

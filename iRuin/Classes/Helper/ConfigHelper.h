@@ -13,6 +13,8 @@
 
 
 
-+(NSDictionary*) handleDefaultCommonConfig:(NSDictionary*)configs key:(NSString*)key;
++(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key;
+
++(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key alternateKey:(NSString*)alternateKey;
 
 @end

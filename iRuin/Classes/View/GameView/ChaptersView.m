@@ -115,19 +115,15 @@
     
     int circel = [chapterCellsConfig[@"Chapters_Cells_Circle"] intValue];
     NSDictionary* specifications = chapterCellsConfig[@"Chapters_Cells"];
+    NSDictionary* imageSpecifications = specifications[@"image"];
+    NSDictionary* labelSpecifications = specifications[@"label"];
     
     int i = abs(index) % circel;
     NSString* iKey = [NSString stringWithFormat:@"%d", i];
     NSString* indexKey = [NSString stringWithFormat: @"%d", index];
-    NSDictionary* config = specifications[indexKey] ? specifications[indexKey] : specifications[iKey];
-    NSDictionary* imageConfig = config[@"image"] ;
-    if (!imageConfig) {
-        imageConfig = specifications[@"default"][@"image"];
-    }
-    NSDictionary* labelConfig = config[@"label"] ;
-    if (!labelConfig) {
-        labelConfig = specifications[@"default"][@"label"];
-    }
+
+    NSDictionary* imageConfig = [ConfigHelper getSubConfig:imageSpecifications key:indexKey alternateKey:iKey];
+    NSDictionary* labelConfig = [ConfigHelper getSubConfig:labelSpecifications key:indexKey alternateKey:iKey];
     
     // image
     NSString* imageName = imageConfig[@"image"];

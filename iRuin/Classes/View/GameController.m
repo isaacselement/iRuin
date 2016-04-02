@@ -32,8 +32,6 @@
     [self.view addSubview: gameView];
     
     [self registerBatteryAndParallex];
-    
-//    self.view.layer.opacity = 0;
 }
 
 -(UIInterfaceOrientationMask) supportedInterfaceOrientations {
@@ -83,7 +81,7 @@
 {
     if ([[UIDevice currentDevice] batteryState] != UIDeviceBatteryStateUnknown) {
         float batteryLevel = [[UIDevice currentDevice] batteryLevel];
-        DLog(@"batteryLevel: %f", batteryLevel);
+        DLOG(@"batteryLevel: %f", batteryLevel);
         
         if (batteryLevel < 0.1) {
             [self stopParallex];
@@ -115,7 +113,7 @@
         motionManager.gyroUpdateInterval = 1/20;
         [motionManager startGyroUpdatesToQueue: [SharedOperationQueue sharedInstance] withHandler:^(CMGyroData *gyroData, NSError *error) {
             CMRotationRate rotationRate = gyroData.rotationRate;
-//            DLog(@"%f, %f, %f", rotationRate.x, rotationRate.y, rotationRate.z);
+//            DLOG(@"%f, %f, %f", rotationRate.x, rotationRate.y, rotationRate.z);
             
             static NSDate* startTime = nil;
             if (startTime) {

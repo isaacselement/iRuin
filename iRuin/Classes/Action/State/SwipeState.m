@@ -52,14 +52,14 @@
             
             // Touch the same symbol, cancel it
             if (touchingSymbol == secondSymbol) {
-                DLog(@"Do the cancel effect ");
+                DLOG(@"Do the cancel effect ");
             } else {
                 
                 int abs_col = abs(touchingSymbol.column - secondSymbol.column);
                 int abs_row = abs(touchingSymbol.row - secondSymbol.row);
                 
                 if (abs_col > 1 || abs_row > 1 || (abs_row == 1 && abs_col == 1) ) {
-                    DLog(@"Not adjacent");
+                    DLOG(@"Not adjacent");
                 } else {
                     [self swipe: touchingSymbol with:secondSymbol];
                 }

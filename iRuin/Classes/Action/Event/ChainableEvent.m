@@ -75,7 +75,7 @@
 
 -(void) eventSymbolsDidChainVanish
 {
-    DLog(@"+++ eventSymbolsDidChainVanish");
+    DLOG(@"+++ eventSymbolsDidChainVanish");
 }
 
 

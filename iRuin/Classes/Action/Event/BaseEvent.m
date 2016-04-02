@@ -51,7 +51,7 @@
 
 -(void) eventSymbolsDidRollIn
 {
-    DLog(@"eventSymbolsDidRollIn");
+    DLOG(@"eventSymbolsDidRollIn");
     [VIEW.gameView.timerView startTimer];
     
     VIEW.gameView.containerView.userInteractionEnabled = YES;
@@ -68,7 +68,7 @@
 
 -(void) eventSymbolsDidRollOut
 {
-    DLog(@"eventSymbolsDidRollOut");
+    DLOG(@"eventSymbolsDidRollOut");
     [state stateSymbolsDidRollOut];
 }
 
@@ -79,7 +79,7 @@
 
 -(void) eventSymbolsDidVanish: (NSArray*)symbols
 {
-    DLog(@"eventSymbolsDidVanish");
+    DLOG(@"eventSymbolsDidVanish");
     
     for (SymbolView* symbol in symbols){
         // cause the view will be reused , so here we need to check ~~~~~~
@@ -101,7 +101,7 @@
 
 -(void) eventSymbolsDidAdjusts
 {
-    DLog(@"eventSymbolsDidAdjusts");
+    DLOG(@"eventSymbolsDidAdjusts");
     [state stateSymbolsDidAdjusts];
 }
 
@@ -112,7 +112,7 @@
 
 -(void) eventSymbolsDidFillIn
 {
-    DLog(@"eventSymbolsDidFillIn");
+    DLOG(@"eventSymbolsDidFillIn");
     [state stateSymbolsDidFillIn];
 }
 
@@ -123,7 +123,7 @@
 
 -(void) eventSymbolsDidSqueeze
 {
-    DLog(@"eventSymbolsDidSqueeze");
+    DLOG(@"eventSymbolsDidSqueeze");
     [state stateSymbolsDidSqueeze];
 }
 

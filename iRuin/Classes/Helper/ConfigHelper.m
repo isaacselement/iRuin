@@ -92,12 +92,25 @@
                             
                             // if setup immediately
                             if (isSetupImmediately) [DATA prepareShareDesignsConfigs];
+                            DLOG(@"Did renew json!!!");
                         }
                     }];
                 }
             }
         }
     }];
+}
+
++(NSDictionary*) getSubConfigWithLoop:(NSDictionary*)configs index:(int)index
+{
+    NSString* indexKey = [NSString stringWithFormat: @"%d", index];
+    NSString* circleIndexKey = nil;
+    NSArray* loopKeys = configs[@"loop"];
+    if (loopKeys) {
+        int circleIndex = abs(index) % [loopKeys count];
+        circleIndexKey = [loopKeys objectAtIndex: circleIndex];
+    }
+    return [self getSubConfig:configs key:indexKey alternateKey:circleIndexKey];
 }
 
 +(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key

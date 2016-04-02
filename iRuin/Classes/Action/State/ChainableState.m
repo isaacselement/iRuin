@@ -49,7 +49,7 @@
     // then start , the vanish symbols maybe nil ~~~
     // in effectStartVanish: , if nil , then return
     // if you want no vanish and start adjust or fill , just call their method directly
-    DLog(@"--- stateStartChainVanish");
+    DLOG(@"--- stateStartChainVanish");
     self.isChainVanishing = YES;
     [self.effect effectStartVanish: vanishSymbols];
 }

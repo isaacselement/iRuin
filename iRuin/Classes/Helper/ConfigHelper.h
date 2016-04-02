@@ -12,6 +12,7 @@
 +(void) requestDowloadRemoteResources;
 
 
++(NSDictionary*) getSubConfigWithLoop:(NSDictionary*)configs index:(int)index;
 
 +(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key;
 

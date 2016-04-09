@@ -3,6 +3,8 @@
 
 @implementation ConfigHelper
 
+#pragma mark - Json
+
 +(NSDictionary*) getDesignJson: (NSString*)name
 {
     return [self getJson: name key:@"Designs"];
@@ -36,8 +38,53 @@
             return result;
         }
     }
-    
     return [JsonFileManager getJsonFromPath: BUNDLEFILE_PATH(fileName)];
+}
+
+
+#pragma mark - Config
+
++(NSDictionary*) getSubConfigWithLoop:(NSDictionary*)configs index:(int)index
+{
+    NSString* indexKey = [NSString stringWithFormat: @"%d", index];
+    NSString* circleIndexKey = nil;
+    NSArray* loopKeys = configs[@"loop"];
+    if (loopKeys) {
+        int circleIndex = abs(index) % [loopKeys count];
+        circleIndexKey = [loopKeys objectAtIndex: circleIndex];
+    }
+    return [self getSubConfig:configs key:indexKey alternateKey:circleIndexKey];
+}
+
++(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key
+{
+    return [self getSubConfig:configs key:key alternateKey:nil];
+}
+
++(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key alternateKey:(NSString*)alternateKey
+{
+    NSDictionary* defaultConfig = configs[@"default"];
+    NSDictionary* commonConfig = configs[@"common"];
+    
+    NSDictionary* config = configs[key];
+    if (!config) {
+        if (alternateKey) config = configs[alternateKey];
+    }
+    if (!config) {
+        config = defaultConfig;
+    }
+    
+    if (commonConfig) {
+        config = [DictionaryHelper combines:commonConfig with:config];
+    }
+    return config;
+}
+
+#pragma mark - Config Music
+
++(NSDictionary*) getMusicConfig:(NSString*)key
+{
+    return DATA.config[@"Music"][key];
 }
 
 
@@ -101,40 +148,5 @@
     }];
 }
 
-+(NSDictionary*) getSubConfigWithLoop:(NSDictionary*)configs index:(int)index
-{
-    NSString* indexKey = [NSString stringWithFormat: @"%d", index];
-    NSString* circleIndexKey = nil;
-    NSArray* loopKeys = configs[@"loop"];
-    if (loopKeys) {
-        int circleIndex = abs(index) % [loopKeys count];
-        circleIndexKey = [loopKeys objectAtIndex: circleIndex];
-    }
-    return [self getSubConfig:configs key:indexKey alternateKey:circleIndexKey];
-}
-
-+(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key
-{
-    return [self getSubConfig:configs key:key alternateKey:nil];
-}
-
-+(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key alternateKey:(NSString*)alternateKey
-{
-    NSDictionary* defaultConfig = configs[@"default"];
-    NSDictionary* commonConfig = configs[@"common"];
-    
-    NSDictionary* config = configs[key];
-    if (!config) {
-        if (alternateKey) config = configs[alternateKey];
-    }
-    if (!config) {
-        config = defaultConfig;
-    }
-    
-    if (commonConfig) {
-        config = [DictionaryHelper combines:commonConfig with:config];
-    }
-    return config;
-}
 
 @end

@@ -33,11 +33,11 @@
     
     
     // chapters cells jumb in effect
-    [self chaptersValuesActions: DATA.config[@"GAME_LAUNCH_Chapters_Cells"]];
+    [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Enter"]];
     
     
     // about mute music
-    [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"PlayActions"] onObjects:@[@""] values:nil baseTimes:nil];
+    [VIEW.actionExecutorManager runActionExecutors:[ConfigHelper getMusicConfig:@"PlayActions"] onObjects:@[@""] values:nil baseTimes:nil];
     
     
     // about schedule task
@@ -59,7 +59,7 @@
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];
     
     // chapters cells effect
-    [self chaptersValuesActions: DATA.config[@"GAME_START_Chapters_Cells"]];
+    [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Start"]];
     
     
     
@@ -96,7 +96,7 @@
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];
     
     // chapters cells effect
-    [self chaptersValuesActions: DATA.config[@"GAME_BACK_Chapters_Cells"]];
+    [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Back"]];
 }
 
 

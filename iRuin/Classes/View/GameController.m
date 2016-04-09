@@ -62,9 +62,6 @@
 
 
 
-
-
-
 #pragma mark - Parallex
 
 -(void) registerBatteryAndParallex
@@ -106,7 +103,7 @@
 -(void) startGyroParallex
 {
     GradientImageView* imageView = (GradientImageView*)[self.view valueForKey:@"backgroundView"];
-    CGPoint center = imageView.center;
+    CGPoint imageViewCenter = imageView.center;
     
     SharedMotionManager* motionManager = [SharedMotionManager sharedInstance];
     if (motionManager.deviceMotionAvailable) {  // same as motionManager.gyroAvailable, cause accelerometer always have , see the doc
@@ -125,7 +122,9 @@
                 [UIView animateWithDuration:0.3f
                                       delay:0.0f
                                     options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseOut
-                                 animations:^{ [imageView setCenterX:center.x + rotationRate.y * 10]; }
+                                 animations:^{
+                                     [imageView setCenterX:imageViewCenter.x + rotationRate.y * 10];
+                                 }
                                  completion:nil];
             });
         }];

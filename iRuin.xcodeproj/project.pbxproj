@@ -175,7 +175,7 @@
 		5E4C9BBF1A87B9F900B500C1 /* NormalLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B241A87B9F900B500C1 /* NormalLabel.m */; };
 		5E4C9BC01A87B9F900B500C1 /* NumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B261A87B9F900B500C1 /* NumberLabel.m */; };
 		5E4C9BC11A87B9F900B500C1 /* StrokeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B281A87B9F900B500C1 /* StrokeLabel.m */; };
-		5E4C9BC21A87B9F900B500C1 /* UILabel+AdjustWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B2A1A87B9F900B500C1 /* UILabel+AdjustWidth.m */; };
+		5E4C9BC21A87B9F900B500C1 /* UILabel+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B2A1A87B9F900B500C1 /* UILabel+Additions.m */; };
 		5E4C9BC31A87B9F900B500C1 /* PickerViewBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B2E1A87B9F900B500C1 /* PickerViewBase.m */; };
 		5E4C9BC41A87B9F900B500C1 /* ZoomablePanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B321A87B9F900B500C1 /* ZoomablePanView.m */; };
 		5E4C9BC51A87B9F900B500C1 /* ZoomableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B341A87B9F900B500C1 /* ZoomableScrollView.m */; };
@@ -198,6 +198,7 @@
 		5E537BEA1A3DDEB300C3F5A7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */; };
 		5E5412E41B4BD42E003D47B2 /* LineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5412E11B4BD42E003D47B2 /* LineScrollView.m */; };
 		5E5412E51B4BD42E003D47B2 /* LineScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5412E31B4BD42E003D47B2 /* LineScrollViewCell.m */; };
+		5E5597A51CB8DA2F00B99A96 /* July - Somewhere.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E5597A41CB8DA2F00B99A96 /* July - Somewhere.mp3 */; };
 		5E598A4B1A5B8A8C009E769D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4A1A5B8A8C009E769D /* libz.dylib */; };
 		5E598A4D1A5B8AB3009E769D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4C1A5B8AB3009E769D /* libsqlite3.dylib */; };
 		5E598A4F1A5B8BD3009E769D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4E1A5B8BD3009E769D /* SystemConfiguration.framework */; };
@@ -598,8 +599,8 @@
 		5E4C9B261A87B9F900B500C1 /* NumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberLabel.m; sourceTree = "<group>"; };
 		5E4C9B271A87B9F900B500C1 /* StrokeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrokeLabel.h; sourceTree = "<group>"; };
 		5E4C9B281A87B9F900B500C1 /* StrokeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrokeLabel.m; sourceTree = "<group>"; };
-		5E4C9B291A87B9F900B500C1 /* UILabel+AdjustWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+AdjustWidth.h"; sourceTree = "<group>"; };
-		5E4C9B2A1A87B9F900B500C1 /* UILabel+AdjustWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+AdjustWidth.m"; sourceTree = "<group>"; };
+		5E4C9B291A87B9F900B500C1 /* UILabel+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Additions.h"; sourceTree = "<group>"; };
+		5E4C9B2A1A87B9F900B500C1 /* UILabel+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Additions.m"; sourceTree = "<group>"; };
 		5E4C9B2C1A87B9F900B500C1 /* _PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PickerView.h; sourceTree = "<group>"; };
 		5E4C9B2D1A87B9F900B500C1 /* PickerViewBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewBase.h; sourceTree = "<group>"; };
 		5E4C9B2E1A87B9F900B500C1 /* PickerViewBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewBase.m; sourceTree = "<group>"; };
@@ -648,6 +649,7 @@
 		5E5412E11B4BD42E003D47B2 /* LineScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineScrollView.m; sourceTree = "<group>"; };
 		5E5412E21B4BD42E003D47B2 /* LineScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineScrollViewCell.h; sourceTree = "<group>"; };
 		5E5412E31B4BD42E003D47B2 /* LineScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineScrollViewCell.m; sourceTree = "<group>"; };
+		5E5597A41CB8DA2F00B99A96 /* July - Somewhere.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "July - Somewhere.mp3"; sourceTree = "<group>"; };
 		5E598A4A1A5B8A8C009E769D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5E598A4C1A5B8AB3009E769D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5E598A4E1A5B8BD3009E769D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1565,8 +1567,8 @@
 				5E4C9B261A87B9F900B500C1 /* NumberLabel.m */,
 				5E4C9B271A87B9F900B500C1 /* StrokeLabel.h */,
 				5E4C9B281A87B9F900B500C1 /* StrokeLabel.m */,
-				5E4C9B291A87B9F900B500C1 /* UILabel+AdjustWidth.h */,
-				5E4C9B2A1A87B9F900B500C1 /* UILabel+AdjustWidth.m */,
+				5E4C9B291A87B9F900B500C1 /* UILabel+Additions.h */,
+				5E4C9B2A1A87B9F900B500C1 /* UILabel+Additions.m */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -1768,6 +1770,7 @@
 		5E9C117A1A3420B3007E3BB6 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				5E5597A41CB8DA2F00B99A96 /* July - Somewhere.mp3 */,
 				5EC9DDA61C020B9B0094B246 /* BeaTsGOy - Piano Beat.mp3 */,
 			);
 			path = Music;
@@ -1909,6 +1912,7 @@
 				5E4C9B6D1A87B9F900B500C1 /* rsa_public_key.pem in Resources */,
 				5E9C118A1A3420B3007E3BB6 /* Config_Swipe.json in Resources */,
 				5E9C11B71A3420B3007E3BB6 /* Icon-76.png in Resources */,
+				5E5597A51CB8DA2F00B99A96 /* July - Somewhere.mp3 in Resources */,
 				5E4C9B721A87B9F900B500C1 /* Screen Shot  private_key info.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2045,7 +2049,7 @@
 				5E4C9B7D1A87B9F900B500C1 /* LocalizeFileManager.m in Sources */,
 				5E4C9BC01A87B9F900B500C1 /* NumberLabel.m in Sources */,
 				5E4C9B8E1A87B9F900B500C1 /* SSZipArchive.m in Sources */,
-				5E4C9BC21A87B9F900B500C1 /* UILabel+AdjustWidth.m in Sources */,
+				5E4C9BC21A87B9F900B500C1 /* UILabel+Additions.m in Sources */,
 				4EEFD9B21A0F5856006A76C8 /* FBShimmeringLayer.m in Sources */,
 				5E4C9B981A87B9F900B500C1 /* NSArray+Additions.m in Sources */,
 				5E4228671A8B69D700FE5B7D /* ConfigHelper.m in Sources */,

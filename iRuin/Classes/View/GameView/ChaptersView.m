@@ -41,7 +41,7 @@
 {
     ACTION.gameState.isMuteMusic = !ACTION.gameState.isMuteMusic;
     NSDictionary* audioPlayers = ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).audiosPlayers;
-    NSDictionary* fadeSpecifications = DATA.config[@"FadeActions"];
+    NSDictionary* fadeSpecifications = [ConfigHelper getMusicConfig:@"FadeActions"];
     for (NSString* key in fadeSpecifications) {
         AVAudioPlayer* player = audioPlayers[key];
         if (!player) return;
@@ -64,11 +64,9 @@
         ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disableAudio = YES;
     }
     
-     
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
     
-    NSDictionary* chapterCellsConfig = DATA.config[@"CHAPTERS_WILL_SHOW"];
-    
+    NSDictionary* chapterCellsConfig = DATA.config[@"Chapters_Cells_In_Touch_Rolling"];
     NSDictionary* specifications = chapterCellsConfig[@"Chapters_Cells"];
     NSDictionary* imageSpecifications = specifications[@"image"];
     NSDictionary* labelSpecifications = specifications[@"label"];
@@ -83,16 +81,7 @@
     GradientLabel* label = cell.label;
     [ACTION.gameEffect designateValuesActionsTo: label config:labelConfig];
     label.text = [NSString stringWithFormat:@"%d", index];
-    
-    // change the font to fix , cause the previous 'designate' will set font again
-    while ( [label.text sizeWithAttributes:@{NSFontAttributeName: label.font}].width > (label.frame.size.width - CanvasW(50))) {
-        label.font = [label.font fontWithSize: (label.font.pointSize - 8)];
-        // be aware of infinite loop
-        if (label.font.pointSize < 8) {
-            break;
-        }
-    }
-    
+    [label adjustFontSizeToWidthWithGap: CanvasW(50)];
     
     // -------------- mute the sound on reload End
     if (isReload) {
@@ -108,7 +97,7 @@
     if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
     
     // chapters cell effect
-    [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchBegan"]];
+    [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_In_Touch_Began"]];
 }
 
 
@@ -119,7 +108,7 @@
     if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
     
     // chapters cell effect
-    [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_TouchEnded"]];
+    [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_In_Touch_Ended"]];
     
     
     // -------------------------- ++++++++++++++ -----------------------

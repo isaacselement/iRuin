@@ -59,7 +59,7 @@
 
 #define CGPointValue(_point) [NSValue valueWithCGPoint: _point]
 
-#define APPStandUserDefaults [NSUserDefaults standardUserDefaults]
+#define APPStandUserDefaults [AppUserDefaults sharedInstance]
 
 
 

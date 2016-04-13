@@ -145,7 +145,7 @@
 {
     int index = identification - 1;         // HERE!!!!! (and~~~~~~)
     
-    NSDictionary* commonSpecifications = DATA.config[@"SYMBOLS"][@"common"];
+    NSDictionary* commonSpecifications = DATA.config[@"SYMBOLS_PORPERTIES"][@"common"];
     [ACTION.gameEffect designateValuesActionsTo:symbol config:commonSpecifications];
     
     NSDictionary* specification = [[SymbolView getSymbolsSpecifications] objectAtIndex: index];
@@ -155,7 +155,7 @@
 
 +(NSArray*) getSymbolsSpecifications
 {
-    return DATA.config[@"SYMBOLS"][@"IDENTIFICAIONTS"];
+    return DATA.config[@"SYMBOLS_PORPERTIES"][@"IDENTIFICAIONTS"];
 }
 
 

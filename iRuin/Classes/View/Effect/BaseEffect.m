@@ -28,7 +28,7 @@
     linesConfigs = DATA.config[VISUAL_POSITIONS];
     phasesConfigs = DATA.config[PHASES_POSITIONS];
     positionsConfigs = DATA.config[CONFIG_POSITIONS];
-    actionsConfigs = DATA.config[SYMBOLS_ActionExecutors];
+    actionsConfigs = DATA.config[SYMBOLS_ACTIONEXECUTORS];
     
     EffectHelper* effectHelper = [EffectHelper getInstance];
     fillInViewsPositionsHandler = [effectHelper fillInViewsPositionsHandler];

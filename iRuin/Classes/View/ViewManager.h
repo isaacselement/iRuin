@@ -8,7 +8,7 @@
 
 #define effect_Font             @"FONT"
 
-#define effect_AUDIO            @"audio.play"
+#define effect_AUDIO            @"audio"
 #define effect_ANIMATION        @"images.play"
 
 #define effect_ValuesSet        @"values.set"

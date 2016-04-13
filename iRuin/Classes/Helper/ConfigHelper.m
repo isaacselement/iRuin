@@ -80,11 +80,16 @@
     return config;
 }
 
-#pragma mark - Config Music
+#pragma mark - Config Category
 
-+(NSDictionary*) getMusicConfig:(NSString*)key
++(id) getMusicConfig:(NSString*)key
 {
     return DATA.config[@"Music"][key];
+}
+
++(id) getUtilitiesConfig:(NSString*)key
+{
+    return DATA.config[@"Utilities"][key];
 }
 
 
@@ -92,7 +97,7 @@
 
 +(void) requestDowloadRemoteResources
 {
-    NSString* definedURL = DATA.config[@"Utilities"][@"ResourcesSpecificationURL"];
+    NSString* definedURL = [ConfigHelper getUtilitiesConfig:@"ResourcesSpecificationURL"];
     if (!definedURL) return;
     HTTPGetRequest* definedRequest = [[HTTPGetRequest alloc] initWithURLString: definedURL parameters:nil];
     

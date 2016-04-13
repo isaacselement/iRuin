@@ -40,7 +40,7 @@ static ScheduledHelper* scheduledHelper = nil;
 -(void) scheduledTask
 {
     // view
-    int viewInterval = [DATA.config[@"Utilities"][@"ScheduleTask.view.interval"] intValue];
+    int viewInterval = [[ConfigHelper getUtilitiesConfig:@"ScheduleTask.view.interval"] intValue];
     if (viewInterval == 0) viewInterval = 60;
     
     if (scheduleTaskTimes % viewInterval == 0) {
@@ -56,7 +56,7 @@ static ScheduledHelper* scheduledHelper = nil;
 
 -(void) refreshViewBackgroundJob
 {
-    NSArray* values = DATA.config[@"Utilities"][@"ScheduleTask.view.values"];
+    NSArray* values = [ConfigHelper getUtilitiesConfig:@"ScheduleTask.view.values"];
     NSMutableDictionary* scheduleTaskConfig = DATA.config[@"GAME_LAUNCH_ScheduleTask"];
     NSMutableDictionary* valuesConfig = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
     

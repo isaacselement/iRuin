@@ -1,21 +1,17 @@
 #import "GameEvent.h"
 #import "AppInterface.h"
 
-
-
 @implementation GameEvent
-
 
 -(void) launchGame
 {
     [ScheduledTask sharedInstance].timeInterval = 0.2;
     [[ScheduledTask sharedInstance] start];
     
-    
     // chapter cells 
     // first time launch app, set the chapter index
     if (![APPStandUserDefaults objectForKey: User_LastTimeLaunch]) {
-        [APPStandUserDefaults setObject:DATA.config[@"Utilities"][@"FirstTimeLaunchGiveChaptersCount"] forKey:User_ChapterIndex];
+        [APPStandUserDefaults setObject:[ConfigHelper getUtilitiesConfig:@"FirstTimeLaunchGiveChaptersCount"] forKey:User_ChapterIndex];
     }
     [APPStandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
     
@@ -24,8 +20,8 @@
     
     lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollViewObj, int index) {
         NSInteger minimalIndex = NSIntegerMin;
-        if (DATA.config[@"Utilities"][@"ChaptersMinimalIndex"]) {
-            minimalIndex = [DATA.config[@"Utilities"][@"ChaptersMinimalIndex"] intValue];
+        if ([ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"]) {
+            minimalIndex = [[ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"] intValue];
         }
         return index >= minimalIndex && index <= [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
     };
@@ -35,17 +31,14 @@
     // chapters cells jumb in effect
     [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Enter"]];
     
-    
-    // about mute music
-    [VIEW.actionExecutorManager runActionExecutors:[ConfigHelper getMusicConfig:@"PlayActions"] onObjects:@[@""] values:nil baseTimes:nil];
-    
+    // about background music
+    if (![[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue]) {
+        [VIEW.actionExecutorManager runAudioActionExecutors:[ConfigHelper getMusicConfig:@"PlayActions"]];
+    }
     
     // about schedule task
     [[ScheduledHelper sharedInstance] registerScheduleTaskAccordingConfig];
 }
-
-
-
 
 -(void) gameStart
 {
@@ -65,7 +58,7 @@
     
     
     // show hint
-    int clearanceScore = [DATA.config[@"Utilities"][@"ClearanceScoreBase"] intValue]  + RANDOM([DATA.config[@"Utilities"][@"ClearanceScoreRandom"] intValue]);
+    int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
     if (clearanceScore == 0) {
         clearanceScore = RANDOM(1000);
     }

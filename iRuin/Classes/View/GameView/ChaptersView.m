@@ -40,19 +40,10 @@
 -(void) swipeRightAction: (UISwipeGestureRecognizer*)sender
 {
     ACTION.gameState.isMuteMusic = !ACTION.gameState.isMuteMusic;
-    NSDictionary* audioPlayers = ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).audiosPlayers;
-    NSDictionary* fadeSpecifications = [ConfigHelper getMusicConfig:@"FadeActions"];
-    for (NSString* key in fadeSpecifications) {
-        AVAudioPlayer* player = audioPlayers[key];
-        if (!player) return;
-        
-        NSDictionary* spec = fadeSpecifications[key];
-        NSDictionary* dic = ACTION.gameState.isMuteMusic ? spec[@"OFF"]: spec[@"ON"];
-        float toVolume = [dic[@"fadeToVolume"] floatValue];
-        float overDuration = [dic[@"fadeOverDuration"] floatValue];
-        MXAudioPlayerFadeOperation* fadeOperation = [[MXAudioPlayerFadeOperation alloc] initFadeWithAudioPlayer:player toVolume:toVolume overDuration:overDuration];
-        [[AudioHandler audioCrossFadeQueue] addOperation: fadeOperation];
-    }
+    [APPStandUserDefaults setObject:@(ACTION.gameState.isMuteMusic) forKey:@"isMusicDisable"];
+    NSString* actionKey = ACTION.gameState.isMuteMusic ? @"PauseActions" : @"ResumeActions";
+    NSDictionary* fadeSpecifications = [ConfigHelper getMusicConfig: actionKey];
+    [VIEW.actionExecutorManager runAudioActionExecutors:fadeSpecifications];
 }
 
 #pragma mark - LineScrollViewDataSource Methods
@@ -119,7 +110,7 @@
     
     
     // --------------------- mode
-    int switchModeCount = [DATA.config[@"Utilities"][@"SwitchModeEveryChapters"] intValue];
+    int switchModeCount = [[ConfigHelper getUtilitiesConfig:@"SwitchModeEveryChapters"] intValue];
     if (switchModeCount == 0) switchModeCount = 1;
     int modeCount = (int)ACTION.gameModes.count;
     int modeIndex = (abs(index) % (modeCount * switchModeCount)) % modeCount;

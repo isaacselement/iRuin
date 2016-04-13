@@ -126,7 +126,7 @@ static EffectHelper* oneInstance = nil;
     
     [self caculateTheScore: vanishViews multiple:multiple];
     NSString* iKey = [NSString stringWithFormat:@"%d", multiple];
-    [self showBonusHint: DATA.config[@"Utilities"][@"VanishBonus"] key:iKey multipleTip:0];
+    [self showBonusHint: [ConfigHelper getUtilitiesConfig:@"VanishBonus"] key:iKey multipleTip:0];
 }
 
 -(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous
@@ -135,7 +135,7 @@ static EffectHelper* oneInstance = nil;
 
     [self caculateTheScore: vanishViews multiple:continuous];
     NSString* iKey = [NSString stringWithFormat:@"%d", continuous];
-    [self showBonusHint: DATA.config[@"Utilities"][@"ChainBonus"] key:iKey multipleTip:continuous];
+    [self showBonusHint: [ConfigHelper getUtilitiesConfig:@"ChainBonus"] key:iKey multipleTip:continuous];
 }
 
 -(void) caculateTheScore: (NSArray*)vanishViews multiple:(int)multiple

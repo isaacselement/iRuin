@@ -16,10 +16,11 @@
 
 +(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key alternateKey:(NSString*)alternateKey;
 
-#pragma mark - Config Music
+#pragma mark - Config Category
 
-+(NSDictionary*) getMusicConfig:(NSString*)key;
++(id) getMusicConfig:(NSString*)key;
 
++(id) getUtilitiesConfig:(NSString*)key;
 
 #pragma mark - Network Request
 

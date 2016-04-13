@@ -56,7 +56,6 @@
 -(void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
     [(AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO] clearCaches];
 }
 
@@ -90,7 +89,7 @@
 
 -(void) startParallex
 {
-    if (![DATA.config[@"Utilities"][@"isParallexEnable"] boolValue]) return;
+    if (![[ConfigHelper getUtilitiesConfig:@"isParallexEnable"] boolValue]) return;
     [self performSelector:@selector(startGyroParallex) withObject:nil afterDelay: 1];
 }
 

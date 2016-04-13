@@ -70,6 +70,7 @@
 		4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75EA91A00F5A00074E493 /* BaseController.m */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
 		5E01AFCD1A5AF68700F051D6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E01AFCC1A5AF68700F051D6 /* CoreMotion.framework */; };
+		5E08685B1CB9528E00C2192F /* AppUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E08685A1CB9528E00C2192F /* AppUserDefaults.m */; };
 		5E19190E1B6C7297002F0A3D /* IPAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E1919061B6C7297002F0A3D /* IPAddress.c */; };
 		5E19190F1B6C7297002F0A3D /* NetworkInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1919091B6C7297002F0A3D /* NetworkInformation.m */; };
 		5E1919101B6C7297002F0A3D /* NetworkObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E19190B1B6C7297002F0A3D /* NetworkObserver.m */; };
@@ -374,6 +375,8 @@
 		4EF7943C18C21FE800E25A30 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
 		5E01AFCC1A5AF68700F051D6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		5E0868591CB9528E00C2192F /* AppUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUserDefaults.h; sourceTree = "<group>"; };
+		5E08685A1CB9528E00C2192F /* AppUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUserDefaults.m; sourceTree = "<group>"; };
 		5E1919051B6C7297002F0A3D /* _Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Network.h; sourceTree = "<group>"; };
 		5E1919061B6C7297002F0A3D /* IPAddress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = IPAddress.c; sourceTree = "<group>"; };
 		5E1919071B6C7297002F0A3D /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddress.h; sourceTree = "<group>"; };
@@ -866,6 +869,8 @@
 			children = (
 				4E4D4EC1181D5B9000886D75 /* DataManager.h */,
 				4E4D4EC2181D5B9000886D75 /* DataManager.m */,
+				5E0868591CB9528E00C2192F /* AppUserDefaults.h */,
+				5E08685A1CB9528E00C2192F /* AppUserDefaults.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -2080,6 +2085,7 @@
 				4E8067BF18C35C8A00AF71B5 /* BaseState.m in Sources */,
 				5E4C9B671A87B9F900B500C1 /* NSString+MD5.m in Sources */,
 				5E34ED341A3E785E00022E45 /* ScoreLabel.m in Sources */,
+				5E08685B1CB9528E00C2192F /* AppUserDefaults.m in Sources */,
 				5E4C9B951A87B9F900B500C1 /* IterateHelper.m in Sources */,
 				5E4C9B5C1A87B9F900B500C1 /* InputSourcesThread.m in Sources */,
 				4ED52C84191E623A002ADA73 /* SwipeEffect.m in Sources */,

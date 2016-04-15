@@ -12,13 +12,6 @@
 #define kTextFormatter @"kTextFormatter"
 
 
-
--(void) designateLoopValuesActionsTo: (id)object config:(NSDictionary*)config
-{
-    
-}
-
-
 -(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config
 {
     if (!config || config.count == 0) return;
@@ -90,6 +83,7 @@
     for (NSString* key in config) {
         if ([key hasSuffix:kIgnore]) continue;
         if ([key hasPrefix:kReserved]) continue;
+        // cause above handled these three
         if ([key isEqualToString:kFrame]) continue;
         if ([key isEqualToString:kExecutors]) continue;
         if ([key isEqualToString:kTextFormatter]) continue;

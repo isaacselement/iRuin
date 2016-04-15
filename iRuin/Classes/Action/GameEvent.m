@@ -131,7 +131,7 @@
     for (int i = 0 ; i < chaptersCells.count; i++) {
         ImageLabelLineScrollCell* cell = [chaptersCells objectAtIndex:i];
         NSString* indexKey = [NSString stringWithFormat:@"%d", i];
-        NSDictionary* config = [ConfigHelper getSubConfig:cellsConfigs key:indexKey];
+        NSDictionary* config = [ConfigHelper getNodeConfig:cellsConfigs key:indexKey];
         [ACTION.gameEffect designateValuesActionsTo:cell config: config];
     }
 }

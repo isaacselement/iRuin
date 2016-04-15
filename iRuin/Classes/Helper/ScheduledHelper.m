@@ -56,15 +56,9 @@ static ScheduledHelper* scheduledHelper = nil;
 
 -(void) refreshViewBackgroundJob
 {
-    NSArray* values = [ConfigHelper getUtilitiesConfig:@"ScheduleTask.view.values"];
-    NSMutableDictionary* scheduleTaskConfig = DATA.config[@"GAME_LAUNCH_ScheduleTask"];
-    NSMutableDictionary* valuesConfig = scheduleTaskConfig[@"view"][@"backgroundView"][@"Executors"][@"1"];
-    
-    scheduleViewValueIndex = scheduleViewValueIndex % [values count];
-    [valuesConfig setObject: [values objectAtIndex: scheduleViewValueIndex] forKey:@"values"];
-    scheduleViewValueIndex++;
-    
+    NSDictionary* scheduleTaskConfig = [ConfigHelper getLoopConfig:DATA.config[@"GAME_LAUNCH_ScheduleTask"] index:scheduleViewValueIndex] ;
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
+    scheduleViewValueIndex++;
 }
 
 

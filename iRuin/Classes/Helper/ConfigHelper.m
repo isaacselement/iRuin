@@ -44,40 +44,59 @@
 
 #pragma mark - Config
 
-+(NSDictionary*) getSubConfigWithLoop:(NSDictionary*)configs index:(int)index
++(NSDictionary*) getLoopConfig:(NSMutableDictionary*)configs index:(int)index
 {
-    NSString* indexKey = [NSString stringWithFormat: @"%d", index];
-    NSString* circleIndexKey = nil;
-    NSArray* loopKeys = configs[@"loop"];
-    if (loopKeys) {
-        int circleIndex = abs(index) % [loopKeys count];
-        circleIndexKey = [loopKeys objectAtIndex: circleIndex];
+    NSDictionary* loopConfig = configs[@"~loop"];
+    NSArray* keyPaths = loopConfig[@"keyPaths"];
+    NSArray* values = loopConfig[@"values"];
+    
+    if (!loopConfig || keyPaths.count != values.count) {
+        return configs;
     }
-    return [self getSubConfig:configs key:indexKey alternateKey:circleIndexKey];
+    
+    for (int j = 0; j < values.count; j++) {
+        NSString* setKeyPath = keyPaths[j];
+        NSArray* setValues = values[j];
+        
+        // get the new value
+        int circleIndex = abs(index) % [setValues count];
+        id newValue = [setValues objectAtIndex:circleIndex];
+        
+        // if keys.count == 1, or keys.count >= 2
+        NSMutableDictionary* handleConfig = configs;
+        NSArray* keys = [setKeyPath componentsSeparatedByString:@"."];
+        for (int i = 0; i < keys.count - 1; i++) {
+            handleConfig = [handleConfig objectForKey: keys[i]];
+        }
+        // get the key
+        NSString* handleKey = [keys lastObject];
+        
+        // set value
+        [handleConfig setObject:newValue forKey:handleKey];
+    }
+
+    return configs;
 }
 
-+(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key
-{
-    return [self getSubConfig:configs key:key alternateKey:nil];
-}
 
-+(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key alternateKey:(NSString*)alternateKey
+// key == nil , use default config , then combine with common config .
+// so if key == nil , default config == nil , then result is the common config .
++(NSDictionary*) getNodeConfig:(NSDictionary*)configs key:(NSString*)key
 {
     NSDictionary* defaultConfig = configs[@"default"];
     NSDictionary* commonConfig = configs[@"common"];
     
-    NSDictionary* config = configs[key];
-    if (!config) {
-        if (alternateKey) config = configs[alternateKey];
+    NSDictionary* result = nil;
+    if(key) {
+        result = configs[key];
     }
-    if (!config) {
-        config = defaultConfig;
+    if (!result) {
+        result = defaultConfig;
     }
-    
     if (commonConfig) {
-        config = [DictionaryHelper combines:commonConfig with:config];
+        result = [DictionaryHelper combines:commonConfig with:result];
     }
-    return config;
+    return result;
 }
 
 #pragma mark - Config Category

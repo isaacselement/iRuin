@@ -56,21 +56,11 @@
     }
     
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
+    NSDictionary* chapterCellsConfig = [ConfigHelper getLoopConfig:DATA.config[@"Chapters_Cells_In_Touch_Rolling"] index:index] ;
     
-    NSDictionary* chapterCellsConfig = DATA.config[@"Chapters_Cells_In_Touch_Rolling"];
-    NSDictionary* specifications = chapterCellsConfig[@"Chapters_Cells"];
-    NSDictionary* imageSpecifications = specifications[@"image"];
-    NSDictionary* labelSpecifications = specifications[@"label"];
-
-    NSDictionary* imageConfig = [ConfigHelper getSubConfigWithLoop:imageSpecifications index:index];
-    NSDictionary* labelConfig = [ConfigHelper getSubConfigWithLoop:labelSpecifications index:index];
+    [ACTION.gameEffect designateValuesActionsTo: cell config:chapterCellsConfig];
     
-    // imageView
-    UIImageView* imageView = cell.imageView;
-    [ACTION.gameEffect designateValuesActionsTo: imageView config: imageConfig];
-    // index label
     GradientLabel* label = cell.label;
-    [ACTION.gameEffect designateValuesActionsTo: label config:labelConfig];
     label.text = [NSString stringWithFormat:@"%d", index];
     [label adjustFontSizeToWidthWithGap: CanvasW(50)];
     

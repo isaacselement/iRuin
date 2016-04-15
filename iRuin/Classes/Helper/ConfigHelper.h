@@ -10,11 +10,9 @@
 
 #pragma mark - Config
 
-+(NSDictionary*) getSubConfigWithLoop:(NSDictionary*)configs index:(int)index;
++(NSDictionary*) getLoopConfig:(NSMutableDictionary*)configs index:(int)index;
 
-+(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key;
-
-+(NSDictionary*) getSubConfig:(NSDictionary*)configs key:(NSString*)key alternateKey:(NSString*)alternateKey;
++(NSDictionary*) getNodeConfig:(NSDictionary*)configs key:(NSString*)key;
 
 #pragma mark - Config Category
 

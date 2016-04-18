@@ -103,7 +103,7 @@
 
 +(id) getMusicConfig:(NSString*)key
 {
-    return DATA.config[@"Music"][key];
+    return DATA.config[@"GAME_MUSIC"][key];
 }
 
 +(id) getUtilitiesConfig:(NSString*)key

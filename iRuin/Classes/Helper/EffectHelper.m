@@ -14,17 +14,71 @@
     ViewsInRepositoryPositionsHandler rollOutViewsInRepositoryPositionsHandler;
 }
 
-
-static EffectHelper* oneInstance = nil;
-
 +(EffectHelper*) getInstance
 {
-    if (!oneInstance) {
-        oneInstance = [[EffectHelper alloc] init];
-    }
-    return oneInstance;
+    static EffectHelper* instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[EffectHelper alloc] init];
+    });
+    return instance;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        KeyValueHelper* keyValueCodingHelper = [KeyValueHelper sharedInstance];
+
+        [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, NSString *type, NSString *key) {
+            if (! type) return value;
+            
+            id result = value;
+            
+            const char* rawType = [type UTF8String];
+            
+            if (strcmp(rawType, @encode(CGFloat)) == 0) {
+                
+                if ([key hasSuffix:@"Width"]) {                 // for "eachCellWidth", "borderWidth" ...
+                    CGFloat num = [value floatValue];
+                    result = @(CanvasW(num));
+                } else if ([key hasSuffix:@"X"]) {              // for "originX" now
+                    CGFloat x = [value floatValue];
+                    result = @(CanvasX(x));
+                }
+                
+            } else if ([obj isKindOfClass:[CAGradientLayer class]] && [key isEqualToString:@"colors"]) {
+                /*
+                po [KeyValueHelper getClassPropertieTypes:[CAGradientLayer class]]
+                and find colors = "@\"NSArray\"";
+                print @encode(NSArray)
+                (const char [12]) $1 = "{NSArray=#}"
+                */
+                NSMutableArray* colors = [NSMutableArray array];
+                for (int i = 0; i < [value count]; i++) {
+                    id v = value[i];
+                    CGColorRef color = [ColorHelper parseColor:v].CGColor;
+                    [colors addObject:(__bridge id)color];
+                }
+                result = colors;
+                
+            } else if ([obj isKindOfClass:[CAGradientLayer class]] && ([key isEqualToString:@"startPoint"] || [key isEqualToString:@"endPoint"])) {
+                CGPoint point = [RectHelper parsePoint: value];
+                result = CGPointValue(point);
+            } else {
+                result = [KeyValueHelper translateValue: value type:type];
+            }
+            
+            return result;
+        }];
+    }
+    return self;
+}
+
+-(void) setValue:(id)value forKeyPath:(NSString*)keyPath onObject:(NSObject*)object
+{
+    [[KeyValueHelper sharedInstance] setValue:value keyPath:keyPath object:object];
+}
 
 #pragma mark - Queue Views Positiosn Handler
 
@@ -112,14 +166,12 @@ static EffectHelper* oneInstance = nil;
 }
 
 
-
-
 #pragma mark - score
 
 -(void) scoreWithEffect:(NSArray*)symbols
 {
     NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
-
+    
     // touch and route not two dimension
     int multiple = [ArrayHelper isTwoDimension: symbols] ? (int)symbols.count : (int)vanishViews.count - MATCH_COUNT;
     multiple = multiple <= 0 ? 1 : multiple;
@@ -132,7 +184,7 @@ static EffectHelper* oneInstance = nil;
 -(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous
 {
     NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
-
+    
     [self caculateTheScore: vanishViews multiple:continuous];
     NSString* iKey = [NSString stringWithFormat:@"%d", continuous];
     [self showBonusHint: [ConfigHelper getUtilitiesConfig:@"ChainBonus"] key:iKey multipleTip:continuous];
@@ -190,11 +242,6 @@ static EffectHelper* oneInstance = nil;
     [VIEW.gameView addSubview: bonusLabel];
     bonusLabel.center = [VIEW.gameView middlePoint];
 }
-
-
-
-
-
 
 
 #pragma mark - pass season hint

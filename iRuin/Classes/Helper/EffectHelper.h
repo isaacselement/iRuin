@@ -9,7 +9,7 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 +(EffectHelper*) getInstance;
 
-
+-(void) setValue:(id)value forKeyPath:(NSString*)keyPath onObject:(NSObject*)object;
 
 
 #pragma mark - Queue Views Positiosn Handler
@@ -21,8 +21,6 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 -(ViewsInRepositoryPositionsHandler) rollInViewsInRepositoryPositionsHandler;
 
 -(ViewsInRepositoryPositionsHandler) rollOutViewsInRepositoryPositionsHandler;
-
-
 
 #pragma mark - score
 

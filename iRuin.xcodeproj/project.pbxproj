@@ -149,7 +149,7 @@
 		5E4C9BA31A87B9F900B500C1 /* RectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ADB1A87B9F900B500C1 /* RectHelper.m */; };
 		5E4C9BA41A87B9F900B500C1 /* TableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ADD1A87B9F900B500C1 /* TableViewHelper.m */; };
 		5E4C9BA51A87B9F900B500C1 /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ADF1A87B9F900B500C1 /* ViewHelper.m */; };
-		5E4C9BA61A87B9F900B500C1 /* ViewKeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AE11A87B9F900B500C1 /* ViewKeyValueHelper.m */; };
+		5E4C9BA61A87B9F900B500C1 /* KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AE11A87B9F900B500C1 /* KeyValueHelper.m */; };
 		5E4C9BA81A87B9F900B500C1 /* ActionAnimateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AEB1A87B9F900B500C1 /* ActionAnimateHelper.m */; };
 		5E4C9BA91A87B9F900B500C1 /* ActionExecutorBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AED1A87B9F900B500C1 /* ActionExecutorBase.m */; };
 		5E4C9BAA1A87B9F900B500C1 /* ActionExecutorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AEF1A87B9F900B500C1 /* ActionExecutorManager.m */; };
@@ -540,8 +540,8 @@
 		5E4C9ADD1A87B9F900B500C1 /* TableViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHelper.m; sourceTree = "<group>"; };
 		5E4C9ADE1A87B9F900B500C1 /* ViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHelper.h; sourceTree = "<group>"; };
 		5E4C9ADF1A87B9F900B500C1 /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHelper.m; sourceTree = "<group>"; };
-		5E4C9AE01A87B9F900B500C1 /* ViewKeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewKeyValueHelper.h; sourceTree = "<group>"; };
-		5E4C9AE11A87B9F900B500C1 /* ViewKeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewKeyValueHelper.m; sourceTree = "<group>"; };
+		5E4C9AE01A87B9F900B500C1 /* KeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueHelper.h; sourceTree = "<group>"; };
+		5E4C9AE11A87B9F900B500C1 /* KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyValueHelper.m; sourceTree = "<group>"; };
 		5E4C9AE21A87B9F900B500C1 /* Modules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Modules.h; sourceTree = "<group>"; };
 		5E4C9AE31A87B9F900B500C1 /* ModulesMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModulesMacro.h; sourceTree = "<group>"; };
 		5E4C9AE81A87B9F900B500C1 /* _ActionExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ActionExecutor.h; sourceTree = "<group>"; };
@@ -1425,8 +1425,8 @@
 				5E4C9ADD1A87B9F900B500C1 /* TableViewHelper.m */,
 				5E4C9ADE1A87B9F900B500C1 /* ViewHelper.h */,
 				5E4C9ADF1A87B9F900B500C1 /* ViewHelper.m */,
-				5E4C9AE01A87B9F900B500C1 /* ViewKeyValueHelper.h */,
-				5E4C9AE11A87B9F900B500C1 /* ViewKeyValueHelper.m */,
+				5E4C9AE01A87B9F900B500C1 /* KeyValueHelper.h */,
+				5E4C9AE11A87B9F900B500C1 /* KeyValueHelper.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1941,7 +1941,7 @@
 				4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */,
 				5E4C9BA11A87B9F900B500C1 /* LayerHelper.m in Sources */,
 				5E4C9B7B1A87B9F900B500C1 /* FileManager.m in Sources */,
-				5E4C9BA61A87B9F900B500C1 /* ViewKeyValueHelper.m in Sources */,
+				5E4C9BA61A87B9F900B500C1 /* KeyValueHelper.m in Sources */,
 				5E4C9B771A87B9F900B500C1 /* CSVFileWriter.m in Sources */,
 				5E4C9B931A87B9F900B500C1 /* CollectionHelper.m in Sources */,
 				5E4C9B7E1A87B9F900B500C1 /* HTTPGetRequest.m in Sources */,

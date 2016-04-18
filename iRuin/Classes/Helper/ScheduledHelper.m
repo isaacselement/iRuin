@@ -38,29 +38,21 @@ static ScheduledHelper* scheduledHelper = nil;
 
 
 -(void) scheduledTask
-{
-    // view
-    int viewInterval = [[ConfigHelper getUtilitiesConfig:@"ScheduleTask.view.interval"] intValue];
-    if (viewInterval == 0) viewInterval = 60;
-    
-    if (scheduleTaskTimes % viewInterval == 0) {
-        [self refreshViewBackgroundJob];
+{    
+    NSDictionary* configs = DATA.config[@"Controller_Schedule_Task"];
+    for (NSString* key in configs) {
+        NSMutableDictionary* config = configs[key];
+        int interval = [config[@"~interval"] intValue];
+        if (interval <= 0) continue;
+        if (scheduleTaskTimes % interval == 0) {
+            NSDictionary* scheduleTaskConfig = [ConfigHelper getLoopConfig:config index:scheduleViewValueIndex] ;
+            [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
+            scheduleViewValueIndex++;
+        }
     }
     
     // count
     scheduleTaskTimes++;
 }
-
-
-#pragma mark - Scheduled Jobs
-
--(void) refreshViewBackgroundJob
-{
-    NSDictionary* scheduleTaskConfig = [ConfigHelper getLoopConfig:DATA.config[@"GAME_LAUNCH_ScheduleTask"] index:scheduleViewValueIndex] ;
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
-    scheduleViewValueIndex++;
-}
-
-
 
 @end

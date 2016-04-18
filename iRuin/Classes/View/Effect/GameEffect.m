@@ -4,7 +4,6 @@
 @implementation GameEffect
 
 
-
 #define kIgnore @"_"
 #define kReserved @"~"
 #define kFrame @"Frame"
@@ -15,54 +14,6 @@
 -(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config
 {
     if (!config || config.count == 0) return;
-    
-    ViewKeyValueHelper* keyValueCodingHelper = [ViewKeyValueHelper sharedInstance];
-    
-    if (! [keyValueCodingHelper translateValueHandler]) {
-        // set handler, for LineScrollView's "eachCellWidth" now
-        [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, NSString *type, NSString *key) {
-            if (! type) return value;
-            
-            id result = value;
-            
-            const char* rawType = [type UTF8String];
-            
-            if (strcmp(rawType, @encode(CGFloat)) == 0) {
-                
-                if ([key hasSuffix:@"Width"]) {                 // for "eachCellWidth", "borderWidth" ...
-                    CGFloat num = [value floatValue];
-                    result = @(CanvasW(num));
-                } else if ([key hasSuffix:@"X"]) {              // for "originX" now
-                    CGFloat x = [value floatValue];
-                    result = @(CanvasX(x));
-                }
-                
-            } else if ([obj isKindOfClass:[CAGradientLayer class]] && [key isEqualToString:@"colors"]) {
-                
-                //            po [ViewKeyValueHelper getClassPropertieTypes:[CAGradientLayer class]]
-                //            and find colors = "@\"NSArray\"";
-                //            print @encode(NSArray)
-                //            (const char [12]) $1 = "{NSArray=#}"
-                
-                NSMutableArray* colors = [NSMutableArray array];
-                for (int i = 0; i < [value count]; i++) {
-                    id v = value[i];
-                    CGColorRef color = [ColorHelper parseColor:v].CGColor;
-                    [colors addObject:(__bridge id)color];
-                }
-                result = colors;
-                
-            } else if ([obj isKindOfClass:[CAGradientLayer class]] && ([key isEqualToString:@"startPoint"] || [key isEqualToString:@"endPoint"])) {
-                CGPoint point = [RectHelper parsePoint: value];
-                result = CGPointValue(point);
-            } else {
-                result = [ViewKeyValueHelper translateValue: value type:type];
-            }
-
-            return result;
-        }];
-    }
-    
     
     // UIView's frame , if is CALayer, no need to do this
     id framesConfig = config[kFrame];
@@ -93,11 +44,9 @@
         if ([value isKindOfClass:[NSDictionary class]]) {
             [self designateValuesActionsTo: [object valueForKey: key] config:value];
         } else {
-            [[ViewKeyValueHelper sharedInstance] setValue:value keyPath:key object:object];
+            [[EffectHelper getInstance] setValue:value forKeyPath:key onObject:object];
         }
-        
     }
-    
 }
 
 

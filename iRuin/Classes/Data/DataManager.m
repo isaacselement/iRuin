@@ -37,19 +37,14 @@ static DataManager* sharedInstance = nil;
 -(void) initializeWithData 
 {
     // set dictionary combine handler
-    [DictionaryHelper setCombineHandler:^BOOL(NSString *key, NSMutableDictionary *destination, NSDictionary *source) {
-        if ([key hasPrefix:STR_UnderLine] && [key hasSuffix:STR_UnderLine]) {
-            NSString* removeKey = [key substringWithRange:NSMakeRange(1, [key length] - 2)];
-            [destination removeObjectForKey: removeKey];
-            
-            if (source[removeKey]) {
-                [destination setObject: source[removeKey] forKey:removeKey];
-            }
-            
-            // firt , _key_ , remove the key object
-            // second , key , add the key object
-            // just aim that use a key to replace all , not combine ~~~~
-            
+    [DictionaryHelper setCombineHandler:^BOOL(NSString *sourceKey, NSMutableDictionary *destination, NSDictionary *source) {
+        if ([sourceKey hasPrefix:@"delete_"]) {
+            NSString* operationKey = [[sourceKey componentsSeparatedByString:@"delete_"] lastObject];
+            [destination removeObjectForKey: operationKey];
+            return NO;
+        } else if ([sourceKey hasPrefix:@"replace_"]) {
+            NSString* operationKey = [[sourceKey componentsSeparatedByString:@"replace_"] lastObject];
+            [destination setObject:source[sourceKey] forKey:operationKey];
             return NO;
         }
         return YES;

@@ -29,7 +29,6 @@
     self = [super init];
     if (self) {
         KeyValueHelper* keyValueCodingHelper = [KeyValueHelper sharedInstance];
-
         [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, NSString *type, NSString *key) {
             if (! type) return value;
             

@@ -2,9 +2,9 @@
 
 @class TimerView;
 @class ScoreLabel;
+@class NormalButton;
 @class GradientLabel;
 @class ContainerView;
-@class InteractiveView;
 @class FBShimmeringView;
 
 @interface GameView : GameBaseView
@@ -17,9 +17,7 @@
 
 @property (strong, readonly) ContainerView* containerView;
 
-
-@property (strong, readonly) InteractiveView* backActionView;
-@property (strong, readonly) InteractiveView* pauseActionView;
-@property (strong, readonly) InteractiveView* refreshActionView;
+@property (strong, readonly) NormalButton* backActionView;
+@property (strong, readonly) NormalButton* refreshActionView;
 
 @end

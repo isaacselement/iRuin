@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4E08AB9819FE66B300F1F449 /* SymbolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08AB9719FE66B300F1F449 /* SymbolView.m */; };
-		4E08AB9B19FE66F400F1F449 /* InteractiveImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08AB9A19FE66F400F1F449 /* InteractiveImageView.m */; };
 		4E0BFC5119260B9100F0E632 /* MoveState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5019260B9100F0E632 /* MoveState.m */; };
 		4E0BFC5419260BAA00F0E632 /* MoveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5319260BAA00F0E632 /* MoveEvent.m */; };
 		4E0BFC5719260BF900F0E632 /* MoveEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0BFC5619260BF900F0E632 /* MoveEffect.m */; };
@@ -32,7 +31,6 @@
 		4E4D4EC0181D5B8400886D75 /* ActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D4EBF181D5B8400886D75 /* ActionManager.m */; };
 		4E4D4EC3181D5B9000886D75 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D4EC2181D5B9000886D75 /* DataManager.m */; };
 		4E4D4EC6181D5B9C00886D75 /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D4EC5181D5B9C00886D75 /* ViewManager.m */; };
-		4E6162FE19FFDAB900302D98 /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6162FD19FFDAB900302D98 /* InteractiveView.m */; };
 		4E71D40518BF779900270180 /* BaseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E71D40418BF779900270180 /* BaseEvent.m */; };
 		4E71D40818BF80D200270180 /* RouteEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E71D40718BF80D200270180 /* RouteEvent.m */; };
 		4E8067BF18C35C8A00AF71B5 /* BaseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8067BE18C35C8A00AF71B5 /* BaseState.m */; };
@@ -70,71 +68,46 @@
 		4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF75EA91A00F5A00074E493 /* BaseController.m */; };
 		4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7943D18C21FE800E25A30 /* BaseEffect.m */; };
 		5E01AFCD1A5AF68700F051D6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E01AFCC1A5AF68700F051D6 /* CoreMotion.framework */; };
+		5E01BB7A1CC5DAEE0070AF79 /* RotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B501A87B9F900B500C1 /* RotatableViewController.m */; };
+		5E01BB7B1CC5DAF70070AF79 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AB71A87B9F900B500C1 /* DateHelper.m */; };
+		5E01BB7C1CC5DB010070AF79 /* SharedOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A221A87B9F900B500C1 /* SharedOperationQueue.m */; };
+		5E01BB7D1CC5DB0B0070AF79 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9F1A87B9F900B500C1 /* SSZipArchive.m */; };
+		5E01BB7E1CC5DB320070AF79 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A961A87B9F900B500C1 /* ioapi.c */; };
+		5E01BB7F1CC5DB320070AF79 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A981A87B9F900B500C1 /* mztools.c */; };
+		5E01BB801CC5DB320070AF79 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9A1A87B9F900B500C1 /* unzip.c */; };
+		5E01BB811CC5DB320070AF79 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9C1A87B9F900B500C1 /* zip.c */; };
 		5E08685B1CB9528E00C2192F /* AppUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E08685A1CB9528E00C2192F /* AppUserDefaults.m */; };
-		5E19190E1B6C7297002F0A3D /* IPAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E1919061B6C7297002F0A3D /* IPAddress.c */; };
-		5E19190F1B6C7297002F0A3D /* NetworkInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1919091B6C7297002F0A3D /* NetworkInformation.m */; };
-		5E1919101B6C7297002F0A3D /* NetworkObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E19190B1B6C7297002F0A3D /* NetworkObserver.m */; };
 		5E1919111B6C7297002F0A3D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E19190D1B6C7297002F0A3D /* Reachability.m */; };
 		5E295E0D1A8CDF9E0053A51A /* Background_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E295E0A1A8CDF9E0053A51A /* Background_001.png */; };
 		5E295E0E1A8CDF9E0053A51A /* Background_003.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E295E0B1A8CDF9E0053A51A /* Background_003.png */; };
 		5E295E0F1A8CDF9E0053A51A /* Background_004.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E295E0C1A8CDF9E0053A51A /* Background_004.png */; };
 		5E34ED341A3E785E00022E45 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E34ED331A3E785E00022E45 /* ScoreLabel.m */; };
 		5E4228671A8B69D700FE5B7D /* ConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4228661A8B69D700FE5B7D /* ConfigHelper.m */; };
-		5E4C9B5B1A87B9F900B500C1 /* ConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A1E1A87B9F900B500C1 /* ConcurrentOperation.m */; };
-		5E4C9B5C1A87B9F900B500C1 /* InputSourcesThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A201A87B9F900B500C1 /* InputSourcesThread.m */; };
-		5E4C9B5D1A87B9F900B500C1 /* SharedOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A221A87B9F900B500C1 /* SharedOperationQueue.m */; };
 		5E4C9B5E1A87B9F900B500C1 /* ScheduledTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A261A87B9F900B500C1 /* ScheduledTask.m */; };
 		5E4C9B5F1A87B9F900B500C1 /* TaskObjectList.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A271A87B9F900B500C1 /* TaskObjectList.c */; };
 		5E4C9B601A87B9F900B500C1 /* BytesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A2E1A87B9F900B500C1 /* BytesHelper.m */; };
-		5E4C9B611A87B9F900B500C1 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A311A87B9F900B500C1 /* CoreDataManager.m */; };
 		5E4C9B621A87B9F900B500C1 /* SharedMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A341A87B9F900B500C1 /* SharedMotionManager.m */; };
-		5E4C9B631A87B9F900B500C1 /* AESCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A3A1A87B9F900B500C1 /* AESCryptor.m */; };
-		5E4C9B641A87B9F900B500C1 /* NSData+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A3C1A87B9F900B500C1 /* NSData+Random.m */; };
-		5E4C9B651A87B9F900B500C1 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A3F1A87B9F900B500C1 /* NSData+Base64.m */; };
 		5E4C9B661A87B9F900B500C1 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A411A87B9F900B500C1 /* NSString+Base64.m */; };
-		5E4C9B671A87B9F900B500C1 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A441A87B9F900B500C1 /* NSString+MD5.m */; };
 		5E4C9B681A87B9F900B500C1 /* pkcs8_private_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 5E4C9A471A87B9F900B500C1 /* pkcs8_private_key.pem */; };
 		5E4C9B691A87B9F900B500C1 /* private_key.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 5E4C9A481A87B9F900B500C1 /* private_key.p12 */; };
 		5E4C9B6A1A87B9F900B500C1 /* private_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 5E4C9A491A87B9F900B500C1 /* private_key.pem */; };
 		5E4C9B6B1A87B9F900B500C1 /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = 5E4C9A4A1A87B9F900B500C1 /* public_key.der */; };
-		5E4C9B6C1A87B9F900B500C1 /* rsa_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A4C1A87B9F900B500C1 /* rsa_main.m */; };
 		5E4C9B6D1A87B9F900B500C1 /* rsa_public_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 5E4C9A4D1A87B9F900B500C1 /* rsa_public_key.pem */; };
 		5E4C9B6E1A87B9F900B500C1 /* rsaCert.crt in Resources */ = {isa = PBXBuildFile; fileRef = 5E4C9A4E1A87B9F900B500C1 /* rsaCert.crt */; };
 		5E4C9B6F1A87B9F900B500C1 /* rsaCertReq.csr in Resources */ = {isa = PBXBuildFile; fileRef = 5E4C9A4F1A87B9F900B500C1 /* rsaCertReq.csr */; };
-		5E4C9B701A87B9F900B500C1 /* RSAKeysKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A511A87B9F900B500C1 /* RSAKeysKeeper.m */; };
 		5E4C9B711A87B9F900B500C1 /* Screen Shot  p12_password.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E4C9A521A87B9F900B500C1 /* Screen Shot  p12_password.png */; };
 		5E4C9B721A87B9F900B500C1 /* Screen Shot  private_key info.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E4C9A531A87B9F900B500C1 /* Screen Shot  private_key info.png */; };
-		5E4C9B731A87B9F900B500C1 /* RSABase64Cryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A551A87B9F900B500C1 /* RSABase64Cryptor.m */; };
-		5E4C9B741A87B9F900B500C1 /* RSACryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A571A87B9F900B500C1 /* RSACryptor.m */; };
-		5E4C9B751A87B9F900B500C1 /* NSString+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A5A1A87B9F900B500C1 /* NSString+SHA.m */; };
-		5E4C9B761A87B9F900B500C1 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A5F1A87B9F900B500C1 /* CHCSVParser.m */; };
-		5E4C9B771A87B9F900B500C1 /* CSVFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A621A87B9F900B500C1 /* CSVFileWriter.m */; };
 		5E4C9B7B1A87B9F900B500C1 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A6E1A87B9F900B500C1 /* FileManager.m */; };
 		5E4C9B7C1A87B9F900B500C1 /* JsonFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A701A87B9F900B500C1 /* JsonFileManager.m */; };
-		5E4C9B7D1A87B9F900B500C1 /* LocalizeFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A721A87B9F900B500C1 /* LocalizeFileManager.m */; };
 		5E4C9B7E1A87B9F900B500C1 /* HTTPGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A761A87B9F900B500C1 /* HTTPGetRequest.m */; };
 		5E4C9B7F1A87B9F900B500C1 /* HTTPPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A781A87B9F900B500C1 /* HTTPPostRequest.m */; };
 		5E4C9B801A87B9F900B500C1 /* HTTPRequestBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A7A1A87B9F900B500C1 /* HTTPRequestBase.m */; };
 		5E4C9B811A87B9F900B500C1 /* HTTPUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A7C1A87B9F900B500C1 /* HTTPUploader.m */; };
-		5E4C9B821A87B9F900B500C1 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A7E1A87B9F900B500C1 /* NSString+URLEncode.m */; };
-		5E4C9B831A87B9F900B500C1 /* CategoriesLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A821A87B9F900B500C1 /* CategoriesLocalizer.m */; };
-		5E4C9B841A87B9F900B500C1 /* LocalizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A841A87B9F900B500C1 /* LocalizeHelper.m */; };
-		5E4C9B851A87B9F900B500C1 /* LocalizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A861A87B9F900B500C1 /* LocalizeManager.m */; };
-		5E4C9B891A87B9F900B500C1 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A921A87B9F900B500C1 /* SQLiteManager.m */; };
-		5E4C9B8A1A87B9F900B500C1 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A961A87B9F900B500C1 /* ioapi.c */; };
-		5E4C9B8B1A87B9F900B500C1 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A981A87B9F900B500C1 /* mztools.c */; };
-		5E4C9B8C1A87B9F900B500C1 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9A1A87B9F900B500C1 /* unzip.c */; };
-		5E4C9B8D1A87B9F900B500C1 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9C1A87B9F900B500C1 /* zip.c */; };
-		5E4C9B8E1A87B9F900B500C1 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9F1A87B9F900B500C1 /* SSZipArchive.m */; };
-		5E4C9B8F1A87B9F900B500C1 /* CharacterSetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AA51A87B9F900B500C1 /* CharacterSetHelper.m */; };
 		5E4C9B901A87B9F900B500C1 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AA71A87B9F900B500C1 /* StringHelper.m */; };
 		5E4C9B911A87B9F900B500C1 /* ArrayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AAB1A87B9F900B500C1 /* ArrayHelper.m */; };
-		5E4C9B921A87B9F900B500C1 /* ArrayListHelper.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AAC1A87B9F900B500C1 /* ArrayListHelper.c */; };
 		5E4C9B931A87B9F900B500C1 /* CollectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AAF1A87B9F900B500C1 /* CollectionHelper.m */; };
 		5E4C9B941A87B9F900B500C1 /* DictionaryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AB11A87B9F900B500C1 /* DictionaryHelper.m */; };
 		5E4C9B951A87B9F900B500C1 /* IterateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AB31A87B9F900B500C1 /* IterateHelper.m */; };
-		5E4C9B961A87B9F900B500C1 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AB71A87B9F900B500C1 /* DateHelper.m */; };
-		5E4C9B971A87B9F900B500C1 /* DeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ABB1A87B9F900B500C1 /* DeviceHelper.m */; };
 		5E4C9B981A87B9F900B500C1 /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ABF1A87B9F900B500C1 /* NSArray+Additions.m */; };
 		5E4C9B991A87B9F900B500C1 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AC11A87B9F900B500C1 /* NSDate+Additions.m */; };
 		5E4C9B9A1A87B9F900B500C1 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AC31A87B9F900B500C1 /* NSMutableArray+Additions.m */; };
@@ -143,11 +116,8 @@
 		5E4C9B9D1A87B9F900B500C1 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ACB1A87B9F900B500C1 /* UIImage+Additions.m */; };
 		5E4C9B9E1A87B9F900B500C1 /* ColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ACF1A87B9F900B500C1 /* ColorHelper.m */; };
 		5E4C9B9F1A87B9F900B500C1 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AD11A87B9F900B500C1 /* ImageHelper.m */; };
-		5E4C9BA01A87B9F900B500C1 /* KeyBoardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AD51A87B9F900B500C1 /* KeyBoardHelper.m */; };
 		5E4C9BA11A87B9F900B500C1 /* LayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AD71A87B9F900B500C1 /* LayerHelper.m */; };
-		5E4C9BA21A87B9F900B500C1 /* PopupViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AD91A87B9F900B500C1 /* PopupViewHelper.m */; };
 		5E4C9BA31A87B9F900B500C1 /* RectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ADB1A87B9F900B500C1 /* RectHelper.m */; };
-		5E4C9BA41A87B9F900B500C1 /* TableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ADD1A87B9F900B500C1 /* TableViewHelper.m */; };
 		5E4C9BA51A87B9F900B500C1 /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ADF1A87B9F900B500C1 /* ViewHelper.m */; };
 		5E4C9BA61A87B9F900B500C1 /* KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AE11A87B9F900B500C1 /* KeyValueHelper.m */; };
 		5E4C9BA81A87B9F900B500C1 /* ActionAnimateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AEB1A87B9F900B500C1 /* ActionAnimateHelper.m */; };
@@ -177,21 +147,7 @@
 		5E4C9BC01A87B9F900B500C1 /* NumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B261A87B9F900B500C1 /* NumberLabel.m */; };
 		5E4C9BC11A87B9F900B500C1 /* StrokeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B281A87B9F900B500C1 /* StrokeLabel.m */; };
 		5E4C9BC21A87B9F900B500C1 /* UILabel+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B2A1A87B9F900B500C1 /* UILabel+Additions.m */; };
-		5E4C9BC31A87B9F900B500C1 /* PickerViewBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B2E1A87B9F900B500C1 /* PickerViewBase.m */; };
-		5E4C9BC41A87B9F900B500C1 /* ZoomablePanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B321A87B9F900B500C1 /* ZoomablePanView.m */; };
-		5E4C9BC51A87B9F900B500C1 /* ZoomableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B341A87B9F900B500C1 /* ZoomableScrollView.m */; };
-		5E4C9BC61A87B9F900B500C1 /* AlignTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B381A87B9F900B500C1 /* AlignTableView.m */; };
-		5E4C9BC71A87B9F900B500C1 /* FilterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B3A1A87B9F900B500C1 /* FilterTableView.m */; };
-		5E4C9BC81A87B9F900B500C1 /* HeaderSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B3C1A87B9F900B500C1 /* HeaderSearchTableView.m */; };
-		5E4C9BC91A87B9F900B500C1 /* HeaderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B3E1A87B9F900B500C1 /* HeaderTableView.m */; };
-		5E4C9BCA1A87B9F900B500C1 /* SearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B401A87B9F900B500C1 /* SearchBarView.m */; };
-		5E4C9BCB1A87B9F900B500C1 /* TableViewBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B421A87B9F900B500C1 /* TableViewBase.m */; };
-		5E4C9BCC1A87B9F900B500C1 /* TableViewBaseContentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B441A87B9F900B500C1 /* TableViewBaseContentHelper.m */; };
 		5E4C9BCD1A87B9F900B500C1 /* NormalTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B481A87B9F900B500C1 /* NormalTextField.m */; };
-		5E4C9BCE1A87B9F900B500C1 /* WithDoneTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B4A1A87B9F900B500C1 /* WithDoneTextField.m */; };
-		5E4C9BCF1A87B9F900B500C1 /* RotatableScorllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B4E1A87B9F900B500C1 /* RotatableScorllViewController.m */; };
-		5E4C9BD01A87B9F900B500C1 /* RotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B501A87B9F900B500C1 /* RotatableViewController.m */; };
-		5E4C9BD11A87B9F900B500C1 /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B521A87B9F900B500C1 /* ScrollViewController.m */; };
 		5E4C9BD21A87B9F900B500C1 /* FrameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B561A87B9F900B500C1 /* FrameHelper.m */; };
 		5E4C9BD31A87B9F900B500C1 /* FrameTranslater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B581A87B9F900B500C1 /* FrameTranslater.m */; };
 		5E4C9BD41A87B9F900B500C1 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B5A1A87B9F900B500C1 /* UIView+Frame.m */; };
@@ -303,8 +259,6 @@
 		4E4D4EC2181D5B9000886D75 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		4E4D4EC4181D5B9C00886D75 /* ViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ViewManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4E4D4EC5181D5B9C00886D75 /* ViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewManager.m; sourceTree = "<group>"; };
-		4E6162FC19FFDAB900302D98 /* InteractiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractiveView.h; sourceTree = "<group>"; };
-		4E6162FD19FFDAB900302D98 /* InteractiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractiveView.m; sourceTree = "<group>"; };
 		4E71D40318BF779900270180 /* BaseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEvent.h; sourceTree = "<group>"; };
 		4E71D40418BF779900270180 /* BaseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEvent.m; sourceTree = "<group>"; };
 		4E71D40618BF80D200270180 /* RouteEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteEvent.h; sourceTree = "<group>"; };
@@ -760,8 +714,6 @@
 				4E2CCACC19FBF93500D2AAEC /* ContainerView.m */,
 				4E08AB9919FE66F400F1F449 /* InteractiveImageView.h */,
 				4E08AB9A19FE66F400F1F449 /* InteractiveImageView.m */,
-				4E6162FC19FFDAB900302D98 /* InteractiveView.h */,
-				4E6162FD19FFDAB900302D98 /* InteractiveView.m */,
 				4EEE51A11A0BB166002CD333 /* TimerView.h */,
 				4EEE51A21A0BB166002CD333 /* TimerView.m */,
 				4ED237741A0E131B002B9C9D /* ImageLabelLineScrollCell.h */,
@@ -1929,20 +1881,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E4C9B701A87B9F900B500C1 /* RSAKeysKeeper.m in Sources */,
+				5E01BB7E1CC5DB320070AF79 /* ioapi.c in Sources */,
+				5E01BB7F1CC5DB320070AF79 /* mztools.c in Sources */,
+				5E01BB801CC5DB320070AF79 /* unzip.c in Sources */,
+				5E01BB811CC5DB320070AF79 /* zip.c in Sources */,
+				5E01BB7D1CC5DB0B0070AF79 /* SSZipArchive.m in Sources */,
+				5E01BB7C1CC5DB010070AF79 /* SharedOperationQueue.m in Sources */,
+				5E01BB7B1CC5DAF70070AF79 /* DateHelper.m in Sources */,
+				5E01BB7A1CC5DAEE0070AF79 /* RotatableViewController.m in Sources */,
 				4EDD80AE1A1268B8007422A0 /* PPSSignatureView.m in Sources */,
-				5E4C9B841A87B9F900B500C1 /* LocalizeHelper.m in Sources */,
 				5E4C9BA91A87B9F900B500C1 /* ActionExecutorBase.m in Sources */,
 				4E4D4E9A181D5AFB00886D75 /* AppDelegate.m in Sources */,
-				5E4C9B8F1A87B9F900B500C1 /* CharacterSetHelper.m in Sources */,
 				4E14BC5719225AF7000CDB57 /* PullState.m in Sources */,
-				5E4C9B761A87B9F900B500C1 /* CHCSVParser.m in Sources */,
-				5E4C9B741A87B9F900B500C1 /* RSACryptor.m in Sources */,
 				4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */,
 				5E4C9BA11A87B9F900B500C1 /* LayerHelper.m in Sources */,
 				5E4C9B7B1A87B9F900B500C1 /* FileManager.m in Sources */,
 				5E4C9BA61A87B9F900B500C1 /* KeyValueHelper.m in Sources */,
-				5E4C9B771A87B9F900B500C1 /* CSVFileWriter.m in Sources */,
 				5E4C9B931A87B9F900B500C1 /* CollectionHelper.m in Sources */,
 				5E4C9B7E1A87B9F900B500C1 /* HTTPGetRequest.m in Sources */,
 				5EC8B2B31C8D2C7D00B736B4 /* IRuinApplication.m in Sources */,
@@ -1952,24 +1906,18 @@
 				4EDACDC5191FB1C200A8E84E /* ChainableEffect.m in Sources */,
 				4ED3BE5F18E7043A00621666 /* PositionsHelper.m in Sources */,
 				5E4C9B9C1A87B9F900B500C1 /* NSTimer+Additions.m in Sources */,
-				5E4C9BC61A87B9F900B500C1 /* AlignTableView.m in Sources */,
 				4EDACDC8191FB88C00A8E84E /* StateHelper.m in Sources */,
 				5E4C9BBC1A87B9F900B500C1 /* NormalButton.m in Sources */,
 				5E4C9B661A87B9F900B500C1 /* NSString+Base64.m in Sources */,
 				5E4C9BAA1A87B9F900B500C1 /* ActionExecutorManager.m in Sources */,
-				5E4C9BC51A87B9F900B500C1 /* ZoomableScrollView.m in Sources */,
-				5E4C9B851A87B9F900B500C1 /* LocalizeManager.m in Sources */,
 				4EEAFF6718D419C1001FB745 /* FrameManager.m in Sources */,
 				4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */,
-				5E4C9BA01A87B9F900B500C1 /* KeyBoardHelper.m in Sources */,
-				5E4C9BC41A87B9F900B500C1 /* ZoomablePanView.m in Sources */,
 				5E4C9BB31A87B9F900B500C1 /* PositionsExecutor.m in Sources */,
 				4E0BFC5119260B9100F0E632 /* MoveState.m in Sources */,
 				5E4C9BB21A87B9F900B500C1 /* InvocationExecutor.m in Sources */,
 				4EA4DD3A181EAFAE00BC1E6E /* GameController.m in Sources */,
 				5E4C9B5F1A87B9F900B500C1 /* TaskObjectList.c in Sources */,
 				5E4C9B9B1A87B9F900B500C1 /* NSString+Additions.m in Sources */,
-				5E4C9BC71A87B9F900B500C1 /* FilterTableView.m in Sources */,
 				5E4C9B941A87B9F900B500C1 /* DictionaryHelper.m in Sources */,
 				4E4D4EC6181D5B9C00886D75 /* ViewManager.m in Sources */,
 				5E4C9B7C1A87B9F900B500C1 /* JsonFileManager.m in Sources */,
@@ -1978,30 +1926,18 @@
 				4E4D4EC3181D5B9000886D75 /* DataManager.m in Sources */,
 				4EF75EAA1A00F5A00074E493 /* BaseController.m in Sources */,
 				4ED52C81191E61FF002ADA73 /* SwipeState.m in Sources */,
-				4E6162FE19FFDAB900302D98 /* InteractiveView.m in Sources */,
 				5E4C9B901A87B9F900B500C1 /* StringHelper.m in Sources */,
 				4E08AB9819FE66B300F1F449 /* SymbolView.m in Sources */,
-				5E1919101B6C7297002F0A3D /* NetworkObserver.m in Sources */,
-				5E4C9BC91A87B9F900B500C1 /* HeaderTableView.m in Sources */,
 				5E4C9B7F1A87B9F900B500C1 /* HTTPPostRequest.m in Sources */,
-				5E4C9B8B1A87B9F900B500C1 /* mztools.c in Sources */,
 				5E4C9B9F1A87B9F900B500C1 /* ImageHelper.m in Sources */,
-				5E4C9B971A87B9F900B500C1 /* DeviceHelper.m in Sources */,
 				5E4C9B9A1A87B9F900B500C1 /* NSMutableArray+Additions.m in Sources */,
 				5E4C9BB41A87B9F900B500C1 /* QueueExecutorBase.m in Sources */,
-				5E4C9BCE1A87B9F900B500C1 /* WithDoneTextField.m in Sources */,
-				5E4C9B8C1A87B9F900B500C1 /* unzip.c in Sources */,
 				5E4C9BBF1A87B9F900B500C1 /* NormalLabel.m in Sources */,
-				5E4C9B651A87B9F900B500C1 /* NSData+Base64.m in Sources */,
-				5E4C9B631A87B9F900B500C1 /* AESCryptor.m in Sources */,
 				4E4D4EC0181D5B8400886D75 /* ActionManager.m in Sources */,
 				5E4C9B5E1A87B9F900B500C1 /* ScheduledTask.m in Sources */,
 				5E4C9BAD1A87B9F900B500C1 /* MXAudioPlayerFadeOperation.m in Sources */,
-				5E4C9B891A87B9F900B500C1 /* SQLiteManager.m in Sources */,
 				5E4C9BAB1A87B9F900B500C1 /* AudioHandler.m in Sources */,
-				5E4C9B831A87B9F900B500C1 /* CategoriesLocalizer.m in Sources */,
 				5E4C9BA81A87B9F900B500C1 /* ActionAnimateHelper.m in Sources */,
-				5E4C9B8A1A87B9F900B500C1 /* ioapi.c in Sources */,
 				5E4C9BB11A87B9F900B500C1 /* ExplodesExecutor.m in Sources */,
 				4E4D4E96181D5AFB00886D75 /* main.m in Sources */,
 				5E4C9BB61A87B9F900B500C1 /* QueueIndexPathParser.m in Sources */,
@@ -2009,7 +1945,6 @@
 				5E4C9BBE1A87B9F900B500C1 /* GradientLabel.m in Sources */,
 				5E4C9BB51A87B9F900B500C1 /* EaseFunction.m in Sources */,
 				4E8067C518C3678B00AF71B5 /* RouteEffect.m in Sources */,
-				5E4C9B5B1A87B9F900B500C1 /* ConcurrentOperation.m in Sources */,
 				4E14BC5419225AA0000CDB57 /* PullEvent.m in Sources */,
 				4ED237761A0E131B002B9C9D /* ImageLabelLineScrollCell.m in Sources */,
 				4E37286E1A023AEB00FA4E8C /* GameEffect.m in Sources */,
@@ -2018,42 +1953,27 @@
 				5E4C9BBD1A87B9F900B500C1 /* FontHelper.m in Sources */,
 				5E4C9BBB1A87B9F900B500C1 /* UIColor+FlatColors.m in Sources */,
 				5E4C9B991A87B9F900B500C1 /* NSDate+Additions.m in Sources */,
-				5E4C9B751A87B9F900B500C1 /* NSString+SHA.m in Sources */,
 				5E4C9BC11A87B9F900B500C1 /* StrokeLabel.m in Sources */,
 				5E4C9B601A87B9F900B500C1 /* BytesHelper.m in Sources */,
-				5E4C9B5D1A87B9F900B500C1 /* SharedOperationQueue.m in Sources */,
 				4EEE51A31A0BB166002CD333 /* TimerView.m in Sources */,
 				4E8067C218C35CB900AF71B5 /* RouteState.m in Sources */,
-				5E4C9BC81A87B9F900B500C1 /* HeaderSearchTableView.m in Sources */,
-				5E4C9BA41A87B9F900B500C1 /* TableViewHelper.m in Sources */,
-				5E4C9BD01A87B9F900B500C1 /* RotatableViewController.m in Sources */,
 				5E4C9BA51A87B9F900B500C1 /* ViewHelper.m in Sources */,
 				4EDACDC2191FB1A600A8E84E /* ChainableState.m in Sources */,
-				5E4C9BC31A87B9F900B500C1 /* PickerViewBase.m in Sources */,
-				5E4C9BA21A87B9F900B500C1 /* PopupViewHelper.m in Sources */,
 				5E4C9BB01A87B9F900B500C1 /* ElementsExecutor.m in Sources */,
 				4E71D40518BF779900270180 /* BaseEvent.m in Sources */,
 				4E1FBA2A191BC0E40093BE25 /* TouchEffect.m in Sources */,
 				5E4C9BB81A87B9F900B500C1 /* QueueTimeCalculator.m in Sources */,
 				4EF282751908038800AA0C54 /* GameState.m in Sources */,
-				5E4C9BCC1A87B9F900B500C1 /* TableViewBaseContentHelper.m in Sources */,
-				5E4C9B8D1A87B9F900B500C1 /* zip.c in Sources */,
 				4EAB5A6119F79C440031F69D /* ChaptersView.m in Sources */,
 				4EF7943E18C21FE800E25A30 /* BaseEffect.m in Sources */,
-				5E4C9B611A87B9F900B500C1 /* CoreDataManager.m in Sources */,
 				5E4C9BCD1A87B9F900B500C1 /* NormalTextField.m in Sources */,
-				5E4C9B821A87B9F900B500C1 /* NSString+URLEncode.m in Sources */,
 				4ED42D441A1DCE21006149C9 /* GradientImageView.m in Sources */,
 				4E1FBA24191BBBDD0093BE25 /* TouchEvent.m in Sources */,
-				5E4C9BD11A87B9F900B500C1 /* ScrollViewController.m in Sources */,
-				5E19190F1B6C7297002F0A3D /* NetworkInformation.m in Sources */,
 				5E4C9BD31A87B9F900B500C1 /* FrameTranslater.m in Sources */,
 				5E4C9BAC1A87B9F900B500C1 /* ImageAnimator.m in Sources */,
 				4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */,
 				5E4C9B811A87B9F900B500C1 /* HTTPUploader.m in Sources */,
-				5E4C9B7D1A87B9F900B500C1 /* LocalizeFileManager.m in Sources */,
 				5E4C9BC01A87B9F900B500C1 /* NumberLabel.m in Sources */,
-				5E4C9B8E1A87B9F900B500C1 /* SSZipArchive.m in Sources */,
 				5E4C9BC21A87B9F900B500C1 /* UILabel+Additions.m in Sources */,
 				4EEFD9B21A0F5856006A76C8 /* FBShimmeringLayer.m in Sources */,
 				5E4C9B981A87B9F900B500C1 /* NSArray+Additions.m in Sources */,
@@ -2063,31 +1983,21 @@
 				4EEFD9B31A0F5856006A76C8 /* FBShimmeringView.m in Sources */,
 				5E4C9BA31A87B9F900B500C1 /* RectHelper.m in Sources */,
 				5E4C9B621A87B9F900B500C1 /* SharedMotionManager.m in Sources */,
-				5E4C9BCB1A87B9F900B500C1 /* TableViewBase.m in Sources */,
 				4EA40A3B1821361B001539B8 /* GameEvent.m in Sources */,
-				5E4C9B641A87B9F900B500C1 /* NSData+Random.m in Sources */,
 				5E4C9B9D1A87B9F900B500C1 /* UIImage+Additions.m in Sources */,
-				4E08AB9B19FE66F400F1F449 /* InteractiveImageView.m in Sources */,
 				4E0BFC5719260BF900F0E632 /* MoveEffect.m in Sources */,
-				5E4C9B961A87B9F900B500C1 /* DateHelper.m in Sources */,
-				5E4C9B6C1A87B9F900B500C1 /* rsa_main.m in Sources */,
 				4E0BFC5419260BAA00F0E632 /* MoveEvent.m in Sources */,
 				5E1919111B6C7297002F0A3D /* Reachability.m in Sources */,
 				5E4C9B911A87B9F900B500C1 /* ArrayHelper.m in Sources */,
 				5E4C9BD21A87B9F900B500C1 /* FrameHelper.m in Sources */,
 				4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */,
 				4ED52C7E191E5DC4002ADA73 /* SwipeEvent.m in Sources */,
-				5E4C9BCA1A87B9F900B500C1 /* SearchBarView.m in Sources */,
-				5E19190E1B6C7297002F0A3D /* IPAddress.c in Sources */,
 				5E5412E51B4BD42E003D47B2 /* LineScrollViewCell.m in Sources */,
-				5E4C9B921A87B9F900B500C1 /* ArrayListHelper.c in Sources */,
 				5E4C9BB71A87B9F900B500C1 /* QueuePositionsHelper.m in Sources */,
 				4E8067BF18C35C8A00AF71B5 /* BaseState.m in Sources */,
-				5E4C9B671A87B9F900B500C1 /* NSString+MD5.m in Sources */,
 				5E34ED341A3E785E00022E45 /* ScoreLabel.m in Sources */,
 				5E08685B1CB9528E00C2192F /* AppUserDefaults.m in Sources */,
 				5E4C9B951A87B9F900B500C1 /* IterateHelper.m in Sources */,
-				5E4C9B5C1A87B9F900B500C1 /* InputSourcesThread.m in Sources */,
 				4ED52C84191E623A002ADA73 /* SwipeEffect.m in Sources */,
 				4E2CCAD319FBF98B00D2AAEC /* GameBaseView.m in Sources */,
 				5E4C9B9E1A87B9F900B500C1 /* ColorHelper.m in Sources */,
@@ -2095,8 +2005,6 @@
 				4E14BC5A19225B3E000CDB57 /* PullEffect.m in Sources */,
 				4EBC39791A14E22700AFE71A /* MBProgressHUD.m in Sources */,
 				4E1FBA27191BBC8D0093BE25 /* TouchState.m in Sources */,
-				5E4C9BCF1A87B9F900B500C1 /* RotatableScorllViewController.m in Sources */,
-				5E4C9B731A87B9F900B500C1 /* RSABase64Cryptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

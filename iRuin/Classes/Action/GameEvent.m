@@ -81,9 +81,6 @@
     
     ACTION.gameState.vanishAmount = 0;
     
-    //
-    VIEW.gameView.pauseActionView.imageView.selected = NO;
-    
     [ACTION.currentEffect effectStartRollOut];
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];

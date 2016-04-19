@@ -6,11 +6,9 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 @interface EffectHelper : NSObject
 
-
 +(EffectHelper*) getInstance;
 
 -(void) setValue:(id)value forKeyPath:(NSString*)keyPath onObject:(NSObject*)object;
-
 
 #pragma mark - Queue Views Positiosn Handler
 

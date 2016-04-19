@@ -179,8 +179,6 @@
 #import "SymbolView.h"
 #import "GradientImageView.h"
 
-
-#import "InteractiveView.h"
 #import "InteractiveImageView.h"
 
 #import "ImageLabelLineScrollCell.h"

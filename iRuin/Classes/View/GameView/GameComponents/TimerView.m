@@ -28,12 +28,14 @@
 }
 
 
--(void) startTimer {
+-(void) startTimer
+{
     // forbid register many
     if ([self isPausing]) [[ScheduledTask sharedInstance] registerSchedule: self timeElapsed:1 repeats:0];
 }
 
--(void) pauseTimer {
+-(void) pauseTimer
+{
     [[ScheduledTask sharedInstance] unRegisterSchedule: self];
 }
 

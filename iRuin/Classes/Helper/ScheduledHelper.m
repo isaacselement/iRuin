@@ -45,9 +45,11 @@ static ScheduledHelper* scheduledHelper = nil;
         int interval = [config[@"~interval"] intValue];
         if (interval <= 0) continue;
         if (scheduleTaskTimes % interval == 0) {
-            NSDictionary* scheduleTaskConfig = [ConfigHelper getLoopConfig:config index:scheduleViewValueIndex] ;
-            [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
-            scheduleViewValueIndex++;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSDictionary* scheduleTaskConfig = [ConfigHelper getLoopConfig:config index:scheduleViewValueIndex] ;
+                [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
+                scheduleViewValueIndex++;                
+            });
         }
     }
     

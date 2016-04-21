@@ -28,7 +28,7 @@
     [lineScrollView setContentOffset: CGPointMake(lineScrollView.contentView.sizeWidth - lineScrollView.sizeWidth, 0) animated:NO];
     
     
-    // chapters cells jumb in effect
+    // chapters cells jump in effect
     [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Enter"]];
     
     // about background music
@@ -44,29 +44,22 @@
 {
     ACTION.gameState.isGameStarted = YES;
     
-    [ACTION switchToMode: ACTION.gameState.currentMode chapter:ACTION.gameState.currentChapter];
+    [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Start"]];
     
-    [ACTION.currentEffect effectStartRollIn];
+    [ACTION switchToMode: ACTION.gameState.currentMode chapter:ACTION.gameState.currentChapter];
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];
     
-    // chapters cells effect
-    [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Start"]];
+    [ACTION.currentEffect effectStartRollIn];
     
-    // show hint
-    int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
-    if (clearanceScore == 0) {
-        clearanceScore = RANDOM(1000);
-    }
+    [self showClearanceScoreAndSetTimer];
+}
+
+-(void) gameReStart
+{
+    [self gameRefresh];
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
-    hud.userInteractionEnabled = NO;
-    hud.mode = MBProgressHUDModeText;
-    hud.detailsLabelText = [NSString stringWithFormat: @"This Season Clearance Score is %d", clearanceScore];
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay: 1 + RANDOM(3)];
-    
-    ACTION.gameState.clearanceScore = clearanceScore;
+    [self showClearanceScoreAndSetTimer];
 }
 
 -(void) gameBack
@@ -81,7 +74,6 @@
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];
     
-    // chapters cells effect
     [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Back"]];
 }
 
@@ -104,11 +96,10 @@
 
 -(void) gameRefresh
 {
-    BaseEffect* effect = ACTION.currentEffect;
     [VIEW.actionDurations clear];
-    [effect effectStartRollOut];
+    [ACTION.currentEffect effectStartRollOut];
     double duration = [VIEW.actionDurations take];
-    [effect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:duration];
+    [ACTION.currentEffect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:duration];
 }
 
 #pragma mark -
@@ -124,6 +115,13 @@
     }
 }
 
+-(void) showClearanceScoreAndSetTimer
+{
+    int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
+    [[EffectHelper getInstance] showClearanceScore: clearanceScore];
+    ACTION.gameState.clearanceScore = clearanceScore;
+    [VIEW.gameView.timerView setTotalTime: VIEW.gameView.timerView.totalTime];
+}
 
 
 @end

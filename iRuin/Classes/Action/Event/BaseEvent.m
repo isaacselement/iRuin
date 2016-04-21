@@ -44,18 +44,17 @@
         return NO;
     }];
     
+    [VIEW.gameView.timerView pauseTimer];
     VIEW.gameView.containerView.userInteractionEnabled = NO;
-    
     [state stateSymbolsWillRollIn];
 }
 
 -(void) eventSymbolsDidRollIn
 {
     DLOG(@"eventSymbolsDidRollIn");
+    
     [VIEW.gameView.timerView startTimer];
-    
     VIEW.gameView.containerView.userInteractionEnabled = YES;
-    
     [state stateSymbolsDidRollIn];
 }
 

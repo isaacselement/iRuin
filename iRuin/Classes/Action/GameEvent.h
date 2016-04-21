@@ -6,6 +6,8 @@
 
 -(void) gameStart;
 
+-(void) gameReStart;
+
 -(void) gameBack;
 
 -(void) gamePause;

@@ -10,7 +10,7 @@
 
 @synthesize lineScrollView;
 
-@synthesize muteBGMActionView;
+@synthesize musicActionView;
 
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -18,12 +18,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         // mute BMG action
-        muteBGMActionView = [[UIView alloc] init];
-        [self addSubview:muteBGMActionView];
+        musicActionView = [[UIView alloc] init];
+        [self addSubview:musicActionView];
         
         UISwipeGestureRecognizer* swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRightAction:)];
         swipeGestureRight.direction = UISwipeGestureRecognizerDirectionRight;
-        [muteBGMActionView addGestureRecognizer:swipeGestureRight];
+        [musicActionView addGestureRecognizer:swipeGestureRight];
         
         // chapters cell views
         lineScrollView = [[LineScrollView alloc] init];
@@ -90,9 +90,6 @@
     
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_In_Touch_Ended"]];
-    
-    
-    // -------------------------- ++++++++++++++ -----------------------
     
     // --------------------- index
     int index = [lineScrollViewObj indexOfVisibleCell: cell];

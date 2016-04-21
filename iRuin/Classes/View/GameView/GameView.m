@@ -51,7 +51,7 @@
         // refresh
         refreshActionView = [[NormalButton alloc] init];
         refreshActionView.didTouchUpInsideAction = ^void(NormalButton* sender){
-            [ACTION.gameEvent gameRefresh];
+            [ACTION.gameEvent gameReStart];
         };
         [self addSubview: refreshActionView];
         

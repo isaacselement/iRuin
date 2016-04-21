@@ -8,6 +8,7 @@
 #define IRuin_Bundle_ID @"com.suchachinoiserie.iRuin"
 
 
+#define key_Json        @"json"
 
 #define key_Config      @"Config"
 
@@ -28,7 +29,6 @@
 
 #define STR_UnderLine   @"_"
 
-#define key_Json        @"json"
 
 
 
@@ -41,8 +41,6 @@
 #define User_ChapterIndex @"User_ChapterIndex"
 
 #define User_LastTimeLaunch @"User_LastTimeLaunch"
-
-
 
 #define User_ResourcesVersion @"User_ResourcesVersion"
 

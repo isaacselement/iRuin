@@ -38,12 +38,12 @@
             
             if (strcmp(rawType, @encode(CGFloat)) == 0) {
                 
-                if ([key hasSuffix:@"Width"]) {                 // for "eachCellWidth", "borderWidth" ...
-                    CGFloat num = [value floatValue];
-                    result = @(CanvasW(num));
+                if ([key hasSuffix:@"Width"]) {                 // for "eachCellWidth", "borderWidth"
+                    result = @(CanvasW([value floatValue]));
                 } else if ([key hasSuffix:@"X"]) {              // for "originX" now
-                    CGFloat x = [value floatValue];
-                    result = @(CanvasX(x));
+                    result = @(CanvasX([value floatValue]));
+                } else if ([key hasSuffix:@"Height"]) {
+                    result = @(CanvasH([value floatValue]));    // for "eachCellHeight"
                 }
                 
             } else if ([obj isKindOfClass:[CAGradientLayer class]] && [key isEqualToString:@"colors"]) {
@@ -301,5 +301,15 @@
     });
 }
 
+
+-(void) showClearanceScore:(int)clearanceScore
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
+    hud.userInteractionEnabled = NO;
+    hud.mode = MBProgressHUDModeText;
+    hud.detailsLabelText = [NSString stringWithFormat: @"This Season Clearance Score is %d", clearanceScore];
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay: 1 + RANDOM(3)];
+}
 
 @end

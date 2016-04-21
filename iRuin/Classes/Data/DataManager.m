@@ -9,10 +9,8 @@
     NSMutableDictionary* landscapeShareConfig ;
     
     
-    
     NSMutableDictionary* portraitModeChapterConfig;
     NSMutableDictionary* landscapeModeChapterConfig;
-    
     
     
     NSMutableDictionary* modesConfigs;
@@ -62,23 +60,29 @@ static DataManager* sharedInstance = nil;
 
 -(void) prepareShareDesignsConfigs
 {
-    //--------------------------------   Designs   ---------------------------
+    //--------------------------------   Designs & Configs   ---------------------------
 
+    // share config
+    NSDictionary* shareConfig = [ConfigHelper getConfigJson: key_Config ];
     // default iPhone
     BOOL isIpad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
-    
     // portrait/landscape share/device config
     NSDictionary* portraitDesign = [DictionaryHelper deepCopy: [ConfigHelper getDesignJson:key_Portrait ]];
     NSDictionary* landscapeDesign = [DictionaryHelper deepCopy: [ConfigHelper getDesignJson:key_Landscape ]];
     NSDictionary* portraitDeviceJSON = [ConfigHelper getDesignJson: StringUnderlineAppend(isIpad ? key_IPad : key_IPhone, key_Portrait) ];
     NSDictionary* landscapeDeviceJSON = [ConfigHelper getDesignJson: StringUnderlineAppend(isIpad ? key_IPad : key_IPhone, key_Landscape) ];
     
+    // combine the configs
+    protraitShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:portraitDesign with:portraitDeviceJSON ]];
+    landscapeShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:landscapeDesign with:landscapeDeviceJSON ]];
+    // setup the IndexPathParser's indexPathsRepository, and replace the indexPaths using IndexPathParser's indexPathsRepository
+    int maxDimension = MAX([ArrayHelper getMaxCount: protraitShareConfig[@"MATRIX"]], [ArrayHelper getMaxCount: landscapeShareConfig[@"MATRIX"]]);
+    [QueueIndexPathParser setIndexPathsRepository: maxDimension];
+    [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:protraitShareConfig];
+    [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:landscapeShareConfig];
     
+    //--------------------------------   Modes & Chapters Configs   ---------------------------
     
-    //--------------------------------   Configs   ---------------------------
-
-    // share config
-    NSDictionary* shareConfig = [ConfigHelper getConfigJson: key_Config ];
     // modes config
     modesConfigs = [NSMutableDictionary dictionary];
     for (NSString* mode in ACTION.gameModes) {
@@ -87,19 +91,6 @@ static DataManager* sharedInstance = nil;
     }
     // chapters config
     chaptersConfig = [DictionaryHelper deepCopy: [ConfigHelper getConfigJson: key_Chapters ]];
-    
-    
-    
-    //-------------------------------  Handler/Combine Configs and Designs -------------------
-    
-    // combine the configs
-    protraitShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:portraitDeviceJSON with: portraitDesign]];
-    landscapeShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:landscapeDeviceJSON with: landscapeDesign]];
-    // setup the IndexPathParser's indexPathsRepository, and replace the indexPaths using IndexPathParser's indexPathsRepository
-    int maxDimension = MAX([ArrayHelper getMaxCount: protraitShareConfig[@"MATRIX"]], [ArrayHelper getMaxCount: landscapeShareConfig[@"MATRIX"]]);
-    [QueueIndexPathParser setIndexPathsRepository: maxDimension];
-    [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:protraitShareConfig];
-    [QueueIndexPathParser replaceIndexPathsWithExistingIndexPathsRepositoryInDictionary:landscapeShareConfig];
 }
 
 

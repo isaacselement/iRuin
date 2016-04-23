@@ -7,13 +7,6 @@
 #define kSTATE     @"State"
 #define kEFFECT    @"Effect"
 
-#define MODE_MOVE   @"Move"
-#define MODE_ROUTE  @"Route"
-#define MODE_TOUCH  @"Touch"
-#define MODE_PULL   @"Pull"
-#define MODE_SWIPE  @"Swipe"
-
-
 @class GameEvent;
 @class GameState;
 @class GameEffect;
@@ -29,7 +22,6 @@
 @property (strong) GameEffect* gameEffect;
 
 // modes
-@property (strong, readonly) NSArray* gameModes;
 @property (strong, readonly) NSMutableDictionary* modesRepository;
 
 @property (assign) BaseEvent* currentEvent;

@@ -20,6 +20,14 @@
 
 +(id) getUtilitiesConfig:(NSString*)key;
 
++(NSArray*) getSupportedModes;
+
++(int) getSymbolsIdentificationsCount;
+
++(NSDictionary*) getSymbolsPorperties;
+
++(int) getKeysCount:(NSDictionary*)config;
+
 #pragma mark - Network Request
 
 +(void) requestDowloadRemoteResources;

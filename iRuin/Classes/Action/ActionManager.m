@@ -11,7 +11,6 @@ static ActionManager* sharedInstance = nil;
 @synthesize gameState;
 @synthesize gameEffect;
 
-@synthesize gameModes;
 @synthesize modesRepository;
 
 
@@ -30,7 +29,6 @@ static ActionManager* sharedInstance = nil;
 {
     self = [super init];
     if (self) {
-        gameModes = @[MODE_ROUTE, MODE_PULL, MODE_MOVE, MODE_TOUCH, MODE_SWIPE];
         modesRepository = [[NSMutableDictionary alloc] init];
         
         gameEvent = [[GameEvent alloc] init];
@@ -53,7 +51,7 @@ static ActionManager* sharedInstance = nil;
 
 -(void) initializeGameModes
 {
-    NSArray* modes = gameModes;
+    NSArray* modes = [ConfigHelper getSupportedModes];
     NSString* eventStr = kEVENT;
     NSString* stateStr = kSTATE;
     NSString* effectStr = kEFFECT;

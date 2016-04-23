@@ -95,14 +95,8 @@
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
     ACTION.gameState.currentChapter = index;
     
-    
     // --------------------- mode
-    int switchModeCount = [[ConfigHelper getUtilitiesConfig:@"SwitchModeEveryChapters"] intValue];
-    if (switchModeCount == 0) switchModeCount = 1;
-    int modeCount = (int)ACTION.gameModes.count;
-    int modeIndex = (abs(index) % (modeCount * switchModeCount)) % modeCount;
-    NSString* mode = [ACTION.gameModes safeObjectAtIndex: modeIndex];
-    ACTION.gameState.currentMode = mode;
+    ACTION.gameState.currentMode = [[ConfigHelper getSupportedModes] firstObject];
 
     // switch config by mode and index
     NSString* indexString = [NSString stringWithFormat:@"%d", index];

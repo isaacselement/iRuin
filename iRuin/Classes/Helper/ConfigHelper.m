@@ -83,8 +83,8 @@
 // so if key == nil , default config == nil , then result is the common config .
 +(NSDictionary*) getNodeConfig:(NSDictionary*)configs key:(NSString*)key
 {
-    NSDictionary* defaultConfig = configs[@"default"];
-    NSDictionary* commonConfig = configs[@"common"];
+    NSDictionary* commonConfig = configs[kCommon];
+    NSDictionary* defaultConfig = configs[kDefault];
     
     NSDictionary* result = nil;
     if(key) {
@@ -111,6 +111,33 @@
     return DATA.config[@"Utilities"][key];
 }
 
++(NSArray*) getSupportedModes
+{
+    return DATA.config[@"Supported_Modes"];
+}
+
++(int) getSymbolsIdentificationsCount
+{
+    return [ConfigHelper getKeysCount:[ConfigHelper getSymbolsPorperties]];
+}
+
++(NSDictionary*) getSymbolsPorperties
+{
+    return DATA.config[@"SYMBOLS_PORPERTIES"];
+}
+
++(int) getKeysCount:(NSDictionary*)config
+{
+    int count = 0 ;
+    for (NSString* key in config) {
+        if ([key hasPrefix:kReserved]) continue;
+        if ([key hasSuffix:kSuffixIgnore]) continue;
+        if ([key isEqualToString:kCommon]) continue;
+        if ([key isEqualToString:kDefault]) continue;
+        count++;
+    }
+    return count;
+}
 
 #pragma mark - Network Request
 

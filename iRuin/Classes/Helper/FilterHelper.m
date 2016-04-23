@@ -85,7 +85,7 @@
     
     // not finde , then get one
     if (depth == loopMax) {
-        int count = [SymbolView getSymbolsIdentificationsCount];
+        int count = [ConfigHelper getSymbolsIdentificationsCount];
         for (int i = 0; i < count ; i++ ) {
             if (identification != i) {
                 randomId = i ;

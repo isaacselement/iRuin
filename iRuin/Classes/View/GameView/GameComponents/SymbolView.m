@@ -133,54 +133,23 @@
 }
 
 
-
-
-
-
-
 #pragma mark - Class Methods
-
 
 +(void) setSymbolIdentification: (int)identification symbol:(SymbolView*)symbol
 {
-    int index = identification - 1;         // HERE!!!!! (and~~~~~~)
-    
-    NSDictionary* commonSpecifications = DATA.config[@"SYMBOLS_PORPERTIES"][@"common"];
-    [ACTION.gameEffect designateValuesActionsTo:symbol config:commonSpecifications];
-    
-    NSDictionary* specification = [[SymbolView getSymbolsSpecifications] objectAtIndex: index];
+    int index = identification - 1;     // HERE!!!!! identification to index
+    NSString* indexKey = [NSString stringWithFormat:@"%d", index];
+    NSDictionary* specification = [ConfigHelper getNodeConfig:[ConfigHelper getSymbolsPorperties] key:indexKey];
     [ACTION.gameEffect designateValuesActionsTo:symbol config:specification];
 }
 
-
-+(NSArray*) getSymbolsSpecifications
-{
-    return DATA.config[@"SYMBOLS_PORPERTIES"][@"IDENTIFICAIONTS"];
-}
-
-
 +(int) getOneRandomSymbolIdentification
 {
-    int count = [SymbolView getSymbolsIdentificationsCount];
+    int count = [ConfigHelper getSymbolsIdentificationsCount];
     int index = arc4random() % count;
-    
-    int identification = index + 1;         // HERE!!!!!
-    
+    int identification = index + 1;     // HERE!!!!! index to identification
     return identification;
 }
-
-
-+(int) getSymbolsIdentificationsCount
-{
-    return (int)[[self getSymbolsSpecifications] count];
-}
-
-
-
-
-
-
-
 
 
 
@@ -221,18 +190,4 @@
     [ellipseLayer addAnimation:drawAnim forKey:@"strokeEnd"];
 }
 
-
-//CABasicAnimation *diagonalAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-//// set the duration of the animation - a float
-//[diagonalAnimation setDuration: 0.5];
-//// set the animation's "toValue" which MUST be wrapped in an NSValue instance (except special cases such as colors)
-//diagonalAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DConcat(symbol.containerLayer.transform, CATransform3DRotate(CATransform3DIdentity, M_PI/2, -1, 1, 0))];
-//// finally, apply the animation
-//[symbol.containerLayer addAnimation:diagonalAnimation forKey:@"arbitraryKey"];
-
-
 @end
-
-
-
-

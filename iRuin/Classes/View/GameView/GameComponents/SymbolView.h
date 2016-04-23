@@ -17,7 +17,6 @@
 
 #pragma mark - Public Methods
 -(void) restore;
--(void) addEllipseInRectWithAnimation;
 
 -(void) setValidArea: (CGRect)rect;
 -(BOOL) isInValidArea: (CGPoint)location;
@@ -31,6 +30,5 @@
 
 +(int) getOneRandomSymbolIdentification;
 
-+(int) getSymbolsIdentificationsCount;
 
 @end

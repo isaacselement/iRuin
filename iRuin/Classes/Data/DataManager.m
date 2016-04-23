@@ -85,7 +85,7 @@ static DataManager* sharedInstance = nil;
     
     // modes config
     modesConfigs = [NSMutableDictionary dictionary];
-    for (NSString* mode in ACTION.gameModes) {
+    for (NSString* mode in [ConfigHelper getSupportedModes]) {
         NSDictionary* modeConfig = [ConfigHelper getConfigJson: StringUnderlineAppend(key_Config, mode) ];
         if (modeConfig) [modesConfigs setObject: modeConfig forKey:mode];
     }

@@ -1,26 +1,24 @@
 
-
-
 #pragma mark - Config Macro
 
+#define kDefault @"default"
+#define kCommon @"common"
 
+#define kReserved @"~"
+#define kSuffixIgnore @"_"
+#define kFrame @"Frame"
+#define kExecutors @"Executors"
+#define kTextFormatter @"kTextFormatter"
 
-#define IRuin_Bundle_ID @"com.suchachinoiserie.iRuin"
 
 
 #define key_Json        @"json"
-
 #define key_Config      @"Config"
-
 #define key_IPad        @"iPad"
 #define key_IPhone      @"iPhone"
-
 #define key_Portrait    @"Portrait"
 #define key_Landscape   @"Landscape"
-
 #define key_Chapters    @"Chapters"
-
-
 
 
 

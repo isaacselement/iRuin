@@ -3,14 +3,6 @@
 
 @implementation GameEffect
 
-
-#define kIgnore @"_"
-#define kReserved @"~"
-#define kFrame @"Frame"
-#define kExecutors @"Executors"
-#define kTextFormatter @"kTextFormatter"
-
-
 -(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config
 {
     if (!config || config.count == 0) return;
@@ -32,8 +24,8 @@
     }
     
     for (NSString* key in config) {
-        if ([key hasSuffix:kIgnore]) continue;
         if ([key hasPrefix:kReserved]) continue;
+        if ([key hasSuffix:kSuffixIgnore]) continue;
         // cause above handled these three
         if ([key isEqualToString:kFrame]) continue;
         if ([key isEqualToString:kExecutors]) continue;

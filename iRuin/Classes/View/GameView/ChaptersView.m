@@ -39,9 +39,10 @@
 
 -(void) swipeRightAction: (UISwipeGestureRecognizer*)sender
 {
-    ACTION.gameState.isMuteMusic = !ACTION.gameState.isMuteMusic;
-    [APPStandUserDefaults setObject:@(ACTION.gameState.isMuteMusic) forKey:@"isMusicDisable"];
-    NSString* actionKey = ACTION.gameState.isMuteMusic ? @"PauseActions" : @"ResumeActions";
+    BOOL isMuteMusic = [[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue];
+    isMuteMusic = !isMuteMusic;
+    [APPStandUserDefaults setObject:@(isMuteMusic) forKey:@"isMusicDisable"];
+    NSString* actionKey = isMuteMusic ? @"PauseActions" : @"ResumeActions";
     NSDictionary* fadeSpecifications = [ConfigHelper getMusicConfig: actionKey];
     [VIEW.actionExecutorManager runAudioActionExecutors:fadeSpecifications];
 }

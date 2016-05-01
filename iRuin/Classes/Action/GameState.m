@@ -3,9 +3,6 @@
 
 @implementation GameState
 
-
-
-
 - (instancetype)init
 {
     self = [super init];
@@ -14,9 +11,5 @@
     }
     return self;
 }
-
-
-
-
 
 @end

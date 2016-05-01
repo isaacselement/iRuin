@@ -23,22 +23,17 @@
         [[TextFormatter sharedInstance] execute: textFormatterConfig onObject:object];
     }
     
-    for (NSString* key in config) {
-        if ([key hasPrefix:kReserved]) continue;
-        if ([key hasSuffix:kSuffixIgnore]) continue;
-        // cause above handled these three
-        if ([key isEqualToString:kFrame]) continue;
-        if ([key isEqualToString:kExecutors]) continue;
-        if ([key isEqualToString:kTextFormatter]) continue;
-        
-        id value = config[key];
+    [ConfigHelper iterateConfig:config handler:^(NSString *key, id value) {
+        if ([key isEqualToString:kFrame]) return ;
+        if ([key isEqualToString:kExecutors]) return;
+        if ([key isEqualToString:kTextFormatter]) return;
         
         if ([value isKindOfClass:[NSDictionary class]]) {
             [self designateValuesActionsTo: [object valueForKey: key] config:value];
         } else {
             [[EffectHelper getInstance] setValue:value forKeyPath:key onObject:object];
         }
-    }
+    }];
 }
 
 

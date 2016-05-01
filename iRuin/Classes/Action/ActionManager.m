@@ -38,11 +38,13 @@ static ActionManager* sharedInstance = nil;
     return self;
 }
 
--(void) launchAppProcedures {
+-(void) launchAppProcedures
+{
     
     [DATA initializeWithData];
     [VIEW initializeWithData];
     [self initializeGameModes];
+    [self initializeSomeViewsFromConfig];
     
     [self renderFramesWithCurrentOrientation];
     
@@ -100,6 +102,11 @@ static ActionManager* sharedInstance = nil;
 
 
 #pragma mark -
+
+-(void) initializeSomeViewsFromConfig
+{
+    [ConfigHelper initializeViewsWithConfig:DATA.config[@"GAME_INIT"] onObject:VIEW.controller];
+}
 
 -(void) renderFramesWithCurrentOrientation
 {

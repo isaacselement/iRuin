@@ -1,14 +1,16 @@
 
 #pragma mark - Config Macro
 
-#define kDefault @"default"
-#define kCommon @"common"
 
 #define kReserved @"~"
 #define kSuffixIgnore @"_"
 #define kFrame @"Frame"
 #define kExecutors @"Executors"
 #define kTextFormatter @"kTextFormatter"
+
+#define kReservedLoop @"~loop"
+#define kReservedCommon @"~common"
+#define kReservedDefault @"~default"
 
 
 

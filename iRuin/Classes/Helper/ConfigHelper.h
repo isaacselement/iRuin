@@ -2,13 +2,17 @@
 
 @interface ConfigHelper : NSObject
 
-#pragma mark - Json
+#pragma mark - Json Files
 
 +(NSDictionary*) getDesignJson: (NSString*)name;
 
 +(NSDictionary*) getConfigJson: (NSString*)name;
 
 #pragma mark - Config
+
++(void) iterateConfig:(NSDictionary*)config handler:(void(^)(NSString* key, id value))handler;
+
++(int) getKeysCount:(NSDictionary*)config;
 
 +(NSDictionary*) getLoopConfig:(NSMutableDictionary*)configs index:(int)index;
 
@@ -26,7 +30,7 @@
 
 +(NSDictionary*) getSymbolsPorperties;
 
-+(int) getKeysCount:(NSDictionary*)config;
++(void) initializeViewsWithConfig:(NSDictionary*)config onObject:(id)onObject;
 
 #pragma mark - Network Request
 

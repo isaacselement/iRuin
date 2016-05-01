@@ -3,7 +3,7 @@
 
 @implementation ConfigHelper
 
-#pragma mark - Json
+#pragma mark - Json Files
 
 +(NSDictionary*) getDesignJson: (NSString*)name
 {
@@ -44,9 +44,27 @@
 
 #pragma mark - Config
 
++(void) iterateConfig:(NSDictionary*)config handler:(void(^)(NSString* key, id value))handler
+{
+    for (NSString* key in config) {
+        if ([key hasPrefix:kReserved]) continue;
+        if ([key hasSuffix:kSuffixIgnore]) continue;
+        handler(key, config[key]);
+    }
+}
+
++(int) getKeysCount:(NSDictionary*)config
+{
+    __block int count = 0 ;
+    [self iterateConfig:config handler:^(NSString *key, id value) {
+        count++;
+    }];
+    return count;
+}
+
 +(NSDictionary*) getLoopConfig:(NSMutableDictionary*)configs index:(int)index
 {
-    NSDictionary* loopConfig = configs[@"~loop"];
+    NSDictionary* loopConfig = configs[kReservedLoop];
     NSArray* keyPaths = loopConfig[@"keyPaths"];
     NSArray* values = loopConfig[@"values"];
     
@@ -78,13 +96,12 @@
     return configs;
 }
 
-
 // key == nil , use default config , then combine with common config .
 // so if key == nil , default config == nil , then result is the common config .
 +(NSDictionary*) getNodeConfig:(NSDictionary*)configs key:(NSString*)key
 {
-    NSDictionary* commonConfig = configs[kCommon];
-    NSDictionary* defaultConfig = configs[kDefault];
+    NSDictionary* commonConfig = configs[kReservedCommon];
+    NSDictionary* defaultConfig = configs[kReservedDefault];
     
     NSDictionary* result = nil;
     if(key) {
@@ -126,17 +143,24 @@
     return DATA.config[@"SYMBOLS_PORPERTIES"];
 }
 
-+(int) getKeysCount:(NSDictionary*)config
++(void) initializeViewsWithConfig:(NSDictionary*)config onObject:(id)onObject
 {
-    int count = 0 ;
-    for (NSString* key in config) {
-        if ([key hasPrefix:kReserved]) continue;
-        if ([key hasSuffix:kSuffixIgnore]) continue;
-        if ([key isEqualToString:kCommon]) continue;
-        if ([key isEqualToString:kDefault]) continue;
-        count++;
-    }
-    return count;
+    [ConfigHelper iterateConfig:config handler:^(NSString *key, id value) {
+        if ([key isEqualToString: @"class"]) {
+            return ;
+        }
+        
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            NSString* clazz = value[@"class"];
+            if (clazz) {
+                id newObj = [[NSClassFromString(clazz) alloc] init];
+                [onObject setValue:newObj forKey:key];
+            }
+            
+            id nextObject = [onObject valueForKey:key];
+            [ConfigHelper initializeViewsWithConfig:value onObject:nextObject];
+        }
+    }];
 }
 
 #pragma mark - Network Request

@@ -205,6 +205,7 @@
 		5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EBDCC1D1A38210C0002636F /* Background_000.png */; };
 		5EC8B2B31C8D2C7D00B736B4 /* IRuinApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC8B2B21C8D2C7D00B736B4 /* IRuinApplication.m */; };
 		5EC9DDA71C020B9B0094B246 /* BeaTsGOy - Piano Beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EC9DDA61C020B9B0094B246 /* BeaTsGOy - Piano Beat.mp3 */; };
+		5EF816871CD60A350091A0CC /* NSObject+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF816861CD60A350091A0CC /* NSObject+KeyValueHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -656,6 +657,8 @@
 		5EC8B2B11C8D2C7D00B736B4 /* IRuinApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRuinApplication.h; sourceTree = "<group>"; };
 		5EC8B2B21C8D2C7D00B736B4 /* IRuinApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRuinApplication.m; sourceTree = "<group>"; };
 		5EC9DDA61C020B9B0094B246 /* BeaTsGOy - Piano Beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "BeaTsGOy - Piano Beat.mp3"; sourceTree = "<group>"; };
+		5EF816851CD60A350091A0CC /* NSObject+KeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KeyValueHelper.h"; sourceTree = "<group>"; };
+		5EF816861CD60A350091A0CC /* NSObject+KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KeyValueHelper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1340,6 +1343,8 @@
 				5E4C9AC51A87B9F900B500C1 /* NSString+Additions.m */,
 				5E4C9AC61A87B9F900B500C1 /* NSTimer+Additions.h */,
 				5E4C9AC71A87B9F900B500C1 /* NSTimer+Additions.m */,
+				5EF816851CD60A350091A0CC /* NSObject+KeyValueHelper.h */,
+				5EF816861CD60A350091A0CC /* NSObject+KeyValueHelper.m */,
 			);
 			path = NSCategories;
 			sourceTree = "<group>";
@@ -1893,6 +1898,7 @@
 				5E4C9B7E1A87B9F900B500C1 /* HTTPGetRequest.m in Sources */,
 				5EC8B2B31C8D2C7D00B736B4 /* IRuinApplication.m in Sources */,
 				5E4C9BB91A87B9F900B500C1 /* QueueValuesHelper.m in Sources */,
+				5EF816871CD60A350091A0CC /* NSObject+KeyValueHelper.m in Sources */,
 				4E11D8DE181FE4F6007837F0 /* GameView.m in Sources */,
 				5EBDCC1C1A38102F0002636F /* ScheduledHelper.m in Sources */,
 				4EDACDC5191FB1C200A8E84E /* ChainableEffect.m in Sources */,

@@ -53,6 +53,9 @@
     [ACTION.currentEffect effectStartRollIn];
     
     [self showClearanceScoreAndSetTimer];
+    
+    ACTION.gameState.vanishAmount = 0;
+    VIEW.gameView.scoreLabel.number = 0;
 }
 
 -(void) gameReStart
@@ -60,6 +63,9 @@
     [self gameRefresh];
     
     [self showClearanceScoreAndSetTimer];
+    
+    ACTION.gameState.vanishAmount = 0;
+    VIEW.gameView.scoreLabel.number = 0;
 }
 
 -(void) gameBack
@@ -69,6 +75,7 @@
     [DATA unsetModeChapterConfig];
     
     ACTION.gameState.vanishAmount = 0;
+    VIEW.gameView.scoreLabel.number = 0;
     
     [ACTION.currentEffect effectStartRollOut];
     

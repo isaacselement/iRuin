@@ -29,15 +29,11 @@
     self = [super init];
     if (self) {
         KeyValueHelper* keyValueCodingHelper = [KeyValueHelper sharedInstance];
-        [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, NSString *type, NSString *key) {
-            if (! type) return value;
-            
-            id result = value;
+        [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, id result, NSString *type, NSString *key) {
+            if (! type) return result;
             
             const char* rawType = [type UTF8String];
-            
             if (strcmp(rawType, @encode(CGFloat)) == 0) {
-                
                 if ([key hasSuffix:@"Width"]) {                 // for "eachCellWidth", "borderWidth"
                     result = @(CanvasW([value floatValue]));
                 } else if ([key hasSuffix:@"X"]) {              // for "originX" now
@@ -64,10 +60,16 @@
             } else if ([obj isKindOfClass:[CAGradientLayer class]] && ([key isEqualToString:@"startPoint"] || [key isEqualToString:@"endPoint"])) {
                 CGPoint point = [RectHelper parsePoint: value];
                 result = CGPointValue(point);
+                
             } else {
-                result = [KeyValueHelper translateValue: value type:type];
+                if ([value isKindOfClass:[NSString class]]) {
+                    if ([value isEqualToString:@"k_nil"]) {
+                        result = nil;
+                    } else if ([value isEqualToString:@"k_current_value"]) {
+                        result = [obj valueForKeyPath:key];
+                    }
+                }
             }
-            
             return result;
         }];
     }

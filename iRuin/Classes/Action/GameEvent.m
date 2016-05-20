@@ -17,16 +17,7 @@
     
     LineScrollView* lineScrollView = VIEW.chaptersView.lineScrollView;
     [lineScrollView setCurrentIndex: [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]];
-    
-    lineScrollView.lineScrollViewShouldShowIndex = ^BOOL(LineScrollView *lineScrollViewObj, int index) {
-        NSInteger minimalIndex = NSIntegerMin;
-        if ([ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"]) {
-            minimalIndex = [[ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"] intValue];
-        }
-        return index >= minimalIndex && index <= [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
-    };
-    [lineScrollView setContentOffset: CGPointMake(lineScrollView.contentView.sizeWidth - lineScrollView.sizeWidth, 0) animated:NO];
-    
+    [lineScrollView setContentOffset: CGPointMake((lineScrollView.contentView.sizeWidth - lineScrollView.sizeWidth) / 2, 0) animated:NO];  // recenter the content view
     
     // chapters cells jump in effect
     [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Enter"]];
@@ -48,6 +39,7 @@
     
     [ACTION switchToMode: ACTION.gameState.currentMode chapter:ACTION.gameState.currentChapter];
     
+    [ConfigHelper initializeViewsWithConfig:DATA.config[@"GAME_START_INIT"] onObject:VIEW.controller];
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];
     
     [ACTION.currentEffect effectStartRollIn];
@@ -79,6 +71,7 @@
     
     [ACTION.currentEffect effectStartRollOut];
     
+    [ConfigHelper initializeViewsWithConfig:DATA.config[@"GAME_BACK_INIT"] onObject:VIEW.controller];
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];
     
     [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Back"]];

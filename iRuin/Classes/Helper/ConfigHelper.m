@@ -149,14 +149,13 @@
         if ([key isEqualToString: @"class"]) {
             return ;
         }
-        
         if ([value isKindOfClass:[NSDictionary class]]) {
             NSString* clazz = value[@"class"];
             if (clazz) {
                 id newObj = [[NSClassFromString(clazz) alloc] init];
                 [onObject setValue:newObj forKey:key];
+//                [[KeyValueHelper sharedInstance] setValue:newObj keyPath:key object:onObject];
             }
-            
             id nextObject = [onObject valueForKey:key];
             [ConfigHelper initializeViewsWithConfig:value onObject:nextObject];
         }

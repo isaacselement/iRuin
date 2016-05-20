@@ -67,11 +67,9 @@
 
 #define StringPathAppend(x, y) [x stringByAppendingPathComponent: y]
 
-#define StringDotAppend(x, y) StringsAppend(x, STR_Dot, y)
+#define StringDotAppend(x, y) StringAppend(x, StringAppend(STR_Dot, y))
 
-#define StringUnderlineAppend(x, y) StringsAppend(x, STR_UnderLine, y)
-
-#define StringsAppend(x, y, z) [NSString stringWithFormat:@"%@%@%@", x, y, z]
+#define StringUnderlineAppend(x, y) StringAppend(x, StringAppend(STR_UnderLine, y))
 
 
 

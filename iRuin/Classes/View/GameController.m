@@ -89,7 +89,7 @@
 
 -(void) startParallex
 {
-    if (![[ConfigHelper getUtilitiesConfig:@"isParallexEnable"] boolValue]) return;
+    if (![DATA.config[@"IsBackGroundParallexEnable"] boolValue]) return;
     [self performSelector:@selector(startGyroParallex) withObject:nil afterDelay: 1];
 }
 

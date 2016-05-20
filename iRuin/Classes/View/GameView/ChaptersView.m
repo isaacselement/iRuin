@@ -49,8 +49,18 @@
 
 #pragma mark - LineScrollViewDataSource Methods
 
+-(BOOL)lineScrollView:(LineScrollView *)lineScrollView shouldShowIndex:(int)index isReload:(BOOL)isReload
+{
+    NSInteger minimalIndex = NSIntegerMin;
+    if ([ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"]) {
+        minimalIndex = [[ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"] intValue];
+    }
+    return index >= minimalIndex && index <= [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
+}
+
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index isReload:(BOOL)isReload
 {
+    DLOG(@"willShowIndex : %d", index);
     // -------------- mute the sound on reload Begin
     if (isReload) {
         ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disableAudio = YES;

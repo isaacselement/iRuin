@@ -29,48 +29,52 @@
     self = [super init];
     if (self) {
         KeyValueHelper* keyValueCodingHelper = [KeyValueHelper sharedInstance];
-        [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, id result, NSString *type, NSString *key) {
-            if (! type) return result;
-            
-            const char* rawType = [type UTF8String];
-            if (strcmp(rawType, @encode(CGFloat)) == 0) {
-                if ([key hasSuffix:@"Width"]) {                 // for "eachCellWidth", "borderWidth"
-                    result = @(CanvasW([value floatValue]));
-                } else if ([key hasSuffix:@"X"]) {              // for "originX" now
-                    result = @(CanvasX([value floatValue]));
-                } else if ([key hasSuffix:@"Height"]) {
-                    result = @(CanvasH([value floatValue]));    // for "eachCellHeight"
+        [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, NSString *type, NSString *key) {
+            if (type) {
+                
+                if ([ValueHandler checkIsNilValue:value]) {
+                    return nil;
+                } else if ([ValueHandler checkIsCurrentValue: value]) {
+                    return [obj valueForKeyPath:key];
                 }
                 
-            } else if ([obj isKindOfClass:[CAGradientLayer class]] && [key isEqualToString:@"colors"]) {
-                /*
-                po [KeyValueHelper getClassPropertieTypes:[CAGradientLayer class]]
-                and find colors = "@\"NSArray\"";
-                print @encode(NSArray)
-                (const char [12]) $1 = "{NSArray=#}"
-                */
-                NSMutableArray* colors = [NSMutableArray array];
-                for (int i = 0; i < [value count]; i++) {
-                    id v = value[i];
-                    CGColorRef color = [ColorHelper parseColor:v].CGColor;
-                    [colors addObject:(__bridge id)color];
-                }
-                result = colors;
-                
-            } else if ([obj isKindOfClass:[CAGradientLayer class]] && ([key isEqualToString:@"startPoint"] || [key isEqualToString:@"endPoint"])) {
-                CGPoint point = [RectHelper parsePoint: value];
-                result = CGPointValue(point);
-                
-            } else {
-                if ([value isKindOfClass:[NSString class]]) {
-                    if ([value isEqualToString:@"k_nil"]) {
-                        result = nil;
-                    } else if ([value isEqualToString:@"k_current_value"]) {
-                        result = [obj valueForKeyPath:key];
+                const char* rawType = [type UTF8String];
+                if (strcmp(rawType, @encode(CGFloat)) == 0) {
+                    if ([key hasSuffix:@"Width"]) {                 // for "eachCellWidth", "borderWidth"
+                        return @(CanvasW([value floatValue]));
+                    } else if ([key hasSuffix:@"X"]) {              // for "originX" now
+                        return @(CanvasX([value floatValue]));
+                    } else if ([key hasSuffix:@"Height"]) {
+                        return @(CanvasH([value floatValue]));      // for "eachCellHeight"
                     }
+                    
+                } else if (strcmp(rawType, @encode(CGRect)) == 0) {
+                    return [NSValue valueWithCGRect: CanvasCGRect([ValueHandler parseRect:value object:obj keyPath:key])];
+                    
+                } else if (strcmp(rawType, @encode(CGPoint)) == 0) {
+                    return [NSValue valueWithCGPoint: CanvasCGPoint([ValueHandler parsePoint:value object:obj keyPath:key])];
+                    
+                } else if (strcmp(rawType, @encode(CGSize)) == 0) {
+                    return [NSValue valueWithCGSize: CanvasCGSize([ValueHandler parseSize:value object:obj keyPath:key])];
+                    
+                }
+                if ([obj isKindOfClass:[CAGradientLayer class]]) {
+                    if ([key isEqualToString:@"colors"]) {
+                        /* po [KeyValueHelper getClassPropertieTypes:[CAGradientLayer class]] & colors = "@\"NSArray\""; & print @encode(NSArray) & (const char [12]) $1 = "{NSArray=#}" */
+                        NSMutableArray* colors = [NSMutableArray array];
+                        for (int i = 0; i < [value count]; i++) {
+                            [colors addObject:(__bridge id)([ColorHelper parseColor: value[i]].CGColor)];
+                        }
+                        return colors;
+                        
+                    } else if ([key isEqualToString:@"startPoint"] || [key isEqualToString:@"endPoint"]) {
+                        return CGPointValue([RectHelper parsePoint: value]);
+                    }
+                    
                 }
             }
-            return result;
+            
+            return [KeyValueHelper translateValue:value type:type];
         }];
     }
     return self;

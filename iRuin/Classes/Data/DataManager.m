@@ -66,11 +66,13 @@ static DataManager* sharedInstance = nil;
     NSDictionary* shareConfig = [ConfigHelper getConfigJson: key_Config ];
     // default iPhone
     BOOL isIpad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+    NSString* portraitFile = StringUnderlineAppend(isIpad ? key_IPad : key_IPhone, key_Portrait);
+    NSString* landscapeFile = StringUnderlineAppend(isIpad ? key_IPad : key_IPhone, key_Landscape);
     // portrait/landscape share/device config
-    NSDictionary* portraitDesign = [DictionaryHelper deepCopy: [ConfigHelper getDesignJson:key_Portrait ]];
-    NSDictionary* landscapeDesign = [DictionaryHelper deepCopy: [ConfigHelper getDesignJson:key_Landscape ]];
-    NSDictionary* portraitDeviceJSON = [ConfigHelper getDesignJson: StringUnderlineAppend(isIpad ? key_IPad : key_IPhone, key_Portrait) ];
-    NSDictionary* landscapeDeviceJSON = [ConfigHelper getDesignJson: StringUnderlineAppend(isIpad ? key_IPad : key_IPhone, key_Landscape) ];
+    NSDictionary* portraitDesign = [ConfigHelper getDesignJson:key_Portrait ];
+    NSDictionary* landscapeDesign = [ConfigHelper getDesignJson:key_Landscape ];
+    NSDictionary* portraitDeviceJSON = [DictionaryHelper deepCopy: [ConfigHelper getDesignJson: portraitFile]];
+    NSDictionary* landscapeDeviceJSON = [DictionaryHelper deepCopy: [ConfigHelper getDesignJson: landscapeFile]];
     
     // combine the configs
     protraitShareConfig = [DictionaryHelper combines:shareConfig with: [DictionaryHelper combines:portraitDesign with:portraitDeviceJSON ]];

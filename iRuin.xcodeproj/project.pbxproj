@@ -81,6 +81,7 @@
 		5E295E0F1A8CDF9E0053A51A /* Background_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E295E0C1A8CDF9E0053A51A /* Background_001.png */; };
 		5E34ED341A3E785E00022E45 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E34ED331A3E785E00022E45 /* ScoreLabel.m */; };
 		5E4228671A8B69D700FE5B7D /* ConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4228661A8B69D700FE5B7D /* ConfigHelper.m */; };
+		5E42A89F1CEC2FB9003F9898 /* ValueHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E42A89E1CEC2FB9003F9898 /* ValueHandler.m */; };
 		5E4C9B5E1A87B9F900B500C1 /* ScheduledTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A261A87B9F900B500C1 /* ScheduledTask.m */; };
 		5E4C9B5F1A87B9F900B500C1 /* TaskObjectList.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A271A87B9F900B500C1 /* TaskObjectList.c */; };
 		5E4C9B601A87B9F900B500C1 /* BytesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A2E1A87B9F900B500C1 /* BytesHelper.m */; };
@@ -343,6 +344,8 @@
 		5E34ED331A3E785E00022E45 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
 		5E4228651A8B69D700FE5B7D /* ConfigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigHelper.h; sourceTree = "<group>"; };
 		5E4228661A8B69D700FE5B7D /* ConfigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigHelper.m; sourceTree = "<group>"; };
+		5E42A89D1CEC2FB9003F9898 /* ValueHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueHandler.h; sourceTree = "<group>"; };
+		5E42A89E1CEC2FB9003F9898 /* ValueHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueHandler.m; sourceTree = "<group>"; };
 		5E4C9A1C1A87B9F900B500C1 /* _Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Operation.h; sourceTree = "<group>"; };
 		5E4C9A1D1A87B9F900B500C1 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcurrentOperation.h; sourceTree = "<group>"; };
 		5E4C9A1E1A87B9F900B500C1 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentOperation.m; sourceTree = "<group>"; };
@@ -917,6 +920,8 @@
 				4EDACDCA191FBCF600A8E84E /* FilterHelper.m */,
 				5EBDCC1A1A38102F0002636F /* ScheduledHelper.h */,
 				5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */,
+				5E42A89D1CEC2FB9003F9898 /* ValueHandler.h */,
+				5E42A89E1CEC2FB9003F9898 /* ValueHandler.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1920,6 +1925,7 @@
 				4ED52C81191E61FF002ADA73 /* SwipeState.m in Sources */,
 				5E4C9B901A87B9F900B500C1 /* StringHelper.m in Sources */,
 				4E08AB9819FE66B300F1F449 /* SymbolView.m in Sources */,
+				5E42A89F1CEC2FB9003F9898 /* ValueHandler.m in Sources */,
 				5E4C9B7F1A87B9F900B500C1 /* HTTPPostRequest.m in Sources */,
 				5E4C9B9F1A87B9F900B500C1 /* ImageHelper.m in Sources */,
 				5E4C9B9A1A87B9F900B500C1 /* NSMutableArray+Additions.m in Sources */,

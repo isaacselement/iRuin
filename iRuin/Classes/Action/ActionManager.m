@@ -44,7 +44,6 @@ static ActionManager* sharedInstance = nil;
     [DATA initializeWithData];
     [VIEW initializeWithData];
     [self initializeGameModes];
-    [self initializeSomeViewsFromConfig];
     
     [self renderFramesWithCurrentOrientation];
     
@@ -103,15 +102,12 @@ static ActionManager* sharedInstance = nil;
 
 #pragma mark -
 
--(void) initializeSomeViewsFromConfig
-{
-    [ConfigHelper initializeViewsWithConfig:DATA.config[@"GAME_INIT"] onObject:VIEW.controller];
-}
-
 -(void) renderFramesWithCurrentOrientation
 {
     // first, set up design/canvas size
     [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.config[@"DESIGN"]]];
+    
+    [ConfigHelper initializeViewsWithConfig:DATA.config[@"GAME_ENTER_INIT"] onObject:VIEW.controller];
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_ENTER"]];
     
     [self createOrUpdateSymbolsWithFramesMatrix];

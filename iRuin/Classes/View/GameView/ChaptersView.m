@@ -55,7 +55,8 @@
     if ([ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"]) {
         minimalIndex = [[ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"] intValue];
     }
-    return index >= minimalIndex && index <= [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
+    NSInteger maximalIndex = [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
+    return index >= minimalIndex && index <= maximalIndex;
 }
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index isReload:(BOOL)isReload
@@ -81,8 +82,6 @@
     }
 }
 
-
-
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchBeganAtPoint:(CGPoint)point
 {
     LineScrollViewCell* cell = (LineScrollViewCell*)[lineScrollViewObj hitTest:point withEvent:nil];
@@ -91,8 +90,6 @@
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_In_Touch_Began"]];
 }
-
-
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchEndedAtPoint:(CGPoint)point
 {

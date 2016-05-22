@@ -112,24 +112,27 @@
     if ([string rangeOfString:flag].location != NSNotFound) {
         CGFloat v = [[[string componentsSeparatedByString:flag] lastObject] floatValue];
         z = z - v;
-    }
-    
-    flag = StringAppend(k_current_value, @"+");
-    if ([string rangeOfString:flag].location != NSNotFound) {
-        CGFloat v = [[[string componentsSeparatedByString:flag] lastObject] floatValue];
-        z = z + v;
-    }
-    
-    flag = StringAppend(k_current_value, @"*");
-    if ([string rangeOfString:flag].location != NSNotFound) {
-        CGFloat v = [[[string componentsSeparatedByString:flag] lastObject] floatValue];
-        z = z * v;
-    }
-    
-    flag = StringAppend(k_current_value, @"/");
-    if ([string rangeOfString:flag].location != NSNotFound) {
-        CGFloat v = [[[string componentsSeparatedByString:flag] lastObject] floatValue];
-        z = z / v;
+    } else {
+        
+        flag = StringAppend(k_current_value, @"+");
+        if ([string rangeOfString:flag].location != NSNotFound) {
+            CGFloat v = [[[string componentsSeparatedByString:flag] lastObject] floatValue];
+            z = z + v;
+        } else {
+            
+            flag = StringAppend(k_current_value, @"*");
+            if ([string rangeOfString:flag].location != NSNotFound) {
+                CGFloat v = [[[string componentsSeparatedByString:flag] lastObject] floatValue];
+                z = z * v;
+            } else {
+                
+                flag = StringAppend(k_current_value, @"/");
+                if ([string rangeOfString:flag].location != NSNotFound) {
+                    CGFloat v = [[[string componentsSeparatedByString:flag] lastObject] floatValue];
+                    z = z / v;
+                }
+            }
+        }
     }
     return z;
 }

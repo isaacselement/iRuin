@@ -68,13 +68,14 @@
     NSArray* keyPaths = loopConfig[@"keyPaths"];
     NSArray* values = loopConfig[@"values"];
     
-    if (!loopConfig || keyPaths.count != values.count) {
+    if (!loopConfig || values.count == 0) {
         return configs;
     }
     
-    for (int j = 0; j < values.count; j++) {
+    for (int j = 0; j < keyPaths.count; j++) {
         NSString* setKeyPath = keyPaths[j];
-        NSArray* setValues = values[j];
+        NSArray* setValues = [values safeObjectAtIndex:j];
+        if (!setValues) setValues = [values lastObject];
         
         // get the new value
         int circleIndex = abs(index) % [setValues count];
@@ -117,10 +118,16 @@
 }
 
 #pragma mark - Config Category
-
+int musicIndex = 0;
++(void) setNextMusic
+{
+    musicIndex++;
+}
 +(id) getMusicConfig:(NSString*)key
 {
-    return DATA.config[@"GAME_MUSIC"][key];
+    // change the config
+    NSDictionary* config = [self getLoopConfig:DATA.config[@"GAME_MUSIC"] index:musicIndex];
+    return config[key];
 }
 
 +(id) getUtilitiesConfig:(NSString*)key

@@ -43,7 +43,7 @@ static ScheduledHelper* scheduledHelper = nil;
     for (NSString* key in configs) {
         NSMutableDictionary* config = configs[key];
         int interval = [config[@"~interval"] intValue];
-        if (interval <= 0) continue;
+        if (scheduleTaskTimes == 0 || interval <= 0) continue;
         if (scheduleTaskTimes % interval == 0) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSDictionary* scheduleTaskConfig = [ConfigHelper getLoopConfig:config index:scheduleViewValueIndex] ;

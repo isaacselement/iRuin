@@ -26,6 +26,11 @@
     if (![[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue]) {
         [VIEW.actionExecutorManager runAudioActionExecutors:[ConfigHelper getMusicConfig:@"PlayActions"]];
     }
+    AudiosExecutor* audiosExecutor = (AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor:effect_AUDIO];
+    audiosExecutor.playFinishAction = ^(AudioHandler* handler) {
+        [ConfigHelper setNextMusic];
+        [VIEW.actionExecutorManager runAudioActionExecutors:[ConfigHelper getMusicConfig:@"PlayActions"]];
+    };
     
     // about schedule task
     [[ScheduledHelper sharedInstance] registerScheduleTaskAccordingConfig];

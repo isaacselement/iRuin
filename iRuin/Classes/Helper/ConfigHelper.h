@@ -20,6 +20,7 @@
 
 #pragma mark - Config Category
 
++(void) setNextMusic;
 +(id) getMusicConfig:(NSString*)key;
 
 +(id) getUtilitiesConfig:(NSString*)key;

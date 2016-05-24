@@ -68,7 +68,6 @@ static ViewManager* sharedInstance = nil;
     
     [_actionExecutorManager registerActionExecutor: effect_Invocation       executor:       [[NSClassFromString(@"InvocationExecutor") alloc] init] ];
     
-    
     _actionDurations = [[QueueTimeCalculator alloc] init];
     NSDictionary* actionExecutors = [_actionExecutorManager getActionExecutors];
     for (NSString* action in actionExecutors) {

@@ -191,6 +191,8 @@
 #import "LineScrollView.h"
 #import "LineScrollViewCell.h"
 
+#import "InformedView.h"
+
 
 
 
@@ -207,6 +209,6 @@
 #import "ScheduledHelper.h"
 #import "PositionsHelper.h"
 
-#import "ValueHandler.h"
+#import "ConfigValueHandler.h"
 
 

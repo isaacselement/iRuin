@@ -24,12 +24,14 @@
     
     // about background music
     if (![[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue]) {
-        [VIEW.actionExecutorManager runAudioActionExecutors:[ConfigHelper getMusicConfig:@"PlayActions"]];
+        [self playBackgroundMusic];
     }
     AudiosExecutor* audiosExecutor = (AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor:effect_AUDIO];
     audiosExecutor.playFinishAction = ^(AudioHandler* handler) {
-        [ConfigHelper setNextMusic];
-        [VIEW.actionExecutorManager runAudioActionExecutors:[ConfigHelper getMusicConfig:@"PlayActions"]];
+        NSString* audioURL = [handler.url absoluteString];
+        if ([audioURL hasSuffix:@".mp3"]) {
+            [self playNextBackgroundMusic];
+        }
     };
     
     // about schedule task
@@ -107,7 +109,42 @@
     [ACTION.currentEffect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:duration];
 }
 
-#pragma mark -
+
+#pragma mark - Music
+
+-(void) playNextBackgroundMusic
+{
+    [self stopBackgroundMusic];
+    [ConfigHelper setNextMusic];
+    [self playBackgroundMusic];
+}
+
+-(void) playBackgroundMusic
+{
+    [self runMusicAction:@"PlayActions"];
+}
+
+-(void) pauseBackgroundMusic
+{
+    [self runMusicAction:@"PauseActions"];
+}
+
+-(void) resumeBackgroundMusic
+{
+    [self runMusicAction:@"ResumeActions"];
+}
+
+-(void) stopBackgroundMusic
+{
+    [self runMusicAction:@"StopActions"];
+}
+
+#pragma mark - Private Methods
+
+-(void) runMusicAction:(NSString*)actionKey
+{
+    [VIEW.actionExecutorManager runAudioActionExecutors:[ConfigHelper getMusicConfig:actionKey]];
+}
 
 -(void) chaptersValuesActions: (NSDictionary*)cellsConfigs
 {
@@ -122,6 +159,8 @@
 
 -(void) showClearanceScoreAndSetTimer
 {
+    [InformedView show];
+    
     int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
     [[EffectHelper getInstance] showClearanceScore: clearanceScore];
     ACTION.gameState.clearanceScore = clearanceScore;

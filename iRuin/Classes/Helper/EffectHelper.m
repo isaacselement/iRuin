@@ -32,9 +32,9 @@
         [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, NSString *type, NSString *key) {
             if (type) {
                 
-                if ([ValueHandler checkIsNilValue:value]) {
+                if ([ConfigValueHandler checkIsNilValue:value]) {
                     return nil;
-                } else if ([ValueHandler checkIsCurrentValue: value]) {
+                } else if ([ConfigValueHandler checkIsCurrentValue: value]) {
                     return [obj valueForKeyPath:key];
                 }
                 
@@ -49,13 +49,13 @@
                     }
                     
                 } else if (strcmp(rawType, @encode(CGRect)) == 0) {
-                    return [NSValue valueWithCGRect: CanvasCGRect([ValueHandler parseRect:value object:obj keyPath:key])];
+                    return [NSValue valueWithCGRect: CanvasCGRect([ConfigValueHandler parseRect:value object:obj keyPath:key])];
                     
                 } else if (strcmp(rawType, @encode(CGPoint)) == 0) {
-                    return [NSValue valueWithCGPoint: CanvasCGPoint([ValueHandler parsePoint:value object:obj keyPath:key])];
+                    return [NSValue valueWithCGPoint: CanvasCGPoint([ConfigValueHandler parsePoint:value object:obj keyPath:key])];
                     
                 } else if (strcmp(rawType, @encode(CGSize)) == 0) {
-                    return [NSValue valueWithCGSize: CanvasCGSize([ValueHandler parseSize:value object:obj keyPath:key])];
+                    return [NSValue valueWithCGSize: CanvasCGSize([ConfigValueHandler parseSize:value object:obj keyPath:key])];
                     
                 }
                 if ([obj isKindOfClass:[CAGradientLayer class]]) {

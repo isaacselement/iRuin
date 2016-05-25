@@ -1,7 +1,7 @@
-#import "ValueHandler.h"
+#import "ConfigValueHandler.h"
 #import "AppInterface.h"
 
-@implementation ValueHandler
+@implementation ConfigValueHandler
 
 #define k_nil @"k_nil"
 #define k_current_value @"k_current_value"

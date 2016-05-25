@@ -99,6 +99,7 @@
     [[SharedMotionManager sharedInstance] stopGyroUpdates];
 }
 
+static NSDate* __startTime = nil;
 -(void) startGyroParallex
 {
     GradientImageView* imageView = (GradientImageView*)[self.view valueForKey:@"backgroundView"];
@@ -111,11 +112,10 @@
             CMRotationRate rotationRate = gyroData.rotationRate;
 //            DLOG(@"%f, %f, %f", rotationRate.x, rotationRate.y, rotationRate.z);
             
-            static NSDate* startTime = nil;
-            if (startTime) {
-                if ([[NSDate date] timeIntervalSinceDate: startTime] < 0.2f) return ;
+            if (__startTime) {
+                if ([[NSDate date] timeIntervalSinceDate: __startTime] < 0.2f) return ;
             }
-            startTime = [NSDate date];
+            __startTime = [NSDate date];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:0.3f

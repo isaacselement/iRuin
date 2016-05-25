@@ -21,8 +21,10 @@
         musicActionView = [[UIView alloc] init];
         [self addSubview:musicActionView];
         
-        UISwipeGestureRecognizer* swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRightAction:)];
-        swipeGestureRight.direction = UISwipeGestureRecognizerDirectionRight;
+        UISwipeGestureRecognizer* swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeAction:)];
+        UISwipeGestureRecognizer* swipeGestureLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeAction:)];
+        swipeGestureLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+        [musicActionView addGestureRecognizer:swipeGestureLeft];
         [musicActionView addGestureRecognizer:swipeGestureRight];
         
         // chapters cell views
@@ -37,14 +39,18 @@
 
 #pragma mark - Swipe Gesture Action
 
--(void) swipeRightAction: (UISwipeGestureRecognizer*)sender
+-(void) swipeAction: (UISwipeGestureRecognizer*)sender
 {
-    BOOL isMuteMusic = [[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue];
-    isMuteMusic = !isMuteMusic;
-    [APPStandUserDefaults setObject:@(isMuteMusic) forKey:@"isMusicDisable"];
-    NSString* actionKey = isMuteMusic ? @"PauseActions" : @"ResumeActions";
-    NSDictionary* fadeSpecifications = [ConfigHelper getMusicConfig: actionKey];
-    [VIEW.actionExecutorManager runAudioActionExecutors:fadeSpecifications];
+    if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
+        BOOL isMuteMusic = [[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue];
+        isMuteMusic = !isMuteMusic;
+        [APPStandUserDefaults setObject:@(isMuteMusic) forKey:@"isMusicDisable"];
+        isMuteMusic ? [ACTION.gameEvent pauseBackgroundMusic] : [ACTION.gameEvent resumeBackgroundMusic];
+        
+    } else if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+        [ACTION.gameEvent playNextBackgroundMusic];
+        
+    }
 }
 
 #pragma mark - LineScrollViewDataSource Methods

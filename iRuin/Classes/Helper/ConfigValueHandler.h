@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface ValueHandler : NSObject
+@interface ConfigValueHandler : NSObject
 
 +(CGPoint) parsePoint: (id)config object:(NSObject*)object keyPath:(NSString*)keyPath;
 

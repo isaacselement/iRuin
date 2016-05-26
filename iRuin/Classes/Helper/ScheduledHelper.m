@@ -42,7 +42,7 @@ static ScheduledHelper* scheduledHelper = nil;
     NSDictionary* configs = DATA.config[@"Controller_Schedule_Task"];
     for (NSString* key in configs) {
         NSMutableDictionary* config = configs[key];
-        int interval = [config[@"~interval"] intValue];
+        int interval = [config[kReservedInterval] intValue];
         if (scheduleTaskTimes == 0 || interval <= 0) continue;
         if (scheduleTaskTimes % interval == 0) {
             dispatch_async(dispatch_get_main_queue(), ^{

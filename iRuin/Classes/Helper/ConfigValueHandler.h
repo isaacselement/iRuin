@@ -13,6 +13,4 @@
 
 +(BOOL) checkIsCurrentValue:(id)value;
 
-+(BOOL) checkIsNilValue:(id)value;
-
 @end

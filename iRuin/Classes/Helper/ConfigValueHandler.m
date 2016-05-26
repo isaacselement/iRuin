@@ -3,7 +3,6 @@
 
 @implementation ConfigValueHandler
 
-#define k_nil @"k_nil"
 #define k_current_value @"k_current_value"
 
 +(CGPoint) parsePoint: (id)config object:(NSObject*)object keyPath:(NSString*)keyPath
@@ -89,11 +88,6 @@
 +(BOOL) checkIsCurrentValue:(id)value
 {
     return [value isKindOfClass:[NSString class]] && ([(NSString*)value rangeOfString:k_current_value].location != NSNotFound) ;
-}
-
-+(BOOL) checkIsNilValue:(id)value
-{
-    return [value isKindOfClass:[NSString class]] && [value isEqualToString:k_nil];
 }
 
 // + - * /

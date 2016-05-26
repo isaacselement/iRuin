@@ -48,6 +48,7 @@
         isMuteMusic ? [ACTION.gameEvent pauseBackgroundMusic] : [ACTION.gameEvent resumeBackgroundMusic];
         
     } else if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+        [ACTION.gameEvent stopBackgroundMusic];
         [ACTION.gameEvent playNextBackgroundMusic];
         
     }

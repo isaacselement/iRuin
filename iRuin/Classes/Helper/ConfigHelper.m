@@ -46,9 +46,19 @@
 
 +(void) iterateConfig:(NSDictionary*)config handler:(void(^)(NSString* key, id value))handler
 {
+    // 1. call sorted keys first
+    NSArray* sortedKeys = config[kReservedSortedKeys];
+    for (int i = 0; i < sortedKeys.count; i++) {
+        NSString* key = sortedKeys[i];
+        if ([key hasPrefix:kReserved]) continue;
+        if ([key hasSuffix:kSuffixIgnore]) continue;
+        handler(key, config[key]);
+    }
+    // 2. then iterate the rest keys
     for (NSString* key in config) {
         if ([key hasPrefix:kReserved]) continue;
         if ([key hasSuffix:kSuffixIgnore]) continue;
+        if ([sortedKeys containsObject: key]) continue;
         handler(key, config[key]);
     }
 }

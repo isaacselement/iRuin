@@ -7,26 +7,25 @@
 {
     if (!config || config.count == 0) return;
     
-    // UIView's frame , if is CALayer, no need to do this
+    // UIView's frame, if it is CALayer, no need to do this code.
+    // Cause layer has the property frame. But now we do not set frame on layer
     id framesConfig = config[kFrame];
     if (framesConfig && [object isKindOfClass:[UIView class]]) {
         ((UIView*)object).frame = CanvasCGRect([RectHelper parseRect: framesConfig]);
     }
     
-    id actionsConfig = config[kExecutors];
-    if (actionsConfig && [object isKindOfClass:[UIView class]]) {  // but audio.play was not use on UIView ... this need to be think more about ...
-        [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:@[object] values:nil baseTimes:nil];
-    }
-    
-    id textFormatterConfig = config[kTextFormatter];
+    id textFormatterConfig = config[kTextFormat];
     if (textFormatterConfig && [object isKindOfClass:[UILabel class]]) {
         [[TextFormatter sharedInstance] execute: textFormatterConfig onObject:object];
     }
     
+    // Cause use the Dictionary to recursily call, so the CGPoint, CGSize, CGRect, UIColor ... can't use the dictionary to
+    // design values. i.e point: {"x": 10, "y": 30} is not available now.
+    
     [ConfigHelper iterateConfig:config handler:^(NSString *key, id value) {
         if ([key isEqualToString:kFrame]) return ;
         if ([key isEqualToString:kExecutors]) return;
-        if ([key isEqualToString:kTextFormatter]) return;
+        if ([key isEqualToString:kTextFormat]) return;
         
         if ([value isKindOfClass:[NSDictionary class]]) {
             [self designateValuesActionsTo: [object valueForKey: key] config:value];
@@ -34,7 +33,13 @@
             [[EffectHelper getInstance] setValue:value forKeyPath:key onObject:object];
         }
     }];
+    
+    // for the k_current_value reason , action execute shoule after set values .
+    // but audio.play was not use on UIView ... this need to be think more about ...
+    id actionsConfig = config[kExecutors];
+    if (actionsConfig && [object isKindOfClass:[UIView class]]) {
+        [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:@[object] values:nil baseTimes:nil];
+    }
 }
-
 
 @end

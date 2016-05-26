@@ -1,10 +1,42 @@
 #import "InformedView.h"
-#import "UIView+Frame.h"
-#import "CALayer+Frame.h"
+#import "AppInterface.h"
+
+
+#pragma mark - InnerContenView
+
+@interface InnerContenView : UIView
+
+@property(strong) GradientLabel* label;
+
+@end
+
+@implementation InnerContenView
+
+@synthesize label;
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // default 
+        label = [[GradientLabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
+        label.textColor = [UIColor blackColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.numberOfLines = 5;
+        [self addSubview: label];
+    }
+    return self;
+}
+
+@end
+
+
+#pragma mark - InformedView
+
 
 @interface InformedView ()
 
-@property UIView* contentView;
+@property(strong) UIView* contentView;
 
 @end
 
@@ -16,42 +48,51 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        // self default
         self.clipsToBounds = YES;
-        contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIApplication sharedApplication].keyWindow.frame) / 2, 1)];
-        contentView.center = [self middlePoint];
-        contentView.backgroundColor = [UIColor whiteColor];
-        [self addSubview:contentView];
-        
         self.layer.borderColor = [UIColor blackColor].CGColor;
         self.layer.borderWidth = 1.0f;
+        self.showDuration = 3.0f;
+        
+        // content view
+        CGFloat width = CGRectGetWidth(frame);
+        contentView = [[InnerContenView alloc] initWithFrame:CGRectMake(0, 0, width / 2, 1)];
+        [contentView setCenterX: width / 2];
+        contentView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:contentView];
     }
     return self;
 }
 
 +(void) show
 {
+    [self show:DATA.config[@"InformedView_Show"] dismiss:DATA.config[@"InformedView_Dismiss"]];
+}
+
++(void) show:(NSDictionary*)showConfig dismiss:(NSDictionary*)dismissConfig
+{
     UIWindow* window = [UIApplication sharedApplication].keyWindow;
     InformedView* informedView = [[InformedView alloc] initWithFrame:CGRectMake(-1, 0, CGRectGetWidth(window.frame) + 2, 1)];
     [window addSubview:informedView];
-    informedView.center = [window middlePoint];
     
-    [UIView animateWithDuration:0.5 animations:^{
-        [informedView setSizeHeight:100];
-        informedView.center = [window middlePoint];
-        [informedView.contentView setSizeHeight:100];
-        informedView.contentView.center = [informedView middlePoint];
+    [VIEW.actionDurations clear];
+    [ACTION.gameEffect designateValuesActionsTo:informedView config:showConfig];
+    double showupDuration = [VIEW.actionDurations take];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(showupDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-    } completion:^(BOOL finished) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(informedView.showDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            [UIView animateWithDuration:0.5 animations:^{
-                [informedView setSizeHeight: 1];
-                informedView.center = [window middlePoint];
-            } completion:^(BOOL finished) {
+            [VIEW.actionDurations clear];
+            [ACTION.gameEffect designateValuesActionsTo:informedView config:dismissConfig];
+            double dismissDuration = [VIEW.actionDurations take];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dismissDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [informedView removeFromSuperview];
-            }];
+            });
+            
         });
-    }];
+    });
 }
 
 @end

@@ -30,22 +30,36 @@
     if (self) {
         KeyValueHelper* keyValueCodingHelper = [KeyValueHelper sharedInstance];
         [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, NSString *type, NSString *key) {
+            
+            if ([key hasSuffix:@".x"]) {                    // for
+                return @(CanvasX([value floatValue]));
+            } else if ([key hasSuffix:@".y"]) {             // for
+                return @(CanvasX([value floatValue]));
+            } else if ([key hasSuffix:@".width"]) {         // for
+                return @(CanvasW([value floatValue]));
+            } else  if ([key hasSuffix:@".height"]) {       // for "bounds.size.height"
+                return @(CanvasH([value floatValue]));
+            }
+            
             if (type) {
                 
-                if ([ConfigValueHandler checkIsNilValue:value]) {
-                    return nil;
-                } else if ([ConfigValueHandler checkIsCurrentValue: value]) {
+                if ([ConfigValueHandler checkIsCurrentValue: value]) {
                     return [obj valueForKeyPath:key];
+                } else if ([value isKindOfClass:[NSString class]]) {
+                    if ([value isEqualToString:@"k_window_center"]) {
+                        return [NSValue valueWithCGPoint:[[[UIApplication sharedApplication] keyWindow] middlePoint]];
+                    } else if ([value isEqualToString:@"k_super_center"]) {
+                        return [NSValue valueWithCGPoint:[[(UIView*)obj superview] middlePoint]];
+                    }
                 }
                 
                 const char* rawType = [type UTF8String];
+                
                 if (strcmp(rawType, @encode(CGFloat)) == 0) {
-                    if ([key hasSuffix:@"Width"]) {                 // for "eachCellWidth", "borderWidth"
+                    if ([key hasSuffix:@"Width"]) {             // for. "eachCellWidth", "borderWidth"
                         return @(CanvasW([value floatValue]));
-                    } else if ([key hasSuffix:@"X"]) {              // for "originX" now
-                        return @(CanvasX([value floatValue]));
-                    } else if ([key hasSuffix:@"Height"]) {
-                        return @(CanvasH([value floatValue]));      // for "eachCellHeight"
+                    } else  if ([key hasSuffix:@"Height"]) {    // for. "eachCellHeight"
+                        return @(CanvasH([value floatValue]));
                     }
                     
                 } else if (strcmp(rawType, @encode(CGRect)) == 0) {
@@ -68,7 +82,7 @@
                         return colors;
                         
                     } else if ([key isEqualToString:@"startPoint"] || [key isEqualToString:@"endPoint"]) {
-                        return CGPointValue([RectHelper parsePoint: value]);
+                        return [NSValue valueWithCGPoint: [RectHelper parsePoint: value]];
                     }
                     
                 }
@@ -82,6 +96,7 @@
 
 -(void) setValue:(id)value forKeyPath:(NSString*)keyPath onObject:(NSObject*)object
 {
+    // cause we setTranslateValueHandler in init methods , so do not directly call this method below outside
     [[KeyValueHelper sharedInstance] setValue:value keyPath:keyPath object:object];
 }
 

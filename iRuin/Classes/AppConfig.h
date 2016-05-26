@@ -4,13 +4,16 @@
 
 #define kReserved @"~"
 #define kSuffixIgnore @"_"
+
 #define kFrame @"Frame"
 #define kExecutors @"Executors"
-#define kTextFormatter @"kTextFormatter"
+#define kTextFormat @"TextFormat"
 
 #define kReservedLoop @"~loop"
 #define kReservedCommon @"~common"
 #define kReservedDefault @"~default"
+#define kReservedInterval @"~interval"
+#define kReservedSortedKeys @"~sortedKeys"
 
 
 

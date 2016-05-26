@@ -114,7 +114,6 @@
 
 -(void) playNextBackgroundMusic
 {
-    [self stopBackgroundMusic];
     [ConfigHelper setNextMusic];
     [self playBackgroundMusic];
 }

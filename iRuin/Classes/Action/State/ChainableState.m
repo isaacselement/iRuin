@@ -14,9 +14,7 @@
     self.isSymbolsOnVAFSing = YES;
     
     if (self.isChainVanishing) {
-        
         continuous++;
-        
         [[EffectHelper getInstance] chainScoreWithEffect: symbols continuous:continuous];
     } else {
         [[EffectHelper getInstance] scoreWithEffect: symbols];

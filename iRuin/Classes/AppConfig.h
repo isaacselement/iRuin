@@ -44,6 +44,7 @@
 #define User_ChapterIndex @"User_ChapterIndex"
 
 #define User_LastTimeLaunch @"User_LastTimeLaunch"
+#define User_FirstTimeLaunch @"User_FirstTimeLaunch"
 
 #define User_ResourcesVersion @"User_ResourcesVersion"
 

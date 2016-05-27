@@ -45,11 +45,11 @@
         BOOL isMuteMusic = [[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue];
         isMuteMusic = !isMuteMusic;
         [APPStandUserDefaults setObject:@(isMuteMusic) forKey:@"isMusicDisable"];
-        isMuteMusic ? [ACTION.gameEvent pauseBackgroundMusic] : [ACTION.gameEvent resumeBackgroundMusic];
+        isMuteMusic ? [EventHelper pauseBackgroundMusic] : [EventHelper resumeBackgroundMusic];
         
     } else if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
-        [ACTION.gameEvent stopBackgroundMusic];
-        [ACTION.gameEvent playNextBackgroundMusic];
+        [EventHelper stopBackgroundMusic];
+        [EventHelper playNextBackgroundMusic];
         
     }
 }

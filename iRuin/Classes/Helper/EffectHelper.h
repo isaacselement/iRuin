@@ -20,6 +20,10 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 -(ViewsInRepositoryPositionsHandler) rollOutViewsInRepositoryPositionsHandler;
 
+#pragma mark -
+
+-(void) executeChapterCellsEffect: (NSDictionary*)cellsConfigs;
+
 #pragma mark - score
 
 -(void) scoreWithEffect:(NSArray*)symbols;

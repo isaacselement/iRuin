@@ -76,8 +76,12 @@
 		5E01BB7F1CC5DB320070AF79 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A981A87B9F900B500C1 /* mztools.c */; };
 		5E01BB801CC5DB320070AF79 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9A1A87B9F900B500C1 /* unzip.c */; };
 		5E01BB811CC5DB320070AF79 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9C1A87B9F900B500C1 /* zip.c */; };
+		5E07ABD01CF771EC0071AAE7 /* Alan Walker - Fade.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E07ABCD1CF771EC0071AAE7 /* Alan Walker - Fade.mp3 */; };
+		5E07ABD11CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E07ABCE1CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 */; };
+		5E07ABD21CF771EC0071AAE7 /* Florian Bur - The Way.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E07ABCF1CF771EC0071AAE7 /* Florian Bur - The Way.mp3 */; };
 		5E08685B1CB9528E00C2192F /* AppUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E08685A1CB9528E00C2192F /* AppUserDefaults.m */; };
 		5E1919111B6C7297002F0A3D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E19190D1B6C7297002F0A3D /* Reachability.m */; };
+		5E1D4CF01CF70253002687AB /* EventHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1D4CEF1CF70253002687AB /* EventHelper.m */; };
 		5E295E0F1A8CDF9E0053A51A /* Background_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E295E0C1A8CDF9E0053A51A /* Background_001.png */; };
 		5E34ED341A3E785E00022E45 /* ScoreLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E34ED331A3E785E00022E45 /* ScoreLabel.m */; };
 		5E4228671A8B69D700FE5B7D /* ConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4228661A8B69D700FE5B7D /* ConfigHelper.m */; };
@@ -207,6 +211,7 @@
 		5EDF51461CF445AF003CE1AA /* InformedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF51451CF445AF003CE1AA /* InformedView.m */; };
 		5EDF514C1CF451B3003CE1AA /* CALayer+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF514B1CF451B3003CE1AA /* CALayer+Frame.m */; };
 		5EF816871CD60A350091A0CC /* NSObject+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF816861CD60A350091A0CC /* NSObject+KeyValueHelper.m */; };
+		5EFCEA8E1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -329,6 +334,9 @@
 		4EF7943C18C21FE800E25A30 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		4EF7943D18C21FE800E25A30 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
 		5E01AFCC1A5AF68700F051D6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		5E07ABCD1CF771EC0071AAE7 /* Alan Walker - Fade.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Alan Walker - Fade.mp3"; sourceTree = "<group>"; };
+		5E07ABCE1CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eddie - Late Autumn.mp3"; sourceTree = "<group>"; };
+		5E07ABCF1CF771EC0071AAE7 /* Florian Bur - The Way.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Florian Bur - The Way.mp3"; sourceTree = "<group>"; };
 		5E0868591CB9528E00C2192F /* AppUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUserDefaults.h; sourceTree = "<group>"; };
 		5E08685A1CB9528E00C2192F /* AppUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUserDefaults.m; sourceTree = "<group>"; };
 		5E1919051B6C7297002F0A3D /* _Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Network.h; sourceTree = "<group>"; };
@@ -340,6 +348,8 @@
 		5E19190B1B6C7297002F0A3D /* NetworkObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkObserver.m; sourceTree = "<group>"; };
 		5E19190C1B6C7297002F0A3D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5E19190D1B6C7297002F0A3D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5E1D4CEE1CF70253002687AB /* EventHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHelper.h; sourceTree = "<group>"; };
+		5E1D4CEF1CF70253002687AB /* EventHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventHelper.m; sourceTree = "<group>"; };
 		5E295E0C1A8CDF9E0053A51A /* Background_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_001.png; sourceTree = "<group>"; };
 		5E34ED321A3E785E00022E45 /* ScoreLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLabel.h; sourceTree = "<group>"; };
 		5E34ED331A3E785E00022E45 /* ScoreLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreLabel.m; sourceTree = "<group>"; };
@@ -663,6 +673,7 @@
 		5EDF514B1CF451B3003CE1AA /* CALayer+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Frame.m"; sourceTree = "<group>"; };
 		5EF816851CD60A350091A0CC /* NSObject+KeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KeyValueHelper.h"; sourceTree = "<group>"; };
 		5EF816861CD60A350091A0CC /* NSObject+KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KeyValueHelper.m"; sourceTree = "<group>"; };
+		5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Robert de Boron - Chiru (Saisei no Uta).mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -928,6 +939,8 @@
 				5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */,
 				5E42A89D1CEC2FB9003F9898 /* ConfigValueHandler.h */,
 				5E42A89E1CEC2FB9003F9898 /* ConfigValueHandler.m */,
+				5E1D4CEE1CF70253002687AB /* EventHelper.h */,
+				5E1D4CEF1CF70253002687AB /* EventHelper.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1733,6 +1746,10 @@
 		5E9C117A1A3420B3007E3BB6 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */,
+				5E07ABCD1CF771EC0071AAE7 /* Alan Walker - Fade.mp3 */,
+				5E07ABCE1CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 */,
+				5E07ABCF1CF771EC0071AAE7 /* Florian Bur - The Way.mp3 */,
 				5EC11AE51CF2F62E00D3708B /* Valentin - A Little Story.mp3 */,
 				5E5597A41CB8DA2F00B99A96 /* July - Somewhere.mp3 */,
 			);
@@ -1844,17 +1861,21 @@
 				5E537BEA1A3DDEB300C3F5A7 /* Icon@2x.png in Resources */,
 				5E9C118C1A3420B3007E3BB6 /* iPad_Landscape.json in Resources */,
 				5E9C11B11A3420B3007E3BB6 /* Default-568h@2x.png in Resources */,
+				5EFCEA8E1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 in Resources */,
 				5E9C118B1A3420B3007E3BB6 /* Config_Touch.json in Resources */,
 				5E9C11C01A3420B3007E3BB6 /* lock.caf in Resources */,
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
 				5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */,
+				5E07ABD01CF771EC0071AAE7 /* Alan Walker - Fade.mp3 in Resources */,
 				5E9C119F1A3420B3007E3BB6 /* back.png in Resources */,
 				5E295E0F1A8CDF9E0053A51A /* Background_001.png in Resources */,
+				5E07ABD11CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 in Resources */,
 				5E9C11871A3420B3007E3BB6 /* Config_Move.json in Resources */,
 				5E537BE91A3DDEB300C3F5A7 /* Icon.png in Resources */,
 				5E9C11AA1A3420B3007E3BB6 /* resume_h.png in Resources */,
 				5E9C11911A3420B3007E3BB6 /* Portrait.json in Resources */,
 				5E9C11901A3420B3007E3BB6 /* Landscape.json in Resources */,
+				5E07ABD21CF771EC0071AAE7 /* Florian Bur - The Way.mp3 in Resources */,
 				5E9C118E1A3420B3007E3BB6 /* iPhone_Landscape.json in Resources */,
 				5E9C11B81A3420B3007E3BB6 /* Icon-Small-50.png in Resources */,
 				5E9C11861A3420B3007E3BB6 /* Config.json in Resources */,
@@ -1894,6 +1915,7 @@
 				5E01BB7A1CC5DAEE0070AF79 /* RotatableViewController.m in Sources */,
 				4EDD80AE1A1268B8007422A0 /* PPSSignatureView.m in Sources */,
 				5E4C9BA91A87B9F900B500C1 /* ActionExecutorBase.m in Sources */,
+				5E1D4CF01CF70253002687AB /* EventHelper.m in Sources */,
 				4E4D4E9A181D5AFB00886D75 /* AppDelegate.m in Sources */,
 				4E14BC5719225AF7000CDB57 /* PullState.m in Sources */,
 				4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */,

@@ -186,6 +186,20 @@
 }
 
 
+#pragma mark - 
+
+-(void) executeChapterCellsEffect: (NSDictionary*)cellsConfigs
+{
+    NSArray* chaptersCells = VIEW.chaptersView.lineScrollView.contentView.subviews;
+    for (int i = 0 ; i < chaptersCells.count; i++) {
+        ImageLabelLineScrollCell* cell = [chaptersCells objectAtIndex:i];
+        NSString* indexKey = [NSString stringWithFormat:@"%d", i];
+        NSDictionary* config = [ConfigHelper getNodeConfig:cellsConfigs key:indexKey];
+        [ACTION.gameEffect designateValuesActionsTo:cell config: config];
+    }
+}
+
+
 #pragma mark - score
 
 -(void) scoreWithEffect:(NSArray*)symbols

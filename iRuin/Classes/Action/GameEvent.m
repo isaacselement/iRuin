@@ -12,6 +12,7 @@
     // first time launch app, set the chapter index
     if (![APPStandUserDefaults objectForKey: User_LastTimeLaunch]) {
         [APPStandUserDefaults setObject:[ConfigHelper getUtilitiesConfig:@"FirstTimeLaunchGiveChaptersCount"] forKey:User_ChapterIndex];
+        [APPStandUserDefaults setObject:[NSDate date] forKey:User_FirstTimeLaunch];
     }
     [APPStandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
     
@@ -20,17 +21,16 @@
     [lineScrollView setContentOffset: CGPointMake((lineScrollView.contentView.sizeWidth - lineScrollView.sizeWidth) / 2, 0) animated:NO];  // recenter the content view
     
     // chapters cells jump in effect
-    [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Enter"]];
+    [[EffectHelper getInstance] executeChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Enter"]];
     
     // about background music
     if (![[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue]) {
-        [self playBackgroundMusic];
+        [EventHelper playBackgroundMusic];
     }
-    AudiosExecutor* audiosExecutor = (AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor:effect_AUDIO];
-    audiosExecutor.playFinishAction = ^(AudioHandler* handler) {
+    ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor:effect_AUDIO]).playFinishAction = ^(AudioHandler* handler) {
         NSString* audioURL = [handler.url absoluteString];
         if ([audioURL hasSuffix:@".mp3"]) {
-            [self playNextBackgroundMusic];
+            [EventHelper playNextBackgroundMusic];
         }
     };
     
@@ -42,7 +42,7 @@
 {
     ACTION.gameState.isGameStarted = YES;
     
-    [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Start"]];
+    [[EffectHelper getInstance] executeChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Start"]];
     
     [ACTION switchToMode: ACTION.gameState.currentMode chapter:ACTION.gameState.currentChapter];
     
@@ -51,7 +51,11 @@
     
     [ACTION.currentEffect effectStartRollIn];
     
-    [self showClearanceScoreAndSetTimer];
+    int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
+    [[EffectHelper getInstance] showClearanceScore: clearanceScore];
+    ACTION.gameState.clearanceScore = clearanceScore;
+    
+    [VIEW.gameView.timerView setTotalTime: VIEW.gameView.timerView.totalTime];
     
     ACTION.gameState.vanishAmount = 0;
     VIEW.gameView.scoreLabel.number = 0;
@@ -61,7 +65,11 @@
 {
     [self gameRefresh];
     
-    [self showClearanceScoreAndSetTimer];
+    int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
+    [[EffectHelper getInstance] showClearanceScore: clearanceScore];
+    ACTION.gameState.clearanceScore = clearanceScore;
+    
+    [VIEW.gameView.timerView setTotalTime: VIEW.gameView.timerView.totalTime];
     
     ACTION.gameState.vanishAmount = 0;
     VIEW.gameView.scoreLabel.number = 0;
@@ -81,7 +89,7 @@
     [ConfigHelper initializeViewsWithConfig:DATA.config[@"GAME_BACK_INIT"] onObject:VIEW.controller];
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];
     
-    [self chaptersValuesActions: DATA.config[@"Chapters_Cells_In_Game_Back"]];
+    [[EffectHelper getInstance] executeChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Back"]];
 }
 
 -(void) gamePause
@@ -108,64 +116,6 @@
     double duration = [VIEW.actionDurations take];
     [ACTION.currentEffect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:duration];
 }
-
-
-#pragma mark - Music
-
--(void) playNextBackgroundMusic
-{
-    [ConfigHelper setNextMusic];
-    [self playBackgroundMusic];
-}
-
--(void) playBackgroundMusic
-{
-    [self runMusicAction:@"PlayActions"];
-}
-
--(void) pauseBackgroundMusic
-{
-    [self runMusicAction:@"PauseActions"];
-}
-
--(void) resumeBackgroundMusic
-{
-    [self runMusicAction:@"ResumeActions"];
-}
-
--(void) stopBackgroundMusic
-{
-    [self runMusicAction:@"StopActions"];
-}
-
-#pragma mark - Private Methods
-
--(void) runMusicAction:(NSString*)actionKey
-{
-    [VIEW.actionExecutorManager runAudioActionExecutors:[ConfigHelper getMusicConfig:actionKey]];
-}
-
--(void) chaptersValuesActions: (NSDictionary*)cellsConfigs
-{
-    NSArray* chaptersCells = VIEW.chaptersView.lineScrollView.contentView.subviews;
-    for (int i = 0 ; i < chaptersCells.count; i++) {
-        ImageLabelLineScrollCell* cell = [chaptersCells objectAtIndex:i];
-        NSString* indexKey = [NSString stringWithFormat:@"%d", i];
-        NSDictionary* config = [ConfigHelper getNodeConfig:cellsConfigs key:indexKey];
-        [ACTION.gameEffect designateValuesActionsTo:cell config: config];
-    }
-}
-
--(void) showClearanceScoreAndSetTimer
-{
-    [InformedView show];
-    
-    int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
-    [[EffectHelper getInstance] showClearanceScore: clearanceScore];
-    ACTION.gameState.clearanceScore = clearanceScore;
-    [VIEW.gameView.timerView setTotalTime: VIEW.gameView.timerView.totalTime];
-}
-
 
 @end
 

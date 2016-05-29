@@ -3,7 +3,7 @@
 
 @implementation GameEvent
 
--(void) launchGame
+-(void) gameLaunch
 {
     [ScheduledTask sharedInstance].timeInterval = 0.2;
     [[ScheduledTask sharedInstance] start];

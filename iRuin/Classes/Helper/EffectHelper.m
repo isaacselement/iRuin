@@ -204,6 +204,18 @@
 
 -(void) scoreWithEffect:(NSArray*)symbols
 {
+//    return;
+//    UIImage* effectImage = [KeyValueHelper getUIImageByPath:@"S1"];
+//    UIImageView* effectImageView = [[UIImageView alloc] initWithImage:effectImage];
+//    [VIEW.gameView addSubview: effectImageView];
+//    effectImageView.center = [VIEW.gameView middlePoint];
+//    
+//    [ACTION.gameEffect designateValuesActionsTo:effectImageView config:DATA.config[@"ScoreEffect"] completion:^{
+//        [effectImageView removeFromSuperview];
+//    }];
+//    
+//   return;
+
     NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
     
     // touch and route not two dimension

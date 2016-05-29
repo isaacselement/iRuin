@@ -15,6 +15,7 @@
 
 #pragma mark - SEARCH
 
+// for Touch
 +(NSArray*) searchTouchMatchedSymbols: (SymbolView*)symbol
 {
     NSMutableSet* repository = [NSMutableSet setWithCapacity: 1];
@@ -23,8 +24,7 @@
     return reslut.count ? reslut : nil;
 }
 
-
-
+// for Route
 +(NSMutableArray*) searchRouteMatchedSymbols: (NSArray*)symbols matchCount:(int)matchCount
 {
     SymbolView* baseSymbolView = [symbols objectAtIndex: 0];
@@ -40,6 +40,7 @@
     return results.count >= matchCount ? results : nil;
 }
 
+// for move , pull , swipe.  for Chainable
 +(NSMutableArray*) searchMatchedInAllLines:(int)matchCount
 {
     NSArray* symbolsAtContainer = [QueueViewsHelper viewsInVisualArea];
@@ -50,7 +51,6 @@
         NSArray* innerArray = [symbolsAtContainer objectAtIndex: i];
         for (int j = 0; j < innerArray.count; j++) {
             SymbolView* symbol = [innerArray objectAtIndex: j];
-            
             
             if (![self isTwoDimensionArray: horizontallyViews contains:symbol]) {
                 
@@ -76,6 +76,31 @@
     if (horizontallyViews.count == 0 && verticallyViews.count == 0) {
         return nil;
     }
+    
+    // handle intersection symbol into one group . Like the L or T shape.
+    int horCount = (int)horizontallyViews.count;
+    for (int i = 0; i < horCount; i++) {
+        NSMutableArray* horInnerViews = horizontallyViews[i];
+        int innerHorCount = (int)horInnerViews.count;
+        for (int j = 0; j < innerHorCount; j++) {
+            SymbolView* symbol = horInnerViews[j];
+            
+            
+            for (int k = 0; k < verticallyViews.count; k++) {
+                NSMutableArray* verInnerView = verticallyViews[k];
+                if ([verInnerView containsObject: symbol]) {
+                    
+                    [verInnerView removeObject: symbol];
+                    [horInnerViews addObjectsFromArray: verInnerView];
+                    [verticallyViews removeObject:verInnerView];
+                    k--;
+                    
+                }
+            }
+        }
+    }
+    
+    // merge the result
     NSMutableArray* results = [NSMutableArray array];
     [results addObjectsFromArray: horizontallyViews];
     [results addObjectsFromArray: verticallyViews];

@@ -47,7 +47,7 @@ static ActionManager* sharedInstance = nil;
     
     [self renderFramesWithCurrentOrientation];
     
-    [gameEvent launchGame];
+    [gameEvent gameLaunch];
 }
 
 -(void) initializeGameModes

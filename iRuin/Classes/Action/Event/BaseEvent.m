@@ -80,11 +80,13 @@
 {
     DLOG(@"eventSymbolsDidVanish");
     
-    for (SymbolView* symbol in symbols){
-        // cause the view will be reused , so here we need to check ~~~~~~
-        // get the no reuse symbol to restore
-        if (![QueueViewsHelper isViewsInVisualAreaContains: symbol]) {
-            [symbol restore];
+    for (NSArray* innerArray in symbols) {
+        for (SymbolView* symbol in innerArray){
+            // cause the view will be reused , so here we need to check ~~~~~~
+            // get the no reuse symbol to restore
+            if (![QueueViewsHelper isViewsInVisualAreaContains: symbol]) {
+                [symbol restore];
+            }
         }
     }
     

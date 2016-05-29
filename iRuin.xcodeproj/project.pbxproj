@@ -78,7 +78,6 @@
 		5E01BB811CC5DB320070AF79 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9C1A87B9F900B500C1 /* zip.c */; };
 		5E07ABD01CF771EC0071AAE7 /* Alan Walker - Fade.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E07ABCD1CF771EC0071AAE7 /* Alan Walker - Fade.mp3 */; };
 		5E07ABD11CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E07ABCE1CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 */; };
-		5E07ABD21CF771EC0071AAE7 /* Florian Bur - The Way.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E07ABCF1CF771EC0071AAE7 /* Florian Bur - The Way.mp3 */; };
 		5E08685B1CB9528E00C2192F /* AppUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E08685A1CB9528E00C2192F /* AppUserDefaults.m */; };
 		5E1919111B6C7297002F0A3D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E19190D1B6C7297002F0A3D /* Reachability.m */; };
 		5E1D4CF01CF70253002687AB /* EventHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1D4CEF1CF70253002687AB /* EventHelper.m */; };
@@ -177,14 +176,6 @@
 		5E9C118F1A3420B3007E3BB6 /* iPhone_Portrait.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11491A3420B3007E3BB6 /* iPhone_Portrait.json */; };
 		5E9C11901A3420B3007E3BB6 /* Landscape.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C114A1A3420B3007E3BB6 /* Landscape.json */; };
 		5E9C11911A3420B3007E3BB6 /* Portrait.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C114B1A3420B3007E3BB6 /* Portrait.json */; };
-		5E9C119F1A3420B3007E3BB6 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C115C1A3420B3007E3BB6 /* back.png */; };
-		5E9C11A01A3420B3007E3BB6 /* back_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C115D1A3420B3007E3BB6 /* back_h.png */; };
-		5E9C11A51A3420B3007E3BB6 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11621A3420B3007E3BB6 /* pause.png */; };
-		5E9C11A61A3420B3007E3BB6 /* pause_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11631A3420B3007E3BB6 /* pause_h.png */; };
-		5E9C11A71A3420B3007E3BB6 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11641A3420B3007E3BB6 /* refresh.png */; };
-		5E9C11A81A3420B3007E3BB6 /* refresh_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11651A3420B3007E3BB6 /* refresh_h.png */; };
-		5E9C11A91A3420B3007E3BB6 /* resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11661A3420B3007E3BB6 /* resume.png */; };
-		5E9C11AA1A3420B3007E3BB6 /* resume_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11671A3420B3007E3BB6 /* resume_h.png */; };
 		5E9C11AD1A3420B3007E3BB6 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C116B1A3420B3007E3BB6 /* 0.png */; };
 		5E9C11AE1A3420B3007E3BB6 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C116C1A3420B3007E3BB6 /* 1.png */; };
 		5E9C11AF1A3420B3007E3BB6 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C116D1A3420B3007E3BB6 /* 2.png */; };
@@ -208,6 +199,8 @@
 		5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EBDCC1D1A38210C0002636F /* Background_000.png */; };
 		5EC11AE61CF2F62E00D3708B /* Valentin - A Little Story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EC11AE51CF2F62E00D3708B /* Valentin - A Little Story.mp3 */; };
 		5EC8B2B31C8D2C7D00B736B4 /* IRuinApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC8B2B21C8D2C7D00B736B4 /* IRuinApplication.m */; };
+		5ECF20641CFAD8810089E152 /* S1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECF20621CFAD8810089E152 /* S1.png */; };
+		5ECF20671CFADD780089E152 /* Otokaze - 夏恋.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5ECF20661CFADD780089E152 /* Otokaze - 夏恋.mp3 */; };
 		5EDF51461CF445AF003CE1AA /* InformedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF51451CF445AF003CE1AA /* InformedView.m */; };
 		5EDF514C1CF451B3003CE1AA /* CALayer+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF514B1CF451B3003CE1AA /* CALayer+Frame.m */; };
 		5EF816871CD60A350091A0CC /* NSObject+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF816861CD60A350091A0CC /* NSObject+KeyValueHelper.m */; };
@@ -336,7 +329,6 @@
 		5E01AFCC1A5AF68700F051D6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		5E07ABCD1CF771EC0071AAE7 /* Alan Walker - Fade.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Alan Walker - Fade.mp3"; sourceTree = "<group>"; };
 		5E07ABCE1CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eddie - Late Autumn.mp3"; sourceTree = "<group>"; };
-		5E07ABCF1CF771EC0071AAE7 /* Florian Bur - The Way.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Florian Bur - The Way.mp3"; sourceTree = "<group>"; };
 		5E0868591CB9528E00C2192F /* AppUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUserDefaults.h; sourceTree = "<group>"; };
 		5E08685A1CB9528E00C2192F /* AppUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUserDefaults.m; sourceTree = "<group>"; };
 		5E1919051B6C7297002F0A3D /* _Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Network.h; sourceTree = "<group>"; };
@@ -634,14 +626,6 @@
 		5E9C11491A3420B3007E3BB6 /* iPhone_Portrait.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iPhone_Portrait.json; sourceTree = "<group>"; };
 		5E9C114A1A3420B3007E3BB6 /* Landscape.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Landscape.json; sourceTree = "<group>"; };
 		5E9C114B1A3420B3007E3BB6 /* Portrait.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Portrait.json; sourceTree = "<group>"; };
-		5E9C115C1A3420B3007E3BB6 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		5E9C115D1A3420B3007E3BB6 /* back_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_h.png; sourceTree = "<group>"; };
-		5E9C11621A3420B3007E3BB6 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
-		5E9C11631A3420B3007E3BB6 /* pause_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_h.png; sourceTree = "<group>"; };
-		5E9C11641A3420B3007E3BB6 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
-		5E9C11651A3420B3007E3BB6 /* refresh_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_h.png; sourceTree = "<group>"; };
-		5E9C11661A3420B3007E3BB6 /* resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume.png; sourceTree = "<group>"; };
-		5E9C11671A3420B3007E3BB6 /* resume_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_h.png; sourceTree = "<group>"; };
 		5E9C116B1A3420B3007E3BB6 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		5E9C116C1A3420B3007E3BB6 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		5E9C116D1A3420B3007E3BB6 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -667,6 +651,8 @@
 		5EC11AE51CF2F62E00D3708B /* Valentin - A Little Story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Valentin - A Little Story.mp3"; sourceTree = "<group>"; };
 		5EC8B2B11C8D2C7D00B736B4 /* IRuinApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRuinApplication.h; sourceTree = "<group>"; };
 		5EC8B2B21C8D2C7D00B736B4 /* IRuinApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRuinApplication.m; sourceTree = "<group>"; };
+		5ECF20621CFAD8810089E152 /* S1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = S1.png; sourceTree = "<group>"; };
+		5ECF20661CFADD780089E152 /* Otokaze - 夏恋.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Otokaze - 夏恋.mp3"; sourceTree = "<group>"; };
 		5EDF51441CF445AF003CE1AA /* InformedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformedView.h; sourceTree = "<group>"; };
 		5EDF51451CF445AF003CE1AA /* InformedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformedView.m; sourceTree = "<group>"; };
 		5EDF514A1CF451B3003CE1AA /* CALayer+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Frame.h"; sourceTree = "<group>"; };
@@ -865,14 +851,14 @@
 			children = (
 				4E71D40318BF779900270180 /* BaseEvent.h */,
 				4E71D40418BF779900270180 /* BaseEvent.m */,
+				4EDACDBD191FB18300A8E84E /* ChainableEvent.h */,
+				4EDACDBE191FB18300A8E84E /* ChainableEvent.m */,
 				4E71D40618BF80D200270180 /* RouteEvent.h */,
 				4E71D40718BF80D200270180 /* RouteEvent.m */,
 				4E1FBA22191BBBDD0093BE25 /* TouchEvent.h */,
 				4E1FBA23191BBBDD0093BE25 /* TouchEvent.m */,
 				4ED52C7C191E5DC4002ADA73 /* SwipeEvent.h */,
 				4ED52C7D191E5DC4002ADA73 /* SwipeEvent.m */,
-				4EDACDBD191FB18300A8E84E /* ChainableEvent.h */,
-				4EDACDBE191FB18300A8E84E /* ChainableEvent.m */,
 				4E14BC5219225AA0000CDB57 /* PullEvent.h */,
 				4E14BC5319225AA0000CDB57 /* PullEvent.m */,
 				4E0BFC5219260BAA00F0E632 /* MoveEvent.h */,
@@ -892,10 +878,10 @@
 				4E8067C118C35CB900AF71B5 /* RouteState.m */,
 				4E1FBA25191BBC8D0093BE25 /* TouchState.h */,
 				4E1FBA26191BBC8D0093BE25 /* TouchState.m */,
-				4ED52C7F191E61FF002ADA73 /* SwipeState.h */,
-				4ED52C80191E61FF002ADA73 /* SwipeState.m */,
 				4E14BC5519225AF7000CDB57 /* PullState.h */,
 				4E14BC5619225AF7000CDB57 /* PullState.m */,
+				4ED52C7F191E61FF002ADA73 /* SwipeState.h */,
+				4ED52C80191E61FF002ADA73 /* SwipeState.m */,
 				4E0BFC4F19260B9100F0E632 /* MoveState.h */,
 				4E0BFC5019260B9100F0E632 /* MoveState.m */,
 			);
@@ -1691,8 +1677,8 @@
 		5E9C114C1A3420B3007E3BB6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5EFCEA8F1CF85E9400EF5DF9 /* Effect */,
 				5E9C114D1A3420B3007E3BB6 /* Background */,
-				5E9C115B1A3420B3007E3BB6 /* Buttons */,
 				5E9C116A1A3420B3007E3BB6 /* Chapters */,
 				5E9C116F1A3420B3007E3BB6 /* Default-568h@2x.png */,
 				5E9C11711A3420B3007E3BB6 /* Default.png */,
@@ -1717,21 +1703,6 @@
 			path = Background;
 			sourceTree = "<group>";
 		};
-		5E9C115B1A3420B3007E3BB6 /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				5E9C115C1A3420B3007E3BB6 /* back.png */,
-				5E9C115D1A3420B3007E3BB6 /* back_h.png */,
-				5E9C11621A3420B3007E3BB6 /* pause.png */,
-				5E9C11631A3420B3007E3BB6 /* pause_h.png */,
-				5E9C11641A3420B3007E3BB6 /* refresh.png */,
-				5E9C11651A3420B3007E3BB6 /* refresh_h.png */,
-				5E9C11661A3420B3007E3BB6 /* resume.png */,
-				5E9C11671A3420B3007E3BB6 /* resume_h.png */,
-			);
-			path = Buttons;
-			sourceTree = "<group>";
-		};
 		5E9C116A1A3420B3007E3BB6 /* Chapters */ = {
 			isa = PBXGroup;
 			children = (
@@ -1746,10 +1717,10 @@
 		5E9C117A1A3420B3007E3BB6 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				5ECF20661CFADD780089E152 /* Otokaze - 夏恋.mp3 */,
 				5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */,
 				5E07ABCD1CF771EC0071AAE7 /* Alan Walker - Fade.mp3 */,
 				5E07ABCE1CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 */,
-				5E07ABCF1CF771EC0071AAE7 /* Florian Bur - The Way.mp3 */,
 				5EC11AE51CF2F62E00D3708B /* Valentin - A Little Story.mp3 */,
 				5E5597A41CB8DA2F00B99A96 /* July - Somewhere.mp3 */,
 			);
@@ -1771,6 +1742,14 @@
 				5E9C11841A3420B3007E3BB6 /* Tock.caf */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		5EFCEA8F1CF85E9400EF5DF9 /* Effect */ = {
+			isa = PBXGroup;
+			children = (
+				5ECF20621CFAD8810089E152 /* S1.png */,
+			);
+			path = Effect;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1839,7 +1818,6 @@
 				5E9C11AE1A3420B3007E3BB6 /* 1.png in Resources */,
 				5E9C11B51A3420B3007E3BB6 /* Icon-57.png in Resources */,
 				5E9C11C41A3420B3007E3BB6 /* Tock.caf in Resources */,
-				5E9C11A61A3420B3007E3BB6 /* pause_h.png in Resources */,
 				5E9C11851A3420B3007E3BB6 /* Chapters.json in Resources */,
 				5E4C9B681A87B9F900B500C1 /* pkcs8_private_key.pem in Resources */,
 				5E9C11B31A3420B3007E3BB6 /* Default.png in Resources */,
@@ -1847,17 +1825,15 @@
 				4E4D4E94181D5AFB00886D75 /* InfoPlist.strings in Resources */,
 				5E4C9B6A1A87B9F900B500C1 /* private_key.pem in Resources */,
 				5E9C11C21A3420B3007E3BB6 /* Pop.aiff in Resources */,
+				5ECF20641CFAD8810089E152 /* S1.png in Resources */,
 				5E4C9B711A87B9F900B500C1 /* Screen Shot  p12_password.png in Resources */,
 				5E4C9B6F1A87B9F900B500C1 /* rsaCertReq.csr in Resources */,
 				5E9C11C11A3420B3007E3BB6 /* Morse.aiff in Resources */,
 				5E6B16341A39D22B0087EA1D /* sand.wav in Resources */,
 				5E9C11891A3420B3007E3BB6 /* Config_Route.json in Resources */,
 				5E9C11B61A3420B3007E3BB6 /* Icon-72.png in Resources */,
-				5E9C11A01A3420B3007E3BB6 /* back_h.png in Resources */,
 				5E9C11B41A3420B3007E3BB6 /* Icon-152.png in Resources */,
-				5E9C11A81A3420B3007E3BB6 /* refresh_h.png in Resources */,
 				5E9C11C31A3420B3007E3BB6 /* Tink.caf in Resources */,
-				5E9C11A91A3420B3007E3BB6 /* resume.png in Resources */,
 				5E537BEA1A3DDEB300C3F5A7 /* Icon@2x.png in Resources */,
 				5E9C118C1A3420B3007E3BB6 /* iPad_Landscape.json in Resources */,
 				5E9C11B11A3420B3007E3BB6 /* Default-568h@2x.png in Resources */,
@@ -1867,24 +1843,20 @@
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,
 				5EBDCC1E1A38210C0002636F /* Background_000.png in Resources */,
 				5E07ABD01CF771EC0071AAE7 /* Alan Walker - Fade.mp3 in Resources */,
-				5E9C119F1A3420B3007E3BB6 /* back.png in Resources */,
 				5E295E0F1A8CDF9E0053A51A /* Background_001.png in Resources */,
 				5E07ABD11CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 in Resources */,
 				5E9C11871A3420B3007E3BB6 /* Config_Move.json in Resources */,
 				5E537BE91A3DDEB300C3F5A7 /* Icon.png in Resources */,
-				5E9C11AA1A3420B3007E3BB6 /* resume_h.png in Resources */,
 				5E9C11911A3420B3007E3BB6 /* Portrait.json in Resources */,
 				5E9C11901A3420B3007E3BB6 /* Landscape.json in Resources */,
-				5E07ABD21CF771EC0071AAE7 /* Florian Bur - The Way.mp3 in Resources */,
 				5E9C118E1A3420B3007E3BB6 /* iPhone_Landscape.json in Resources */,
 				5E9C11B81A3420B3007E3BB6 /* Icon-Small-50.png in Resources */,
 				5E9C11861A3420B3007E3BB6 /* Config.json in Resources */,
 				5E9C11881A3420B3007E3BB6 /* Config_Pull.json in Resources */,
+				5ECF20671CFADD780089E152 /* Otokaze - 夏恋.mp3 in Resources */,
 				5E9C11BD1A3420B3007E3BB6 /* Bottle.aiff in Resources */,
 				5E4C9B691A87B9F900B500C1 /* private_key.p12 in Resources */,
-				5E9C11A71A3420B3007E3BB6 /* refresh.png in Resources */,
 				5E9C11B01A3420B3007E3BB6 /* 3.png in Resources */,
-				5E9C11A51A3420B3007E3BB6 /* pause.png in Resources */,
 				5E4C9B6B1A87B9F900B500C1 /* public_key.der in Resources */,
 				5E6B16331A39D22B0087EA1D /* Bubble_2.wav in Resources */,
 				5E9C118F1A3420B3007E3BB6 /* iPhone_Portrait.json in Resources */,

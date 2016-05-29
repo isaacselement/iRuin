@@ -110,8 +110,7 @@
     
     ACTION.gameState.vanishAmount += (int)vanishViews.count;
     
-    for (NSInteger i = 0; i < vanishViews.count; i++) {
-        SymbolView* symbol = vanishViews[i];
+    for (SymbolView* symbol in vanishViews){
         if (symbol.row == -1 || symbol.column == -1) {
             DLOG(@"ERROR!!!! ++++");
             continue;
@@ -128,7 +127,7 @@
     [self startSymbolsVanish: symbols];
     double vanishDuration = [VIEW.actionDurations take];
     [event eventSymbolsWillVanish: symbols];
-    [event performSelector: @selector(eventSymbolsDidVanish:) withObject:vanishViews afterDelay:vanishDuration];
+    [event performSelector: @selector(eventSymbolsDidVanish:) withObject:symbols afterDelay:vanishDuration];
     
     // adjust , fill or squeeze
     [self effectStartAdjustFillSqueeze:vanishViews vanishDuration:vanishDuration];

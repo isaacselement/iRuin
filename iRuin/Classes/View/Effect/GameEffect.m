@@ -3,6 +3,19 @@
 
 @implementation GameEffect
 
+-(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config completion:(void(^)(void))completion
+{
+    [VIEW.actionDurations clear];
+    [self designateValuesActionsTo:object config:config];
+    double duration = [VIEW.actionDurations take];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (completion) {
+            completion();
+        }
+    });
+}
+
 -(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config
 {
     if (!config || config.count == 0) return;

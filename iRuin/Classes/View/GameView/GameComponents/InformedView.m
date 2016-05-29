@@ -75,24 +75,17 @@
     InformedView* informedView = [[InformedView alloc] initWithFrame:CGRectMake(-1, 0, CGRectGetWidth(window.frame) + 2, 1)];
     [window addSubview:informedView];
     
-    [VIEW.actionDurations clear];
-    [ACTION.gameEffect designateValuesActionsTo:informedView config:showConfig];
-    double showupDuration = [VIEW.actionDurations take];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(showupDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [ACTION.gameEffect designateValuesActionsTo:informedView config:showConfig completion:^{
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(informedView.showDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            [VIEW.actionDurations clear];
-            [ACTION.gameEffect designateValuesActionsTo:informedView config:dismissConfig];
-            double dismissDuration = [VIEW.actionDurations take];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dismissDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [ACTION.gameEffect designateValuesActionsTo:informedView config:dismissConfig completion:^{
                 [informedView removeFromSuperview];
-            });
+            }];
             
         });
-    });
+        
+    }];
 }
 
 @end

@@ -11,13 +11,11 @@
 
 -(void) stateSymbolsWillVanish: (NSArray*)symbols
 {
-    self.isSymbolsOnVAFSing = YES;
+    [super stateSymbolsWillVanish:symbols];
     
     if (self.isChainVanishing) {
         continuous++;
         [[EffectHelper getInstance] chainScoreWithEffect: symbols continuous:continuous];
-    } else {
-        [[EffectHelper getInstance] scoreWithEffect: symbols];
     }
 }
 

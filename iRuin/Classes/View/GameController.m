@@ -1,19 +1,19 @@
 #import "GameController.h"
 #import "AppInterface.h"
 
-#import "SharedMotionManager.h"
-
-
 @implementation GameController
 
 @synthesize gameView;
 @synthesize chaptersView;
+@synthesize emissionLayer;
 
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName: nil bundle:nibBundleOrNil];
     if (self) {
+        emissionLayer = [EmissionLayer layer];
+        emissionLayer.cell = [CAEmitterCell emitterCell];
         chaptersView = [[ChaptersView alloc] init];
         gameView = [[GameView alloc] init];
     }
@@ -28,6 +28,7 @@
     self.view = [[GameBaseView alloc] initWithFrame:self.view.bounds];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    [self.view.layer addSublayer: emissionLayer];
     [self.view addSubview: chaptersView];
     [self.view addSubview: gameView];
     

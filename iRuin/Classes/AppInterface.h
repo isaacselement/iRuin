@@ -35,7 +35,7 @@
 
 #import "HTTPGetRequest.h"
 
-
+#import "SharedMotionManager.h"
 
 
 #pragma mark - View
@@ -65,8 +65,6 @@
 #import "_CharacterHelper.h"
 
 #import "_CollectionHelper.h"
-
-
 
 
 
@@ -193,8 +191,7 @@
 
 #import "InformedView.h"
 
-
-
+#import "EmissionLayer.h"
 
 
 

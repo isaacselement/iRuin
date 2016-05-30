@@ -100,7 +100,7 @@
         }
     }
     
-    // merge the result
+    // merge into result
     NSMutableArray* results = [NSMutableArray array];
     [results addObjectsFromArray: horizontallyViews];
     [results addObjectsFromArray: verticallyViews];

@@ -43,12 +43,12 @@
             
             if (type) {
                 
-                if ([ConfigValueHandler checkIsCurrentValue: value]) {
-                    return [obj valueForKeyPath:key];
-                } else if ([value isKindOfClass:[NSString class]]) {
-                    if ([value isEqualToString:@"k_window_center"]) {
-                        return [NSValue valueWithCGPoint:[[[UIApplication sharedApplication] keyWindow] middlePoint]];
-                    } else if ([value isEqualToString:@"k_super_center"]) {
+                if ([value isKindOfClass:[NSString class]]) {
+                    if ([ConfigValueHandler checkIsCurrentValue:value]) {
+                        return [obj valueForKeyPath:key];
+                    } else if ([ConfigValueHandler checkIsWindowCenterValue:value]) {
+                        return [NSValue valueWithCGPoint:[[[[UIApplication sharedApplication] delegate] window] middlePoint]];
+                    } else if ([ConfigValueHandler checkIsSuperCenterValue:value]) {
                         return [NSValue valueWithCGPoint:[[(UIView*)obj superview] middlePoint]];
                     }
                 }
@@ -72,6 +72,7 @@
                     return [NSValue valueWithCGSize: CanvasCGSize([ConfigValueHandler parseSize:value object:obj keyPath:key])];
                     
                 }
+                
                 if ([obj isKindOfClass:[CAGradientLayer class]]) {
                     if ([key isEqualToString:@"colors"]) {
                         /* po [KeyValueHelper getClassPropertieTypes:[CAGradientLayer class]] & colors = "@\"NSArray\""; & print @encode(NSArray) & (const char [12]) $1 = "{NSArray=#}" */
@@ -85,6 +86,10 @@
                         return [NSValue valueWithCGPoint: [RectHelper parsePoint: value]];
                     }
                     
+                } else if ([obj isKindOfClass:[CAEmitterCell class]]) {
+                    if ([key isEqualToString:@"contents"]) {
+                        return (id)[[KeyValueHelper getUIImageByPath:value] CGImage];
+                    }
                 }
             }
             

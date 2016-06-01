@@ -41,7 +41,7 @@
         if ([key isEqualToString:kTextFormat]) return;
         
         if ([value isKindOfClass:[NSDictionary class]]) {
-            [self designateValuesActionsTo: [object valueForKey: key] config:value];
+            [self designateValuesActionsTo: [object valueForKeyPath: key] config:value];
         } else {
             [[EffectHelper getInstance] setValue:value forKeyPath:key onObject:object];
         }

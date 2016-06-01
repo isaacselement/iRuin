@@ -13,7 +13,6 @@
     self = [super initWithNibName: nil bundle:nibBundleOrNil];
     if (self) {
         emissionLayer = [EmissionLayer layer];
-        emissionLayer.cell = [CAEmitterCell emitterCell];
         chaptersView = [[ChaptersView alloc] init];
         gameView = [[GameView alloc] init];
     }

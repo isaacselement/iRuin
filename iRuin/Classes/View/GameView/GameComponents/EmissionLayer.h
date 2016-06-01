@@ -4,6 +4,5 @@
 
 @interface EmissionLayer : CAEmitterLayer
 
-@property (assign, nonatomic) CAEmitterCell* cell;
 
 @end

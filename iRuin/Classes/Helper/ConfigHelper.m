@@ -163,18 +163,32 @@ int musicIndex = 0;
 +(void) initializeViewsWithConfig:(NSDictionary*)config onObject:(id)onObject
 {
     [ConfigHelper iterateConfig:config handler:^(NSString *key, id value) {
-        if ([key isEqualToString: @"class"]) {
+        // it has handled by following code to new an object
+        if ([key isEqualToString: @"~class"]) {
             return ;
         }
+        
         if ([value isKindOfClass:[NSDictionary class]]) {
-            NSString* clazz = value[@"class"];
-            if (clazz) {
-                id newObj = [[NSClassFromString(clazz) alloc] init];
-                [onObject setValue:newObj forKey:key];
-//                [[KeyValueHelper sharedInstance] setValue:newObj keyPath:key object:onObject];
-            }
+            // have "~class" , means should new a object
+            NSString* clazz = value[@"~class"];
             id nextObject = [onObject valueForKey:key];
+            if (clazz) {
+                nextObject = [[NSClassFromString(clazz) alloc] init];
+            }
+            // then do the set value action
             [ConfigHelper initializeViewsWithConfig:value onObject:nextObject];
+            
+            if ([onObject isKindOfClass:[NSMutableArray class]]) {
+                [onObject addObject: nextObject];
+            } else {
+                // not use [[EffectHelper getInstance] setValue:newObj forKeyPath:key onObject:onObject];
+                // cause no need to tranlate value
+                if (clazz) {
+                    [onObject setValue:nextObject forKey:key];
+                }
+            }
+        } else {
+            [[EffectHelper getInstance] setValue:value forKeyPath:key onObject:onObject];
         }
     }];
 }

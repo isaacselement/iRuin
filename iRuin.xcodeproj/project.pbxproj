@@ -163,6 +163,7 @@
 		5E6B16321A39D22B0087EA1D /* Bubble_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */; };
 		5E6B16331A39D22B0087EA1D /* Bubble_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B16301A39D22B0087EA1D /* Bubble_2.wav */; };
 		5E6B16341A39D22B0087EA1D /* sand.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B16311A39D22B0087EA1D /* sand.wav */; };
+		5E6B193D1CFD8E5500788F8A /* NSArray+KVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B193C1CFD8E5500788F8A /* NSArray+KVC.m */; };
 		5E9C11851A3420B3007E3BB6 /* Chapters.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C113E1A3420B3007E3BB6 /* Chapters.json */; };
 		5E9C11861A3420B3007E3BB6 /* Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C113F1A3420B3007E3BB6 /* Config.json */; };
 		5E9C11871A3420B3007E3BB6 /* Config_Move.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11401A3420B3007E3BB6 /* Config_Move.json */; };
@@ -615,6 +616,8 @@
 		5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble_1.wav; sourceTree = "<group>"; };
 		5E6B16301A39D22B0087EA1D /* Bubble_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble_2.wav; sourceTree = "<group>"; };
 		5E6B16311A39D22B0087EA1D /* sand.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sand.wav; sourceTree = "<group>"; };
+		5E6B193B1CFD8E5500788F8A /* NSArray+KVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+KVC.h"; sourceTree = "<group>"; };
+		5E6B193C1CFD8E5500788F8A /* NSArray+KVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KVC.m"; sourceTree = "<group>"; };
 		5E9C113E1A3420B3007E3BB6 /* Chapters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chapters.json; sourceTree = "<group>"; };
 		5E9C113F1A3420B3007E3BB6 /* Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config.json; sourceTree = "<group>"; };
 		5E9C11401A3420B3007E3BB6 /* Config_Move.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Move.json; sourceTree = "<group>"; };
@@ -729,6 +732,8 @@
 				5EDF51451CF445AF003CE1AA /* InformedView.m */,
 				5ECF206C1CFB2FD30089E152 /* EmissionLayer.h */,
 				5ECF206D1CFB2FD30089E152 /* EmissionLayer.m */,
+				5E6B193B1CFD8E5500788F8A /* NSArray+KVC.h */,
+				5E6B193C1CFD8E5500788F8A /* NSArray+KVC.m */,
 			);
 			path = GameComponents;
 			sourceTree = "<group>";
@@ -2001,6 +2006,7 @@
 				5E4C9BD21A87B9F900B500C1 /* FrameHelper.m in Sources */,
 				4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */,
 				4ED52C7E191E5DC4002ADA73 /* SwipeEvent.m in Sources */,
+				5E6B193D1CFD8E5500788F8A /* NSArray+KVC.m in Sources */,
 				5E5412E51B4BD42E003D47B2 /* LineScrollViewCell.m in Sources */,
 				5E4C9BB71A87B9F900B500C1 /* QueuePositionsHelper.m in Sources */,
 				5ECF206E1CFB2FD30089E152 /* EmissionLayer.m in Sources */,

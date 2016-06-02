@@ -161,19 +161,19 @@ int musicIndex = 0;
 }
 
 
-// now , below method is merge into GameEffect.m's "designateValuesActionsTo:config" method
 /*
+ // now , below method is merge into GameEffect.m's "designateValuesActionsTo:config" method
 +(void) initializeViewsWithConfig:(NSDictionary*)config onObject:(id)object
 {
     [ConfigHelper iterateConfig:config handler:^(NSString *key, id value) {
         // it has handled by following code to new an object
-        if ([key isEqualToString: @"~class"]) {
+        if ([key isEqualToString: kReservedClass]) {
             return ;
         }
         
         if ([value isKindOfClass:[NSDictionary class]]) {
-            // have "~class" , means should new a object
-            NSString* clazz = value[@"~class"];
+            // have "~Class" , means should new a object
+            NSString* clazz = value[kReservedClass];
             id nextObject = [object valueForKey:key];
             if (clazz) {
                 nextObject = [[NSClassFromString(clazz) alloc] init];

@@ -1,6 +1,8 @@
 #import "ConfigValueHandler.h"
 #import "AppInterface.h"
 
+// To Be refactor...
+
 @implementation ConfigValueHandler
 
 +(CGPoint) parsePoint: (id)config object:(NSObject*)object keyPath:(NSString*)keyPath
@@ -16,15 +18,25 @@
         BOOL isCurrentValue = isString && [self checkIsCurrentValue:value];
         BOOL isWindowCenter = isString && [self checkIsWindowCenterValue:value];
         BOOL isSuperCenter = isString && [self checkIsSuperCenterValue:value];
+        
         if ( isCurrentValue || isWindowCenter || isSuperCenter ) {
-            CGPoint point = isCurrentValue ? [[object valueForKeyPath:keyPath] CGPointValue] : (isWindowCenter ? [[[[UIApplication sharedApplication] delegate] window] middlePoint] : [[(UIView*)object superview] middlePoint]);
+            
+            CGPoint point =  [[object valueForKeyPath:keyPath] CGPointValue];
+            NSString* key = k_current_value;
+            if (isWindowCenter) {
+                point = [[[[UIApplication sharedApplication] delegate] window] middlePoint];
+                key = k_window_center;
+            } else if (isSuperCenter) {
+                point = [[(UIView*)object superview] middlePoint];
+                key = k_super_center;
+            }
             
             if (i == 0) {
                 z = [FrameTranslater canvasX:point.x];
             } else {
                 z = [FrameTranslater canvasY:point.y];
             }
-            z = [self getCurrentValueWithExpression:value value:z];
+            z = [self getExpressionValue:value key:key value:z];
         } else {
             z = [value floatValue];
         }
@@ -43,7 +55,10 @@
         CGFloat z = 0;
         id value = isArray ? [config safeObjectAtIndex: i] : config[keys[i]];
         
-        if ([value isKindOfClass:[NSString class]] && [self checkIsCurrentValue:value]) {
+        BOOL isString = [value isKindOfClass:[NSString class]];
+        BOOL isCurrentValue = isString && [self checkIsCurrentValue:value];
+        
+        if (isCurrentValue) {
             CGSize size = [[object valueForKeyPath:keyPath] CGSizeValue];
             
             if (i == 0) {
@@ -51,7 +66,7 @@
             } else {
                 z = [FrameTranslater canvasY:size.height];
             }
-            z = [self getCurrentValueWithExpression:value value:z];
+            z = [self getExpressionValue:value key:k_current_value value:z];
         } else {
             z = [value floatValue];
         }
@@ -70,7 +85,10 @@
         CGFloat z = 0;
         id value = isArray ? [config safeObjectAtIndex: i] : config[keys[i]];
         
-        if ([value isKindOfClass:[NSString class]] && [self checkIsCurrentValue:value]) {
+        BOOL isString = [value isKindOfClass:[NSString class]];
+        BOOL isCurrentValue = isString && [self checkIsCurrentValue:value];
+        
+        if (isCurrentValue) {
             CGRect rect = [[object valueForKeyPath:keyPath] CGRectValue];
             
             if (i == 0) {
@@ -82,7 +100,7 @@
             } else {
                 z = [FrameTranslater canvasY:rect.size.height];
             }
-            z = [self getCurrentValueWithExpression:value value:z];
+            z = [self getExpressionValue:value key:k_current_value value:z];
         } else {
             z = [value floatValue];
         }
@@ -110,12 +128,6 @@
 
 
 // + - * /
-
-+(CGFloat) getCurrentValueWithExpression:(NSString*)expression value:(CGFloat)z
-{
-    return [self getExpressionValue:expression key:k_current_value value:z];
-}
-
 +(CGFloat) getExpressionValue:(NSString*)expression key:(NSString*)key value:(CGFloat)z
 {
     if ([expression isEqualToString:key]) {

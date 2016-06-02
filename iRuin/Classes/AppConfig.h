@@ -5,10 +5,13 @@
 #define kReserved @"~"
 #define kSuffixIgnore @"_"
 
-#define kFrame @"Frame"
-#define kExecutors @"Executors"
-#define kTextFormat @"TextFormat"
+// in GameEffect.m
+#define kReservedClass @"~Class"
+#define kReservedFrame @"~Frame"
+#define kReservedExecutors @"~Executors"
+#define kReservedTextFormat @"~TextFormat"
 
+// in ConfigHelper.m
 #define kReservedLoop @"~loop"
 #define kReservedCommon @"~common"
 #define kReservedDefault @"~default"

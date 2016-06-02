@@ -205,9 +205,6 @@
 #import "SearchHelper.h"
 #import "ScheduledHelper.h"
 #import "PositionsHelper.h"
-
 #import "ConfigValueHandler.h"
-
-#import "NSArray+KVC.h"
 
 

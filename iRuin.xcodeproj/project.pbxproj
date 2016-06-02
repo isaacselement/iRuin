@@ -158,7 +158,6 @@
 		5E6B16321A39D22B0087EA1D /* Bubble_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */; };
 		5E6B16331A39D22B0087EA1D /* Bubble_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B16301A39D22B0087EA1D /* Bubble_2.wav */; };
 		5E6B16341A39D22B0087EA1D /* sand.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B16311A39D22B0087EA1D /* sand.wav */; };
-		5E6B193D1CFD8E5500788F8A /* NSArray+KVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B193C1CFD8E5500788F8A /* NSArray+KVC.m */; };
 		5E9C11851A3420B3007E3BB6 /* Chapters.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C113E1A3420B3007E3BB6 /* Chapters.json */; };
 		5E9C11861A3420B3007E3BB6 /* Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C113F1A3420B3007E3BB6 /* Config.json */; };
 		5E9C11871A3420B3007E3BB6 /* Config_Move.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E9C11401A3420B3007E3BB6 /* Config_Move.json */; };
@@ -208,6 +207,7 @@
 		5EFB33211D0004F2002FACE0 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB331A1D0004F2002FACE0 /* NSString+Additions.m */; };
 		5EFB33221D0004F2002FACE0 /* NSTimer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB331C1D0004F2002FACE0 /* NSTimer+Additions.m */; };
 		5EFB33251D000581002FACE0 /* CALayer+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB33241D000581002FACE0 /* CALayer+KeyValueHelper.m */; };
+		5EFB33281D001680002FACE0 /* NSArray+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB33271D001680002FACE0 /* NSArray+KeyValueHelper.m */; };
 		5EFCEA8E1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */; };
 /* End PBXBuildFile section */
 
@@ -606,8 +606,6 @@
 		5E6B162F1A39D22B0087EA1D /* Bubble_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble_1.wav; sourceTree = "<group>"; };
 		5E6B16301A39D22B0087EA1D /* Bubble_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble_2.wav; sourceTree = "<group>"; };
 		5E6B16311A39D22B0087EA1D /* sand.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sand.wav; sourceTree = "<group>"; };
-		5E6B193B1CFD8E5500788F8A /* NSArray+KVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+KVC.h"; sourceTree = "<group>"; };
-		5E6B193C1CFD8E5500788F8A /* NSArray+KVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KVC.m"; sourceTree = "<group>"; };
 		5E9C113E1A3420B3007E3BB6 /* Chapters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Chapters.json; sourceTree = "<group>"; };
 		5E9C113F1A3420B3007E3BB6 /* Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config.json; sourceTree = "<group>"; };
 		5E9C11401A3420B3007E3BB6 /* Config_Move.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config_Move.json; sourceTree = "<group>"; };
@@ -670,6 +668,8 @@
 		5EFB331C1D0004F2002FACE0 /* NSTimer+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Additions.m"; sourceTree = "<group>"; };
 		5EFB33231D000581002FACE0 /* CALayer+KeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+KeyValueHelper.h"; sourceTree = "<group>"; };
 		5EFB33241D000581002FACE0 /* CALayer+KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+KeyValueHelper.m"; sourceTree = "<group>"; };
+		5EFB33261D001680002FACE0 /* NSArray+KeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+KeyValueHelper.h"; sourceTree = "<group>"; };
+		5EFB33271D001680002FACE0 /* NSArray+KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KeyValueHelper.m"; sourceTree = "<group>"; };
 		5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Robert de Boron - Chiru (Saisei no Uta).mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -735,8 +735,6 @@
 				5EDF51451CF445AF003CE1AA /* InformedView.m */,
 				5ECF206C1CFB2FD30089E152 /* EmissionLayer.h */,
 				5ECF206D1CFB2FD30089E152 /* EmissionLayer.m */,
-				5E6B193B1CFD8E5500788F8A /* NSArray+KVC.h */,
-				5E6B193C1CFD8E5500788F8A /* NSArray+KVC.m */,
 			);
 			path = GameComponents;
 			sourceTree = "<group>";
@@ -1743,6 +1741,8 @@
 			isa = PBXGroup;
 			children = (
 				5EFB33101D0004F2002FACE0 /* _Categories.h */,
+				5EFB33261D001680002FACE0 /* NSArray+KeyValueHelper.h */,
+				5EFB33271D001680002FACE0 /* NSArray+KeyValueHelper.m */,
 				5EFB33231D000581002FACE0 /* CALayer+KeyValueHelper.h */,
 				5EFB33241D000581002FACE0 /* CALayer+KeyValueHelper.m */,
 				5EFB33111D0004F2002FACE0 /* NSArray+Additions.h */,
@@ -1911,6 +1911,7 @@
 				4E4D4E9A181D5AFB00886D75 /* AppDelegate.m in Sources */,
 				4E14BC5719225AF7000CDB57 /* PullState.m in Sources */,
 				4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */,
+				5EFB33281D001680002FACE0 /* NSArray+KeyValueHelper.m in Sources */,
 				5E4C9BA11A87B9F900B500C1 /* LayerHelper.m in Sources */,
 				5E4C9B7B1A87B9F900B500C1 /* FileManager.m in Sources */,
 				5E4C9BA61A87B9F900B500C1 /* KeyValueHelper.m in Sources */,
@@ -2011,7 +2012,6 @@
 				5EFB331E1D0004F2002FACE0 /* NSDate+Additions.m in Sources */,
 				4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */,
 				4ED52C7E191E5DC4002ADA73 /* SwipeEvent.m in Sources */,
-				5E6B193D1CFD8E5500788F8A /* NSArray+KVC.m in Sources */,
 				5E5412E51B4BD42E003D47B2 /* LineScrollViewCell.m in Sources */,
 				5E4C9BB71A87B9F900B500C1 /* QueuePositionsHelper.m in Sources */,
 				5ECF206E1CFB2FD30089E152 /* EmissionLayer.m in Sources */,

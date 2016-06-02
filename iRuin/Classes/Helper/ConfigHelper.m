@@ -160,7 +160,10 @@ int musicIndex = 0;
     return DATA.config[@"SYMBOLS_PORPERTIES"];
 }
 
-+(void) initializeViewsWithConfig:(NSDictionary*)config onObject:(id)onObject
+
+// now , below method is merge into GameEffect.m's "designateValuesActionsTo:config" method
+/*
++(void) initializeViewsWithConfig:(NSDictionary*)config onObject:(id)object
 {
     [ConfigHelper iterateConfig:config handler:^(NSString *key, id value) {
         // it has handled by following code to new an object
@@ -171,27 +174,28 @@ int musicIndex = 0;
         if ([value isKindOfClass:[NSDictionary class]]) {
             // have "~class" , means should new a object
             NSString* clazz = value[@"~class"];
-            id nextObject = [onObject valueForKey:key];
+            id nextObject = [object valueForKey:key];
             if (clazz) {
                 nextObject = [[NSClassFromString(clazz) alloc] init];
             }
             // then do the set value action
             [ConfigHelper initializeViewsWithConfig:value onObject:nextObject];
             
-            if ([onObject isKindOfClass:[NSMutableArray class]]) {
-                [onObject addObject: nextObject];
-            } else {
-                // not use [[EffectHelper getInstance] setValue:newObj forKeyPath:key onObject:onObject];
-                // cause no need to tranlate value
-                if (clazz) {
-                    [onObject setValue:nextObject forKey:key];
+            if (clazz) {
+                if ([object isKindOfClass:[NSMutableArray class]]) {
+                    [object addObject: nextObject];
+                } else {
+                    // not use [[EffectHelper getInstance] setValue:newObj forKeyPath:key onObject:onObject];
+                    // cause no need to tranlate value
+                    [object setValue:nextObject forKey:key];
                 }
             }
         } else {
-            [[EffectHelper getInstance] setValue:value forKeyPath:key onObject:onObject];
+            [[EffectHelper getInstance] setValue:value forKeyPath:key onObject:object];
         }
     }];
 }
+ */
 
 #pragma mark - Network Request
 

@@ -39,9 +39,28 @@
         if ([key isEqualToString:kFrame]) return ;
         if ([key isEqualToString:kExecutors]) return;
         if ([key isEqualToString:kTextFormat]) return;
+        if ([key isEqualToString: @"~class"]) return;
         
         if ([value isKindOfClass:[NSDictionary class]]) {
-            [self designateValuesActionsTo: [object valueForKeyPath: key] config:value];
+            // have "~class" , means should new a object
+            NSString* clazz = value[@"~class"];
+            id nextObject = [object valueForKeyPath: key];
+            if (clazz) {
+                nextObject = [[NSClassFromString(clazz) alloc] init];
+            }
+            
+            [self designateValuesActionsTo: nextObject config:value];
+            
+            
+            if (clazz) {
+                if ([object isKindOfClass:[NSMutableArray class]]) {
+                    [object addObject: nextObject];
+                } else {
+                    // not use [[EffectHelper getInstance] setValue:newObj forKeyPath:key onObject:onObject];
+                    // cause no need to tranlate value
+                    [object setValue:nextObject forKey:key];
+                }
+            }
         } else {
             [[EffectHelper getInstance] setValue:value forKeyPath:key onObject:object];
         }

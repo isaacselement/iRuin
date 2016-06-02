@@ -107,8 +107,7 @@ static ActionManager* sharedInstance = nil;
     // first, set up design/canvas size
     [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.config[@"DESIGN"]]];
     
-    [ConfigHelper initializeViewsWithConfig:DATA.config[@"GAME_ENTER_INIT"] onObject:VIEW.controller];
-    
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_ENTER_INIT"]];
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_ENTER"]];
     [self createOrUpdateSymbolsWithFramesMatrix];
 }

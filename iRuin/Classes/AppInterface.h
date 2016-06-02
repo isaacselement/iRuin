@@ -55,8 +55,7 @@
 
 #pragma mark - Helper
 
-#import "_NSCategories.h"
-#import "NSObject+KeyValueHelper.h"
+#import "_Categories.h"
 
 #import "_ViewHelper.h"
 

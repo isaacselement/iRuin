@@ -8,6 +8,6 @@
 
 @property (strong) GameView* gameView;
 @property (strong) ChaptersView* chaptersView;
-@property (strong) EmissionLayer* emissionLayer;
+//@property (strong) EmissionLayer* emissionLayer;
 
 @end

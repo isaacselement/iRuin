@@ -31,8 +31,6 @@
 
 +(NSDictionary*) getSymbolsPorperties;
 
-+(void) initializeViewsWithConfig:(NSDictionary*)config onObject:(id)onObject;
-
 #pragma mark - Network Request
 
 +(void) requestDowloadRemoteResources;

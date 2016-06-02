@@ -110,11 +110,6 @@
 		5E4C9B931A87B9F900B500C1 /* CollectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AAF1A87B9F900B500C1 /* CollectionHelper.m */; };
 		5E4C9B941A87B9F900B500C1 /* DictionaryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AB11A87B9F900B500C1 /* DictionaryHelper.m */; };
 		5E4C9B951A87B9F900B500C1 /* IterateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AB31A87B9F900B500C1 /* IterateHelper.m */; };
-		5E4C9B981A87B9F900B500C1 /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ABF1A87B9F900B500C1 /* NSArray+Additions.m */; };
-		5E4C9B991A87B9F900B500C1 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AC11A87B9F900B500C1 /* NSDate+Additions.m */; };
-		5E4C9B9A1A87B9F900B500C1 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AC31A87B9F900B500C1 /* NSMutableArray+Additions.m */; };
-		5E4C9B9B1A87B9F900B500C1 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AC51A87B9F900B500C1 /* NSString+Additions.m */; };
-		5E4C9B9C1A87B9F900B500C1 /* NSTimer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AC71A87B9F900B500C1 /* NSTimer+Additions.m */; };
 		5E4C9B9D1A87B9F900B500C1 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ACB1A87B9F900B500C1 /* UIImage+Additions.m */; };
 		5E4C9B9E1A87B9F900B500C1 /* ColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ACF1A87B9F900B500C1 /* ColorHelper.m */; };
 		5E4C9B9F1A87B9F900B500C1 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AD11A87B9F900B500C1 /* ImageHelper.m */; };
@@ -206,7 +201,13 @@
 		5ECF206E1CFB2FD30089E152 /* EmissionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF206D1CFB2FD30089E152 /* EmissionLayer.m */; };
 		5EDF51461CF445AF003CE1AA /* InformedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF51451CF445AF003CE1AA /* InformedView.m */; };
 		5EDF514C1CF451B3003CE1AA /* CALayer+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF514B1CF451B3003CE1AA /* CALayer+Frame.m */; };
-		5EF816871CD60A350091A0CC /* NSObject+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF816861CD60A350091A0CC /* NSObject+KeyValueHelper.m */; };
+		5EFB331D1D0004F2002FACE0 /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB33121D0004F2002FACE0 /* NSArray+Additions.m */; };
+		5EFB331E1D0004F2002FACE0 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB33141D0004F2002FACE0 /* NSDate+Additions.m */; };
+		5EFB331F1D0004F2002FACE0 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB33161D0004F2002FACE0 /* NSMutableArray+Additions.m */; };
+		5EFB33201D0004F2002FACE0 /* NSObject+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB33181D0004F2002FACE0 /* NSObject+KeyValueHelper.m */; };
+		5EFB33211D0004F2002FACE0 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB331A1D0004F2002FACE0 /* NSString+Additions.m */; };
+		5EFB33221D0004F2002FACE0 /* NSTimer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB331C1D0004F2002FACE0 /* NSTimer+Additions.m */; };
+		5EFB33251D000581002FACE0 /* CALayer+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB33241D000581002FACE0 /* CALayer+KeyValueHelper.m */; };
 		5EFCEA8E1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */; };
 /* End PBXBuildFile section */
 
@@ -467,17 +468,6 @@
 		5E4C9AB91A87B9F900B500C1 /* _DeviceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DeviceHelper.h; sourceTree = "<group>"; };
 		5E4C9ABA1A87B9F900B500C1 /* DeviceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceHelper.h; sourceTree = "<group>"; };
 		5E4C9ABB1A87B9F900B500C1 /* DeviceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceHelper.m; sourceTree = "<group>"; };
-		5E4C9ABD1A87B9F900B500C1 /* _NSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _NSCategories.h; sourceTree = "<group>"; };
-		5E4C9ABE1A87B9F900B500C1 /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
-		5E4C9ABF1A87B9F900B500C1 /* NSArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Additions.m"; sourceTree = "<group>"; };
-		5E4C9AC01A87B9F900B500C1 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
-		5E4C9AC11A87B9F900B500C1 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
-		5E4C9AC21A87B9F900B500C1 /* NSMutableArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Additions.h"; sourceTree = "<group>"; };
-		5E4C9AC31A87B9F900B500C1 /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
-		5E4C9AC41A87B9F900B500C1 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
-		5E4C9AC51A87B9F900B500C1 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
-		5E4C9AC61A87B9F900B500C1 /* NSTimer+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Additions.h"; sourceTree = "<group>"; };
-		5E4C9AC71A87B9F900B500C1 /* NSTimer+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Additions.m"; sourceTree = "<group>"; };
 		5E4C9AC91A87B9F900B500C1 /* _UICategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _UICategories.h; sourceTree = "<group>"; };
 		5E4C9ACA1A87B9F900B500C1 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
 		5E4C9ACB1A87B9F900B500C1 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
@@ -665,8 +655,21 @@
 		5EDF51451CF445AF003CE1AA /* InformedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformedView.m; sourceTree = "<group>"; };
 		5EDF514A1CF451B3003CE1AA /* CALayer+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Frame.h"; sourceTree = "<group>"; };
 		5EDF514B1CF451B3003CE1AA /* CALayer+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Frame.m"; sourceTree = "<group>"; };
-		5EF816851CD60A350091A0CC /* NSObject+KeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KeyValueHelper.h"; sourceTree = "<group>"; };
-		5EF816861CD60A350091A0CC /* NSObject+KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KeyValueHelper.m"; sourceTree = "<group>"; };
+		5EFB33101D0004F2002FACE0 /* _Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Categories.h; sourceTree = "<group>"; };
+		5EFB33111D0004F2002FACE0 /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
+		5EFB33121D0004F2002FACE0 /* NSArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Additions.m"; sourceTree = "<group>"; };
+		5EFB33131D0004F2002FACE0 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
+		5EFB33141D0004F2002FACE0 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
+		5EFB33151D0004F2002FACE0 /* NSMutableArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Additions.h"; sourceTree = "<group>"; };
+		5EFB33161D0004F2002FACE0 /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
+		5EFB33171D0004F2002FACE0 /* NSObject+KeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KeyValueHelper.h"; sourceTree = "<group>"; };
+		5EFB33181D0004F2002FACE0 /* NSObject+KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KeyValueHelper.m"; sourceTree = "<group>"; };
+		5EFB33191D0004F2002FACE0 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		5EFB331A1D0004F2002FACE0 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		5EFB331B1D0004F2002FACE0 /* NSTimer+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Additions.h"; sourceTree = "<group>"; };
+		5EFB331C1D0004F2002FACE0 /* NSTimer+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Additions.m"; sourceTree = "<group>"; };
+		5EFB33231D000581002FACE0 /* CALayer+KeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+KeyValueHelper.h"; sourceTree = "<group>"; };
+		5EFB33241D000581002FACE0 /* CALayer+KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+KeyValueHelper.m"; sourceTree = "<group>"; };
 		5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Robert de Boron - Chiru (Saisei no Uta).mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1287,11 +1290,11 @@
 		5E4C9AA01A87B9F900B500C1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				5EFB330F1D0004F2002FACE0 /* Categories */,
 				5E4C9AA21A87B9F900B500C1 /* Character */,
 				5E4C9AA81A87B9F900B500C1 /* Collection */,
 				5E4C9AB41A87B9F900B500C1 /* Date */,
 				5E4C9AB81A87B9F900B500C1 /* Device */,
-				5E4C9ABC1A87B9F900B500C1 /* NSCategories */,
 				5E4C9AC81A87B9F900B500C1 /* UICategories */,
 				5E4C9ACC1A87B9F900B500C1 /* View */,
 			);
@@ -1346,26 +1349,6 @@
 				5E4C9ABB1A87B9F900B500C1 /* DeviceHelper.m */,
 			);
 			path = Device;
-			sourceTree = "<group>";
-		};
-		5E4C9ABC1A87B9F900B500C1 /* NSCategories */ = {
-			isa = PBXGroup;
-			children = (
-				5E4C9ABD1A87B9F900B500C1 /* _NSCategories.h */,
-				5E4C9ABE1A87B9F900B500C1 /* NSArray+Additions.h */,
-				5E4C9ABF1A87B9F900B500C1 /* NSArray+Additions.m */,
-				5E4C9AC01A87B9F900B500C1 /* NSDate+Additions.h */,
-				5E4C9AC11A87B9F900B500C1 /* NSDate+Additions.m */,
-				5E4C9AC21A87B9F900B500C1 /* NSMutableArray+Additions.h */,
-				5E4C9AC31A87B9F900B500C1 /* NSMutableArray+Additions.m */,
-				5E4C9AC41A87B9F900B500C1 /* NSString+Additions.h */,
-				5E4C9AC51A87B9F900B500C1 /* NSString+Additions.m */,
-				5E4C9AC61A87B9F900B500C1 /* NSTimer+Additions.h */,
-				5E4C9AC71A87B9F900B500C1 /* NSTimer+Additions.m */,
-				5EF816851CD60A350091A0CC /* NSObject+KeyValueHelper.h */,
-				5EF816861CD60A350091A0CC /* NSObject+KeyValueHelper.m */,
-			);
-			path = NSCategories;
 			sourceTree = "<group>";
 		};
 		5E4C9AC81A87B9F900B500C1 /* UICategories */ = {
@@ -1756,6 +1739,28 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		5EFB330F1D0004F2002FACE0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5EFB33101D0004F2002FACE0 /* _Categories.h */,
+				5EFB33231D000581002FACE0 /* CALayer+KeyValueHelper.h */,
+				5EFB33241D000581002FACE0 /* CALayer+KeyValueHelper.m */,
+				5EFB33111D0004F2002FACE0 /* NSArray+Additions.h */,
+				5EFB33121D0004F2002FACE0 /* NSArray+Additions.m */,
+				5EFB33131D0004F2002FACE0 /* NSDate+Additions.h */,
+				5EFB33141D0004F2002FACE0 /* NSDate+Additions.m */,
+				5EFB33151D0004F2002FACE0 /* NSMutableArray+Additions.h */,
+				5EFB33161D0004F2002FACE0 /* NSMutableArray+Additions.m */,
+				5EFB33171D0004F2002FACE0 /* NSObject+KeyValueHelper.h */,
+				5EFB33181D0004F2002FACE0 /* NSObject+KeyValueHelper.m */,
+				5EFB33191D0004F2002FACE0 /* NSString+Additions.h */,
+				5EFB331A1D0004F2002FACE0 /* NSString+Additions.m */,
+				5EFB331B1D0004F2002FACE0 /* NSTimer+Additions.h */,
+				5EFB331C1D0004F2002FACE0 /* NSTimer+Additions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		5EFCEA8F1CF85E9400EF5DF9 /* Effect */ = {
 			isa = PBXGroup;
 			children = (
@@ -1893,6 +1898,7 @@
 			files = (
 				5E01BB7E1CC5DB320070AF79 /* ioapi.c in Sources */,
 				5E01BB7F1CC5DB320070AF79 /* mztools.c in Sources */,
+				5EFB33221D0004F2002FACE0 /* NSTimer+Additions.m in Sources */,
 				5E01BB801CC5DB320070AF79 /* unzip.c in Sources */,
 				5E01BB811CC5DB320070AF79 /* zip.c in Sources */,
 				5E01BB7D1CC5DB0B0070AF79 /* SSZipArchive.m in Sources */,
@@ -1911,12 +1917,10 @@
 				5E4C9B931A87B9F900B500C1 /* CollectionHelper.m in Sources */,
 				5E4C9B7E1A87B9F900B500C1 /* HTTPGetRequest.m in Sources */,
 				5EC8B2B31C8D2C7D00B736B4 /* IRuinApplication.m in Sources */,
-				5EF816871CD60A350091A0CC /* NSObject+KeyValueHelper.m in Sources */,
 				4E11D8DE181FE4F6007837F0 /* GameView.m in Sources */,
 				5EBDCC1C1A38102F0002636F /* ScheduledHelper.m in Sources */,
 				4EDACDC5191FB1C200A8E84E /* ChainableEffect.m in Sources */,
 				4ED3BE5F18E7043A00621666 /* PositionsHelper.m in Sources */,
-				5E4C9B9C1A87B9F900B500C1 /* NSTimer+Additions.m in Sources */,
 				4EDACDC8191FB88C00A8E84E /* StateHelper.m in Sources */,
 				5E4C9BBC1A87B9F900B500C1 /* NormalButton.m in Sources */,
 				5E4C9B661A87B9F900B500C1 /* NSString+Base64.m in Sources */,
@@ -1925,10 +1929,10 @@
 				4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */,
 				5E4C9BB31A87B9F900B500C1 /* PositionsExecutor.m in Sources */,
 				4E0BFC5119260B9100F0E632 /* MoveState.m in Sources */,
+				5EFB331F1D0004F2002FACE0 /* NSMutableArray+Additions.m in Sources */,
 				5E4C9BB21A87B9F900B500C1 /* InvocationExecutor.m in Sources */,
 				4EA4DD3A181EAFAE00BC1E6E /* GameController.m in Sources */,
 				5E4C9B5F1A87B9F900B500C1 /* TaskObjectList.c in Sources */,
-				5E4C9B9B1A87B9F900B500C1 /* NSString+Additions.m in Sources */,
 				5E4C9B941A87B9F900B500C1 /* DictionaryHelper.m in Sources */,
 				4E4D4EC6181D5B9C00886D75 /* ViewManager.m in Sources */,
 				5E4C9B7C1A87B9F900B500C1 /* JsonFileManager.m in Sources */,
@@ -1943,7 +1947,6 @@
 				5E42A89F1CEC2FB9003F9898 /* ConfigValueHandler.m in Sources */,
 				5E4C9B7F1A87B9F900B500C1 /* HTTPPostRequest.m in Sources */,
 				5E4C9B9F1A87B9F900B500C1 /* ImageHelper.m in Sources */,
-				5E4C9B9A1A87B9F900B500C1 /* NSMutableArray+Additions.m in Sources */,
 				5E4C9BB41A87B9F900B500C1 /* QueueExecutorBase.m in Sources */,
 				5E4C9BBF1A87B9F900B500C1 /* NormalLabel.m in Sources */,
 				4E4D4EC0181D5B8400886D75 /* ActionManager.m in Sources */,
@@ -1955,18 +1958,19 @@
 				4E4D4E96181D5AFB00886D75 /* main.m in Sources */,
 				5E4C9BB61A87B9F900B500C1 /* QueueIndexPathParser.m in Sources */,
 				4E71D40818BF80D200270180 /* RouteEvent.m in Sources */,
+				5EFB33201D0004F2002FACE0 /* NSObject+KeyValueHelper.m in Sources */,
 				5E4C9BBE1A87B9F900B500C1 /* GradientLabel.m in Sources */,
 				5E4C9BB51A87B9F900B500C1 /* EaseFunction.m in Sources */,
 				4E8067C518C3678B00AF71B5 /* RouteEffect.m in Sources */,
 				4E14BC5419225AA0000CDB57 /* PullEvent.m in Sources */,
 				5EDF51461CF445AF003CE1AA /* InformedView.m in Sources */,
 				4ED237761A0E131B002B9C9D /* ImageLabelLineScrollCell.m in Sources */,
+				5EFB33251D000581002FACE0 /* CALayer+KeyValueHelper.m in Sources */,
 				4E37286E1A023AEB00FA4E8C /* GameEffect.m in Sources */,
 				4EDACDBF191FB18300A8E84E /* ChainableEvent.m in Sources */,
 				5E4C9B801A87B9F900B500C1 /* HTTPRequestBase.m in Sources */,
 				5E4C9BBD1A87B9F900B500C1 /* FontHelper.m in Sources */,
 				5E4C9BBB1A87B9F900B500C1 /* UIColor+FlatColors.m in Sources */,
-				5E4C9B991A87B9F900B500C1 /* NSDate+Additions.m in Sources */,
 				5E4C9BC11A87B9F900B500C1 /* StrokeLabel.m in Sources */,
 				5E4C9B601A87B9F900B500C1 /* BytesHelper.m in Sources */,
 				4EEE51A31A0BB166002CD333 /* TimerView.m in Sources */,
@@ -1986,11 +1990,11 @@
 				5E4C9BD31A87B9F900B500C1 /* FrameTranslater.m in Sources */,
 				5E4C9BAC1A87B9F900B500C1 /* ImageAnimator.m in Sources */,
 				4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */,
+				5EFB331D1D0004F2002FACE0 /* NSArray+Additions.m in Sources */,
 				5E4C9B811A87B9F900B500C1 /* HTTPUploader.m in Sources */,
 				5E4C9BC01A87B9F900B500C1 /* NumberLabel.m in Sources */,
 				5E4C9BC21A87B9F900B500C1 /* UILabel+Additions.m in Sources */,
 				4EEFD9B21A0F5856006A76C8 /* FBShimmeringLayer.m in Sources */,
-				5E4C9B981A87B9F900B500C1 /* NSArray+Additions.m in Sources */,
 				5E4228671A8B69D700FE5B7D /* ConfigHelper.m in Sources */,
 				5E4C9BBA1A87B9F900B500C1 /* QueueViewsHelper.m in Sources */,
 				5E4C9BAF1A87B9F900B500C1 /* AudiosExecutor.m in Sources */,
@@ -2004,6 +2008,7 @@
 				5E1919111B6C7297002F0A3D /* Reachability.m in Sources */,
 				5E4C9B911A87B9F900B500C1 /* ArrayHelper.m in Sources */,
 				5E4C9BD21A87B9F900B500C1 /* FrameHelper.m in Sources */,
+				5EFB331E1D0004F2002FACE0 /* NSDate+Additions.m in Sources */,
 				4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */,
 				4ED52C7E191E5DC4002ADA73 /* SwipeEvent.m in Sources */,
 				5E6B193D1CFD8E5500788F8A /* NSArray+KVC.m in Sources */,
@@ -2015,6 +2020,7 @@
 				5E08685B1CB9528E00C2192F /* AppUserDefaults.m in Sources */,
 				5E4C9B951A87B9F900B500C1 /* IterateHelper.m in Sources */,
 				4ED52C84191E623A002ADA73 /* SwipeEffect.m in Sources */,
+				5EFB33211D0004F2002FACE0 /* NSString+Additions.m in Sources */,
 				4E2CCAD319FBF98B00D2AAEC /* GameBaseView.m in Sources */,
 				5E4C9B9E1A87B9F900B500C1 /* ColorHelper.m in Sources */,
 				5E4C9BAE1A87B9F900B500C1 /* TextFormatter.m in Sources */,

@@ -5,14 +5,14 @@
 
 @synthesize gameView;
 @synthesize chaptersView;
-@synthesize emissionLayer;
+//@synthesize emissionLayer;
 
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName: nil bundle:nibBundleOrNil];
     if (self) {
-        emissionLayer = [EmissionLayer layer];
+//        emissionLayer = [EmissionLayer layer];
         chaptersView = [[ChaptersView alloc] init];
         gameView = [[GameView alloc] init];
     }
@@ -27,7 +27,7 @@
     self.view = [[GameBaseView alloc] initWithFrame:self.view.bounds];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.view.layer addSublayer: emissionLayer];
+//    [self.view.layer addSublayer: emissionLayer];
     [self.view addSubview: chaptersView];
     [self.view addSubview: gameView];
     

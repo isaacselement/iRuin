@@ -46,7 +46,6 @@
     
     [ACTION switchToMode: ACTION.gameState.currentMode chapter:ACTION.gameState.currentChapter];
     
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START_INIT"]];
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];
     
     [ACTION.currentEffect effectStartRollIn];
@@ -86,7 +85,6 @@
     
     [ACTION.currentEffect effectStartRollOut];
     
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK_INIT"]];
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];
     
     [[EffectHelper getInstance] executeChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Back"]];

@@ -208,7 +208,6 @@
 		5EFB33221D0004F2002FACE0 /* NSTimer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB331C1D0004F2002FACE0 /* NSTimer+Additions.m */; };
 		5EFB33251D000581002FACE0 /* CALayer+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB33241D000581002FACE0 /* CALayer+KeyValueHelper.m */; };
 		5EFB33281D001680002FACE0 /* NSArray+KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB33271D001680002FACE0 /* NSArray+KeyValueHelper.m */; };
-		5EFB332B1D00229F002FACE0 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFB33291D00229F002FACE0 /* circle.png */; };
 		5EFB332C1D00229F002FACE0 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EFB332A1D00229F002FACE0 /* spark.png */; };
 		5EFCEA8E1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */; };
 /* End PBXBuildFile section */
@@ -672,7 +671,6 @@
 		5EFB33241D000581002FACE0 /* CALayer+KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+KeyValueHelper.m"; sourceTree = "<group>"; };
 		5EFB33261D001680002FACE0 /* NSArray+KeyValueHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+KeyValueHelper.h"; sourceTree = "<group>"; };
 		5EFB33271D001680002FACE0 /* NSArray+KeyValueHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KeyValueHelper.m"; sourceTree = "<group>"; };
-		5EFB33291D00229F002FACE0 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		5EFB332A1D00229F002FACE0 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		5EFCEA8D1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Robert de Boron - Chiru (Saisei no Uta).mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1768,7 +1766,6 @@
 		5EFCEA8F1CF85E9400EF5DF9 /* Effect */ = {
 			isa = PBXGroup;
 			children = (
-				5EFB33291D00229F002FACE0 /* circle.png */,
 				5EFB332A1D00229F002FACE0 /* spark.png */,
 				5ECF20681CFB2F750089E152 /* fire.png */,
 				5ECF20691CFB2F750089E152 /* mask_01.png */,
@@ -1834,7 +1831,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EFB332B1D00229F002FACE0 /* circle.png in Resources */,
 				5E6B16321A39D22B0087EA1D /* Bubble_1.wav in Resources */,
 				5ECF206B1CFB2F750089E152 /* mask_01.png in Resources */,
 				5EC11AE61CF2F62E00D3708B /* Valentin - A Little Story.mp3 in Resources */,

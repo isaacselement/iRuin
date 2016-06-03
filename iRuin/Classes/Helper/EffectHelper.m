@@ -221,7 +221,7 @@
 //    
 //   return;
 
-    NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
+    NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
     
     // touch and route not two dimension
     int multiple = [ArrayHelper isTwoDimension: symbols] ? (int)symbols.count : (int)vanishViews.count - MATCH_COUNT;
@@ -234,7 +234,7 @@
 
 -(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous
 {
-    NSMutableArray* vanishViews = [ArrayHelper eliminateDuplicates: [ArrayHelper translateToOneDimension: symbols]];
+    NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
     
     [self caculateTheScore: vanishViews multiple:continuous];
     NSString* iKey = [NSString stringWithFormat:@"%d", continuous];

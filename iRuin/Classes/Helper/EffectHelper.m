@@ -219,9 +219,7 @@
 
 -(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous
 {
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"ChainVanishingEffect"] completion:^{
-//        [effectImageView removeFromSuperview];
-    }];
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"ChainVanishingEffect"]];
     
 }
 

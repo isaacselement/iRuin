@@ -6,10 +6,11 @@
 #define kSuffixIgnore @"_"
 
 // in GameEffect.m
+#define kReservedText @"~Text"
 #define kReservedClass @"~Class"
 #define kReservedFrame @"~Frame"
 #define kReservedExecutors @"~Executors"
-#define kReservedTextFormat @"~TextFormat"
+#define kReservedExecutorsDone @"~ExecutorsDone"
 
 // in ConfigHelper.m
 #define kReservedLoop @"~loop"

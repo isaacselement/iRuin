@@ -5,16 +5,15 @@
 {
     SymbolView* touchingSymbol; // firstSymbol;
     
-    
     NSDate* startTime;
     CGPoint startPoint;
     BOOL isHaveCheckSwipe;
-    
     
     SymbolView* secondSymbol;
 }
 
 #pragma mark - Override Methods
+
 - (void)stateTouchesBegan:(SymbolView*)symbol location:(CGPoint)location
 {
     [super stateTouchesBegan:symbol location:location];
@@ -30,8 +29,8 @@
     } else {
         secondSymbol = symbol;
     }
-    
 }
+
 - (void)stateTouchesMoved:(SymbolView*)symbol location:(CGPoint)location
 {
     [super stateTouchesMoved:symbol location:location];
@@ -40,6 +39,7 @@
         [self checkIsSwipeThenSwipe: location];
     }
 }
+
 - (void)stateTouchesEnded:(SymbolView*)symbol location:(CGPoint)location
 {
     [super stateTouchesEnded:symbol location:location];
@@ -66,22 +66,18 @@
                 
                 
             }
-            
-            
         }
         
         [self restoreExistingState];
     }
 }
+
 - (void)stateTouchesCancelled:(SymbolView*)symbol location:(CGPoint)location
 {
     [super stateTouchesCancelled:symbol location:location];
     
     [self restoreExistingState];
 }
-
-
-
 
 #pragma mark - 
 
@@ -91,8 +87,6 @@
     touchingSymbol = nil;
     secondSymbol = nil;
 }
-
-
 
 
 #define swap_swipe_minispeed (200.0)
@@ -118,12 +112,6 @@
     }
 }
 
-
-
-
-
-
-
 -(void) swipe: (SymbolView*)symbol with:(SymbolView*)withSymbol
 {
     if (! symbol || ! withSymbol) return;
@@ -142,9 +130,10 @@
     
     [timeCalculator clear];
     [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Swipe_First_ActionExecutors"] onObjects:@[symbol] values:symbolPositions baseTimes:nil];
-    swapEffectDuration += [timeCalculator takeThenClear];
+    swapEffectDuration += [timeCalculator take];
+    [timeCalculator clear];
     [VIEW.actionExecutorManager runActionExecutors:DATA.config[@"Swipe_Second_ActionExecutors"] onObjects:@[withSymbol] values:withSymbolPositions baseTimes:nil];
-    swapEffectDuration += [timeCalculator takeThenClear];
+    swapEffectDuration += [timeCalculator take];
     
     // update the row and column attribute , and the position in viewsInVisualArea
     [PositionsHelper updateRowsColumnsInVisualArea: @[symbol, withSymbol]];
@@ -155,10 +144,6 @@
     
 }
 
-
-
-
-
 #pragma mark - Private Methods
 
 -(void) startVanishProcedure
@@ -167,9 +152,5 @@
     NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
     [self.effect effectStartVanish: vanishSymbols];
 }
-
-
-
-
 
 @end

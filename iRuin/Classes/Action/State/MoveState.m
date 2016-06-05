@@ -78,7 +78,7 @@
     QueueTimeCalculator* timeCalculator = VIEW.actionDurations;
     [timeCalculator clear];
     [self adjustSymbolPosition: touchingSymbol config:DATA.config[@"TouchingSymbol_ActionExecutors"]];
-    double effectDuration = [timeCalculator takeThenClear];
+    double effectDuration = [timeCalculator take];
     
     // start vanish ~~~~~
     [self performSelector:@selector(startVanishProcedure) withObject:nil afterDelay:effectDuration];

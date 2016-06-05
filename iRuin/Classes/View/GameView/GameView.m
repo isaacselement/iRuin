@@ -5,7 +5,7 @@
 @implementation GameView
 
 @synthesize timerView;
-@synthesize scoreLabel;
+@synthesize vanishAmountLabel;
 
 @synthesize seasonLabel;
 @synthesize seasonLabelShimmerView;
@@ -32,8 +32,8 @@
         };
         
         // score label
-        scoreLabel = [[ScoreLabel alloc] init];
-        [self addSubview: scoreLabel];
+        vanishAmountLabel = [[IRNumberLabel alloc] init];
+        [self addSubview: vanishAmountLabel];
         
         // season label
         seasonLabel = [[GradientLabel alloc] init];

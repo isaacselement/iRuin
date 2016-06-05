@@ -174,7 +174,7 @@
 
 #import "TimerView.h"
 
-#import "ScoreLabel.h"
+#import "IRNumberLabel.h"
 
 
 #import "SymbolView.h"

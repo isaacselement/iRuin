@@ -1,7 +1,7 @@
 #import "GameBaseView.h"
 
 @class TimerView;
-@class ScoreLabel;
+@class IRNumberLabel;
 @class NormalButton;
 @class GradientLabel;
 @class ContainerView;
@@ -10,7 +10,7 @@
 @interface GameView : GameBaseView
 
 @property (strong) TimerView* timerView;
-@property (strong) ScoreLabel* scoreLabel;
+@property (strong) IRNumberLabel* vanishAmountLabel;
 
 @property (strong) GradientLabel* seasonLabel;
 @property (strong) FBShimmeringView* seasonLabelShimmerView;

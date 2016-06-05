@@ -104,6 +104,7 @@
 {
     // two dimension or one dimension, nil return
     if (!symbols) return;
+    [event eventSymbolsWillVanish: symbols];
     
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
     NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
@@ -126,7 +127,6 @@
     [VIEW.actionDurations clear];
     [self startSymbolsVanish: symbols];
     double vanishDuration = [VIEW.actionDurations take];
-    [event eventSymbolsWillVanish: symbols];
     [event performSelector: @selector(eventSymbolsDidVanish:) withObject:symbols afterDelay:vanishDuration];
     
     // adjust , fill or squeeze
@@ -170,15 +170,11 @@
     }
 }
 
-
-
-
-
 #pragma mark - Private Methods
 
--(void) startSymbolsVanish: (NSArray*)views
+-(void) startSymbolsVanish: (NSArray*)symbols
 {
-    [VIEW.actionExecutorManager runActionExecutors:actionsConfigs[Vanish] onObjects:views values:nil baseTimes:nil];
+    [VIEW.actionExecutorManager runActionExecutors:actionsConfigs[Vanish] onObjects:symbols values:nil baseTimes:nil];
 }
 
 -(void) startSymbolsRollIn
@@ -235,7 +231,5 @@
     [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:baseTimes];
     [PositionsHelper updateViewsRowsColumnsInVisualArea: views];
 }
-
-
 
 @end

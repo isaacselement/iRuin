@@ -14,6 +14,6 @@
 @property (assign) BOOL isClearanced;
 
 
-@property (assign) int vanishAmount;
+@property (assign, nonatomic) int vanishAmount;
 
 @end

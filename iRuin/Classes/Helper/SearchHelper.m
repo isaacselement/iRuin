@@ -85,11 +85,16 @@
         for (int j = 0; j < innerHorCount; j++) {
             SymbolView* symbol = horInnerViews[j];
             
-            
             for (int k = 0; k < verticallyViews.count; k++) {
                 NSMutableArray* verInnerView = verticallyViews[k];
                 if ([verInnerView containsObject: symbol]) {
                     
+                    // exchange the position with last index
+                    NSUInteger intersectionIndex = [horInnerViews indexOfObject:symbol];
+                    NSUInteger lastObjectIndex = [horInnerViews indexOfObject:[horInnerViews lastObject]];
+                    [horInnerViews exchangeObjectAtIndex:intersectionIndex withObjectAtIndex:lastObjectIndex];
+                    
+                    // merge into one line
                     [verInnerView removeObject: symbol];
                     [horInnerViews addObjectsFromArray: verInnerView];
                     [verticallyViews removeObject:verInnerView];
@@ -329,6 +334,7 @@
 
 
 #pragma mark - BASIC
+
 +(float) getDegreeBetween:(CGPoint)p1 to:(CGPoint)p2 {
     float dx = p2.x - p1.x;
     float dy = p2.y - p1.y;

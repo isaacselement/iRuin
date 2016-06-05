@@ -191,7 +191,7 @@
 }
 
 
-#pragma mark - 
+#pragma mark -
 
 -(void) executeChapterCellsEffect: (NSDictionary*)cellsConfigs
 {
@@ -205,93 +205,42 @@
 }
 
 
-#pragma mark - score
+#pragma mark -
 
 -(void) scoreWithEffect:(NSArray*)symbols
 {
-//    return;
-//    UIImage* effectImage = [KeyValueHelper getUIImageByPath:@"S1"];
-//    UIImageView* effectImageView = [[UIImageView alloc] initWithImage:effectImage];
-//    [VIEW.gameView addSubview: effectImageView];
-//    effectImageView.center = [VIEW.gameView middlePoint];
-//    
-//    [ACTION.gameEffect designateValuesActionsTo:effectImageView config:DATA.config[@"ScoreEffect"] completion:^{
-//        [effectImageView removeFromSuperview];
-//    }];
-//    
-//   return;
-
-    NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
-    
-    // touch and route not two dimension
-    int multiple = [ArrayHelper isTwoDimension: symbols] ? (int)symbols.count : (int)vanishViews.count - MATCH_COUNT;
-    multiple = multiple <= 0 ? 1 : multiple;
-    
-    [self caculateTheScore: vanishViews multiple:multiple];
-    NSString* iKey = [NSString stringWithFormat:@"%d", multiple];
-    [self showBonusHint: [ConfigHelper getUtilitiesConfig:@"VanishBonus"] key:iKey multipleTip:0];
+    for (NSArray* views in symbols) {
+        BOOL isInSameLine = [self isSameLineSymbols: views];
+        if (!isInSameLine) {
+            
+        }
+    }
 }
 
 -(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous
 {
-    NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
+    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"ChainVanishingEffect"] completion:^{
+//        [effectImageView removeFromSuperview];
+    }];
     
-    [self caculateTheScore: vanishViews multiple:continuous];
-    NSString* iKey = [NSString stringWithFormat:@"%d", continuous];
-    [self showBonusHint: [ConfigHelper getUtilitiesConfig:@"ChainBonus"] key:iKey multipleTip:continuous];
 }
 
--(void) caculateTheScore: (NSArray*)vanishViews multiple:(int)multiple
+// one dimension array
+-(BOOL) isSameLineSymbols:(NSArray*)views
 {
-    float totalScore = 0;
-    for (int i = 0; i < vanishViews.count; i++) {
-        SymbolView* symbol = vanishViews[i];
-        float score = symbol.score * multiple;
-        totalScore += score;
-    }
-    VIEW.gameView.scoreLabel.number += totalScore;
+    BOOL isInSameRowLine = YES;
+    BOOL isInSameColumnLine = YES;
     
-    // check if passed this season
-    if (VIEW.gameView.scoreLabel.number >= ACTION.gameState.clearanceScore) {
-        
-        MBProgressHUD* hud = nil;
-        if (!ACTION.gameState.isClearanced) {
-            hud = [self getPassedSeasonHint: 4];
+    SymbolView* baseSymbol = nil;
+    for (SymbolView* symbol in views) {
+        if (!baseSymbol) {
+            baseSymbol = symbol;
+        } else {
+            isInSameRowLine = isInSameRowLine && (baseSymbol.row == symbol.row);
+            isInSameColumnLine = isInSameColumnLine && (baseSymbol.column == symbol.column);
         }
-        [self showSeasonHud: hud title:@"Congratulations" scoreDelay:0 messageDelay:2];
-        
-        ACTION.gameState.isClearanced = YES;
-    } else {
-        ACTION.gameState.isClearanced = NO;
     }
-}
-
--(void) showBonusHint: (NSDictionary*)configs key:(NSString*)key multipleTip:(int)multiple
-{
-    NSDictionary* config = [ConfigHelper getNodeConfig:configs key:key];
-    
-    GradientLabel* bonusLabel = [[GradientLabel alloc] init];
-    
-    [VIEW.actionDurations clear];
-    [ACTION.gameEffect designateValuesActionsTo: bonusLabel config:config];
-    double totalDuration = [VIEW.actionDurations take];
-    
-    if ([bonusLabel.text isEqualToString:@""]) return;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(totalDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [bonusLabel.layer removeAllAnimations];
-        [bonusLabel removeFromSuperview];
-    });
-    
-    // center and add to view
-    if (multiple >= 1) {
-        NSString* appendFormat = config[@"~textMultiFormat"];
-        NSString* appendText = [NSString stringWithFormat:appendFormat, multiple];
-        bonusLabel.text = [bonusLabel.text stringByAppendingString: appendText];
-    }
-    [bonusLabel adjustWidthToFontText];
-    [VIEW.gameView addSubview: bonusLabel];
-    bonusLabel.center = [VIEW.gameView middlePoint];
+    return isInSameRowLine || isInSameColumnLine;
 }
 
 
@@ -329,7 +278,7 @@
     hud.labelText = title;
     
     NSString* message = nil;
-    if (VIEW.gameView.scoreLabel.number >= ACTION.gameState.clearanceScore) {
+    if (VIEW.gameView.vanishAmountLabel.number >= ACTION.gameState.clearanceScore) {
         if (ACTION.gameState.currentChapter != [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]) {
             message = [NSString stringWithFormat:@"Season %d already unlocked :)", ACTION.gameState.currentChapter + 1];
         } else {
@@ -344,7 +293,7 @@
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(scoreDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        hud.detailsLabelText = [NSString stringWithFormat:@"You got %.0f, clearance is %d", VIEW.gameView.scoreLabel.number, ACTION.gameState.clearanceScore];
+        hud.detailsLabelText = [NSString stringWithFormat:@"You got %.0f, clearance is %d", VIEW.gameView.vanishAmountLabel.number, ACTION.gameState.clearanceScore];
     });
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(messageDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

@@ -44,22 +44,25 @@
             id nextObject = [object valueForKeyPath: key];
             if (clazz) {
                 nextObject = [[NSClassFromString(clazz) alloc] init];
-            }
-            // ------ Handle the new object Begin ------
-            
-            
-            
-            [self designateValuesActionsTo: nextObject config:value];
-            
-            
-            
-            // ------ Handle the new object End ------
-            if (clazz) {
                 // add the object , or set the value that we will handle it in NSObject+KeyValueHelper/NSArray+KeyValueHelper/CALayer+KeyValueHelper
+                
                 if ([object isKindOfClass:[NSMutableArray class]]) {
                     [object addObject: nextObject];
                 } else {
                     // not use [[EffectHelper getInstance] setValue:newObj forKeyPath:key onObject:onObject], cause no need to tranlate value
+                    // also, you can set nil . nil will remove view / layer.
+                    [object setValue:nextObject forKey:key];
+                }
+            }
+            // ------ Handle the new object Begin ------
+            
+            [self designateValuesActionsTo: nextObject config:value];
+            
+            
+            // ------ Handle the new object End ------
+            // cause the CAEmitterLayer & CAEmitterCell class's property emitterCells is NSArray and use keyword copy!!
+            if (clazz ) {
+                if (/*[object isKindOfClass:[CAEmitterLayer class]] || [object isKindOfClass:[CAEmitterCell class]]*/[key isEqualToString:@"emitterCells"]) {
                     [object setValue:nextObject forKey:key];
                 }
             }

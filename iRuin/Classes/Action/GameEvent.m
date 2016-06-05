@@ -57,7 +57,7 @@
     [VIEW.gameView.timerView setTotalTime: VIEW.gameView.timerView.totalTime];
     
     ACTION.gameState.vanishAmount = 0;
-    VIEW.gameView.scoreLabel.number = 0;
+    VIEW.gameView.vanishAmountLabel.number = 0;
 }
 
 -(void) gameReStart
@@ -71,7 +71,7 @@
     [VIEW.gameView.timerView setTotalTime: VIEW.gameView.timerView.totalTime];
     
     ACTION.gameState.vanishAmount = 0;
-    VIEW.gameView.scoreLabel.number = 0;
+    VIEW.gameView.vanishAmountLabel.number = 0;
 }
 
 -(void) gameBack
@@ -81,7 +81,7 @@
     [DATA unsetModeChapterConfig];
     
     ACTION.gameState.vanishAmount = 0;
-    VIEW.gameView.scoreLabel.number = 0;
+    VIEW.gameView.vanishAmountLabel.number = 0;
     
     [ACTION.currentEffect effectStartRollOut];
     

@@ -2,8 +2,8 @@
 
 @interface SymbolView : UIView
 
-// identification cannot be 0
 @property(assign, nonatomic) float score;
+// identification cannot be 0
 @property(assign, nonatomic) int identification;
 
 @property(assign, nonatomic) int row;

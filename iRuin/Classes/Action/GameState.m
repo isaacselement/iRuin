@@ -12,4 +12,10 @@
     return self;
 }
 
+- (void)setVanishAmount:(int)vanishAmount
+{
+    _vanishAmount = vanishAmount;
+    VIEW.gameView.vanishAmountLabel.number = vanishAmount;
+}
+
 @end

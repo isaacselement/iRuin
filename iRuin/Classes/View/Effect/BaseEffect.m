@@ -99,8 +99,7 @@
     [event performSelector:@selector(eventSymbolsDidRollOut) withObject:nil afterDelay:totalDuration];
 }
 
-
--(void)effectStartVanish: (NSArray*)symbols
+-(void) effectStartVanish: (NSArray*)symbols
 {
     // two dimension or one dimension, nil return
     if (!symbols) return;
@@ -132,7 +131,6 @@
     // adjust , fill or squeeze
     [self effectStartAdjustFillSqueeze:vanishViews vanishDuration:vanishDuration];
 }
-
 
 -(void) effectStartAdjustFillSqueeze: (NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
@@ -207,7 +205,6 @@
     
     [self roll:linesConfigs[phasesConfigs[Squeeze_FillIn]] config:positionsConfigs[Squeeze_FillIn] actionsConfig:actionsConfigs[Squeeze_FillIn] isGroupBreak:YES delay:vanishDuration vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
 }
-
 
 -(void) roll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig isGroupBreak:(BOOL)isGroupBreak delay:(double)delay vanishingViews:(NSArray*)vanishingViews viewspositionsHandler:(NSArray*(^)(NSArray* lines, NSArray* indexPaths, NSArray* groupedNullIndexpaths, NSDictionary* linesConfig, NSArray* vanishingView))viewspositionsHandler
 {

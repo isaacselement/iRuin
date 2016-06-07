@@ -15,7 +15,7 @@
     
     if (self.isChainVanishing) {
         continuous++;
-        [[EffectHelper getInstance] chainScoreWithEffect: symbols continuous:continuous];
+        [[EffectHelper getInstance] startChainScoreEffect: symbols continuous:continuous];
     }
 }
 

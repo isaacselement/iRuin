@@ -11,7 +11,7 @@
     // chapter cells 
     // first time launch app, set the chapter index
     if (![APPStandUserDefaults objectForKey: User_LastTimeLaunch]) {
-        [APPStandUserDefaults setObject:[ConfigHelper getUtilitiesConfig:@"FirstTimeLaunchGiveChaptersCount"] forKey:User_ChapterIndex];
+        [APPStandUserDefaults setObject:DATA.config[@"ChaptersCountInFirstLaunch"] forKey:User_ChapterIndex];
         [APPStandUserDefaults setObject:[NSDate date] forKey:User_FirstTimeLaunch];
     }
     [APPStandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
@@ -21,7 +21,7 @@
     [lineScrollView setContentOffset: CGPointMake((lineScrollView.contentView.sizeWidth - lineScrollView.sizeWidth) / 2, 0) animated:NO];  // recenter the content view
     
     // chapters cells jump in effect
-    [[EffectHelper getInstance] executeChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Enter"]];
+    [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Enter"]];
     
     // about background music
     if (![[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue]) {
@@ -42,7 +42,7 @@
 {
     ACTION.gameState.isGameStarted = YES;
     
-    [[EffectHelper getInstance] executeChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Start"]];
+    [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Start"]];
     
     [ACTION switchToMode: ACTION.gameState.currentMode chapter:ACTION.gameState.currentChapter];
     
@@ -87,7 +87,7 @@
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];
     
-    [[EffectHelper getInstance] executeChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Back"]];
+    [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Back"]];
 }
 
 -(void) gamePause

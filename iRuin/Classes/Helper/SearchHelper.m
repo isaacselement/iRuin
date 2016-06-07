@@ -83,19 +83,21 @@
         NSMutableArray* horInnerViews = horizontallyViews[i];
         int innerHorCount = (int)horInnerViews.count;
         for (int j = 0; j < innerHorCount; j++) {
-            SymbolView* symbol = horInnerViews[j];
+            SymbolView* intersectionSymbol = horInnerViews[j];
             
             for (int k = 0; k < verticallyViews.count; k++) {
                 NSMutableArray* verInnerView = verticallyViews[k];
-                if ([verInnerView containsObject: symbol]) {
+                if ([verInnerView containsObject: intersectionSymbol]) {
+                    
+                    intersectionSymbol.isIntersectionInVanish = YES;
                     
                     // exchange the position with last index
-                    NSUInteger intersectionIndex = [horInnerViews indexOfObject:symbol];
+                    NSUInteger intersectionIndex = [horInnerViews indexOfObject:intersectionSymbol];
                     NSUInteger lastObjectIndex = [horInnerViews indexOfObject:[horInnerViews lastObject]];
                     [horInnerViews exchangeObjectAtIndex:intersectionIndex withObjectAtIndex:lastObjectIndex];
                     
                     // merge into one line
-                    [verInnerView removeObject: symbol];
+                    [verInnerView removeObject: intersectionSymbol];
                     [horInnerViews addObjectsFromArray: verInnerView];
                     [verticallyViews removeObject:verInnerView];
                     k--;

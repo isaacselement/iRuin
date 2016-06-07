@@ -57,7 +57,7 @@
 {
     self.isSymbolsOnVAFSing = YES;
     
-    [[EffectHelper getInstance] scoreWithEffect: symbols];
+    [[EffectHelper getInstance] startScoresEffect: symbols];
 }
 
 -(void) stateSymbolsDidVanish: (NSArray*)symbols

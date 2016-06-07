@@ -16,6 +16,7 @@
 
 @synthesize row;
 @synthesize column;
+@synthesize isIntersectionInVanish;
 
 //@synthesize containerLayer;
 
@@ -100,10 +101,9 @@
 {
     row = -1;
     column = -1;
-    
+    isIntersectionInVanish = NO;
     self.center = VIEW.frame.blackPoint;
     [self.layer removeAllAnimations];
-    
 }
 
 -(void) setValidArea: (CGRect)rect

@@ -193,7 +193,7 @@
 
 #pragma mark -
 
--(void) executeChapterCellsEffect: (NSDictionary*)cellsConfigs
+-(void) startChapterCellsEffect: (NSDictionary*)cellsConfigs
 {
     NSArray* chaptersCells = VIEW.chaptersView.lineScrollView.contentView.subviews;
     for (int i = 0 ; i < chaptersCells.count; i++) {
@@ -207,40 +207,19 @@
 
 #pragma mark -
 
--(void) scoreWithEffect:(NSArray*)symbols
+-(void) startScoresEffect:(NSArray*)symbols
 {
-    for (NSArray* views in symbols) {
-        BOOL isInSameLine = [self isSameLineSymbols: views];
-        if (!isInSameLine) {
-            
-        }
-    }
-}
-
--(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous
-{
-    [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"ChainVanishingEffect"]];
     
 }
 
-// one dimension array
--(BOOL) isSameLineSymbols:(NSArray*)views
+-(void) startChainScoreEffect:(NSArray*)symbols continuous:(int)continuous
 {
-    BOOL isInSameRowLine = YES;
-    BOOL isInSameColumnLine = YES;
+//    if (continuous < 3) {
+        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"Continuous_Vanish"][@"Chaining"]];
+//    } else {
     
-    SymbolView* baseSymbol = nil;
-    for (SymbolView* symbol in views) {
-        if (!baseSymbol) {
-            baseSymbol = symbol;
-        } else {
-            isInSameRowLine = isInSameRowLine && (baseSymbol.row == symbol.row);
-            isInSameColumnLine = isInSameColumnLine && (baseSymbol.column == symbol.column);
-        }
-    }
-    return isInSameRowLine || isInSameColumnLine;
+//    }
 }
-
 
 #pragma mark - pass season hint
 

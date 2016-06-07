@@ -22,13 +22,13 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 #pragma mark -
 
--(void) executeChapterCellsEffect: (NSDictionary*)cellsConfigs;
+-(void) startChapterCellsEffect: (NSDictionary*)cellsConfigs;
 
 #pragma mark - score
 
--(void) scoreWithEffect:(NSArray*)symbols;
+-(void) startScoresEffect:(NSArray*)symbols;
 
--(void) chainScoreWithEffect: (NSArray*)symbols continuous:(int)continuous;
+-(void) startChainScoreEffect: (NSArray*)symbols continuous:(int)continuous;
 
 
 #pragma mark - pass season hint

@@ -59,8 +59,8 @@
 -(BOOL)lineScrollView:(LineScrollView *)lineScrollView shouldShowIndex:(int)index isReload:(BOOL)isReload
 {
     NSInteger minimalIndex = NSIntegerMin;
-    if ([ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"]) {
-        minimalIndex = [[ConfigHelper getUtilitiesConfig:@"ChaptersMinimalIndex"] intValue];
+    if (DATA.config[@"ChaptersMinimalIndex"]) {
+        minimalIndex = [DATA.config[@"ChaptersMinimalIndex"] intValue];
     }
     NSInteger maximalIndex = [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
     return index >= minimalIndex && index <= maximalIndex;

@@ -14,8 +14,7 @@
     ViewsInRepositoryPositionsHandler rollOutViewsInRepositoryPositionsHandler;
     
     
-    BOOL isSqueeze ;
-    double fillAdvanceAdjustTime ;
+    BOOL isSqueezeEnable ;
 }
 
 @synthesize event;
@@ -36,9 +35,7 @@
     rollInViewsInRepositoryPositionsHandler = [effectHelper rollInViewsInRepositoryPositionsHandler];
     rollOutViewsInRepositoryPositionsHandler = [effectHelper rollOutViewsInRepositoryPositionsHandler];
     
-    
-    isSqueeze = [DATA.config[Squeeze] boolValue];
-    fillAdvanceAdjustTime = [DATA.config[FillAdvanceAdjustTime] doubleValue];
+    isSqueezeEnable = [DATA.config[SqueezeEnable] boolValue];
 }
 
 -(void) effectUnInitialize
@@ -134,7 +131,7 @@
 
 -(void) effectStartAdjustFillSqueeze: (NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
-    if (isSqueeze){
+    if (isSqueezeEnable){
         
         [VIEW.actionDurations clear];
         [self startSymbolsSqueeze:vanishingViews vanishDuration:vanishDuration];
@@ -148,14 +145,15 @@
         [VIEW.actionDurations clear];
         [self startSymbolsAdjusts:vanishingViews delay:vanishDuration];
         double adjustDuration = [VIEW.actionDurations take];
-        [event eventSymbolsWillAdjusts];
-        [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidAdjusts) object:nil];
-        [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustDuration];
         
-        // maybe no adjust, if the top line symbol vanish
-        double fillDelayTime = vanishDuration + adjustDuration;
-        if (adjustDuration != 0) {
-            fillDelayTime -= fillAdvanceAdjustTime;
+        // when the top line symbol vanish , it would be no adjust, and the duraction will be equals 0
+        double fillDelayTime = adjustDuration ;
+        if (adjustDuration == 0) {
+            fillDelayTime = vanishDuration;
+        } else {
+            [event eventSymbolsWillAdjusts];
+            [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidAdjusts) object:nil];
+            [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustDuration];
         }
         
         [VIEW.actionDurations clear];
@@ -164,7 +162,6 @@
         [event eventSymbolsWillFillIn];
         [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidFillIn) object:nil];
         [event performSelector: @selector(eventSymbolsDidFillIn) withObject:nil afterDelay:filInDuration];
-        
     }
 }
 
@@ -206,7 +203,7 @@
     [self roll:linesConfigs[phasesConfigs[Squeeze_FillIn]] config:positionsConfigs[Squeeze_FillIn] actionsConfig:actionsConfigs[Squeeze_FillIn] isGroupBreak:YES delay:vanishDuration vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
 }
 
--(void) roll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig isGroupBreak:(BOOL)isGroupBreak delay:(double)delay vanishingViews:(NSArray*)vanishingViews viewspositionsHandler:(NSArray*(^)(NSArray* lines, NSArray* indexPaths, NSArray* groupedNullIndexpaths, NSDictionary* linesConfig, NSArray* vanishingView))viewspositionsHandler
+-(void) roll: (NSArray*)lines config:(NSDictionary*)config actionsConfig:(NSArray*)actionsConfig isGroupBreak:(BOOL)isGroupBreak delay:(double)delay vanishingViews:(NSArray*)vanishingViews viewspositionsHandler:(ViewsInRepositoryPositionsHandler)viewspositionsHandler
 {
     NSDictionary* linesConfig = config[LINES];
     
@@ -220,9 +217,15 @@
     NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupTheNullIndexPaths: nullIndexPaths isNullIndexPathsBreakWhenNotCoterminous:isGroupBreak isColumnBase:isColumnBase];
     NSArray* indexPaths = [QueueIndexPathParser assembleIndexPaths:lines groupedNullIndexpaths:groupedNullIndexpaths isBackward:isBackward isColumnBase:isColumnBase isReverse:isReverse];
     
-    NSArray* array = viewspositionsHandler(lines, indexPaths, groupedNullIndexpaths, linesConfig, vanishingViews);
-    NSMutableArray* views = [array firstObject];
-    NSMutableArray* positions = [array lastObject];
+    NSArray* viewsPositions = viewspositionsHandler(lines, indexPaths, groupedNullIndexpaths, linesConfig, vanishingViews);
+    NSMutableArray* views = [viewsPositions firstObject];
+    
+    // when indexPaths == groupedNullIndexpaths, the views is blank . That happen in no adjust
+    if ([QueueViewsHelper checkIsWholeViewsNull: views]) {
+        return;
+    }
+    
+    NSMutableArray* positions = [viewsPositions lastObject];
     NSMutableArray* baseTimes = [QueueTimeCalculator getBaseTimesAccordingToViews: views delay:delay];
     
     [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:baseTimes];

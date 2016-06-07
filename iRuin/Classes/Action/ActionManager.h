@@ -24,9 +24,9 @@
 // modes
 @property (strong, readonly) NSMutableDictionary* modesRepository;
 
-@property (assign) BaseEvent* currentEvent;
-@property (assign) BaseState* currentState;
-@property (assign) BaseEffect* currentEffect;
+@property (assign) BaseEvent* modeEvent;
+@property (assign) BaseState* modeState;
+@property (assign) BaseEffect* modeEffect;
 
 
 +(ActionManager*) getInstance ;

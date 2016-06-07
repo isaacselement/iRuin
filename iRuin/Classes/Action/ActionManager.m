@@ -82,21 +82,21 @@ static ActionManager* sharedInstance = nil;
 -(void) switchToMode: (NSString*)mode chapter:(int)chapter
 {
     // destroy initialize
-    [self.currentEvent eventUnInitialize];
-    [self.currentState stateUnInitialize];
-    [self.currentEffect effectUnInitialize];
+    [self.modeEvent eventUnInitialize];
+    [self.modeState stateUnInitialize];
+    [self.modeEffect effectUnInitialize];
     
     // change the config
     [DATA setConfigByMode:mode chapter:chapter];
     
-    self.currentEvent   = [[modesRepository objectForKey: mode] objectForKey: kEVENT];
-    self.currentState   = [[modesRepository objectForKey: mode] objectForKey: kSTATE];
-    self.currentEffect  = [[modesRepository objectForKey: mode] objectForKey: kEFFECT];
+    self.modeEvent   = [[modesRepository objectForKey: mode] objectForKey: kEVENT];
+    self.modeState   = [[modesRepository objectForKey: mode] objectForKey: kSTATE];
+    self.modeEffect  = [[modesRepository objectForKey: mode] objectForKey: kEFFECT];
     
     // initialize
-    [self.currentEvent eventInitialize];
-    [self.currentState stateInitialize];
-    [self.currentEffect effectInitialize];
+    [self.modeEvent eventInitialize];
+    [self.modeState stateInitialize];
+    [self.modeEffect effectInitialize];
 }
 
 

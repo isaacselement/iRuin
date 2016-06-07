@@ -77,7 +77,7 @@
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
     NSDictionary* chapterCellsConfig = [ConfigHelper getLoopConfig:DATA.config[@"Chapters_Cells_In_Touch_Rolling"] index:index] ;
     
-    [ACTION.gameEffect designateValuesActionsTo: cell config:chapterCellsConfig];
+    [ACTION.gameEffect designateValuesActionsTo:cell config:chapterCellsConfig];
     
     GradientLabel* label = cell.label;
     label.text = [NSString stringWithFormat:@"%d", index];

@@ -160,43 +160,6 @@ int musicIndex = 0;
     return DATA.config[@"SYMBOLS_PORPERTIES"];
 }
 
-
-/*
- // now , below method is merge into GameEffect.m's "designateValuesActionsTo:config" method
-+(void) initializeViewsWithConfig:(NSDictionary*)config onObject:(id)object
-{
-    [ConfigHelper iterateConfig:config handler:^(NSString *key, id value) {
-        // it has handled by following code to new an object
-        if ([key isEqualToString: kReservedClass]) {
-            return ;
-        }
-        
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            // have "~Class" , means should new a object
-            NSString* clazz = value[kReservedClass];
-            id nextObject = [object valueForKey:key];
-            if (clazz) {
-                nextObject = [[NSClassFromString(clazz) alloc] init];
-            }
-            // then do the set value action
-            [ConfigHelper initializeViewsWithConfig:value onObject:nextObject];
-            
-            if (clazz) {
-                if ([object isKindOfClass:[NSMutableArray class]]) {
-                    [object addObject: nextObject];
-                } else {
-                    // not use [[EffectHelper getInstance] setValue:newObj forKeyPath:key onObject:onObject];
-                    // cause no need to tranlate value
-                    [object setValue:nextObject forKey:key];
-                }
-            }
-        } else {
-            [[EffectHelper getInstance] setValue:value forKeyPath:key onObject:object];
-        }
-    }];
-}
- */
-
 #pragma mark - Network Request
 
 +(void) requestDowloadRemoteResources

@@ -14,11 +14,9 @@
 #define Adjusts @"Adjusts"
 #define FillIn @"FillIn"
 
-#define Squeeze @"Squeeze"
+#define SqueezeEnable @"SqueezeEnable"
 #define Squeeze_Adjust @"Squeeze.Adjust"
 #define Squeeze_FillIn @"Squeeze.FillIn"
-
-#define FillAdvanceAdjustTime @"FillAdvanceAdjustTime"
 
 
 #define LINES @"LINES"
@@ -66,7 +64,7 @@
 
 // Adjust is the phase of adjusting the empty
 // FillIn is the pahse of filling the empty, waiting until Adjust done , do FillIn
-// Squeeze is the connected phase of Adjust and Fill , just not waiting until Adjust done and start the FillIn simultaneously. You should choose one of Adjust or Squeeze when vanish Done in 'stateStartNextPhase' .
+// Squeeze is the connected phase of Adjust and Fill , just not waiting until Adjust done and start the FillIn simultaneously. You should choose one of Adjust or Squeeze when vanish done to continue.
 
 
 

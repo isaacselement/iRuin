@@ -3,24 +3,20 @@
 
 @implementation GameEffect
 
--(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config completion:(void(^)(void))completion
+-(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config completion:( void(^)(void))completion
 {
-    if (completion) {
-        [VIEW.actionDurations clear];
-        [self designateValuesActionsTo:object config:config];
-        double duration = [VIEW.actionDurations take];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            completion();
-        });
-    } else {
-        [self designateValuesActionsTo:object config:config];
-    }
+    [VIEW.actionDurations clear];
+    [self designateValuesActionsTo:object config:config];
+    double duration = [VIEW.actionDurations take];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        completion();
+    });
 }
 
 -(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config
 {
-    if (!config || config.count == 0) return;
+    if (!object || !config || config.count == 0) return;
     
     
     // UIView's frame, if it is CALayer, no need to do this code.

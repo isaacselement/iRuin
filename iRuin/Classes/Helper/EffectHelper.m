@@ -215,7 +215,7 @@
 -(void) startChainScoreEffect:(NSArray*)symbols continuous:(int)continuous
 {
 //    if (continuous < 3) {
-        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"Continuous_Vanish"][@"Chaining"]];
+//        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"Continuous_Vanish"][@"Chaining"]];
 //    } else {
     
 //    }

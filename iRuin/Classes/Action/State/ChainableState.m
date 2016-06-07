@@ -34,7 +34,7 @@
         
         // the first time check , no chain vanish , so should check vanishing~~~
         if (self.isChainVanishing) {
-            [(ChainableEvent*)ACTION.currentEvent eventSymbolsDidChainVanish];
+            [(ChainableEvent*)ACTION.modeEvent eventSymbolsDidChainVanish];
             self.isChainVanishing = NO;
             continuous = 0;
         }

@@ -56,28 +56,28 @@
 {
     SymbolView* symbol = [self getSymbolView: location event:event];
     
-    [ACTION.currentEvent eventTouchesBegan: symbol location:location];
+    [ACTION.modeEvent eventTouchesBegan: symbol location:location];
 }
 
 - (void)touchesMoved:(CGPoint)location event:(UIEvent *)event
 {
     SymbolView* symbol = [self getSymbolView: location event:event];
     
-    [ACTION.currentEvent eventTouchesMoved: symbol location:location];
+    [ACTION.modeEvent eventTouchesMoved: symbol location:location];
 }
 
 - (void)touchesEnded:(CGPoint)location event:(UIEvent *)event
 {
     SymbolView* symbol = [self getSymbolView: location event:event];
     
-    [ACTION.currentEvent eventTouchesEnded: symbol location:location];
+    [ACTION.modeEvent eventTouchesEnded: symbol location:location];
 }
 
 - (void)touchesCancelled:(CGPoint)location event:(UIEvent *)event
 {
     SymbolView* symbol = [self getSymbolView: location event:event];
     
-    [ACTION.currentEvent eventTouchesCancelled: symbol location:location];
+    [ACTION.modeEvent eventTouchesCancelled: symbol location:location];
 }
 
 
@@ -104,5 +104,34 @@
     
     return symbol;
 }
+
+#pragma mark - Test
+
+#ifdef DEBUG
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        tap.numberOfTapsRequired = 1;
+        [self addGestureRecognizer: tap];
+        tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        tap.numberOfTapsRequired = 2;
+        [self addGestureRecognizer: tap];
+    }
+    return self;
+}
+
+- (void)tapAction:(UITapGestureRecognizer*)tap
+{
+    if (tap.numberOfTapsRequired == 1) {
+        CGPoint location = [tap locationInView: self];
+        SymbolView* symbol = [self getSymbolView: location event:nil];
+        symbol.identification = 1;
+    } else if (tap.numberOfTapsRequired == 2) {
+        [(ChainableState*)ACTION.modeState stateStartChainVanish];
+    }
+}
+#endif
 
 @end

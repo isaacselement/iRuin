@@ -48,7 +48,7 @@
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_START"]];
     
-    [ACTION.currentEffect effectStartRollIn];
+    [ACTION.modeEffect effectStartRollIn];
     
     int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
     [[EffectHelper getInstance] showClearanceScore: clearanceScore];
@@ -83,7 +83,7 @@
     ACTION.gameState.vanishAmount = 0;
     VIEW.gameView.vanishAmountLabel.number = 0;
     
-    [ACTION.currentEffect effectStartRollOut];
+    [ACTION.modeEffect effectStartRollOut];
     
     [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"GAME_BACK"]];
     
@@ -110,9 +110,9 @@
 -(void) gameRefresh
 {
     [VIEW.actionDurations clear];
-    [ACTION.currentEffect effectStartRollOut];
+    [ACTION.modeEffect effectStartRollOut];
     double duration = [VIEW.actionDurations take];
-    [ACTION.currentEffect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:duration];
+    [ACTION.modeEffect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:duration];
 }
 
 @end

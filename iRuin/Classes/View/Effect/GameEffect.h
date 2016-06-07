@@ -2,8 +2,8 @@
 
 @interface GameEffect : NSObject
 
--(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config completion:(void(^)(void))completion;
+-(void) designateValuesActionsTo: (id _Nonnull)object config:(NSDictionary* _Nonnull)config completion:( void(^ _Nonnull )(void))completion;
 
--(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config;
+-(void) designateValuesActionsTo: (id _Nonnull)object config:(NSDictionary* _Nonnull)config;
 
 @end

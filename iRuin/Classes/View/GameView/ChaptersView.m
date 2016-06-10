@@ -5,11 +5,11 @@
 
 @end
 
+
 @implementation ChaptersView
 
 
 @synthesize lineScrollView;
-
 @synthesize musicActionView;
 
 
@@ -50,7 +50,6 @@
     } else if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
         [EventHelper stopBackgroundMusic];
         [EventHelper playNextBackgroundMusic];
-        
     }
 }
 
@@ -68,7 +67,6 @@
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index isReload:(BOOL)isReload
 {
-    DLOG(@"willShowIndex : %d", index);
     // -------------- mute the sound on reload Begin
     if (isReload) {
         ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disableAudio = YES;
@@ -123,5 +121,3 @@
 }
 
 @end
-
-

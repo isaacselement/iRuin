@@ -12,12 +12,11 @@
     ViewsInRepositoryPositionsHandler adjustViewsInVisualPositionsHandler;
     ViewsInRepositoryPositionsHandler rollInViewsInRepositoryPositionsHandler;
     ViewsInRepositoryPositionsHandler rollOutViewsInRepositoryPositionsHandler;
-    
-    
-    BOOL isSqueezeEnable ;
 }
 
 @synthesize event;
+
+@synthesize isSqueezeEnable;
 
 
 #pragma mark - Subclass Override Methods
@@ -38,7 +37,7 @@
     isSqueezeEnable = [DATA.config[SqueezeEnable] boolValue];
 }
 
--(void) effectUnInitialize
+- (void)effectUnInitialize
 {
 }
 
@@ -98,10 +97,6 @@
 
 -(void) effectStartVanish: (NSArray*)symbols
 {
-    // two dimension or one dimension, nil return
-    if (!symbols) return;
-    [event eventSymbolsWillVanish: symbols];
-    
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
     NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
     
@@ -129,40 +124,46 @@
     [self effectStartAdjustFillSqueeze:vanishViews vanishDuration:vanishDuration];
 }
 
--(void) effectStartAdjustFillSqueeze: (NSArray*)vanishingViews vanishDuration:(double)vanishDuration
+-(void) effectStartAdjustFillSqueeze:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
     if (isSqueezeEnable){
-        
-        [VIEW.actionDurations clear];
-        [self startSymbolsSqueeze:vanishingViews vanishDuration:vanishDuration];
-        double squeezeDuration = [VIEW.actionDurations take];
-        [event eventSymbolsWillSqueeze];
-        [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidSqueeze) object:nil];
-        [event performSelector: @selector(eventSymbolsDidSqueeze) withObject:nil afterDelay:squeezeDuration];
-        
+        // .Squeeze
+        [self effectStartSqueeze:vanishingViews vanishDuration:vanishDuration];
     } else {
-        
-        [VIEW.actionDurations clear];
-        [self startSymbolsAdjusts:vanishingViews delay:vanishDuration];
-        double adjustDuration = [VIEW.actionDurations take];
-        
-        // when the top line symbol vanish , it would be no adjust, and the duraction will be equals 0
-        double fillDelayTime = adjustDuration ;
-        if (adjustDuration == 0) {
-            fillDelayTime = vanishDuration;
-        } else {
-            [event eventSymbolsWillAdjusts];
-            [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidAdjusts) object:nil];
-            [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustDuration];
-        }
-        
-        [VIEW.actionDurations clear];
-        [self startSymbolsFillIn: vanishingViews delay:fillDelayTime];
-        double filInDuration = [VIEW.actionDurations take];
-        [event eventSymbolsWillFillIn];
-        [NSObject cancelPreviousPerformRequestsWithTarget:event selector:@selector(eventSymbolsDidFillIn) object:nil];
-        [event performSelector: @selector(eventSymbolsDidFillIn) withObject:nil afterDelay:filInDuration];
+        // .Adjust
+        double fillDelayTime = [self effectStartAdjust:vanishingViews vanishDuration:vanishDuration];
+        // .Fill
+        [self effectStartFill:vanishingViews fillDelayTime:fillDelayTime];
     }
+}
+
+#pragma mark -
+
+-(void) effectStartSqueeze:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration
+{
+    [VIEW.actionDurations clear];
+    [self startSymbolsSqueeze:vanishingViews vanishDuration:vanishDuration];
+    double squeezeDuration = [VIEW.actionDurations take];
+    [event performSelector: @selector(eventSymbolsDidSqueeze) withObject:nil afterDelay:squeezeDuration];
+}
+
+-(double) effectStartAdjust:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration
+{
+    [VIEW.actionDurations clear];
+    [self startSymbolsAdjusts:vanishingViews delay:vanishDuration];
+    double adjustDuration = [VIEW.actionDurations take];
+    // when the top line symbol vanish , it would be no adjust, and the duraction will be equals 0
+    double fillDelayTime = adjustDuration == 0 ? vanishDuration : adjustDuration ;
+    [event performSelector: @selector(eventSymbolsDidAdjusts) withObject:nil afterDelay:adjustDuration];
+    return fillDelayTime;
+}
+
+-(void) effectStartFill:(NSArray*)vanishingViews fillDelayTime:(double)fillDelayTime
+{
+    [VIEW.actionDurations clear];
+    [self startSymbolsFill: vanishingViews delay:fillDelayTime];
+    double filInDuration = [VIEW.actionDurations take];
+    [event performSelector: @selector(eventSymbolsDidFillIn) withObject:nil afterDelay:filInDuration];
 }
 
 #pragma mark - Private Methods
@@ -191,7 +192,7 @@
     [self roll:linesConfigs[phasesConfigs[Adjusts]] config:positionsConfigs[Adjusts] actionsConfig:actionsConfigs[Adjusts] isGroupBreak:NO delay:delay vanishingViews:vanishingViews viewspositionsHandler:adjustViewsInVisualPositionsHandler];
 }
 
--(void) startSymbolsFillIn:(NSArray*)vanishingViews delay:(double)delay
+-(void) startSymbolsFill:(NSArray*)vanishingViews delay:(double)delay
 {
     [self roll:linesConfigs[phasesConfigs[FillIn]] config:positionsConfigs[FillIn] actionsConfig:actionsConfigs[FillIn] isGroupBreak:YES delay:delay vanishingViews:vanishingViews viewspositionsHandler:fillInViewsPositionsHandler];
 }
@@ -220,7 +221,8 @@
     NSArray* viewsPositions = viewspositionsHandler(lines, indexPaths, groupedNullIndexpaths, linesConfig, vanishingViews);
     NSMutableArray* views = [viewsPositions firstObject];
     
-    // when indexPaths == groupedNullIndexpaths, the views is blank . That happen in no adjust
+    // when indexPaths == groupedNullIndexpaths , the views is blank . That happen in no adjust . No views, then no need do animation .
+    // just return .
     if ([QueueViewsHelper checkIsWholeViewsNull: views]) {
         return;
     }

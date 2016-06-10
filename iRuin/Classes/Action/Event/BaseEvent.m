@@ -71,11 +71,6 @@
     [state stateSymbolsDidRollOut];
 }
 
--(void) eventSymbolsWillVanish: (NSArray*)symbols
-{
-    [state stateSymbolsWillVanish: symbols];
-}
-
 -(void) eventSymbolsDidVanish: (NSArray*)symbols
 {
     DLOG(@"eventSymbolsDidVanish");
@@ -93,33 +88,16 @@
     [state stateSymbolsDidVanish: symbols];
 }
 
-
-
--(void) eventSymbolsWillAdjusts
-{
-    [state stateSymbolsWillAdjusts];
-}
-
 -(void) eventSymbolsDidAdjusts
 {
     DLOG(@"eventSymbolsDidAdjusts");
     [state stateSymbolsDidAdjusts];
 }
 
--(void) eventSymbolsWillFillIn
-{
-    [state stateSymbolsWillFillIn];
-}
-
 -(void) eventSymbolsDidFillIn
 {
     DLOG(@"eventSymbolsDidFillIn");
     [state stateSymbolsDidFillIn];
-}
-
--(void) eventSymbolsWillSqueeze
-{
-    [state stateSymbolsWillSqueeze];
 }
 
 -(void) eventSymbolsDidSqueeze

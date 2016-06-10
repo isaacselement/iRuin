@@ -2,23 +2,11 @@
 #import "AppInterface.h"
 
 @implementation ChainableState
-{
-    // continuously chain vanish number 
-    int continuous;
-}
 
-#pragma mark - Override Methods
+@synthesize isChainVanishing;
+@synthesize isAutoAdjusting;
 
--(void) stateSymbolsWillVanish: (NSArray*)symbols
-{
-    [super stateSymbolsWillVanish:symbols];
-    
-    if (self.isChainVanishing) {
-        continuous++;
-        [[EffectHelper getInstance] startChainScoreEffect: symbols continuous:continuous];
-    }
-}
-
+@synthesize continuous;
 
 #pragma mark - Public Methods
 
@@ -27,27 +15,37 @@
     // get symbols ...
     NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
     
-    
     // check if end chain vanish ~~~
-    BOOL isContainsNull = [QueueViewsHelper isViewsInVisualAreaContains: [NSNull null]];
-    if (vanishSymbols == nil && !isContainsNull) {
+    if (vanishSymbols == nil) {
         
-        // the first time check , no chain vanish , so should check vanishing~~~
-        if (self.isChainVanishing) {
-            [(ChainableEvent*)ACTION.modeEvent eventSymbolsDidChainVanish];
-            self.isChainVanishing = NO;
-            continuous = 0;
+        BOOL isContainsBlank = [QueueViewsHelper isViewsInVisualAreaContains: [NSNull null]];
+        if (isContainsBlank == NO) {
+            
+            // the first time check , no chain vanish , so should check vanishing~~~
+            if (isChainVanishing) {
+                [(ChainableEvent*)ACTION.modeEvent eventSymbolsDidChainVanish];
+                isChainVanishing = NO;
+                continuous = 0;
+            }
+
+        } else {
+            
         }
         
-        return;
+    } else {
+        
+        // then start , the vanish symbols maybe nil ~~~
+        // in effectStartVanish: , if nil , then return
+        // if you want no vanish and start adjust or fill , just call their method directly
+        
+        DLOG(@"--- stateStartChainVanish");
+        isChainVanishing = YES;
+        isAutoAdjusting = YES;
+        [self stateStartVanishSymbols: vanishSymbols];
+        
+        continuous++;
+        [[EffectHelper getInstance] startChainScoreEffect: vanishSymbols continuous:continuous];
     }
-    
-    // then start , the vanish symbols maybe nil ~~~
-    // in effectStartVanish: , if nil , then return
-    // if you want no vanish and start adjust or fill , just call their method directly
-    DLOG(@"--- stateStartChainVanish");
-    self.isChainVanishing = YES;
-    [self.effect effectStartVanish: vanishSymbols];
 }
 
 @end

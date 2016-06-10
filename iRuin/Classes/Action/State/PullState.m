@@ -155,8 +155,7 @@
     [PositionsHelper updateRowsColumnsInVisualArea: [StateHelper getViewsInContainer: currentMovingViews]];
     
     // after update row and column
-    NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
-    [self.effect effectStartVanish: vanishSymbols];
+    [self startVanishProcedure];
 }
 
 - (void)stateTouchesCancelled:(SymbolView*)symbol location:(CGPoint)location
@@ -171,9 +170,13 @@
     [PositionsHelper updateRowsColumnsInVisualArea: [StateHelper getViewsInContainer: currentMovingViews]];
 }
 
-
-
 #pragma mark - Private Methods
+
+- (void)startVanishProcedure
+{
+    NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
+    [self stateStartVanishSymbols:vanishSymbols];
+}
 
 -(void) checkDirection: (CGPoint)location {
     float distanceX = location.x - startPoint.x;

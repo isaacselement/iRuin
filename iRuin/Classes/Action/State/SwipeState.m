@@ -146,11 +146,10 @@
 
 #pragma mark - Private Methods
 
--(void) startVanishProcedure
+- (void)startVanishProcedure
 {
-    // start the vanish effect
     NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
-    [self.effect effectStartVanish: vanishSymbols];
+    [self stateStartVanishSymbols:vanishSymbols];
 }
 
 @end

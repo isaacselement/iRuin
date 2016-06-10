@@ -28,16 +28,14 @@
 -(void) stateSymbolsWillRollOut;
 -(void) stateSymbolsDidRollOut;
 
--(void) stateSymbolsWillVanish: (NSArray*)symbols;
+-(void) stateStartVanishSymbols: (NSMutableArray*)vanishSymbols;
+
 -(void) stateSymbolsDidVanish: (NSArray*)symbols;
 
--(void) stateSymbolsWillAdjusts;
 -(void) stateSymbolsDidAdjusts;
 
--(void) stateSymbolsWillFillIn;
 -(void) stateSymbolsDidFillIn;
 
--(void) stateSymbolsWillSqueeze;
 -(void) stateSymbolsDidSqueeze;
 
 

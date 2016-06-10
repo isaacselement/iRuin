@@ -53,19 +53,17 @@
     
 }
 
--(void) stateSymbolsWillVanish: (NSArray*)symbols
+-(void) stateStartVanishSymbols: (NSMutableArray*)vanishSymbols
 {
+    // two dimension, nil return. cause the callers didn't check nil .
+    if (!vanishSymbols) return;
+    // start the vanish effect
     self.isSymbolsOnVAFSing = YES;
-    
-    [[EffectHelper getInstance] startScoresEffect: symbols];
+    [[EffectHelper getInstance] startScoresEffect: vanishSymbols];
+    [self.effect effectStartVanish: vanishSymbols];
 }
 
 -(void) stateSymbolsDidVanish: (NSArray*)symbols
-{
-    
-}
-
--(void) stateSymbolsWillAdjusts
 {
     
 }
@@ -75,19 +73,9 @@
     
 }
 
--(void) stateSymbolsWillFillIn
-{
-    
-}
-
 -(void) stateSymbolsDidFillIn
 {
     self.isSymbolsOnVAFSing = NO;
-}
-
--(void) stateSymbolsWillSqueeze
-{
-    
 }
 
 -(void) stateSymbolsDidSqueeze

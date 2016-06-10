@@ -5,14 +5,14 @@
 {
     SymbolView* touchingSymbol;
     
-    NSMutableArray* engageSymbolRepository;
+    NSMutableArray* engageSymbols;
 }
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        engageSymbolRepository = [NSMutableArray array];
+        engageSymbols = [NSMutableArray array];
     }
     return self;
 }
@@ -26,7 +26,7 @@
     
     touchingSymbol = symbol;
     if (symbol) {
-        if (![engageSymbolRepository containsObject: symbol]) [engageSymbolRepository addObject: symbol];
+        if (![engageSymbols containsObject: symbol]) [engageSymbols addObject: symbol];
     }
 }
 - (void)stateTouchesMoved:(SymbolView*)symbol location:(CGPoint)location
@@ -38,8 +38,8 @@
     if (! touchingSymbol) {
         touchingSymbol = symbol;
         
-        if (![engageSymbolRepository containsObject: symbol]){
-            [engageSymbolRepository addObject: symbol];
+        if (![engageSymbols containsObject: symbol]){
+            [engageSymbols addObject: symbol];
         }
         
         return;
@@ -64,8 +64,8 @@
             // the same identification
             if (touchingSymbol.identification == symbol.identification) {
                 // add to engage
-                if (![engageSymbolRepository containsObject: symbol]){
-                    [engageSymbolRepository addObject: symbol];
+                if (![engageSymbols containsObject: symbol]){
+                    [engageSymbols addObject: symbol];
                 }
             }
             
@@ -94,7 +94,7 @@
     
     touchingSymbol = nil;
     if (symbol) {
-        if (![engageSymbolRepository containsObject: symbol]) [engageSymbolRepository addObject: symbol];
+        if (![engageSymbols containsObject: symbol]) [engageSymbols addObject: symbol];
     }
     
     [self startVanishProcedure];
@@ -107,20 +107,14 @@
 }
 
 
-
-
-
-
 #pragma mark - Private Methods
 
--(void) startVanishProcedure
+- (void)startVanishProcedure
 {
-    if (engageSymbolRepository.count >= MATCH_COUNT) {
-        NSMutableArray* vanishSymbols = [SearchHelper searchRouteMatchedSymbols: engageSymbolRepository matchCount:MATCH_COUNT];
-        [self.effect effectStartVanish: vanishSymbols];
-    }
-    [engageSymbolRepository removeAllObjects];
+    NSMutableArray* vanishSymbols = [SearchHelper searchRouteMatchedSymbols:engageSymbols matchCount:MATCH_COUNT];
+    [engageSymbols removeAllObjects];
     touchingSymbol = nil;
+    [self stateStartVanishSymbols:vanishSymbols];
 }
 
 @end

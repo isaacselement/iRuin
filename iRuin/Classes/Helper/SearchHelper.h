@@ -24,9 +24,9 @@ enum APPDirection : NSUInteger {
 
 #pragma mark -
 
-#pragma mark - SEARCH
+#pragma mark - SEARCH . The results shoule be two dimension
 
-+(NSArray*) searchTouchMatchedSymbols: (SymbolView*)symbol;
++(NSMutableArray*) searchTouchMatchedSymbols: (SymbolView*)symbol matchCount:(int)matchCount;
 
 +(NSMutableArray*) searchRouteMatchedSymbols: (NSArray*)moveSymbols matchCount:(int)matchCount;
 

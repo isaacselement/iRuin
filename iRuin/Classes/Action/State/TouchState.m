@@ -31,13 +31,13 @@
     touchingSymbol = nil;
 }
 
-
 #pragma mark - Private Methods
 
--(void) startVanishProcedure
+- (void)startVanishProcedure
 {
-    NSArray* vanishSymbols = [SearchHelper searchTouchMatchedSymbols: touchingSymbol];
-    [self.effect effectStartVanish: vanishSymbols];
+    NSMutableArray* vanishSymbols = [SearchHelper searchTouchMatchedSymbols: touchingSymbol matchCount:MATCH_COUNT];
+    touchingSymbol = nil;
+    [self stateStartVanishSymbols:vanishSymbols];
 }
 
 @end

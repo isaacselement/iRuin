@@ -13,31 +13,39 @@
 @implementation SearchHelper
 
 
-#pragma mark - SEARCH
+#pragma mark - SEARCH . The results shoule be two dimension
 
 // for Touch
-+(NSArray*) searchTouchMatchedSymbols: (SymbolView*)symbol
++(NSMutableArray*) searchTouchMatchedSymbols: (SymbolView*)symbol matchCount:(int)matchCount
 {
-    NSMutableSet* repository = [NSMutableSet setWithCapacity: 1];
+    NSMutableArray* repository = [NSMutableArray arrayWithCapacity: 1];
     [self searchConnectedSymbols: symbol repository:repository];
-    NSArray* reslut = [repository allObjects];
-    return reslut.count ? reslut : nil;
+    if (repository.count < matchCount) {
+        return nil;
+    }
+    return [NSMutableArray arrayWithObject: repository];
 }
 
 // for Route
 +(NSMutableArray*) searchRouteMatchedSymbols: (NSArray*)symbols matchCount:(int)matchCount
 {
+    if (symbols.count < matchCount) {
+        return nil;
+    }
     SymbolView* baseSymbolView = [symbols objectAtIndex: 0];
-    NSMutableArray* results = [NSMutableArray array];
+    NSMutableArray* repository = [NSMutableArray array];
     
     for (int i = 0 ; i < symbols.count ; i++) {
         SymbolView* checkedSymbolView = [symbols objectAtIndex: i];
         if (checkedSymbolView.identification != baseSymbolView.identification){
             break;
         }
-        [results addObject:checkedSymbolView];
+        [repository addObject:checkedSymbolView];
     }
-    return results.count >= matchCount ? results : nil;
+    if (repository.count < matchCount) {
+        return nil;
+    }
+    return [NSMutableArray arrayWithObject: repository];
 }
 
 // for move , pull , swipe.  for Chainable
@@ -107,7 +115,7 @@
         }
     }
     
-    // merge into result
+    // merge into result , so return the two dimension array
     NSMutableArray* results = [NSMutableArray array];
     [results addObjectsFromArray: horizontallyViews];
     [results addObjectsFromArray: verticallyViews];
@@ -130,7 +138,7 @@
 #pragma mark - Contains The Symbol You Passed
 
 // connected means just left, up, right , down , these four directions  .
-+(void) searchConnectedSymbols: (SymbolView*)symbol repository:(NSMutableSet*)repository
++(void) searchConnectedSymbols: (SymbolView*)symbol repository:(NSMutableArray*)repository
 {
     if (!symbol || (id)symbol == [NSNull null]) return;
     

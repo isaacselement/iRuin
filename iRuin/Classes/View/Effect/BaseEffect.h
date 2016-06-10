@@ -41,12 +41,14 @@
 
 @property (assign) BaseEvent* event;
 
+@property (assign) BOOL isSqueezeEnable ;
+
 
 
 #pragma mark - Subclass Override Methods
 
 - (void)effectInitialize;
--(void) effectUnInitialize;
+- (void)effectUnInitialize;
 - (void)effectTouchesBegan:(SymbolView*)symbol location:(CGPoint)location;
 - (void)effectTouchesMoved:(SymbolView*)symbol location:(CGPoint)location;
 - (void)effectTouchesEnded:(SymbolView*)symbol location:(CGPoint)location;
@@ -59,6 +61,14 @@
 -(void) effectStartRollIn ;
 -(void) effectStartRollOut;
 -(void) effectStartVanish: (NSArray*)symbols;
+-(void) effectStartAdjustFillSqueeze:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration;
+
+
+#pragma mark - Squeeze & Adjust & Fill
+
+-(void) effectStartSqueeze:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration;
+-(double) effectStartAdjust:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration;
+-(void) effectStartFill:(NSArray*)vanishingViews fillDelayTime:(double)fillDelayTime;
 
 
 

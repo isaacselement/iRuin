@@ -42,7 +42,7 @@
 {
     [super eventSymbolsWillRollOut];
     
-    // cance the chain vanish
+    // cancel the chain vanish
     [NSObject cancelPreviousPerformRequestsWithTarget:(ChainableState*)self.state selector:@selector(stateStartChainVanish) object:nil];
 }
 
@@ -75,7 +75,7 @@
 
 -(void) eventSymbolsDidChainVanish
 {
-    DLOG(@"+++ eventSymbolsDidChainVanish");
+    DLOG(@"chaining done!~");
 }
 
 

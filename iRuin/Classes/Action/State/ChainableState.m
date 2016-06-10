@@ -4,7 +4,6 @@
 @implementation ChainableState
 
 @synthesize isChainVanishing;
-@synthesize isAutoAdjusting;
 
 @synthesize continuous;
 
@@ -38,13 +37,12 @@
         // in effectStartVanish: , if nil , then return
         // if you want no vanish and start adjust or fill , just call their method directly
         
-        DLOG(@"--- stateStartChainVanish");
         isChainVanishing = YES;
-        isAutoAdjusting = YES;
-        [self stateStartVanishSymbols: vanishSymbols];
-        
         continuous++;
         [[EffectHelper getInstance] startChainScoreEffect: vanishSymbols continuous:continuous];
+        
+        DLOG(@"chaining: %d", continuous);
+        [self stateStartVanishSymbols: vanishSymbols];
     }
 }
 

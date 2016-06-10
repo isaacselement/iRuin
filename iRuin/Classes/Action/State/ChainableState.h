@@ -4,7 +4,6 @@
 
 
 @property (assign) BOOL isChainVanishing;
-@property (assign) BOOL isAutoAdjusting;
 
 // continuously chain vanish number
 @property (assign) int continuous;

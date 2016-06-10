@@ -29,8 +29,6 @@
     [effect effectTouchesCancelled: symbol location:location];
 }
 
-
-
 #pragma mark - Public Methods
 
 -(void) stateSymbolsWillRollIn

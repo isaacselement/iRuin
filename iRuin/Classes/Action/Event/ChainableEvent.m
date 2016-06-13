@@ -3,6 +3,7 @@
 
 @implementation ChainableEvent
 {
+    BOOL isDisableChainable;
     BOOL isDisableFilterOnRollIn;
 }
 
@@ -14,7 +15,7 @@
     [super eventInitialize];
     
     // so , default is NO !
-    self.isDisableChainable = [DATA.config[@"isDisableChainable"] boolValue];
+    isDisableChainable = [DATA.config[@"isDisableChainable"] boolValue];
     isDisableFilterOnRollIn = [DATA.config[@"isDisableFilterOnRollIn"] boolValue];
 }
 
@@ -42,7 +43,7 @@
 {
     [super eventSymbolsWillRollOut];
     
-    // cancel the chain vanish
+    // Roll out when chain vanishing , should cancel the chain vanish
     [NSObject cancelPreviousPerformRequestsWithTarget:(ChainableState*)self.state selector:@selector(stateStartChainVanish) object:nil];
 }
 
@@ -87,7 +88,7 @@
 
 -(void) startChainVainsh
 {
-    if (self.isDisableChainable) return;
+    if (isDisableChainable) return;
     [NSObject cancelPreviousPerformRequestsWithTarget:(ChainableState*)self.state selector:@selector(stateStartChainVanish) object:nil];
     [(ChainableState*)self.state performSelector:@selector(stateStartChainVanish) withObject:nil afterDelay:0.2];
 }

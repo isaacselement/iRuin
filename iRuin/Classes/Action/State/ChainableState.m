@@ -7,6 +7,11 @@
 
 @synthesize continuous;
 
+-(void) stateInitialize
+{
+    self.isFullAdjusting = [DATA.config[@"IsFullAdjusting"] boolValue];
+}
+
 #pragma mark - Public Methods
 
 -(void) stateStartChainVanish
@@ -28,7 +33,7 @@
             }
 
         } else {
-            
+            [self.effect effectStartAdjustFillSqueeze:nil vanishDuration:0];
         }
         
     } else {

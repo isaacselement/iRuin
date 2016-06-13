@@ -52,7 +52,6 @@
 -(void) eventSymbolsDidRollIn
 {
     DLOG(@"eventSymbolsDidRollIn");
-    
     [VIEW.gameView.timerView startTimer];
     VIEW.gameView.containerView.userInteractionEnabled = YES;
     [state stateSymbolsDidRollIn];
@@ -74,7 +73,6 @@
 -(void) eventSymbolsDidVanish: (NSArray*)symbols
 {
     DLOG(@"eventSymbolsDidVanish");
-    
     for (NSArray* innerArray in symbols) {
         for (SymbolView* symbol in innerArray){
             // cause the view will be reused , so here we need to check ~~~~~~

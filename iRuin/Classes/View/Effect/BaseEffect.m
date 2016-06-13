@@ -95,6 +95,7 @@
     [event performSelector:@selector(eventSymbolsDidRollOut) withObject:nil afterDelay:totalDuration];
 }
 
+// symbols maybe nil
 -(void) effectStartVanish: (NSArray*)symbols
 {
     NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
@@ -124,6 +125,7 @@
     [self effectStartAdjustFillSqueeze:vanishViews vanishDuration:vanishDuration];
 }
 
+// vanishingViews maybe nil
 -(void) effectStartAdjustFillSqueeze:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
     if (isSqueezeEnable){
@@ -131,9 +133,9 @@
         [self effectStartSqueeze:vanishingViews vanishDuration:vanishDuration];
     } else {
         // .Adjust
-        double fillDelayTime = [self effectStartAdjust:vanishingViews vanishDuration:vanishDuration];
+        double adjustDuration = [self effectStartAdjust:vanishingViews vanishDuration:vanishDuration];
         // .Fill
-        [self effectStartFill:vanishingViews fillDelayTime:fillDelayTime];
+        [self effectStartFill:vanishingViews fillDelayTime:adjustDuration];
     }
 }
 

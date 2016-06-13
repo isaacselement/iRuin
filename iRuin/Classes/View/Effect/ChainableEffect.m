@@ -3,6 +3,9 @@
 
 @implementation ChainableEffect
 
+
+#pragma mark - Override Methods
+
 -(void) effectStartAdjustFillSqueeze:(NSArray*)vanishingViews vanishDuration:(double)vanishDuration
 {
     if (self.isSqueezeEnable){
@@ -11,7 +14,7 @@
     } else {
         // .Adjust
         double adjustDuration = [self effectStartAdjust:vanishingViews vanishDuration:vanishDuration];
-        if (((ChainableState*)ACTION.modeState).isFullAdjusting && adjustDuration != 0) {
+        if ( !((ChainableState*)ACTION.modeState).isDisableAutoAdjusting && adjustDuration != 0) {
             return;
         }
         // .Fill

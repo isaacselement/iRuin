@@ -2,17 +2,86 @@
 #import "AppInterface.h"
 
 @implementation ChainableState
-
-@synthesize isChainVanishing;
+{
+    BOOL isDisableChainable;
+    BOOL isDisableFilterOnRollIn;
+}
 
 @synthesize continuous;
+@synthesize isChainVanishing;
+@synthesize isDisableAutoAdjusting;
+
+
+#pragma mark - Override Methods
 
 -(void) stateInitialize
 {
-    self.isFullAdjusting = [DATA.config[@"IsFullAdjusting"] boolValue];
+    [super stateInitialize];
+    
+    // so , default is NO !
+    isDisableChainable = [DATA.config[@"IsDisableChainable"] boolValue];
+    isDisableAutoAdjusting = [DATA.config[@"IsDisableAutoAdjusting"] boolValue];
+    isDisableFilterOnRollIn = [DATA.config[@"IsDisableFilterOnRollIn"] boolValue];
 }
 
-#pragma mark - Public Methods
+-(void) stateSymbolsWillRollIn
+{
+    [super stateSymbolsWillRollIn];
+    
+    // do the filter match symbols job
+    if (! isDisableFilterOnRollIn) {
+        [FilterHelper forwardFilterMatchedObjects];
+    }
+}
+
+-(void) stateSymbolsDidRollIn
+{
+    [super stateSymbolsDidRollIn];
+    
+    // chain vanish
+    if (isDisableFilterOnRollIn) {
+        [self startChainVainsh];
+    }
+}
+
+-(void) stateSymbolsWillRollOut
+{
+    [super stateSymbolsWillRollOut];
+    
+    // Roll out when chain vanishing , should cancel the chain vanish
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stateStartChainVanish) object:nil];
+}
+
+-(void) stateSymbolsDidAdjusts
+{
+    [super stateSymbolsDidAdjusts];
+    
+    [self startChainVainsh];
+}
+
+-(void) stateSymbolsDidFillIn
+{
+    [super stateSymbolsDidFillIn];
+    
+    [self startChainVainsh];
+}
+
+-(void) stateSymbolsDidSqueeze
+{
+    [super stateSymbolsDidSqueeze];
+    
+    [self startChainVainsh];
+}
+
+
+#pragma mark - Private Methods
+
+-(void) startChainVainsh
+{
+    if (isDisableChainable) return;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stateStartChainVanish) object:nil];
+    [self performSelector:@selector(stateStartChainVanish) withObject:nil afterDelay:0.2];
+}
 
 -(void) stateStartChainVanish
 {
@@ -52,4 +121,3 @@
 }
 
 @end
-

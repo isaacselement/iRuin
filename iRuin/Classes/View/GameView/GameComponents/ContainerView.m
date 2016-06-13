@@ -105,7 +105,7 @@
     return symbol;
 }
 
-#pragma mark - Test
+#pragma mark - For Test
 
 #ifdef DEBUG
 - (instancetype)init
@@ -129,7 +129,10 @@
         SymbolView* symbol = [self getSymbolView: location event:nil];
         symbol.identification = 1;
     } else if (tap.numberOfTapsRequired == 2) {
-        [(ChainableState*)ACTION.modeState stateStartChainVanish];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        [(ChainableState*)ACTION.modeState performSelector:@selector(stateStartChainVanish)];
+#pragma clang diagnostic pop
     }
 }
 #endif

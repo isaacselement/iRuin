@@ -6,24 +6,30 @@
 @synthesize effect;
 
 #pragma mark - Subclass Override Methods
+
 -(void) stateInitialize
 {
 }
+
 -(void) stateUnInitialize
 {
 }
+
 -(void) stateTouchesBegan:(SymbolView*)symbol location:(CGPoint)location
 {
     [effect effectTouchesBegan: symbol location:location];
 }
+
 -(void) stateTouchesMoved:(SymbolView*)symbol location:(CGPoint)location
 {
 //    [effect effectTouchesMoved: symbol location:location];    // give to everyone state to handle it.
 }
+
 -(void) stateTouchesEnded:(SymbolView*)symbol location:(CGPoint)location
 {
     [effect effectTouchesEnded: symbol location:location];
 }
+
 -(void) stateTouchesCancelled:(SymbolView*)symbol location:(CGPoint)location
 {
     [effect effectTouchesCancelled: symbol location:location];

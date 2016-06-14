@@ -14,9 +14,12 @@
     } else {
         // .Adjust
         double adjustDuration = [self effectStartAdjust:vanishingViews vanishDuration:vanishDuration];
-        if ( !((ChainableState*)ACTION.modeState).isDisableAutoAdjusting && adjustDuration != 0) {
+        
+        // adjustDuration == 0 , that means that no adjust phase
+        if (((ChainableState*)ACTION.modeState).isAdjustChaining && adjustDuration != 0) {
             return;
         }
+        
         // .Fill
         [self effectStartFill:vanishingViews fillDelayTime:adjustDuration];
     }

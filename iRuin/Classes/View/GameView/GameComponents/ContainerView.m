@@ -105,9 +105,11 @@
     return symbol;
 }
 
-#pragma mark - For Test
+
+#pragma mark - Just for Development
 
 #ifdef DEBUG
+
 - (instancetype)init
 {
     self = [super init];
@@ -125,16 +127,21 @@
 - (void)tapAction:(UITapGestureRecognizer*)tap
 {
     if (tap.numberOfTapsRequired == 1) {
+        
         CGPoint location = [tap locationInView: self];
         SymbolView* symbol = [self getSymbolView: location event:nil];
         symbol.identification = 1;
+        
     } else if (tap.numberOfTapsRequired == 2) {
+        
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
         [(ChainableState*)ACTION.modeState performSelector:@selector(stateStartChainVanish)];
 #pragma clang diagnostic pop
+        
     }
 }
+
 #endif
 
 @end

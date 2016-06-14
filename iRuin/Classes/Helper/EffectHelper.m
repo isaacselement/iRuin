@@ -214,11 +214,17 @@
 
 -(void) startChainScoreEffect:(NSArray*)symbols continuous:(int)continuous
 {
-//    if (continuous < 3) {
-        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:DATA.config[@"Continuous_Vanish"][@"Chaining"]];
-//    } else {
-//    
-//    }
+    NSDictionary* ContinuousConfig = DATA.config[@"Continuous_Vanish"];
+    
+    if (!((ChainableState*)ACTION.modeState).isAdjustChaining && continuous >= [ContinuousConfig[@"AdjustChainContinuous"] intValue]) {
+        ((ChainableState*)ACTION.modeState).isAdjustChaining = YES;
+    }
+
+    if (((ChainableState*)ACTION.modeState).isAdjustChaining) {
+        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:ContinuousConfig[@"AdjustChaining"]];
+    } else {
+        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:ContinuousConfig[@"Chaining"]];
+    }
 }
 
 #pragma mark - pass season hint

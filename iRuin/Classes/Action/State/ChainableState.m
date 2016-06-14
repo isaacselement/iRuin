@@ -9,7 +9,7 @@
 
 @synthesize continuous;
 @synthesize isChainVanishing;
-@synthesize isDisableAutoAdjusting;
+@synthesize isAdjustChaining;
 
 
 #pragma mark - Override Methods
@@ -20,7 +20,6 @@
     
     // so , default is NO !
     isDisableChainable = [DATA.config[@"IsDisableChainable"] boolValue];
-    isDisableAutoAdjusting = [DATA.config[@"IsDisableAutoAdjusting"] boolValue];
     isDisableFilterOnRollIn = [DATA.config[@"IsDisableFilterOnRollIn"] boolValue];
 }
 
@@ -100,6 +99,8 @@
                 isChainVanishing = NO;
                 continuous = 0;
             }
+            
+            isAdjustChaining = NO;
 
         } else {
             [self.effect effectStartAdjustFillSqueeze:nil vanishDuration:0];

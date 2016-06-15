@@ -193,12 +193,12 @@
 
 #pragma mark -
 
--(void) startChapterCellsEffect: (NSDictionary*)cellsConfigs
+-(void) startChapterCellsEffect: (NSMutableDictionary*)cellsConfigs
 {
     NSArray* chaptersCells = VIEW.chaptersView.lineScrollView.contentView.subviews;
     for (int i = 0 ; i < chaptersCells.count; i++) {
         ImageLabelLineScrollCell* cell = [chaptersCells objectAtIndex:i];
-        NSDictionary* config = [ConfigHelper getNodeConfig:cellsConfigs index:i];
+        NSDictionary* config = [ConfigHelper getLoopConfig:cellsConfigs index:i];
         [ACTION.gameEffect designateValuesActionsTo:cell config: config];
     }
 }

@@ -22,7 +22,7 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 #pragma mark -
 
--(void) startChapterCellsEffect: (NSDictionary*)cellsConfigs;
+-(void) startChapterCellsEffect: (NSMutableDictionary*)cellsConfigs;
 
 #pragma mark - score
 

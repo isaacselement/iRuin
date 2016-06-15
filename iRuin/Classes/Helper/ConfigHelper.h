@@ -12,15 +12,12 @@
 
 +(void) iterateConfig:(NSDictionary*)config handler:(void(^)(NSString* key, id value))handler;
 
-+(int) getKeysCount:(NSDictionary*)config;
-
 +(NSDictionary*) getLoopConfig:(NSMutableDictionary*)configs index:(int)index;
-
-+(NSDictionary*) getNodeConfig:(NSDictionary*)configs index:(int)index;
 
 #pragma mark - Config Category
 
 +(void) setNextMusic;
+
 +(id) getMusicConfig:(NSString*)key;
 
 +(id) getUtilitiesConfig:(NSString*)key;
@@ -29,7 +26,7 @@
 
 +(int) getSymbolsIdentificationsCount;
 
-+(NSDictionary*) getSymbolsPorperties;
++(NSMutableDictionary*) getSymbolsPorperties;
 
 #pragma mark - Network Request
 

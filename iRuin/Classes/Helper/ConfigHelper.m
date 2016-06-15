@@ -66,22 +66,21 @@
     }
 }
 
-+(int) getKeysCount:(NSDictionary*)config
-{
-    __block int count = 0 ;
-    [self iterateConfig:config handler:^(NSString *key, id value) {
-        count++;
-    }];
-    return count;
-}
-
 +(NSDictionary*) getLoopConfig:(NSMutableDictionary*)configs index:(int)index
 {
+    // First , checkout if have "~0" or "~1" ... to need to combine  (such as chepater cells and symbols)
+    NSString* indexKey = [NSString stringWithFormat:@"%@%d", kReserved, index];
+    NSDictionary* indexConfig = configs[indexKey];
+    if (indexConfig) {
+        configs = [DictionaryHelper combines:configs with:indexConfig];
+    }
+    
+    // Second , loop with replace the config
     NSDictionary* loopConfig = configs[kReservedLoop];
     NSArray* keyPaths = loopConfig[@"keyPaths"];
     NSArray* values = loopConfig[@"values"];
     
-    // no need to replace
+    // no need to replace the value
     if (!loopConfig || values.count == 0 || keyPaths.count == 0) {
         return configs;
     }
@@ -111,33 +110,27 @@
     return configs;
 }
 
-+(NSDictionary*) getNodeConfig:(NSDictionary*)configs index:(int)index
-{
-    NSString* indexKey = [NSString stringWithFormat:@"%d", index];
-    NSDictionary* commonConfig = configs[kReservedCommon];
-    NSDictionary* result = configs[indexKey];
-    if (commonConfig) {
-        result = [DictionaryHelper combines:commonConfig with:result];
-    }
-    return result;
-}
-
-
-
-#pragma mark - Config Category
+#pragma mark - Music
 
 
 int musicIndex = 0;
+
 +(void) setNextMusic
 {
     musicIndex++;
 }
+
 +(id) getMusicConfig:(NSString*)key
 {
     // change the config
     NSDictionary* config = [self getLoopConfig:DATA.config[@"GAME_MUSIC"] index:musicIndex];
     return config[key];
 }
+
+
+
+#pragma mark - 
+
 
 +(id) getUtilitiesConfig:(NSString*)key
 {
@@ -151,10 +144,10 @@ int musicIndex = 0;
 
 +(int) getSymbolsIdentificationsCount
 {
-    return [ConfigHelper getKeysCount:[ConfigHelper getSymbolsPorperties]];
+    return [[ConfigHelper getSymbolsPorperties][@"~count"] intValue];
 }
 
-+(NSDictionary*) getSymbolsPorperties
++(NSMutableDictionary*) getSymbolsPorperties
 {
     return DATA.config[@"SYMBOLS_PORPERTIES"];
 }

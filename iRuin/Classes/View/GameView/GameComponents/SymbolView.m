@@ -138,8 +138,8 @@
 +(void) setSymbolIdentification: (int)identification symbol:(SymbolView*)symbol
 {
     int index = identification - 1;     // HERE!!!!! identification to index
-    NSString* indexKey = [NSString stringWithFormat:@"%d", index];
-    NSDictionary* specification = [ConfigHelper getNodeConfig:[ConfigHelper getSymbolsPorperties] key:indexKey];
+    NSDictionary* configs = [ConfigHelper getSymbolsPorperties];
+    NSDictionary* specification = [ConfigHelper getNodeConfig:configs index:index];
     [ACTION.gameEffect designateValuesActionsTo:symbol config:specification];
 }
 

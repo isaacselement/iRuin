@@ -15,7 +15,6 @@
 // in ConfigHelper.m
 #define kReservedLoop @"~loop"
 #define kReservedCommon @"~common"
-#define kReservedDefault @"~default"
 #define kReservedInterval @"~interval"
 #define kReservedSortedKeys @"~sortedKeys"
 

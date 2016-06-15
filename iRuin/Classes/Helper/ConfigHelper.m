@@ -3,6 +3,8 @@
 
 @implementation ConfigHelper
 
+
+
 #pragma mark - Json Files
 
 +(NSDictionary*) getDesignJson: (NSString*)name
@@ -42,6 +44,7 @@
 }
 
 
+
 #pragma mark - Config
 
 +(void) iterateConfig:(NSDictionary*)config handler:(void(^)(NSString* key, id value))handler
@@ -78,7 +81,8 @@
     NSArray* keyPaths = loopConfig[@"keyPaths"];
     NSArray* values = loopConfig[@"values"];
     
-    if (!loopConfig || values.count == 0) {
+    // no need to replace
+    if (!loopConfig || values.count == 0 || keyPaths.count == 0) {
         return configs;
     }
     
@@ -107,27 +111,22 @@
     return configs;
 }
 
-// key == nil , use default config , then combine with common config .
-// so if key == nil , default config == nil , then result is the common config .
-+(NSDictionary*) getNodeConfig:(NSDictionary*)configs key:(NSString*)key
++(NSDictionary*) getNodeConfig:(NSDictionary*)configs index:(int)index
 {
+    NSString* indexKey = [NSString stringWithFormat:@"%d", index];
     NSDictionary* commonConfig = configs[kReservedCommon];
-    NSDictionary* defaultConfig = configs[kReservedDefault];
-    
-    NSDictionary* result = nil;
-    if(key) {
-        result = configs[key];
-    }
-    if (!result) {
-        result = defaultConfig;
-    }
+    NSDictionary* result = configs[indexKey];
     if (commonConfig) {
         result = [DictionaryHelper combines:commonConfig with:result];
     }
     return result;
 }
 
+
+
 #pragma mark - Config Category
+
+
 int musicIndex = 0;
 +(void) setNextMusic
 {
@@ -160,7 +159,10 @@ int musicIndex = 0;
     return DATA.config[@"SYMBOLS_PORPERTIES"];
 }
 
+
+
 #pragma mark - Network Request
+
 
 +(void) requestDowloadRemoteResources
 {

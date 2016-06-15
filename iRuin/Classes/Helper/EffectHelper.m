@@ -198,8 +198,7 @@
     NSArray* chaptersCells = VIEW.chaptersView.lineScrollView.contentView.subviews;
     for (int i = 0 ; i < chaptersCells.count; i++) {
         ImageLabelLineScrollCell* cell = [chaptersCells objectAtIndex:i];
-        NSString* indexKey = [NSString stringWithFormat:@"%d", i];
-        NSDictionary* config = [ConfigHelper getNodeConfig:cellsConfigs key:indexKey];
+        NSDictionary* config = [ConfigHelper getNodeConfig:cellsConfigs index:i];
         [ACTION.gameEffect designateValuesActionsTo:cell config: config];
     }
 }
@@ -229,7 +228,7 @@
     }
 }
 
--(void) stopChainVanishingEffect:(int)continuous
+-(void) stopChainVanishingEffect:(int)lastContinuous
 {
     NSDictionary* ContinuousConfig = DATA.config[@"Continuous_Vanish"];
     

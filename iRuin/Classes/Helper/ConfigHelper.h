@@ -16,7 +16,7 @@
 
 +(NSDictionary*) getLoopConfig:(NSMutableDictionary*)configs index:(int)index;
 
-+(NSDictionary*) getNodeConfig:(NSDictionary*)configs key:(NSString*)key;
++(NSDictionary*) getNodeConfig:(NSDictionary*)configs index:(int)index;
 
 #pragma mark - Config Category
 

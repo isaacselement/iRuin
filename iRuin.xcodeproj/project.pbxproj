@@ -118,7 +118,6 @@
 		5E4C9BA31A87B9F900B500C1 /* RectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ADB1A87B9F900B500C1 /* RectHelper.m */; };
 		5E4C9BA51A87B9F900B500C1 /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9ADF1A87B9F900B500C1 /* ViewHelper.m */; };
 		5E4C9BA61A87B9F900B500C1 /* KeyValueHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AE11A87B9F900B500C1 /* KeyValueHelper.m */; };
-		5E4C9BA81A87B9F900B500C1 /* ActionAnimateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AEB1A87B9F900B500C1 /* ActionAnimateHelper.m */; };
 		5E4C9BA91A87B9F900B500C1 /* ActionExecutorBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AED1A87B9F900B500C1 /* ActionExecutorBase.m */; };
 		5E4C9BAA1A87B9F900B500C1 /* ActionExecutorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AEF1A87B9F900B500C1 /* ActionExecutorManager.m */; };
 		5E4C9BAB1A87B9F900B500C1 /* AudioHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9AF21A87B9F900B500C1 /* AudioHandler.m */; };
@@ -502,8 +501,6 @@
 		5E4C9AE31A87B9F900B500C1 /* ModulesMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModulesMacro.h; sourceTree = "<group>"; };
 		5E4C9AE81A87B9F900B500C1 /* _ActionExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ActionExecutor.h; sourceTree = "<group>"; };
 		5E4C9AE91A87B9F900B500C1 /* _ActionExecutor_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ActionExecutor_.h; sourceTree = "<group>"; };
-		5E4C9AEA1A87B9F900B500C1 /* ActionAnimateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionAnimateHelper.h; sourceTree = "<group>"; };
-		5E4C9AEB1A87B9F900B500C1 /* ActionAnimateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionAnimateHelper.m; sourceTree = "<group>"; };
 		5E4C9AEC1A87B9F900B500C1 /* ActionExecutorBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionExecutorBase.h; sourceTree = "<group>"; };
 		5E4C9AED1A87B9F900B500C1 /* ActionExecutorBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionExecutorBase.m; sourceTree = "<group>"; };
 		5E4C9AEE1A87B9F900B500C1 /* ActionExecutorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionExecutorManager.h; sourceTree = "<group>"; };
@@ -1423,8 +1420,6 @@
 			children = (
 				5E4C9AE81A87B9F900B500C1 /* _ActionExecutor.h */,
 				5E4C9AE91A87B9F900B500C1 /* _ActionExecutor_.h */,
-				5E4C9AEA1A87B9F900B500C1 /* ActionAnimateHelper.h */,
-				5E4C9AEB1A87B9F900B500C1 /* ActionAnimateHelper.m */,
 				5E4C9AEC1A87B9F900B500C1 /* ActionExecutorBase.h */,
 				5E4C9AED1A87B9F900B500C1 /* ActionExecutorBase.m */,
 				5E4C9AEE1A87B9F900B500C1 /* ActionExecutorManager.h */,
@@ -1975,7 +1970,6 @@
 				5E4C9B5E1A87B9F900B500C1 /* ScheduledTask.m in Sources */,
 				5E4C9BAD1A87B9F900B500C1 /* MXAudioPlayerFadeOperation.m in Sources */,
 				5E4C9BAB1A87B9F900B500C1 /* AudioHandler.m in Sources */,
-				5E4C9BA81A87B9F900B500C1 /* ActionAnimateHelper.m in Sources */,
 				5E4C9BB11A87B9F900B500C1 /* ExplodesExecutor.m in Sources */,
 				4E4D4E96181D5AFB00886D75 /* main.m in Sources */,
 				5E4C9BB61A87B9F900B500C1 /* QueueIndexPathParser.m in Sources */,

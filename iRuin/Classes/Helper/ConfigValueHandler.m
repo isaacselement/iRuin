@@ -24,10 +24,10 @@
             CGPoint point =  [[object valueForKeyPath:keyPath] CGPointValue];
             NSString* key = k_current_value;
             if (isWindowCenter) {
-                point = [[[[UIApplication sharedApplication] delegate] window] middlePoint];
+                point = [self getWindowCenter];
                 key = k_window_center;
             } else if (isSuperCenter) {
-                point = [[(UIView*)object superview] middlePoint];
+                point = [self getSuperCenter: object];
                 key = k_super_center;
             }
             
@@ -126,6 +126,21 @@
     return [value rangeOfString:k_super_center].location != NSNotFound ;
 }
 
++(CGPoint) getWindowCenter
+{
+    return [[[[UIApplication sharedApplication] delegate] window] middlePoint];
+}
+
++(CGPoint) getSuperCenter:(NSObject*)object
+{
+    CGPoint point = CGPointZero;
+    if ([object isKindOfClass:[UIView class]]) {
+        point = [[(UIView*)object superview] middlePoint];
+    } else if ([object isKindOfClass:[CALayer class]]) {
+        point = [[(CALayer*)object superlayer] middlePoint];
+    }
+    return point;
+}
 
 // + - * /
 +(CGFloat) getExpressionValue:(NSString*)expression key:(NSString*)key value:(CGFloat)z

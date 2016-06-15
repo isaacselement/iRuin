@@ -75,6 +75,11 @@
 
 #pragma mark - Private Methods
 
+-(void) stateSymbolsDidChainVanish
+{
+    [[EffectHelper getInstance] stopChainVanishingEffect: continuous];
+}
+
 -(void) startChainVainsh
 {
     if (isDisableChainable) return;
@@ -95,7 +100,7 @@
             
             // the first time check , no chain vanish , so should check vanishing~~~
             if (isChainVanishing) {
-                [(ChainableEvent*)ACTION.modeEvent eventSymbolsDidChainVanish];
+                [self stateSymbolsDidChainVanish];
                 isChainVanishing = NO;
                 continuous = 0;
             }
@@ -114,7 +119,7 @@
         
         isChainVanishing = YES;
         continuous++;
-        [[EffectHelper getInstance] startChainScoreEffect: vanishSymbols continuous:continuous];
+        [[EffectHelper getInstance] startChainVanishingEffect: vanishSymbols continuous:continuous];
         
         DLOG(@"chaining: %d", continuous);
         [self stateStartVanishSymbols: vanishSymbols];

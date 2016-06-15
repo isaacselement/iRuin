@@ -21,4 +21,8 @@
 
 +(BOOL) checkIsSuperCenterValue:(NSString*)value;
 
++(CGPoint) getWindowCenter;
+
++(CGPoint) getSuperCenter:(NSObject*)object;
+
 @end

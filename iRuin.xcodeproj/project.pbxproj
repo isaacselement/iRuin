@@ -148,11 +148,14 @@
 		5E4C9BD21A87B9F900B500C1 /* FrameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B561A87B9F900B500C1 /* FrameHelper.m */; };
 		5E4C9BD31A87B9F900B500C1 /* FrameTranslater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B581A87B9F900B500C1 /* FrameTranslater.m */; };
 		5E4C9BD41A87B9F900B500C1 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B5A1A87B9F900B500C1 /* UIView+Frame.m */; };
+		5E4ED73C1D0FEEA5002D3896 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E4ED73B1D0FEEA5002D3896 /* circle.png */; };
 		5E537BE91A3DDEB300C3F5A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE71A3DDEB300C3F5A7 /* Icon.png */; };
 		5E537BEA1A3DDEB300C3F5A7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */; };
 		5E5412E41B4BD42E003D47B2 /* LineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5412E11B4BD42E003D47B2 /* LineScrollView.m */; };
 		5E5412E51B4BD42E003D47B2 /* LineScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5412E31B4BD42E003D47B2 /* LineScrollViewCell.m */; };
 		5E5597A51CB8DA2F00B99A96 /* July - Somewhere.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E5597A41CB8DA2F00B99A96 /* July - Somewhere.mp3 */; };
+		5E58F5C61D0FE1AC00FDB9FE /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E58F5C51D0FE1AC00FDB9FE /* triangle.png */; };
+		5E58F5CA1D0FE7CA00FDB9FE /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E58F5C91D0FE7CA00FDB9FE /* star.png */; };
 		5E598A4B1A5B8A8C009E769D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4A1A5B8A8C009E769D /* libz.dylib */; };
 		5E598A4D1A5B8AB3009E769D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4C1A5B8AB3009E769D /* libsqlite3.dylib */; };
 		5E598A4F1A5B8BD3009E769D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E598A4E1A5B8BD3009E769D /* SystemConfiguration.framework */; };
@@ -597,6 +600,7 @@
 		5E4C9B581A87B9F900B500C1 /* FrameTranslater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameTranslater.m; sourceTree = "<group>"; };
 		5E4C9B591A87B9F900B500C1 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		5E4C9B5A1A87B9F900B500C1 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		5E4ED73B1D0FEEA5002D3896 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		5E537BE71A3DDEB300C3F5A7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		5E5412E01B4BD42E003D47B2 /* LineScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineScrollView.h; sourceTree = "<group>"; };
@@ -604,6 +608,8 @@
 		5E5412E21B4BD42E003D47B2 /* LineScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineScrollViewCell.h; sourceTree = "<group>"; };
 		5E5412E31B4BD42E003D47B2 /* LineScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineScrollViewCell.m; sourceTree = "<group>"; };
 		5E5597A41CB8DA2F00B99A96 /* July - Somewhere.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "July - Somewhere.mp3"; sourceTree = "<group>"; };
+		5E58F5C51D0FE1AC00FDB9FE /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
+		5E58F5C91D0FE7CA00FDB9FE /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		5E598A4A1A5B8A8C009E769D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5E598A4C1A5B8AB3009E769D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5E598A4E1A5B8BD3009E769D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1771,6 +1777,9 @@
 		5EFCEA8F1CF85E9400EF5DF9 /* Effect */ = {
 			isa = PBXGroup;
 			children = (
+				5E4ED73B1D0FEEA5002D3896 /* circle.png */,
+				5E58F5C91D0FE7CA00FDB9FE /* star.png */,
+				5E58F5C51D0FE1AC00FDB9FE /* triangle.png */,
 				5EFB332A1D00229F002FACE0 /* spark.png */,
 				5ECF20681CFB2F750089E152 /* fire.png */,
 				5ECF20691CFB2F750089E152 /* mask.png */,
@@ -1837,9 +1846,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E6B16321A39D22B0087EA1D /* Bubble_1.wav in Resources */,
+				5E58F5C61D0FE1AC00FDB9FE /* triangle.png in Resources */,
 				5ECF206B1CFB2F750089E152 /* mask.png in Resources */,
 				5EC11AE61CF2F62E00D3708B /* Valentin - A Little Story.mp3 in Resources */,
 				5E9C11AD1A3420B3007E3BB6 /* 0.png in Resources */,
+				5E58F5CA1D0FE7CA00FDB9FE /* star.png in Resources */,
 				5E9C11AF1A3420B3007E3BB6 /* 2.png in Resources */,
 				5E4C9B6E1A87B9F900B500C1 /* rsaCert.crt in Resources */,
 				5E9C11AE1A3420B3007E3BB6 /* 1.png in Resources */,
@@ -1865,6 +1876,7 @@
 				5E9C118C1A3420B3007E3BB6 /* iPad_Landscape.json in Resources */,
 				5E9C11B11A3420B3007E3BB6 /* Default-568h@2x.png in Resources */,
 				5EFCEA8E1CF8403700EF5DF9 /* Robert de Boron - Chiru (Saisei no Uta).mp3 in Resources */,
+				5E4ED73C1D0FEEA5002D3896 /* circle.png in Resources */,
 				5E9C118B1A3420B3007E3BB6 /* Config_Touch.json in Resources */,
 				5E9C11C01A3420B3007E3BB6 /* lock.caf in Resources */,
 				4E4D4E9C181D5AFB00886D75 /* Images.xcassets in Resources */,

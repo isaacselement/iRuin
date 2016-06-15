@@ -47,9 +47,9 @@
                     if ([ConfigValueHandler checkIsCurrentValue:value]) {
                         return [obj valueForKeyPath:key];
                     } else if ([ConfigValueHandler checkIsWindowCenterValue:value]) {
-                        return [NSValue valueWithCGPoint:[[[[UIApplication sharedApplication] delegate] window] middlePoint]];
+                        return [NSValue valueWithCGPoint:[ConfigValueHandler getWindowCenter]];
                     } else if ([ConfigValueHandler checkIsSuperCenterValue:value]) {
-                        return [NSValue valueWithCGPoint:[[(UIView*)obj superview] middlePoint]];
+                        return [NSValue valueWithCGPoint:[ConfigValueHandler getSuperCenter:obj]];
                     }
                 }
                 
@@ -212,18 +212,31 @@
     
 }
 
--(void) startChainScoreEffect:(NSArray*)symbols continuous:(int)continuous
+-(void) startChainVanishingEffect:(NSArray*)symbols continuous:(int)continuous
 {
     NSDictionary* ContinuousConfig = DATA.config[@"Continuous_Vanish"];
     
-    if (!((ChainableState*)ACTION.modeState).isAdjustChaining && continuous >= [ContinuousConfig[@"AdjustChainContinuous"] intValue]) {
-        ((ChainableState*)ACTION.modeState).isAdjustChaining = YES;
+    if (!((ChainableState*)ACTION.modeState).isAdjustChaining) {
+        if (continuous >= [ContinuousConfig[@"AdjustChainContinuous"] intValue]) {
+            ((ChainableState*)ACTION.modeState).isAdjustChaining = YES;
+        }
     }
 
     if (((ChainableState*)ACTION.modeState).isAdjustChaining) {
-        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:ContinuousConfig[@"AdjustChaining"]];
+        [ACTION.gameEffect designateToControllerWithConfig:ContinuousConfig[@"AdjustChaining"]];
     } else {
-        [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:ContinuousConfig[@"Chaining"]];
+        [ACTION.gameEffect designateToControllerWithConfig:ContinuousConfig[@"Chaining"]];
+    }
+}
+
+-(void) stopChainVanishingEffect:(int)continuous
+{
+    NSDictionary* ContinuousConfig = DATA.config[@"Continuous_Vanish"];
+    
+    if (((ChainableState*)ACTION.modeState).isAdjustChaining) {
+        [ACTION.gameEffect designateToControllerWithConfig:ContinuousConfig[@"AdjustChaining_Stop"]];
+    } else {
+        [ACTION.gameEffect designateToControllerWithConfig:ContinuousConfig[@"Chaining_Stop"]];
     }
 }
 

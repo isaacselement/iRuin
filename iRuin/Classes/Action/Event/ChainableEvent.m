@@ -6,10 +6,5 @@
 
 #pragma mark - Event Methods
 
--(void) eventSymbolsDidChainVanish
-{
-    DLOG(@"chaining done!~");
-}
-
 
 @end

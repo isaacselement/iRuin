@@ -28,8 +28,9 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 -(void) startScoresEffect:(NSArray*)symbols;
 
--(void) startChainScoreEffect: (NSArray*)symbols continuous:(int)continuous;
+-(void) startChainVanishingEffect: (NSArray*)symbols continuous:(int)continuous;
 
+-(void) stopChainVanishingEffect:(int)continuous;
 
 #pragma mark - pass season hint
 

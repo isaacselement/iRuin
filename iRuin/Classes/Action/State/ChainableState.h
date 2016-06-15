@@ -9,5 +9,4 @@
 @property (assign) BOOL isAdjustChaining;
 
 
-
 @end

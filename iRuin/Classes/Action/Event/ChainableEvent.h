@@ -5,7 +5,5 @@
 
 #pragma mark - Event Methods
 
--(void) eventSymbolsDidChainVanish;
-
 
 @end

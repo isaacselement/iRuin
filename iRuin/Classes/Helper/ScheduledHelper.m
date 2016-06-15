@@ -47,7 +47,7 @@ static ScheduledHelper* scheduledHelper = nil;
         if (scheduleTaskTimes % interval == 0) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSDictionary* scheduleTaskConfig = [ConfigHelper getLoopConfig:config index:scheduleViewValueIndex] ;
-                [ACTION.gameEffect designateValuesActionsTo:VIEW.controller config:scheduleTaskConfig];
+                [ACTION.gameEffect designateToControllerWithConfig:scheduleTaskConfig];
                 scheduleViewValueIndex++;                
             });
         }

@@ -14,6 +14,11 @@
     });
 }
 
+-(void) designateToControllerWithConfig:(NSDictionary*)config
+{
+    [self designateValuesActionsTo:VIEW.controller config:config];
+}
+
 -(void) designateValuesActionsTo: (id)object config:(NSDictionary*)config
 {
     if (!object || !config || config.count == 0) return;
@@ -79,7 +84,7 @@
     // but audio.play was not use on UIView ... this need to be think more about ...
     
     id actionsConfig = config[kReservedExecutors];
-    if (!actionsConfig || ![object isKindOfClass:[UIView class]]) {
+    if (!actionsConfig) {
         return;
     }
     

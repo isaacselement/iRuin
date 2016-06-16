@@ -7,7 +7,6 @@
 
 
 @synthesize window;
-@synthesize frame;
 @synthesize controller;
 
 
@@ -31,8 +30,9 @@ static ViewManager* sharedInstance = nil;
 {
     self = [super init];
     if (self) {
-        frame = [[FrameManager alloc] init];
         controller = [[GameController alloc] init];
+        
+        self.blackPoint = CGPointMake(-250, -250);
     }
     return self;
 }

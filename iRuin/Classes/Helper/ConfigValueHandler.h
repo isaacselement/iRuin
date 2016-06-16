@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 
 #define k_current_value @"k_current_value"
-#define k_window_center @"k_window_center"
-#define k_super_center @"k_super_center"
+#define k_window_middle @"k_window_middle"
+#define k_super_middle @"k_super_middle"
 
 @interface ConfigValueHandler : NSObject
 

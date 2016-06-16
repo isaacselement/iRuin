@@ -102,7 +102,7 @@
     row = -1;
     column = -1;
     isIntersectionInVanish = NO;
-    self.center = VIEW.frame.blackPoint;
+    self.center = VIEW.blackPoint;
     [self.layer removeAllAnimations];
 }
 

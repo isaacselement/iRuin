@@ -27,9 +27,6 @@
 @class GameView;
 @class ChaptersView;
 @class GameController;
-
-@class FrameManager;
-
 @class QueueTimeCalculator;
 @class ActionExecutorManager;
 
@@ -41,11 +38,7 @@
 @interface ViewManager : NSObject
 
 
-
-
 @property (assign) UIWindow* window;
-
-@property (strong) FrameManager* frame;
 
 @property (strong) GameController* controller;
 
@@ -55,6 +48,7 @@
 @property (strong, readonly) ActionExecutorManager* actionExecutorManager;
 
 
+@property (assign) CGPoint blackPoint;
 
 
 +(ViewManager*) getInstance ;

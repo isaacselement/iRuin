@@ -58,7 +58,6 @@
 		4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDACDCA191FBCF600A8E84E /* FilterHelper.m */; };
 		4EDC3D8C18229FEB00CD1C04 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDC3D8B18229FEB00CD1C04 /* QuartzCore.framework */; };
 		4EDD80AE1A1268B8007422A0 /* PPSSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD80AD1A1268B8007422A0 /* PPSSignatureView.m */; };
-		4EEAFF6718D419C1001FB745 /* FrameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF6618D419C1001FB745 /* FrameManager.m */; };
 		4EEAFF7518D47D96001FB745 /* EffectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7018D47D96001FB745 /* EffectHelper.m */; };
 		4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEAFF7418D47D96001FB745 /* SearchHelper.m */; };
 		4EEE51A31A0BB166002CD333 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE51A21A0BB166002CD333 /* TimerView.m */; };
@@ -315,8 +314,6 @@
 		4EDD80AD1A1268B8007422A0 /* PPSSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSSignatureView.m; sourceTree = "<group>"; };
 		4EE6354C1A22E2B200019C58 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4EE6354E1A22E2BE00019C58 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		4EEAFF6518D419C1001FB745 /* FrameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameManager.h; sourceTree = "<group>"; };
-		4EEAFF6618D419C1001FB745 /* FrameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameManager.m; sourceTree = "<group>"; };
 		4EEAFF6F18D47D96001FB745 /* EffectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectHelper.h; sourceTree = "<group>"; };
 		4EEAFF7018D47D96001FB745 /* EffectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectHelper.m; sourceTree = "<group>"; };
 		4EEAFF7318D47D96001FB745 /* SearchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHelper.h; sourceTree = "<group>"; };
@@ -859,8 +856,6 @@
 				4E11D8DB181FE4F6007837F0 /* GameView */,
 				4E4D4EC4181D5B9C00886D75 /* ViewManager.h */,
 				4E4D4EC5181D5B9C00886D75 /* ViewManager.m */,
-				4EEAFF6518D419C1001FB745 /* FrameManager.h */,
-				4EEAFF6618D419C1001FB745 /* FrameManager.m */,
 				4EA4DD38181EAFAE00BC1E6E /* GameController.h */,
 				4EA4DD39181EAFAE00BC1E6E /* GameController.m */,
 				4EF75EA81A00F5A00074E493 /* BaseController.h */,
@@ -1942,7 +1937,6 @@
 				5E4C9BBC1A87B9F900B500C1 /* NormalButton.m in Sources */,
 				5E4C9B661A87B9F900B500C1 /* NSString+Base64.m in Sources */,
 				5E4C9BAA1A87B9F900B500C1 /* ActionExecutorManager.m in Sources */,
-				4EEAFF6718D419C1001FB745 /* FrameManager.m in Sources */,
 				4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */,
 				5E4C9BB31A87B9F900B500C1 /* PositionsExecutor.m in Sources */,
 				4E0BFC5119260B9100F0E632 /* MoveState.m in Sources */,

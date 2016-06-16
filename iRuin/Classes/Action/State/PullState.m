@@ -317,7 +317,7 @@
         
         // for the two useless symbols
         if (index == 0 || index == count - 1) {
-            [((SymbolView*)obj) setCenter: VIEW.frame.blackPoint];
+            [((SymbolView*)obj) setCenter: VIEW.blackPoint];
             
             return NO;
         }

@@ -166,7 +166,6 @@
 
 // Global
 #import "ViewManager.h"
-#import "FrameManager.h"
 #import "GameController.h"
 
 // GameView

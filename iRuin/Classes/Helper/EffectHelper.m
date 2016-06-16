@@ -166,7 +166,7 @@
         rollInViewsInRepositoryPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
             // move all symbols to black point , cause roll out may be some time not roll all out . cause the line defined difference ...
             [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-                ((UIView*)obj).center = VIEW.frame.blackPoint;
+                ((UIView*)obj).center = VIEW.blackPoint;
                 return NO;
             }];
             NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsRepository lines:lines indexPaths:indexPaths];

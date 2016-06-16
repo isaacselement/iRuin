@@ -72,7 +72,7 @@
 
 -(void) eventSymbolsDidVanish: (NSArray*)symbols
 {
-    DLOG(@"eventSymbolsDidVanish");
+//    DLOG(@"eventSymbolsDidVanish");
     for (NSArray* innerArray in symbols) {
         for (SymbolView* symbol in innerArray){
             // cause the view will be reused , so here we need to check ~~~~~~
@@ -88,19 +88,19 @@
 
 -(void) eventSymbolsDidAdjusts
 {
-    DLOG(@"eventSymbolsDidAdjusts");
+//    DLOG(@"eventSymbolsDidAdjusts");
     [state stateSymbolsDidAdjusts];
 }
 
 -(void) eventSymbolsDidFillIn
 {
-    DLOG(@"eventSymbolsDidFillIn");
+//    DLOG(@"eventSymbolsDidFillIn");
     [state stateSymbolsDidFillIn];
 }
 
 -(void) eventSymbolsDidSqueeze
 {
-    DLOG(@"eventSymbolsDidSqueeze");
+//    DLOG(@"eventSymbolsDidSqueeze");
     [state stateSymbolsDidSqueeze];
 }
 

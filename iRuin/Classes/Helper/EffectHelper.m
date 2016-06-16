@@ -215,28 +215,17 @@
 {
     NSDictionary* ContinuousConfig = DATA.config[@"Continuous_Vanish"];
     
-    if (!((ChainableState*)ACTION.modeState).isAdjustChaining) {
-        if (continuous >= [ContinuousConfig[@"AdjustChainContinuous"] intValue]) {
-            ((ChainableState*)ACTION.modeState).isAdjustChaining = YES;
-        }
-    }
-
-    if (((ChainableState*)ACTION.modeState).isAdjustChaining) {
-        [ACTION.gameEffect designateToControllerWithConfig:ContinuousConfig[@"AdjustChaining"]];
-    } else {
-        [ACTION.gameEffect designateToControllerWithConfig:ContinuousConfig[@"Chaining"]];
-    }
+    NSDictionary* config = [ConfigHelper getLoopConfig:ContinuousConfig[@"ChainVanishing"] index:continuous];
+    [ACTION.gameEffect designateToControllerWithConfig:config];
 }
 
--(void) stopChainVanishingEffect:(int)lastContinuous
+// here continuous is the last continuous count
+-(void) stopChainVanishingEffect:(int)continuous
 {
     NSDictionary* ContinuousConfig = DATA.config[@"Continuous_Vanish"];
     
-    if (((ChainableState*)ACTION.modeState).isAdjustChaining) {
-        [ACTION.gameEffect designateToControllerWithConfig:ContinuousConfig[@"AdjustChaining_Stop"]];
-    } else {
-        [ACTION.gameEffect designateToControllerWithConfig:ContinuousConfig[@"Chaining_Stop"]];
-    }
+    NSDictionary* config = [ConfigHelper getLoopConfig:ContinuousConfig[@"ChainVanishing_Stop"] index:continuous];
+    [ACTION.gameEffect designateToControllerWithConfig:config];
 }
 
 #pragma mark - pass season hint

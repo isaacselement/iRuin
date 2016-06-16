@@ -97,7 +97,7 @@
         [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:objects values:nil baseTimes:nil];
         double duration = [VIEW.actionDurations justTakeOnePhase];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [VIEW.actionExecutorManager runActionExecutors:actionsDoneConfig onObjects:objects values:nil baseTimes:nil];
+            [self designateValuesActionsTo:object config:actionsDoneConfig];
         });
     } else {
         [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:objects values:nil baseTimes:nil];

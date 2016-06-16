@@ -5,6 +5,7 @@
 {
     BOOL isDisableChainable;
     BOOL isDisableFilterOnRollIn;
+    int chainAdjustContinuousCount;
 }
 
 @synthesize continuous;
@@ -21,6 +22,7 @@
     // so , default is NO !
     isDisableChainable = [DATA.config[@"IsDisableChainable"] boolValue];
     isDisableFilterOnRollIn = [DATA.config[@"IsDisableFilterOnRollIn"] boolValue];
+    chainAdjustContinuousCount = [DATA.config[@"ChainAdjustContinuous"] intValue];
 }
 
 -(void) stateSymbolsWillRollIn
@@ -51,6 +53,17 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stateStartChainVanish) object:nil];
 }
 
+-(void) stateStartVanishSymbols:(NSMutableArray *)vanishSymbols
+{
+    if (!self.isAdjustChaining) {
+        if (continuous >= chainAdjustContinuousCount) {
+            self.isAdjustChaining = YES;
+        }
+    }
+    
+    [super stateStartVanishSymbols:vanishSymbols];
+}
+
 -(void) stateSymbolsDidAdjusts
 {
     [super stateSymbolsDidAdjusts];
@@ -77,6 +90,7 @@
 
 -(void) stateSymbolsDidChainVanish
 {
+    DLOG(@"+++++++ DidChainVanish");
     [[EffectHelper getInstance] stopChainVanishingEffect: continuous];
 }
 
@@ -119,9 +133,9 @@
         
         isChainVanishing = YES;
         continuous++;
+        DLOG(@"+++++++ Chaining: %d", continuous);
         [[EffectHelper getInstance] startChainVanishingEffect: vanishSymbols continuous:continuous];
         
-        DLOG(@"chaining: %d", continuous);
         [self stateStartVanishSymbols: vanishSymbols];
     }
 }

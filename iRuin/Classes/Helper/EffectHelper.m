@@ -43,14 +43,8 @@
             
             if (type) {
                 
-                if ([value isKindOfClass:[NSString class]]) {
-                    if ([ConfigValueHandler checkIsCurrentValue:value]) {
-                        return [obj valueForKeyPath:key];
-                    } else if ([ConfigValueHandler checkIsWindowCenterValue:value]) {
-                        return [NSValue valueWithCGPoint:[ConfigValueHandler getWindowCenter]];
-                    } else if ([ConfigValueHandler checkIsSuperCenterValue:value]) {
-                        return [NSValue valueWithCGPoint:[ConfigValueHandler getSuperCenter:obj]];
-                    }
+                if ([ConfigValueHandler isKValue: value]) {
+                    return [ConfigValueHandler getKValue: value object:obj keyPath:key];
                 }
                 
                 const char* rawType = [type UTF8String];

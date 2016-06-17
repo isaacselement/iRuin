@@ -1,10 +1,7 @@
 #import <Foundation/Foundation.h>
 
-#define k_current_value @"k_current_value"
-#define k_window_middle @"k_window_middle"
-#define k_super_middle @"k_super_middle"
-
 @interface ConfigValueHandler : NSObject
+
 
 +(CGPoint) parsePoint: (id)config object:(NSObject*)object keyPath:(NSString*)keyPath;
 
@@ -12,17 +9,9 @@
 
 +(CGRect) parseRect: (id)config object:(NSObject*)object keyPath:(NSString*)keyPath;
 
++(BOOL) isKValue:(id)value;
 
-#pragma mark 
++(id) getKValue:(id)value object:(NSObject*)object keyPath:(NSString*)keyPath;
 
-+(BOOL) checkIsCurrentValue:(id)value;
-
-+(BOOL) checkIsWindowCenterValue:(id)value;
-
-+(BOOL) checkIsSuperCenterValue:(NSString*)value;
-
-+(CGPoint) getWindowCenter;
-
-+(CGPoint) getSuperCenter:(NSObject*)object;
 
 @end

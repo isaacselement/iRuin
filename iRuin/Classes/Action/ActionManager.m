@@ -105,7 +105,7 @@ static ActionManager* sharedInstance = nil;
 -(void) renderFramesWithCurrentOrientation
 {
     // first, set up design/canvas size
-    [FrameTranslater setCanvasSize: [RectHelper parseSize:DATA.config[@"DESIGN"]]];
+    [FrameTranslater setCanvas: [RectHelper parseSize:DATA.config[@"DESIGN"]]];
     
     [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"GAME_ENTER"]];
     [self createOrUpdateSymbolsWithFramesMatrix];

@@ -55,6 +55,8 @@
 
 -(void)didReceiveMemoryWarning
 {
+    DLOG(@"Receive Memory Warning");
+    
     [super didReceiveMemoryWarning];
     [(AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO] clearCaches];
 }
@@ -134,8 +136,6 @@ static NSDate* __startTime = nil;
 
 -(void) reRenderWithDeviceOrientation
 {
-    [ACTION renderFramesWithCurrentOrientation];
-    
     return;
     
     // Temp -------------------------------

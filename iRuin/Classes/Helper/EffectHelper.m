@@ -57,13 +57,13 @@
                     }
                     
                 } else if (strcmp(rawType, @encode(CGRect)) == 0) {
-                    return [NSValue valueWithCGRect: CanvasCGRect([ConfigValueHandler parseRect:value object:obj keyPath:key])];
+                    return [NSValue valueWithCGRect: [ConfigValueHandler parseRect:value object:obj keyPath:key]];
                     
                 } else if (strcmp(rawType, @encode(CGPoint)) == 0) {
-                    return [NSValue valueWithCGPoint: CanvasCGPoint([ConfigValueHandler parsePoint:value object:obj keyPath:key])];
+                    return [NSValue valueWithCGPoint: [ConfigValueHandler parsePoint:value object:obj keyPath:key]];
                     
                 } else if (strcmp(rawType, @encode(CGSize)) == 0) {
-                    return [NSValue valueWithCGSize: CanvasCGSize([ConfigValueHandler parseSize:value object:obj keyPath:key])];
+                    return [NSValue valueWithCGSize: [ConfigValueHandler parseSize:value object:obj keyPath:key]];
                     
                 }
                 

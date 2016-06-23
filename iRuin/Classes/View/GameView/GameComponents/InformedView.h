@@ -2,8 +2,5 @@
 
 @interface InformedView : UIView
 
-@property (assign) float showDuration;
-
-+(void) show;
 
 @end

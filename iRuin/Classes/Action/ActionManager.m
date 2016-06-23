@@ -45,7 +45,10 @@ static ActionManager* sharedInstance = nil;
     [VIEW initializeWithData];
     [self initializeGameModes];
     
-    [self renderFramesWithCurrentOrientation];
+    // first, set up design/canvas size
+    [FrameTranslater setCanvas: [RectHelper parseSize:DATA.config[@"DESIGN"]]];
+    [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"GAME_LAUNCH"]];
+    [self createOrUpdateSymbolsWithFramesMatrix];
     
     [gameEvent gameLaunch];
 }
@@ -102,16 +105,6 @@ static ActionManager* sharedInstance = nil;
 
 #pragma mark -
 
--(void) renderFramesWithCurrentOrientation
-{
-    // first, set up design/canvas size
-    [FrameTranslater setCanvas: [RectHelper parseSize:DATA.config[@"DESIGN"]]];
-    
-    [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"GAME_ENTER"]];
-    [self createOrUpdateSymbolsWithFramesMatrix];
-}
-
-
 -(void) createOrUpdateSymbolsWithFramesMatrix
 {
     ContainerView* containerView = VIEW.gameView.containerView;
@@ -137,7 +130,6 @@ static ActionManager* sharedInstance = nil;
     if (! isVisualAreaClipsToBounds) {
         [QueuePositionsHelper refreshRectsPositionsRepositoryWhenClipsToBoundsIsNO:visualFrame];
     }
-    
     
     // A
     [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {

@@ -52,7 +52,6 @@
         self.clipsToBounds = YES;
         self.layer.borderColor = [UIColor blackColor].CGColor;
         self.layer.borderWidth = 1.0f;
-        self.showDuration = 3.0f;
         
         // content view
         CGFloat width = CGRectGetWidth(frame);
@@ -62,30 +61,6 @@
         [self addSubview:contentView];
     }
     return self;
-}
-
-+(void) show
-{
-    [self show:DATA.config[@"InformedView_Show"] dismiss:DATA.config[@"InformedView_Dismiss"]];
-}
-
-+(void) show:(NSDictionary*)showConfig dismiss:(NSDictionary*)dismissConfig
-{
-    UIWindow* window = [UIApplication sharedApplication].keyWindow;
-    InformedView* informedView = [[InformedView alloc] initWithFrame:CGRectMake(-1, 0, CGRectGetWidth(window.frame) + 2, 1)];
-    [window addSubview:informedView];
-    
-    [ACTION.gameEffect designateValuesActionsTo:informedView config:showConfig completion:^{
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(informedView.showDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [ACTION.gameEffect designateValuesActionsTo:informedView config:dismissConfig completion:^{
-                [informedView removeFromSuperview];
-            }];
-            
-        });
-        
-    }];
 }
 
 @end

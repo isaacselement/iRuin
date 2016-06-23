@@ -37,8 +37,6 @@
 
 #pragma mark -
 
--(void) renderFramesWithCurrentOrientation;
-
 -(void) switchToMode: (NSString*)mode chapter:(int)chapter;
 
 

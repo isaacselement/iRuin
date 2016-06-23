@@ -44,8 +44,21 @@
     BOOL isArray = [config isKindOfClass: [NSArray class]];
     for (int i = 0; i < count; i++) {
         id value = isArray ? [config safeObjectAtIndex: i] : config[keys[i]];
-        id newValue = [self getKValue:value object:object keyPath:keyPath];
-        result[i] = [newValue floatValue];
+        if ([self isKValue: value]) {
+            result[i] = [[self getKValue:value object:object keyPath:keyPath] floatValue];
+        } else {
+            CGFloat o = [value floatValue];
+            if (i == 0) {
+                o = [FrameTranslater convertCanvasX:o];
+            } else if (i == 1) {
+                o = [FrameTranslater convertCanvasY:o];
+            } else if (i == 2) {
+                o = [FrameTranslater convertCanvasWidth:o];
+            } else {
+                o = [FrameTranslater convertCanvasHeight:o];
+            }
+            result[i] = o;
+        }
     }
 }
 
@@ -57,10 +70,6 @@
 
 +(id) getKValue:(id)value object:(NSObject*)object keyPath:(NSString*)keyPath
 {
-    if (![self isKValue: value]) {
-        return value;
-    }
-    
     NSString* expression = [[value componentsSeparatedByString:k_prefix] lastObject];
     NSArray* targetAction = [expression componentsSeparatedByString:k_sperator];
     if (targetAction.count >= 2) {
@@ -128,29 +137,29 @@
     if ([valueDescription rangeOfString:@"Rect"].location != NSNotFound) {
         CGRect rect = [value CGRectValue];
         if ([xywh isEqualToString:@"x"]) {
-            z = [FrameTranslater canvasX:rect.origin.x];
+            z = rect.origin.x;
         } else if ([xywh isEqualToString:@"y"]) {
-            z = [FrameTranslater canvasY:rect.origin.y];
+            z = rect.origin.y;
         } else if ([xywh isEqualToString:@"width"]) {
-            z = [FrameTranslater canvasWidth:rect.size.width];
+            z = rect.size.width;
         } else if ([xywh isEqualToString:@"height"]) {
-            z = [FrameTranslater canvasHeight:rect.size.height];
+            z = rect.size.height;
         }
         
     } else if ([valueDescription rangeOfString:@"Point"].location != NSNotFound) {
         CGPoint point = [value CGPointValue];
         if ([xywh isEqualToString:@"x"]) {
-            z = [FrameTranslater canvasX:point.x];
+            z = point.x;
         } else if ([xywh isEqualToString:@"y"]) {
-            z = [FrameTranslater canvasY:point.y];
+            z = point.y;
         }
         
     } else if ([valueDescription rangeOfString:@"Size"].location != NSNotFound) {
         CGSize size = [value CGSizeValue];
         if ([xywh isEqualToString:@"width"]) {
-            z = [FrameTranslater canvasWidth:size.width];
+            z = size.width;
         } else if ([xywh isEqualToString:@"height"]) {
-            z = [FrameTranslater canvasHeight:size.height];
+            z = size.height;
         }
     }
     
@@ -159,9 +168,11 @@
         z = -z;
     } else if ([expression hasPrefix:@"-"]) {
         CGFloat v = [[[expression componentsSeparatedByString:@"-"] lastObject] floatValue];
+        v = [self canvasV:v xywh:xywh];
         z = z - v;
     } else if ([expression hasPrefix:@"+"]) {
         CGFloat v = [[[expression componentsSeparatedByString:@"+"] lastObject] floatValue];
+        v = [self canvasV:v xywh:xywh];
         z = z + v;
     } else if ([expression hasPrefix:@"*"]) {
         CGFloat v = [[[expression componentsSeparatedByString:@"*"] lastObject] floatValue];
@@ -172,6 +183,20 @@
     }
     
     return @(z);
+}
+
++(CGFloat) canvasV:(CGFloat)v xywh:(NSString*)xywh
+{
+    if ([xywh isEqualToString:@"x"]) {
+        v = [FrameTranslater convertCanvasX:v];
+    } else if ([xywh isEqualToString:@"y"]) {
+        v = [FrameTranslater convertCanvasY:v];
+    } else if ([xywh isEqualToString:@"width"]) {
+        v = [FrameTranslater convertCanvasWidth:v];
+    } else if ([xywh isEqualToString:@"height"]) {
+        v = [FrameTranslater convertCanvasHeight:v];
+    }
+    return v;
 }
 
 #pragma mark -

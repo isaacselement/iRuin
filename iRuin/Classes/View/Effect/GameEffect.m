@@ -25,11 +25,11 @@
     
     
     // UIView's frame, if it is CALayer, no need to do this code.
-    // Cause layer has the property frame. But now we do not set frame on layer
+    // Cause layer has the property frame. But UIView is different , frame is not key-value coding property for UIView! 
     
     id framesConfig = config[kReservedFrame];
     if (framesConfig && [object isKindOfClass:[UIView class]]) {
-        ((UIView*)object).frame = CanvasCGRect([RectHelper parseRect: framesConfig]);
+        ((UIView*)object).frame = [ConfigValueHandler parseRect:framesConfig object:object keyPath:@"frame"];
     }
     
     id textFormatterConfig = config[kReservedText];

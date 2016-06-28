@@ -5,7 +5,7 @@
 {
     BOOL isDisableChainable;
     BOOL isDisableFilterOnRollIn;
-    int chainAdjustContinuousCount;
+    int startAdjustChainingCount;
 }
 
 @synthesize continuous;
@@ -22,7 +22,7 @@
     // so , default is NO !
     isDisableChainable = [DATA.config[@"IsDisableChainable"] boolValue];
     isDisableFilterOnRollIn = [DATA.config[@"IsDisableFilterOnRollIn"] boolValue];
-    chainAdjustContinuousCount = [DATA.config[@"ChainAdjustContinuous"] intValue];
+    startAdjustChainingCount = [DATA.config[@"StartAdjustChainContinuous"] intValue];
 }
 
 -(void) stateSymbolsWillRollIn
@@ -56,7 +56,7 @@
 -(void) stateStartVanishSymbols:(NSMutableArray *)vanishSymbols
 {
     if (!self.isAdjustChaining) {
-        if (continuous >= chainAdjustContinuousCount) {
+        if (continuous >= startAdjustChainingCount) {
             self.isAdjustChaining = YES;
         }
     }

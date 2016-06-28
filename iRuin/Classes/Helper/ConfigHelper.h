@@ -20,8 +20,6 @@
 
 +(id) getMusicConfig:(NSString*)key;
 
-+(id) getUtilitiesConfig:(NSString*)key;
-
 +(NSArray*) getSupportedModes;
 
 +(int) getSymbolsIdentificationsCount;

@@ -32,10 +32,4 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 -(void) stopChainVanishingEffect:(int)continuous;
 
-#pragma mark - pass season hint
-
--(void) showPassedSeasonHint:(int)hideDelay title:(NSString*)title scoreDelay:(int)scoreDelay messageDelay:(int)messageDelay;
-
--(void) showClearanceScore:(int)clearanceScore;
-
 @end

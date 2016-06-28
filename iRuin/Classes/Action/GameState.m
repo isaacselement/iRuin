@@ -12,10 +12,10 @@
     return self;
 }
 
-- (void)setVanishAmount:(int)vanishAmount
+- (void)setVanishAmount:(int)vanishViewsAmount
 {
-    _vanishAmount = vanishAmount;
-    VIEW.gameView.vanishAmountLabel.number = vanishAmount;
+    _vanishViewsAmount = vanishViewsAmount;
+    VIEW.gameView.vanishViewsAmountLabel.number = vanishViewsAmount;
 }
 
 @end

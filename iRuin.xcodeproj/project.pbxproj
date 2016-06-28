@@ -147,6 +147,7 @@
 		5E4C9BD31A87B9F900B500C1 /* FrameTranslater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B581A87B9F900B500C1 /* FrameTranslater.m */; };
 		5E4C9BD41A87B9F900B500C1 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9B5A1A87B9F900B500C1 /* UIView+Frame.m */; };
 		5E4ED73C1D0FEEA5002D3896 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E4ED73B1D0FEEA5002D3896 /* circle.png */; };
+		5E4F89B41D2103160093DF5E /* ScoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F89B31D2103160093DF5E /* ScoreHelper.m */; };
 		5E537BE91A3DDEB300C3F5A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE71A3DDEB300C3F5A7 /* Icon.png */; };
 		5E537BEA1A3DDEB300C3F5A7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */; };
 		5E5412E41B4BD42E003D47B2 /* LineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5412E11B4BD42E003D47B2 /* LineScrollView.m */; };
@@ -595,6 +596,8 @@
 		5E4C9B591A87B9F900B500C1 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		5E4C9B5A1A87B9F900B500C1 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		5E4ED73B1D0FEEA5002D3896 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		5E4F89B21D2103160093DF5E /* ScoreHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreHelper.h; sourceTree = "<group>"; };
+		5E4F89B31D2103160093DF5E /* ScoreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreHelper.m; sourceTree = "<group>"; };
 		5E537BE71A3DDEB300C3F5A7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		5E537BE81A3DDEB300C3F5A7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		5E5412E01B4BD42E003D47B2 /* LineScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineScrollView.h; sourceTree = "<group>"; };
@@ -927,22 +930,24 @@
 		4EEAFF6E18D47D96001FB745 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				5E4228651A8B69D700FE5B7D /* ConfigHelper.h */,
-				5E4228661A8B69D700FE5B7D /* ConfigHelper.m */,
 				4EEAFF6F18D47D96001FB745 /* EffectHelper.h */,
 				4EEAFF7018D47D96001FB745 /* EffectHelper.m */,
+				5E4228651A8B69D700FE5B7D /* ConfigHelper.h */,
+				5E4228661A8B69D700FE5B7D /* ConfigHelper.m */,
+				5E42A89D1CEC2FB9003F9898 /* ConfigValueHandler.h */,
+				5E42A89E1CEC2FB9003F9898 /* ConfigValueHandler.m */,
+				5E4F89B21D2103160093DF5E /* ScoreHelper.h */,
+				5E4F89B31D2103160093DF5E /* ScoreHelper.m */,
 				4EEAFF7318D47D96001FB745 /* SearchHelper.h */,
 				4EEAFF7418D47D96001FB745 /* SearchHelper.m */,
 				4ED3BE5D18E7043A00621666 /* PositionsHelper.h */,
 				4ED3BE5E18E7043A00621666 /* PositionsHelper.m */,
-				4EDACDC6191FB88C00A8E84E /* StateHelper.h */,
-				4EDACDC7191FB88C00A8E84E /* StateHelper.m */,
 				4EDACDC9191FBCF600A8E84E /* FilterHelper.h */,
 				4EDACDCA191FBCF600A8E84E /* FilterHelper.m */,
 				5EBDCC1A1A38102F0002636F /* ScheduledHelper.h */,
 				5EBDCC1B1A38102F0002636F /* ScheduledHelper.m */,
-				5E42A89D1CEC2FB9003F9898 /* ConfigValueHandler.h */,
-				5E42A89E1CEC2FB9003F9898 /* ConfigValueHandler.m */,
+				4EDACDC6191FB88C00A8E84E /* StateHelper.h */,
+				4EDACDC7191FB88C00A8E84E /* StateHelper.m */,
 				5E1D4CEE1CF70253002687AB /* EventHelper.h */,
 				5E1D4CEF1CF70253002687AB /* EventHelper.m */,
 			);
@@ -2020,6 +2025,7 @@
 				5E4C9B911A87B9F900B500C1 /* ArrayHelper.m in Sources */,
 				5E4C9BD21A87B9F900B500C1 /* FrameHelper.m in Sources */,
 				5EFB331E1D0004F2002FACE0 /* NSDate+Additions.m in Sources */,
+				5E4F89B41D2103160093DF5E /* ScoreHelper.m in Sources */,
 				4EDACDCB191FBCF600A8E84E /* FilterHelper.m in Sources */,
 				4ED52C7E191E5DC4002ADA73 /* SwipeEvent.m in Sources */,
 				5E5412E51B4BD42E003D47B2 /* LineScrollViewCell.m in Sources */,

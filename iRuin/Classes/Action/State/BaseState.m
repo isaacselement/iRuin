@@ -44,7 +44,7 @@
 
 -(void) stateSymbolsDidRollIn
 {
-    
+    [[ScoreHelper getInstance] setupClearedSeasonStatus];
 }
 
 -(void) stateSymbolsWillRollOut
@@ -61,10 +61,33 @@
 {
     // two dimension, nil return. cause the callers didn't check nil .
     if (!vanishSymbols) return;
-    // start the vanish effect
     self.isSymbolsOnVAFSing = YES;
+    
+    ACTION.gameState.vanishCount++;
+    
+    int viewsCount = 0;
+    NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
+    for (NSArray* innerViews in vanishSymbols) {
+        for (SymbolView* symbol in innerViews) {
+            if (symbol.row == -1 || symbol.column == -1) {
+                DLOG(@"ERROR!!!! __________________________");
+                continue;
+            }
+            viewsCount++;
+            int row = symbol.row;
+            int column = symbol.column;
+            [[symbolsAtContainer objectAtIndex: row] replaceObjectAtIndex: column withObject:[NSNull null]];
+            symbol.row = -1;
+            symbol.column = -1;
+        }
+    }
+    ACTION.gameState.vanishViewsAmount += viewsCount;
+    
+    // start the score & VASF effect
     [[EffectHelper getInstance] startScoresEffect: vanishSymbols];
     [self.effect effectStartVanish: vanishSymbols];
+    
+    [[ScoreHelper getInstance] checkIsClearedSeasonOnSymbolVanish];
 }
 
 -(void) stateSymbolsDidVanish: (NSArray*)symbols

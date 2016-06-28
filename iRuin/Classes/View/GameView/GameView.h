@@ -10,7 +10,7 @@
 @interface GameView : GameBaseView
 
 @property (strong) TimerView* timerView;
-@property (strong) IRNumberLabel* vanishAmountLabel;
+@property (strong) IRNumberLabel* vanishViewsAmountLabel;
 
 @property (strong) GradientLabel* seasonLabel;
 @property (strong) FBShimmeringView* seasonLabelShimmerView;

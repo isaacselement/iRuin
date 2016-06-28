@@ -10,12 +10,6 @@
 
 -(void) gameBack;
 
--(void) gamePause;
-
--(void) gameResume;
-
 -(void) gameOver;
-
--(void) gameRefresh;
 
 @end

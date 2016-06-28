@@ -31,8 +31,6 @@
 //        containerLayer = [CATransformLayer layer];
 //        [self.layer addSublayer: containerLayer];
         
-        self.score = 1.0;
-        
         symbolImageView = [[GradientImageView alloc] initWithFrame: self.bounds];
         symbolImageView.userInteractionEnabled = NO;
         [self addSubview: symbolImageView];

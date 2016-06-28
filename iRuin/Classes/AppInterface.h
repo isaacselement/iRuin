@@ -198,6 +198,7 @@
 
 #pragma mark - Helper
 /** Helper */
+#import "ScoreHelper.h"
 #import "EventHelper.h"
 #import "StateHelper.h"
 #import "ConfigHelper.h"

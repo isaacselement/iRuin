@@ -44,46 +44,21 @@
 {
     ACTION.gameState.isGameStarted = YES;
     
-    [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Start"]];
-    
-    [ACTION switchToMode: ACTION.gameState.currentMode chapter:ACTION.gameState.currentChapter];
-    
-    [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"GAME_START"]];
-    
     [ACTION.modeEffect effectStartRollIn];
     
-    int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
-    [[EffectHelper getInstance] showClearanceScore: clearanceScore];
-    ACTION.gameState.clearanceScore = clearanceScore;
-    
     [VIEW.gameView.timerView setTotalTime: VIEW.gameView.timerView.totalTime];
-    
-    ACTION.gameState.vanishAmount = 0;
-    VIEW.gameView.vanishAmountLabel.number = 0;
-}
-
--(void) gameReStart
-{
-    [self gameRefresh];
-    
-    int clearanceScore = [[ConfigHelper getUtilitiesConfig:@"ClearanceScoreBase"] intValue]  + RANDOM([[ConfigHelper getUtilitiesConfig:@"ClearanceScoreRandom"] intValue]);
-    [[EffectHelper getInstance] showClearanceScore: clearanceScore];
-    ACTION.gameState.clearanceScore = clearanceScore;
-    
-    [VIEW.gameView.timerView setTotalTime: VIEW.gameView.timerView.totalTime];
-    
-    ACTION.gameState.vanishAmount = 0;
-    VIEW.gameView.vanishAmountLabel.number = 0;
+    ACTION.gameState.vanishCount = 0;
+    ACTION.gameState.vanishViewsAmount = 0;
 }
 
 -(void) gameBack
 {
     ACTION.gameState.isGameStarted = NO;
     
-    [DATA unsetModeChapterConfig];
-    
-    ACTION.gameState.vanishAmount = 0;
-    VIEW.gameView.vanishAmountLabel.number = 0;
+    [DATA unsetChapterModeConfig];
+
+    ACTION.gameState.vanishCount = 0;
+    ACTION.gameState.vanishViewsAmount = 0;
     
     [ACTION.modeEffect effectStartRollOut];
     
@@ -92,29 +67,22 @@
     [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Back"]];
 }
 
--(void) gamePause
-{
-    VIEW.gameView.containerView.userInteractionEnabled = NO;
-}
-
--(void) gameResume
-{
-    VIEW.gameView.containerView.userInteractionEnabled = YES;
-}
-
--(void) gameOver
-{
-    [[EffectHelper getInstance] showPassedSeasonHint:6 title:@"Game Over" scoreDelay:1 messageDelay:3.5];
-    
-    [self performSelector:@selector(gameBack) withObject:nil afterDelay: 1];
-}
-
--(void) gameRefresh
+-(void) gameReStart
 {
     [VIEW.actionDurations clear];
     [ACTION.modeEffect effectStartRollOut];
     double duration = [VIEW.actionDurations take];
-    [ACTION.modeEffect performSelector:@selector(effectStartRollIn) withObject:nil afterDelay:duration];
+    [self performSelector:@selector(gameStart) withObject:nil afterDelay:duration];
+}
+
+-(void) gameOver
+{
+    if (ACTION.modeState.isSymbolsOnVAFSing || ([ACTION.modeState isKindOfClass:[ChainableState class]] && ((ChainableState*)ACTION.modeState).isChainVanishing)) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(gameOver) object:nil];
+        [self performSelector:@selector(gameOver) withObject:nil afterDelay:0.5];
+    } else {
+        [self gameBack];
+    }
 }
 
 @end

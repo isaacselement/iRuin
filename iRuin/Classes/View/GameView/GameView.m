@@ -5,7 +5,7 @@
 @implementation GameView
 
 @synthesize timerView;
-@synthesize vanishAmountLabel;
+@synthesize vanishViewsAmountLabel;
 
 @synthesize seasonLabel;
 @synthesize seasonLabelShimmerView;
@@ -28,12 +28,12 @@
         timerView = [[TimerView alloc] init];
         [self addSubview: timerView];
         timerView.timeIsOverAction = ^void(TimerView* timer) {
-            [ACTION.gameEvent gameOver];
+            [[ScoreHelper getInstance] checkIsClearedSeasonOnTimesOut];
         };
         
         // score label
-        vanishAmountLabel = [[IRNumberLabel alloc] init];
-        [self addSubview: vanishAmountLabel];
+        vanishViewsAmountLabel = [[IRNumberLabel alloc] init];
+        [self addSubview: vanishViewsAmountLabel];
         
         // season label
         seasonLabel = [[GradientLabel alloc] init];

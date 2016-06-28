@@ -131,12 +131,6 @@ int musicIndex = 0;
 
 #pragma mark - 
 
-
-+(id) getUtilitiesConfig:(NSString*)key
-{
-    return DATA.config[@"Utilities"][key];
-}
-
 +(NSArray*) getSupportedModes
 {
     return DATA.config[@"Supported_Modes"];
@@ -159,7 +153,7 @@ int musicIndex = 0;
 
 +(void) requestDowloadRemoteResources
 {
-    NSString* definedURL = [ConfigHelper getUtilitiesConfig:@"ResourcesSpecificationURL"];
+    NSString* definedURL = DATA.config[@"ResourcesSpecificationURL"];
     if (!definedURL) return;
     HTTPGetRequest* definedRequest = [[HTTPGetRequest alloc] initWithURLString: definedURL parameters:nil];
     

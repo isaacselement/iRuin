@@ -95,26 +95,9 @@
     [event performSelector:@selector(eventSymbolsDidRollOut) withObject:nil afterDelay:totalDuration];
 }
 
-// symbols maybe nil
+// symbols is two dimension, and maybe nil
 -(void) effectStartVanish: (NSArray*)symbols
 {
-    NSArray* symbolsAtContainer = QueueViewsHelper.viewsInVisualArea;
-    NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
-    
-    ACTION.gameState.vanishAmount += (int)vanishViews.count;
-    
-    for (SymbolView* symbol in vanishViews){
-        if (symbol.row == -1 || symbol.column == -1) {
-            DLOG(@"ERROR!!!! ++++");
-            continue;
-        }
-        int row = symbol.row;
-        int column = symbol.column;
-        [[symbolsAtContainer objectAtIndex: row] replaceObjectAtIndex: column withObject:[NSNull null]];
-        symbol.row = -1;
-        symbol.column = -1;
-    }
-    
     // vanish
     [VIEW.actionDurations clear];
     [self startSymbolsVanish: symbols];
@@ -122,6 +105,7 @@
     [event performSelector: @selector(eventSymbolsDidVanish:) withObject:symbols afterDelay:vanishDuration];
     
     // adjust , fill or squeeze
+    NSMutableArray* vanishViews = [ArrayHelper translateToOneDimension: symbols];
     [self effectStartAdjustFillSqueeze:vanishViews vanishDuration:vanishDuration];
 }
 

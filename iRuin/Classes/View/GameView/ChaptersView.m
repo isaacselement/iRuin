@@ -106,13 +106,20 @@
     
     // --------------------- index
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
-    ACTION.gameState.currentChapter = index;
+    int chapter = index;
+    ACTION.gameState.currentChapter = chapter;
     
     // --------------------- mode
-    ACTION.gameState.currentMode = [[ConfigHelper getSupportedModes] firstObject];
-
     // switch config by mode and index
-    NSString* indexString = [NSString stringWithFormat:@"%d", index];
+    NSString* mode = [[ConfigHelper getSupportedModes] firstObject];
+    ACTION.gameState.currentMode = mode;
+    [ACTION switchToMode:mode chapter:chapter];
+    
+    // prepare the game views
+    [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Start"]];
+    [ACTION.gameEffect designateToControllerWithConfig:  [ConfigHelper getLoopConfig:DATA.config[@"GAME_START"] index:chapter]];
+    
+    NSString* indexString = [NSString stringWithFormat:@"%d", chapter];
     UILabel* label = VIEW.gameView.seasonLabel;
     label.text = StringAppend(@"Season ", indexString);
     [label adjustFontSizeToWidth];

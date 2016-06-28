@@ -31,16 +31,6 @@
         KeyValueHelper* keyValueCodingHelper = [KeyValueHelper sharedInstance];
         [keyValueCodingHelper setTranslateValueHandler:^id(NSObject* obj, id value, NSString *type, NSString *key) {
             
-            if ([key hasSuffix:@".x"]) {                    // for
-                return @(CanvasX([value floatValue]));
-            } else if ([key hasSuffix:@".y"]) {             // for
-                return @(CanvasX([value floatValue]));
-            } else if ([key hasSuffix:@".width"]) {         // for
-                return @(CanvasW([value floatValue]));
-            } else  if ([key hasSuffix:@".height"]) {       // for "bounds.size.height"
-                return @(CanvasH([value floatValue]));
-            }
-            
             if (type) {
                 
                 if ([ConfigValueHandler isKValue: value]) {
@@ -85,6 +75,16 @@
                         return (id)[[KeyValueHelper getUIImageByPath:value] CGImage];
                     }
                 }
+            }
+            
+            if ([key hasSuffix:@".x"]) {                    // for
+                return @(CanvasX([value floatValue]));
+            } else if ([key hasSuffix:@".y"]) {             // for
+                return @(CanvasX([value floatValue]));
+            } else if ([key hasSuffix:@".width"]) {         // for
+                return @(CanvasW([value floatValue]));
+            } else  if ([key hasSuffix:@".height"]) {       // for "bounds.size.height"
+                return @(CanvasH([value floatValue]));
             }
             
             return [KeyValueHelper translateValue:value type:type];
@@ -220,75 +220,6 @@
     
     NSDictionary* config = [ConfigHelper getLoopConfig:ContinuousConfig[@"ChainVanishing_Stop"] index:continuous];
     [ACTION.gameEffect designateToControllerWithConfig:config];
-}
-
-#pragma mark - pass season hint
-
--(void) showPassedSeasonHint:(int)hideDelay title:(NSString*)title scoreDelay:(int)scoreDelay messageDelay:(int)messageDelay
-{
-    MBProgressHUD *hud = [self getPassedSeasonHint: hideDelay];
-    [self showSeasonHud: hud title:title scoreDelay:scoreDelay messageDelay:messageDelay];
-}
-
--(MBProgressHUD*) getPassedSeasonHint: (int)hideDelay
-{
-    MBProgressHUD *hud = (MBProgressHUD*)[[ViewHelper getTopView] viewWithTag:SeasonHintHudTag];
-    if (!hud) {
-        hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
-        hud.tag = SeasonHintHudTag;
-        hud.userInteractionEnabled = NO;
-        
-        hud.mode = MBProgressHUDModeText;
-        hud.dimBackground = YES;
-        hud.removeFromSuperViewOnHide = YES;
-        [hud hide:YES afterDelay: hideDelay];
-    }
-    return hud;
-}
-
--(void) showSeasonHud: (MBProgressHUD*)hud title:(NSString*)title scoreDelay:(int)scoreDelay messageDelay:(int)messageDelay
-{
-    if (!hud) {
-        hud = (MBProgressHUD*)[[ViewHelper getTopView] viewWithTag:SeasonHintHudTag];
-    }
-    if (!hud) return;
-    
-    hud.labelText = title;
-    
-    NSString* message = nil;
-    if (VIEW.gameView.vanishAmountLabel.number >= ACTION.gameState.clearanceScore) {
-        if (ACTION.gameState.currentChapter != [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]) {
-            message = [NSString stringWithFormat:@"Season %d already unlocked :)", ACTION.gameState.currentChapter + 1];
-        } else {
-            [APPStandUserDefaults setObject: @(ACTION.gameState.currentChapter + 1) forKey:User_ChapterIndex];  // do no put this in delay, important!!!
-            [VIEW.chaptersView.lineScrollView setCurrentIndex: [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]];
-            
-            message = [NSString stringWithFormat:@"Season %d now unlocked :)", [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]];
-        }
-        
-    } else {
-        message = [NSString stringWithFormat:@"No new season unlocked :("];
-    }
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(scoreDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        hud.detailsLabelText = [NSString stringWithFormat:@"You got %.0f, clearance is %d", VIEW.gameView.vanishAmountLabel.number, ACTION.gameState.clearanceScore];
-    });
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(messageDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        hud.labelText = message;
-        hud.detailsLabelText = nil;
-    });
-}
-
-
--(void) showClearanceScore:(int)clearanceScore
-{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ViewHelper getTopView] animated:YES];
-    hud.userInteractionEnabled = NO;
-    hud.mode = MBProgressHUDModeText;
-    hud.detailsLabelText = [NSString stringWithFormat: @"This Season Clearance Score is %d", clearanceScore];
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay: 1 + RANDOM(3)];
 }
 
 @end

@@ -136,7 +136,8 @@
         
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-        [(ChainableState*)ACTION.modeState performSelector:@selector(stateStartChainVanish)];
+         NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
+        [ACTION.modeState stateStartVanishSymbols: vanishSymbols];
 #pragma clang diagnostic pop
         
     }

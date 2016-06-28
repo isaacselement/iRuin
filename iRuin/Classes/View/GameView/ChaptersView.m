@@ -104,7 +104,7 @@
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_In_Touch_Ended"]];
     
-    // --------------------- index
+    // --------------------- chapter
     int index = [lineScrollViewObj indexOfVisibleCell: cell];
     int chapter = index;
     ACTION.gameState.currentChapter = chapter;

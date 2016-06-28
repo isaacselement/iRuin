@@ -110,7 +110,7 @@ static DataManager* sharedInstance = nil;
 
 -(void) unsetChapterModeConfig
 {
-    // then , the landscapeShareConfig and protraitShareConfig will be reused.
+    // then , the landscapeShareConfig and protraitShareConfig will be used.
     landscapeModeChapterConfig = nil;
     portraitModeChapterConfig = nil;
 }

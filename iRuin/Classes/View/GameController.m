@@ -136,21 +136,7 @@ static NSDate* __startTime = nil;
 
 -(void) reRenderWithDeviceOrientation
 {
-    return;
-    
-    // Temp -------------------------------
-    if (! ACTION.gameState.isGameStarted) {
-        
-        // Temporary code here.
-        [UIView animateWithDuration: 0.5 animations:^{
-            [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-                SymbolView* symbolView = (SymbolView*)obj;
-                CGRect rect = [QueuePositionsHelper.rectsRepository[outterIndex][innerIndex] CGRectValue];
-                symbolView.frame = rect;
-                return NO;
-            }];
-        }];
-    }
+
 }
 
 @end

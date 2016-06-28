@@ -42,29 +42,11 @@
 
 -(void) gameStart
 {
-    ACTION.gameState.isGameStarted = YES;
-    
     [ACTION.modeEffect effectStartRollIn];
     
     [VIEW.gameView.timerView setTotalTime: VIEW.gameView.timerView.totalTime];
-    ACTION.gameState.vanishCount = 0;
-    ACTION.gameState.vanishViewsAmount = 0;
-}
-
--(void) gameBack
-{
-    ACTION.gameState.isGameStarted = NO;
     
-    [DATA unsetChapterModeConfig];
-
-    ACTION.gameState.vanishCount = 0;
-    ACTION.gameState.vanishViewsAmount = 0;
-    
-    [ACTION.modeEffect effectStartRollOut];
-    
-    [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"GAME_BACK"]];
-    
-    [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Back"]];
+    [ACTION.gameState resetStatus];
 }
 
 -(void) gameReStart
@@ -73,6 +55,19 @@
     [ACTION.modeEffect effectStartRollOut];
     double duration = [VIEW.actionDurations take];
     [self performSelector:@selector(gameStart) withObject:nil afterDelay:duration];
+}
+
+-(void) gameBack
+{
+    [ACTION.gameState resetStatus];
+    
+    [DATA unsetChapterModeConfig];
+    
+    [ACTION.modeEffect effectStartRollOut];
+    
+    [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"GAME_BACK"]];
+    
+    [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Back"]];
 }
 
 -(void) gameOver

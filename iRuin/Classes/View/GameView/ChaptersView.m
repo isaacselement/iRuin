@@ -42,10 +42,8 @@
 -(void) swipeAction: (UISwipeGestureRecognizer*)sender
 {
     if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
-        BOOL isMuteMusic = [[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue];
-        isMuteMusic = !isMuteMusic;
-        [APPStandUserDefaults setObject:@(isMuteMusic) forKey:@"isMusicDisable"];
-        isMuteMusic ? [EventHelper pauseBackgroundMusic] : [EventHelper resumeBackgroundMusic];
+        [IRUserSetting sharedSetting].isMuteMusic = ![IRUserSetting sharedSetting].isMuteMusic;
+        [IRUserSetting sharedSetting].isMuteMusic ? [EventHelper pauseBackgroundMusic] : [EventHelper resumeBackgroundMusic];
         
     } else if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
         [EventHelper stopBackgroundMusic];
@@ -61,8 +59,7 @@
     if (DATA.config[@"ChaptersMinimalIndex"]) {
         minimalIndex = [DATA.config[@"ChaptersMinimalIndex"] intValue];
     }
-    NSInteger maximalIndex = [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
-    return index >= minimalIndex && index <= maximalIndex;
+    return index >= minimalIndex && index <= [IRUserSetting sharedSetting].chapter;
 }
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj willShowIndex:(int)index isReload:(BOOL)isReload
@@ -87,20 +84,14 @@
     }
 }
 
--(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchBeganAtPoint:(CGPoint)point
+-(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchBeganAtCell:(LineScrollViewCell *)cell
 {
-    LineScrollViewCell* cell = (LineScrollViewCell*)[lineScrollViewObj hitTest:point withEvent:nil];
-    if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
-    
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_In_Touch_Began"]];
 }
 
--(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchEndedAtPoint:(CGPoint)point
+-(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchEndedAtCell:(LineScrollViewCell *)cell
 {
-    ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj hitTest:point withEvent:nil];
-    if (!cell || ![cell isKindOfClass:[LineScrollViewCell class]]) return;
-    
     // chapters cell effect
     [ACTION.gameEffect designateValuesActionsTo:cell config:DATA.config[@"Chapter_Cell_In_Touch_Ended"]];
     

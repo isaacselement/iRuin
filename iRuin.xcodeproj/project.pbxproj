@@ -76,13 +76,15 @@
 		5E01BB811CC5DB320070AF79 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A9C1A87B9F900B500C1 /* zip.c */; };
 		5E07ABD01CF771EC0071AAE7 /* Alan Walker - Fade.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E07ABCD1CF771EC0071AAE7 /* Alan Walker - Fade.mp3 */; };
 		5E07ABD11CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5E07ABCE1CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 */; };
-		5E08685B1CB9528E00C2192F /* AppUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E08685A1CB9528E00C2192F /* AppUserDefaults.m */; };
+		5E08685B1CB9528E00C2192F /* IRUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E08685A1CB9528E00C2192F /* IRUserDefaults.m */; };
 		5E1919111B6C7297002F0A3D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E19190D1B6C7297002F0A3D /* Reachability.m */; };
 		5E1D4CF01CF70253002687AB /* EventHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1D4CEF1CF70253002687AB /* EventHelper.m */; };
 		5E21DAF21D01A4650078774C /* IRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E21DAF11D01A4650078774C /* IRImageView.m */; };
 		5E295E0F1A8CDF9E0053A51A /* Background_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E295E0C1A8CDF9E0053A51A /* Background_001.png */; };
 		5E34ED341A3E785E00022E45 /* IRNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E34ED331A3E785E00022E45 /* IRNumberLabel.m */; };
 		5E3A896C1D23BCD7003FBD2F /* IRBonusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A896B1D23BCD7003FBD2F /* IRBonusView.m */; };
+		5E3A896F1D23CB4F003FBD2F /* IRUserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A896E1D23CB4F003FBD2F /* IRUserSetting.m */; };
+		5E3A89721D23D651003FBD2F /* IRSystemSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A89711D23D651003FBD2F /* IRSystemSetting.m */; };
 		5E4228671A8B69D700FE5B7D /* ConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4228661A8B69D700FE5B7D /* ConfigHelper.m */; };
 		5E42A89F1CEC2FB9003F9898 /* ConfigValueHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E42A89E1CEC2FB9003F9898 /* ConfigValueHandler.m */; };
 		5E4C9B5E1A87B9F900B500C1 /* ScheduledTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A261A87B9F900B500C1 /* ScheduledTask.m */; };
@@ -333,8 +335,8 @@
 		5E01AFCC1A5AF68700F051D6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		5E07ABCD1CF771EC0071AAE7 /* Alan Walker - Fade.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Alan Walker - Fade.mp3"; sourceTree = "<group>"; };
 		5E07ABCE1CF771EC0071AAE7 /* Eddie - Late Autumn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eddie - Late Autumn.mp3"; sourceTree = "<group>"; };
-		5E0868591CB9528E00C2192F /* AppUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUserDefaults.h; sourceTree = "<group>"; };
-		5E08685A1CB9528E00C2192F /* AppUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUserDefaults.m; sourceTree = "<group>"; };
+		5E0868591CB9528E00C2192F /* IRUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserDefaults.h; sourceTree = "<group>"; };
+		5E08685A1CB9528E00C2192F /* IRUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUserDefaults.m; sourceTree = "<group>"; };
 		5E1919051B6C7297002F0A3D /* _Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Network.h; sourceTree = "<group>"; };
 		5E1919061B6C7297002F0A3D /* IPAddress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = IPAddress.c; sourceTree = "<group>"; };
 		5E1919071B6C7297002F0A3D /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddress.h; sourceTree = "<group>"; };
@@ -353,6 +355,10 @@
 		5E34ED331A3E785E00022E45 /* IRNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRNumberLabel.m; sourceTree = "<group>"; };
 		5E3A896A1D23BCD7003FBD2F /* IRBonusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRBonusView.h; sourceTree = "<group>"; };
 		5E3A896B1D23BCD7003FBD2F /* IRBonusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRBonusView.m; sourceTree = "<group>"; };
+		5E3A896D1D23CB4F003FBD2F /* IRUserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserSetting.h; sourceTree = "<group>"; };
+		5E3A896E1D23CB4F003FBD2F /* IRUserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUserSetting.m; sourceTree = "<group>"; };
+		5E3A89701D23D651003FBD2F /* IRSystemSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRSystemSetting.h; sourceTree = "<group>"; };
+		5E3A89711D23D651003FBD2F /* IRSystemSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRSystemSetting.m; sourceTree = "<group>"; };
 		5E4228651A8B69D700FE5B7D /* ConfigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigHelper.h; sourceTree = "<group>"; };
 		5E4228661A8B69D700FE5B7D /* ConfigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigHelper.m; sourceTree = "<group>"; };
 		5E42A89D1CEC2FB9003F9898 /* ConfigValueHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigValueHandler.h; sourceTree = "<group>"; };
@@ -847,8 +853,12 @@
 			children = (
 				4E4D4EC1181D5B9000886D75 /* DataManager.h */,
 				4E4D4EC2181D5B9000886D75 /* DataManager.m */,
-				5E0868591CB9528E00C2192F /* AppUserDefaults.h */,
-				5E08685A1CB9528E00C2192F /* AppUserDefaults.m */,
+				5E0868591CB9528E00C2192F /* IRUserDefaults.h */,
+				5E08685A1CB9528E00C2192F /* IRUserDefaults.m */,
+				5E3A896D1D23CB4F003FBD2F /* IRUserSetting.h */,
+				5E3A896E1D23CB4F003FBD2F /* IRUserSetting.m */,
+				5E3A89701D23D651003FBD2F /* IRSystemSetting.h */,
+				5E3A89711D23D651003FBD2F /* IRSystemSetting.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1934,6 +1944,7 @@
 				5E4C9BBC1A87B9F900B500C1 /* NormalButton.m in Sources */,
 				5E4C9B661A87B9F900B500C1 /* NSString+Base64.m in Sources */,
 				5E4C9BAA1A87B9F900B500C1 /* ActionExecutorManager.m in Sources */,
+				5E3A896F1D23CB4F003FBD2F /* IRUserSetting.m in Sources */,
 				4E2CCACF19FBF93500D2AAEC /* ContainerView.m in Sources */,
 				5E4C9BB31A87B9F900B500C1 /* PositionsExecutor.m in Sources */,
 				4E0BFC5119260B9100F0E632 /* MoveState.m in Sources */,
@@ -1994,6 +2005,7 @@
 				5E4C9BCD1A87B9F900B500C1 /* NormalTextField.m in Sources */,
 				4ED42D441A1DCE21006149C9 /* GradientImageView.m in Sources */,
 				4E1FBA24191BBBDD0093BE25 /* TouchEvent.m in Sources */,
+				5E3A89721D23D651003FBD2F /* IRSystemSetting.m in Sources */,
 				5E4C9BD31A87B9F900B500C1 /* FrameTranslater.m in Sources */,
 				5E4C9BAC1A87B9F900B500C1 /* ImageAnimator.m in Sources */,
 				4EEAFF7718D47D96001FB745 /* SearchHelper.m in Sources */,
@@ -2026,7 +2038,7 @@
 				5ECF206E1CFB2FD30089E152 /* EmissionLayer.m in Sources */,
 				4E8067BF18C35C8A00AF71B5 /* BaseState.m in Sources */,
 				5E34ED341A3E785E00022E45 /* IRNumberLabel.m in Sources */,
-				5E08685B1CB9528E00C2192F /* AppUserDefaults.m in Sources */,
+				5E08685B1CB9528E00C2192F /* IRUserDefaults.m in Sources */,
 				5E4C9B951A87B9F900B500C1 /* IterateHelper.m in Sources */,
 				4ED52C84191E623A002ADA73 /* SwipeEffect.m in Sources */,
 				5EFB33211D0004F2002FACE0 /* NSString+Additions.m in Sources */,

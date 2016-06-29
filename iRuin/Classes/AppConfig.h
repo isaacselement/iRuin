@@ -44,13 +44,11 @@
 
 
 #define User_ChapterIndex @"User_ChapterIndex"
-
 #define User_LastTimeLaunch @"User_LastTimeLaunch"
 #define User_FirstTimeLaunch @"User_FirstTimeLaunch"
 
-#define User_ResourcesVersion @"User_ResourcesVersion"
-
-#define User_ResourcesSandboxPath @"User_ResourcesSandboxPath"
+#define SYS_ResourcesVersion @"SYS_ResourcesVersion"
+#define SYS_ResourcesSandbox @"SYS_ResourcesSandbox"
 
 
 
@@ -62,10 +60,6 @@
 #define MATCH_COUNT 3
 
 #define CGPointValue(_point) [NSValue valueWithCGPoint: _point]
-
-#define APPStandUserDefaults [AppUserDefaults sharedInstance]
-
-
 
 
 

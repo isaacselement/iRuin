@@ -44,9 +44,8 @@
     if (isPassed) {
         isPassedOneSeason = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
-            int chapter = [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
-            [APPStandUserDefaults setObject: @(chapter + 1) forKey:User_ChapterIndex];
-            [VIEW.chaptersView.lineScrollView setCurrentIndex: [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]];
+            [IRUserSetting sharedSetting].chapter++;
+            [VIEW.chaptersView.lineScrollView setCurrentIndex: [IRUserSetting sharedSetting].chapter];
             
             [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"WIN"]];
             [ACTION.gameEvent gameOver];

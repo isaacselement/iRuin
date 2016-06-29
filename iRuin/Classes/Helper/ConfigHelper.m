@@ -19,25 +19,20 @@
 
 +(NSDictionary*) getJson: (NSString*)name key:(NSString*)key
 {
-    NSString* resourceSandboxPath = [APPStandUserDefaults objectForKey:User_ResourcesSandboxPath];
-    NSString* relativeDirectory = StringPathAppend(resourceSandboxPath, key);
-    return [self getJson: StringDotAppend(name, key_Json) relativeDirectory:relativeDirectory];
+    NSString* sandboxRelativeDirectory = StringPathAppend([IRSystemSetting sharedSetting].resourceSandbox, key);
+    return [self getJson: StringDotAppend(name, key_Json) relativeDirectory:sandboxRelativeDirectory];
 }
 
 +(NSDictionary*) getJson: (NSString*)fileName relativeDirectory:(NSString*)relativeDirectory
 {
-    NSString* sanboxFilePath = nil;
     if (relativeDirectory) {
         NSString* configPath = StringPathAppend(NSHomeDirectory(), relativeDirectory);
-        NSString* configFilePath = StringPathAppend(configPath, fileName);
-        if ([FileManager isFileExist: configFilePath]) {
-            sanboxFilePath = configFilePath;
-        }
-    }
-    if (sanboxFilePath) {
-        NSDictionary* result = [JsonFileManager getJsonFromPath: sanboxFilePath];
-        if (result) {
-            return result;
+        NSString* configInSandbox = StringPathAppend(configPath, fileName);
+        if ([FileManager isFileExist: configInSandbox]) {
+            NSDictionary* result = [JsonFileManager getJsonFromPath: configInSandbox];
+            if (result) {
+                return result;
+            }
         }
     }
     return [JsonFileManager getJsonFromPath: BUNDLEFILE_PATH(fileName)];
@@ -169,7 +164,7 @@ int musicIndex = 0;
                 BOOL isProduction = [specification[@"isProduction"] boolValue];
                 BOOL isSetupImmediately = [specification[@"isSetupImmediately"] boolValue];
                 
-                int currentVersion = [[APPStandUserDefaults objectForKey: User_ResourcesVersion] intValue];
+                int currentVersion = [IRSystemSetting sharedSetting].resourceVersion;
                 BOOL isNewerVersion = version > currentVersion;
                 
                 if (isProduction && isNewerVersion) {
@@ -195,8 +190,8 @@ int musicIndex = 0;
                             
                             // save to user defaults
                             NSString* resourceSandboxPath = StringPathAppend(inSandboxPath, [zipFileName stringByDeletingPathExtension]);
-                            [APPStandUserDefaults setObject: @(version) forKey:User_ResourcesVersion];
-                            [APPStandUserDefaults setObject: resourceSandboxPath forKey:User_ResourcesSandboxPath];
+                            [IRSystemSetting sharedSetting].resourceVersion = version;
+                            [IRSystemSetting sharedSetting].resourceSandbox = resourceSandboxPath;
                             
                             // if setup immediately
                             if (isSetupImmediately) [DATA prepareShareDesignsConfigs];

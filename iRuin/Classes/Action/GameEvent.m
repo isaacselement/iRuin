@@ -10,23 +10,22 @@
     
     // chapter cells 
     // first time launch app, set the chapter index
-    if (![APPStandUserDefaults objectForKey: User_LastTimeLaunch]) {
-        [APPStandUserDefaults setObject:[NSDate date] forKey:User_FirstTimeLaunch];
-        
-        [APPStandUserDefaults setObject:DATA.config[@"ChaptersCountInFirstLaunch"] forKey:User_ChapterIndex];
+    if (![IRUserSetting sharedSetting].firtLauchDate) {
+        [IRUserSetting sharedSetting].firtLauchDate = [NSDate date];
+        [IRUserSetting sharedSetting].chapter = [DATA.config[@"ChaptersCountInFirstLaunch"] intValue];
         [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"GAME_INIT_LAUNCH"]];
     }
-    [APPStandUserDefaults setObject:[NSDate date] forKey:User_LastTimeLaunch];
+    [IRUserSetting sharedSetting].lastLauchDate = [NSDate date];
     
     LineScrollView* lineScrollView = VIEW.chaptersView.lineScrollView;
-    [lineScrollView setCurrentIndex: [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]];
+    [lineScrollView setCurrentIndex: [IRUserSetting sharedSetting].chapter];
     [lineScrollView setContentOffset: CGPointMake((lineScrollView.contentView.sizeWidth - lineScrollView.sizeWidth) / 2, 0) animated:NO];  // recenter the content view
     
     // chapters cells jump in effect
     [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Enter"]];
     
     // about background music
-    if (![[APPStandUserDefaults objectForKey:@"isMusicDisable"] boolValue]) {
+    if (![IRUserSetting sharedSetting].isMuteMusic) {
         [EventHelper playBackgroundMusic];
     }
     ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor:effect_AUDIO]).playFinishAction = ^(AudioHandler* handler) {

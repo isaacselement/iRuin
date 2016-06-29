@@ -94,7 +94,9 @@
 #pragma mark - Data
 /** Data */
 #import "DataManager.h"
-#import "AppUserDefaults.h"
+#import "IRUserSetting.h"
+#import "IRSystemSetting.h"
+#import "IRUserDefaults.h"
 
 
 

@@ -2,9 +2,9 @@
 
 @interface ScoreHelper : NSObject
 
-@property (assign) int clearedContinuous;
-@property (assign) int clearedVanishedCount;
-@property (assign) int clearedVanishedViewCount;
+@property (assign, readonly) int clearedContinuous;
+@property (assign, readonly) int clearedVanishedCount;
+@property (assign, readonly) int clearedVanishedViewCount;
 
 
 +(ScoreHelper*) getInstance;

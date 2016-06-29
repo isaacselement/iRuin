@@ -29,11 +29,8 @@
     clearedVanishedViewCount = 0;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSDictionary* conditionConfig = [ConfigHelper getLoopConfig:DATA.config[@"WIN_LOSE_CONDITION"] index:ACTION.gameState.currentChapter];
-        [ACTION.gameEffect designateValuesActionsTo:self config:conditionConfig];
-        
-        NSDictionary* effectConfig = [ConfigHelper getLoopConfig:DATA.config[@"WIN_LOSE_PROMPT"] index:ACTION.gameState.currentChapter];
-        [ACTION.gameEffect designateToControllerWithConfig:effectConfig];
+        [ACTION.gameEffect designateValuesActionsTo:self config:DATA.config[@"WIN_LOSE_CONDITION"] ];
+        [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"WIN_LOSE_PROMPT"]];
     });
     
 }
@@ -47,7 +44,8 @@
     if (isPassed) {
         isPassedOneSeason = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [APPStandUserDefaults setObject: @(ACTION.gameState.currentChapter + 1) forKey:User_ChapterIndex];
+            int chapter = [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue];
+            [APPStandUserDefaults setObject: @(chapter + 1) forKey:User_ChapterIndex];
             [VIEW.chaptersView.lineScrollView setCurrentIndex: [[APPStandUserDefaults objectForKey:User_ChapterIndex] intValue]];
             
             [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"WIN"]];
@@ -69,7 +67,7 @@
     BOOL isPassed = YES;
     
     if (clearedContinuous != 0) {
-        isPassed &= ((ChainableState*)ACTION.modeState).continuous >= clearedContinuous;
+        isPassed &= ACTION.gameState.continuousCount >= clearedContinuous;
     }
     
     if (clearedVanishedCount != 0) {

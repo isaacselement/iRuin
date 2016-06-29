@@ -8,6 +8,7 @@
 @property (strong) NSString* currentMode;
 
 @property (assign) int vanishCount;
+@property (assign, nonatomic) int continuousCount;
 @property (assign, nonatomic) int vanishViewsAmount;
 
 

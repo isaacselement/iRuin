@@ -87,8 +87,6 @@
 // Third-Party
 #import "FBShimmeringView.h"
 #import "PPSSignatureView.h"
-#import "MBProgressHUD.h"
-
 
 
 
@@ -174,12 +172,16 @@
 #import "ContainerView.h"
 
 #import "TimerView.h"
-
+#import "IRBonusView.h"
+#import "IRImageView.h"
 #import "IRNumberLabel.h"
-
 
 #import "SymbolView.h"
 #import "GradientImageView.h"
+
+#import "InformedView.h"
+
+#import "EmissionLayer.h"
 
 #import "InteractiveImageView.h"
 
@@ -189,9 +191,6 @@
 #import "LineScrollView.h"
 #import "LineScrollViewCell.h"
 
-#import "InformedView.h"
-
-#import "EmissionLayer.h"
 
 
 

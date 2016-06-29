@@ -1,8 +1,9 @@
 #import "GameBaseView.h"
 
 @class TimerView;
-@class IRNumberLabel;
+@class IRBonusView;
 @class NormalButton;
+@class IRNumberLabel;
 @class GradientLabel;
 @class ContainerView;
 @class FBShimmeringView;
@@ -17,7 +18,9 @@
 
 @property (strong, readonly) ContainerView* containerView;
 
+@property (strong, readonly) IRBonusView* bonusView;
 @property (strong, readonly) NormalButton* backActionView;
 @property (strong, readonly) NormalButton* refreshActionView;
+
 
 @end

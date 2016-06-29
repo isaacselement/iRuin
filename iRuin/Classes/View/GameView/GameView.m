@@ -15,6 +15,7 @@
 @synthesize backActionView;
 @synthesize refreshActionView;
 
+@synthesize bonusView;
 
 - (id)init
 {
@@ -31,7 +32,7 @@
             [[ScoreHelper getInstance] checkIsClearedSeasonOnTimesOut];
         };
         
-        // score label
+        // vanished view label
         vanishViewsAmountLabel = [[IRNumberLabel alloc] init];
         [self addSubview: vanishViewsAmountLabel];
         
@@ -54,6 +55,10 @@
             [ACTION.gameEvent gameReStart];
         };
         [self addSubview: refreshActionView];
+        
+        // bonus
+        bonusView = [[IRBonusView alloc] init];
+        [self addSubview:bonusView];
         
     }
     return self;

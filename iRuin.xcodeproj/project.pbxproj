@@ -44,7 +44,6 @@
 		4EA5C07D19EFC31100008EED /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C07C19EFC31100008EED /* CoreAudio.framework */; };
 		4EA5C07F19EFC31800008EED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5C07E19EFC31800008EED /* AVFoundation.framework */; };
 		4EAB5A6119F79C440031F69D /* ChaptersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB5A6019F79C440031F69D /* ChaptersView.m */; };
-		4EBC39791A14E22700AFE71A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBC39781A14E22700AFE71A /* MBProgressHUD.m */; };
 		4ED237761A0E131B002B9C9D /* ImageLabelLineScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED237751A0E131B002B9C9D /* ImageLabelLineScrollCell.m */; };
 		4ED3BE5F18E7043A00621666 /* PositionsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3BE5E18E7043A00621666 /* PositionsHelper.m */; };
 		4ED42D441A1DCE21006149C9 /* GradientImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED42D431A1DCE21006149C9 /* GradientImageView.m */; };
@@ -83,6 +82,7 @@
 		5E21DAF21D01A4650078774C /* IRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E21DAF11D01A4650078774C /* IRImageView.m */; };
 		5E295E0F1A8CDF9E0053A51A /* Background_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E295E0C1A8CDF9E0053A51A /* Background_001.png */; };
 		5E34ED341A3E785E00022E45 /* IRNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E34ED331A3E785E00022E45 /* IRNumberLabel.m */; };
+		5E3A896C1D23BCD7003FBD2F /* IRBonusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A896B1D23BCD7003FBD2F /* IRBonusView.m */; };
 		5E4228671A8B69D700FE5B7D /* ConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4228661A8B69D700FE5B7D /* ConfigHelper.m */; };
 		5E42A89F1CEC2FB9003F9898 /* ConfigValueHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E42A89E1CEC2FB9003F9898 /* ConfigValueHandler.m */; };
 		5E4C9B5E1A87B9F900B500C1 /* ScheduledTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C9A261A87B9F900B500C1 /* ScheduledTask.m */; };
@@ -286,8 +286,6 @@
 		4EA5C07E19EFC31800008EED /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4EAB5A5F19F79C440031F69D /* ChaptersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChaptersView.h; sourceTree = "<group>"; };
 		4EAB5A6019F79C440031F69D /* ChaptersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChaptersView.m; sourceTree = "<group>"; };
-		4EBC39771A14E22700AFE71A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		4EBC39781A14E22700AFE71A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4ED237741A0E131B002B9C9D /* ImageLabelLineScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLabelLineScrollCell.h; sourceTree = "<group>"; };
 		4ED237751A0E131B002B9C9D /* ImageLabelLineScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelLineScrollCell.m; sourceTree = "<group>"; };
 		4ED3BE5D18E7043A00621666 /* PositionsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionsHelper.h; sourceTree = "<group>"; };
@@ -353,6 +351,8 @@
 		5E295E0C1A8CDF9E0053A51A /* Background_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_001.png; sourceTree = "<group>"; };
 		5E34ED321A3E785E00022E45 /* IRNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRNumberLabel.h; sourceTree = "<group>"; };
 		5E34ED331A3E785E00022E45 /* IRNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRNumberLabel.m; sourceTree = "<group>"; };
+		5E3A896A1D23BCD7003FBD2F /* IRBonusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRBonusView.h; sourceTree = "<group>"; };
+		5E3A896B1D23BCD7003FBD2F /* IRBonusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRBonusView.m; sourceTree = "<group>"; };
 		5E4228651A8B69D700FE5B7D /* ConfigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigHelper.h; sourceTree = "<group>"; };
 		5E4228661A8B69D700FE5B7D /* ConfigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigHelper.m; sourceTree = "<group>"; };
 		5E42A89D1CEC2FB9003F9898 /* ConfigValueHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigValueHandler.h; sourceTree = "<group>"; };
@@ -722,7 +722,6 @@
 		4E2CCACA19FBF93500D2AAEC /* GameComponents */ = {
 			isa = PBXGroup;
 			children = (
-				4EBC39761A14E22700AFE71A /* MBProgressHUD */,
 				4EDD80AB1A1268B8007422A0 /* PPSSignatureView */,
 				4EEFD9AC1A0F5856006A76C8 /* FBShimmering */,
 				4E08AB9619FE66B300F1F449 /* SymbolView.h */,
@@ -745,6 +744,8 @@
 				5ECF206D1CFB2FD30089E152 /* EmissionLayer.m */,
 				5E21DAF01D01A4650078774C /* IRImageView.h */,
 				5E21DAF11D01A4650078774C /* IRImageView.m */,
+				5E3A896A1D23BCD7003FBD2F /* IRBonusView.h */,
+				5E3A896B1D23BCD7003FBD2F /* IRBonusView.m */,
 			);
 			path = GameComponents;
 			sourceTree = "<group>";
@@ -907,15 +908,6 @@
 				4E0BFC5019260B9100F0E632 /* MoveState.m */,
 			);
 			path = State;
-			sourceTree = "<group>";
-		};
-		4EBC39761A14E22700AFE71A /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				4EBC39771A14E22700AFE71A /* MBProgressHUD.h */,
-				4EBC39781A14E22700AFE71A /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		4EDD80AB1A1268B8007422A0 /* PPSSignatureView */ = {
@@ -2021,6 +2013,7 @@
 				5E4C9B9D1A87B9F900B500C1 /* UIImage+Additions.m in Sources */,
 				4E0BFC5719260BF900F0E632 /* MoveEffect.m in Sources */,
 				4E0BFC5419260BAA00F0E632 /* MoveEvent.m in Sources */,
+				5E3A896C1D23BCD7003FBD2F /* IRBonusView.m in Sources */,
 				5E1919111B6C7297002F0A3D /* Reachability.m in Sources */,
 				5E4C9B911A87B9F900B500C1 /* ArrayHelper.m in Sources */,
 				5E4C9BD21A87B9F900B500C1 /* FrameHelper.m in Sources */,
@@ -2041,7 +2034,6 @@
 				5E4C9B9E1A87B9F900B500C1 /* ColorHelper.m in Sources */,
 				5E4C9BAE1A87B9F900B500C1 /* TextFormatter.m in Sources */,
 				4E14BC5A19225B3E000CDB57 /* PullEffect.m in Sources */,
-				4EBC39791A14E22700AFE71A /* MBProgressHUD.m in Sources */,
 				4E1FBA27191BBC8D0093BE25 /* TouchState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

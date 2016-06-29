@@ -18,6 +18,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.userInteractionEnabled = NO;
+        
         // default 
         label = [[GradientLabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
         label.textColor = [UIColor blackColor];
@@ -50,6 +52,7 @@
     if (self) {
         // self default
         self.clipsToBounds = YES;
+        self.userInteractionEnabled = NO;
         self.layer.borderColor = [UIColor blackColor].CGColor;
         self.layer.borderWidth = 1.0f;
         

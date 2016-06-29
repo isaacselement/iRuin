@@ -8,7 +8,6 @@
     int startAdjustChainingCount;
 }
 
-@synthesize continuous;
 @synthesize isChainVanishing;
 @synthesize isAdjustChaining;
 
@@ -56,7 +55,7 @@
 -(void) stateStartVanishSymbols:(NSMutableArray *)vanishSymbols
 {
     if (!self.isAdjustChaining) {
-        if (continuous >= startAdjustChainingCount) {
+        if (ACTION.gameState.continuousCount >= startAdjustChainingCount) {
             self.isAdjustChaining = YES;
         }
     }
@@ -91,7 +90,7 @@
 -(void) stateSymbolsDidChainVanish
 {
     DLOG(@"+++++++ DidChainVanish");
-    [[EffectHelper getInstance] stopChainVanishingEffect: continuous];
+    [[EffectHelper getInstance] stopChainVanishingEffect: ACTION.gameState.continuousCount];
 }
 
 -(void) startChainVainsh
@@ -116,7 +115,7 @@
             if (isChainVanishing) {
                 [self stateSymbolsDidChainVanish];
                 isChainVanishing = NO;
-                continuous = 0;
+                ACTION.gameState.continuousCount = 0;
             }
             
             isAdjustChaining = NO;
@@ -132,7 +131,8 @@
         // if you want no vanish and start adjust or fill , just call their method directly
         
         isChainVanishing = YES;
-        continuous++;
+        ACTION.gameState.continuousCount++;
+        int continuous = ACTION.gameState.continuousCount;
         DLOG(@"+++++++ Chaining: %d", continuous);
         [[EffectHelper getInstance] startChainVanishingEffect: vanishSymbols continuous:continuous];
         

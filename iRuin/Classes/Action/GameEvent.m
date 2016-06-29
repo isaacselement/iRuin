@@ -59,8 +59,6 @@
 
 -(void) gameBack
 {
-    [ACTION.gameState resetStatus];
-    
     [DATA unsetChapterModeConfig];
     
     [ACTION.modeEffect effectStartRollOut];

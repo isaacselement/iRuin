@@ -15,22 +15,22 @@
 
 - (int)resourceVersion
 {
-    return [[self get:SYS_ResourcesVersion] intValue];
+    return [[self objectForKey:SYS_ResourcesVersion] intValue];
 }
 
 - (void)setResourceVersion:(int)resourceVersion
 {
-    [self set:@(resourceVersion) key:SYS_ResourcesVersion];
+    [self setObject:@(resourceVersion) forKey:SYS_ResourcesVersion];
 }
 
 - (NSString *)resourceSandbox
 {
-    return [self get:SYS_ResourcesSandbox];
+    return [self objectForKey:SYS_ResourcesSandbox];
 }
 
 - (void)setResourceSandbox:(NSString *)resourceSandbox
 {
-    [self set:resourceSandbox key:SYS_ResourcesSandbox];
+    [self setObject:resourceSandbox forKey:SYS_ResourcesSandbox];
 }
 
 @end

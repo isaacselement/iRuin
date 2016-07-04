@@ -28,8 +28,8 @@ typedef NSArray*(^ViewsInRepositoryPositionsHandler)(NSArray* lines, NSArray* in
 
 -(void) startScoresEffect:(NSArray*)symbols;
 
--(void) startChainVanishingEffect: (NSArray*)symbols continuous:(int)continuous;
+-(void) startChainVanishingEffect: (NSArray*)symbols;
 
--(void) stopChainVanishingEffect:(int)continuous;
+-(void) stopChainVanishingEffect;
 
 @end

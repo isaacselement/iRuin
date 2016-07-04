@@ -4,10 +4,10 @@
 
 #pragma mark -
 
-- (id)get:(NSString*)key;
+- (id)objectForKey:(NSString *)key;
 
-- (void)remove:(NSString*)key;
+- (void)setObject:(id)value forKey:(NSString *)key;
 
-- (void)set:(id)value key:(NSString*)key;
+- (void)removeObjectForKey:(NSString *)key;
 
 @end

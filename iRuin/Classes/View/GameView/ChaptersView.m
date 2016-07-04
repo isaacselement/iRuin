@@ -82,6 +82,13 @@
     if (isReload) {
         ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disableAudio = NO;
     }
+    
+    // start the lagest chapter effect
+    if (index == [IRUserSetting sharedSetting].chapter) {
+        [cell startMaskEffect];
+    } else {
+        [cell stopMaskEffect];
+    }
 }
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchBeganAtCell:(LineScrollViewCell *)cell
@@ -108,7 +115,7 @@
     
     // prepare the game views
     [[EffectHelper getInstance] startChapterCellsEffect: DATA.config[@"Chapters_Cells_In_Game_Start"]];
-    [ACTION.gameEffect designateToControllerWithConfig:  [ConfigHelper getLoopConfig:DATA.config[@"GAME_START"] index:chapter]];
+    [ACTION.gameEffect designateToControllerWithConfig: [ConfigHelper getLoopConfig:DATA.config[@"GAME_START"] index:chapter]];
     
     NSString* indexString = [NSString stringWithFormat:@"%d", chapter];
     UILabel* label = VIEW.gameView.seasonLabel;

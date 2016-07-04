@@ -12,5 +12,10 @@
 @property (strong, readonly) GradientLabel* label;
 
 
+#pragma mark -
+
+-(void) startMaskEffect;
+
+-(void) stopMaskEffect;
 
 @end

@@ -144,6 +144,7 @@
 +(int) getOneRandomSymbolIdentification
 {
     int count = [ConfigHelper getSymbolsIdentificationsCount];
+    if (count == 0) count = 1;
     int index = arc4random() % count;
     int identification = index + 1;     // HERE!!!!! index to identification
     return identification;

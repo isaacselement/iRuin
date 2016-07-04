@@ -1,6 +1,8 @@
 #import "IRUserSetting.h"
 #import "AppInterface.h"
 
+
+// to do , refactor , iterate the method list and hook it .
 @implementation IRUserSetting
 
 + (IRUserSetting*)sharedSetting
@@ -17,42 +19,42 @@
 
 - (int)chapter
 {
-    return [[self get:User_ChapterIndex] intValue];
+    return [[self objectForKey:User_ChapterIndex] intValue];
 }
 
 - (void)setChapter:(int)chapter
 {
-    [self set:@(chapter) key:User_ChapterIndex];
+    [self setObject:@(chapter) forKey:User_ChapterIndex];
 }
 
 - (NSDate *)firtLauchDate
 {
-    return [self get:User_FirstTimeLaunch];
+    return [self objectForKey:User_FirstTimeLaunch];
 }
 
 - (void)setFirtLauchDate:(NSDate *)firtLauchDate
 {
-    [self set:firtLauchDate key:User_FirstTimeLaunch];
+    [self setObject:firtLauchDate forKey:User_FirstTimeLaunch];
 }
 
 - (NSDate *)lastLauchDate
 {
-    return [self get:User_LastTimeLaunch];
+    return [self objectForKey:User_LastTimeLaunch];
 }
 
 - (void)setLastLauchDate:(NSDate *)lastLauchDate
 {
-    [self set:lastLauchDate key:User_LastTimeLaunch];
+    [self setObject:lastLauchDate forKey:User_LastTimeLaunch];
 }
 
 - (BOOL)isMuteMusic
 {
-    return [[self get:@"User_IsMusicDisable"] boolValue];
+    return [[self objectForKey:@"User_IsMusicDisable"] boolValue];
 }
 
 - (void)setIsMuteMusic:(BOOL)isMuteMusic
 {
-    [self set:@(isMuteMusic) key:@"User_IsMusicDisable"];
+    [self setObject:@(isMuteMusic) forKey:@"User_IsMusicDisable"];
 }
 
 @end

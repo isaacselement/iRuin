@@ -20,23 +20,4 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-
-#pragma mark -
-
-- (id)get:(NSString*)key
-{
-    return [self objectForKey: key];
-}
-
-- (void)remove:(NSString*)key
-{
-    [self removeObjectForKey:key];
-}
-
-- (void)set:(id)value key:(NSString*)key
-{
-    [self setObject:value forKey:key];
-}
-
-
 @end

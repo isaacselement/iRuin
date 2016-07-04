@@ -1,8 +1,17 @@
 #import "ImageLabelLineScrollCell.h"
 #import "AppInterface.h"
 
-@implementation ImageLabelLineScrollCell
+@interface ImageLabelLineScrollCell ()
 
+@property (strong, nonatomic) CAGradientLayer* maskLayer;
+
+@property (strong) CAShapeLayer* maskLayerUp;
+@property (strong) CAShapeLayer* maskLayerDown;
+
+
+@end
+
+@implementation ImageLabelLineScrollCell
 
 @synthesize imageView;
 
@@ -23,8 +32,6 @@
     return self;
 }
 
-
-
 -(void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
@@ -34,5 +41,28 @@
 }
 
 
+#pragma mark - 
+
+-(void) startMaskEffect
+{
+    self.layer.mask = self.maskLayer;
+    [ACTION.gameEffect designateValuesActionsTo: self config:DATA.config[@"Chapter_Cell_In_The_Last"]];
+}
+
+-(void) stopMaskEffect
+{
+    self.layer.mask = nil;
+    [self.maskLayer removeAllAnimations];
+    [self.layer removeAllAnimations];
+}
+
+- (CAGradientLayer *)maskLayer
+{
+    if (!_maskLayer) {
+        _maskLayer = [CAGradientLayer layer];
+        _maskLayer.frame = self.layer.bounds;
+    }
+    return _maskLayer;
+}
 
 @end

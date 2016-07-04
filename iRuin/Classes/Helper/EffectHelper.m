@@ -37,6 +37,26 @@
                     return [ConfigValueHandler getKValue: value object:obj keyPath:key];
                 }
                 
+                if ([obj isKindOfClass:[CAGradientLayer class]]) {
+                    if ([key isEqualToString:@"colors"]) {
+                        /* po [KeyValueHelper getClassPropertieTypes:[CAGradientLayer class]] & colors = "@\"NSArray\""; & print @encode(NSArray) & (const char [12]) $1 = "{NSArray=#}" */
+                        NSMutableArray* colors = [NSMutableArray array];
+                        for (int i = 0; i < [value count]; i++) {
+                            [colors addObject:(__bridge id)([ColorHelper parseColor: value[i]].CGColor)];
+                        }
+                        return colors;
+                    // startPoint & endPoint no need to canvas translation, so here do it first
+                    } else if ([key isEqualToString:@"startPoint"] || [key isEqualToString:@"endPoint"]) {
+                        return [NSValue valueWithCGPoint: [RectHelper parsePoint: value]];
+                    }
+                    
+                } else if ([obj isKindOfClass:[CAEmitterCell class]]) {
+                    if ([key isEqualToString:@"contents"]) {
+                        return (id)[[KeyValueHelper getUIImageByPath:value] CGImage];
+                    }
+                }
+                
+                
                 const char* rawType = [type UTF8String];
                 
                 if (strcmp(rawType, @encode(CGFloat)) == 0) {
@@ -57,24 +77,6 @@
                     
                 }
                 
-                if ([obj isKindOfClass:[CAGradientLayer class]]) {
-                    if ([key isEqualToString:@"colors"]) {
-                        /* po [KeyValueHelper getClassPropertieTypes:[CAGradientLayer class]] & colors = "@\"NSArray\""; & print @encode(NSArray) & (const char [12]) $1 = "{NSArray=#}" */
-                        NSMutableArray* colors = [NSMutableArray array];
-                        for (int i = 0; i < [value count]; i++) {
-                            [colors addObject:(__bridge id)([ColorHelper parseColor: value[i]].CGColor)];
-                        }
-                        return colors;
-                        
-                    } else if ([key isEqualToString:@"startPoint"] || [key isEqualToString:@"endPoint"]) {
-                        return [NSValue valueWithCGPoint: [RectHelper parsePoint: value]];
-                    }
-                    
-                } else if ([obj isKindOfClass:[CAEmitterCell class]]) {
-                    if ([key isEqualToString:@"contents"]) {
-                        return (id)[[KeyValueHelper getUIImageByPath:value] CGImage];
-                    }
-                }
             }
             
             if ([key hasSuffix:@".x"]) {                    // for
@@ -205,17 +207,19 @@
     
 }
 
--(void) startChainVanishingEffect:(NSArray*)symbols continuous:(int)continuous
+-(void) startChainVanishingEffect:(NSArray*)symbols
 {
+    int continuous = ACTION.gameState.continuousCount;
     NSDictionary* ContinuousConfig = DATA.config[@"Continuous_Vanish"];
     
     NSDictionary* config = [ConfigHelper getLoopConfig:ContinuousConfig[@"ChainVanishing"] index:continuous];
     [ACTION.gameEffect designateToControllerWithConfig:config];
 }
 
-// here continuous is the last continuous count
--(void) stopChainVanishingEffect:(int)continuous
+-(void) stopChainVanishingEffect
 {
+    // here continuous is the last continuous count
+    int continuous = ACTION.gameState.continuousCount;
     NSDictionary* ContinuousConfig = DATA.config[@"Continuous_Vanish"];
     
     NSDictionary* config = [ConfigHelper getLoopConfig:ContinuousConfig[@"ChainVanishing_Stop"] index:continuous];

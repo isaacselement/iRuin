@@ -5,6 +5,8 @@
 {
     BOOL isDisableChainable;
     BOOL isDisableFilterOnRollIn;
+    
+    int startBonusChainingCount;
     int startAdjustChainingCount;
 }
 
@@ -21,6 +23,8 @@
     // so , default is NO !
     isDisableChainable = [DATA.config[@"IsDisableChainable"] boolValue];
     isDisableFilterOnRollIn = [DATA.config[@"IsDisableFilterOnRollIn"] boolValue];
+    
+    startBonusChainingCount = [DATA.config[@"StartBonusChainingCount"] intValue];
     startAdjustChainingCount = [DATA.config[@"StartAdjustChainContinuous"] intValue];
 }
 
@@ -90,7 +94,7 @@
 -(void) stateSymbolsDidChainVanish
 {
     DLOG(@"+++++++ DidChainVanish");
-    [[EffectHelper getInstance] stopChainVanishingEffect: ACTION.gameState.continuousCount];
+    [[EffectHelper getInstance] stopChainVanishingEffect];
 }
 
 -(void) startChainVainsh
@@ -131,12 +135,18 @@
         // if you want no vanish and start adjust or fill , just call their method directly
         
         isChainVanishing = YES;
-        ACTION.gameState.continuousCount++;
-        int continuous = ACTION.gameState.continuousCount;
-        DLOG(@"+++++++ Chaining: %d", continuous);
-        [[EffectHelper getInstance] startChainVanishingEffect: vanishSymbols continuous:continuous];
         
+        // bonus effect
+        ACTION.gameState.continuousCount++;
+        [ACTION.gameState startBonusEffect: ACTION.gameState.continuousCount];
+
+        DLOG(@"+++++++ Chaining: %d", ACTION.gameState.continuousCount);
+        [[EffectHelper getInstance] startChainVanishingEffect: vanishSymbols];
+        
+        // ----- start vanish
         [self stateStartVanishSymbols: vanishSymbols];
+        
+        
     }
 }
 

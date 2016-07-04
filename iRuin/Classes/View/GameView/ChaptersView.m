@@ -70,8 +70,16 @@
     }
     
     ImageLabelLineScrollCell* cell = (ImageLabelLineScrollCell*)[lineScrollViewObj visibleCellAtIndex: index];
-    NSDictionary* chapterCellsConfig = [ConfigHelper getLoopConfig:DATA.config[@"Chapters_Cells_In_Touch_Rolling"] index:index] ;
     
+    // start the lagest chapter effect
+    if (index == [IRUserSetting sharedSetting].chapter) {
+        [cell startMaskEffect];
+    } else {
+        [cell stopMaskEffect];
+    }
+    
+    // touch rolling effect
+    NSDictionary* chapterCellsConfig = [ConfigHelper getLoopConfig:DATA.config[@"Chapters_Cells_In_Touch_Rolling"] index:index] ;
     [ACTION.gameEffect designateValuesActionsTo:cell config:chapterCellsConfig];
     
     GradientLabel* label = cell.label;
@@ -83,12 +91,6 @@
         ((AudiosExecutor*)[VIEW.actionExecutorManager getActionExecutor: effect_AUDIO]).disableAudio = NO;
     }
     
-    // start the lagest chapter effect
-    if (index == [IRUserSetting sharedSetting].chapter) {
-        [cell startMaskEffect];
-    } else {
-        [cell stopMaskEffect];
-    }
 }
 
 -(void)lineScrollView:(LineScrollView *)lineScrollViewObj touchBeganAtCell:(LineScrollViewCell *)cell

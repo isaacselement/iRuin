@@ -53,7 +53,6 @@
 {
     self.layer.mask = nil;
     [self.maskLayer removeAllAnimations];
-    [self.layer removeAllAnimations];
 }
 
 - (CAGradientLayer *)maskLayer

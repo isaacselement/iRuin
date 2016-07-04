@@ -145,8 +145,6 @@
         
         // ----- start vanish
         [self stateStartVanishSymbols: vanishSymbols];
-        
-        
     }
 }
 

@@ -115,10 +115,10 @@
     self = [super init];
     if (self) {
         UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        tap.numberOfTapsRequired = 1;
+        tap.numberOfTapsRequired = 2;
         [self addGestureRecognizer: tap];
         tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        tap.numberOfTapsRequired = 2;
+        tap.numberOfTapsRequired = 3;
         [self addGestureRecognizer: tap];
     }
     return self;
@@ -126,13 +126,13 @@
 
 - (void)tapAction:(UITapGestureRecognizer*)tap
 {
-    if (tap.numberOfTapsRequired == 1) {
+    if (tap.numberOfTapsRequired == 2) {
         
         CGPoint location = [tap locationInView: self];
         SymbolView* symbol = [self getSymbolView: location event:nil];
         symbol.identification = 1;
         
-    } else if (tap.numberOfTapsRequired == 2) {
+    } else if (tap.numberOfTapsRequired == 3) {
         
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"

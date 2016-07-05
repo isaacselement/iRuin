@@ -19,15 +19,14 @@
 
 +(NSDictionary*) getJson: (NSString*)name key:(NSString*)key
 {
-    NSString* sandboxRelativeDirectory = StringPathAppend([IRSystemSetting sharedSetting].resourceSandbox, key);
-    return [self getJson: StringDotAppend(name, key_Json) relativeDirectory:sandboxRelativeDirectory];
+    NSString* configDirectory = StringPathAppend([self getPath:[IRSystemSetting sharedSetting].resourceSandbox], key);
+    return [self getJson: StringDotAppend(name, key_Json) configDirectory:configDirectory];
 }
 
-+(NSDictionary*) getJson: (NSString*)fileName relativeDirectory:(NSString*)relativeDirectory
++(NSDictionary*) getJson: (NSString*)fileName configDirectory:(NSString*)configDirectory
 {
-    if (relativeDirectory) {
-        NSString* configPath = StringPathAppend(NSHomeDirectory(), relativeDirectory);
-        NSString* configInSandbox = StringPathAppend(configPath, fileName);
+    if (configDirectory) {
+        NSString* configInSandbox = StringPathAppend(configDirectory, fileName);
         if ([FileManager isFileExist: configInSandbox]) {
             NSDictionary* result = [JsonFileManager getJsonFromPath: configInSandbox];
             if (result) {
@@ -145,63 +144,67 @@ int musicIndex = 0;
 
 #pragma mark - Network Request
 
-
 +(void) requestDowloadRemoteResources
 {
-    NSString* definedURL = DATA.config[@"ResourcesSpecificationURL"];
-    if (!definedURL) return;
-    HTTPGetRequest* definedRequest = [[HTTPGetRequest alloc] initWithURLString: definedURL parameters:nil];
+#ifdef DEBUG
+    NSString* URL = DATA.config[@"__specification__UAT__"];
+#else
+    NSString* URL = DATA.config[@"__specification__"];
+#endif
     
-    [definedRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (! connectionError && [(NSHTTPURLResponse*) response statusCode] < 400) {
-            NSError* error = nil;
-            NSDictionary* specification = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingAllowFragments error:&error];
-            
-            if (!error && specification) {
+    HTTPGetRequest* specificationRequest = [[HTTPGetRequest alloc] initWithURLString:URL parameters:nil];
+    [specificationRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (! connectionError && [(NSHTTPURLResponse*) response statusCode] == 200) {
+            NSError* jsonParseError = nil;
+            NSDictionary* specification = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingAllowFragments error:&jsonParseError];
+            if (!jsonParseError && specification) {
+                NSString* resourcesURL = specification[@"uri"];
                 int version = [specification[@"version"] intValue];
-                NSString* resourcesURL = specification[@"resourcesURL"];
+                BOOL isSetupImmediately = [specification[@"isImmediately"] boolValue];
+                
                 NSString* inSandboxPath = specification[@"inSandboxPath"];
-                BOOL isProduction = [specification[@"isProduction"] boolValue];
-                BOOL isSetupImmediately = [specification[@"isSetupImmediately"] boolValue];
+                NSString* zipFilePath = StringPathAppend(inSandboxPath, [resourcesURL lastPathComponent]);
                 
-                int currentVersion = [IRSystemSetting sharedSetting].resourceVersion;
-                BOOL isNewerVersion = version > currentVersion;
-                
-                if (isProduction && isNewerVersion) {
-                    NSString* zipFileName = [resourcesURL lastPathComponent];
-                    NSString* inSandboxFullPath = StringPathAppend(NSHomeDirectory(), inSandboxPath);
-                    NSString* zipFileFullPath = StringPathAppend(inSandboxFullPath, zipFileName);
-                    
+                if (version > [IRSystemSetting sharedSetting].resourceVersion) {
                     
                     // Get resources.zip
                     HTTPGetRequest* resourcesRequest = [[HTTPGetRequest alloc] initWithURLString:resourcesURL parameters:nil];
-                    
                     [resourcesRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
-                        if (! connectionError && [(NSHTTPURLResponse*) response statusCode] < 400) {
+                        if (! connectionError && [(NSHTTPURLResponse*) response statusCode] == 200) {
+                            NSString* inSandboxFullPath = [self getPath:inSandboxPath];
+                            NSString* zipFileFullPath = [self getPath:zipFilePath];
                             // save
                             [FileManager writeDataToFile:zipFileFullPath data:data];
-                            
                             // un compress
                             NSError* unZipError = nil;
                             [SSZipArchive unzipFileAtPath:zipFileFullPath toDestination:inSandboxFullPath overwrite:YES password:nil error:&unZipError];
-                            
                             // delete
                             [FileManager deleteFile:zipFileFullPath];
                             
                             // save to user defaults
-                            NSString* resourceSandboxPath = StringPathAppend(inSandboxPath, [zipFileName stringByDeletingPathExtension]);
                             [IRSystemSetting sharedSetting].resourceVersion = version;
-                            [IRSystemSetting sharedSetting].resourceSandbox = resourceSandboxPath;
+                            [IRSystemSetting sharedSetting].resourceSandbox = [zipFilePath stringByDeletingPathExtension];
                             
+                            DLOG(@"Did download & unzip resources!!!");
                             // if setup immediately
-                            if (isSetupImmediately) [DATA prepareShareDesignsConfigs];
-                            DLOG(@"Did renew json!!!");
+                            if (isSetupImmediately) {
+                                [DATA prepareShareDesignsConfigs];
+                                DLOG(@"Did renew resources!!!");
+                            }
                         }
                     }];
                 }
             }
         }
     }];
+}
+
++(NSString*) getPath: (NSString*)path
+{
+    if ([path hasPrefix:@"~"]) {
+        return [path stringByReplacingOccurrencesOfString:@"~" withString:NSHomeDirectory()];
+    }
+    return path;
 }
 
 

@@ -3,26 +3,20 @@
 
 @implementation AppDelegate
 
-#ifdef DEBUG
 void uncaughtExceptionHandler(NSException *exception) {
     NSLog(@"Crash : %@", exception);
     NSLog(@"Stack Trace : %@", [exception callStackSymbols]);
     
-    NSString* description = [[NSString alloc] initWithFormat:@"%@: %@", exception, exception.callStackSymbols ];
+    NSString* description = [[NSString alloc] initWithFormat:@"%@\n%@: %@", [NSDate date], exception, exception.callStackSymbols ];
     NSData* data = [description dataUsingEncoding: NSUTF8StringEncoding];
-    NSString* errorFilePath = [DateHelper stringFromDate:[NSDate date] pattern:PATTERN_DATE_TIME];
-    errorFilePath = [[NSTemporaryDirectory() stringByAppendingPathComponent: errorFilePath] stringByAppendingPathExtension:@"txt"];
+    NSString* errorFilePath = [[NSTemporaryDirectory() stringByAppendingPathComponent: @"error"] stringByAppendingPathExtension:@"log"];
     [FileManager writeDataToFile: errorFilePath data:data];
 }
-#endif
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#ifdef DEBUG
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-#endif
-    
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = VIEW.controller;

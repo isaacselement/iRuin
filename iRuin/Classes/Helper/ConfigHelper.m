@@ -82,6 +82,7 @@
     for (int j = 0; j < keyPaths.count; j++) {
         NSString* setKeyPath = keyPaths[j];
         NSArray* setValues = [values safeObjectAtIndex:j];
+        // if no corresponding setValues, get the last one . i.e. config "GAME_MUSIC"
         if (!setValues) setValues = [values lastObject];
         
         // get the new value

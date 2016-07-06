@@ -10,8 +10,8 @@
     
     // chapter cells 
     // first time launch app, set the chapter index
-    if (![IRUserSetting sharedSetting].firtLauchDate) {
-        [IRUserSetting sharedSetting].firtLauchDate = [NSDate date];
+    if (![IRUserSetting sharedSetting].firstLauchDate) {
+        [IRUserSetting sharedSetting].firstLauchDate = [NSDate date];
         [IRUserSetting sharedSetting].chapter = [DATA.config[@"ChaptersCountInFirstLaunch"] intValue];
         [ACTION.gameEffect designateToControllerWithConfig:DATA.config[@"GAME_INIT_LAUNCH"]];
     }

@@ -2,6 +2,10 @@
 
 @interface IRUserDefaults : NSObject
 
+
++ (void)invoke_in_load_for_subclass: (NSArray*)skip_sel_names;
+
+
 #pragma mark -
 
 - (id)objectForKey:(NSString *)key;

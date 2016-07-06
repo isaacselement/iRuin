@@ -11,19 +11,15 @@
     Method* methods = class_copyMethodList([self class], &count);
     for (int i = 0; i < count; i++) {
         Method method = methods[i];
-        SEL selector = method_getName(method);
-        const char* sel_name = sel_getName(selector);
+        const char* sel_name = sel_getName(method_getName(method));
         NSString* name = [NSString stringWithCString:sel_name encoding:NSUTF8StringEncoding];
-//        NSLog(@"Method ---- %@", name);
-//        continue;
         if ([skip_sel_names containsObject:name]) {
             continue;
         }
-        if ([name hasPrefix:@"."]||[name hasPrefix:@"_"] ) {        // .cxx_destruct  and  __hooker__:
+        if ([name hasPrefix:@"."]||[name hasPrefix:@"__hook"] ) {        // .cxx_destruct  and  __hooker__:
             continue;
         }
         method_setImplementation(method, hookerIMP);
-//        NSLog(@"Hooked ++++ %s", sel_getName(method_getName(method)));
     }
 }
 

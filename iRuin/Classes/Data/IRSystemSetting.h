@@ -5,6 +5,8 @@
 @property (nonatomic) int resourceVersion;
 @property (nonatomic) NSString* resourceSandbox;
 
+@property (nonatomic) NSString* appVersion;
+
 + (IRSystemSetting*)sharedSetting;
 
 @end

@@ -26,6 +26,10 @@
 
 +(NSMutableDictionary*) getSymbolsPorperties;
 
+#pragma mark - 
+
++(void) deleteLegacyResource;
+
 #pragma mark - Network Request
 
 +(void) requestDowloadRemoteResources;

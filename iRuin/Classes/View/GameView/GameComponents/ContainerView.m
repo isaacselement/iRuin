@@ -110,18 +110,23 @@
 
 #ifdef DEBUG
 
-- (instancetype)init
+- (instancetype)init___
 {
     self = [super init];
     if (self) {
-        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        tap.numberOfTapsRequired = 2;
-        [self addGestureRecognizer: tap];
-        tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        tap.numberOfTapsRequired = 3;
-        [self addGestureRecognizer: tap];
+        [self addTapAction];
     }
     return self;
+}
+
+- (void)addTapAction
+{
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    tap.numberOfTapsRequired = 2;
+    [self addGestureRecognizer: tap];
+    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    tap.numberOfTapsRequired = 3;
+    [self addGestureRecognizer: tap];
 }
 
 - (void)tapAction:(UITapGestureRecognizer*)tap

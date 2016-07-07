@@ -142,6 +142,22 @@ int musicIndex = 0;
 }
 
 
+#pragma mark -
+
++(void) deleteLegacyResource
+{
+    NSString* bundleVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
+    if ([[IRSystemSetting sharedSetting].appVersion floatValue] < [bundleVersion floatValue]) {
+        
+        // delete the resources
+        if ([IRSystemSetting sharedSetting].resourceSandbox) {
+            [FileManager deleteFile: [self getPath:[IRSystemSetting sharedSetting].resourceSandbox]];
+        }
+        
+        [IRSystemSetting sharedSetting].appVersion = bundleVersion;
+    }
+}
+
 
 #pragma mark - Network Request
 
@@ -172,6 +188,9 @@ int musicIndex = 0;
                     HTTPGetRequest* resourcesRequest = [[HTTPGetRequest alloc] initWithURLString:resourcesURL parameters:nil];
                     [resourcesRequest startRequest:^(HTTPRequestBase *httpRequest, NSURLResponse *response, NSData *data, NSError *connectionError) {
                         if (! connectionError && [(NSHTTPURLResponse*) response statusCode] == 200) {
+                            if ([IRSystemSetting sharedSetting].resourceSandbox) {
+                                [FileManager deleteFile: [self getPath:[IRSystemSetting sharedSetting].resourceSandbox]];
+                            }
                             NSString* inSandboxFullPath = [self getPath:inSandboxPath];
                             NSString* zipFileFullPath = [self getPath:zipFilePath];
                             // save

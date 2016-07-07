@@ -65,11 +65,14 @@
     } else {
         value = (__bridge void *)([self objectForKey:key]);
         
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wint-to-void-pointer-cast"
         if (strcmp(type, "i") == 0) {
-            value = (void *)[((__bridge NSNumber*)value) integerValue];
+            value = (void *)[((__bridge NSNumber*)value) intValue];
         } else if (strcmp(type, "B") == 0) {
             value = (void *)[((__bridge NSNumber*)value) boolValue];
         }
+#pragma clang diagnostic pop
         
         return value;
     }

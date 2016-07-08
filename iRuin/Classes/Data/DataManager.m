@@ -48,14 +48,11 @@ static DataManager* sharedInstance = nil;
         return YES;
     }];
     
-    // delete the old config
-    [ConfigHelper deleteLegacyResource];
-    
     // set up designs and configs
     [self prepareShareDesignsConfigs];
     
     // check update and download
-    [ConfigHelper requestDowloadRemoteResources];
+    [ConfigHelper requestDowloadResources];
 }
 
 

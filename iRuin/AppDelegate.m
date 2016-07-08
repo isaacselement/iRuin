@@ -16,6 +16,9 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
+    // delete the old config
+    [ConfigHelper deleteLegacyResource];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -44,6 +47,9 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    // check update and download
+    [ConfigHelper requestDowloadResources];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

@@ -37,8 +37,6 @@
     return [JsonFileManager getJsonFromPath: BUNDLEFILE_PATH(fileName)];
 }
 
-
-
 #pragma mark - Config
 
 +(void) iterateConfig:(NSDictionary*)config handler:(void(^)(NSString* key, id value))handler
@@ -161,7 +159,7 @@ int musicIndex = 0;
 
 #pragma mark - Network Request
 
-+(void) requestDowloadRemoteResources
++(void) requestDowloadResources
 {
 #ifdef DEBUG
     NSString* URL = DATA.config[@"__specification__UAT__"];
@@ -218,6 +216,8 @@ int musicIndex = 0;
         }
     }];
 }
+
+#pragma mark -
 
 +(NSString*) getPath: (NSString*)path
 {

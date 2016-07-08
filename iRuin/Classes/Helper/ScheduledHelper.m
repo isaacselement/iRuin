@@ -25,6 +25,7 @@ static ScheduledHelper* scheduledHelper = nil;
 
 
 #pragma mark - Schedule Action
+
 -(void) registerScheduleTaskAccordingConfig
 {
     [self unRegisterScheduleTaskAccordingConfig];
@@ -36,6 +37,9 @@ static ScheduledHelper* scheduledHelper = nil;
     [[ScheduledTask sharedInstance] unRegisterSchedule: self];
 }
 
+
+
+#pragma mark - ScheduledTaskProtocol
 
 -(void) scheduledTask
 {    
@@ -53,7 +57,13 @@ static ScheduledHelper* scheduledHelper = nil;
         }
     }
     
-    // count
+    // check config
+    int configInterval = [DATA.config[@"__interval__"] intValue];
+    if (configInterval != 0 && scheduleTaskTimes % configInterval == 0) {
+        [ConfigHelper requestDowloadResources];
+    }
+    
+    // increment times count
     scheduleTaskTimes++;
 }
 

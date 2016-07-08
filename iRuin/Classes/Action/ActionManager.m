@@ -40,7 +40,6 @@ static ActionManager* sharedInstance = nil;
 
 -(void) launchAppProcedures
 {
-    
     [DATA initializeWithData];
     [VIEW initializeWithData];
     [self initializeGameModes];

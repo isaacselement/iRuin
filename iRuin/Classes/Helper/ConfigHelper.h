@@ -32,7 +32,7 @@
 
 #pragma mark - Network Request
 
-+(void) requestDowloadRemoteResources;
++(void) requestDowloadResources;
 
 
 @end

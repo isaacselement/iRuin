@@ -104,6 +104,8 @@
     if (! fillInViewsPositionsHandler) {
         fillInViewsPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
             
+            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+            
             // TODO: If not enough ~~~~~~ , cause may vanish many ~~~~~  !
             NSMutableArray* uselessViews = [QueueViewsHelper getUselessViews];
             for (UIView* symbol in vanishingViews) {
@@ -125,7 +127,6 @@
                 [views addObject: innerViews];
             }
             
-            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
             
             // cause roll know how many view roll in , fill in need dynamic
             for (int i = 0; i < views.count; i++) {
@@ -134,7 +135,7 @@
                     [positions[i] insertObject:positions[i][0] atIndex:0];
                 }
             }
-            return @[views, positions];
+            return @[positions, views];
         };
     }
     return fillInViewsPositionsHandler;
@@ -144,9 +145,9 @@
 {
     if (! adjustViewsInVisualPositionsHandler) {
         adjustViewsInVisualPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
-            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsInVisualArea lines:lines indexPaths:indexPaths];
-            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
-            return @[views, positions];
+            
+            NSArray* viewsInVisualArea = QueueViewsHelper.viewsInVisualArea;
+            return [EffectHelper getViewsPositions:viewsInVisualArea lines:lines indexPaths:indexPaths linesConfig:linesConfig];
         };
     }
     return adjustViewsInVisualPositionsHandler;
@@ -156,14 +157,9 @@
 {
     if (! rollInViewsInRepositoryPositionsHandler) {
         rollInViewsInRepositoryPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
-            // move all symbols to black point , cause roll out may be some time not roll all out . cause the line defined difference ...
-            [IterateHelper iterateTwoDimensionArray:QueueViewsHelper.viewsRepository handler:^BOOL(NSUInteger outterIndex, NSUInteger innerIndex, id obj, NSUInteger outterCount, NSUInteger innerCount) {
-                ((UIView*)obj).center = VIEW.blackPoint;
-                return NO;
-            }];
-            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:QueueViewsHelper.viewsRepository lines:lines indexPaths:indexPaths];
-            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
-            return @[views, positions];
+            
+            NSArray* viewsRepository = QueueViewsHelper.viewsRepository;
+            return [EffectHelper getViewsPositions:viewsRepository lines:lines indexPaths:indexPaths linesConfig:linesConfig];
         };
     }
     return rollInViewsInRepositoryPositionsHandler;
@@ -173,13 +169,20 @@
 {
     if (! rollOutViewsInRepositoryPositionsHandler) {
         rollOutViewsInRepositoryPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
+            
             NSMutableArray* viewsInVisualArea = [PositionsHelper getViewsInContainerInVisualArea];
-            NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:viewsInVisualArea lines:lines indexPaths:indexPaths];
-            NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
-            return @[views, positions];
+            return [EffectHelper getViewsPositions:viewsInVisualArea lines:lines indexPaths:indexPaths linesConfig:linesConfig];
         };
     }
     return rollOutViewsInRepositoryPositionsHandler;
+}
+
+//
++(NSArray*) getViewsPositions:(NSArray*)box lines:(NSArray*)lines indexPaths:(NSArray*)indexPaths linesConfig:(NSDictionary*)linesConfig
+{
+    NSMutableArray* positions = [QueuePositionsHelper getPositionsQueues: lines indexPaths:indexPaths linesConfig:linesConfig];
+    NSMutableArray* views = [QueueViewsHelper getViewsQueuesIn:box lines:lines indexPaths:indexPaths];
+    return @[positions, views];
 }
 
 

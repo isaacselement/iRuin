@@ -5,11 +5,6 @@
 
 #pragma mark - Public Methods
 
-+(NSMutableArray*) getNullIndexPathsInVisualAreaViews
-{
-    return [QueueIndexPathParser getIndexPathsIn: QueueViewsHelper.viewsInVisualArea element:[NSNull null]];
-}
-
 +(NSMutableArray*) getViewsInContainerInVisualArea
 {
     return [QueueViewsHelper getViewsInVisualAreaFromViewsRepository: VIEW.gameView.containerView.bounds];

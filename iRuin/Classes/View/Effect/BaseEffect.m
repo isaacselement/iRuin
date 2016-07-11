@@ -199,13 +199,13 @@
     BOOL isBackward = [indexPathsConfig[IsBackward] boolValue];
     BOOL isColumnBase = [indexPathsConfig[IsColumnBase] boolValue];
     
-    NSMutableArray* nullRowColumns = [PositionsHelper getNullIndexPathsInVisualAreaViews];
-    NSMutableArray* nullIndexPaths = [QueueIndexPathParser getIndexPathsIn: lines elements:nullRowColumns];
-    NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupTheNullIndexPaths: nullIndexPaths isNullIndexPathsBreakWhenNotCoterminous:isGroupBreak isColumnBase:isColumnBase];
+    NSMutableArray* nullIndexPathsInViews = [QueueIndexPathParser getIndexPathsIn: QueueViewsHelper.viewsInVisualArea element:[NSNull null]];
+    NSMutableArray* nullIndexPathsInLines = [QueueIndexPathParser getIndexPathsIn: lines elements:nullIndexPathsInViews];
+    NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupTheNullIndexPaths: nullIndexPathsInLines isNullIndexPathsBreakWhenNotCoterminous:isGroupBreak isColumnBase:isColumnBase];
     NSArray* indexPaths = [QueueIndexPathParser assembleIndexPaths:lines groupedNullIndexpaths:groupedNullIndexpaths isBackward:isBackward isColumnBase:isColumnBase isReverse:isReverse];
     
     NSArray* viewsPositions = viewspositionsHandler(lines, indexPaths, groupedNullIndexpaths, linesConfig, vanishingViews);
-    NSMutableArray* views = [viewsPositions firstObject];
+    NSMutableArray* views = [viewsPositions lastObject];
     
     // when indexPaths == groupedNullIndexpaths , the views is blank . That happen in no adjust . No views, then no need do animation .
     // just return .
@@ -213,7 +213,7 @@
         return;
     }
     
-    NSMutableArray* positions = [viewsPositions lastObject];
+    NSMutableArray* positions = [viewsPositions firstObject];
     NSMutableArray* baseTimes = [QueueTimeCalculator getBaseTimesAccordingToViews: views delay:delay];
     
     [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:baseTimes];

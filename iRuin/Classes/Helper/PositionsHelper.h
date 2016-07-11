@@ -4,7 +4,6 @@
 
 
 +(NSMutableArray*) getViewsInContainerInVisualArea;
-+(NSMutableArray*) getNullIndexPathsInVisualAreaViews;
 
 +(void) updateViewsRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
 

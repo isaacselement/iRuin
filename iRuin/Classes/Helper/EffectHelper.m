@@ -1,10 +1,6 @@
 #import "EffectHelper.h"
 #import "AppInterface.h"
 
-
-#define SeasonHintHudTag 2008
-
-
 @implementation EffectHelper
 {
     // queue views positions handler

@@ -110,7 +110,7 @@
 
 #ifdef DEBUG
 
-- (instancetype)init___
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -126,6 +126,9 @@
     [self addGestureRecognizer: tap];
     tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     tap.numberOfTapsRequired = 3;
+    [self addGestureRecognizer: tap];
+    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    tap.numberOfTapsRequired = 4;
     [self addGestureRecognizer: tap];
 }
 
@@ -144,6 +147,12 @@
          NSMutableArray* vanishSymbols = [SearchHelper searchMatchedInAllLines: MATCH_COUNT];
         [ACTION.modeState stateStartVanishSymbols: vanishSymbols];
 #pragma clang diagnostic pop
+        
+    } else if (tap.numberOfTapsRequired == 2) {
+        
+        CGPoint location = [tap locationInView: self];
+        SymbolView* symbol = [self getSymbolView: location event:nil];
+        [ACTION.modeState stateStartVanishSymbols: [NSMutableArray arrayWithObject:symbol]];
         
     }
 }

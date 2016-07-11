@@ -170,7 +170,7 @@
     if (! rollOutViewsInRepositoryPositionsHandler) {
         rollOutViewsInRepositoryPositionsHandler = ^NSArray *(NSArray *lines, NSArray *indexPaths, NSArray* groupedNullIndexpaths, NSDictionary *linesConfig, NSArray* vanishingViews) {
             
-            NSMutableArray* viewsInVisualArea = [PositionsHelper getViewsInContainerInVisualArea];
+            NSMutableArray* viewsInVisualArea = [QueueViewsHelper getViewsInVisualAreaFromViewsRepository: VIEW.gameView.containerView.bounds];
             return [EffectHelper getViewsPositions:viewsInVisualArea lines:lines indexPaths:indexPaths linesConfig:linesConfig];
         };
     }

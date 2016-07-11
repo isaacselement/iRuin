@@ -154,6 +154,9 @@
 
 
 #pragma mark - Private Methods
+
+/*
+ 
 // call it in drawRect: methods
 -(void) drawValidArea: (CGMutablePathRef)path
 {
@@ -164,7 +167,8 @@
     CGContextFillPath(context);
 }
 
--(void) addEllipseInRectWithAnimation {
+-(void) addEllipseInRectWithAnimation
+{
     CGPoint ellipseOrigin = CGPointMake(0, 0);
     CGSize ellipseSize = self.bounds.size;// CGSizeMake(200, 100);
     CGMutablePathRef path = CGPathCreateMutable();
@@ -188,5 +192,6 @@
     drawAnim.toValue = [NSNumber numberWithFloat:1.0f];
     [ellipseLayer addAnimation:drawAnim forKey:@"strokeEnd"];
 }
+ */
 
 @end

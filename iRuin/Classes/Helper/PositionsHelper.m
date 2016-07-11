@@ -5,26 +5,6 @@
 
 #pragma mark - Public Methods
 
-+(NSMutableArray*) getViewsInContainerInVisualArea
-{
-    return [QueueViewsHelper getViewsInVisualAreaFromViewsRepository: VIEW.gameView.containerView.bounds];
-}
-
-+(void) updateViewsRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence
-{
-    NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: viewsSequence];
-    [onedimensionViews removeObject:[NSNull null]];
-    
-    // replace the original location symbol (just a copy) with null
-    [self replaceOutdatedPositionsWithNullInVisualArea: onedimensionViews];
-    
-    // reset the row column properties
-    [self updateRowsColumnsInVisualArea: onedimensionViews];
-}
-
-
-#pragma mark -
-
 // replace the original location symbol with null
 +(void) replaceOutdatedPositionsWithNullInVisualArea: (NSArray*)oneDimensionSymbols
 {
@@ -51,10 +31,9 @@
 }
 
 // reset the row column properties
-+(void) updateRowsColumnsInVisualArea: (NSArray*)oneDimensionObjects
++(void) updateRowsColumnsInVisualArea: (NSArray*)oneDimensionSymbols
 {
-    for (NSUInteger k = 0; k < oneDimensionObjects.count; k++) {
-        SymbolView* symbolObj = oneDimensionObjects[k];
+    for (SymbolView* symbolObj in oneDimensionSymbols) {
         [self updateRowColumnInVisualArea: symbolObj];
     }
 }

@@ -2,10 +2,7 @@
 
 @interface PositionsHelper : NSObject
 
-
-+(NSMutableArray*) getViewsInContainerInVisualArea;
-
-+(void) updateViewsRowsColumnsInVisualArea: (NSMutableArray*)viewsSequence;
++(void) replaceOutdatedPositionsWithNullInVisualArea: (NSArray*)oneDimensionSymbols;
 
 +(void) updateRowsColumnsInVisualArea: (NSArray*)oneDimensionSymbols;
 

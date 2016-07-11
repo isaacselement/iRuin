@@ -162,6 +162,7 @@ int musicIndex = 0;
 +(void) requestDowloadResources
 {
 #ifdef DEBUG
+    return;
     NSString* URL = DATA.config[@"__specification__UAT__"];
 #else
     NSString* URL = DATA.config[@"__specification__"];

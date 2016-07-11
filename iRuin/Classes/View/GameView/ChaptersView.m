@@ -111,7 +111,7 @@
     
     // --------------------- mode
     // switch config by mode and index
-    NSString* mode = [[ConfigHelper getSupportedModes] firstObject];
+    NSString* mode = DATA.config[@"Mode"];
     ACTION.gameState.currentMode = mode;
     [ACTION switchToMode:mode chapter:chapter];
     

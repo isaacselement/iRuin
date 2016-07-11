@@ -201,7 +201,7 @@
     
     NSMutableArray* nullIndexPathsInViews = [QueueIndexPathParser getIndexPathsIn: QueueViewsHelper.viewsInVisualArea element:[NSNull null]];
     NSMutableArray* nullIndexPathsInLines = [QueueIndexPathParser getIndexPathsIn: lines elements:nullIndexPathsInViews];
-    NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupTheNullIndexPaths: nullIndexPathsInLines isNullIndexPathsBreakWhenNotCoterminous:isGroupBreak isColumnBase:isColumnBase];
+    NSArray* groupedNullIndexpaths = [QueueIndexPathParser groupNullIndexPaths: nullIndexPathsInLines isNullIndexPathsBreakWhenNotCoterminous:isGroupBreak isColumnBase:isColumnBase];
     NSArray* indexPaths = [QueueIndexPathParser assembleIndexPaths:lines groupedNullIndexpaths:groupedNullIndexpaths isBackward:isBackward isColumnBase:isColumnBase isReverse:isReverse];
     
     NSArray* viewsPositions = viewspositionsHandler(lines, indexPaths, groupedNullIndexpaths, linesConfig, vanishingViews);
@@ -217,7 +217,14 @@
     NSMutableArray* baseTimes = [QueueTimeCalculator getBaseTimesAccordingToViews: views delay:delay];
     
     [VIEW.actionExecutorManager runActionExecutors:actionsConfig onObjects:views values:positions baseTimes:baseTimes];
-    [PositionsHelper updateViewsRowsColumnsInVisualArea: views];
+    
+    // ......
+    NSMutableArray* onedimensionViews = [ArrayHelper translateToOneDimension: views];
+    [onedimensionViews removeObject:[NSNull null]];
+    // replace the original location symbol (just a copy) with null
+    [PositionsHelper replaceOutdatedPositionsWithNullInVisualArea: onedimensionViews];
+    // reset the row column properties
+    [PositionsHelper updateRowsColumnsInVisualArea: onedimensionViews];
 }
 
 @end

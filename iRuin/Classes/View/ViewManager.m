@@ -14,6 +14,8 @@
 static ViewManager* sharedInstance = nil;
 
 +(void)initialize {
+    // http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/
+    // Because runtime use objc_msgSend to invoke initialize method 
     // Without that extra check, your initializations could run twice in this class, if you ever have a subclass that doesn't implement its own +initialize method.
     if (self == [ViewManager class]) {
         sharedInstance = [[ViewManager alloc] init];

@@ -50,7 +50,7 @@
     }
     const char* type = ivar_getTypeEncoding(ivar);
     
-    // get or set the value
+    // setter
     if (isSetter) {
         
         if (strcmp(type, "i") == 0) {
@@ -62,6 +62,7 @@
         [self setObject:(__bridge id)value forKey:key];
         return nil;
         
+    // getter
     } else {
         value = (__bridge void *)([self objectForKey:key]);
         
